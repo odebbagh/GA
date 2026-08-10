@@ -1,0 +1,22 @@
+ {
+     "_requiered":["top","left","width","height","text","dataSource"],
+     "top": "long",
+     "left": "long",
+     "width": "long;50",
+     "height": "long;20",
+     "text": "text;valeur par defaut",
+	 "dataSource": "text",
+     "fontFamily":"text;Helvetica",
+     "fontSize":"long;13",
+     "stroke":"text",
+     "fontWeight":"text;normal",
+     "fontStyle":"text;italic",
+     "style":"text;flat;regular;toolbar;bevel;roundedBevel;gradientBevel;texturedBevel;disclosure",
+     "icon":"text",
+     "textDecoration": "text:underline",
+     "visibility":"text;visible;hidden",
+     "_fillEven":"text;#e0e0e0",
+     "_fillOdd":"text;#eaeaea",
+	 "_strokeEven":"text;#e0e0e0",
+     "_strokeOdd":"text;#eaeaea"
+ }

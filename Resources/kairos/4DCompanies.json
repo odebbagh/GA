@@ -1,0 +1,38 @@
+[
+    {
+        "UUID":"3B6E6626CAA0D401CBF149D88652E865A",
+		"name": "4D SAS",
+        "UUID_Country":"9A0108299DCE459FA5304A8681D7A4EE"
+    },
+    {
+        "UUID":"D7953297A5BE4ED3A18641ADCE7153B4",
+		"name": "4D Inc.",
+        "UUID_Country":"C726529944404FC5B48853CF46BA2D4E"
+
+    },
+    {
+        "UUID":"B98B04F8582D4ED89FA6E7186F55CFDB",
+		"name": "4D Deutschland GmbH",
+        "UUID_Country":"3731D5606D834975B532571F17029001"
+    },
+    {
+        "UUID":"6764C7E2FBF447D0A9F0C8C61EAC5AA4",
+		"name": "4D Australasia",
+        "UUID_Country":"2E8815B18B8045AFBEDA64AE32FA94E6"
+    },
+    {
+        "UUID":"85A1CE670247494DAFF76917CB49592E",
+		"name": "4D Japan",
+        "UUID_Country":"AAE0E6BC15F3411284753ADBB76E7776"
+    },
+    {
+        "UUID":"560260CEFFF94FDDB388E47904E13B33",
+		"name": "4D Logiciels Maroc",
+        "UUID_Country":"2BB150DE4E6C4FF6A4984B544D443213"
+    },
+    {
+        "UUID":"F13A3E22E6074F3D99AC49185E2E2401",
+		"name": "4D Export",
+        "UUID_Country":"9A0108299DCE459FA5304A8681D7A4EE"
+    }
+]

@@ -1,0 +1,1 @@
+Form:C1466.current_item.color:=cs:C1710.sfw_htmlColor.me.deployPup(Form:C1466.current_item.color).hex

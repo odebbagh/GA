@@ -1,0 +1,628 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailPrinter",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Text": {
+					"type": "text",
+					"text": "RETURNED MATERIAL AUTHORIZATION",
+					"top": 15,
+					"left": 158,
+					"width": 457,
+					"height": 38,
+					"textAlign": "center",
+					"fontSize": 20,
+					"fontWeight": "bold",
+					"right": 615
+				},
+				"Static Picture2": {
+					"type": "picture",
+					"top": 8,
+					"left": 6,
+					"width": 153,
+					"height": 45,
+					"picture": "/RESOURCES/image/logo/golden_atos.png",
+					"pictureFormat": "scaled"
+				},
+				"Text1": {
+					"type": "text",
+					"text": "Received Date",
+					"top": 83,
+					"left": 5,
+					"width": 77,
+					"height": 16
+				},
+				"Input": {
+					"type": "input",
+					"left": 94,
+					"top": 83,
+					"width": 104,
+					"height": 16,
+					"dataSource": "Form:C1466.dateReceived",
+					"dataSourceTypeHint": "date",
+					"dateFormat": "short",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text2": {
+					"type": "text",
+					"text": "Customer",
+					"top": 103,
+					"left": 5,
+					"width": 77,
+					"height": 16
+				},
+				"Input1": {
+					"type": "input",
+					"left": 94,
+					"top": 103,
+					"width": 104,
+					"height": 16,
+					"dataSource": "Form:C1466.customer",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text3": {
+					"type": "text",
+					"text": "Customer PO",
+					"top": 123,
+					"left": 5,
+					"width": 77,
+					"height": 16
+				},
+				"Input2": {
+					"type": "input",
+					"left": 94,
+					"top": 123,
+					"width": 104,
+					"height": 16,
+					"dataSource": "Form:C1466.customerPo",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text4": {
+					"type": "text",
+					"text": "Part No",
+					"top": 143,
+					"left": 5,
+					"width": 77,
+					"height": 16
+				},
+				"Input3": {
+					"type": "input",
+					"left": 94,
+					"top": 143,
+					"width": 104,
+					"height": 16,
+					"dataSource": "Form:C1466.partNumber",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text5": {
+					"type": "text",
+					"text": "RMA No",
+					"top": 83,
+					"left": 210,
+					"width": 77,
+					"height": 16
+				},
+				"Input4": {
+					"type": "input",
+					"left": 299,
+					"top": 83,
+					"width": 104,
+					"height": 16,
+					"dataSource": "Form:C1466.rmaNumber",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text6": {
+					"type": "text",
+					"text": "Contact",
+					"top": 103,
+					"left": 210,
+					"width": 77,
+					"height": 16
+				},
+				"Input5": {
+					"type": "input",
+					"left": 299,
+					"top": 103,
+					"width": 104,
+					"height": 16,
+					"dataSource": "Form:C1466.contact",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text7": {
+					"type": "text",
+					"text": "Traveller No",
+					"top": 123,
+					"left": 210,
+					"width": 77,
+					"height": 16
+				},
+				"Input6": {
+					"type": "input",
+					"left": 299,
+					"top": 123,
+					"width": 104,
+					"height": 16,
+					"dataSource": "Form:C1466.lotNumber",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text8": {
+					"type": "text",
+					"text": "GA Invoice No",
+					"top": 143,
+					"left": 210,
+					"width": 77,
+					"height": 16
+				},
+				"Input7": {
+					"type": "input",
+					"left": 299,
+					"top": 143,
+					"width": 104,
+					"height": 16,
+					"dataSource": "Form:C1466.gaInvoiceNumber",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text9": {
+					"type": "text",
+					"text": "Authorized By",
+					"top": 83,
+					"left": 415,
+					"width": 77,
+					"height": 16
+				},
+				"Input8": {
+					"type": "input",
+					"left": 504,
+					"top": 83,
+					"width": 104,
+					"height": 16,
+					"dataSource": "Form:C1466.authorizedBy",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text10": {
+					"type": "text",
+					"text": "Tel No",
+					"top": 103,
+					"left": 415,
+					"width": 77,
+					"height": 16
+				},
+				"Input9": {
+					"type": "input",
+					"left": 504,
+					"top": 103,
+					"width": 104,
+					"height": 16,
+					"dataSource": "Form:C1466.phone",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text11": {
+					"type": "text",
+					"text": "Status",
+					"top": 123,
+					"left": 415,
+					"width": 77,
+					"height": 16
+				},
+				"Input10": {
+					"type": "input",
+					"left": 504,
+					"top": 123,
+					"width": 104,
+					"height": 16,
+					"dataSource": "Form:C1466.status",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text12": {
+					"type": "text",
+					"text": "Date Close",
+					"top": 143,
+					"left": 415,
+					"width": 77,
+					"height": 16
+				},
+				"Input11": {
+					"type": "input",
+					"left": 504,
+					"top": 143,
+					"width": 104,
+					"height": 16,
+					"dataSource": "Form:C1466.dateClose",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text13": {
+					"type": "text",
+					"text": ":",
+					"top": 83,
+					"left": 84,
+					"width": 10,
+					"height": 16,
+					"textAlign": "center"
+				},
+				"Text14": {
+					"type": "text",
+					"text": ":",
+					"top": 103,
+					"left": 84,
+					"width": 10,
+					"height": 16,
+					"textAlign": "center"
+				},
+				"Text15": {
+					"type": "text",
+					"text": ":",
+					"top": 123,
+					"left": 84,
+					"width": 10,
+					"height": 16,
+					"textAlign": "center"
+				},
+				"Text16": {
+					"type": "text",
+					"text": ":",
+					"top": 143,
+					"left": 84,
+					"width": 10,
+					"height": 16,
+					"textAlign": "center"
+				},
+				"Text17": {
+					"type": "text",
+					"text": ":",
+					"top": 83,
+					"left": 289,
+					"width": 10,
+					"height": 16,
+					"textAlign": "center"
+				},
+				"Text18": {
+					"type": "text",
+					"text": ":",
+					"top": 103,
+					"left": 289,
+					"width": 10,
+					"height": 16,
+					"textAlign": "center"
+				},
+				"Text19": {
+					"type": "text",
+					"text": ":",
+					"top": 123,
+					"left": 289,
+					"width": 10,
+					"height": 16,
+					"textAlign": "center"
+				},
+				"Text20": {
+					"type": "text",
+					"text": ":",
+					"top": 143,
+					"left": 289,
+					"width": 10,
+					"height": 16,
+					"textAlign": "center"
+				},
+				"Text21": {
+					"type": "text",
+					"text": ":",
+					"top": 83,
+					"left": 494,
+					"width": 10,
+					"height": 16,
+					"textAlign": "center"
+				},
+				"Text22": {
+					"type": "text",
+					"text": ":",
+					"top": 103,
+					"left": 494,
+					"width": 10,
+					"height": 16,
+					"textAlign": "center"
+				},
+				"Text23": {
+					"type": "text",
+					"text": ":",
+					"top": 123,
+					"left": 494,
+					"width": 10,
+					"height": 16,
+					"textAlign": "center"
+				},
+				"Text24": {
+					"type": "text",
+					"text": ":",
+					"top": 143,
+					"left": 494,
+					"width": 10,
+					"height": 16,
+					"textAlign": "center"
+				},
+				"Line": {
+					"type": "line",
+					"top": 172,
+					"left": 0,
+					"width": 610,
+					"height": 0,
+					"startPoint": "topLeft",
+					"right": 610
+				},
+				"Line1": {
+					"type": "line",
+					"top": 194,
+					"left": 0,
+					"width": 610,
+					"height": 0,
+					"startPoint": "topLeft",
+					"right": 610
+				},
+				"Text25": {
+					"type": "text",
+					"text": "Reason for Return:",
+					"top": 174,
+					"left": 6,
+					"width": 598,
+					"height": 18,
+					"fontWeight": "bold",
+					"fontSize": 16,
+					"textAlign": "center",
+					"fontFamily": "Arial",
+					"right": 604
+				},
+				"Input12": {
+					"type": "input",
+					"left": 10,
+					"top": 199,
+					"width": 590,
+					"height": 36,
+					"dataSource": "Form:C1466.reasonForReturn",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Line2": {
+					"type": "line",
+					"top": 239,
+					"left": 0,
+					"width": 610,
+					"height": 0,
+					"startPoint": "topLeft",
+					"right": 610
+				},
+				"Line3": {
+					"type": "line",
+					"top": 261,
+					"left": 0,
+					"width": 610,
+					"height": 0,
+					"startPoint": "topLeft",
+					"right": 610
+				},
+				"Text26": {
+					"type": "text",
+					"text": "Description:",
+					"top": 241,
+					"left": 6,
+					"width": 598,
+					"height": 18,
+					"fontWeight": "bold",
+					"fontSize": 16,
+					"textAlign": "center",
+					"fontFamily": "Arial",
+					"right": 604
+				},
+				"Input13": {
+					"type": "input",
+					"left": 10,
+					"top": 266,
+					"width": 590,
+					"height": 176,
+					"dataSource": "Form:C1466.description",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Line4": {
+					"type": "line",
+					"top": 446,
+					"left": 0,
+					"width": 610,
+					"height": 0,
+					"startPoint": "topLeft",
+					"right": 610
+				},
+				"Line5": {
+					"type": "line",
+					"top": 468,
+					"left": 0,
+					"width": 610,
+					"height": 0,
+					"startPoint": "topLeft",
+					"right": 610
+				},
+				"Text27": {
+					"type": "text",
+					"text": "Material Disposition:",
+					"top": 448,
+					"left": 6,
+					"width": 598,
+					"height": 18,
+					"fontWeight": "bold",
+					"fontSize": 16,
+					"textAlign": "center",
+					"fontFamily": "Arial",
+					"right": 604
+				},
+				"Input14": {
+					"type": "input",
+					"left": 10,
+					"top": 473,
+					"width": 590,
+					"height": 176,
+					"dataSource": "Form:C1466.materialDisposition",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text28": {
+					"type": "text",
+					"text": "QA/QC:",
+					"top": 663,
+					"left": 10,
+					"width": 84,
+					"height": 16,
+					"textAlign": "right"
+				},
+				"Input15": {
+					"type": "input",
+					"left": 105,
+					"top": 663,
+					"width": 155,
+					"height": 16,
+					"dataSource": "Form:C1466.qaQc",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text29": {
+					"type": "text",
+					"text": "Customer Svc:",
+					"top": 688,
+					"left": 10,
+					"width": 84,
+					"height": 16,
+					"textAlign": "right"
+				},
+				"Input16": {
+					"type": "input",
+					"left": 105,
+					"top": 688,
+					"width": 155,
+					"height": 16,
+					"dataSource": "Form:C1466.customerSvc",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text30": {
+					"type": "text",
+					"text": "Date:",
+					"top": 663,
+					"left": 350,
+					"width": 84,
+					"height": 16,
+					"textAlign": "right"
+				},
+				"Input17": {
+					"type": "input",
+					"left": 445,
+					"top": 663,
+					"width": 155,
+					"height": 16,
+					"dataSource": "Form:C1466.currentDate",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text31": {
+					"type": "text",
+					"text": "Tel No:",
+					"top": 688,
+					"left": 350,
+					"width": 84,
+					"height": 16,
+					"textAlign": "right"
+				},
+				"Input18": {
+					"type": "input",
+					"left": 445,
+					"top": 688,
+					"width": 155,
+					"height": 16,
+					"dataSource": "Form:C1466.phone",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"Text32": {
+					"type": "text",
+					"text": "Reference AQ-65013",
+					"top": 721,
+					"left": 26,
+					"width": 184,
+					"height": 16,
+					"textAlign": "automatic"
+				},
+				"Text33": {
+					"type": "text",
+					"text": "GAF# 1226 REV/ 04",
+					"top": 721,
+					"left": 413,
+					"width": 184,
+					"height": 16,
+					"textAlign": "right",
+					"fontWeight": "bold"
+				},
+				"Line6": {
+					"type": "line",
+					"top": 649,
+					"left": 0,
+					"width": 610,
+					"height": 0,
+					"startPoint": "topLeft",
+					"right": 610
+				}
+			}
+		}
+	],
+	"geometryStamp": 583,
+	"markerFooter": 744,
+	"markerBreak": 651,
+	"markerBody": 650,
+	"markerHeader": 171,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

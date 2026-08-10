@@ -1,0 +1,119 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "Confirm",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"bOk": {
+					"type": "button",
+					"top": 140,
+					"left": 457,
+					"width": 100,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "Ok",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/check-24x24.png",
+					"iconFrames": 4,
+					"textPlacement": "right",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "accept"
+				},
+				"Static Picture1": {
+					"type": "picture",
+					"top": 30,
+					"left": 10,
+					"width": 50,
+					"height": 50,
+					"picture": "/RESOURCES/sfw/image/icon/alert-50x50.png"
+				},
+				"message": {
+					"type": "input",
+					"left": 73,
+					"top": 32,
+					"width": 484,
+					"height": 81,
+					"dataSource": "Form:C1466.message",
+					"enterable": false,
+					"focusable": false,
+					"contextMenu": "none",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"styledText": true
+				},
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 580,
+					"height": 21,
+					"stroke": "transparent",
+					"fill": "#FFB012",
+					"sizingX": "grow"
+				},
+				"bCancel": {
+					"type": "button",
+					"top": 140,
+					"left": 317,
+					"width": 100,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "Cancel",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/return-24x24.png",
+					"iconFrames": 4,
+					"textPlacement": "right",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "cancel"
+				}
+			}
+		}
+	],
+	"geometryStamp": 24,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

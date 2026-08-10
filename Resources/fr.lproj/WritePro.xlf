@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="flyerCoach">
+            <trans-unit id="2" resname="flyerCoach.yogaTitleIntro">
+               <source>Reduce Anxiety &amp; Stress through Yoga Practice.</source>
+               <target>Réduire l'anxiété et le stress par la pratique du yoga.</target>
+            </trans-unit>
+            <trans-unit id="7" resname="flyerCoach.yogaRequirments">
+               <source>Things You Need for Yoga: </source>
+               <target>Ce que vous devez savoir sur le yoga: </target>
+            </trans-unit>
+            <trans-unit id="7" resname="flyerCoach.workingDaysExcept">
+               <source>Everyday except </source>
+               <target>Tous les jours sauf </target>
+            </trans-unit>
+            <trans-unit id="8" resname="flyerCoach.workingDaysOnly">
+               <source>Only </source>
+               <target>Uniquement </target>
+            </trans-unit>
+            <trans-unit id="9" resname="flyerCoach.workingDaysEvery">
+               <source>Join us every: </source>
+               <target>Rejoignez-nous chaque : </target>
+            </trans-unit>
+            <trans-unit id="10" resname="flyerCoach.workingDaysLast">
+               <source>Last for at least: </source>
+               <target>Dure au moins : </target>
+            </trans-unit>
+            <trans-unit id="7" resname="flyerCoach.yogaRequirmentsDetails">
+               <source>For hundreds or even thousands of years, there was no yoga equipment. Practicing yoga required only your body, mind, and spirit. And while that's still all you need, we still offer straps, blocks, and other props for you to use.</source>
+               <target>Depuis des centaines, voire des milliers d'années, il n'existait aucun équipement de yoga. La pratique du yoga ne nécessitait que votre corps, votre âme et votre esprit. Et même si c'est tout ce dont vous avez besoin, nous proposons des sangles, des blocs et d'autres accessoires que vous pouvez utiliser.</target>
+            </trans-unit>
+            <trans-unit id="8" resname="flyerCoach.danceAbout">
+               <source>About </source>
+               <target>A propos de </target>
+            </trans-unit>
+            <trans-unit id="9" resname="flyerCoach.avblProgm">
+               <source>Available Programs:</source>
+               <target>Programmes disponibles :</target>
+            </trans-unit>
+            <trans-unit id="10" resname="flyerCoach.danceIntro">
+               <source>We make this fun and rewarding physical activity available to a wider audience by ensuring that all programs we offer give you the best bang for your buck.</source>
+               <target>Nous mettons cette activité physique amusante et gratifiante à la disposition d'un public plus large en veillant à ce que tous les programmes que nous proposons vous en donnent le plus possible pour votre argent.</target>
+            </trans-unit>
+            <trans-unit id="11" resname="flyerCoach.danceFacilities">
+               <source>Well Kept Dance Facilities:</source>
+               <target>Des installations de danse bien entretenues:</target>
+            </trans-unit>
+            <trans-unit id="12" resname="flyerCoach.danceFacilitiesDescription">
+               <source>We have some of the best dancing facilities in the whole state. These facilities include personal lockers with padlocks &amp; keys, shower rooms, dance rooms with mirror, ballet bars and hardwood floors, cafeteria and snack bar, free water station and 24 hour security system.</source>
+               <target>Nos installations de danse sont parmi les meilleures de tout l'État. Ces installations comprennent des casiers personnels avec cadenas et clés, des salles de douche, des salles de danse avec miroir, des barres de ballet et des sols en bois dur, une cafétéria et un snack-bar, une station d'eau gratuite et un système de sécurité 24h/24.</target>
+            </trans-unit>
+            <trans-unit id="13" resname="flyerCoach.yogaHeaderSlogan">
+               <source>EXPERIENCE TRANQUILITY AND BLISS</source>
+               <target>VIVRE LA TRANQUILITÉ ET LA BÉLITE</target>
+            </trans-unit>
+            <trans-unit id="14" resname="flyerCoach.yogaMidSlogan">
+               <source>RESTORE LIFE AND BALANCE</source>
+               <target>RÉTABLIR LA VIE ET L'ÉQUILIBRE</target>
+            </trans-unit>
+            <trans-unit id="15" resname="flyerCoach.danceSlogan">
+               <source>Get Moving and Dance With Us!</source>
+               <target>Bougez et dansez avec nous !</target>
+            </trans-unit>
+            <trans-unit id="16" resname="flyerCoach.danceStudioName">
+               <source>Dance Studio</source>
+               <target>Studio de Danse</target>
+            </trans-unit>
+            <trans-unit id="17" resname="flyerCoach.danceMidSlogan">
+               <source>Leave
+Your Mark
+On The
+Dance Floor</source>
+               <target>LAISSEZ
+VOTRE TOUCHE
+SUR LA
+PISTE DE DANSE</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

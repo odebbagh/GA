@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="1" resname="entry.activities">
+               <source>Activities</source>
+               <target>Activités</target>
+            </trans-unit>
+            <trans-unit id="2" resname="entry.activity">
+               <source>Activity</source>
+               <target>Activité</target>
+            </trans-unit>
+            <trans-unit id="3" resname="entry.activity.field.name">
+               <source>Name</source>
+               <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="4" resname="entry.activity.unit1">
+               <source>activity</source>
+               <target>activité</target>
+            </trans-unit>
+            <trans-unit id="5" resname="entry.activity.unitN">
+               <source>activities</source>
+               <target>activités</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

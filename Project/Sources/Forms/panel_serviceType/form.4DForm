@@ -1,0 +1,134 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"label_0_1": {
+					"type": "text",
+					"top": 12,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Code"
+				},
+				"entryField_code": {
+					"type": "input",
+					"top": 12,
+					"left": 132,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.code",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_0_2": {
+					"type": "text",
+					"top": 37,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Name"
+				},
+				"entryField_name": {
+					"type": "input",
+					"top": 37,
+					"left": 132,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.name",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_1_1": {
+					"type": "text",
+					"top": 12,
+					"left": 390,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Color"
+				},
+				"pup_color": {
+					"type": "button",
+					"top": 6,
+					"left": 476,
+					"width": 140,
+					"height": 27,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "      Colors",
+					"icon": "/RESOURCES/sfw/colors/colors.png",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_color.4dm",
+					"events": [
+						"onClick"
+					],
+					"textAlign": "left"
+				}
+			}
+		},
+		{
+			"objects": {}
+		}
+	],
+	"inheritedForm": "sfw_bkgd_header_2lines",
+	"geometryStamp": 4,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

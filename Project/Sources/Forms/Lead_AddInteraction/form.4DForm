@@ -1,0 +1,382 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Button": {
+					"type": "button",
+					"top": 510,
+					"left": 268,
+					"width": 70,
+					"height": 20,
+					"sizingX": "move",
+					"sizingY": "move",
+					"dataSource": "Button",
+					"action": "cancel",
+					"shortcutKey": "[Esc]",
+					"text": "Cancel",
+					"events": [
+						"onClick"
+					]
+				},
+				"Button1": {
+					"type": "button",
+					"top": 510,
+					"left": 348,
+					"width": 70,
+					"height": 20,
+					"sizingX": "move",
+					"sizingY": "move",
+					"dataSource": "Button",
+					"action": "accept",
+					"shortcutKey": "[Enter]",
+					"text": "Save",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					]
+				},
+				"Rectangle5": {
+					"type": "rectangle",
+					"top": 7,
+					"left": 0,
+					"width": 438,
+					"height": 32,
+					"fill": "#00A4A4",
+					"stroke": "transparent",
+					"sizingX": "grow"
+				},
+				"Text": {
+					"type": "text",
+					"text": "Log an integration",
+					"top": 15,
+					"left": 8,
+					"width": 195,
+					"height": 16,
+					"fontWeight": "bold"
+				},
+				"Text1": {
+					"type": "text",
+					"text": "Date",
+					"top": 75,
+					"left": 23,
+					"width": 91,
+					"height": 16
+				},
+				"creationDate": {
+					"type": "input",
+					"left": 129,
+					"top": 75,
+					"width": 261,
+					"height": 17,
+					"dataSourceTypeHint": "text",
+					"dataSource": "Form:C1466.creationDate",
+					"sizingX": "grow"
+				},
+				"btnDatePickerCreate": {
+					"type": "button",
+					"text": " ",
+					"top": 76,
+					"left": 400,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerCreate.4dm",
+					"visibility": "visible",
+					"iconFrames": 4,
+					"focusable": false,
+					"dataSource": "",
+					"sizingX": "move"
+				},
+				"pup_method": {
+					"type": "button",
+					"top": 110,
+					"left": 129,
+					"width": 289,
+					"height": 28,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "Method",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_method.4dm",
+					"events": [
+						"onClick"
+					],
+					"sizingX": "grow"
+				},
+				"Text2": {
+					"type": "text",
+					"text": "Method",
+					"top": 110,
+					"left": 23,
+					"width": 113,
+					"height": 16
+				},
+				"pup_outcome": {
+					"type": "button",
+					"top": 146,
+					"left": 129,
+					"width": 289,
+					"height": 28,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "Outcome",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_outcome.4dm",
+					"events": [
+						"onClick"
+					],
+					"sizingX": "grow"
+				},
+				"Text3": {
+					"type": "text",
+					"text": "Outcome",
+					"top": 146,
+					"left": 23,
+					"width": 113,
+					"height": 16
+				},
+				"pup_sales": {
+					"type": "button",
+					"top": 182,
+					"left": 129,
+					"width": 289,
+					"height": 27,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "Sales person",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_sales.4dm",
+					"events": [
+						"onClick"
+					],
+					"sizingX": "grow"
+				},
+				"Text4": {
+					"type": "text",
+					"text": "Sales person",
+					"top": 182,
+					"left": 23,
+					"width": 113,
+					"height": 16
+				},
+				"Text5": {
+					"type": "text",
+					"text": "Notes",
+					"top": 292,
+					"left": 24,
+					"width": 85,
+					"height": 16
+				},
+				"creationDate1": {
+					"type": "input",
+					"left": 129,
+					"top": 292,
+					"width": 289,
+					"height": 145,
+					"dataSourceTypeHint": "text",
+					"dataSource": "Form:C1466.notes",
+					"multiline": "yes",
+					"sizingY": "grow",
+					"sizingX": "grow"
+				},
+				"pup_contact": {
+					"type": "button",
+					"top": 218,
+					"left": 129,
+					"width": 289,
+					"height": 27,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "Contact",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_contact.4dm",
+					"events": [
+						"onClick"
+					],
+					"sizingX": "grow"
+				},
+				"Text6": {
+					"type": "text",
+					"text": "Contact",
+					"top": 218,
+					"left": 23,
+					"width": 113,
+					"height": 16
+				},
+				"pup_trigger": {
+					"type": "button",
+					"top": 254,
+					"left": 129,
+					"width": 289,
+					"height": 27,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "Trigger",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_trigger.4dm",
+					"events": [
+						"onClick"
+					],
+					"sizingX": "grow"
+				},
+				"Text7": {
+					"type": "text",
+					"text": "Trigger",
+					"top": 254,
+					"left": 23,
+					"width": 113,
+					"height": 16
+				},
+				"Text8": {
+					"type": "text",
+					"text": "Number",
+					"top": 46,
+					"left": 24,
+					"width": 91,
+					"height": 16
+				},
+				"creationDate2": {
+					"type": "input",
+					"left": 130,
+					"top": 46,
+					"width": 261,
+					"height": 17,
+					"dataSourceTypeHint": "integer",
+					"dataSource": "Form:C1466.number",
+					"enterable": false,
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"Text9": {
+					"type": "text",
+					"text": "Next follow-up?",
+					"top": 459,
+					"left": 24,
+					"width": 118,
+					"height": 16,
+					"sizingY": "move"
+				},
+				"followUPDate": {
+					"type": "input",
+					"left": 223,
+					"top": 459,
+					"width": 168,
+					"height": 17,
+					"dataSourceTypeHint": "text",
+					"dataSource": "Form:C1466.followUPDate",
+					"visibility": "hidden",
+					"sizingX": "grow",
+					"sizingY": "move"
+				},
+				"followUPDateBtnDatePickerCreate": {
+					"type": "button",
+					"text": " ",
+					"top": 460,
+					"left": 401,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/followUPDateBtnDatePickerCreate.4dm",
+					"visibility": "hidden",
+					"iconFrames": 4,
+					"focusable": false,
+					"dataSource": "",
+					"sizingX": "move",
+					"sizingY": "move"
+				},
+				"Check Box": {
+					"type": "checkbox",
+					"text": "",
+					"top": 452,
+					"left": 130,
+					"width": 26,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.nextFollowUp",
+					"method": "ObjectMethods/Check Box.4dm",
+					"sizingY": "move"
+				}
+			}
+		}
+	],
+	"geometryStamp": 160,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

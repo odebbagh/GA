@@ -1,0 +1,36 @@
+{
+	"destination": "detailScreen",
+	"rightMargin": 19,
+	"bottomMargin": 20,
+	"markerHeader": 0,
+	"markerBody": 1000,
+	"markerBreak": 1000,
+	"markerFooter": 1000,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange",
+        "onBeforeDataEntry",
+        "onSelectionChange"
+	],
+	"pages": [
+		null,
+		{
+			"objects": {
+			}
+		}
+	]
+}

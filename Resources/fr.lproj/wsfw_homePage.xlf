@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="1" resname="wsfw.medicalHouse">
+               <source>Medical house</source>
+               <target>Maison médicale</target>
+            </trans-unit>
+            <trans-unit id="2" resname="wsfw.wellness">
+               <source>Wellness</source>
+               <target>Bien-être</target>
+            </trans-unit>
+            <trans-unit id="3" resname="wsfw.bookConsultation">
+               <source>Book a consultation with a health professional and sign up for wellness courses.</source>
+               <target>Réservez une consultation chez un professionel de santé et inscrivez-vous à des cours de bien-être.</target>
+            </trans-unit>
+            <trans-unit id="4" resname="wsfw.services">
+               <source>Services</source>
+               <target>Services</target>
+            </trans-unit>
+            <trans-unit id="5" resname="wsfw.generalMedicine">
+               <source>General medicine</source>
+               <target>Médecine générale</target>
+            </trans-unit>
+            <trans-unit id="6" resname="wsfw.generalMedicineDescription">
+               <source>The general practitioners of the medical center offer curative follow-up but also attach great importance to the preventive aspect.</source>
+               <target>Les médecins généralistes de la maison médicale proposent un suivi curatif mais accordent également une grande importance au volet préventif.</target>
+            </trans-unit>
+             <trans-unit id="7" resname="wsfw.nursingClinic">
+               <source>Nursing clinic</source>
+               <target>Dispensaire infirmier</target>
+            </trans-unit>
+             <trans-unit id="8" resname="wsfw.nursingClinicDescription">
+               <source>A series of treatments are organized there, for example: blood tests, wound care, drug injections, syringing of earwax plugs, blood pressure monitoring, occasional vaccines outside of vaccination campaigns for which another permanence is organized as well as home visits for patients who cannot come to the dispensary.</source>
+               <target>On y organise une série de soins, par exemple: les prises de sang, les soins de plaies, les injections de médicaments, les seringages de bouchons de cérumen, le contrôle de tension artérielle, les vaccins ponctuels en dehors des campagnes de vaccinations pour lesquelles une autre permanence est organisée ainsi que les visites à domicile pour les patients qui ne peuvent se rendre au dispensaire.</target>
+            </trans-unit>
+             <trans-unit id="9" resname="wsfw.socialService">
+               <source>Social service</source>
+               <target>Service social</target>
+            </trans-unit>
+             <trans-unit id="10" resname="wsfw.socialServiceDescription">
+               <source>Our social worker guides and helps patients in difficulty with medico-social and administrative procedures relating to their health.</source>
+               <target>Notre assistante sociale oriente et aide les patients en difficulté dans les démarches médico-sociales et administratives relatives à leur santé.</target>
+            </trans-unit>
+             <trans-unit id="11" resname="wsfw.course">
+               <source>Course</source>
+               <target>Cours</target>
+            </trans-unit>
+             <trans-unit id="12" resname="wsfw.courseDescription1">
+               <source>Professional coaches give wellness courses.</source>
+               <target>Des coaches professionels donnent des cours de bien-être.</target>
+            </trans-unit>
+             <trans-unit id="13" resname="wsfw.clickhere">
+               <source>Click here</source>
+               <target>cliquer ici</target>
+            </trans-unit>
+             <trans-unit id="14" resname="wsfw.courseDescription2">
+               <source>to download the catalog of available courses.</source>
+               <target>pour télécharger le catalogue des cours disponibles.</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

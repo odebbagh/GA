@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <!--Translation file.This file is distributed under the same license as the product package.-->
+<xliff version="1.0" xmlns:d4="http://www.4d.com/d4-ns">
+   <file datatype="x-STR#" original="undefined" source-language="fr" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="document.dialog">
+            <trans-unit id="1" resname="document.dialog.mainList">
+               <source>Documents</source>
+               <target>Documents</target>
+            </trans-unit>
+            <trans-unit id="2" resname="document.dialog.settings">
+               <source>Réglages du document</source>
+               <target>Réglages du document</target>
+            </trans-unit>
+            <trans-unit id="3" resname="document.dialog.variables">
+               <source>Valorisation des variables du modèle</source>
+               <target>Valorisation des variables du modèle</target>
+            </trans-unit>
+            <trans-unit id="14" resname="document.dialog.lb_documents.name">
+               <source>Nom</source>
+               <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="15" resname="document.dialog.lb_settings.name">
+               <source>Réglage</source>
+               <target>Réglage</target>
+            </trans-unit>
+            <trans-unit id="16" resname="document.dialog.lb_settings.value">
+               <source>Valeur</source>
+               <target>Valeur</target>
+            </trans-unit>
+            <trans-unit id="17" resname="document.dialog.lb_variables.name">
+               <source>Variable</source>
+               <target>Variable</target>
+            </trans-unit>
+            <trans-unit id="18" resname="document.dialog.lb_variables.type">
+               <source>Type</source>
+               <target>Type</target>
+            </trans-unit>
+            <trans-unit id="19" resname="document.dialog.lb_variables.value">
+               <source>Valeur</source>
+               <target>Valeur</target>
+            </trans-unit>
+         </group>
+         <group resname="template.dialog">
+            <trans-unit id="4" resname="template.dialog.mainList">
+               <source>Modèles</source>
+               <target>Modèles</target>
+            </trans-unit>
+            <trans-unit id="5" resname="template.dialog.settings">
+               <source>Réglages du modèle</source>
+               <target>Réglages du modèle</target>
+            </trans-unit>
+            <trans-unit id="6" resname="template.dialog.variables">
+               <source>Variables du modèle</source>
+               <target>Variables du modèle</target>
+            </trans-unit>
+            <trans-unit id="7" resname="template.dialog.lines">
+               <source>Lignes du modèle</source>
+               <target>Lignes du modèle</target>
+            </trans-unit>
+            <trans-unit id="8" resname="template.dialog.lineProperties">
+               <source>Propriétés de la ligne</source>
+               <target>Propriétés de la ligne</target>
+            </trans-unit>
+            <trans-unit id="20" resname="template.dialog.lb_templates.name">
+               <source>Nom</source>
+               <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="21" resname="template.dialog.lb_settings.name">
+               <source>Réglage</source>
+               <target>Réglage</target>
+            </trans-unit>
+            <trans-unit id="22" resname="template.dialog.lb_settings.value">
+               <source>Valeur</source>
+               <target>Valeur</target>
+            </trans-unit>
+            <trans-unit id="23" resname="template.dialog.lb_variables.name">
+               <source>Variable</source>
+               <target>Variable</target>
+            </trans-unit>
+            <trans-unit id="24" resname="template.dialog.lb_variables.line">
+               <source>Ligne</source>
+               <target>Ligne</target>
+            </trans-unit>
+            <trans-unit id="25" resname="template.dialog.lb_lines.name">
+               <source>Ligne</source>
+               <target>Ligne</target>
+            </trans-unit>
+            <trans-unit id="26" resname="template.dialog.lb_lines.typology">
+               <source>Typologie</source>
+               <target>Typologie</target>
+            </trans-unit>
+            <trans-unit id="27" resname="template.dialog.lb_properties.name">
+               <source>Propriété</source>
+               <target>Propriété</target>
+            </trans-unit>
+            <trans-unit id="28" resname="template.dialog.lb_properties.value">
+               <source>Valeur</source>
+               <target>Valeur</target>
+            </trans-unit>
+            <trans-unit id="169" resname="template.dialog.method">
+               <source>Méthode préparatoire</source>
+               <target>Méthode préparatoire</target>
+            </trans-unit>
+         </group>
+         <group resname="tempLine.dialog">
+            <trans-unit id="9" resname="tempLine.dialog.mainList">
+               <source>Modèles de lignes</source>
+               <target>Modèles de lignes</target>
+            </trans-unit>
+            <trans-unit id="10" resname="tempLine.dialog.variables">
+               <source>Variable de la ligne</source>
+               <target>Variable de la ligne</target>
+            </trans-unit>
+            <trans-unit id="11" resname="tempLine.dialog.rules">
+               <source>Règles de la ligne</source>
+               <target>Règles de la ligne</target>
+            </trans-unit>
+            <trans-unit id="12" resname="tempLine.dialog.objects">
+               <source>Objets de la ligne</source>
+               <target>Objets de la ligne</target>
+            </trans-unit>
+            <trans-unit id="13" resname="tempLine.dialog.objectProperties">
+               <source>Propriétés de l'objet</source>
+               <target>Propriétés de l'objet</target>
+            </trans-unit>
+            <trans-unit id="29" resname="tempLine.dialog.lb_template_lines.name">
+               <source>Nom</source>
+               <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="30" resname="tempLine.dialog.lb_variables.name">
+               <source>Variable</source>
+               <target>Variable</target>
+            </trans-unit>
+            <trans-unit id="31" resname="tempLine.dialog.lb_variables.nbCalls">
+               <source>Nb Appels</source>
+               <target>Nb Appels</target>
+            </trans-unit>
+            <trans-unit id="32" resname="tempLine.dialog.lb_rules.rule">
+               <source>Règle</source>
+               <target>Règle</target>
+            </trans-unit>
+            <trans-unit id="33" resname="tempLine.dialog.lb_objects.name">
+               <source>Ligne</source>
+               <target>Ligne</target>
+            </trans-unit>
+            <trans-unit id="34" resname="tempLine.dialog.lb_properties.name">
+               <source>Propriété</source>
+               <target>Propriété</target>
+            </trans-unit>
+            <trans-unit id="35" resname="tempLine.dialog.lb_properties.value">
+               <source>Valeur</source>
+               <target>Valeur</target>
+            </trans-unit>
+         </group>
+         <group resname="resource.dialog">
+            <trans-unit id="36" resname="resource.dialog.mainList">
+               <source>Ressources</source>
+               <target>Ressources</target>
+            </trans-unit>
+            <trans-unit id="37" resname="resource.dialog.lb_resources.name">
+               <source>Ressource</source>
+               <target>Ressource</target>
+            </trans-unit>
+            <trans-unit id="179" resname="resource.dialog.mainList2">
+               <source>Record</source>
+               <target>Record</target>
+            </trans-unit>
+         </group>
+         <group resname="collection.editor">
+            <trans-unit id="39" resname="collection.editor.lb_attributs">
+               <source>Attributs de l'élément</source>
+               <target>Attributs de l'élément</target>
+            </trans-unit>
+            <trans-unit id="40" resname="collection.editor.lb_items">
+               <source>Eléments de la collection</source>
+               <target>Eléments de la collection</target>
+            </trans-unit>
+            <trans-unit id="41" resname="collection.editor.lb_items.item">
+               <source>Elément</source>
+               <target>Elément</target>
+            </trans-unit>
+            <trans-unit id="44" resname="collection.editor.lb_attributs.attribut">
+               <source>Attribut</source>
+               <target>Attribut</target>
+            </trans-unit>
+            <trans-unit id="45" resname="collection.editor.lb_attributs.type">
+               <source>Type</source>
+               <target>Type</target>
+            </trans-unit>
+            <trans-unit id="46" resname="collection.editor.lb_attributs.value">
+               <source>Valeur</source>
+               <target>Valeur</target>
+            </trans-unit>
+            <trans-unit id="45" resname="collection.editor.title">
+               <source>Editeur de collection</source>
+               <target>Editeur de collection</target>
+            </trans-unit>
+            <trans-unit id="143" resname="collection.editor.lb_items.add">
+               <source>Ajouter un élément</source>
+               <target>Ajouter un élément</target>
+            </trans-unit>
+            <trans-unit id="144" resname="collection.editor.lb_items.duplicate">
+               <source>Dupliquer cet élément</source>
+               <target>Dupliquer cet élément</target>
+            </trans-unit>
+            <trans-unit id="145" resname="collection.editor.lb_items.delete">
+               <source>Supprimer cet élément</source>
+               <target>Supprimer cet élément</target>
+            </trans-unit>
+            <trans-unit id="147" resname="collection.editor.lb_items.delete.prompt">
+               <source>Voulez-vous vraiment supprimer cette élément ?</source>
+               <target>Voulez-vous vraiment supprimer cette élément ?</target>
+            </trans-unit>
+            <trans-unit id="148" resname="collection.editor.lb_items.duplicate.prompt">
+               <source>Voulez-vous vraiment dupliquer cette élément ?</source>
+               <target>Voulez-vous vraiment dupliquer cette élément ?</target>
+            </trans-unit>
+            <trans-unit id="149" resname="collection.editor.lb_attributs.add">
+               <source>Ajouter un attribut</source>
+               <target>Ajouter un attribut</target>
+            </trans-unit>
+            <trans-unit id="150" resname="collection.editor.lb_attributs.delete">
+               <source>Supprimer cet attribut</source>
+               <target>Supprimer cet attribut</target>
+            </trans-unit>
+            <trans-unit id="152" resname="collection.editor.lb_attributs.add.prompt">
+               <source>Quel est le nom du nouvel attribut ?</source>
+               <target>Quel est le nom du nouvel attribut ?</target>
+            </trans-unit>
+            <trans-unit id="153" resname="collection.editor.lb_attributs.add.default">
+               <source>attribut</source>
+               <target>attribut</target>
+            </trans-unit>
+            <trans-unit id="154" resname="collection.editor.lb_attributs.delete.prompt">
+               <source>Voulez-vous vraiment supprimer cet attribut ?</source>
+               <target>Voulez-vous vraiment supprimer cet attribut ?</target>
+            </trans-unit>
+         </group>
+         <group resname="coordinate.editor">
+            <trans-unit id="44" resname="coordinate.editor.title">
+               <source>Coordonnées de l'objet</source>
+               <target>Coordonnées de l'objet</target>
+            </trans-unit>
+         </group>
+         <group resname="toolbar">
+            <trans-unit id="46" resname="toolbar.documents">
+               <source>Documents</source>
+               <target>Documents</target>
+            </trans-unit>
+            <trans-unit id="47" resname="toolbar.templates">
+               <source>Modèles</source>
+               <target>Modèles</target>
+            </trans-unit>
+            <trans-unit id="48" resname="toolbar.templates_lines">
+               <source>Mod. lignes</source>
+               <target>Mod. lignes</target>
+            </trans-unit>
+            <trans-unit id="49" resname="toolbar.resources">
+               <source>Ressources</source>
+               <target>Ressources</target>
+            </trans-unit>
+            <trans-unit id="50" resname="toolbar.viewer">
+               <source>Lecteur</source>
+               <target>Lecteur</target>
+            </trans-unit>
+         </group>
+         <group resname="document">
+            <trans-unit id="51" resname="document.create.prompt">
+               <source>Entrez le nom du nouveau document :</source>
+               <target>Entrez le nom du nouveau document :</target>
+            </trans-unit>
+            <trans-unit id="52" resname="document.create.default">
+               <source>document</source>
+               <target>document</target>
+            </trans-unit>
+            <trans-unit id="53" resname="document.delete.prompt">
+               <source>Voulez-vous vraiment supprimer ce document ?</source>
+               <target>Voulez-vous vraiment supprimer ce document ?</target>
+            </trans-unit>
+            <trans-unit id="54" resname="document.template">
+               <source>Modèle</source>
+               <target>Modèle</target>
+            </trans-unit>
+            <trans-unit id="55" resname="document.tdb">
+               <source>A définir</source>
+               <target>A définir</target>
+            </trans-unit>
+            <trans-unit id="79" resname="document.menu.create">
+               <source>Créer nouveau ...</source>
+               <target>Créer nouveau ...</target>
+            </trans-unit>
+            <trans-unit id="80" resname="document.menu.duplicate">
+               <source>Dupliquer</source>
+               <target>Dupliquer</target>
+            </trans-unit>
+            <trans-unit id="81" resname="document.menu.rename">
+               <source>Renommer...</source>
+               <target>Renommer...</target>
+            </trans-unit>
+            <trans-unit id="82" resname="document.menu.delete">
+               <source>Supprimer...</source>
+               <target>Supprimer...</target>
+            </trans-unit>
+            <trans-unit id="83" resname="document.menu.export">
+               <source>Exporter...</source>
+               <target>Exporter...</target>
+            </trans-unit>
+            <trans-unit id="84" resname="document.menu.import">
+               <source>Importer...</source>
+               <target>Importer...</target>
+            </trans-unit>
+            <trans-unit id="86" resname="document.rename.prompt">
+               <source>Entrez le nouveau nom :</source>
+               <target>Entrez le nouveau nom :</target>
+            </trans-unit>
+            <trans-unit id="87" resname="document.duplicate.copy">
+               <source> (copie)</source>
+               <target> (copie)</target>
+            </trans-unit>
+            <trans-unit id="88" resname="document.export.prompt">
+               <source>Où souhaitez-vous exporter votre fichier ? </source>
+               <target>Où souhaitez-vous exporter votre fichier ? </target>
+            </trans-unit>
+            <trans-unit id="89" resname="document.import.prompt">
+               <source>Selectionnez le fichier JSON contenant un modèle</source>
+               <target>Selectionnez le fichier JSON contenant un modèle</target>
+            </trans-unit>
+            <trans-unit id="90" resname="document.import.completed">
+               <source>Import terminé</source>
+               <target>Import terminé</target>
+            </trans-unit>
+            <trans-unit id="91" resname="document.create.drop">
+               <source>Entrez le nom du document :</source>
+               <target>Entrez le nom du document :</target>
+            </trans-unit>
+            <trans-unit id="92" resname="document.define.drop.prompt">
+               <source>Voulez-vous vraiment redefinir le modèle ?</source>
+               <target>Voulez-vous vraiment redefinir le modèle ?</target>
+            </trans-unit>
+            <trans-unit id="93" resname="document.define.drop.ok">
+               <source>Redéfinir</source>
+               <target>Redéfinir</target>
+            </trans-unit>
+            <trans-unit id="94" resname="document.define.drop.ko">
+               <source>Ne pas changer</source>
+               <target>Ne pas changer</target>
+            </trans-unit>
+         </group>
+         <group resname="resource">
+            <trans-unit id="57" resname="resource.create.prompt">
+               <source>Entrez le nom de la nouvelle ressource : </source>
+               <target>Entrez le nom de la nouvelle ressource : </target>
+            </trans-unit>
+            <trans-unit id="58" resname="resource.delete.prompt">
+               <source>Voulez-vous vraiment supprimer la ressource ##1 ?</source>
+               <target>Voulez-vous vraiment supprimer la ressource ##1 ?</target>
+            </trans-unit>
+            <trans-unit id="155" resname="resource.menu.create">
+               <source>Créer une ressource...</source>
+               <target>Créer une ressource...</target>
+            </trans-unit>
+            <trans-unit id="156" resname="resource.menu.rename">
+               <source>Renommer</source>
+               <target>Renommer</target>
+            </trans-unit>
+            <trans-unit id="157" resname="resource.menu.delete">
+               <source>Supprimer</source>
+               <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="159" resname="resource.menu.rename.prompt">
+               <source>Entrez le nouveau nom :</source>
+               <target>Entrez le nouveau nom :</target>
+            </trans-unit>
+            <trans-unit id="160" resname="resource.menu.rename.alert">
+               <source>Ce nom est déjà utilisé !</source>
+               <target>Ce nom est déjà utilisé !</target>
+            </trans-unit>
+            <trans-unit id="180" resname="resource.create.prompt2">
+               <source>Entrez le nom de la nouvelle image : </source>
+               <target>Entrez le nom de la nouvelle image : </target>
+            </trans-unit>
+            <trans-unit id="181" resname="resource.delete.prompt2">
+               <source>Voulez-vous vraiment supprimer l'image ##1 ?</source>
+               <target>Voulez-vous vraiment supprimer l'image ##1 ?</target>
+            </trans-unit>
+         </group>
+         <group resname="template">
+            <trans-unit id="58" resname="template.create.prompt">
+               <source>Entrez le nom du nouveau modèle :</source>
+               <target>Entrez le nom du nouveau modèle :</target>
+            </trans-unit>
+            <trans-unit id="59" resname="template.create.default">
+               <source>modèle</source>
+               <target>modèle</target>
+            </trans-unit>
+            <trans-unit id="60" resname="template.delete.prompt">
+               <source>Voulez-vous vraiment supprimer ce modèle ?</source>
+               <target>Voulez-vous vraiment supprimer ce modèle ?</target>
+            </trans-unit>
+            <trans-unit id="61" resname="template.import.prompt">
+               <source>Le fichier ##1 existe déjà dans les ressources. Souhaitez-vous le remplacer ?</source>
+               <target>Le fichier ##1 existe déjà dans les ressources. Souhaitez-vous le remplacer ?</target>
+            </trans-unit>
+            <trans-unit id="62" resname="template.typology">
+               <source>Typologie</source>
+               <target>Typologie</target>
+            </trans-unit>
+            <trans-unit id="63" resname="template.line">
+               <source>Ligne</source>
+               <target>Ligne</target>
+            </trans-unit>
+            <trans-unit id="103" resname="template.menu.create">
+               <source>Creer un nouveau...</source>
+               <target>Creer un nouveau...</target>
+            </trans-unit>
+            <trans-unit id="104" resname="template.menu.duplicate">
+               <source>Dupliquer...</source>
+               <target>Dupliquer...</target>
+            </trans-unit>
+            <trans-unit id="105" resname="template.menu.rename">
+               <source>Renommer...</source>
+               <target>Renommer...</target>
+            </trans-unit>
+            <trans-unit id="106" resname="template.menu.delete">
+               <source>Supprimer...</source>
+               <target>Supprimer...</target>
+            </trans-unit>
+            <trans-unit id="107" resname="template.menu.export">
+               <source>Exporter...</source>
+               <target>Exporter...</target>
+            </trans-unit>
+            <trans-unit id="108" resname="template.menu.import">
+               <source>Importer...</source>
+               <target>Importer...</target>
+            </trans-unit>
+            <trans-unit id="109" resname="template.export.prompt">
+               <source>Où souhaitez-vous exporter votre fichier ? </source>
+               <target>Où souhaitez-vous exporter votre fichier ? </target>
+            </trans-unit>
+            <trans-unit id="110" resname="template.import.promptMenu">
+               <source>Selectionnez le fichier JSON contenant un modèle</source>
+               <target>Selectionnez le fichier JSON contenant un modèle</target>
+            </trans-unit>
+            <trans-unit id="111" resname="template.import.completed">
+               <source>Import terminé</source>
+               <target>Import terminé</target>
+            </trans-unit>
+            <trans-unit id="112" resname="template.duplicate.copy">
+               <source> (copie)</source>
+               <target> (copie)</target>
+            </trans-unit>
+            <trans-unit id="113" resname="template.rename.prompt">
+               <source>Entrez le nouveau nom :</source>
+               <target>Entrez le nouveau nom :</target>
+            </trans-unit>
+            <trans-unit id="114" resname="template.duplicate.prompt">
+               <source>Voulez-vous dupliquer également les modèles de ligne liés ? </source>
+               <target>Voulez-vous dupliquer également les modèles de ligne liés ? </target>
+            </trans-unit>
+            <trans-unit id="115" resname="template.duplicate.accept">
+               <source>Oui</source>
+               <target>Oui</target>
+            </trans-unit>
+            <trans-unit id="116" resname="template.duplicate.cancel">
+               <source>Seulement le modèle</source>
+               <target>Seulement le modèle</target>
+            </trans-unit>
+            <trans-unit id="167" resname="template.duplicate.newName">
+               <source>Nouveau nom</source>
+               <target>Nouveau nom</target>
+            </trans-unit>
+            <trans-unit id="168" resname="template.duplicate.oldName">
+               <source>Ancien nom</source>
+               <target>Ancien nom</target>
+            </trans-unit>
+            <trans-unit id="173" resname="template.visibility">
+               <source>Visibilité</source>
+               <target>Visibilité</target>
+            </trans-unit>
+         </group>
+         <group resname="template_line">
+            <trans-unit id="64" resname="template_line.create.prompt">
+               <source>Entrez le nom du nouveau modèle de ligne :</source>
+               <target>Entrez le nom du nouveau modèle de ligne :</target>
+            </trans-unit>
+            <trans-unit id="65" resname="template_line.create.default">
+               <source>modèle de ligne</source>
+               <target>modèle de ligne</target>
+            </trans-unit>
+            <trans-unit id="66" resname="template_line.delete.prompt">
+               <source>Voulez-vous vraiment supprimer ce modèle de ligne ?</source>
+               <target>Voulez-vous vraiment supprimer ce modèle de ligne ?</target>
+            </trans-unit>
+            <trans-unit id="120" resname="template_line.menu.create">
+               <source>Créer un nouveau...</source>
+               <target>Créer un nouveau...</target>
+            </trans-unit>
+            <trans-unit id="121" resname="template_line.menu.duplicate">
+               <source>Dupliquer</source>
+               <target>Dupliquer</target>
+            </trans-unit>
+            <trans-unit id="122" resname="template_line.menu.rename">
+               <source>Renommer</source>
+               <target>Renommer</target>
+            </trans-unit>
+            <trans-unit id="123" resname="template_line.menu.delete">
+               <source>Supprimer...</source>
+               <target>Supprimer...</target>
+            </trans-unit>
+            <trans-unit id="124" resname="template_line.rename.prompt">
+               <source>Entrez le nouveau nom :</source>
+               <target>Entrez le nouveau nom :</target>
+            </trans-unit>
+            <trans-unit id="125" resname="template_line.duplicate.copy">
+               <source> (copie)</source>
+               <target> (copie)</target>
+            </trans-unit>
+            <trans-unit id="126" resname="template_line.lb_variables.useby">
+               <source>Utiliser par</source>
+               <target>Utiliser par</target>
+            </trans-unit>
+            <trans-unit id="127" resname="template_line.lb_rules.add">
+               <source>Ajouter une règle</source>
+               <target>Ajouter une règle</target>
+            </trans-unit>
+            <trans-unit id="128" resname="template_line.lb_rules.edit">
+               <source>Modifier la règle...</source>
+               <target>Modifier la règle...</target>
+            </trans-unit>
+            <trans-unit id="129" resname="template_line.lb_rules.duplicate">
+               <source>Dupliquer la règle</source>
+               <target>Dupliquer la règle</target>
+            </trans-unit>
+            <trans-unit id="130" resname="template_line.lb_rules.detete">
+               <source>Supprimer la règle</source>
+               <target>Supprimer la règle</target>
+            </trans-unit>
+            <trans-unit id="131" resname="template_line.lb_rules.add.prompt">
+               <source>Entrez la nouvelle règle :</source>
+               <target>Entrez la nouvelle règle :</target>
+            </trans-unit>
+            <trans-unit id="132" resname="template_line.lb_rules.edit.prompt">
+               <source>Modifier la nouvelle règle :</source>
+               <target>Modifier la nouvelle règle :</target>
+            </trans-unit>
+            <trans-unit id="133" resname="template_line.lb_objects.duplicate">
+               <source>Dupliquer</source>
+               <target>Dupliquer</target>
+            </trans-unit>
+            <trans-unit id="134" resname="template_line.lb_objects.rename">
+               <source>Renommer</source>
+               <target>Renommer</target>
+            </trans-unit>
+            <trans-unit id="135" resname="template_line.lb_objects.toFront">
+               <source>Premier plan</source>
+               <target>Premier plan</target>
+            </trans-unit>
+            <trans-unit id="136" resname="template_line.lb_objects.up">
+               <source>Vers le haut</source>
+               <target>Vers le haut</target>
+            </trans-unit>
+            <trans-unit id="137" resname="template_line.lb_objects.down">
+               <source>Vers le fond</source>
+               <target>Vers le fond</target>
+            </trans-unit>
+            <trans-unit id="138" resname="template_line.lb_objects.toBack">
+               <source>Dernier plan</source>
+               <target>Dernier plan</target>
+            </trans-unit>
+            <trans-unit id="139" resname="template_line.lb_objects.organize">
+               <source>Organiser</source>
+               <target>Organiser</target>
+            </trans-unit>
+            <trans-unit id="140" resname="template_line.lb_objects.editCoordinates">
+               <source>Modifier les coordonnées...</source>
+               <target>Modifier les coordonnées...</target>
+            </trans-unit>
+            <trans-unit id="141" resname="template_line.lb_objects.delete">
+               <source>Supprimer</source>
+               <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="142" resname="template_line.lb_objects.other">
+               <source>Autre...</source>
+               <target>Autre...</target>
+            </trans-unit>
+         </group>
+         <group resname="typology">
+            <trans-unit id="67" resname="typology.LS">
+               <source>Ligne standard</source>
+               <target>Ligne standard</target>
+            </trans-unit>
+            <trans-unit id="68" resname="typology.ETP">
+               <source>Entête pour toutes les pages</source>
+               <target>Entête pour toutes les pages</target>
+            </trans-unit>
+            <trans-unit id="69" resname="typology.EPP">
+               <source>Entête de première page</source>
+               <target>Entête de première page</target>
+            </trans-unit>
+            <trans-unit id="70" resname="typology.EPS">
+               <source>Entête des pages suivantes</source>
+               <target>Entête des pages suivantes</target>
+            </trans-unit>
+            <trans-unit id="71" resname="typology.ECR">
+               <source>Entête corps répété</source>
+               <target>Entête corps répété</target>
+            </trans-unit>
+            <trans-unit id="72" resname="typology.ERR">
+               <source>Entête report répété</source>
+               <target>Entête report répété</target>
+            </trans-unit>
+            <trans-unit id="73" resname="typology.CR">
+               <source>Corps répété</source>
+               <target>Corps répété</target>
+            </trans-unit>
+            <trans-unit id="74" resname="typology.RP">
+               <source>Rupture répétition bas de page</source>
+               <target>Rupture répétition bas de page</target>
+            </trans-unit>
+            <trans-unit id="75" resname="typology.PP">
+               <source>Pied de page</source>
+               <target>Pied de page</target>
+            </trans-unit>
+            <trans-unit id="76" resname="typology.FP">
+               <source>Fond de page</source>
+               <target>Fond de page</target>
+            </trans-unit>
+            <trans-unit id="77" resname="typology.FPP">
+               <source>Fond de première page</source>
+               <target>Fond de première page</target>
+            </trans-unit>
+            <trans-unit id="78" resname="typology.FPS">
+               <source>Fond des pages suivantes</source>
+               <target>Fond des pages suivantes</target>
+            </trans-unit>
+            <trans-unit id="173" resname="typology.CRS">
+               <source>Corps répété secondaire</source>
+               <target>Corps répété secondaire</target>
+            </trans-unit>
+            <trans-unit id="174" resname="typology.PPP">
+               <source>Pied de première page</source>
+               <target>Pied de première page</target>
+            </trans-unit>
+            <trans-unit id="175" resname="typology.PPS">
+               <source>Pied de pages suivantes</source>
+               <target>Pied de pages suivantes</target>
+            </trans-unit>
+            <trans-unit id="176" resname="typology.PPI">
+               <source>Pied de pages intermédiaires</source>
+               <target>Pied de pages intermédiaires</target>
+            </trans-unit>
+            <trans-unit id="177" resname="typology.PPL">
+               <source>Pied de dernière page</source>
+               <target>Pied de dernière page</target>
+            </trans-unit>
+         </group>
+         <group resname="tool">
+            <trans-unit id="95" resname="tool.convert.text">
+               <source>Convertir en texte</source>
+               <target>Convertir en texte</target>
+            </trans-unit>
+            <trans-unit id="96" resname="tool.convert.real">
+               <source>Convertir en réel</source>
+               <target>Convertir en réel</target>
+            </trans-unit>
+            <trans-unit id="97" resname="tool.convert.date">
+               <source>Convertir en date</source>
+               <target>Convertir en date</target>
+            </trans-unit>
+            <trans-unit id="98" resname="tool.convert.boolean">
+               <source>Convertir en booléen</source>
+               <target>Convertir en booléen</target>
+            </trans-unit>
+            <trans-unit id="99" resname="tool.edit.collection">
+               <source>Editer la collection...</source>
+               <target>Editer la collection...</target>
+            </trans-unit>
+            <trans-unit id="100" resname="tool.edit.text">
+               <source>Editer le texte...</source>
+               <target>Editer le texte...</target>
+            </trans-unit>
+            <trans-unit id="101" resname="tool.paste.picture">
+               <source>Coller l'image</source>
+               <target>Coller l'image</target>
+            </trans-unit>
+            <trans-unit id="102" resname="tool.ddPage">
+               <source>Page : </source>
+               <target>Page : </target>
+            </trans-unit>
+            <trans-unit id="114" resname="tool.menu.first">
+               <source>Premier</source>
+               <target>Premier</target>
+            </trans-unit>
+            <trans-unit id="115" resname="tool.menu.up">
+               <source>Monter</source>
+               <target>Monter</target>
+            </trans-unit>
+            <trans-unit id="115" resname="tool.menu.down">
+               <source>Descendre</source>
+               <target>Descendre</target>
+            </trans-unit>
+            <trans-unit id="116" resname="tool.menu.last">
+               <source>Dernier</source>
+               <target>Dernier</target>
+            </trans-unit>
+            <trans-unit id="117" resname="tool.menu.organize">
+               <source>Organiser</source>
+               <target>Organiser</target>
+            </trans-unit>
+            <trans-unit id="118" resname="tool.menu.insertBreak">
+               <source>Insérer un saut de page</source>
+               <target>Insérer un saut de page</target>
+            </trans-unit>
+            <trans-unit id="119" resname="tool.menu.delete">
+               <source>Supprimer</source>
+               <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="151" resname="tool.convert.time">
+               <source>Convertir en heure</source>
+               <target>Convertir en heure</target>
+            </trans-unit>
+            <trans-unit id="171" resname="tool.menu.visibility">
+               <source>Visibilité</source>
+               <target>Visibilité</target>
+            </trans-unit>
+            <trans-unit id="172" resname="tool.menu.addProperty">
+               <source>Ajouter une propriété</source>
+               <target>Ajouter une propriété</target>
+            </trans-unit>
+         </group>
+         <group resname="confirmation">
+            <trans-unit id="161" resname="confirmation.btn.cancel">
+               <source>Annuler les modifications</source>
+               <target>Annuler les modifications</target>
+            </trans-unit>
+            <trans-unit id="162" resname="confirmation.btn.save">
+               <source>Sauver les modifications</source>
+               <target>Sauver les modifications</target>
+            </trans-unit>
+            <trans-unit id="163" resname="confirmation.btn.stay">
+               <source>Rester sur l'élément en cours</source>
+               <target>Rester sur l'élément en cours</target>
+            </trans-unit>
+            <trans-unit id="164" resname="confirmation.prompt">
+               <source>Vous avez apporté des modifications à l'élément ##1.\rQue souhaitez-vous faire ? </source>
+               <target>Vous avez apporté des modifications à l'élément ##1.\rQue souhaitez-vous faire ? </target>
+            </trans-unit>
+            <trans-unit id="165" resname="confirmation.title">
+               <source>Confirmer</source>
+               <target>Confirmer</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

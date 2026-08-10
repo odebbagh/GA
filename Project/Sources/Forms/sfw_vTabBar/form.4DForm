@@ -1,0 +1,400 @@
+{
+	"destination": "detailScreen",
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "842pt",
+		"paperHeight": "595pt"
+	},
+	"pages": [
+		null,
+		{
+			"objects": {
+				"tabBar_bkgd": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 50,
+					"height": 1200,
+					"sizingY": "grow",
+					"fill": "#DCDCDC",
+					"stroke": "transparent"
+				},
+				"vTabBar_1": {
+					"type": "radio",
+					"top": 0,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_2": {
+					"type": "radio",
+					"top": 49,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_3": {
+					"type": "radio",
+					"top": 98,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_4": {
+					"type": "radio",
+					"top": 147,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_5": {
+					"type": "radio",
+					"top": 196,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_6": {
+					"type": "radio",
+					"top": 245,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_7": {
+					"type": "radio",
+					"top": 294,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_8": {
+					"type": "radio",
+					"top": 343,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_9": {
+					"type": "radio",
+					"top": 392,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_10": {
+					"type": "radio",
+					"top": 441,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_11": {
+					"type": "radio",
+					"top": 490,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_12": {
+					"type": "radio",
+					"top": 539,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_13": {
+					"type": "radio",
+					"top": 588,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_14": {
+					"type": "radio",
+					"top": 637,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_15": {
+					"type": "radio",
+					"top": 686,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_16": {
+					"type": "radio",
+					"top": 735,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_17": {
+					"type": "radio",
+					"top": 784,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_18": {
+					"type": "radio",
+					"top": 833,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_19": {
+					"type": "radio",
+					"top": 882,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				},
+				"vTabBar_20": {
+					"type": "radio",
+					"top": 931,
+					"left": 0,
+					"width": 50,
+					"height": 50,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/address-32x32.png",
+					"iconFrames": 4,
+					"style": "bevel",
+					"radioGroup": "Groupe4",
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		}
+	],
+	"editor": {
+		"groups": {
+			"Groupe4": [
+				"vTabBar_1",
+				"vTabBar_2",
+				"vTabBar_3",
+				"vTabBar_4",
+				"vTabBar_5",
+				"vTabBar_6",
+				"vTabBar_7",
+				"vTabBar_8",
+				"vTabBar_9",
+				"vTabBar_10",
+				"vTabBar_11",
+				"vTabBar_12",
+				"vTabBar_13",
+				"vTabBar_14",
+				"vTabBar_15",
+				"vTabBar_16",
+				"vTabBar_17",
+				"vTabBar_18",
+				"vTabBar_19",
+				"vTabBar_20"
+			]
+		}
+	},
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
+}

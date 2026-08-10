@@ -1,0 +1,49 @@
+ {
+     "availableTypes": [
+         {
+             "type": "text",
+             "labelMenu": "un texte",
+             "picto":"text"
+         },
+         {
+             "type": "rectangle",
+             "labelMenu": "un rectangle",
+             "picto":"rectangle"
+         },
+         {
+             "type": "oval",
+             "labelMenu": "un oval",
+             "picto":"oval"
+         },
+         {
+             "type": "line",
+             "labelMenu": "une ligne",
+             "picto":"line"
+         },
+         {
+             "type": "picture",
+             "labelMenu": "une image",
+             "picto":"picture"
+         },
+         {
+             "type": "input",
+             "labelMenu": "une zone de saisie",
+             "picto":"input"
+         },
+         {
+             "type": "checkbox",
+             "labelMenu": "une boite à cocher",
+             "picto":"checkbox"
+         },
+         {
+             "type": "barcode",
+             "labelMenu": "un code barre",
+             "picto":"barcode"
+         },
+         {
+             "type": "dynPict",
+             "labelMenu": "une image dynamique",
+             "picto":"dynPict"
+         }
+     ]
+ }

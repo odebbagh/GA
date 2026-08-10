@@ -1,0 +1,112 @@
+﻿{
+	"ident": "versionReferenceRecords_taskType",
+	"version": 8,
+	"stmp": 694819923,
+	"date": "2025-01-06",
+	"records": [
+		{
+			"UUID": "EB6D9B8F01834DFB97022E7BE7BDC787",
+			"code": "CMT",
+			"name": "Customer meeting",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "Customer meeting"
+		},
+		{
+			"UUID": "10578CAFB54B44A3823C14592E00CCA1",
+			"code": "IMT",
+			"name": "Internal Meeting",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "Internal Meeting"
+		},
+		{
+			"UUID": "AFE5E1EEFCB24DB8A014699F8390487C",
+			"code": "WRI",
+			"name": "Writing Document",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "Writing Document"
+		},
+		{
+			"UUID": "441431A55450E047B97B56D22D50E3AB",
+			"code": "FIX",
+			"name": "Bug Fixing",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "Bug Fixing"
+		},
+		{
+			"UUID": "F2163DBB3984A84BA6A14B7D2B84163F",
+			"code": "PLG",
+			"name": "Project Planning",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "Project Planning"
+		},
+		{
+			"UUID": "4D4C2868066F6F4BABC15CECDC259164",
+			"code": "SUP",
+			"name": "Technical Support",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "Technical Support"
+		},
+		{
+			"UUID": "7EE2E08BDB890C4B834A4195FED33F1B",
+			"code": "MON",
+			"name": "System Monitoring",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "System Monitoring"
+		},
+		{
+			"UUID": "E0EAD34064E69F42B6B76AD12AB7FEFF",
+			"code": "DOC",
+			"name": "Technical Documentation",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "Technical Documentation"
+		},
+		{
+			"UUID": "689783C6E2C541EC8840CB6B7FB01688",
+			"code": "DEV",
+			"name": "Development",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "Development"
+		},
+		{
+			"UUID": "FC172E6C38BE4249A9BA0CD23BBB69D2",
+			"code": "TST",
+			"name": "Testing",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "Testing"
+		},
+		{
+			"UUID": "CEAD26D56AB4024BAA4D985EB21B91B9",
+			"code": "XXX",
+			"name": "Other",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "Other"
+		},
+		{
+			"UUID": "A91D19B8B9A5B64A84BDDE126D1F0485",
+			"code": "TRN",
+			"name": "Internal Training",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "Internal Training"
+		},
+		{
+			"UUID": "82D4C7111EDEC345A90D6C60FA0E6AB8",
+			"code": "LOG",
+			"name": "Analyze log",
+			"tasks": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nameInWindowTitle": "Analyze log"
+		}
+	]
+}

@@ -1,0 +1,15 @@
+ {
+     "_requiered":["top","left","width","height"],
+     "top": "long",
+     "left": "long",
+     "width": "long;100",
+     "height": "long;100",
+     "fill": "text",
+     "stroke": "text",
+     "strokeWidth":"long;0,1",
+     "visibility":"text;visible;hidden",
+     "_fillEven":"text;#e0e0e0",
+     "_fillOdd":"text;#eaeaea",
+	 "_strokeEven":"text;#e0e0e0",
+     "_strokeOdd":"text;#eaeaea"
+ }

@@ -1,0 +1,43 @@
+﻿{
+	"ident": "versionReferenceRecords_taskPriority",
+	"version": 1,
+	"stmp": 693247899,
+	"date": "2024-12-19",
+	"records": [
+		{
+			"UUID": "4CBA8E01F9292043B8B419963376A7FE",
+			"levelID": 0,
+			"code": "N",
+			"name": "None",
+			"color": "#E6E6FA"
+		},
+		{
+			"UUID": "A5B88DD0E125164AB753BB9CA885E292",
+			"levelID": 1,
+			"code": "L",
+			"name": "Low Priority",
+			"color": "#00FF00"
+		},
+		{
+			"UUID": "41C1712E15C4AA4BAE9267049E9BA663",
+			"levelID": 2,
+			"code": "M",
+			"name": "Medium Priority",
+			"color": "#FFD700"
+		},
+		{
+			"UUID": "F0D8A21C3BE3EF47B770E58BBE0EEF5F",
+			"levelID": 3,
+			"code": "H",
+			"name": "High Priority",
+			"color": "#FFA500"
+		},
+		{
+			"UUID": "A9D461312FB7AD40B2561C900F87C84A",
+			"levelID": 4,
+			"code": "C",
+			"name": "Critical Priority",
+			"color": "#FF0000"
+		}
+	]
+}

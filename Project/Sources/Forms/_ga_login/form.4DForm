@@ -1,0 +1,266 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"bkgd_topBar": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 387,
+					"height": 344,
+					"sizingX": "fixed",
+					"fill": "#FFFFFF",
+					"stroke": "transparent",
+					"sizingY": "fixed"
+				},
+				"imgLogo": {
+					"type": "input",
+					"left": 16,
+					"top": 11,
+					"width": 356,
+					"height": 97,
+					"dataSourceTypeHint": "picture",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"focusable": false,
+					"dataSource": "Form:C1466.logo",
+					"pictureFormat": "proportionalCenter"
+				}
+			}
+		},
+		{
+			"objects": {
+				"input_password": {
+					"type": "input",
+					"left": 153,
+					"top": 213,
+					"width": 194,
+					"height": 17,
+					"textAlign": "automatic",
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"dataSource": "Form:C1466.password",
+					"events": [
+						"onLosingFocus",
+						"onAfterEdit"
+					],
+					"method": "ObjectMethods/input_password.4dm"
+				},
+				"Text": {
+					"type": "text",
+					"text": ":xliff:user.login.field.user",
+					"top": 167,
+					"left": 30,
+					"width": 124,
+					"height": 16,
+					"stroke": "#808080"
+				},
+				"Text1": {
+					"type": "text",
+					"text": ":xliff:user.login.field.password",
+					"top": 214,
+					"left": 30,
+					"width": 124,
+					"height": 16,
+					"stroke": "#808080"
+				},
+				"input_error": {
+					"type": "input",
+					"left": 30,
+					"top": 273,
+					"width": 317,
+					"height": 33,
+					"textAlign": "center",
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"enterable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#ff6347",
+					"dataSource": "Form:C1466.error"
+				},
+				"checkbox_storeAccess": {
+					"type": "checkbox",
+					"text": ":xliff:user.login.checkbox.rememberMe",
+					"top": 233,
+					"left": 30,
+					"width": 340,
+					"height": 31,
+					"events": [
+						"onClick"
+					],
+					"fontSize": 10,
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.storeAccess",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": ""
+				},
+				"Button": {
+					"type": "button",
+					"text": "shortcut",
+					"top": 317,
+					"left": 301,
+					"width": 75,
+					"height": 17,
+					"events": [
+						"onClick"
+					],
+					"visibility": "hidden",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "[Enter]"
+				},
+				"bCancel": {
+					"type": "button",
+					"top": 354,
+					"left": 202,
+					"width": 60,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": ":xliff:user.login.button.quit",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/return-24x24.png",
+					"iconFrames": 4,
+					"textPlacement": "right",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "cancel",
+					"sizingX": "move"
+				},
+				"bOk": {
+					"type": "button",
+					"top": 354,
+					"left": 316,
+					"width": 60,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": ":xliff:user.login.button.login",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/check-24x24.png",
+					"iconFrames": 4,
+					"textPlacement": "right",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "",
+					"sizingX": "move",
+					"method": "ObjectMethods/bOk.4dm",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "[Return]"
+				},
+				"bHelp": {
+					"type": "button",
+					"text": "Help",
+					"top": 319,
+					"left": 30,
+					"width": 50,
+					"height": 17,
+					"events": [
+						"onLoad",
+						"onClick"
+					],
+					"visibility": "hidden",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "",
+					"method": "ObjectMethods/bHelp.4dm"
+				},
+				"bScan": {
+					"type": "button",
+					"top": 161,
+					"left": 347,
+					"width": 23,
+					"height": 23,
+					"sizingY": "fixed",
+					"focusable": false,
+					"text": "",
+					"icon": "/RESOURCES/image/button/barcode-scan.png",
+					"iconFrames": 1,
+					"textPlacement": "right",
+					"style": "regular",
+					"events": [
+						"onClick"
+					],
+					"action": "",
+					"sizingX": "fixed",
+					"method": "ObjectMethods/bScan.4dm",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": ""
+				},
+				"pup_users": {
+					"type": "dropdown",
+					"left": 153,
+					"top": 159,
+					"width": 194,
+					"height": 27,
+					"events": [
+						"onDataChange"
+					],
+					"dataSource": "Form:C1466.pup_users",
+					"dataSourceTypeHint": "object",
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"method": "ObjectMethods/pup_users.4dm"
+				}
+			}
+		}
+	],
+	"geometryStamp": 94,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

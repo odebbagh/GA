@@ -1,0 +1,158 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 15,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailPrinter",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 21,
+					"left": 6,
+					"width": 183,
+					"height": 297,
+					"fill": "transparent",
+					"right": 189,
+					"bottom": 318
+				},
+				"Input": {
+					"type": "input",
+					"left": 11,
+					"top": 22,
+					"width": 76,
+					"height": 11,
+					"right": 87,
+					"bottom": 33,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontFamily": "Times New Roman",
+					"fontSize": 8,
+					"fontWeight": "bold",
+					"dataSource": "Form:C1466.employee.firstName"
+				},
+				"Input1": {
+					"type": "input",
+					"left": 87,
+					"top": 22,
+					"width": 64,
+					"height": 11,
+					"right": 151,
+					"bottom": 33,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontFamily": "Times New Roman",
+					"fontSize": 8,
+					"fontWeight": "bold",
+					"dataSource": "Form:C1466.employee.lastName"
+				},
+				"Input2": {
+					"type": "input",
+					"left": 155,
+					"top": 22,
+					"width": 31,
+					"height": 11,
+					"right": 186,
+					"bottom": 33,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontFamily": "Times New Roman",
+					"fontSize": 8,
+					"fontWeight": "bold",
+					"dataSource": "Form:C1466.employee.code"
+				},
+				"Input3": {
+					"type": "input",
+					"left": 9,
+					"top": 42,
+					"width": 177,
+					"height": 241,
+					"dataSourceTypeHint": "picture",
+					"right": 186,
+					"bottom": 283,
+					"dataSource": "Form:C1466.certifications",
+					"pictureFormat": "scaled",
+					"borderStyle": "none",
+					"enterable": false
+				},
+				"barcode": {
+					"type": "input",
+					"left": 20,
+					"top": 286,
+					"width": 153,
+					"height": 16,
+					"dataSourceTypeHint": "picture",
+					"dataSource": "Form:C1466.barcode",
+					"class": "",
+					"right": 173,
+					"bottom": 302,
+					"method": "ObjectMethods/barcode.4dm",
+					"borderStyle": "none",
+					"enterable": false
+				},
+				"Text": {
+					"type": "text",
+					"text": "Certification Badge       QA016 Rev d 2/23/01",
+					"top": 305,
+					"left": 7,
+					"width": 180,
+					"height": 11,
+					"right": 187,
+					"bottom": 316,
+					"fontSize": 8,
+					"fontFamily": "Times New Roman",
+					"textAlign": "center"
+				}
+			}
+		}
+	],
+	"geometryStamp": 71,
+	"markerFooter": 319,
+	"markerBreak": 319,
+	"markerBody": 319,
+	"markerHeader": 15,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

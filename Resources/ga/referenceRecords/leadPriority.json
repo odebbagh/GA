@@ -1,0 +1,35 @@
+﻿{
+	"ident": "versionReferenceRecords_leadPriority",
+	"version": 1,
+	"stmp": 708859867,
+	"date": "2025-06-18",
+	"records": [
+		{
+			"UUID": "1A0419D04DDD054FAEF101ACB9CFF146",
+			"levelID": "0",
+			"code": "N",
+			"name": "Normal",
+			"color": "#00FF00",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Normal"
+		},
+		{
+			"UUID": "E29240354C323142AEE8CCF0BC85E678",
+			"levelID": "1",
+			"code": "L",
+			"name": "Low",
+			"color": "#FFA500",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Low"
+		},
+		{
+			"UUID": "FCC39B303F1F184FA236E1D5CB642B88",
+			"levelID": "2",
+			"code": "H",
+			"name": "High",
+			"color": "#FF0000",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "High"
+		}
+	]
+}

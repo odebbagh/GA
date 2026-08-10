@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+   <!--Translation file.This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="en">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="Status">
+            <trans-unit id="1" resname="chrono.status_-1">
+               <source>Reserved slot</source>
+               <target>Reserved slot</target>
+            </trans-unit>
+            <trans-unit id="6" resname="chrono.status_-111">
+               <source>Cancelled by patient</source>
+               <target>Cancelled by patient</target>
+            </trans-unit>
+            <trans-unit id="7" resname="chrono.status_-112">
+               <source>Cancelled by medical house</source>
+               <target>Cancelled by medical house</target>
+            </trans-unit>
+            <trans-unit id="2" resname="chrono.status_1">
+               <source>Appointment taking</source>
+               <target>Appointment taking</target>
+            </trans-unit>
+            <trans-unit id="10" resname="chrono.status_2">
+               <source>Enter in the waiting room
+</source>
+               <target>Enter in the waiting room
+</target>
+            </trans-unit>
+            <trans-unit id="11" resname="chrono.status_3">
+               <source>Beginning of consultation</source>
+               <target>Beginning of consultation</target>
+            </trans-unit>
+            <trans-unit id="12" resname="chrono.status_4">
+               <source>End of consultation</source>
+               <target>End of consultation</target>
+            </trans-unit>
+            <trans-unit id="9" resname="chrono.status_-10">
+               <source>No show</source>
+               <target>No show</target>
+            </trans-unit>
+            <trans-unit id="8" resname="chrono.status_10">
+               <source>Finished</source>
+               <target>Finished</target>
+            </trans-unit>
+         </group>
+         <group resname="Origin">
+            <trans-unit id="3" resname="chrono.origin_1">
+               <source>C/S</source>
+               <target>C/S</target>
+            </trans-unit>
+            <trans-unit id="4" resname="chrono.origin_2">
+               <source>Web</source>
+               <target>Web</target>
+            </trans-unit>
+            <trans-unit id="5" resname="chrono.origin_3">
+               <source>Mobile</source>
+               <target>Mobile</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

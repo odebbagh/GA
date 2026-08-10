@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+   <!--Translation file.This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="en">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="appointment">
+            <trans-unit id="1" resname="appointment.who">
+               <source>Who</source>
+               <target>Who</target>
+            </trans-unit>
+            <trans-unit id="6" resname="appointment.staff">
+               <source>Staff</source>
+               <target>Staff</target>
+            </trans-unit>
+            <trans-unit id="4" resname="appointment.typeMedical">
+               <source>Medical</source>
+               <target>Medical</target>
+            </trans-unit>
+            <trans-unit id="7" resname="appointment.purpose">
+               <source>Purpose</source>
+               <target>Purpose</target>
+            </trans-unit>
+            <trans-unit id="3" resname="appointment.historic">
+               <source>Historic</source>
+               <target>Historic</target>
+            </trans-unit>
+            <trans-unit id="5" resname="appointment.typeLabel">
+               <source>Type</source>
+               <target>Type</target>
+            </trans-unit>
+            <trans-unit id="2" resname="appointment.employmentLevels">
+               <source>Employment levels</source>
+               <target>Employment levels</target>
+            </trans-unit>
+            <trans-unit id="8" resname="appointment.allMedicalHouses">
+               <source>All medical houses</source>
+               <target>All medical houses</target>
+            </trans-unit>
+            <trans-unit id="9" resname="appointment.allConsultationKinds">
+               <source>All consultation kinds</source>
+               <target>All consultation kinds</target>
+            </trans-unit>
+            <trans-unit id="10" resname="appointment.availableSlots">
+               <source>Available slots</source>
+               <target>Available slots</target>
+            </trans-unit>
+            <trans-unit id="11" resname="entry.newAppointment">
+               <source>New appointement</source>
+               <target>New appointement</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

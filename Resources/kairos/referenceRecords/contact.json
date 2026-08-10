@@ -1,0 +1,55 @@
+﻿{
+	"ident": "versionReferenceRecords_contact",
+	"version": 1,
+	"stmp": 695571319,
+	"date": "2025-01-15",
+	"records": [
+		{
+			"UUID": "C9F3F905870E12469BC831030FF012AF",
+			"UUID_Customer": "E48F887F080944DF8CFCADB97D146599",
+			"title": "",
+			"civility": "Mr",
+			"lastName": "Dominicy",
+			"firstName": "Cyril",
+			"contactDetails": {
+				"addresses": [
+					{
+						"type": "main",
+						"detail": {
+							"country": "GI",
+							"postcode": "bgfnygt"
+						}
+					}
+				],
+				"communications": []
+			},
+			"customer": "[object Entity]",
+			"fullName": "Cyril Dominicy",
+			"nameInWindowTitle": "Cyril Dominicy",
+			"nameInWizard": "🙍🏻‍♂️ Cyril Dominicy"
+		},
+		{
+			"UUID": "1E39954EE512F547957218306B16E16B",
+			"UUID_Customer": "E48F887F080944DF8CFCADB97D146599",
+			"title": "",
+			"civility": "Mr",
+			"lastName": "Leroy",
+			"firstName": "Ludovic",
+			"contactDetails": {
+				"addresses": [
+					{
+						"type": "main",
+						"detail": {
+							"country": "GI"
+						}
+					}
+				],
+				"communications": []
+			},
+			"customer": "[object Entity]",
+			"fullName": "Ludovic Leroy",
+			"nameInWindowTitle": "Ludovic Leroy",
+			"nameInWizard": "🙍🏻‍♂️ Ludovic Leroy"
+		}
+	]
+}

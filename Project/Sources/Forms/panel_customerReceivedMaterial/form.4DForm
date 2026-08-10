@@ -1,0 +1,665 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onActivate",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"label_lotNumber": {
+					"type": "text",
+					"top": 12,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Lot Number"
+				},
+				"entryField_lotNumber": {
+					"type": "input",
+					"top": 12,
+					"left": 132,
+					"width": 120,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.number",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal",
+					"textAlign": "left"
+				},
+				"label_jobNumber": {
+					"type": "text",
+					"top": 37,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Job Number"
+				},
+				"entryField_jobNumber": {
+					"type": "input",
+					"top": 37,
+					"left": 132,
+					"width": 96,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.job.jobNumber",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal",
+					"textAlign": "left"
+				},
+				"label_customer": {
+					"type": "text",
+					"top": 63,
+					"left": 11,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Customer"
+				},
+				"label_dateIn": {
+					"type": "text",
+					"top": 12,
+					"left": 372,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Date In"
+				},
+				"entryField_dateIn": {
+					"type": "input",
+					"top": 12,
+					"left": 492,
+					"width": 120,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.dateIn",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal",
+					"textAlign": "left",
+					"dataSourceTypeHint": "date"
+				},
+				"dp_dateIn": {
+					"type": "subform",
+					"top": 12,
+					"left": 616,
+					"width": 19,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.dateIn",
+					"dataSourceTypeHint": "date",
+					"detailForm": "DateButton",
+					"deletableInList": false,
+					"doubleClickInRowAction": "editSubrecord",
+					"doubleClickInEmptyAreaAction": "addSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"events": [
+						"onLoad"
+					],
+					"focusable": true
+				},
+				"pup_customer": {
+					"type": "button",
+					"top": 60,
+					"left": 131,
+					"width": 200,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_customer.4dm",
+					"events": [
+						"onClick"
+					],
+					"textAlign": "left"
+				},
+				"pup_job": {
+					"type": "button",
+					"text": " ",
+					"top": 36,
+					"left": 267,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/forward-16x16.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/pup_job.4dm",
+					"visibility": "visible",
+					"iconFrames": 4,
+					"focusable": false
+				},
+				"label_device": {
+					"type": "text",
+					"top": 37,
+					"left": 372,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Device"
+				},
+				"entryField_device": {
+					"type": "input",
+					"top": 37,
+					"left": 492,
+					"width": 228,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.device",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal",
+					"textAlign": "left"
+				},
+				"label_device1": {
+					"type": "text",
+					"top": 63,
+					"left": 372,
+					"width": 112,
+					"height": 15,
+					"stroke": "#808080",
+					"text": "Alternative Device"
+				},
+				"entryField_alternativeDevice": {
+					"type": "input",
+					"top": 63,
+					"left": 492,
+					"width": 228,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.alternativeDevice",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal",
+					"textAlign": "left"
+				}
+			}
+		},
+		{
+			"objects": {
+				"packageInfo_bkgd": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 1,
+					"width": 604,
+					"height": 106,
+					"sizingX": "grow",
+					"fill": "#E4E4E4",
+					"stroke": "transparent"
+				},
+				"packageInfo_header": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 1,
+					"width": 604,
+					"height": 24,
+					"sizingX": "grow",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"section_packageInfo": {
+					"type": "text",
+					"top": 118,
+					"left": 12,
+					"width": 140,
+					"height": 17,
+					"text": "Package Info",
+					"fontWeight": "bold"
+				},
+				"label_packageType": {
+					"type": "text",
+					"top": 150,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Package Type"
+				},
+				"entryField_packageType": {
+					"type": "input",
+					"top": 150,
+					"left": 102,
+					"width": 200,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.packageType",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal",
+					"textAlign": "left"
+				},
+				"label_customerLotNumber": {
+					"type": "text",
+					"top": 174,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Customer Lot #"
+				},
+				"entryField_customerLotNumber": {
+					"type": "input",
+					"top": 174,
+					"left": 102,
+					"width": 200,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.customerLotNumber",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal",
+					"textAlign": "left"
+				},
+				"countInfo_bkgd": {
+					"type": "rectangle",
+					"top": 220,
+					"left": 1,
+					"width": 604,
+					"height": 90,
+					"sizingX": "grow",
+					"fill": "#E4E4E4",
+					"stroke": "transparent"
+				},
+				"countInfo_header": {
+					"type": "rectangle",
+					"top": 220,
+					"left": 1,
+					"width": 604,
+					"height": 24,
+					"sizingX": "grow",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"section_countInfo": {
+					"type": "text",
+					"top": 224,
+					"left": 12,
+					"width": 140,
+					"height": 17,
+					"text": "Count",
+					"fontWeight": "bold"
+				},
+				"label_customerCount": {
+					"type": "text",
+					"top": 256,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Customer Count"
+				},
+				"entryField_customerCount": {
+					"type": "input",
+					"top": 256,
+					"left": 102,
+					"width": 100,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.customerCount",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal",
+					"textAlign": "automatic",
+					"dataSourceTypeHint": "number"
+				},
+				"label_ourCount": {
+					"type": "text",
+					"top": 280,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Our Count"
+				},
+				"entryField_ourCount": {
+					"type": "input",
+					"top": 280,
+					"left": 102,
+					"width": 100,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.ourCount",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal",
+					"textAlign": "automatic",
+					"dataSourceTypeHint": "number"
+				},
+				"label_dateCode": {
+					"type": "text",
+					"top": 197,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Date Code"
+				},
+				"entryField_dateCode": {
+					"type": "input",
+					"top": 197,
+					"left": 102,
+					"width": 200,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.dateCode",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal",
+					"textAlign": "left",
+					"dataSourceTypeHint": "text"
+				}
+			}
+		},
+		{
+			"objects": {
+				"rec_bkgd_2": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 1,
+					"width": 100,
+					"height": 446,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent",
+					"right": 101,
+					"bottom": 560
+				},
+				"bActionCustProvMat": {
+					"type": "button",
+					"text": "Actions",
+					"top": 535,
+					"left": 16,
+					"width": 80,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionCustProvMat.4dm",
+					"visibility": "visible"
+				},
+				"txt_customerProvidedMaterial": {
+					"type": "text",
+					"text": "Customer Provided Material",
+					"top": 125,
+					"left": 9,
+					"width": 92,
+					"height": 56,
+					"fontWeight": "bold",
+					"right": 101
+				},
+				"lb_materials": {
+					"type": "listbox",
+					"left": 102,
+					"top": 114,
+					"width": 1476,
+					"height": 446,
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"dataSource": "Form:C1466.lb_materials",
+					"listboxType": "collection",
+					"method": "ObjectMethods/lb_materials.4dm",
+					"currentItemSource": "Form:C1466.selectedMaterial",
+					"currentItemPositionSource": "Form:C1466.selectedMaterialPos",
+					"columns": [
+						{
+							"header": {
+								"text": "Part #",
+								"name": "Header1"
+							},
+							"name": "partNumber",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.partNumber",
+							"width": 120,
+							"minWidth": 120
+						},
+						{
+							"header": {
+								"text": "Customer",
+								"name": "Header2"
+							},
+							"name": "vendor",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This:C1470.vendor",
+							"width": 150,
+							"minWidth": 150
+						},
+						{
+							"header": {
+								"text": "Description",
+								"name": "Header3"
+							},
+							"name": "description",
+							"footer": {
+								"name": "Footer3"
+							},
+							"dataSource": "This:C1470.description",
+							"width": 200,
+							"minWidth": 200
+						},
+						{
+							"header": {
+								"text": "Classification",
+								"name": "Header4"
+							},
+							"name": "classification",
+							"footer": {
+								"name": "Footer4"
+							},
+							"dataSource": "This:C1470.classification",
+							"width": 100,
+							"minWidth": 100
+						},
+						{
+							"header": {
+								"text": "Lot #",
+								"name": "Header5"
+							},
+							"name": "lotNumber",
+							"footer": {
+								"name": "Footer5"
+							},
+							"dataSource": "This:C1470.partLotNumber",
+							"width": 100,
+							"minWidth": 100
+						},
+						{
+							"header": {
+								"text": "INV #",
+								"name": "Header6"
+							},
+							"name": "invCode",
+							"footer": {
+								"name": "Footer6"
+							},
+							"dataSource": "This:C1470.code",
+							"width": 100,
+							"minWidth": 100
+						},
+						{
+							"header": {
+								"text": "Date IN",
+								"name": "Header7"
+							},
+							"name": "dateIn",
+							"footer": {
+								"name": "Footer7"
+							},
+							"dataSource": "This:C1470.dateIn",
+							"dataSourceTypeHint": "date",
+							"dateFormat": "short",
+							"width": 90,
+							"minWidth": 90
+						},
+						{
+							"header": {
+								"text": "Exp. Date",
+								"name": "Header8"
+							},
+							"name": "expirationDate",
+							"footer": {
+								"name": "Footer8"
+							},
+							"dataSource": "(This:C1470.expirationDate=0) ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.expirationDate)",
+							"dataSourceTypeHint": "date",
+							"dateFormat": "short",
+							"width": 90,
+							"minWidth": 90
+						},
+						{
+							"header": {
+								"text": "Qty in Stock",
+								"name": "Header9"
+							},
+							"name": "qtyInStock",
+							"footer": {
+								"name": "Footer9"
+							},
+							"dataSource": "This:C1470.qtyInStock",
+							"dataSourceTypeHint": "number",
+							"textAlign": "right",
+							"width": 90,
+							"minWidth": 90
+						},
+						{
+							"header": {
+								"text": "Units",
+								"name": "Header10"
+							},
+							"name": "units",
+							"footer": {
+								"name": "Footer10"
+							},
+							"dataSource": "This:C1470.units",
+							"width": 80,
+							"minWidth": 80
+						},
+						{
+							"header": {
+								"text": "Received By",
+								"name": "Header14"
+							},
+							"name": "receivedBy",
+							"footer": {
+								"name": "Footer14"
+							},
+							"dataSource": "This:C1470.receiver.code",
+							"width": 150,
+							"minWidth": 150
+						}
+					]
+				}
+			}
+		}
+	],
+	"geometryStamp": 403,
+	"inheritedForm": "sfw_bkgd_header_3lines",
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

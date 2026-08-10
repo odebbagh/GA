@@ -1,0 +1,16 @@
+﻿{
+    "macros": {
+        "Create a Panel from zero with Inherited form": {
+            "class": "sfw_formMacro",
+            "type": "createAPanelFromZeroWithInherited"
+        },
+        "Create a panel from zero": {
+            "class": "sfw_formMacro",
+            "type": "createAPanelFromZero"
+        },
+        "Select none xliff text": {
+            "class": "sfw_formMacro",
+            "type": "SelectNoneXliffText"
+        }
+    }
+}

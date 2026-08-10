@@ -1,0 +1,161 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"markerHeader": 30,
+	"markerBody": 60,
+	"events": [
+		"onLoad"
+	],
+	"windowTitle": "window title",
+	"destination": "listScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"background": {
+					"type": "rectangle",
+					"fill": "automatic",
+					"stroke": "transparent",
+					"top": 30,
+					"height": 30,
+					"left": 0,
+					"right": 1310
+				},
+				"label_UUID": {
+					"type": "text",
+					"text": "UUID",
+					"top": 10,
+					"left": 10,
+					"height": 17,
+					"width": 250,
+					"fontWeight": "bold",
+					"textAlign": "center"
+				},
+				"field_UUID": {
+					"type": "input",
+					"dataSource": "[sfw_UserInscription:81]UUID:1",
+					"top": 37,
+					"left": 10,
+					"width": 250,
+					"height": 17,
+					"borderStyle": "none"
+				},
+				"line_1": {
+					"type": "line",
+					"top": 0,
+					"height": 60,
+					"left": 265
+				},
+				"label_UUID_User": {
+					"type": "text",
+					"text": "UUID_User",
+					"top": 10,
+					"left": 270,
+					"height": 17,
+					"width": 250,
+					"fontWeight": "bold",
+					"textAlign": "center"
+				},
+				"field_UUID_User": {
+					"type": "input",
+					"dataSource": "[sfw_UserInscription:81]UUID_User:2",
+					"top": 37,
+					"left": 270,
+					"width": 250,
+					"height": 17,
+					"borderStyle": "none"
+				},
+				"line_2": {
+					"type": "line",
+					"top": 0,
+					"height": 60,
+					"left": 525
+				},
+				"label_UUID_UserProfile": {
+					"type": "text",
+					"text": "UUID_UserProfile",
+					"top": 10,
+					"left": 530,
+					"height": 17,
+					"width": 250,
+					"fontWeight": "bold",
+					"textAlign": "center"
+				},
+				"field_UUID_UserProfile": {
+					"type": "input",
+					"dataSource": "[sfw_UserInscription:81]UUID_UserProfile:3",
+					"top": 37,
+					"left": 530,
+					"width": 250,
+					"height": 17,
+					"borderStyle": "none"
+				},
+				"line_3": {
+					"type": "line",
+					"top": 0,
+					"height": 60,
+					"left": 785
+				},
+				"label_UUID_whoHasGiven": {
+					"type": "text",
+					"text": "UUID_whoHasGiven",
+					"top": 10,
+					"left": 790,
+					"height": 17,
+					"width": 250,
+					"fontWeight": "bold",
+					"textAlign": "center"
+				},
+				"field_UUID_whoHasGiven": {
+					"type": "input",
+					"dataSource": "[sfw_UserInscription:81]UUID_whoHasGiven:4",
+					"top": 37,
+					"left": 790,
+					"width": 250,
+					"height": 17,
+					"borderStyle": "none"
+				},
+				"line_4": {
+					"type": "line",
+					"top": 0,
+					"height": 60,
+					"left": 1045
+				},
+				"label_stmp_given": {
+					"type": "text",
+					"text": "stmp_given",
+					"top": 10,
+					"left": 1050,
+					"height": 17,
+					"width": 250,
+					"fontWeight": "bold",
+					"textAlign": "center"
+				},
+				"field_stmp_given": {
+					"type": "input",
+					"dataSource": "[sfw_UserInscription:81]stmp_given:5",
+					"dataSourceTypeHint": "integer",
+					"entryFilter": "&\"0-9;-\"",
+					"top": 37,
+					"left": 1050,
+					"width": 250,
+					"height": 17,
+					"borderStyle": "none"
+				}
+			}
+		}
+	],
+	"geometryStamp": 3
+}

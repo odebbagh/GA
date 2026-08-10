@@ -1,0 +1,31 @@
+{
+    "default": {
+           "backgroundColor": "#FFFFFF",
+           "borderColor": "#101010",
+           "borderStyle": 1,
+           "borderWidth": "0.5pt",
+           "font": "Times New Roman",
+           "color": "#101010",
+           "fontFamily": "Times New Roman",
+           "fontSize": "10pt",
+           "padding": "2pt"
+    },
+    "table": {
+           "backgroundColor": "#FFFFFF"
+    },
+    "header1": {
+           "textAlign": 2,
+           "borderColor": "#41548F",
+           "borderWidth": "1.5pt",
+           "backgroundColor": "#FFFFFF",
+           "font": "Times New Roman Bold"
+    },
+    "data": {
+           "fontSize": "10pt",
+           "textAlign": 0
+    },
+    "break1": {
+           "textAlign": 2,
+           "fontSize": "15pt"
+    }
+}

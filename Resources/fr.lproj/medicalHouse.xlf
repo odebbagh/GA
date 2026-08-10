@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+   <!--Translation file.This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="1" resname="entry.medicalHouses">
+               <source>Medical houses</source>
+               <target>Maisons médicales</target>
+            </trans-unit>
+            <trans-unit id="2" resname="entry.medicalHouse">
+               <source>Medical house</source>
+               <target>Maison médicale</target>
+            </trans-unit>
+            <trans-unit id="3" resname="entry.medicalHouse.field.name">
+               <source>Name</source>
+               <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="7" resname="entry.medicalHouse.field.level">
+               <source>Level</source>
+               <target>Niveau</target>
+            </trans-unit>
+            <trans-unit id="5" resname="entry.medicalHouse.unit1">
+               <source>medical house</source>
+               <target>maison médciale</target>
+            </trans-unit>
+            <trans-unit id="6" resname="entry.medicalHouse.unitN">
+               <source>medical houes</source>
+               <target>maisons médicales</target>
+            </trans-unit>
+         </group>
+         <group resname="medicalHouse">
+            <trans-unit id="4" resname="medicalHouse.abrev">
+               <source>MH</source>
+               <target>MM</target>
+            </trans-unit>
+            <trans-unit id="8" resname="medicalHouse.level1">
+               <source>Main</source>
+               <target>Principale</target>
+            </trans-unit>
+            <trans-unit id="9" resname="medicalHouse.level2">
+               <source>Secondary</source>
+               <target>Secondaire</target>
+            </trans-unit>
+            <trans-unit id="10" resname="medicalHouse.level3">
+               <source>Extension</source>
+               <target>Annexe</target>
+            </trans-unit>
+            <trans-unit id="11" resname="medicalHouse.selectAMedicalHouse">
+               <source>Select a medical house...</source>
+               <target>Choisir une maison médicale...</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

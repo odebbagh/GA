@@ -1,0 +1,15 @@
+{
+    "_requiered":["top","left","width","height","pictureFormat","picture"],
+    "type": "text;picture",
+    "top": "long;10",
+    "left": "long;10",
+    "width": "long;90",
+    "height": "long;90",
+    "pictureFormat": "text;scaled;tiled;proportionalCenter;proportionalTopLeft;truncatedCenter;truncatedTopLeft",
+    "picture": "text;/RESOURCES/image/modeles/question.png",
+    "visibility":"text;visible;hidden",
+    "_fillEven":"text;#e0e0e0",
+    "_fillOdd":"text;#eaeaea",
+    "_strokeEven":"text;#e0e0e0",
+    "_strokeOdd":"text;#eaeaea"
+}

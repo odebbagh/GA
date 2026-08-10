@@ -1,0 +1,148 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onUnload",
+		"onOutsideCall"
+	],
+	"windowTitle": "",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 340,
+					"height": 460,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#FFFFFF",
+					"stroke": "#808080",
+					"borderStyle": "solid"
+				},
+				"lb_options": {
+					"type": "listbox",
+					"top": 4,
+					"left": 4,
+					"width": 332,
+					"height": 412,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"focusable": true,
+					"movableRows": false,
+					"dataSource": "Form:C1466.options",
+					"currentItemSource": "Form:C1466.currentItem",
+					"currentItemPositionSource": "",
+					"metaSource": "",
+					"rowFillSource": "_popup_hierMenu_fill",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "automatic",
+					"horizontalLineStroke": "#C8C8C8",
+					"verticalLineStroke": "transparent",
+					"hideHeaders": true,
+					"events": [
+						"onClick"
+					],
+					"fill": "#FFFFFF",
+					"alternateFill": "#FFFFFF",
+					"borderStyle": "none",
+					"method": "ObjectMethods/lb_options.4dm",
+					"selectedItemsSource": "",
+					"selectionMode": "single",
+					"columns": [
+						{
+							"name": "col_label",
+							"dataSource": "This:C1470.label",
+							"width": 320,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"events": [
+								"onClick"
+							],
+							"header": {
+								"name": "header_label",
+								"text": "",
+								"fontTheme": "normal",
+								"textAlign": "left"
+							},
+							"footer": {
+								"name": "footer_label"
+							},
+							"fontTheme": "normal",
+							"enterable": false,
+							"fontSize": 13
+						}
+					]
+				},
+				"Separator_bottom": {
+					"type": "line",
+					"top": 422,
+					"left": 4,
+					"endPoint": {
+						"top": 422,
+						"left": 336
+					},
+					"sizingX": "grow",
+					"sizingY": "move",
+					"stroke": "#C8C8C8"
+				},
+				"b_cancel": {
+					"type": "button",
+					"top": 432,
+					"left": 180,
+					"width": 70,
+					"height": 24,
+					"sizingX": "move",
+					"sizingY": "move",
+					"text": "Annuler",
+					"style": "bevel",
+					"shortcutKey": "[Esc]",
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/b_cancel.4dm"
+				},
+				"b_accept": {
+					"type": "button",
+					"top": 432,
+					"left": 260,
+					"width": 70,
+					"height": 24,
+					"sizingX": "move",
+					"sizingY": "move",
+					"text": "Valider",
+					"style": "bevel",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/b_accept.4dm"
+				}
+			}
+		}
+	],
+	"geometryStamp": 1,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

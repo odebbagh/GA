@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<xliff version="1.0" xmlns:d4="http://www.4d.com/d4-ns">
+  <file datatype="x-STR#" original="Undefined" source-language="en" target-language="fr">
+    <header>
+      <prop-group name="4DPop XLIFF Pro">
+        <prop prop-type="version">3.1</prop>
+      </prop-group>
+    </header>
+    <body>
+
+      <group resname="foundations">
+        <trans-unit id="200" resname="foundations.message">
+          <target>Les modifications n’ont pas pu être appliquées à tous les enregistrements. Voulez-vous confirmer ce qui a été effectué ?</target>
+          <source>The changes could not be applied to all records. Would you like to confirm what has been done?</source>
+        </trans-unit>
+        <trans-unit id="201" resname="foundations.messagesingle">
+          <target>changement impossible"</target>
+          <source>change not possible"</source>
+        </trans-unit>
+        <trans-unit id="202" resname="foundations.messageplural">
+          <target>changements impossibles"</target>
+          <source>changes not possible"</source>
+        </trans-unit>
+        <trans-unit id="203" resname="foundations.validate">
+          <target>Valider"</target>
+          <source>Validate"</source>
+        </trans-unit>
+        <trans-unit id="204" resname="foundations.cancel">
+          <target>Annuler"</target>
+          <source>Cancel"</source>
+        </trans-unit>
+      </group>
+
+      <group resname="definitionEntry">
+        <trans-unit id="10" resname="definitionEntry.preconfig.export">
+          <target>Exporter les enregistrements de référence</target>
+          <source>Export the reference records</source>
+        </trans-unit>
+        <trans-unit id="11" resname="definitionEntry.preconfig.import">
+          <target>Importer les enregistrements de référence</target>
+          <source>Import the reference records</source>
+        </trans-unit>
+        <trans-unit id="12" resname="definitionEntry.preconfig.copy">
+          <target>Copier cette liste dans le presse-papiers</target>
+          <source>Copy this list to the pasteboard</source>
+        </trans-unit>
+        <trans-unit id="100" resname="definitionEntry.preconfig.capitalize">
+          <source>Mettre le nom avec une majuscule</source>
+          <target>Capitalize the name</target>
+        </trans-unit>
+        <trans-unit id="101" resname="definitionEntry.preconfig.upper">
+          <source>Mettre le nom en majuscules</source>
+          <target>Uppercase the name</target>
+        </trans-unit>
+      </group>
+      <group resname="definitionpagemoredata">
+      <trans-unit id="109" resname="definitionpagemoredata.placeholder">
+          <source>vide</source>
+          <target>empty</target>
+        </trans-unit>
+      </group>
+      <group resname="assignation">
+      <trans-unit id="300" resname="assignation.deadline">
+          <source>Échéance</source>
+          <target>Deadline</target>
+        </trans-unit>
+        <trans-unit id="301" resname="assignation.nodeadline">
+          <source>Sans échéance</source>
+          <target>No deadline</target>
+        </trans-unit>
+
+        <trans-unit id="302" resname="assignation.today">
+          <source>aujourd'hui</source>
+          <target>today</target>
+        </trans-unit>
+        <trans-unit id="303" resname="assignation.tomorrow">
+          <source>demain</source>
+          <target>tomorrow</target>
+        </trans-unit>
+        <trans-unit id="304" resname="assignation.in7days">
+          <source>dans 7 jours</source>
+          <target>in 7 days</target>
+        </trans-unit>
+        <trans-unit id="305" resname="assignation.in30days">
+          <source>dans 30 jours</source>
+          <target>in 30 days</target>
+        </trans-unit>
+        <trans-unit id="306" resname="assignation.in365days">
+          <source>dans 365 jours</source>
+          <target>in 365 days</target>
+        </trans-unit>
+        <trans-unit id="307" resname="assignation.nextweek">
+          <source>semaine prochaine</source>
+          <target>next week</target>
+        </trans-unit>
+        <trans-unit id="308" resname="assignation.nextmonth">
+          <source>mois prochaine</source>
+          <target>next month</target>
+        </trans-unit>
+        <trans-unit id="309" resname="assignation.nextyear">
+          <source>année prochaine</source>
+          <target>next year</target>
+        </trans-unit>
+
+
+      </group>
+
+      <group resname="assignationManager">
+        <trans-unit id="102" resname="assignationManager.assignatedby">
+          <source>assigné par</source>
+          <target>assignated by</target>
+        </trans-unit>
+        <trans-unit id="103" resname="assignationManager.assignateddate">
+          <source>date assignée</source>
+          <target>assignated date</target>
+        </trans-unit>
+        <trans-unit id="104" resname="assignationManager.assignatedto">
+          <source>assigné à</source>
+          <target>assignated to</target>
+        </trans-unit>
+        <trans-unit id="105" resname="assignationManager.nodeadline">
+          <source>sans échéance</source>
+          <target>no deadline</target>
+        </trans-unit>
+        <trans-unit id="106" resname="assignationManager.deadline">
+          <source>échéance</source>
+          <target>deadline</target>
+        </trans-unit>
+        <trans-unit id="107" resname="assignationManager.notachived">
+          <source>pas réalisé</source>
+          <target>not achived</target>
+        </trans-unit>
+        <trans-unit id="108" resname="assignationManager.achived">
+          <source>réalisé</source>
+          <target>achived</target>
+        </trans-unit>
+        <trans-unit id="109" resname="assignationManager.at">
+          <source>à</source>
+          <target>at</target>
+        </trans-unit>
+      </group>
+
+
+      <group resname="communication">
+        <trans-unit id="GRQHO7JA8+TZ8sP66WlTqA" resname="communication.add">
+          <target>Ajouter un moyen de communication</target>
+          <source>Add a communication means</source>
+        </trans-unit>
+        <trans-unit id="HG8N6CPTBLJecAYRsY2Ksg" resname="communication.delete">
+          <target>Supprimer un moyen de communication</target>
+          <source>Delete a communication means</source>
+        </trans-unit>
+        <trans-unit id="GP3xaZlq2jJZ3reRSibd1Q" resname="communication.phone">
+          <target>Téléphone</target>
+          <source>Phone</source>
+        </trans-unit>
+        <trans-unit id="bViLod9PdbeF4gZzh69h+w" resname="communication.mobile">
+          <target>Portable</target>
+          <source>Mobile</source>
+        </trans-unit>
+        <trans-unit id="zXf0X14eZ58u+XNaCYC7Bg" resname="communication.e-mail">
+          <target>Courriel</target>
+          <source>e-Mail</source>
+        </trans-unit>
+        <trans-unit id="TtNW4hWqqeCHtWRUSzs28Q" resname="communication.website">
+          <target>Site web</target>
+          <source>Web site </source>
+        </trans-unit>
+      </group>
+      <group resname="scheduler">
+        <trans-unit id="Cnt3YYnEID24zNmuViS5KQ" resname="scheduler.hourly">
+          <target>Horaire</target>
+          <source>Hourly</source>
+        </trans-unit>
+        <trans-unit id="R206AjgR0f5K6w00pByuZQ" resname="scheduler.daily">
+          <target>Quotidien</target>
+          <source>Daily</source>
+        </trans-unit>
+        <trans-unit id="dE+ysULBsZuvpgnIQili5g" resname="scheduler.weekly">
+          <target>Hebdomadaire</target>
+          <source>weekly</source>
+        </trans-unit>
+        <trans-unit id="BIrlS17fNpXatcV8tK2U+w" resname="scheduler.title">
+          <target>Planificateur</target>
+          <source>Scheduler</source>
+        </trans-unit>
+        <trans-unit id="6G2_kTf4zdnlPey021PlJg" resname="scheduler.name">
+          <target>Nom</target>
+          <source>Name</source>
+        </trans-unit>
+        <trans-unit id="PPMN7v3RlBrafz5swc9FpQ" resname="scheduler.lastEx">
+          <target>Dernière exécution</target>
+          <source>Last execution</source>
+        </trans-unit>
+        <trans-unit id="nUMQLrDT+mKTb89BNOc+1Q" resname="scheduler.time">
+          <target>Heure</target>
+          <source>Time</source>
+        </trans-unit>
+        <trans-unit id="ccyyuD3LDq1gLIsL2kjALQ" resname="scheduler.never">
+          <target>jamais</target>
+          <source>never</source>
+        </trans-unit>
+      </group>
+      <group resname="commentPalette">
+        <trans-unit id="6eVuqoJk7yIhQncd5dmjmg" resname="commentPalette.add">
+          <target>Ajouter un nouveau commentaire</target>
+          <source>Add a new comment</source>
+        </trans-unit>
+        <trans-unit id="EYTcABCTXUwW5yf4bcZpwQ" resname="commentPalette.comment">
+          <target>Il n'y a aucun commentaire pour l'instant pour l'élément actuel</target>
+          <source>There is no comment at this moment for the current item</source>
+        </trans-unit>
+        <trans-unit id="7V2ev3jzJjDBzMZ605Quxw" resname="commentPalette.erase">
+          <target>Effacer</target>
+          <source>Erase</source>
+        </trans-unit>
+        <trans-unit id="dzEjmLATmtdG2OjC6c2x_A" resname="commentPalette.save">
+          <target>Enregistrer le commentaire</target>
+          <source>Save comment</source>
+        </trans-unit>
+        <trans-unit id="cVySHfcxwZMYvW5h73gRnQ" resname="commentPalette.no">
+          <target>aucun commentaire</target>
+          <source>no comment</source>
+        </trans-unit>
+        <trans-unit id="sA5QEVN0Fax86DDWPDCbzQ" resname="commentPalette.one">
+          <target>un commentaire</target>
+          <source>one comment</source>
+        </trans-unit>
+        <trans-unit id="Gpopi3TJU3AO3cREXn_Hwg" resname="commentPalette.comments">
+          <target>commentaires</target>
+          <source>comments</source>
+        </trans-unit>
+      </group>
+      <group resname="address">
+        <trans-unit id="lUOI24+eA04zm2zV6myAfA" resname="address.street_1">
+          <target>rue_1</target>
+          <source>street_1</source>
+        </trans-unit>
+        <trans-unit id="sINCGOQxrUMukOeYJ4q5lA" resname="address.street_2">
+          <target>rue_2</target>
+          <source>street_2</source>
+        </trans-unit>
+        <trans-unit id="z3E4khD230o01zC7MNoixA" resname="address.postcode">
+          <target>codepostal</target>
+          <source>postcode</source>
+        </trans-unit>
+        <trans-unit id="4Nt8dlWApb1w0TXljRdIZg" resname="address.ville">
+          <target>ville</target>
+          <source>city</source>
+        </trans-unit>
+        <trans-unit id="7LTEPYgXuCCnLBc9flMMSg" resname="address.state">
+          <target>état</target>
+          <source>state</source>
+        </trans-unit>
+        <trans-unit id="kRGpdSeo7Q63npxpr7Dwag" resname="address.region">
+          <target>région</target>
+          <source>region</source>
+        </trans-unit>
+        <trans-unit id="FiOC2HmgvzmcN6YkWTbN5A" resname="address.municipality">
+          <target>municipalité</target>
+          <source>municipality</source>
+        </trans-unit>
+        <trans-unit id="CI9Br5dx6nX91kxCuZKjIA" resname="address.island">
+          <target>île</target>
+          <source>island</source>
+        </trans-unit>
+        <trans-unit id="nHgIEiMF6LCNCfvyeE94kQ" resname="address.prefecture">
+          <target>Préfecture</target>
+          <source>prefecture</source>
+        </trans-unit>
+        <trans-unit id="Gh3gSXf7VQ9DZIBW0byRlg" resname="address.paroisse">
+          <target>paroisse</target>
+          <source>parish</source>
+        </trans-unit>
+        <trans-unit id="64fAR7CRTBVX89gWPU2UBw" resname="address.suburb">
+          <target>banlieue</target>
+          <source>suburb</source>
+        </trans-unit>
+        <trans-unit id="2f2KzStZg5nnWuvlJjN1lw" resname="address.department">
+          <target>département</target>
+          <source>department</source>
+        </trans-unit>
+        <trans-unit id="ursK1mUQlK_K_LPKiCwgYg" resname="address.voisinage">
+          <target>voisinage</target>
+          <source>neighborhood</source>
+        </trans-unit>
+        <trans-unit id="Ndy_XVqGOTO3smXb8yWBDQ" resname="address.town">
+          <target>ville</target>
+          <source>town</source>
+        </trans-unit>
+        <trans-unit id="qxzlxEf3HswwdetViVggNQ" resname="address.street">
+          <target>rue</target>
+          <source>street</source>
+        </trans-unit>
+        <trans-unit id="VJelcB63Q_1sNgkS9cm9oQ" resname="address.buildingnamenumber">
+          <target>nom/numéro du bâtiment</target>
+          <source>buildingnamenumber</source>
+        </trans-unit>
+        <trans-unit id="eV0n0wNWA5EulHxF2DzQhQ" resname="address.regionstate">
+          <target>région/état</target>
+          <source>regionstate</source>
+        </trans-unit>
+      </group>
+      <group resname="eventtype">
+        
+        <trans-unit id="amFLUix3DoRjf0AOzK+HVQ" resname="eventtype.field.label">
+          <target>Libellé</target>
+          <source>Label</source>
+        </trans-unit>
+        <trans-unit id="s1m0+gHZSBoGf4JbgXaQDQ" resname="currency">
+          <target>Types d’événement</target>
+          <source>Event types</source>
+        </trans-unit>
+      </group>
+      <group resname="counter">
+        <trans-unit id="iwga_Dc1c3gUbAoNP22i2w" resname="counter.counter">
+          <source>counter</source>
+          <target>Compteur</target>
+        </trans-unit>
+      </group>
+      <group resname="user">
+        <trans-unit id="1" resname="user.vision">
+          <target>Gestion des utilisateurs</target>
+          <source>User management</source>
+        </trans-unit>
+        <trans-unit id="2" resname="user.capitalename">
+          <target>Mettre une majuscule initiale aux noms</target>
+          <source>Capitalize the names</source>
+        </trans-unit>
+        <trans-unit id="3" resname="user.cleanprofile">
+          <target>Nettoyer les inscriptions du profil</target>
+          <source>Clean up profile inscriptions</source>
+        </trans-unit>
+
+        <trans-unit id="450" resname="user.byname">
+          <source>par nom</source>
+          <target>by name</target>
+        </trans-unit>
+        <trans-unit id="451" resname="user.byapplicationorder">
+          <source>par ordre d'application</source>
+          <target>by application order</target>
+        </trans-unit>
+        <trans-unit id="452" resname="user.ordervisions">
+          <source>Ordonner les visions</source>
+          <target>Order visions</target>
+        </trans-unit>
+        <trans-unit id="453" resname="user.orderentries">
+          <source>Ordonner les entrées</source>
+          <target>Order entries</target>
+        </trans-unit>
+        <trans-unit id="454" resname="user.groupbyvisions">
+          <source>Grouper par visions</source>
+          <target>Group by visions</target>
+        </trans-unit>   
+
+
+        <trans-unit id="455" resname="user.profileregistrations">
+          <source>Inscriptions de profil</source>
+          <target>Profile registrations</target>
+        </trans-unit>
+        <trans-unit id="456" resname="user.availablevisons">
+          <source>Visions disponibles</source>
+          <target>Available visons</target>
+        </trans-unit>
+        <trans-unit id="457" resname="user.unvailablevisons">
+          <source>Visions non disponibles</source>
+          <target>Unvailable visons</target>
+        </trans-unit>
+        <trans-unit id="458" resname="user.availableentriesbyvis">
+          <source>Entrées disponibles par visions</source>
+          <target>Available entries by visions</target>
+        </trans-unit>
+        <trans-unit id="459" resname="user.availableentries">
+          <source>Entrées disponibles</source>
+          <target>Available entries</target>
+        </trans-unit>
+        <trans-unit id="460" resname="user.unavailableentries">
+          <source>Entrées non disponibles</source>
+          <target>Unavailable entries</target>
+        </trans-unit>     
+
+        <trans-unit id="461" resname="user.registerauser">
+          <source>Enregistrer un utilisateur</source>
+          <target>Register a user</target>
+        </trans-unit>
+        <trans-unit id="462" resname="user.unregisteruser">
+          <source>Désenregistrer l'utilisateur</source>
+          <target>Unregister the user</target>
+        </trans-unit>
+
+
+        <trans-unit id="EMu2BNodDIVWZMaAL8KAOQ" resname="user.users">
+          <target>Utilisateurs</target>
+          <source>Users</source>
+        </trans-unit>
+        <trans-unit id="0I6tzH8JHPI_Gw+d8wth3A" resname="user.field.firstname">
+          <target>Prénom</target>
+          <source>First name</source>
+        </trans-unit>
+        <trans-unit id="4kSJieW4h+joRpCOyG0OJQ" resname="user.field.lastname">
+          <target>Nom</target>
+          <source>Last name</source>
+        </trans-unit>
+        <trans-unit id="i5+Q3WyI_QYT5Vy+mDcdIQ" resname="user.field.login">
+          <target>Identifiant</target>
+          <source>Login</source>
+        </trans-unit>
+        <trans-unit id="zP1E0EdiB8OYn1EOCeepzg" resname="user.field.designeract">
+          <target>Agit en tant que designer</target>
+          <source>Acts as designer</source>
+        </trans-unit>
+        <trans-unit id="kiDwj2+QyJeRtnpTUHonXg" resname="user.field.inactiveuser">
+          <target>Utilisateur inactif</target>
+          <source state="new">Utilisateur inactif</source>
+        </trans-unit>
+        <trans-unit id="mwVSUh11baCBrJJutSA6nA" resname="user.listbox.profile">
+          <target>Profil</target>
+          <source>Profile</source>
+        </trans-unit>
+        <trans-unit id="7zkoCbswoVorsHKCjq0gFg" resname="user.pwdconfirm">
+          <target>Souhaitez-vous copier le mot de passe temporaire dans le presse-papiers ?</target>
+          <source state="new">Souhaitez-vous copier le mot de passe temporaire dans le presse-papiers ?</source>
+        </trans-unit>
+      </group>
+      <group resname="profile">
+        <trans-unit id="4xOpkyHuVMxmg_8RmO4gJQ" resname="profile.profiles">
+          <target>Profils</target>
+          <source>Profiles</source>
+        </trans-unit>
+        <trans-unit id="400" resname="profile.single">
+          <target>profil</target>
+          <source>profile</source>
+        </trans-unit>
+        <trans-unit id="401" resname="profile.plural">
+          <target>profils</target>
+          <source>profiles</source>
+        </trans-unit>
+        <trans-unit id="zciTOngSzaIEZWmGt8QmOg" resname="profile.field.ident">
+          <target>Identifiant</target>
+          <source>Identifier</source>
+        </trans-unit>
+        <trans-unit id="_UQrMCMcWW5OSHqXKu4qOA" resname="profile.field.name">
+          <target>Nom</target>
+          <source>Name</source>
+        </trans-unit>
+        <trans-unit id="MXSm1V53JDa_o2WdH9HoqQ" resname="profile.adduser">
+          <target>Ajouter un utilisateur</target>
+          <source>Add a user</source>
+        </trans-unit>
+        <trans-unit id="CFa_LDGgf3ncYC8bGCErzA" resname="profile.deleteuser">
+          <target>Supprimer l'utilisateur</target>
+          <source>Delete the user</source>
+        </trans-unit>
+        <trans-unit id="uNiklLMxAzwngcXl1qf4Ow" resname="profile.listbox.user">
+          <target>Utilisateur</target>
+          <source>User</source>
+        </trans-unit>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </group>
+      <group resname="counter">
+        <trans-unit id="iwga_Dc1c3gUbAoNP22i2w" resname="counter.counter">
+          <target>Compteur</target>
+          <source>Counter</source>
+        </trans-unit>
+        <trans-unit id="NgOBtVQPRk8lmFyFzjeJWg" resname="counter.field.currentvalue">
+          <target>Valeur actuelle</target>
+          <source>Current value</source>
+        </trans-unit>
+        <trans-unit id="L88ivbdUyI2l165G9TdSJQ" resname="counter.field.ident">
+          <target>Identifiant</target>
+          <source>Identifier</source>
+        </trans-unit>
+        <trans-unit id="veYyScX6ZaQ8S3INzPspqQ" resname="counter.field.value">
+          <target>Valeur</target>
+          <source>Value</source>
+        </trans-unit>
+      </group>
+      <group resname="notificationType">
+        <trans-unit id="UWB8jrzV6ONO80IGI40fvA" resname="notificationtype.title">
+          <target>Types de notification</target>
+          <source state="needs-review-translation">Notification types</source>
+        </trans-unit>
+        <trans-unit id="b3sqcpC_3Jq690K0axHp5g" resname="notificationtype.field.ident">
+          <target>Identifiant</target>
+          <source>Identifier</source>
+        </trans-unit>
+        <trans-unit id="dkduG2dfbpakiuv8T0zY3A" resname="notificationtype.field.label">
+          <target>Libellé</target>
+          <source>Label</source>
+        </trans-unit>
+      </group>
+      <group resname="emailtemplate">
+        <trans-unit id="13bsruM_GAufRPKiWkUR7Q" resname="emailtemplate.title">
+          <target>Modèles d'email</target>
+          <source>Email templates</source>
+        </trans-unit>
+        <trans-unit id="wyGqVc0VngkjAJob+LjLRw" resname="emailtemplate.field.ident">
+          <target>Identifiant</target>
+          <source>Identifier</source>
+        </trans-unit>
+        <trans-unit id="U12xmBbldxJk3t+rj8GYVQ" resname="emailtemplate.field.name">
+          <target>Nom</target>
+          <source>Name</source>
+        </trans-unit>
+        <trans-unit id="+bHJ8raCTRf2f6z+50lDDg" resname="emailtemplate.field.subject">
+          <target>Objet</target>
+          <source state="needs-review-translation">Subject</source>
+        </trans-unit>
+      </group>
+      
+      <group resname="setting">
+        <trans-unit id="q6pshGTj3e2i2LgXQVpJxw" resname="setting.title">
+          <target>Paramètres</target>
+          <source>Settings</source>
+        </trans-unit>
+        <trans-unit id="1mAsTQfPxSNyb7qc+neNCA" resname="setting.field.ident">
+          <target>Identifiant</target>
+          <source>Identifier</source>
+        </trans-unit>
+        <trans-unit id="X+Y54alUdUo0KDR7tHYfBA" resname="setting.field.name">
+          <target>Nom</target>
+          <source>Name</source>
+        </trans-unit>
+        <trans-unit id="B7b3hEUcbD5+Er1pTlIVyg" resname="setting.type.text">
+          <target>Texte</target>
+          <source>Text</source>
+        </trans-unit>
+        <trans-unit id="+YmEV3Qy7XdYzUaTLlekLQ" resname="setting.type.boolean">
+          <target>Booléen</target>
+          <source>Boolean</source>
+        </trans-unit>
+        <trans-unit id="cIqyoyY+V80F0yjyPNLhvA" resname="setting.type.integer">
+          <target>Entier</target>
+          <source>Integer</source>
+        </trans-unit>
+        <trans-unit id="KktUAPDEoW1c7uNc9AImmw" resname="setting.type.real">
+          <target>Réel</target>
+          <source>Real</source>
+        </trans-unit>
+      </group>
+      <group resname="currency">
+        <trans-unit id="CGSkllZarnrMdsz4MXEZTw" resname="currency.title">
+          <target>Devies</target>
+          <source>Currencies</source>
+        </trans-unit>
+        <trans-unit id="ZcuErnm_YcuLz0ESutJZpA" resname="currency.field.symbol">
+          <target>Symbole</target>
+          <source>Symbol</source>
+        </trans-unit>
+        <trans-unit id="C0hsz6l0ALoipsswTFDYHg" resname="currency.field.name">
+          <target>Nom</target>
+          <source>Name</source>
+        </trans-unit>
+      </group>
+      <group resname="pagelistbox">
+        <trans-unit id="Ciu5GnUjZBNZyVZmBsRVeg" resname="pagelistbox.filter.all">
+          <target>À tout moment</target>
+          <source>All times</source>
+        </trans-unit>
+        <trans-unit id="ffL1wOi2wXvEMStU98c22g" resname="pagelistbox.filter.currentmonth">
+          <target>Mois en cours</target>
+          <source>Current month</source>
+        </trans-unit>
+        <trans-unit id="8J+IxblcWOW7mgXU7g55mg" resname="pagelistbox.filter.previousmonth">
+          <target>Mois précédent</target>
+          <source>Previous month</source>
+        </trans-unit>
+        <trans-unit id="k5wgh_7iknuZnuvs_PWI9g" resname="pagelistbox.filter.currentyear">
+          <target>Année en cours</target>
+          <source>Current year</source>
+        </trans-unit>
+        <trans-unit id="S0T8PAy4vuKyjIWXdMw+PQ" resname="pagelistbox.filter.previousyear">
+          <target>Année précédente</target>
+          <source>Previous year</source>
+        </trans-unit>
+
+        <trans-unit id="24" resname="pagelistbox.select.selectall">
+          <target>Sélectionner tous les éléments...</target>
+          <source>Select all items...</source>
+        </trans-unit>
+        <trans-unit id="25" resname="pagelistbox.select.unselectall">
+          <target>Désélectionner tous les éléments...</target>
+          <source>Unselect all items...</source>
+        </trans-unit>
+
+
+
+      </group>
+
+      <group resname="pagedocument">
+        <trans-unit id="2" resname="pagedocument.properties">
+               <target>Propriétés</target>
+               <source>Properties</source>
+        </trans-unit>
+        <trans-unit id="3" resname="pagedocument.uploadfile">
+               <target>Importer un fichier</target>
+               <source>Upload a file</source>
+        </trans-unit>
+        <trans-unit id="4" resname="pagedocument.adddocmodel">
+               <target>Ajouter un document à partir d’un modèle</target>
+               <source>Add a document from model</source>
+        </trans-unit>
+        <trans-unit id="5" resname="pagedocument.adddynamicdoc">
+               <target>Ajouter un nouveau document dynamique</target>
+               <source>Add a new dynamic document</source>
+        </trans-unit>
+        <trans-unit id="6" resname="pagedocument.rename">
+               <target>Renommer</target>
+               <source>Rename</source>
+        </trans-unit>
+        <trans-unit id="7" resname="pagedocument.delete">
+               <target>Supprimer</target>
+               <source>Delete</source>
+        </trans-unit>
+        <trans-unit id="8" resname="pagedocument.download">
+               <target>Télécharger</target>
+               <source>Download</source>
+        </trans-unit>
+        <trans-unit id="9" resname="pagedocument.filename">
+               <target>Nom du fichier</target>
+               <source>file name</source>
+        </trans-unit>
+        <trans-unit id="10" resname="pagedocument.extension">
+               <target>extension</target>
+               <source>extension</source>
+        </trans-unit>
+        <trans-unit id="11" resname="pagedocument.size">
+               <target>taille</target>
+               <source>size</source>
+        </trans-unit>
+        <trans-unit id="12" resname="pagedocument.creationdate">
+               <target>date de création</target>
+               <source>creation date</source>
+        </trans-unit>
+        <trans-unit id="13" resname="pagedocument.creationtime">
+               <target>heure de création</target>
+               <source>creation time</source>
+        </trans-unit>
+        <trans-unit id="14" resname="pagedocument.modifdate">
+               <target>date de modif.</target>
+               <source>modif. date</source>
+        </trans-unit>
+        <trans-unit id="15" resname="pagedocument.modiftime">
+               <target>heure de modif.</target>
+               <source>modif. time</source>
+        </trans-unit>
+        <trans-unit id="16" resname="pagedocument.addedby">
+               <target>ajouté par</target>
+               <source>added by</source>
+        </trans-unit>
+        <trans-unit id="17" resname="pagedocument.name">
+               <target>nom</target>
+               <source>name</source>
+        </trans-unit>
+        <trans-unit id="18" resname="pagedocument.foldername">
+               <target>Nom du dossier</target>
+               <source>Folder name</source>
+        </trans-unit>
+        <trans-unit id="19" resname="pagedocument.nbsubfolders">
+               <target>Nb de sous-dossiers</target>
+               <source>Nb subfolders</source>
+        </trans-unit>
+        <trans-unit id="20" resname="pagedocument.nbdoc">
+               <target>Nb documents</target>
+               <source>Nb documents</source>
+        </trans-unit>
+        <trans-unit id="21" resname="pagedocument.chars">
+               <target> caractères</target>
+               <source> chars</source>
+        </trans-unit>
+        <trans-unit id="22" resname="pagedocument.newnamedoc">
+               <target>Saisissez le nouveau nom du document :</target>
+               <source>Enter the new name for the document:</source>
+        </trans-unit>
+        <trans-unit id="23" resname="pagedocument.cancel">
+               <target>Annuler</target>
+               <source>Cancel</source>
+        </trans-unit>
+      </group>
+
+      <group resname="documentFolder">
+        <trans-unit id="26" resname="documentFolder.entry.plural">
+          <target>Dossiers</target>
+          <source>Folders</source>
+        </trans-unit>
+        <trans-unit id="27" resname="documentFolder.entry.single">
+          <target>Dossier</target>
+          <source>Folder</source>
+        </trans-unit>
+        <trans-unit id="28" resname="documentFolder.entry.allfolders">
+          <target>Tous les dossiers</target>
+          <source>All folders</source>
+        </trans-unit>
+
+        <trans-unit id="28" resname="documentFolder.form.ident">
+          <target>Identifiant</target>
+          <source>Identifier</source>
+        </trans-unit>
+        <trans-unit id="28" resname="documentFolder.form.name">
+          <target>Nom</target>
+          <source>Name</source>
+        </trans-unit>
+        <trans-unit id="28" resname="documentFolder.form.parentfolder">
+          <target>Dossier parent</target>
+          <source>Parent folder</source>
+        </trans-unit>
+        <trans-unit id="28" resname="documentFolder.form.dontupload">
+          <target>N'importez aucun fichier</target>
+          <source>Don't upload any files</source>
+        </trans-unit>
+
+
+
+      </group>
+      <group resname="documentModel">
+        <trans-unit id="29" resname="documentModel.entry.plural">
+          <target>Modèles</target>
+          <source>Models</source>
+        </trans-unit>
+        <trans-unit id="30" resname="documentModel.entry.single">
+          <target>Modèle</target>
+          <source>Model</source>
+        </trans-unit>
+        <trans-unit id="31" resname="documentModel.entry.alltemplate">
+          <target>Tous les modèles</target>
+          <source>All templates</source>
+        </trans-unit>
+        <trans-unit id="32" resname="documentModel.entry.field.name">
+          <target>Nom</target>
+          <source>Name</source>
+        </trans-unit>
+        <trans-unit id="33" resname="documentModel.entry.counter.one">
+          <target>modèle</target>
+          <source>model</source>
+        </trans-unit>
+        <trans-unit id="34" resname="documentModel.entry.counter.unitn">
+          <target>modèles</target>
+          <source>models</source>
+        </trans-unit>
+
+        <trans-unit id="54" resname="documentModel.panel.balisedtext">
+          <target>Texte balisé</target>
+          <source>Balised text</source>
+        </trans-unit>
+
+      </group>
+
+
+
+
+      <group resname="eventManager">
+        <trans-unit id="35" resname="eventManager.expall">
+          <target>Développer tout</target>
+          <source>Expand all</source>
+        </trans-unit>
+        <trans-unit id="36" resname="eventManager.expyears">
+          <target>Développer les années</target>
+          <source>Expand years</source>
+        </trans-unit>
+        <trans-unit id="37" resname="eventManager.expmonths">
+          <target>Développer les mois</target>
+          <source>Expand months</source>
+        </trans-unit>
+        <trans-unit id="38" resname="eventManager.expevent">
+          <target>Développer les événements</target>
+          <source>Expand events</source>
+        </trans-unit>
+        <trans-unit id="39" resname="eventManager.exp">
+          <target>Développer</target>
+          <source>Expand</source>
+        </trans-unit>
+        
+        <trans-unit id="40" resname="eventManager.collall">
+          <target>Réduire tout</target>
+          <source>Collapse all</source>
+        </trans-unit>
+        <trans-unit id="41" resname="eventManager.collyears">
+          <target>Réduire les années</target>
+          <source>Collapse years</source>
+        </trans-unit>
+        <trans-unit id="42" resname="eventManager.collmonths">
+          <target>Réduire les mois</target>
+          <source>Collapse months</source>
+        </trans-unit>
+        <trans-unit id="43" resname="eventManager.collevent">
+          <target>Réduire les événements</target>
+          <source>Collapse events</source>
+        </trans-unit>
+        <trans-unit id="44" resname="eventManager.coll">
+          <target>Réduire</target>
+          <source>Collapse</source>
+        </trans-unit>
+
+        <trans-unit id="45" resname="eventManager.userall">
+          <target>Tous les utilisateurs</target>
+          <source>All users</source>
+        </trans-unit>
+        <trans-unit id="46" resname="eventManager.user">
+          <target>Utilisateurs</target>
+          <source>Users</source>
+        </trans-unit>
+
+        <trans-unit id="47" resname="eventManager.alleventtype">
+          <target>Tous les types d’événements</target>
+          <source>All event types</source>
+        </trans-unit>
+        <trans-unit id="48" resname="eventManager.eventtype">
+          <target>Types d’événements</target>
+          <source>Event types</source>
+        </trans-unit>
+
+      </group>
+
+
+
+
+
+    </body>
+  </file>
+
+</xliff>

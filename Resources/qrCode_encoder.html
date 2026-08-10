@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Générateur de QR Code Credentials</title>
+    <script src="qrcode.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f9; color: #333; }
+        .container { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #2c3e50; }
+        .field { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        select, input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        #qrcode-res { margin-top: 20px; display: flex; justify-content: center; background: #eee; padding: 10px; border-radius: 4px; min-height: 100px; align-items: center; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Générateur QR</h2>
+    
+    <div class="field">
+        <label for="type">Type de contenu :</label>
+        <select id="type" onchange="updatePlaceholder()">
+            <option value="text">Texte libre / Identifiants</option>
+            <option value="url">Lien Web (URL)</option>
+            <option value="email">Adresse Email</option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label id="label-content" for="content">Contenu :</label>
+        <textarea id="content" rows="3" placeholder="Entrez vos identifiants ou texte..."></textarea>
+    </div>
+
+    <button onclick="generate()">Générer le QR Code</button>
+
+    <div id="qrcode-res">
+        <div id="canvas"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("canvas"), {
+        width: 200,
+        height: 200
+    });
+
+    function updatePlaceholder() {
+        const type = document.getElementById('type').value;
+        const input = document.getElementById('content');
+        if(type === 'url') input.placeholder = "https://www.exemple.com";
+        else if(type === 'email') input.placeholder = "nom@exemple.com";
+        else input.placeholder = "Entrez vos identifiants ou texte...";
+    }
+
+    function generate() {
+        const type = document.getElementById('type').value;
+        let rawValue = document.getElementById('content').value;
+        let finalValue = rawValue;
+
+        if (!rawValue) {
+            alert("Veuillez remplir le champ");
+            return;
+        }
+
+        // Formatage automatique selon le type
+        if (type === 'email') {
+            finalValue = "mailto:" + rawValue;
+        } else if (type === 'url') {
+            if (!rawValue.startsWith('http')) {
+                finalValue = "https://" + rawValue;
+            }
+        }
+
+        // Mise à jour du QR Code
+        qrcode.makeCode(finalValue);
+    }
+</script>
+
+</body>
+</html>

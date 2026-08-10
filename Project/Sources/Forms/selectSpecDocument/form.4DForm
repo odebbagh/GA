@@ -1,0 +1,107 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 5,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"lb_items": {
+					"type": "listbox",
+					"left": 0,
+					"top": 0,
+					"width": 277,
+					"height": 216,
+					"events": [
+						"onDoubleClick",
+						"onDataChange",
+						"onSelectionChange",
+						"onHeaderClick"
+					],
+					"showHeaders": true,
+					"selectionMode": "single",
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.lb_items",
+					"currentItemSource": "Form:C1466.item",
+					"focusable": false,
+					"scrollbarVertical": "automatic",
+					"scrollbarHorizontal": "hidden",
+					"method": "ObjectMethods/lb_items.4dm",
+					"alternateFill": "#F1F1F1",
+					"borderStyle": "none",
+					"hideExtraBlankRows": false,
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"columns": [
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Code",
+								"textAlign": "automatic"
+							},
+							"name": "Column3",
+							"dataSource": "This:C1470.spec",
+							"width": 200,
+							"footer": {
+								"name": "Footer3"
+							},
+							"minWidth": 200
+						},
+						{
+							"header": {
+								"text": " Revision",
+								"name": "Header1"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer1"
+							},
+							"width": 80,
+							"dataSource": "This:C1470.revision",
+							"minWidth": 80
+						}
+					]
+				}
+			}
+		}
+	],
+	"geometryStamp": 94,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

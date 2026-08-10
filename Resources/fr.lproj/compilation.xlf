@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+   <!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="2" resname="entry.compilation.thisProject">
+               <source>Compilation result of this project</source>
+               <target>Résultat de la compilation de ce projet</target>
+            </trans-unit>
+            <trans-unit id="3" resname="entry.compilation.fileProject">
+               <source>Compilation result of this project</source>
+               <target>Résultat de la compilation issue du fichier : </target>
+            </trans-unit>
+            <trans-unit id="4" resname="entry.compilation.compilationSuccess">
+               <source>The compilation was successful</source>
+               <target>La compilation a réussi</target>
+            </trans-unit>
+            <trans-unit id="5" resname="entry.compilation.compilationFail">
+               <source>Compilation failed</source>
+               <target>La compilation a échoué</target>
+            </trans-unit>
+            <trans-unit id="6" resname="entry.compilation.errors">
+               <source>Errors</source>
+               <target>Erreurs</target>
+            </trans-unit>
+             <trans-unit id="7" resname="entry.compilation.warnings">
+               <source>Warnings</source>
+               <target>Warnings</target>
+            </trans-unit>
+            <trans-unit id="8" resname="entry.compilation.export">
+               <source>Export compilation file</source>
+               <target>Exporter le fichier de compilation</target>
+            </trans-unit>
+             <trans-unit id="9" resname="entry.compilation.import">
+               <source>Import compilation file</source>
+               <target>Importer un fichier de compilation</target>
+            </trans-unit>
+             <trans-unit id="10" resname="compilation.title.syntaxCheck">
+               <source>Check syntax</source>
+               <target>Vérifier la syntaxe</target>
+            </trans-unit>
+             <trans-unit id="11" resname="compilation.title.interprocessVariables">
+               <source>Interprocess variables</source>
+               <target>Les variables interprocess</target>
+            </trans-unit>
+             <trans-unit id="12" resname="compilation.title.processVariables">
+               <source>Process variables</source>
+               <target>Les variables process</target>
+            </trans-unit>
+             <trans-unit id="13" resname="compilation.title.localVariables">
+               <source>Local variables</source>
+               <target>Les variables locales</target>
+            </trans-unit>
+             <trans-unit id="14" resname="compilation.title.methods">
+               <source>Methods</source>
+               <target>Les méthodes</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

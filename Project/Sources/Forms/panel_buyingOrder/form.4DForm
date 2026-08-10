@@ -1,0 +1,1368 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"label_boNumber": {
+					"type": "text",
+					"top": 12,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "BO #",
+					"textAlign": "right"
+				},
+				"Field_boNumber": {
+					"type": "input",
+					"top": 12,
+					"left": 112,
+					"width": 175,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.boNumber",
+					"dataSourceTypeHint": "integer",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"label_issueDate": {
+					"type": "text",
+					"top": 40,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Issue Date",
+					"textAlign": "right"
+				},
+				"entryField_issueDate": {
+					"type": "input",
+					"top": 40,
+					"left": 112,
+					"width": 175,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.orderDate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "date",
+					"entryFilter": "!0&9##/##/##",
+					"dateFormat": "systemShort blankIfNull"
+				},
+				"label_buyer": {
+					"type": "text",
+					"top": 40,
+					"left": 394,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Buyer",
+					"textAlign": "right"
+				},
+				"Field_buyer": {
+					"type": "input",
+					"top": 40,
+					"left": 494,
+					"width": 145,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.buyer.code",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onMouseMove"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"contextMenu": "none",
+					"method": "ObjectMethods/Field_buyer.4dm"
+				},
+				"bScan_buyer": {
+					"type": "button",
+					"top": 37,
+					"left": 646,
+					"width": 23,
+					"height": 23,
+					"sizingY": "fixed",
+					"focusable": false,
+					"text": "",
+					"icon": "/RESOURCES/image/button/barcode-scan.png",
+					"iconFrames": 1,
+					"textPlacement": "right",
+					"style": "regular",
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"sizingX": "fixed",
+					"method": "ObjectMethods/bScan_buyer.4dm"
+				},
+				"label_requestor": {
+					"type": "text",
+					"top": 66,
+					"left": 394,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Requestor",
+					"textAlign": "right"
+				},
+				"Field_requestor": {
+					"type": "input",
+					"top": 66,
+					"left": 494,
+					"width": 145,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.requestor.fullName",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onMouseMove"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"contextMenu": "none",
+					"method": "ObjectMethods/Field_requestor.4dm"
+				},
+				"label_supplier": {
+					"type": "text",
+					"top": 68,
+					"left": 28,
+					"width": 74,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Vendor",
+					"fontWeight": "normal",
+					"textAlign": "right"
+				},
+				"label_service": {
+					"type": "text",
+					"top": 24,
+					"left": 1302,
+					"width": 74,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Service",
+					"fontWeight": "normal",
+					"textAlign": "right",
+					"visibility": "hidden"
+				},
+				"pup_quote1": {
+					"type": "button",
+					"top": 21,
+					"left": 1386,
+					"width": 163,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_quote1.4dm",
+					"events": [
+						"onClick",
+						"onDisplayDetail"
+					],
+					"fontWeight": "bold",
+					"right": 1549,
+					"visibility": "hidden"
+				},
+				"label_buyOrderLimit": {
+					"type": "text",
+					"top": 12,
+					"left": 394,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Buy Order Limit",
+					"textAlign": "right"
+				},
+				"entryField_buyOrderLimit": {
+					"type": "input",
+					"top": 12,
+					"left": 494,
+					"width": 145,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.buyOrderLimit",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onBeforeKeystroke",
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "number",
+					"method": "ObjectMethods/entryField_buyOrderLimit.4dm"
+				},
+				"Field_customerName": {
+					"type": "input",
+					"top": 68,
+					"left": 112,
+					"width": 175,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.customer.name",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onGettingFocus",
+						"onMouseMove"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"fontWeight": "normal",
+					"method": "ObjectMethods/Field_customerName.4dm"
+				},
+				"btnForward": {
+					"type": "button",
+					"text": " ",
+					"top": 67,
+					"left": 311,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/forward-16x16.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnForward.4dm",
+					"visibility": "visible",
+					"iconFrames": 4,
+					"focusable": false
+				},
+				"btnDatePicker_commitDate": {
+					"type": "button",
+					"text": "",
+					"top": 36,
+					"left": 306,
+					"width": 28,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"method": "ObjectMethods/btnDatePicker_commitDate.4dm"
+				},
+				"label_boStatus": {
+					"type": "text",
+					"top": 12,
+					"left": 863,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Status",
+					"textAlign": "right"
+				},
+				"pup_boStatus": {
+					"type": "button",
+					"top": 9,
+					"left": 973,
+					"width": 120,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/pup_boStatus.4dm"
+				},
+				"label_signature1": {
+					"type": "text",
+					"top": 39,
+					"left": 863,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Approver 1",
+					"textAlign": "right"
+				},
+				"Field_signature1": {
+					"type": "input",
+					"top": 39,
+					"left": 973,
+					"width": 120,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.approver1.code",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"bScan_signature1": {
+					"type": "button",
+					"top": 36,
+					"left": 1259,
+					"width": 23,
+					"height": 23,
+					"sizingY": "fixed",
+					"focusable": false,
+					"text": "",
+					"icon": "/RESOURCES/image/button/barcode-scan.png",
+					"iconFrames": 1,
+					"textPlacement": "right",
+					"style": "regular",
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"sizingX": "fixed",
+					"method": "ObjectMethods/bScan_signature1.4dm"
+				},
+				"label_signature2": {
+					"type": "text",
+					"top": 65,
+					"left": 863,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Approver 2",
+					"textAlign": "right"
+				},
+				"Field_signature2": {
+					"type": "input",
+					"top": 65,
+					"left": 973,
+					"width": 120,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.approver2.code",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"bScan_signature2": {
+					"type": "button",
+					"top": 62,
+					"left": 1259,
+					"width": 23,
+					"height": 23,
+					"sizingY": "fixed",
+					"focusable": false,
+					"text": "",
+					"icon": "/RESOURCES/image/button/barcode-scan.png",
+					"iconFrames": 1,
+					"textPlacement": "right",
+					"style": "regular",
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"sizingX": "fixed",
+					"method": "ObjectMethods/bScan_signature2.4dm"
+				}
+			}
+		},
+		{
+			"objects": {
+				"header_bkgd1": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 0,
+					"width": 350,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_paymentInfos1": {
+					"type": "text",
+					"top": 121,
+					"left": 6,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Attention To",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"label_supplier1": {
+					"type": "text",
+					"top": 165,
+					"left": 28,
+					"width": 74,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Attention To",
+					"fontWeight": "normal",
+					"textAlign": "right"
+				},
+				"Field_attentionTo": {
+					"type": "input",
+					"top": 165,
+					"left": 112,
+					"width": 175,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.contact.firstName",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onGettingFocus",
+						"onMouseMove"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"fontWeight": "normal",
+					"method": "ObjectMethods/Field_attentionTo.4dm"
+				},
+				"btnForward1": {
+					"type": "button",
+					"text": " ",
+					"top": 164,
+					"left": 307,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/addition.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnForward1.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false
+				},
+				"subFormCommunication": {
+					"type": "subform",
+					"left": 0,
+					"top": 200,
+					"width": 350,
+					"height": 300,
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"detailForm": "_ga_subpanel_communication",
+					"dataSource": "Form:C1466.subFormCommunication",
+					"method": "",
+					"visibility": "visible"
+				},
+				"addresses_header_bkgd": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 365,
+					"width": 700,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_addresses": {
+					"type": "text",
+					"top": 121,
+					"left": 371,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Addresses",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"rbBilling1": {
+					"type": "radio",
+					"text": "Billing",
+					"top": 149,
+					"left": 365,
+					"width": 127,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "bevel",
+					"dataSource": "Form:C1466.addressBilling",
+					"radioGroup": "address",
+					"fontSize": 11,
+					"focusable": false,
+					"method": "ObjectMethods/rbBilling1.4dm",
+					"textPlacement": "right"
+				},
+				"rbShipping1": {
+					"type": "radio",
+					"text": "Shipping",
+					"top": 149,
+					"left": 493,
+					"width": 127,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "bevel",
+					"dataSource": "Form:C1466.addressShipping",
+					"radioGroup": "address",
+					"fontSize": 11,
+					"focusable": false,
+					"method": "ObjectMethods/rbShipping1.4dm",
+					"textPlacement": "right"
+				},
+				"rbRemit1": {
+					"type": "radio",
+					"text": "Remit To",
+					"top": 149,
+					"left": 621,
+					"width": 127,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "bevel",
+					"dataSource": "Form:C1466.addressRemit",
+					"radioGroup": "address",
+					"fontSize": 11,
+					"focusable": false,
+					"method": "ObjectMethods/rbRemit1.4dm",
+					"textPlacement": "right"
+				},
+				"subFormAddress": {
+					"type": "subform",
+					"left": 365,
+					"top": 175,
+					"width": 688,
+					"height": 261,
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"detailForm": "sfw_subpanel_addressSingle",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.subFormAddress"
+				},
+				"header_bkgd3": {
+					"type": "rectangle",
+					"top": 551,
+					"left": 365,
+					"width": 350,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_paymentInfos": {
+					"type": "text",
+					"top": 558,
+					"left": 371,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Payment Informations",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"label_accountNumber": {
+					"type": "text",
+					"top": 592,
+					"left": 377,
+					"width": 75,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Account #",
+					"textAlign": "right"
+				},
+				"entryField_accountNumber": {
+					"type": "input",
+					"top": 592,
+					"left": 462,
+					"width": 234,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.accountNumber",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/entryField_accountNumber.4dm",
+					"right": 696,
+					"dataSourceTypeHint": "integer"
+				},
+				"label_salesTaxRate": {
+					"type": "text",
+					"top": 616,
+					"left": 377,
+					"width": 75,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Sales Tax Rate",
+					"textAlign": "right"
+				},
+				"entryField_salesTaxRate": {
+					"type": "input",
+					"top": 616,
+					"left": 462,
+					"width": 60,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.salesTaxRate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/entryField_salesTaxRate.4dm",
+					"dataSourceTypeHint": "number"
+				},
+				"label_currency": {
+					"type": "text",
+					"top": 616,
+					"left": 532,
+					"width": 84,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Currency",
+					"textAlign": "right"
+				},
+				"entryField_currency": {
+					"type": "input",
+					"top": 616,
+					"left": 626,
+					"width": 70,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.currency",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/entryField_currency.4dm"
+				},
+				"label_discount": {
+					"type": "text",
+					"top": 640,
+					"left": 377,
+					"width": 75,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Discount",
+					"textAlign": "right"
+				},
+				"entryField_discount": {
+					"type": "input",
+					"top": 640,
+					"left": 462,
+					"width": 60,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.discount",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/entryField_discount.4dm",
+					"dataSourceTypeHint": "number"
+				},
+				"label_discountDays": {
+					"type": "text",
+					"top": 640,
+					"left": 532,
+					"width": 84,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Discount (Days)",
+					"textAlign": "right"
+				},
+				"entryField_discountDays": {
+					"type": "input",
+					"top": 640,
+					"left": 626,
+					"width": 70,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.discountDays",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/entryField_discountDays.4dm",
+					"dataSourceTypeHint": "integer"
+				},
+				"label_netDays": {
+					"type": "text",
+					"top": 664,
+					"left": 377,
+					"width": 75,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Net (Days)",
+					"textAlign": "right"
+				},
+				"entryField_netDays": {
+					"type": "input",
+					"top": 664,
+					"left": 462,
+					"width": 60,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.netDays",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/entryField_netDays.4dm",
+					"dataSourceTypeHint": "integer"
+				},
+				"header_bkgd8": {
+					"type": "rectangle",
+					"top": 551,
+					"left": 727,
+					"width": 338,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_requisition": {
+					"type": "text",
+					"top": 558,
+					"left": 733,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Requisition",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"label_division": {
+					"type": "text",
+					"top": 592,
+					"left": 733,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Division",
+					"textAlign": "right"
+				},
+				"entryField_division": {
+					"type": "input",
+					"top": 592,
+					"left": 833,
+					"width": 200,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.division",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/entryField_division.4dm",
+					"right": 1033
+				},
+				"label_salesTax": {
+					"type": "text",
+					"top": 640,
+					"left": 733,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Sales Tax",
+					"textAlign": "right"
+				},
+				"entryField_salesTax": {
+					"type": "input",
+					"top": 640,
+					"left": 833,
+					"width": 200,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.salesTax",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/entryField_salesTax.4dm",
+					"right": 1033,
+					"dataSourceTypeHint": "number"
+				},
+				"label_lineItemsTotal": {
+					"type": "text",
+					"top": 664,
+					"left": 733,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Line Items Total",
+					"textAlign": "right"
+				},
+				"entryField_lineItemsTotal": {
+					"type": "input",
+					"top": 664,
+					"left": 833,
+					"width": 200,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.lineItemsTotal",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/entryField_lineItemsTotal.4dm",
+					"right": 1033,
+					"dataSourceTypeHint": "number"
+				},
+				"header_bkgd2": {
+					"type": "rectangle",
+					"top": 451,
+					"left": 365,
+					"width": 700,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_shippingInfos": {
+					"type": "text",
+					"top": 458,
+					"left": 371,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Shipping Informations",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"label_fobDeliveryTerms": {
+					"type": "text",
+					"top": 491,
+					"left": 377,
+					"width": 115,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "FOB (Delivery Terms)",
+					"textAlign": "right"
+				},
+				"entryField_fob": {
+					"type": "input",
+					"top": 491,
+					"left": 502,
+					"width": 194,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.fob",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/entryField_fob.4dm",
+					"right": 696
+				},
+				"label_shipVia": {
+					"type": "text",
+					"top": 515,
+					"left": 377,
+					"width": 115,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Ship Via",
+					"textAlign": "right"
+				},
+				"entryField_shipVia": {
+					"type": "input",
+					"top": 515,
+					"left": 502,
+					"width": 194,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.shipVia",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/entryField_shipVia.4dm",
+					"right": 696
+				},
+				"Texte": {
+					"type": "text",
+					"text": "QA Not Approved",
+					"top": 66,
+					"left": 335,
+					"width": 64,
+					"height": 30,
+					"fontWeight": "bold",
+					"stroke": "#dc143c"
+				}
+			}
+		},
+		{
+			"objects": {
+				"rec_bkgd_boLines": {
+					"type": "rectangle",
+					"top": 115,
+					"left": 1,
+					"width": 100,
+					"height": 442,
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"Text_boLines": {
+					"type": "text",
+					"text": "Line Items",
+					"top": 122,
+					"left": 5,
+					"width": 92,
+					"height": 16,
+					"fontWeight": "bold"
+				},
+				"bActionBuyItems": {
+					"type": "button",
+					"text": "Actions",
+					"top": 530,
+					"left": 8,
+					"width": 80,
+					"height": 21,
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionBuyItems.4dm",
+					"visibility": "visible"
+				},
+				"lb_boLines": {
+					"type": "listbox",
+					"left": 103,
+					"top": 115,
+					"width": 1100,
+					"height": 440,
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onSelectionChange"
+					],
+					"method": "ObjectMethods/lb_boLines.4dm",
+					"headerHeight": "24px",
+					"listboxType": "collection",
+					"visibility": "visible",
+					"dataSource": "Form:C1466.lb_boLines",
+					"alternateFill": "automatic",
+					"selectionMode": "single",
+					"currentItemSource": "Form:C1466.selectedBoLine",
+					"currentItemPositionSource": "Form:C1466.selectedBoLinePos",
+					"columns": [
+						{
+							"header": {
+								"name": "Header_boLineDescription",
+								"text": "Description",
+								"fontWeight": "bold"
+							},
+							"name": "Column_boLineDescription",
+							"footer": {
+								"name": "Footer_boLineDescription"
+							},
+							"width": 280,
+							"minWidth": 150,
+							"enterable": false,
+							"dataSource": "This:C1470.description"
+						},
+						{
+							"header": {
+								"name": "Header_boLineUnitPrice",
+								"text": "Unit Price",
+								"fontWeight": "bold"
+							},
+							"name": "Column_boLineUnitPrice",
+							"footer": {
+								"name": "Footer_boLineUnitPrice"
+							},
+							"width": 80,
+							"minWidth": 60,
+							"textAlign": "right",
+							"enterable": false,
+							"dataSource": "This:C1470.unitPrice",
+							"dataSourceTypeHint": "number",
+							"numberFormat": "###,##0.00"
+						},
+						{
+							"header": {
+								"name": "Header_boLineLineTotal",
+								"text": "Line Total",
+								"fontWeight": "bold"
+							},
+							"name": "Column_boLineLineTotal",
+							"footer": {
+								"name": "Footer_boLineLineTotal"
+							},
+							"width": 80,
+							"minWidth": 60,
+							"textAlign": "right",
+							"enterable": false,
+							"dataSource": "This:C1470.lineTotal",
+							"dataSourceTypeHint": "number",
+							"numberFormat": "###,##0.00"
+						},
+						{
+							"header": {
+								"name": "Header_boLineOrderDate",
+								"text": "Order Date",
+								"fontWeight": "bold"
+							},
+							"name": "Column_boLineOrderDate",
+							"footer": {
+								"name": "Footer_boLineOrderDate"
+							},
+							"width": 80,
+							"minWidth": 70,
+							"textAlign": "center",
+							"enterable": false,
+							"dataSource": "This:C1470.orderDate",
+							"dataSourceTypeHint": "date",
+							"dateFormat": "systemShort blankIfNull"
+						},
+						{
+							"header": {
+								"name": "Header_boLineRequiredDate",
+								"text": "Required Date",
+								"fontWeight": "bold"
+							},
+							"name": "Column_boLineRequiredDate",
+							"footer": {
+								"name": "Footer_boLineRequiredDate"
+							},
+							"width": 90,
+							"minWidth": 70,
+							"textAlign": "center",
+							"enterable": false,
+							"dataSource": "This:C1470.requiredDate",
+							"dataSourceTypeHint": "date",
+							"dateFormat": "systemShort blankIfNull"
+						},
+						{
+							"header": {
+								"name": "Header_boLineDateIn",
+								"text": "Date In",
+								"fontWeight": "bold"
+							},
+							"name": "Column_boLineDateIn",
+							"footer": {
+								"name": "Footer_boLineDateIn"
+							},
+							"width": 80,
+							"minWidth": 70,
+							"textAlign": "center",
+							"enterable": false,
+							"dataSource": "This:C1470.dateIn",
+							"dataSourceTypeHint": "date",
+							"dateFormat": "systemShort blankIfNull"
+						},
+						{
+							"header": {
+								"name": "Header_boLineGlAccount",
+								"text": "GL Account",
+								"fontWeight": "bold"
+							},
+							"name": "Column_boLineGlAccount",
+							"footer": {
+								"name": "Footer_boLineGlAccount"
+							},
+							"width": 90,
+							"minWidth": 70,
+							"enterable": false,
+							"dataSource": "This:C1470.glAccount"
+						},
+						{
+							"header": {
+								"name": "Header_boLineTaxable",
+								"text": "Taxable",
+								"fontWeight": "bold"
+							},
+							"name": "Column_boLineTaxable",
+							"footer": {
+								"name": "Footer_boLineTaxable"
+							},
+							"width": 60,
+							"minWidth": 50,
+							"textAlign": "center",
+							"enterable": false,
+							"dataSource": "This:C1470.taxable",
+							"dataSourceTypeHint": "boolean",
+							"controlType": "checkbox",
+							"resizable": false
+						},
+						{
+							"header": {
+								"name": "Header_boLineVerification",
+								"text": "Verification",
+								"fontWeight": "bold"
+							},
+							"name": "Column_boLineVerification",
+							"footer": {
+								"name": "Footer_boLineVerification"
+							},
+							"width": 75,
+							"minWidth": 60,
+							"textAlign": "center",
+							"enterable": false,
+							"dataSource": "This:C1470.verificationRequired",
+							"dataSourceTypeHint": "boolean",
+							"controlType": "checkbox",
+							"resizable": false
+						}
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"header_bkgd10": {
+					"type": "rectangle",
+					"top": 148,
+					"left": 0,
+					"width": 1160,
+					"height": 519,
+					"sizingX": "fixed",
+					"fill": "#E4E4E4",
+					"stroke": "transparent"
+				},
+				"lb_terms": {
+					"type": "listbox",
+					"top": 153,
+					"left": 6,
+					"width": 244,
+					"height": 146,
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"focusable": false,
+					"movableRows": false,
+					"dataSource": "Form:C1466.lb_terms",
+					"currentItemSource": "Form:C1466.selectedTerm",
+					"currentItemPositionSource": "",
+					"metaSource": "This:C1470.meta",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "#C0C0C0",
+					"events": [
+						"onClick",
+						"onDataChange",
+						"onSelectionChange",
+						"onHeaderClick"
+					],
+					"fill": "#FFFFFF",
+					"alternateFill": "#F7F9FC",
+					"borderStyle": "system",
+					"method": "ObjectMethods/lb_terms.4dm",
+					"selectedItemsSource": "",
+					"selectionMode": "single",
+					"columns": [
+						{
+							"name": "Colonne1",
+							"dataSource": "This:C1470.name",
+							"width": 139,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "EntÃªte1",
+								"text": "Choose Term",
+								"fontTheme": "normal",
+								"textAlign": "left"
+							},
+							"footer": {
+								"name": "Pied1",
+								"timeFormat": "hh_mm_ss",
+								"fontFamily": "System Font Regular",
+								"fontSize": 10
+							},
+							"fontTheme": "normal",
+							"enterable": false
+						}
+					]
+				},
+				"bActionTerms": {
+					"type": "button",
+					"text": "Actions",
+					"top": 303,
+					"left": 10,
+					"width": 80,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionTerms.4dm"
+				},
+				"header_bkgd11": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 0,
+					"width": 1160,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_comments4": {
+					"type": "text",
+					"top": 121,
+					"left": 6,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Terms",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"WriteProArea": {
+					"type": "write",
+					"left": 258,
+					"top": 153,
+					"width": 897,
+					"height": 508,
+					"events": [
+						"onDataChange",
+						"onSelectionChange",
+						"onAfterEdit"
+					],
+					"dataSource": "wpArea",
+					"dpi": 0,
+					"scrollbarVertical": "automatic",
+					"scrollbarHorizontal": "automatic",
+					"hideFocusRing": true,
+					"layoutMode": "embedded"
+				}
+			}
+		}
+	],
+	"geometryStamp": 1631,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"inheritedForm": "sfw_bkgd_header_3lines",
+	"method": "method.4dm"
+}

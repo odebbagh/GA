@@ -1,0 +1,15 @@
+ {
+     "_requiered":["top","left","width","height"],
+     "top": "long;0",
+     "left": "long;0",
+     "width": "long;100",
+     "height": "long;20",
+     "fill": "text",
+     "stroke": "text",
+     "strokeWidth":"long;0,1",
+     "strokeDashArray": "text;1 3",
+     "startPoint":"text;topLeft",
+     "visibility":"text;visible;hidden",
+     "_strokeEven":"text;#e0e0e0",
+     "_strokeOdd":"text;#eaeaea"
+ }

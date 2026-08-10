@@ -1,0 +1,26 @@
+{
+    "name": "BASE64",
+    "id": 20000,
+    "commands": [
+        {
+            "theme": "BASE64",
+            "syntax": "BLOB to base64(&O):T",
+            "threadSafe": true
+        },
+        {
+            "theme": "BASE64",
+            "syntax": "BLOB from base64(&T):O",
+            "threadSafe": true
+        },
+        {
+            "theme": "BASE64",
+            "syntax": "BLOB to hex(&O):T",
+            "threadSafe": true
+        },
+        {
+            "theme": "BASE64",
+            "syntax": "BLOB from hex(&T):O",
+            "threadSafe": true
+        }
+    ]
+}

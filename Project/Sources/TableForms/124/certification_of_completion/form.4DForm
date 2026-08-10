@@ -1,0 +1,118 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Static Picture1": {
+					"type": "picture",
+					"top": 0,
+					"left": 0,
+					"width": 792,
+					"height": 612,
+					"picture": "Images/default-CT-preview (1) (1).png",
+					"pictureFormat": "scaled"
+				},
+				"Input": {
+					"type": "input",
+					"left": 143,
+					"top": 240,
+					"width": 508,
+					"height": 22,
+					"fontSize": 18,
+					"fontWeight": "bold",
+					"fontFamily": "Arial",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "center",
+					"dataSource": "Form:C1466.staffName"
+				},
+				"Input1": {
+					"type": "input",
+					"left": 143,
+					"top": 365,
+					"width": 508,
+					"height": 22,
+					"fontSize": 18,
+					"fontWeight": "bold",
+					"fontFamily": "Arial",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "center",
+					"dataSource": "Form:C1466.certificationName"
+				},
+				"Input2": {
+					"type": "input",
+					"left": 207,
+					"top": 434,
+					"width": 379,
+					"height": 22,
+					"fontSize": 18,
+					"fontWeight": "bold",
+					"fontFamily": "Arial",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "center",
+					"dataSource": "Form:C1466.issuedBy"
+				},
+				"Input3": {
+					"type": "input",
+					"left": 268,
+					"top": 502,
+					"width": 257,
+					"height": 22,
+					"fontSize": 18,
+					"fontWeight": "bold",
+					"fontFamily": "Arial",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "center",
+					"dataSource": "Form:C1466.date"
+				}
+			}
+		}
+	],
+	"geometryStamp": 107,
+	"markerFooter": 635,
+	"markerBreak": 612,
+	"markerBody": 612,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

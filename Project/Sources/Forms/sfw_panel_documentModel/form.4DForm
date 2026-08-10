@@ -1,0 +1,277 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onResize",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"label_name": {
+					"type": "text",
+					"top": 12,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": ":xliff:documentFolder.form.name"
+				},
+				"entryField_name": {
+					"type": "input",
+					"top": 12,
+					"left": 132,
+					"width": 348,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.name",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_type": {
+					"type": "text",
+					"top": 10,
+					"left": 515,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Type"
+				},
+				"pup_type": {
+					"type": "button",
+					"top": 5,
+					"left": 625,
+					"width": 140,
+					"height": 27,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "-types-",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_type.4dm",
+					"events": [
+						"onClick"
+					],
+					"textAlign": "left"
+				}
+			}
+		},
+		{
+			"objects": {
+				"entryField_balisedTextModel": {
+					"type": "input",
+					"left": 6,
+					"top": 72,
+					"width": 729,
+					"height": 369,
+					"dataSource": "Form:C1466.current_item.moreData.balisedTextModel"
+				},
+				"WParea": {
+					"type": "write",
+					"top": 156,
+					"left": 755,
+					"width": 880,
+					"height": 590,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"dataSource": "Form:C1466.current_item.area",
+					"hideFocusRing": true,
+					"scrollbarVertical": "automatic",
+					"scrollbarHorizontal": "automatic",
+					"dpi": 0,
+					"borderStyle": "none",
+					"method": "ObjectMethods/WParea.4dm",
+					"events": [
+						"onLoad",
+						"onLosingFocus",
+						"onGettingFocus",
+						"onSelectionChange",
+						"onAfterEdit"
+					]
+				},
+				"WPtoolbar": {
+					"type": "subform",
+					"top": 66,
+					"left": 755,
+					"width": 880,
+					"height": 90,
+					"sizingX": "grow",
+					"detailForm": "WP_Toolbar",
+					"focusable": false,
+					"deletableInList": false,
+					"doubleClickInRowAction": "editSubrecord",
+					"doubleClickInEmptyAreaAction": "addSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable"
+				}
+			}
+		},
+		{
+			"objects": {
+				"pup_documentFolder": {
+					"type": "button",
+					"top": 73,
+					"left": 136,
+					"width": 189,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "Document folder",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_documentFolder.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"label_0_4": {
+					"type": "text",
+					"top": 76,
+					"left": 3,
+					"width": 113,
+					"height": 15,
+					"stroke": "#808080",
+					"text": "Document Folder"
+				},
+				"permissions_bkgd": {
+					"type": "rectangle",
+					"top": 103,
+					"left": -1,
+					"width": 340,
+					"height": 499,
+					"stroke": "#c0c0c0",
+					"fill": "#F7F9FC"
+				},
+				"hl_bkgd": {
+					"type": "picture",
+					"top": 103,
+					"left": 0,
+					"width": 251,
+					"height": 400,
+					"picture": "Images/Static Picture3.png",
+					"pictureFormat": "tiled"
+				},
+				"hl_permissions": {
+					"type": "list",
+					"left": 0,
+					"top": 103,
+					"width": 265,
+					"height": 400,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.hl_permissions",
+					"scrollbarVertical": "visible",
+					"scrollbarHorizontal": "hidden",
+					"fill": "transparent",
+					"focusable": false,
+					"enterable": false,
+					"method": "ObjectMethods/hl_permissions.4dm"
+				},
+				"bAction_permissions": {
+					"type": "button",
+					"text": "Actions",
+					"top": 512,
+					"left": 7,
+					"width": 82,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bAction_permissions.4dm"
+				}
+			}
+		},
+		{
+			"objects": {
+				"label_0_1": {
+					"type": "text",
+					"top": 76,
+					"left": 3,
+					"width": 173,
+					"height": 15,
+					"stroke": "#808080",
+					"text": "Document name formula"
+				},
+				"entryField_documentNameFormula": {
+					"type": "input",
+					"left": 185,
+					"top": 76,
+					"width": 729,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.moreData.documentNameFormula"
+				},
+				"label_0_2": {
+					"type": "text",
+					"top": 102,
+					"left": 3,
+					"width": 173,
+					"height": 35,
+					"stroke": "#808080",
+					"text": "Precalculation method"
+				},
+				"entryField_documentPrecalculationMethod": {
+					"type": "input",
+					"left": 185,
+					"top": 102,
+					"width": 729,
+					"height": 369,
+					"dataSource": "Form:C1466.current_item.moreData.documentPrecalculationMethod"
+				}
+			}
+		}
+	],
+	"method": "method.4dm",
+	"inheritedForm": "sfw_bkgd_header_1lines",
+	"geometryStamp": 77,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

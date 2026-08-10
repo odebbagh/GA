@@ -1,0 +1,25 @@
+Case of 
+	: (FORM Event:C1606.code=On Double Clicked:K2:5) && (Form:C1466.sfw.checkIsInModification())
+		If (Form:C1466.selectedTool#Null:C1517)
+			OBJECT GET COORDINATES:C663(*; "toolNameCol"; $l; $t; $r; $b)
+			CONVERT COORDINATES:C1365($l; $b; XY Current form:K27:5; XY Main window:K27:8)
+			
+			$form:=New object:C1471("uuid_toolType"; Form:C1466.selectedTool.uuid_toolType; "lb_items"; ds:C1482.Tool.query("UUID_ToolType = :1"; Form:C1466.selectedTool.uuid_toolType))
+			
+			$winRef:=Open form window:C675("selectTool"; Pop up form window:K39:11; $l; $b-80+(Form:C1466.selectedTool.order*20))
+			DIALOG:C40("selectTool"; $form)
+			CLOSE WINDOW:C154($winRef)
+			
+			If (ok=1)
+				
+				If ($form.item#Null:C1517)
+					$tool:=Form:C1466.current_item.tools.items.query("order = :1"; Form:C1466.selectedTool.order)[0]
+					$tool.toolName:=$form.item.name
+					$tool.toolDate:=$form.item.date
+					
+					cs:C1710.panel_punch_out.me.loadToolsLb()
+					Form:C1466.current_item.UUID:=Form:C1466.current_item.UUID
+				End if 
+			End if 
+		End if 
+End case 

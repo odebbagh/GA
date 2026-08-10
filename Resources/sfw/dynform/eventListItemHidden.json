@@ -1,0 +1,23 @@
+{
+    "objects": {
+        "header_bkgd_##1##": {
+            "type": "rectangle",
+            "top": 0,
+            "left": 0,
+            "width": 350,
+            "height": 15,
+            "stroke": "transparent",
+            "fill": "#BFBFBF"
+        },
+        "title_##1##": {
+            "type": "text",
+            "left": 120,
+            "top": -3,
+            "width": 227,
+            "height": 17,
+            "fill": "transparent",
+            "borderStyle": "none",
+            "text": "..."
+        }
+    }
+}

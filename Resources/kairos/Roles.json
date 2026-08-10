@@ -1,0 +1,66 @@
+[
+    {
+        "UUID":"7DB949791C96EC4CB68DA40B404EBEBF",
+        "code": "PM",
+		"name": "Project Manager"
+    },
+    {
+        "UUID":"E62A116D96349D4BA1D05B84A5AF2BE5",
+        "code": "DE",
+		"name": "Development Engineer"
+
+    },
+    {
+        "UUID":"887722ACB33D354E8CE0C6BB6605E310",
+        "code": "SD",
+		"name": "Software Developer"
+    },
+    {
+        "UUID":"0B5AD09F41EE3C43ADFBDBB01CFAE0AA",
+        "code": "TSS",
+		"name": "Technical Support Specialist"
+
+    },
+    {
+        "UUID":"96AD18E84C21E648B5E9E5885BDDD5E4",
+        "code": "QAE",
+		"name": "Quality Assurance Engineer"
+    },
+    {
+        "UUID":"C4524123B452E84FA12EBF3F59E1A197",
+        "code": "ProdM",
+		"name": "Product Manager"
+
+    },
+    {
+        "UUID":"DD44C2FCADEC4745B08684D9347C02C1",
+        "code": "UX/UI",
+		"name": "UX/UI Designer"
+    },
+    {
+        "UUID":"3A51126C297EA04C83DC3F2B18C86DBC",
+        "code": "SE",
+		"name": "Support Engineer"
+
+    },
+    {
+        "UUID":"509F0DECFE65B0488C8029815A36D4FE",
+        "code": "SA",
+		"name": "Security Analyst"
+    },
+    {
+        "UUID":"DE4C329E433BAD4B8FDB52BD32BDB9D5",
+        "code": "SE",
+		"name": "Sales Executive"
+    },
+    {
+        "UUID":"8FDF8AEEB72ACE4A8BEB1722DB274B50",
+        "code": "BDM",
+		"name": "Business Development Manager"
+    },
+    {
+        "UUID":"27C7C58528E978418E4AE011B0AE4B7B",
+        "code": "HRM",
+		"name": "Human Resources Manager"
+    }
+]

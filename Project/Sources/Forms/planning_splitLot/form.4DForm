@@ -1,0 +1,357 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad"
+	],
+	"windowTitle": "Split Lot",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"bkgd": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 540,
+					"height": 520,
+					"fill": "#E6E6E6",
+					"stroke": "transparent",
+					"strokeWidth": 0
+				},
+				"header_bkgd": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 540,
+					"height": 35,
+					"sizingX": "fixed",
+					"fill": "#69A4C0",
+					"stroke": "transparent"
+				},
+				"lbl_title": {
+					"type": "text",
+					"top": 10,
+					"left": 12,
+					"width": 300,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Split Lot",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				}
+			}
+		},
+		{
+			"objects": {
+				"lbl_bkgd_motherLot": {
+					"type": "rectangle",
+					"top": 46,
+					"left": 0,
+					"width": 150,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#B1CFDE",
+					"stroke": "transparent"
+				},
+				"lbl_motherLot": {
+					"type": "text",
+					"text": "Mother Lot :",
+					"top": 52,
+					"left": 7,
+					"width": 130,
+					"height": 15,
+					"fontWeight": "bold"
+				},
+				"inp_bkgd_motherLot": {
+					"type": "rectangle",
+					"top": 46,
+					"left": 154,
+					"width": 380,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"inp_motherLot": {
+					"type": "input",
+					"left": 161,
+					"top": 51,
+					"width": 360,
+					"height": 16,
+					"borderStyle": "none",
+					"fill": "transparent",
+					"dataSource": "Form:C1466.motherLotNumber",
+					"enterable": false,
+					"focusable": false
+				},
+				"lbl_bkgd_currentStep": {
+					"type": "rectangle",
+					"top": 78,
+					"left": 0,
+					"width": 150,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#B1CFDE",
+					"stroke": "transparent"
+				},
+				"lbl_currentStep": {
+					"type": "text",
+					"text": "Split at Step :",
+					"top": 84,
+					"left": 7,
+					"width": 130,
+					"height": 15,
+					"fontWeight": "bold"
+				},
+				"inp_bkgd_currentStep": {
+					"type": "rectangle",
+					"top": 78,
+					"left": 154,
+					"width": 380,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"inp_currentStep": {
+					"type": "input",
+					"left": 161,
+					"top": 83,
+					"width": 360,
+					"height": 16,
+					"borderStyle": "none",
+					"fill": "transparent",
+					"dataSource": "Form:C1466.currentStepDisplay",
+					"enterable": false,
+					"focusable": false
+				},
+				"lbl_bkgd_availableQty": {
+					"type": "rectangle",
+					"top": 110,
+					"left": 0,
+					"width": 150,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#B1CFDE",
+					"stroke": "transparent"
+				},
+				"lbl_availableQty": {
+					"type": "text",
+					"text": "Available Quantity :",
+					"top": 116,
+					"left": 7,
+					"width": 130,
+					"height": 15,
+					"fontWeight": "bold"
+				},
+				"inp_bkgd_availableQty": {
+					"type": "rectangle",
+					"top": 110,
+					"left": 154,
+					"width": 380,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"inp_availableQty": {
+					"type": "input",
+					"left": 161,
+					"top": 115,
+					"width": 360,
+					"height": 16,
+					"borderStyle": "none",
+					"fill": "transparent",
+					"dataSource": "Form:C1466.availableQty",
+					"dataSourceTypeHint": "number",
+					"enterable": false,
+					"focusable": false
+				},
+				"lbl_bkgd_quantity": {
+					"type": "rectangle",
+					"top": 142,
+					"left": 0,
+					"width": 150,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#B1CFDE",
+					"stroke": "transparent"
+				},
+				"lbl_quantity": {
+					"type": "text",
+					"text": "Quantity to Split :",
+					"top": 148,
+					"left": 7,
+					"width": 130,
+					"height": 15,
+					"fontWeight": "bold"
+				},
+				"inp_bkgd_quantity": {
+					"type": "rectangle",
+					"top": 142,
+					"left": 154,
+					"width": 380,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"inp_quantity": {
+					"type": "input",
+					"left": 161,
+					"top": 147,
+					"width": 360,
+					"height": 16,
+					"borderStyle": "none",
+					"fill": "transparent",
+					"dataSource": "Form:C1466.quantity",
+					"dataSourceTypeHint": "number"
+				},
+				"lbl_snHint": {
+					"type": "text",
+					"top": 182,
+					"left": 7,
+					"width": 520,
+					"height": 15,
+					"text": "Select the serial numbers to move into the new sublot:",
+					"fontWeight": "bold"
+				},
+				"lb_snItems": {
+					"type": "listbox",
+					"top": 202,
+					"left": 7,
+					"width": 527,
+					"height": 260,
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.snItems",
+					"selectionMode": "single",
+					"scrollbarVertical": "visible",
+					"scrollbarHorizontal": "hidden",
+					"borderStyle": "system",
+					"fill": "#FFFFFF",
+					"alternateFill": "#F7F9FC",
+					"events": [
+						"onDataChange"
+					],
+					"method": "ObjectMethods/lb_snItems.4dm",
+					"columns": [
+						{
+							"header": {
+								"name": "Header_take",
+								"text": "Take"
+							},
+							"name": "col_take",
+							"footer": {
+								"name": "Footer_take"
+							},
+							"dataSource": "This:C1470.selected",
+							"dataSourceTypeHint": "boolean",
+							"minWidth": 50,
+							"width": 50,
+							"events": [
+								"onDataChange"
+							]
+						},
+						{
+							"header": {
+								"name": "Header_id",
+								"text": "ID"
+							},
+							"name": "col_id",
+							"footer": {
+								"name": "Footer_id"
+							},
+							"dataSource": "This:C1470.id",
+							"dataSourceTypeHint": "number",
+							"minWidth": 60,
+							"width": 60,
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header_sn",
+								"text": "Serial Number"
+							},
+							"name": "col_sn",
+							"footer": {
+								"name": "Footer_sn"
+							},
+							"dataSource": "This:C1470.serial_number",
+							"minWidth": 100,
+							"width": 220,
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header_comments",
+								"text": "Comments"
+							},
+							"name": "col_comments",
+							"footer": {
+								"name": "Footer_comments"
+							},
+							"dataSource": "This:C1470.comments",
+							"minWidth": 100,
+							"width": 180,
+							"enterable": false
+						}
+					]
+				},
+				"bCancel": {
+					"type": "button",
+					"top": 480,
+					"left": 374,
+					"width": 70,
+					"height": 20,
+					"sizingX": "move",
+					"sizingY": "move",
+					"dataSource": "Button",
+					"action": "cancel",
+					"text": "Cancel",
+					"events": [
+						"onClick"
+					]
+				},
+				"bOK": {
+					"type": "button",
+					"top": 480,
+					"left": 454,
+					"width": 70,
+					"height": 20,
+					"sizingX": "move",
+					"sizingY": "move",
+					"dataSource": "Button",
+					"action": "",
+					"text": "Split",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/bOK.4dm"
+				}
+			},
+			"entryOrder": [
+				"inp_quantity",
+				"lb_snItems",
+				"bOK",
+				"bCancel"
+			]
+		}
+	],
+	"geometryStamp": 1,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

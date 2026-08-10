@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="JsBarcode.js"></script>
+     <!-- <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.12.1/dist/JsBarcode.all.min.js"></script> -->
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        /* Cette zone contient l'image générée */
+        #result-box { 
+            margin-top: 20px; 
+            padding: 10px; 
+            border: 1px solid #ccc;
+            background: white;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="status">Génération...</div>
+    
+    <div id="result-box">
+        <canvas id="barcode-canvas"></canvas>
+    </div>
+
+    <script>
+        window.onload = function() {
+            
+            try {
+
+                const urlParams = new URLSearchParams(window.location.search);
+                
+                // Récupération des paramètres (Valeur,Type et text d'affichage)
+                const val = urlParams.get('value') || "123456789012";
+                const type = urlParams.get('type') || "CODE128";
+                const text = urlParams.get('text') || "";
+
+                // Génération du Code-barre
+                JsBarcode("#barcode-canvas", val, {
+                    format: type,
+                    lineColor: "#000000",
+                    width: 1,
+                    height: 80,
+                    fontSize:15,
+                    text:text,
+                    textAlign:"center",
+                    textPosition:"bottom",
+                    background:"#ffffff",
+                    displayValue: (text === "") ? false : true // Affiche le texte en dessous
+                
+                    // margin:0,
+                });
+
+              
+                const canvas = document.getElementById('barcode-canvas');
+                const resultBox = document.getElementById('result-box');
+                
+                // On met le Base64 dans l'attribut "data-base64"
+                resultBox.setAttribute("data-base64", canvas.toDataURL("image/png"));
+                
+                // document.getElementById('status').innerText = "Statut : Prêt";
+                // document.title = "READY";
+
+            } catch (e) {
+                // document.getElementById('status').innerText = "Erreur : " + e.message;
+                // document.title = "ERROR";
+            }
+        };
+    </script>
+</body>
+</html>

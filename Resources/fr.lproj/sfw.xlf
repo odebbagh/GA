@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="4DPop XLIFF Pro">
+            <prop prop-type="version">3.1</prop>
+         </prop-group>
+      </header>
+      <body>
+        <group resname="DateAndTime">
+            <trans-unit id="wjF8mNF2FLCKJY3sweJa+g" resname="dateAndTime.abrev.day1">
+               <source>S</source>
+               <target>D</target>
+            </trans-unit>
+            <trans-unit id="xqfuPenHaeQUdbhtx9Mr3g" resname="dateAndTime.abrev.day2">
+               <source>M</source>
+               <target>L</target>
+            </trans-unit>
+            <trans-unit id="SnucvU7oZWTtCz6DkvXNwA" resname="dateAndTime.abrev.day3">
+               <source>T</source>
+               <target>M</target>
+            </trans-unit>
+            <trans-unit id="Lq+KXldp1N_7SuFf8IHUyQ" resname="dateAndTime.abrev.day4">
+               <source>W</source>
+               <target>M</target>
+            </trans-unit>
+            <trans-unit id="8BF1YdAFJpC41RXT5o_o9A" resname="dateAndTime.abrev.day5">
+               <source>T</source>
+               <target>J</target>
+            </trans-unit>
+            <trans-unit id="ekjm46R2QnT2Q2HHGC4g+g" resname="dateAndTime.abrev.day6">
+               <source>F</source>
+               <target>V</target>
+            </trans-unit>
+            <trans-unit id="yB5dUzrxWaa4xvou8Mgvug" resname="dateAndTime.abrev.day7">
+               <source>S</source>
+               <target>S</target>
+            </trans-unit>
+            <trans-unit id="Y18KLZjMOtGg+LAYGNlWhA" resname="dateAndTime.date">
+               <source>Date</source>
+               <target>Date</target>
+            </trans-unit>
+            <trans-unit id="NbbA7PU53+Vainl1mnOe6g" resname="dateAndTime.days">
+               <source>Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday</source>
+               <target>Dimanche;Lundi;Mardi;Mercredi;Jeudi;Vendredi;Samedi</target>
+            </trans-unit>
+            <trans-unit id="01INw8WQNukF2CqGpTM8xQ" resname="dateAndTime.nextdays">
+               <source>Next sunday;Next monday;Next tuesday;Next wednesday;Next thursday;Next friday;Next saturday</source>
+               <target>Dimanche prochain;Lundi prochain;Mardi prochain;Mercredi prochain;Jeudi prochain;Vendredi prochain;Samedi prochain</target>
+            </trans-unit>
+            <trans-unit id="GjA6kTKrzqdyGf7tTi55rA" resname="dateAndTime.duration">
+               <source>Duration</source>
+               <target>Durée</target>
+            </trans-unit>
+            <trans-unit id="+GCLv0O37cBNBsEYQ6zHhA" resname="dateAndTime.duration.abrev">
+               <source>Dur.</source>
+               <target>Dur.</target>
+            </trans-unit>
+            <trans-unit id="uiXIIOthrgyeXgA5wsGWeA" resname="dateAndTime.duration.ninemonths">
+               <source>nine months</source>
+               <target>neuf mois</target>
+            </trans-unit>
+            <trans-unit id="7OqY1uzAym32+GAG9yhMKw" resname="dateAndTime.duration.onemonth">
+               <source>one month</source>
+               <target>un mois</target>
+            </trans-unit>
+            <trans-unit id="rqEHNl0+pKLhvK8GJWT41A" resname="dateAndTime.duration.oneyear">
+               <source>one year</source>
+               <target>un an</target>
+            </trans-unit>
+            <trans-unit id="_YLy4LVOtFVF5k7DCUUaaA" resname="dateAndTime.duration.sixmonths">
+               <source>six months</source>
+               <target>six mois</target>
+            </trans-unit>
+            <trans-unit id="9hiHVtyPlqxZqdLEayJwdw" resname="dateAndTime.duration.threemonths">
+               <source>three months</source>
+               <target>trois mois</target>
+            </trans-unit>
+            <trans-unit id="YtQTI0r+1h+Bj6tplhigVA" resname="dateAndTime.from">
+               <source>From</source>
+               <target>A parir de</target>
+            </trans-unit>
+            <trans-unit id="DFfWVe7CUE5ilKGIBIyqTg" resname="dateAndTime.minDuration">
+               <source>Min duration</source>
+               <target>Durée minimale</target>
+            </trans-unit>
+            <trans-unit id="PVOF7wgCRlLzrbQhb9_DOw" resname="dateAndTime.months">
+               <source>January;Febuary;March;April;May;June;July;August;September;October;November;December</source>
+               <target>Janvier;Février;Mars;Avril;Mai;Juin;Juillet;Août;Septembre;Octobre;Novembre;Décembre</target>
+            </trans-unit>
+            <trans-unit id="RUyCt23bzZjeaGhYY_JoWQ" resname="dateAndTime.onlyThisDate">
+               <source>Only this date</source>
+               <target>Seulement cette date</target>
+            </trans-unit>
+            <trans-unit id="kuPRSmTa3_3DpYYuG4lJhA" resname="dateAndTime.remove">
+               <source>remove</source>
+               <target>effacer</target>
+            </trans-unit>
+            <trans-unit id="OKohlp5rMqnPLUkNMcwFxg" resname="dateAndTime.removeAll">
+               <source>remove all</source>
+               <target>tout effacer</target>
+            </trans-unit>
+            <trans-unit id="FppGGHAu8PBmMx6p+D+qMQ" resname="dateAndTime.startAt">
+               <source>start at</source>
+               <target>commence à</target>
+            </trans-unit>
+            <trans-unit id="UEN35I5J2UR2MnJBqViSMQ" resname="dateAndTime.stopAt">
+               <source>stop at</source>
+               <target>fini à</target>
+            </trans-unit>
+            <trans-unit id="77vLdOzX_Av6mQ6x0QS1+g" resname="dateAndTime.time">
+               <source>Time</source>
+               <target>Heure</target>
+            </trans-unit>
+            <trans-unit id="qvZFc6UJpnDEZX90m1nn4w" resname="dateAndTime.today">
+               <source>today</source>
+               <target>aujourd'hui</target>
+            </trans-unit>
+            <trans-unit id="gOAQpK5qJOA7rfqvSyNzqg" resname="dateAndTime.tomorrow">
+               <source>tomorrow</source>
+               <target>demain</target>
+            </trans-unit>
+            <trans-unit id="UMv69kgj40PZSGgG2ra+bQ" resname="dateAndTime.yesterday">
+               <source>yesterday</source>
+               <target>hier</target>
+            </trans-unit>
+            <trans-unit id="It26rxpoDled0M9vvpGPkA" resname="dateAndTime.beforeyesterday">
+               <source>Before yesterday</source>
+               <target>Avant-hier</target>
+            </trans-unit>
+            <trans-unit id="daANDjLzAELbKzLU7aePJA" resname="dateAndTime.aftertomorrow" translate="yes">
+               <source>After tomoprrow</source>
+               <target>Après-demain</target>
+            </trans-unit>
+         </group>
+         <group resname="Periods">
+            <trans-unit id="jOzin5j6KgA_aZbhnD++Hg" resname="period.label">
+               <source>Period</source>
+               <target>Période</target>
+            </trans-unit>
+            <trans-unit id="xoPmKgaQUIyz3nh5K5pIeA" resname="period.type.bankHoliday">
+               <source>Bank Holiday</source>
+               <target>Jour férié</target>
+            </trans-unit>
+            <trans-unit id="BoQXzeI+8uUvo23iRq_1fg" resname="period.type.default">
+               <source>Default</source>
+               <target>Par défaut</target>
+            </trans-unit>
+            <trans-unit id="LZNj0T8XN5qqBvgeeFlLbg" resname="period.type.except">
+               <source>except:</source>
+               <target>excepté :</target>
+            </trans-unit>
+            <trans-unit id="WEfOduS4glox2odEcCOLRw" resname="period.type.holiday">
+               <source>Holiday</source>
+               <target>Congès</target>
+            </trans-unit>
+            <trans-unit id="PdMHX2xu2Jqgsy4sWsKdDA" resname="period.type.label">
+               <source>Period type</source>
+               <target>Type de période</target>
+            </trans-unit>
+            <trans-unit id="yuSKl9wLHF_y2h5ZNlODWQ" resname="period.type.month">
+               <source>Month</source>
+               <target>Mois</target>
+            </trans-unit>
+            <trans-unit id="WpdgRCv2uWj6Z2bKh0Qyog" resname="period.type.noException">
+               <source>no exception</source>
+               <target>pas d'exception</target>
+            </trans-unit>
+            <trans-unit id="Y_N8A0zIKI1WnqYRsrJTqQ" resname="period.type.quarter">
+               <source>Quarter</source>
+               <target>Trimestre</target>
+            </trans-unit>
+            <trans-unit id="g_CuuqR4kw2uh5wmchoqhQ" resname="period.type.work">
+               <source>Work</source>
+               <target>Travail</target>
+            </trans-unit>
+            <trans-unit id="6PV7DxcbRtfVun57wpz_EA" resname="period.type.year">
+               <source>Year</source>
+               <target>Année</target>
+            </trans-unit>
+            <trans-unit id="zRgBlY3k_drQUFLqPVThAw" resname="period.type.only">
+               <source>only:</source>
+               <target>seulement :</target>
+            </trans-unit>
+         </group>
+         <group resname="CRUD">
+            <trans-unit id="9RfdVy0Exr4hrdrDt8Hi9A" resname="crud.mode.visualization">
+               <source>Visualization</source>
+               <target>Lecture</target>
+            </trans-unit>
+            <trans-unit id="Gt54XXWtliuQ774HwPN+mw" resname="crud.mode.modification">
+               <source>Modification</source>
+               <target>Edition</target>
+            </trans-unit>
+            <trans-unit id="_2JF+jEa0q3esFydHHr1NA" resname="crud.mode.creation">
+               <source>Creation</source>
+               <target>Création</target>
+            </trans-unit>
+            <trans-unit id="JfjUhqP5d2O5OOOy7WYaHQ" resname="crud.mode.deletion">
+               <source>Suppression</source>
+               <target>Suppression</target>
+            </trans-unit>
+            <trans-unit id="A5HVDYfm1uHEfGo6PYbbpw" resname="crud.mode.chooseAMode">
+               <source>Choose a mode</source>
+               <target>Choisir un mode</target>
+            </trans-unit>
+         <trans-unit id="jERbRhyBHrh9wKfaACUZZQ" resname="crud.mode.openNewWindow">
+          <source>Ouvrir dans une nouvelle fenêtre</source>
+          <target>Ouvrir dans une nouvelle fenêtre</target>
+        </trans-unit>
+        <trans-unit id="DWUPj+W0Kpc6MqMsAuK7Yg" resname="crud.mode.openSpider">
+          <source>Afficher les enregistrements associés</source>
+          <target>Afficher les enregistrements associés</target>
+        </trans-unit>
+        <trans-unit id="P3mW_ot+YEYA5aZwIy5CQQ" resname="crud.mode.actions">
+          <source>Actions</source>
+          <target>Actions</target>
+        </trans-unit>
+      </group>
+         <group resname="Deletion">
+            <trans-unit id="zlaXN_4XmPlpocrWJkmRSQ" resname="deletion.message">
+               <source>Do you really want to delete this item?</source>
+               <target>Voullez-vous vraiment supprimer cet élément ? </target>
+            </trans-unit>
+            <trans-unit id="U9ikk36D9YognPfNQHo5NA" resname="deletion.button.delete">
+               <source>Delete</source>
+               <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="nuUBwAS6B7Xr_w6KDDASHQ" resname="deletion.button.keep">
+               <source>Keep</source>
+               <target>Conserver</target>
+            </trans-unit>
+         </group>
+         <group resname="WorkingRange">
+            <trans-unit id="PiUHRagLvzCfanr1iODGNA" resname="workingRanges.label">
+               <source>Working ranges</source>
+               <target>Plages de travail</target>
+            </trans-unit>
+            <trans-unit id="IrRlxqxh8lvdFLNKPpbX2A" resname="workingRanges.warningNoWorkings">
+               <source>It's neccessary to define schedule for this professional before create appointments</source>
+               <target>Il est nécessaire de définir le planning de ce professionel avant de créer des rendez-vous.</target>
+            </trans-unit>
+         </group>
+         <group resname="Address">
+            <trans-unit id="ZhVjbvHnt8FF_gssr9xKYw" resname="address.city">
+               <source>City</source>
+               <target>Ville</target>
+            </trans-unit>
+            <trans-unit id="YUW57k854EohczJtvaalv_XA" resname="address.format">
+               <source>Address format</source>
+               <target>Format des adresses</target>
+            </trans-unit>
+            <trans-unit id="YUW57kbEohczJtvaalv_XA" resname="address.label">
+               <source>Address</source>
+               <target>Adresse</target>
+            </trans-unit>
+            <trans-unit id="xNzhEh2aqcVICW7yYyDfoA" resname="address.menu.erase">
+               <source>Erase</source>
+               <target>Effacer</target>
+            </trans-unit>
+         </group>
+         <group resname="Search">
+            <trans-unit id="gxnbuaUus7Kxd5qANyBQpw" resname="search.localSearch">
+               <source>local search</source>
+               <target>recherche locale</target>
+            </trans-unit>
+            <trans-unit id="eEHjWN85AY7HVUAyXtZYCg" resname="search.globalSearch">
+               <source>global search</source>
+               <target>recherche globale</target>
+            </trans-unit>
+         </group>
+         <group resname="Dialog">
+            <trans-unit id="PdLDzbwHYx+5OkE1b5oQmA" resname="dialog.saveCancelContinue.message">
+               <source>Data has been modified on the item being edited. 
+Selecting "Save" will store the modification before continuing.
+Selecting "Cancel" will discard all the modification before continuing.
+Selecting "Continue" will keep you on the screen and continue with the changes in progress</source>
+               <target>Des données ont été modifiées sur l'élément en cours d'édition. 
+En sélectionnant "Sauvegarder", la modification est enregistrée avant de continuer.
+En sélectionnant "Annuler", vous effacez toutes les modifications avant de continuer.
+En sélectionnant "Continuer", vous restez à l'écran et vous poursuivez les modifications en cours.</target>
+            </trans-unit>
+            <trans-unit id="tdJu1dpqAtl__rrDv2HUTA" resname="dialog.saveCancelContinue.button.continue">
+               <source>Continue</source>
+               <target>Continuer</target>
+            </trans-unit>
+            <trans-unit id="uxO2NGild3zBaWXFv3Ht3A" resname="dialog.saveCancelContinue.button.cancel">
+               <source>Cancel</source>
+               <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="pmH9t8fqSJj1po68aeQaeA" resname="dialog.saveCancelContinue.button.save">
+               <source>Save</source>
+               <target>Sauvegarder</target>
+            </trans-unit>
+            <trans-unit id="T3xXwkqwRvIsr2EWad+_KA" resname="dialog.createRenounceContinue.message">
+               <source>Data has been modified on the item being edited. 
+Selecting "Create" will create the new item before continuing.
+Selecting "Renounce" will discard all the creation before continuing.
+Selecting "Continue" will keep you on the screen and continue with the changes in progress</source>
+               <target>Des données ont été modifiées sur l'élément en cours d'édition. 
+En sélectionnant "Créer", le nouvel élément sera créé avant de continuer.
+En sélectionnant "Renoncer", vous abandonnez toutes les créations avant de continuer.
+En sélectionnant "Continuer", vous restez à l'écran et vous poursuivez les modifications en cours.</target>
+            </trans-unit>
+            <trans-unit id="OJpLWGVUYswRXBCjiGU9ag" resname="dialog.createRenounceContinue.button.continue">
+               <source>Continue</source>
+               <target>Continuer</target>
+            </trans-unit>
+            <trans-unit id="zb1QAcc7mb95SGKUOjBJdg" resname="dialog.createRenounceContinue.button.renounce">
+               <source>Renounce</source>
+               <target>Renoncer</target>
+            </trans-unit>
+            <trans-unit id="okazy0389q2yjL1sdIY_NQ" resname="dialog.createRenounceContinue.button.create">
+               <source>Create</source>
+               <target>Créer</target>
+            </trans-unit>
+         </group>
+         <group resname="Button">
+            <trans-unit id="dlIo+6DGNCBDgCsaIgxpOg" resname="button.accept">
+               <source>Accept</source>
+               <target>Sauvegarder</target>
+            </trans-unit>
+            <trans-unit id="BRiPnVBY3YrVD6JhlDkHCw" resname="button.cancel">
+               <source>Cancel</source>
+               <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="BIOu_29BJgR3nnhey+p5Gw" resname="button.create">
+               <source>Create</source>
+               <target>Créer</target>
+            </trans-unit>
+            <trans-unit id="+GNnNd9MhwDZBzt61XnREg" resname="button.delete">
+               <source>Delete</source>
+               <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="eQEiWOFptZfTM3cB_JK0OQ" resname="button.reload">
+               <source>Reload</source>
+               <target>Mettre à jour</target>
+            </trans-unit>
+            <trans-unit id="onMGSMKZmTIHRNtLCLp2sQ" resname="button.renounce">
+               <source>Renounce</source>
+               <target>Renoncer</target>
+            </trans-unit>
+         <trans-unit id="r0jncEz0QVZuvcEjUyPKEA" resname="button.action">
+          <source>Actions</source>
+          <target>Actions</target>
+        </trans-unit>
+      </group>
+         <group resname="Country">
+            <trans-unit id="RHnPEJlU47ebkCgW0MPSIQ" resname="entry.countries">
+               <source>Countries</source>
+               <target>Pays</target>
+            </trans-unit>
+            <trans-unit id="9jiugN6Mc_7Ejzaz67jKSA" resname="entry.country">
+               <source>Country</source>
+               <target>Pays</target>
+            </trans-unit>
+            <trans-unit id="sVG2dVuWvMGc9UNYJEPHkw" resname="entry.sfw_country.field.name">
+               <source>Name</source>
+               <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="rLneAvTBjApXXzKL5pWpSQ" resname="entry.sfw_country.field.iso_code_2">
+               <source>Iso code 2</source>
+               <target>Code iso 2</target>
+            </trans-unit>
+            <trans-unit id="7uwGt3M2LU4gJtkqyjGOCQ" resname="entry.sfw_country.field.capital">
+               <source>Capital</source>
+               <target>Capitale</target>
+            </trans-unit>
+            <trans-unit id="BOmyY7qme7e_H0EmgIbwSw" resname="entry.sfw_country.isoCodes">
+               <source>Iso codes</source>
+               <target>Codes Iso</target>
+            </trans-unit>
+            <trans-unit id="jlZ0xiHSsmf5xesrASukgw" resname="entry.sfw_country.unit1">
+               <source>country</source>
+               <target>pays</target>
+            </trans-unit>
+            <trans-unit id="HrG1GdxqorMihQYeb9SfEA" resname="entry.sfw_country.unitN">
+               <source>countries</source>
+               <target>pays</target>
+            </trans-unit>
+         </group>
+         <group resname="Message">
+            <trans-unit id="Ysvq5EpwCtLNV9yGYWk6sg" resname="message.ooups">
+               <source>Oops... it seems that some code is missing here!</source>
+               <target>Ooups... il semble que du code manque ici !</target>
+            </trans-unit>
+         </group>
+         <group resname="Menu">
+            <trans-unit id="qBtQUJgLdSgdwb++kONscw" resname="menu.displayRecords">
+               <source>Display records...</source>
+               <target>Afficher les enregistrements...</target>
+            </trans-unit>
+            <trans-unit id="0dA6bTE067ZnnO_hDSsxgw" resname="menu.editForm">
+               <source>Edit form...</source>
+               <target>Editer le formulaire...</target>
+            </trans-unit>
+            <trans-unit id="A+XwZRR05YWOGUiwgwkNKQ" resname="menu.displayRecord">
+               <source>Display the record...</source>
+               <target>Afficher l'enregistrement...</target>
+            </trans-unit>
+         </group>
+      <group resname="User">
+        <trans-unit id="Nfkhu9WxaidIX4kvx3ujOQ" resname="user.users">
+          <source>Users</source>
+          <target>Utilisateurs</target>
+        </trans-unit>
+        <trans-unit id="RZyTkGF0CHaKa_R3u5Xp9w" resname="user.user">
+          <source>user</source>
+          <target>utilisateur</target>
+        </trans-unit>
+        <trans-unit id="ocM9vUlafr5a4fPT3DZm2A" resname="user.entry.firstname">
+          <source>Firstname</source>
+          <target>Prénom</target>
+        </trans-unit>
+        <trans-unit id="SXkddAxLUCWfW0vflG2rFQ" resname="user.entry.lastname">
+          <source>Lastname</source>
+          <target>Nom de famille</target>
+        </trans-unit>
+        <trans-unit id="XN3dw_F9Bnnu08USX7KgjA" resname="user.entry.login">
+          <source>Login</source>
+          <target>Identifiant</target>
+        </trans-unit>
+        <trans-unit id="tHHQGEzJZWATHBHqyuWXgQ" resname="user.login.request.secondPassword">
+          <source>Please confirm the new password</source>
+          <target>Veuillez confirmer le nouveau mot de passe</target>
+        </trans-unit>
+        
+        <trans-unit id="U_A633VFtabUZhlaGZVycg" resname="user.entry.field.password">
+          <source>Password</source>
+          <target>Mot de passe</target>
+        </trans-unit>
+        <trans-unit id="yY+vb1tdBVpDwvGO4xOMqg" resname="user.login.forgotPassword">
+          <source>Forgot password?</source>
+          <target>Mot de passe oublié ?</target>
+        </trans-unit>
+        <trans-unit id="6r5r7yaRKuiT3YHIFcBRbQ" resname="user.entry.confirm.resetPassword">
+          <source>Are you sure you want to reset this user's password? </source>
+          <target>Êtes-vous sûr de vouloir réinitialiser le mot de passe de cet utilisateur ? </target>
+        </trans-unit>
+        <trans-unit id="8pjheyFMgrwmc9PFvU0JnA" resname="user.login.button.login">
+          <source>Login</source>
+          <target>Connexion</target>
+        </trans-unit>
+        <trans-unit id="EFVRpqFw+3UqFf9UEtqT4g" resname="user.login.message.error">
+          <source>Incorrect password</source>
+          <target>Mot de passe incorrect</target>
+        </trans-unit>
+        <trans-unit id="lDxRsVsRHGbfBTudO0t5sA" resname="user.login.field.password">
+          <source>Password</source>
+          <target>Mot de passe</target>
+        </trans-unit>
+        <trans-unit id="1d56rE3lp5sO+aI6Cp8+2w" resname="user.login.field.user">
+          <source>User</source>
+          <target>Utilisateur</target>
+        </trans-unit>
+        <trans-unit id="MGXTXowq4ty7Zlh5pIi5Ww" resname="user.login.select">
+          <source>Select a user</source>
+          <target state="needs-review-translation">Sélectionnez un utilisateur</target>
+        </trans-unit>
+        <trans-unit id="WVAbU9ycxFsRv2f8KrJH6w" resname="user.password.message.rules">
+          <source>The new password must comply with security rules and contain at least: 
+- &lt;!--4DTEXT cs.sfw_passwordManager.me.passwordLength--&gt; characters
+- one lower case 
+- one upper case 
+- one digit
+- one special character from &lt;b&gt;&lt;!--4DTEXT cs.sfw_passwordManager.me.authorizedChars.special--&gt;&lt;/b&gt;</source>
+          <target state="needs-review-translation">Le nouveau mot de passe doit respecter les règles de sécurité et comporter au moins : 
+- &lt;!--4DTEXT cs.sfw_passwordManager.me.passwordLength--&gt; caractères
+- une minuscule
+- une majuscule
+- un chiffre
+- un caractère spécial parmi &lt;b&gt;&lt;!--4DTEXT cs.sfw_passwordManager.me.authorizedChars.special--&gt;&lt;/b&gt;</target>
+        </trans-unit>
+        <trans-unit id="UhRoN+TkQoTluTexTHEMQA" resname="user.login.message.format">
+          <source>Please change your password to meet the required security requirements.</source>
+          <target state="new">Please change your password to meet the required security requirements.</target>
+        </trans-unit>
+        <trans-unit id="i3mHHrZ56Vsmxgg45W0Rhw" resname="user.login.request.firstPassword">
+          <source>Please enter your new password</source>
+          <target>Veuillez saisir votre nouveau mot de passe</target>
+        </trans-unit>
+        <trans-unit id="7dLmjxy5XnYC7DNvVPqRFA" resname="user.entry.confirm.newUser.createTemporaryPassword">
+          <source>Would you like to create a temporary password for this new user?</source>
+          <target>Souhaitez-vous créer un mot de passe temporaire pour ce nouvel utilisateur ?</target>
+        </trans-unit>
+        <trans-unit id="2Y_sxB84ufO1BMs73BDvcw" resname="user.entry.confirm.temporaryPasswordToPasteboard">
+          <source>Would you like to copy the temporary password in the pasteboard?</source>
+          <target>Souhaitez-vous copier le mot de passe temporaire dans le presse-papiers ?</target>
+        </trans-unit>
+        <trans-unit id="xvCEeJhwq7QTIS4SgOl9JQ" resname="user.password.current">
+          <source>Please enter your current password:</source>
+          <target>Veuillez saisir votre mot de passe actuel :</target>
+        </trans-unit>
+        <trans-unit id="hq12p6QOqni0oSrh6ViCyA" resname="user.password.new">
+          <source>New password:</source>
+          <target>Nouveau mot de passe :</target>
+        </trans-unit>
+        <trans-unit id="YTkpqLWTTb3zpVSlVvjxbQ" resname="user.password.confirmNew">
+          <source>Confirm your new password:</source>
+          <target state="needs-review-translation">Confirmez votre nouveau mot de passe : </target>
+        </trans-unit>
+        <trans-unit id="zOOaX2qxCxsufNBp9pMPmA" resname="user.login.checkbox.rememberMe">
+          <source>Remember my credentials on this computer</source>
+          <target>Mémoriser mes identifiants sur cet ordinateur</target>
+        </trans-unit>
+        <trans-unit id="UDJEHYgy2t+cfyC2ipJLIQ" resname="user.login.button.quit">
+          <source>Quit</source>
+          <target>Quiiter</target>
+        </trans-unit>
+      </group>
+      <group resname="Projection">
+        <trans-unit id="TAEjcSYPcviF+wzax0MaRw" resname="projection.fromTheList">
+          <target>À partir de la liste...</target>
+          <source>From the list...</source>
+        </trans-unit>
+        <trans-unit id="u056xHodtJonRFdEVMccYQ" resname="projection.fromSelectedList">
+          <target>À partir de l'élément sélectionné...</target>
+          <source>From the selected item...</source>
+        </trans-unit>
+        <trans-unit id="dGAo13GBO650dBIIRvZbQg" resname="projection.fromMyFavorites">
+          <target>À partir de mes favoris...</target>
+          <source>From my favorites...</source>
+        </trans-unit>
+      </group>
+      <group resname="favorite">
+        <trans-unit id="AGHxRZRNwAWE39bgHSazmg" resname="favorite.setAsFavoriteEntry">
+          <target>Définir comme entrée favorite</target>
+          <source>Set as favorite entry</source>
+        </trans-unit>
+        <trans-unit id="hP+JN99Z+GOg6Xn0GUNA+Q" resname="favorite.unsetAsFavoriteEntry">
+          <target>Retirer comme entrée favorite</target>
+          <source>Unset as favorite entry</source>
+        </trans-unit>
+        <trans-unit id="Qky1fKtzWN4cnGd5qkl7Hg" resname="favorite.addFavorite">
+          <target>Ajouter aux favoris</target>
+          <source>Add as favorite</source>
+        </trans-unit>
+        <trans-unit id="NGMqhBjLnSnnLip34r6uJg" resname="favorite.isFavorite">
+          <target>Marqué comme favori</target>
+          <source>Is a favorite</source>
+        </trans-unit>
+      </group>
+      <group resname="Export">
+        <trans-unit id="RVg5_Hpxgai0VeVfs4d7nw" resname="export.done">
+          <target>L'exportation est terminée</target>
+          <source>The export is done</source>
+        </trans-unit>
+        <trans-unit id="CpQd8JqSycs_qaFpLtI6CQ" resname="export.sfw">
+          <target>Voulez-vous exporter toutes les sources du framework ?</target>
+          <source>Do you want to export all the source for the framework ?</source>
+        </trans-unit>
+      </group>
+      <group resname="Import">
+        <trans-unit id="fdlz+UDf0QPw5RBV90sqGA" resname="import.bellowCurrentVersion">
+          <target>La version dans le fichier referenceRecords est inférieure à la version actuelle dans ce fichier de données</target>
+          <source>The version in the referenceRecords file is bellow the current version in this datafile</source>
+        </trans-unit>
+        <trans-unit id="u1DtkMpYQEQ_RjUVfrHQbg" resname="import.buttonImport">
+          <target>Importer</target>
+          <source>Import</source>
+        </trans-unit>
+        <trans-unit id="y_KNTedLBu9SZj78XHDoUQ" resname="import.buttonCancel">
+          <target>Annuler</target>
+          <source>Cancel</source>
+        </trans-unit>
+        <trans-unit id="Hu5G7QSOG9IoYmT97w37Ew" resname="impot.buttonKeep">
+          <target>La version dans le fichier referenceRecords semble être la même que la version actuelle dans ce fichier de données</target>
+          <source>The version in the referenceRecords file seems the same than the current version in this datafile</source>
+        </trans-unit>
+        <trans-unit id="YduF1sK11tIjRhRSOs1Uxg" resname="import.notPresent">
+          <target>Certains enregistrements présents dans le fichier de données ne sont pas présents dans le fichier d'importation de référence. Que souhaitez-vous faire ?</target>
+          <source>Some records present in the datafile aren't present in the reference import file. What do you want to do?</source>
+        </trans-unit>
+        <trans-unit id="uCYVQJdfPEnNaC5f1brnIA" resname="import.buttonKeep">
+          <target>Garder</target>
+          <source>Keep</source>
+        </trans-unit>
+        <trans-unit id="nVlJm0WnePhRl48NfC2jXA" resname="import.buttonDrop">
+          <target>Supprimer</target>
+          <source>Drop</source>
+        </trans-unit>
+        <trans-unit id="iIbO01TlgaUHb6Zdw5_Jpw" resname="import.done">
+          <target>L'importation est terminée</target>
+          <source>The import is done</source>
+        </trans-unit>
+        <trans-unit id="+_fRr5t5OrI+w4QeGoYhfg" resname="import.fileNotExist">
+          <target>Le fichier referenceRecords n'existe pas dans le dossier</target>
+          <source>The referenceRecords file doesn't exist in the folder</source>
+        </trans-unit>
+        <trans-unit id="+mZSZ62I6O45d6Zd8fitsg" resname="import.sfw">
+          <target>Voulez-vous importer toutes les sources du framework ?</target>
+          <source>Do you want to import all the source for the framework ?</source>
+        </trans-unit>
+        <trans-unit id="mJGJkc7kEXBie+l7xc1jjA" resname="import.sfwDone">
+          <target>L'importation complète est terminée ! Je vous souhaite un bon travail avec cette nouvelle version du framework.</target>
+          <source>Full Import is done ! I wish you a good work with this new version of the framework.</source>
+        </trans-unit>
+      </group>
+      <group resname="Comment">
+        <trans-unit id="vi6nXuf+HXwZn9C4O4hIKA" resname="comment.level.low">
+          <target>Faible</target>
+          <source>Low</source>
+        </trans-unit>
+        <trans-unit id="Rd5Fa6d7gzjhS3XMRTjccw" resname="comment.level.normal">
+          <target>Normal</target>
+          <source>Normal</source>
+        </trans-unit>
+        <trans-unit id="nHovoAe+jLmg4afXmD_vSw" resname="comment.level.important">
+          <target>Important</target>
+          <source>Important</source>
+        </trans-unit>
+        <trans-unit id="OXA9wk_ehLfao0EMJYJCTQ" resname="comment.level.critical">
+          <target>Critique</target>
+          <source>Critical</source>
+        </trans-unit>
+        <trans-unit id="pB_6slonzTfci_3eX0uorQ" resname="comment.priority">
+          <target>Priorité</target>
+          <source>Priority</source>
+        </trans-unit>
+        <trans-unit id="Jtwa6GJ9M3T2W2pX2tXRcw" resname="comment.level.critique">
+          <target>Critique</target>
+          <source>Critical</source>
+        </trans-unit>
+        <trans-unit id="5EKQkqG9Z69ncMLEB4CVCA" resname="comment.level.faible">
+          <target>faible</target>
+          <source>Low</source>
+        </trans-unit>
+        <trans-unit id="CfSclBwTLpFavEXh+K0bgA" resname="comment.expandAll">
+          <target>Afficher tout</target>
+          <source>Expand all</source>
+        </trans-unit>
+        <trans-unit id="I28rO4UUL_gPqJVjhf7E5g" resname="comment.collapseAll">
+          <target>Tout réduire</target>
+          <source>Collapse all</source>
+        </trans-unit>
+        <trans-unit id="qGnYcLDsX2EsUD1+WhKbNw" resname="comment.limitToLevel">
+          <target>Limiter au niveau</target>
+          <source>Limit to level</source>
+        </trans-unit>
+      </group>
+      <group resname="FefinitionPageListBox">
+        <trans-unit id="t0i2RjcfAMXEeDSpAXmxYQ" resname="Profile">
+          <target>Ouvrir une projection avec les éléments sélectionnés...</target>
+          <source state="needs-review-translation">Open a projection with selected items...</source>
+        </trans-unit>
+        <trans-unit id="G0pLXuAXTcfp6AzzxE7lTQ" resname="definitionPageLB.openProjectionAllItem">
+          <target>Ouvrir une projection avec tous les éléments...</target>
+          <source>Open a projection with all items...</source>
+        </trans-unit>
+        <trans-unit id="vanfVgW6GI6xpODohTLVeg" resname="definitionPageLB.exportSelectedItem">
+          <target>Exporter les éléments sélectionnés...</target>
+          <source>Export the selected items...</source>
+        </trans-unit>
+        <trans-unit id="gGzmlfeUhKw9puWYzrEI3g" resname="definitionPageLB.exportAll">
+          <target>Exporter tous les éléments...</target>
+          <source>Export all items...</source>
+        </trans-unit>
+      </group>
+      <group resname="MAin">
+        <trans-unit id="6EABmP2Nqygrl6Gh8npeCw" resname="main.unselectedAll">
+          <target>Tout désélectionner</target>
+          <source>Unselect all</source>
+        </trans-unit>
+        <trans-unit id="0OJpZkdYJsWTPdx_cYsvyQ" resname="main.openNewWindow">
+          <target>Ouvrir dans une nouvelle fenêtre...</target>
+          <source>Open in a new window...</source>
+        </trans-unit>
+      </group>
+      <group resname="Entry">
+        <trans-unit id="NWBnh3bygb5z4Nk0uf2exA" resname="entry.noResctriction">
+          <target>Aucune restriction</target>
+          <source>No restriction</source>
+        </trans-unit>
+        <trans-unit id="EhoEt+JqI3724NwmankehQ" resname="entry.onlyFavorites">
+          <target>Uniquement mes favoris</target>
+          <source>Only my favorites</source>
+        </trans-unit>
+      </group>
+      <group resname="Profil">
+        <trans-unit id="6QEcL_HxtexEqTUYlRrQ3g" resname="profil.addProfile">
+          <target>Ajouter un profil</target>
+          <source>Add a profile</source>
+        </trans-unit>
+        <trans-unit id="PqL1ARPPGo2qtzD+eZ2UrA" resname="profil.deleteProfile">
+          <target>Supprimer le profil</target>
+          <source>Delete the profile</source>
+        </trans-unit>
+      </group>
+      <group resname="Scheduler">
+        <trans-unit id="NJJrLx6DRARvZ0GcuDKNjQ" resname="schedular.never">
+          <target>jamais</target>
+          <source>never</source>
+        </trans-unit>
+      </group>
+      <group resname="Toolbar">
+        <trans-unit id="Xey5mua24ueePYeAjnf+lw" resname="toolbar.newMainWindow">
+          <target>Nouvelle fenêtre principale</target>
+          <source>New main window</source>
+        </trans-unit>
+        <trans-unit id="s51OjDJLSd91gANhHUpUIQ" resname="toolbar.favorites">
+          <target>Favoris</target>
+          <source>Favorites</source>
+        </trans-unit>
+        <trans-unit id="4xaGDYb0XoE85sEHGUQZZA" resname="toolbar.storeAccess">
+          <target>Enregistrer l'accès dans les préférences...</target>
+          <source>Store access in preferences...</source>
+        </trans-unit>
+        <trans-unit id="yyMHh0Ks2Thltu6XMjc4gg" resname="toolbar.changePassword">
+          <target>Changer mon mot de passe...</target>
+          <source>Change my password...</source>
+        </trans-unit>
+        <trans-unit id="GbUtl6toB6oL6HBK8JYgnA" resname="toolbar.onlyForDesigner">
+          <target>Réservé aux concepteurs</target>
+          <source>only for designer</source>
+        </trans-unit>
+        <trans-unit id="VDGmB9k10JJ942aBuFD1kQ" resname="toolbar.sfwUserClasses">
+          <target>Classes d'utilisateurs SFW</target>
+          <source>SFW user classes</source>
+        </trans-unit>
+        <trans-unit id="nyg653NzEDp+i5Qzt0W9og" resname="toolbar.sfwDataclasses">
+          <target>Dataclasses SFW</target>
+          <source>SFW dataclasses</source>
+        </trans-unit>
+        <trans-unit id="y_+41BE7a9S35cPhr1P1Tg" resname="toolbar.projectDefinitionClass">
+          <target>Classe de définition de projet</target>
+          <source>Project definition class</source>
+        </trans-unit>
+        <trans-unit id="JCPGZygDxCA3pjjS1z3MVg" resname="toolbar.entryClasses">
+          <target>Classes d'entrée</target>
+          <source>Entry classes</source>
+        </trans-unit>
+        <trans-unit id="YeKyPEb8Nx1uLfL3BySzNw" resname="toolbar.panelClasses">
+          <target>Classes de panneau</target>
+          <source>Panel classes</source>
+        </trans-unit>
+        <trans-unit id="H7lHPX4hNm4y9qKtgc+PcQ" resname="toolbar.otherDataclasses">
+          <target>Autres dataclasses</target>
+          <source>Other dataclasses</source>
+        </trans-unit>
+        <trans-unit id="tnLiBNt291WUkzCImzFaBg" resname="toolbar.testMOMail">
+          <target>Test Microsoft Office 365 : envoyer un e-mail</target>
+          <source>Test Microsoft Office 365 : send mail</source>
+        </trans-unit>
+        <trans-unit id="V0EYN1F0DgJ3sIXydOcnlA" resname="toolbar.colors">
+          <target>Couleurs</target>
+          <source>Colors</source>
+        </trans-unit>
+        <trans-unit id="JEed5UqxlmgLlvixQMf5lg" resname="toolbar.favoriteEntries">
+          <target>Entrées favoris</target>
+          <source>Favorite entries</source>
+        </trans-unit>
+        <trans-unit id="T3_8JWqqL8niF3P7nW8s5A" resname="toolbar.favoriteItems">
+          <target>Éléments favoris</target>
+          <source>Favorite items</source>
+        </trans-unit>
+        <trans-unit id="xDQ+xTBLvMNvYxJO6w5GPg" resname="toolbar.storeAccessConfirm">
+          <target>Voulez-vous vraiment enregistrer votre accès sur cet ordinateur ?</target>
+          <source>Do you really want to store your access on this computer?</source>
+        </trans-unit>
+        <trans-unit id="eGnSoM3hufUnIb2LG4YtKA" resname="toolbar.storeAccessYes">
+          <target>Oui je veux</target>
+          <source>Yes I want</source>
+        </trans-unit>
+        <trans-unit id="DGqMqUjf_20R8bQLrTEfJA" resname="toolbar.storeAccessNo">
+          <target>Non</target>
+          <source>No</source>
+        </trans-unit>
+        <trans-unit id="MIEBeRSj+azRmuJbO6EBvQ" resname="toolbar.storeAccessRequest">
+          <target>Entrez votre mot de passe pour pouvoir enregistrer l'accès:</target>
+          <source>Enter your password to be able to store the access:</source>
+        </trans-unit>
+        <trans-unit id="7oZ9s20ubncaX9PT0j_+0A" resname="toolbar.storeAccessAccept">
+          <target>Enregistrer</target>
+          <source>Store the access</source>
+        </trans-unit>
+        <trans-unit id="oArR0WFjdHUPnBrrRtkVMw" resname="toolbar.storeAccessCancel">
+          <target>Annuler</target>
+          <source>Cancel</source>
+        </trans-unit>
+      </group>
+    </body>
+   </file>
+</xliff>

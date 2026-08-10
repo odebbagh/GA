@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE macros SYSTEM "http://www.4d.com/dtd/2007/macros.dtd" >
+<macros>
+    <macro name="-" in_menu="true" type_ahead="false" version="2">
+        <text></text>
+    </macro>
+    <macro name="Callbacks for dataclass" in_menu="true" type_ahead="false" version="2">
+        <text>
+            <method>sfw_macro_callbackEntry("<method_path/>")</method>
+        </text>
+    </macro>
+    <macro name="Callbacks for dataclass entity" in_menu="true" type_ahead="false" version="2">
+        <text>
+            <method>sfw_macro_callbackEntity("<method_path/>")</method>
+        </text>
+    </macro>
+    <macro name="Create panel Class " in_menu="true" type_ahead="false" version="2">
+        <text>
+            <method>sfw_macro_panelClass("<method_path/>")</method>
+        </text>
+    </macro>
+    <macro name="Add entry definition" in_menu="true" type_ahead="false" version="2">
+        <text>
+            <method>sfw_macro_entryDefinition("<method_path/>")</method>
+        </text>
+    </macro>
+    <macro name="Entry definition " in_menu="true" type_ahead="true" version="2">
+        <text>
+        local Function entryDefinition()->$entry : cs.sfw_definitionEntry
+
+$entry:=cs.sfw_definitionEntry.new("<caret/>"; ""; "")
+$entry.setDataclass("<selection/>")
+$entry.setDisplayOrder(100)
+$entry.setIcon("image/entry/-50x50.png")
+
+$entry.setSearchboxField("")
+
+
+$entry.setPanel("panel_"; 2)
+$entry.setPanelPage(1; "-24x24.png"; "")
+
+
+$entry.setLBItemsColumn(""; "")
+
+$entry.setLBItemsOrderBy("")
+
+$entry.setLBItemsCounter("")
+$entry.setMainViewLabel("")
+
+$entry.setAddable()
+$entry.setItemAction(""; "")
+
+$entry.enableTransaction()
+
+$entry.setItemListPreconfigAction("exportReferenceRecords")
+$entry.setItemListPreconfigAction("importReferenceRecords")
+
+$entry.setItemListAction(""; "")
+
+
+$view:=cs.sfw_definitionView.new(""; "")
+$entry.setLBItemsColumn(""; "")
+
+$entry.setLBItemsOrderBy("")
+
+$entry.setLBItemsCounter("")
+
+$view.setSubset("")
+$view.setPictoLabel("/RESOURCES/kairos/image/picto/.png")
+$entry.setView($view)
+
+$entry.enableEvent()
+        </text>
+    </macro>
+    <macro name="Create menu" in_menu="true" type_ahead="true" version="2">
+        <text>
+	$refMenus:=New collection
+	$refMenu:=Create menu
+	$refMenus.push($refMenu)
+	
+	For each (; )
+		APPEND MENU ITEM($refMenu; ; *)
+		SET MENU ITEM ICON($refMenu; -1; ".png")
+		SET MENU ITEM PARAMETER($refMenu; -1; )
+		If ()
+			SET MENU ITEM MARK($refMenu; -1; Char(18))
+			If (Is Windows)
+				SET MENU ITEM STYLE($refMenu; -1; Bold)
+			End if 
+		End if 
+	End for each 
+	$choose:=Dynamic pop up menu($refMenu)
+	for each($refMenu;$refMenus)
+		RELEASE MENU($refMenu)
+	End for each 
+	
+	Case of 
+		: ($choose#"")
+			
+	End case 
+        </text>
+    </macro>
+    <macro name="Variadic parameters" in_menu="true" type_ahead="true" version="2">
+        <text>
+	For ($p; 3; Count parameters)
+		$params:=Split string(${$p}; ":")
+		$selector:=$params.shift()
+		Case of 
+			: ($selector="")
+		End case 
+	End for 
+         </text>
+    </macro>
+</macros>

@@ -1,0 +1,31 @@
+{
+    "tableDataSource": "Form.sfw.lb_items.query(\"isForm =:1 & suppress =:2\";True;False)",
+    "columns": [{
+            "check": true,
+            "header": "Spec#",
+            "source": "This.item.spec"
+        }, {
+            "check": true,
+            "header": "Revision",
+            "source": "This.item.revision"
+        }, {
+            "check": true,
+            "header": "Spec Title",
+            "source": "This.item.title"
+        }
+        , {
+            "check": true,
+            "header": "Revision Date ",
+            "source": "This.item.revisionDate"
+        }, {
+            "check": true,
+            "header": "Remarks",
+            "source": "This.item.remark"
+        }, {
+            "check": true,
+            "header": "Addendum",
+            "source": "This.item.addendum ? String(\"☑\") : String(\"☐\")"
+        }
+    ]
+   
+}

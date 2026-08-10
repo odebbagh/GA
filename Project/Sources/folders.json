@@ -1,0 +1,58 @@
+{
+	"Classes par défaut": {},
+	"DFD": {
+		"tables": [
+			"dfd_Document",
+			"dfd_Line",
+			"dfd_Picture",
+			"dfd_Template"
+		]
+	},
+	"Dossier par défaut": {
+		"groups": [
+			"Classes par défaut",
+			"Formulaires par défaut",
+			"Méthodes projet par défaut",
+			"Tables par défaut"
+		]
+	},
+	"Formulaires par défaut": {
+		"forms": [
+			"sfw_wizard_notification",
+			"sfw_wizard_scheduler"
+		]
+	},
+	"Méthodes projet par défaut": {},
+	"SFW": {
+		"tables": [
+			"sfw_Comment",
+			"sfw_Counter",
+			"sfw_Country",
+			"sfw_Currency",
+			"sfw_Document",
+			"sfw_DocumentFolder",
+			"sfw_DocumentModel",
+			"sfw_EMailLog",
+			"sfw_EMailQueue",
+			"sfw_EmailTemplate",
+			"sfw_EventType",
+			"sfw_Favorite",
+			"sfw_Notification",
+			"sfw_NotificationType",
+			"sfw_Scheduler",
+			"sfw_SchedulerLog",
+			"sfw_Setting",
+			"sfw_User",
+			"sfw_UserInscription",
+			"sfw_UserProfile"
+		]
+	},
+	"Tables par défaut": {},
+	"Web": {
+		"methods": [
+			"sfw_w_home_page",
+			"sfw_w_logout"
+		]
+	},
+	"trash": {}
+}

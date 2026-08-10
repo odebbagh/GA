@@ -1,0 +1,40 @@
+{
+	"version": "3.1",
+	"reference": "en",
+	"project": "4D_Kairos",
+	"4D_Kairos": {
+		"languages": [
+			"fr"
+		],
+		"files": [
+			"activity",
+			"administration",
+			"appointment",
+			"chrono",
+			"coach",
+			"compilation",
+			"consultationKind",
+			"customer",
+			"group",
+			"healthDashboard",
+			"lesson",
+			"medicalHouse",
+			"medicalStaff",
+			"mobile",
+			"setting",
+			"sfw",
+			"WritePro",
+			"wsfw_homePage",
+			"wsfw_list_appointment_page",
+			"wsfw_login_page",
+			"wsfw_meeting_page",
+			"wsfw_not_confirmed_page",
+			"wsfw_results_page",
+			"wsfw_review_page",
+			"wsfw_top_bar",
+			"wsfw_validate_page"
+		],
+		"file": "sfw",
+		"digest": "53c09dce03de30098397042c098ae3ee"
+	}
+}

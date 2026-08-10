@@ -1,0 +1,47 @@
+{
+    "tableDataSource": "Form.current_item.lots",
+    "columns": [{
+            "check": true,
+            "header": "#",
+            "source": "This.itemIndex+1"
+        }, {
+            "check": true,
+            "header": "Part No",
+            "source": "This.item.device"
+        }, {
+            "check": true,
+            "header": "Package",
+            "source": "This.item.packageType"
+        }
+        , {
+            "check": true,
+            "header": "Lot# ",
+            "source": "This.item.lotNumber"
+        }, {
+            "check": true,
+            "header": "Alt Lot#",
+            "source": "This.item.altLotNumber"
+        }, {
+            "check": true,
+            "header": "Date Code",
+            "source": "This.item.dateCode"
+        }, {
+            "check": true,
+            "header": "In",
+            "source": "This.item.ourCount"
+        }, {
+            "check": true,
+            "header": "Out",
+            "source": "This.item.progressive"
+        }, {
+            "check": true,
+            "header": "Date",
+            "source": "This.item.dateOut"
+        }, {
+            "check": true,
+            "header": "Rel",
+            "source": "This.item.shipRel"
+        }
+    ]
+   
+}

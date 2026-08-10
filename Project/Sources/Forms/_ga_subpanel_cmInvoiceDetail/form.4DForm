@@ -1,0 +1,210 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"lb_invoices": {
+					"type": "listbox",
+					"left": 0,
+					"top": 4,
+					"width": 678,
+					"height": 204,
+					"events": [
+						"onDoubleClick",
+						"onDataChange",
+						"onSelectionChange",
+						"onHeaderClick"
+					],
+					"lockedColumnCount": 0,
+					"showHeaders": true,
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.lb_invoices",
+					"scrollbarHorizontal": "hidden",
+					"borderStyle": "none",
+					"currentItemSource": "Form:C1466.currentInvoice",
+					"currentItemPositionSource": "Form:C1466.currentInvoicePosition",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "#C0C0C0",
+					"fill": "automatic",
+					"alternateFill": "#DFDFDF",
+					"resizingMode": "rightToLeft",
+					"selectionMode": "single",
+					"headerHeight": "1em",
+					"singleClickEdit": false,
+					"rowHeightAutoMin": "1em",
+					"rowHeightAutoMax": "1600em",
+					"scrollbarVertical": "automatic",
+					"columns": [
+						{
+							"header": {
+								"name": "Header1",
+								"text": "#",
+								"fontWeight": "bold",
+								"textAlign": "left"
+							},
+							"name": "col_itemNumber",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.indexOf()+1",
+							"enterable": false,
+							"width": 30,
+							"dataSourceTypeHint": "text",
+							"pictureFormat": "truncatedCenter",
+							"minWidth": 30,
+							"maxWidth": 50,
+							"resizable": true
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Description",
+								"fontWeight": "bold",
+								"textAlign": "left"
+							},
+							"name": "col_description",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This:C1470.description",
+							"enterable": false,
+							"width": 285,
+							"minWidth": 100,
+							"maxWidth": 2500,
+							"resizable": true,
+							"rowHeightAuto": true
+						},
+						{
+							"header": {
+								"name": "Header4",
+								"text": "Qty",
+								"fontWeight": "bold",
+								"textAlign": "right"
+							},
+							"name": "col_quantity",
+							"footer": {
+								"name": "Footer4"
+							},
+							"dataSource": "This:C1470.qtyOrdered",
+							"width": 70,
+							"minWidth": 70,
+							"enterable": false,
+							"resizable": true,
+							"rowHeightAuto": true,
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Header5",
+								"text": "Rate",
+								"fontWeight": "bold",
+								"textAlign": "right"
+							},
+							"name": "col_rate",
+							"footer": {
+								"name": "Footer5"
+							},
+							"dataSource": "This:C1470.unitPrice",
+							"width": 70,
+							"resizable": true,
+							"enterable": false,
+							"rowHeightAuto": true,
+							"minWidth": 70,
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Header6",
+								"text": "Amount",
+								"fontWeight": "bold",
+								"textAlign": "right",
+								"horizontalPadding": 5
+							},
+							"name": "Amount",
+							"footer": {
+								"name": "Footer6"
+							},
+							"dataSource": "This:C1470.total",
+							"width": 70,
+							"resizable": true,
+							"enterable": false,
+							"rowHeightAuto": true,
+							"minWidth": 70,
+							"dataSourceTypeHint": "number",
+							"horizontalPadding": 5
+						}
+					]
+				},
+				"header_bkgd": {
+					"type": "rectangle",
+					"top": 210,
+					"left": 0,
+					"width": 678,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"bActions": {
+					"type": "button",
+					"text": "Action",
+					"top": 213,
+					"left": 6,
+					"width": 70,
+					"height": 25,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActions.4dm"
+				}
+			}
+		}
+	],
+	"geometryStamp": 34,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"lines": [
+		{
+			"items": [
+				"street_1"
+			]
+		},
+		{
+			"items": [
+				"street_2"
+			]
+		},
+		{
+			"items": [
+				"postcode",
+				"city"
+			]
+		},
+		{
+			"items": [
+				"country"
+			]
+		}
+	]
+}

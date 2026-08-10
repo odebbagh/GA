@@ -1,0 +1,18 @@
+[
+    {
+        "UUID":"6C3C775DFE8BE044B342FE9E99C85F6F",
+        "code": "T&M",
+		"name": "Time and material"
+    },
+    {
+        "UUID":"B1CE130D49E56D4C8B590A82883FEC60",
+        "code": "FP",
+		"name": "Fixed price"
+
+    },
+    {
+        "UUID":"1214212BE92A7B45A041B003C0AC3272",
+        "code": "T&M-FP",
+		"name": "Time and material - Fixed price"
+    }
+]

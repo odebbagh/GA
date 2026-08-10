@@ -1,0 +1,27 @@
+{
+    "tableDataSource": "Form.sfw.lb_items.orderBy(\"reportID asc\")",
+    "columns": [{
+            "check": true,
+            "header": "Report ID",
+            "source": "This.item.reportID"
+        }, {
+            "check": true,
+            "header": "Sys ID",
+            "source": "This.item.equipment#Null ? String(This.item.equipment.assignedID) : \"\""
+        }, {
+            "check": true,
+            "header": "Report date",
+            "source": "This.item.reportDate"
+        }, {
+            "check": true,
+            "header": "Problem Description or Feature Request",
+            "source": "This.item.problem"
+        }, {
+            "check": true,
+            "header": "Solution Description",
+            "source": "This.item.status This.item.fix"
+        }
+        
+    ]
+   
+}

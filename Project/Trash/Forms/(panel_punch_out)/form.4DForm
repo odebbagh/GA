@@ -1,0 +1,1288 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"label_step_type": {
+					"type": "text",
+					"top": 45,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Step Type"
+				},
+				"field_step_type": {
+					"type": "input",
+					"top": 45,
+					"left": 112,
+					"width": 250,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.step.stepTemplate.templateNumber",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"label_lotNumber1": {
+					"type": "text",
+					"top": 70,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Lot Number"
+				},
+				"field_lotNumber": {
+					"type": "input",
+					"top": 70,
+					"left": 112,
+					"width": 250,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.lot.number",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"label_jobNumber1": {
+					"type": "text",
+					"top": 70,
+					"left": 412,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Spec Control"
+				},
+				"field_specificationControl": {
+					"type": "input",
+					"top": 70,
+					"left": 512,
+					"width": 293,
+					"height": 16,
+					"dataSource": "Form:C1466.specificationControl",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"method": "ObjectMethods/field_specificationControl.4dm"
+				},
+				"label_step_number": {
+					"type": "text",
+					"top": 20,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Step Number"
+				},
+				"field_step_number": {
+					"type": "input",
+					"top": 20,
+					"left": 112,
+					"width": 250,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.order",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"label_jobNumber2": {
+					"type": "text",
+					"top": 95,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Job Number"
+				},
+				"field_jobNumber1": {
+					"type": "input",
+					"top": 95,
+					"left": 112,
+					"width": 250,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.lot.job.jobNumber",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"label_sample_step": {
+					"type": "text",
+					"top": 95,
+					"left": 412,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Sample Step"
+				},
+				"checkbox_sample_step": {
+					"type": "checkbox",
+					"text": "",
+					"top": 95,
+					"left": 512,
+					"width": 94,
+					"height": 17,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.current_item.sampleStep",
+					"dataSourceTypeHint": "boolean"
+				},
+				"label_step_description": {
+					"type": "text",
+					"top": 20,
+					"left": 412,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Step Description"
+				},
+				"field_step_description": {
+					"type": "input",
+					"top": 20,
+					"left": 512,
+					"width": 660,
+					"height": 32,
+					"dataSource": "Form:C1466.current_item.description",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				}
+			}
+		},
+		{
+			"objects": {
+				"dates_bkgd": {
+					"type": "rectangle",
+					"top": 150,
+					"left": 1,
+					"width": 329,
+					"height": 214,
+					"sizingX": "grow",
+					"fill": "#E4E4E4",
+					"stroke": "transparent"
+				},
+				"dates_header": {
+					"type": "rectangle",
+					"top": 150,
+					"left": 1,
+					"width": 329,
+					"height": 30,
+					"sizingX": "grow",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"label_punch_in_section": {
+					"type": "text",
+					"top": 157,
+					"left": 12,
+					"width": 300,
+					"height": 17,
+					"text": "Punch IN",
+					"fontWeight": "bold"
+				},
+				"label_quantity_in": {
+					"type": "text",
+					"top": 200,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Quantity In"
+				},
+				"entryField_quantity_in": {
+					"type": "input",
+					"top": 200,
+					"left": 112,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.qtyIn",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "date"
+				},
+				"label_date_in": {
+					"type": "text",
+					"top": 225,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Date In"
+				},
+				"entryField_quantity_in1": {
+					"type": "input",
+					"top": 225,
+					"left": 112,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.dateIn",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "date"
+				},
+				"btnDatePicker_dateIn": {
+					"type": "button",
+					"text": "",
+					"top": 221,
+					"left": 266,
+					"width": 28,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"method": "ObjectMethods/btnDatePicker_dateIn.4dm"
+				},
+				"label_time_in": {
+					"type": "text",
+					"top": 250,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Time In"
+				},
+				"entryField_time_in": {
+					"type": "input",
+					"top": 250,
+					"left": 112,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.timeIn",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "time",
+					"timeFormat": "hh_mm"
+				},
+				"dates_bkgd1": {
+					"type": "rectangle",
+					"top": 150,
+					"left": 335,
+					"width": 492,
+					"height": 214,
+					"sizingX": "grow",
+					"fill": "#E4E4E4",
+					"stroke": "transparent"
+				},
+				"dates_header1": {
+					"type": "rectangle",
+					"top": 150,
+					"left": 335,
+					"width": 492,
+					"height": 30,
+					"sizingX": "grow",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"label_punch_in_section1": {
+					"type": "text",
+					"top": 157,
+					"left": 346,
+					"width": 300,
+					"height": 17,
+					"text": "Tools",
+					"fontWeight": "bold"
+				},
+				"lb_tools": {
+					"type": "listbox",
+					"left": 336,
+					"top": 181,
+					"width": 490,
+					"height": 183,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"headerHeight": "24px",
+					"listboxType": "collection",
+					"visibility": "visible",
+					"dataSource": "Form:C1466.current_item.tools.items",
+					"alternateFill": "#F7F9FC",
+					"method": "ObjectMethods/lb_tools.4dm",
+					"selectionMode": "single",
+					"currentItemSource": "Form:C1466.selectedTool",
+					"currentItemPositionSource": "Form:C1466.selectedToolPos",
+					"right": 826,
+					"bottom": 364,
+					"rowFillSource": "",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "hidden",
+					"hideExtraBlankRows": false,
+					"singleClickEdit": false,
+					"columns": [
+						{
+							"header": {
+								"name": "Entête7",
+								"text": "Order"
+							},
+							"name": "Colonne7",
+							"footer": {
+								"name": "Pied7"
+							},
+							"minWidth": 60,
+							"width": 60,
+							"dataSource": "This:C1470.order",
+							"dataSourceTypeHint": "number",
+							"method": "ObjectMethods/Colonne7.4dm"
+						},
+						{
+							"header": {
+								"name": "Entête8",
+								"text": "Tool Type"
+							},
+							"name": "Colonne8",
+							"footer": {
+								"name": "Pied8"
+							},
+							"minWidth": 200,
+							"width": 200,
+							"dataSource": "This:C1470.toolType",
+							"dataSourceTypeHint": "text",
+							"dateFormat": "short",
+							"timeFormat": "hh_mm"
+						},
+						{
+							"header": {
+								"name": "Entête9",
+								"text": "Tool Name"
+							},
+							"name": "toolNameCol",
+							"footer": {
+								"name": "Pied9"
+							},
+							"minWidth": 150,
+							"width": 150,
+							"dataSource": "This:C1470.toolName"
+						},
+						{
+							"header": {
+								"name": "Entête10",
+								"text": "Tool Date"
+							},
+							"name": "Colonne10",
+							"footer": {
+								"name": "Pied10"
+							},
+							"minWidth": 80,
+							"width": 80,
+							"dataSource": "This:C1470.toolDate",
+							"dataSourceTypeHint": "date",
+							"timeFormat": "hh_mm"
+						}
+					]
+				},
+				"dates_bkgd2": {
+					"type": "rectangle",
+					"top": 369,
+					"left": 1,
+					"width": 825,
+					"height": 255,
+					"sizingX": "grow",
+					"fill": "#E4E4E4",
+					"stroke": "transparent"
+				},
+				"dates_header2": {
+					"type": "rectangle",
+					"top": 369,
+					"left": 1,
+					"width": 826,
+					"height": 30,
+					"sizingX": "grow",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"label_punch_in_section2": {
+					"type": "text",
+					"top": 376,
+					"left": 12,
+					"width": 300,
+					"height": 17,
+					"text": "Step Info",
+					"fontWeight": "bold"
+				},
+				"label_step_description1": {
+					"type": "text",
+					"top": 419,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Step Description"
+				},
+				"entryField_step_description": {
+					"type": "input",
+					"top": 419,
+					"left": 112,
+					"width": 660,
+					"height": 50,
+					"dataSource": "Form:C1466.current_item.description",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"label_step_description2": {
+					"type": "text",
+					"top": 489,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Step Alert"
+				},
+				"entryField_step_alert": {
+					"type": "input",
+					"top": 489,
+					"left": 112,
+					"width": 660,
+					"height": 50,
+					"dataSource": "Form:C1466.current_item.alert",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"label_quantity_in1": {
+					"type": "text",
+					"top": 559,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Step Area"
+				},
+				"entryField_quantity_in2": {
+					"type": "input",
+					"top": 559,
+					"left": 112,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.area",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "date"
+				},
+				"label_quantity_in2": {
+					"type": "text",
+					"top": 585,
+					"left": 12,
+					"width": 90,
+					"height": 30,
+					"stroke": "#808080",
+					"text": "Planned test-time/unit"
+				},
+				"entryField_quantity_in3": {
+					"type": "input",
+					"top": 585,
+					"left": 112,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.area",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "date"
+				},
+				"label_quantity_in3": {
+					"type": "text",
+					"top": 559,
+					"left": 336,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Next Area"
+				},
+				"entryField_quantity_in4": {
+					"type": "input",
+					"top": 559,
+					"left": 436,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.area",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "date"
+				},
+				"label_quantity_in4": {
+					"type": "text",
+					"top": 585,
+					"left": 336,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Planned Hours"
+				},
+				"entryField_quantity_in5": {
+					"type": "input",
+					"top": 585,
+					"left": 436,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.area",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "date"
+				},
+				"dates_bkgd3": {
+					"type": "rectangle",
+					"top": 150,
+					"left": 832,
+					"width": 329,
+					"height": 474,
+					"sizingX": "grow",
+					"fill": "#E4E4E4",
+					"stroke": "transparent"
+				},
+				"dates_header3": {
+					"type": "rectangle",
+					"top": 150,
+					"left": 832,
+					"width": 329,
+					"height": 30,
+					"sizingX": "grow",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"label_punch_in_section3": {
+					"type": "text",
+					"top": 157,
+					"left": 843,
+					"width": 300,
+					"height": 17,
+					"text": "Step Info",
+					"fontWeight": "bold"
+				},
+				"label_quantity_in5": {
+					"type": "text",
+					"top": 200,
+					"left": 843,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Setup Info",
+					"textDecoration": "underline"
+				},
+				"label_date_in1": {
+					"type": "text",
+					"top": 225,
+					"left": 843,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Start Time"
+				},
+				"entryField_quantity_in7": {
+					"type": "input",
+					"top": 225,
+					"left": 943,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.dateIn",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "date"
+				},
+				"label_time_in1": {
+					"type": "text",
+					"top": 250,
+					"left": 843,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Stop Time"
+				},
+				"entryField_time_in1": {
+					"type": "input",
+					"top": 250,
+					"left": 943,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.timeIn",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "time",
+					"timeFormat": "hh_mm"
+				},
+				"label_quantity_in6": {
+					"type": "text",
+					"top": 312,
+					"left": 843,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Step Planning",
+					"textDecoration": "underline"
+				},
+				"label_date_in2": {
+					"type": "text",
+					"top": 341,
+					"left": 843,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Start Date"
+				},
+				"entryField_quantity_in6": {
+					"type": "input",
+					"top": 341,
+					"left": 943,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.dateIn",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "date"
+				},
+				"label_time_in2": {
+					"type": "text",
+					"top": 366,
+					"left": 843,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Stop Date"
+				},
+				"entryField_time_in2": {
+					"type": "input",
+					"top": 366,
+					"left": 943,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.timeIn",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "time",
+					"timeFormat": "hh_mm"
+				},
+				"label_quantity_in7": {
+					"type": "text",
+					"top": 432,
+					"left": 843,
+					"width": 224,
+					"height": 15,
+					"stroke": "#808080",
+					"text": "Lot-Ship Commitment Dates",
+					"textDecoration": "underline"
+				},
+				"label_date_in3": {
+					"type": "text",
+					"top": 461,
+					"left": 843,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Expected Ship date"
+				},
+				"entryField_quantity_in8": {
+					"type": "input",
+					"top": 461,
+					"left": 943,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.dateIn",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "date"
+				},
+				"label_time_in3": {
+					"type": "text",
+					"top": 486,
+					"left": 843,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Re-commit date"
+				},
+				"entryField_time_in3": {
+					"type": "input",
+					"top": 486,
+					"left": 943,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.timeIn",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "time",
+					"timeFormat": "hh_mm"
+				},
+				"btnDatePicker_dateIn1": {
+					"type": "button",
+					"text": "",
+					"top": 457,
+					"left": 1103,
+					"width": 28,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"method": "ObjectMethods/btnDatePicker_dateIn1.4dm"
+				},
+				"btnDatePicker_dateIn2": {
+					"type": "button",
+					"text": "",
+					"top": 482,
+					"left": 1103,
+					"width": 28,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"method": "ObjectMethods/btnDatePicker_dateIn2.4dm"
+				}
+			}
+		},
+		{
+			"objects": {
+				"rec_bkgd": {
+					"type": "rectangle",
+					"top": 150,
+					"left": 1,
+					"width": 100,
+					"height": 442,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent",
+					"right": 101,
+					"bottom": 592
+				},
+				"lb_step_interruptions": {
+					"type": "listbox",
+					"left": 102,
+					"top": 151,
+					"width": 802,
+					"height": 440,
+					"events": [
+						"onSelectionChange"
+					],
+					"headerHeight": "24px",
+					"listboxType": "collection",
+					"visibility": "visible",
+					"dataSource": "Form:C1466.current_item.stepInterruptions.items",
+					"alternateFill": "#F7F9FC",
+					"method": "ObjectMethods/lb_step_interruptions.4dm",
+					"selectionMode": "single",
+					"currentItemSource": "Form:C1466.stepInterruptionRow",
+					"currentItemPositionSource": "Form:C1466.stepInterruptionPos",
+					"right": 904,
+					"bottom": 591,
+					"rowFillSource": "",
+					"columns": [
+						{
+							"header": {
+								"name": "Entête1",
+								"text": "Start Date"
+							},
+							"name": "Colonne1",
+							"footer": {
+								"name": "Pied1"
+							},
+							"minWidth": 80,
+							"width": 80,
+							"dataSource": "This:C1470.start_date"
+						},
+						{
+							"header": {
+								"name": "Entête2",
+								"text": "Start Time"
+							},
+							"name": "Colonne2",
+							"footer": {
+								"name": "Pied2"
+							},
+							"minWidth": 80,
+							"width": 80,
+							"dataSource": "This:C1470.start_time",
+							"dataSourceTypeHint": "time",
+							"dateFormat": "short",
+							"timeFormat": "hh_mm"
+						},
+						{
+							"header": {
+								"name": "Entête3",
+								"text": "End Date"
+							},
+							"name": "Colonne3",
+							"footer": {
+								"name": "Pied3"
+							},
+							"minWidth": 80,
+							"width": 80,
+							"dataSource": "This:C1470.end_date"
+						},
+						{
+							"header": {
+								"name": "Entête4",
+								"text": "End Time"
+							},
+							"name": "Colonne4",
+							"footer": {
+								"name": "Pied4"
+							},
+							"minWidth": 80,
+							"width": 80,
+							"dataSource": "This:C1470.end_time",
+							"dataSourceTypeHint": "time",
+							"timeFormat": "hh_mm"
+						},
+						{
+							"header": {
+								"name": "Entête6",
+								"text": "Engineer"
+							},
+							"name": "Colonne6",
+							"footer": {
+								"name": "Pied6"
+							},
+							"minWidth": 80,
+							"width": 80,
+							"dataSource": "This:C1470.engineer"
+						},
+						{
+							"header": {
+								"name": "Entête5",
+								"text": "Description"
+							},
+							"name": "Colonne5",
+							"footer": {
+								"name": "Pied5"
+							},
+							"minWidth": 300,
+							"width": 300,
+							"dataSource": "This:C1470.description"
+						}
+					]
+				},
+				"bActionStepInterruptions": {
+					"type": "button",
+					"text": "Actions",
+					"top": 567,
+					"left": 12,
+					"width": 80,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionStepInterruptions.4dm",
+					"visibility": "visible"
+				},
+				"df_bkgd": {
+					"type": "rectangle",
+					"top": 150,
+					"left": 905,
+					"width": 300,
+					"height": 442,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent",
+					"right": 1205,
+					"bottom": 592
+				},
+				"df_label_start_date": {
+					"type": "text",
+					"top": 178,
+					"left": 915,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Start Date"
+				},
+				"df_field_start_date_entryField": {
+					"type": "input",
+					"top": 178,
+					"left": 1015,
+					"width": 136,
+					"height": 16,
+					"dataSource": "Form:C1466.stepInterruptionRow.start_date",
+					"focusable": false,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"df_label_start_time": {
+					"type": "text",
+					"top": 203,
+					"left": 915,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Start Time"
+				},
+				"df_field_start_time_entryField": {
+					"type": "input",
+					"top": 203,
+					"left": 1015,
+					"width": 136,
+					"height": 16,
+					"dataSource": "Form:C1466.stepInterruptionRow.start_time",
+					"focusable": false,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "time",
+					"timeFormat": "hh_mm"
+				},
+				"df_label_end_date": {
+					"type": "text",
+					"top": 228,
+					"left": 915,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "End Date"
+				},
+				"df_field_end_date_entryField": {
+					"type": "input",
+					"top": 228,
+					"left": 1015,
+					"width": 136,
+					"height": 16,
+					"dataSource": "Form:C1466.stepInterruptionRow.end_date",
+					"focusable": false,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"df_label_end_time": {
+					"type": "text",
+					"top": 253,
+					"left": 915,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "End Time"
+				},
+				"df_field_end_time_entryField": {
+					"type": "input",
+					"top": 253,
+					"left": 1015,
+					"width": 136,
+					"height": 16,
+					"dataSource": "Form:C1466.stepInterruptionRow.end_time",
+					"focusable": false,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"dataSourceTypeHint": "time",
+					"timeFormat": "hh_mm"
+				},
+				"df_label_engineer": {
+					"type": "text",
+					"top": 278,
+					"left": 915,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Engineer"
+				},
+				"df_field_engineer_entryField": {
+					"type": "input",
+					"top": 278,
+					"left": 1015,
+					"width": 136,
+					"height": 16,
+					"dataSource": "Form:C1466.stepInterruptionRow.engineer",
+					"focusable": false,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"df_label_description": {
+					"type": "text",
+					"top": 303,
+					"left": 915,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Description"
+				},
+				"df_field_description_entryField": {
+					"type": "input",
+					"top": 303,
+					"left": 1015,
+					"width": 136,
+					"height": 112,
+					"dataSource": "Form:C1466.stepInterruptionRow.description",
+					"focusable": false,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"df_btnDatePicker_startDate": {
+					"type": "button",
+					"text": "",
+					"top": 174,
+					"left": 1156,
+					"width": 28,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"method": "ObjectMethods/df_btnDatePicker_startDate.4dm"
+				},
+				"df_btnDatePicker_endDate": {
+					"type": "button",
+					"text": "",
+					"top": 224,
+					"left": 1156,
+					"width": 28,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"method": "ObjectMethods/df_btnDatePicker_endDate.4dm"
+				}
+			}
+		},
+		null,
+		null,
+		null
+	],
+	"inheritedForm": "sfw_bkgd_header_4lines",
+	"geometryStamp": 450,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

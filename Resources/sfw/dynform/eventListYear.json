@@ -1,0 +1,41 @@
+{
+    "objects": {
+        "header_bkgd_year_##1##": {
+            "type": "rectangle",
+            "top": 0,
+            "left": 0,
+            "width": 350,
+            "height": 23,
+            "stroke": "transparent",
+            "fill": "#1e90ff"
+        },
+        "year_##1##": {
+            "type": "input",
+            "left": 26,
+            "top": 3,
+            "width": 209,
+            "height": 17,
+            "enterable": false,
+            "focusable": false,
+            "fill": "transparent",
+            "borderStyle": "none",
+            "dataSource": "",
+            "stroke": "#FFFFFF",
+			"textAlign": "left"
+        },
+        "bExpand_year_##1##": {
+            "type": "checkbox",
+            "text": "Checkbox",
+            "top": 3,
+            "left": 3,
+            "width": 16,
+            "height": 16,
+            "events": [
+                "onClick"
+            ],
+            "style": "disclosure",
+            "focusable": false,
+            "enterable": true
+        }
+    }
+}

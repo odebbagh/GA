@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+   <!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+
+<xliff version="1.0" xmlns:d4="http://www.4d.com/d4-ns">
+   <file datatype="x-STR#" original="undefined" source-language="fr" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="dfdDocument.entry">
+            <trans-unit id="1" resname="dfdDocument.entry.alldocuments">
+               <source>Tous les documents</source>
+               <target>Tous les documents</target>
+            </trans-unit>
+         </group>
+         <group resname="dfdLine.panel">
+            <trans-unit id="2" resname="dfdLine.panel.addrule">
+               <source>Ajouter une régle</source>
+               <target>Ajouter une régle</target>
+            </trans-unit>
+            <trans-unit id="3" resname="dfdLine.panel.cancelrule">
+               <source>Annuler</source>
+               <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="4" resname="dfdLine.panel.modifyrule">
+               <source>Modifier une régle</source>
+               <target>Modifier une régle</target>
+            </trans-unit>
+            <trans-unit id="5" resname="dfdLine.panel.modifyduplicate">
+               <source>Modifier la régle dupliquée</source>
+               <target>Modifier la régle dupliquée</target>
+            </trans-unit>
+            <trans-unit id="6" resname="dfdLine.panel.renameobject">
+               <source>Entez le nouveau nom</source>
+               <target>Entez le nouveau nom</target>
+            </trans-unit>
+            <trans-unit id="7" resname="dfdLine.panel.rename">
+               <source>Renommer</source>
+               <target>Renommer</target>
+            </trans-unit>
+            <trans-unit id="8" resname="dfdLine.panel.norenameobject">
+               <source>Ce nom est déjà utilisé. Il est impossible de le renommer</source>
+               <target>Ce nom est déjà utilisé. Il est impossible de le renommer</target>
+            </trans-unit>
+            <trans-unit id="9" resname="dfdLine.panel.addproperty">
+               <source>Ajouter une propriété...</source>
+               <target>Ajouter une propriété...</target>
+            </trans-unit>
+            <trans-unit id="11" resname="dfdLine.panel.delete">
+               <source>Supprimer</source>
+               <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="12" resname="dfdLine.panel.deletemandatory">
+               <source>Supprimer (propriété obligatoire)</source>
+               <target>Supprimer (propriété obligatoire)</target>
+            </trans-unit>
+            <trans-unit id="13" resname="dfdLine.panel.colorEditor">
+               <source>Éditeur de couleurs...</source>
+               <target>Éditeur de couleurs...</target>
+            </trans-unit>
+         </group>
+         <group resname="dfdTemplate.form">
+            <trans-unit id="10" resname="dfdTemplate.form.documentfolder">
+               <source>Dossier de documents</source>
+               <target>Dossier de documents</target>
+            </trans-unit>
+            <trans-unit id="10" resname="dfdTemplate.form.documentformula">
+               <source>Formule du nom de document</source>
+               <target>Formule du nom de document</target>
+            </trans-unit>
+            <trans-unit id="10" resname="dfdTemplate.form.precalculmethod">
+               <source>Méthode de précalcul</source>
+               <target>Méthode de précalcul</target>
+            </trans-unit>
+         </group>
+
+         <group resname="dfdTemplate.panel">
+            <trans-unit id="10" resname="dfdTemplate.panel.pagebreak">
+               <source>Saut de page</source>
+               <target>Saut de page</target>
+            </trans-unit>
+            <trans-unit id="14" resname="dfdTemplate.panel.profiles">
+               <source>Profils</source>
+               <target>Profils</target>
+            </trans-unit>
+            <trans-unit id="15" resname="dfdTemplate.panel.entries">
+               <source>Entrées</source>
+               <target>Entrées</target>
+            </trans-unit>
+            <trans-unit id="16" resname="dfdTemplate.panel.addpr">
+               <source>Ajouter un profil</source>
+               <target>Ajouter un profil</target>
+            </trans-unit>
+            <trans-unit id="17" resname="dfdTemplate.panel.adde">
+               <source>Ajouter une entrée</source>
+               <target>Ajouter une entrée</target>
+            </trans-unit>
+            <trans-unit id="18" resname="dfdTemplate.panel.delete">
+               <source>Supprimer</source>
+               <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="50" resname="dfdTemplate.panel.rootfolder">
+               <source>Dossier racine</source>
+               <target>Dossier racine</target>
+            </trans-unit>
+         </group>
+         <group resname="dfdTemplate.page">
+            <trans-unit id="19" resname="dfdTemplate.page.definition">
+               <source>Définition</source>
+               <target>Définition</target>
+            </trans-unit>
+            <trans-unit id="20" resname="dfdTemplate.page.permissions">
+               <source>Autorisations</source>
+               <target>Autorisations</target>
+            </trans-unit>
+            <trans-unit id="21" resname="dfdTemplate.page.docgeneration">
+               <source>Génération de documents</source>
+               <target>Génération de documents</target>
+            </trans-unit>
+         </group>
+         <group resname="dfdVision">
+            <trans-unit id="22" resname="dfdVision.vision">
+               <source>Gestion des documents</source>
+               <target>Gestion des documents</target>
+            </trans-unit>
+         </group>
+         <group resname="dfdPicture">
+            <trans-unit id="22" resname="dfdPicture.entry.plural">
+               <source>Images</source>
+               <target>Images</target>
+            </trans-unit>
+            <trans-unit id="22" resname="dfdPicture.entry.single">
+               <source>Image</source>
+               <target>Image</target>
+            </trans-unit>
+            <trans-unit id="22" resname="dfdPicture.entry.counter.oneunit">
+               <source>image</source>
+               <target>image</target>
+            </trans-unit>
+            <trans-unit id="22" resname="dfdPicture.entry.counter.nunit">
+               <source>images</source>
+               <target>images</target>
+            </trans-unit>
+            <trans-unit id="22" resname="dfdPicture.entry.allpic">
+               <source>Toutes les images</source>
+               <target>Toutes les images</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

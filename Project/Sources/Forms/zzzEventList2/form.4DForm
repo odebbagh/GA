@@ -1,0 +1,150 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"header_bkgd_##1##": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 350,
+					"height": 31,
+					"stroke": "transparent",
+					"fill": "#BAD6ED"
+				},
+				"date_##1##": {
+					"type": "input",
+					"left": 36,
+					"top": 8,
+					"width": 129,
+					"height": 17,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.events[##1##].date",
+					"stroke": "#FFFFFF",
+					"dataSourceTypeHint": "date"
+				},
+				"user_##1##": {
+					"type": "input",
+					"left": 182,
+					"top": 8,
+					"width": 163,
+					"height": 17,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.events[##1##].eventTypeTitle",
+					"stroke": "#FFFFFF"
+				},
+				"header_bkgd_##1##1": {
+					"type": "rectangle",
+					"top": 31,
+					"left": 0,
+					"width": 350,
+					"height": 109,
+					"stroke": "transparent",
+					"fill": "#D2E4ED"
+				},
+				"time_##1##": {
+					"type": "input",
+					"left": 36,
+					"top": 39,
+					"width": 129,
+					"height": 17,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.events[##1##].time",
+					"stroke": "#000000",
+					"dataSourceTypeHint": "time"
+				},
+				"user_##1##1": {
+					"type": "input",
+					"left": 182,
+					"top": 39,
+					"width": 163,
+					"height": 17,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.events[##1##].user",
+					"stroke": "#000000"
+				},
+				"bCollapse_event_##1##": {
+					"type": "checkbox",
+					"text": "Checkbox",
+					"top": 7,
+					"left": 9,
+					"width": 16,
+					"height": 16,
+					"events": [
+						"onClick"
+					],
+					"style": "disclosure",
+					"focusable": false,
+					"enterable": true,
+					"stroke": "automatic"
+				},
+				"comment_##1##": {
+					"type": "input",
+					"left": 36,
+					"top": 63,
+					"width": 309,
+					"height": 49,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.events[##1##].comment",
+					"stroke": "#000000"
+				}
+			}
+		}
+	],
+	"geometryStamp": 208,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

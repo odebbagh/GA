@@ -1,0 +1,427 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [],
+	"destination": "listPrinter",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Text": {
+					"type": "text",
+					"text": "Staff List",
+					"top": 10,
+					"left": 17,
+					"width": 560,
+					"height": 40,
+					"textAlign": "center",
+					"fontSize": 28,
+					"fontWeight": "bold"
+				},
+				"Line": {
+					"type": "line",
+					"top": 90,
+					"left": 16,
+					"width": 562,
+					"height": 0
+				},
+				"Line1": {
+					"type": "line",
+					"top": 60,
+					"left": 17,
+					"width": 560,
+					"height": 0
+				},
+				"Line2": {
+					"type": "line",
+					"top": 60,
+					"left": 47,
+					"width": 0,
+					"height": 30
+				},
+				"Line3": {
+					"type": "line",
+					"top": 60,
+					"left": 97,
+					"width": 0,
+					"height": 30
+				},
+				"Line4": {
+					"type": "line",
+					"top": 60,
+					"left": 177,
+					"width": 0,
+					"height": 30
+				},
+				"Line5": {
+					"type": "line",
+					"top": 60,
+					"left": 257,
+					"width": 0,
+					"height": 30
+				},
+				"Line6": {
+					"type": "line",
+					"top": 60,
+					"left": 337,
+					"width": 0,
+					"height": 30
+				},
+				"Line7": {
+					"type": "line",
+					"top": 60,
+					"left": 417,
+					"width": 0,
+					"height": 30
+				},
+				"Line8": {
+					"type": "line",
+					"top": 60,
+					"left": 486,
+					"width": 0,
+					"height": 30
+				},
+				"Text1": {
+					"type": "text",
+					"text": "#",
+					"top": 68,
+					"left": 17,
+					"width": 30,
+					"height": 14,
+					"textAlign": "center",
+					"fontWeight": "bold"
+				},
+				"Text2": {
+					"type": "text",
+					"text": "Code",
+					"top": 68,
+					"left": 47,
+					"width": 50,
+					"height": 14,
+					"textAlign": "center",
+					"fontWeight": "bold"
+				},
+				"Text3": {
+					"type": "text",
+					"text": "FirstName",
+					"top": 68,
+					"left": 97,
+					"width": 80,
+					"height": 14,
+					"textAlign": "center",
+					"fontWeight": "bold"
+				},
+				"Text4": {
+					"type": "text",
+					"text": "LastName",
+					"top": 68,
+					"left": 177,
+					"width": 80,
+					"height": 14,
+					"textAlign": "center",
+					"fontWeight": "bold"
+				},
+				"Text5": {
+					"type": "text",
+					"text": "Department",
+					"top": 68,
+					"left": 257,
+					"width": 80,
+					"height": 14,
+					"textAlign": "center",
+					"fontWeight": "bold"
+				},
+				"Text6": {
+					"type": "text",
+					"text": "Hire Date",
+					"top": 68,
+					"left": 337,
+					"width": 80,
+					"height": 14,
+					"textAlign": "center",
+					"fontWeight": "bold"
+				},
+				"Text7": {
+					"type": "text",
+					"text": "Teminated",
+					"top": 68,
+					"left": 417,
+					"width": 70,
+					"height": 14,
+					"textAlign": "center",
+					"fontWeight": "bold"
+				},
+				"Text8": {
+					"type": "text",
+					"text": "Termination Date",
+					"top": 60,
+					"left": 489,
+					"width": 88,
+					"height": 30,
+					"textAlign": "center",
+					"fontWeight": "bold"
+				},
+				"Line9": {
+					"type": "line",
+					"top": 119,
+					"left": 17,
+					"width": 560,
+					"height": 0
+				},
+				"Line10": {
+					"type": "line",
+					"top": 60,
+					"left": 16,
+					"width": 0,
+					"height": 30
+				},
+				"Line11": {
+					"type": "line",
+					"top": 91,
+					"left": 16,
+					"width": 0,
+					"height": 29
+				},
+				"Line12": {
+					"type": "line",
+					"top": 91,
+					"left": 47,
+					"width": 0,
+					"height": 29
+				},
+				"Line13": {
+					"type": "line",
+					"top": 91,
+					"left": 97,
+					"width": 0,
+					"height": 29
+				},
+				"Line14": {
+					"type": "line",
+					"top": 91,
+					"left": 177,
+					"width": 0,
+					"height": 29
+				},
+				"Line15": {
+					"type": "line",
+					"top": 91,
+					"left": 257,
+					"width": 0,
+					"height": 29
+				},
+				"Line16": {
+					"type": "line",
+					"top": 91,
+					"left": 337,
+					"width": 0,
+					"height": 29
+				},
+				"Line17": {
+					"type": "line",
+					"top": 91,
+					"left": 417,
+					"width": 0,
+					"height": 29
+				},
+				"Line18": {
+					"type": "line",
+					"top": 91,
+					"left": 486,
+					"width": 0,
+					"height": 29
+				},
+				"Line19": {
+					"type": "line",
+					"top": 91,
+					"left": 577,
+					"width": 0,
+					"height": 29
+				},
+				"Line20": {
+					"type": "line",
+					"top": 60,
+					"left": 577,
+					"width": 0,
+					"height": 30
+				},
+				"Input": {
+					"type": "input",
+					"left": 18,
+					"top": 97,
+					"width": 28,
+					"height": 16,
+					"dataSource": "Form:C1466.employee.count",
+					"enterable": false,
+					"borderStyle": "none",
+					"textAlign": "center"
+				},
+				"Input1": {
+					"type": "input",
+					"left": 49,
+					"top": 97,
+					"width": 47,
+					"height": 16,
+					"dataSource": "Form:C1466.employee.code",
+					"enterable": false,
+					"borderStyle": "none",
+					"textAlign": "center"
+				},
+				"Input2": {
+					"type": "input",
+					"left": 99,
+					"top": 97,
+					"width": 77,
+					"height": 16,
+					"dataSource": "Form:C1466.employee.firstName",
+					"enterable": false,
+					"borderStyle": "none",
+					"textAlign": "center"
+				},
+				"Input3": {
+					"type": "input",
+					"left": 179,
+					"top": 97,
+					"width": 77,
+					"height": 16,
+					"dataSource": "Form:C1466.employee.lastName",
+					"enterable": false,
+					"borderStyle": "none",
+					"textAlign": "center"
+				},
+				"Input4": {
+					"type": "input",
+					"left": 259,
+					"top": 97,
+					"width": 77,
+					"height": 16,
+					"dataSource": "Form:C1466.employee.department",
+					"enterable": false,
+					"borderStyle": "none",
+					"textAlign": "center"
+				},
+				"Input5": {
+					"type": "input",
+					"left": 339,
+					"top": 97,
+					"width": 77,
+					"height": 16,
+					"dataSource": "Form:C1466.employee.hireDate",
+					"enterable": false,
+					"borderStyle": "none",
+					"textAlign": "center"
+				},
+				"Input6": {
+					"type": "input",
+					"left": 420,
+					"top": 97,
+					"width": 65,
+					"height": 16,
+					"dataSource": "Form:C1466.employee.terminated",
+					"enterable": false,
+					"borderStyle": "none",
+					"textAlign": "center"
+				},
+				"Input7": {
+					"type": "input",
+					"left": 489,
+					"top": 97,
+					"width": 87,
+					"height": 16,
+					"dataSource": "Form:C1466.employee.terminationDate",
+					"enterable": false,
+					"borderStyle": "none",
+					"dataSourceTypeHint": "date",
+					"textAlign": "center"
+				},
+				"Static Picture2": {
+					"type": "picture",
+					"top": 8,
+					"left": 6,
+					"width": 153,
+					"height": 45,
+					"picture": "/RESOURCES/image/logo/golden_atos.png",
+					"pictureFormat": "scaled"
+				},
+				"Text11": {
+					"type": "text",
+					"text": "Printed by :",
+					"top": 124,
+					"left": 420,
+					"width": 75,
+					"height": 15,
+					"textAlign": "right",
+					"fontSize": 10
+				},
+				"Text12": {
+					"type": "text",
+					"text": "Printed Date :",
+					"top": 136,
+					"left": 420,
+					"width": 75,
+					"height": 27,
+					"textAlign": "right",
+					"fontSize": 10
+				},
+				"Input10": {
+					"type": "input",
+					"left": 499,
+					"top": 124,
+					"width": 77,
+					"height": 16,
+					"dataSource": "Form:C1466.printedBy",
+					"enterable": false,
+					"borderStyle": "none",
+					"textAlign": "right",
+					"fontSize": 10
+				},
+				"Input11": {
+					"type": "input",
+					"left": 499,
+					"top": 136,
+					"width": 77,
+					"height": 28,
+					"dataSource": "Form:C1466.printedDate",
+					"enterable": false,
+					"borderStyle": "none",
+					"textAlign": "right",
+					"fontSize": 10,
+					"dataSourceTypeHint": "date",
+					"dateFormat": "short"
+				},
+				"Line21": {
+					"type": "line",
+					"top": 121,
+					"left": 17,
+					"width": 560,
+					"height": 0
+				}
+			}
+		}
+	],
+	"geometryStamp": 900,
+	"markerFooter": 154,
+	"markerBreak": 120,
+	"markerBody": 119,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm",
+	"markerHeader": 90
+}

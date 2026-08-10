@@ -1,0 +1,136 @@
+﻿{
+	"ident": "versionReferenceRecords_holidayType",
+	"version": 2,
+	"stmp": 695748444,
+	"date": "2025-01-17",
+	"records": [
+		{
+			"UUID": "EB7EA6982FBBBB4086960A932D62102C",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "CP",
+			"name": "Congés payés",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "5B0E8219E4B81545B18F6A0538A46FBF",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "JS",
+			"name": "RTT",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "4A8361F4569FB4478013D07294771735",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "RJ",
+			"name": "Récupération",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "EDCC34D519B283448A02C515C7701854",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "RC",
+			"name": "Repos compensateur",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "E205FD28CEB6EB40AE74826EDE72F106",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "CS",
+			"name": "Congé sans solde",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "5C9EDE903398DD42B1A546433F310AF8",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "DE",
+			"name": "Délégation",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "E1616D53ED2F1B43913D3F6ACC8F14E9",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "K1",
+			"name": "Mariage du salarié ou Pacs 4 jours",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "99A6AE67BA9CA4469D93397B1BC7D0F9",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "K8",
+			"name": "Mariage d'un enfant 1 jour",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "7C402984EF053A40AF6558A121227020",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "K2",
+			"name": "Naissance ou adoption 3 jours",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "BF13ECE1DB9C344F9223D9E66CB23427",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "K3",
+			"name": "Décès du conjoint, concubin, partenaire de Pacs 3 jours",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "40B94A01F3D50742B8D632C981550D5C",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "K5",
+			"name": "Décès père, mère 3 jours",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "725BC24422738D4FB3D4B285143D1253",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "KA",
+			"name": "Décès beaux-parents 3 jours",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "232599BAAB55C640A16EA4D5AF9EB070",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "K9",
+			"name": "Décès frère, soeur, collatéraux 2ème degré 3 jours",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "FB3C9032FF92F647BBBF3C080671C2C8",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "K6",
+			"name": "Décès grands-parents 2 jours",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "5FDDAA43F4590E4D8C05D9964B35B5A8",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "K7",
+			"name": "Décès d'un enfant 5 jours",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		},
+		{
+			"UUID": "B54D23D3DC7E1249AFC5DEC46FD33CF3",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"code": "KB",
+			"name": "Annonce de la survenue d'un handicap chez un enfant",
+			"company": "[object Entity]",
+			"holidays": "[object EntityCollection]"
+		}
+	]
+}

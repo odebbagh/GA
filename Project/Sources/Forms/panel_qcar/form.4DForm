@@ -1,0 +1,980 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"label_0_1": {
+					"type": "text",
+					"top": 62,
+					"left": 12,
+					"width": 65,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Customer"
+				},
+				"Field_customer": {
+					"type": "input",
+					"top": 62,
+					"left": 82,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.lot.customer",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/Field_customer.4dm"
+				},
+				"label_poNumber": {
+					"type": "text",
+					"top": 37,
+					"left": 12,
+					"width": 65,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "PO #"
+				},
+				"Field_lot.poNumber": {
+					"type": "input",
+					"top": 37,
+					"left": 82,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.lot.poNumber",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_lotNumber": {
+					"type": "text",
+					"top": 12,
+					"left": 12,
+					"width": 65,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Traveller #"
+				},
+				"Field_lotNumber": {
+					"type": "input",
+					"top": 12,
+					"left": 82,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.lot.lotNumber",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onMouseMove"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/Field_lotNumber.4dm"
+				},
+				"label_device": {
+					"type": "text",
+					"top": 87,
+					"left": 214,
+					"width": 95,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Device"
+				},
+				"Field_device": {
+					"type": "input",
+					"top": 87,
+					"left": 322,
+					"width": 310,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.lot.device",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_0_5": {
+					"type": "text",
+					"top": 12,
+					"left": 214,
+					"width": 95,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Date Open"
+				},
+				"Field_openDate": {
+					"type": "input",
+					"top": 12,
+					"left": 322,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.openDate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_0_6": {
+					"type": "text",
+					"top": 37,
+					"left": 444,
+					"width": 75,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Revision Date"
+				},
+				"Field_0_6": {
+					"type": "input",
+					"top": 37,
+					"left": 520,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.field2",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_0_7": {
+					"type": "text",
+					"top": 37,
+					"left": 214,
+					"width": 95,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Target Close Date"
+				},
+				"Field_targetCloseDate": {
+					"type": "input",
+					"top": 37,
+					"left": 322,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.targetCloseDate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_0_8": {
+					"type": "text",
+					"top": 62,
+					"left": 214,
+					"width": 95,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Initial Response"
+				},
+				"entryField_initialResponse": {
+					"type": "input",
+					"top": 62,
+					"left": 322,
+					"width": 310,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.initialResponse",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"right": 632
+				},
+				"label_originator": {
+					"type": "text",
+					"top": 12,
+					"left": 653,
+					"width": 95,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Originator"
+				},
+				"entryField_initiator8D": {
+					"type": "input",
+					"top": 12,
+					"left": 753,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.initiator8D",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_0_10": {
+					"type": "text",
+					"top": 37,
+					"left": 653,
+					"width": 95,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Actual Close Date"
+				},
+				"Field_actualCloseDate": {
+					"type": "input",
+					"top": 37,
+					"left": 753,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.actualCloseDate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"dp_openDate": {
+					"type": "subform",
+					"top": 12,
+					"left": 413,
+					"width": 19,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.openDate",
+					"dataSourceTypeHint": "date",
+					"detailForm": "DateButton",
+					"deletableInList": false,
+					"doubleClickInRowAction": "editSubrecord",
+					"doubleClickInEmptyAreaAction": "addSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"method": "ObjectMethods/dp_openDate.4dm",
+					"events": [
+						"onLoad"
+					],
+					"focusable": true
+				},
+				"dp_creationDate1": {
+					"type": "subform",
+					"top": 37,
+					"left": 611,
+					"width": 19,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.creationDate",
+					"dataSourceTypeHint": "date",
+					"detailForm": "DateButton",
+					"deletableInList": false,
+					"doubleClickInRowAction": "editSubrecord",
+					"doubleClickInEmptyAreaAction": "addSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"method": "ObjectMethods/dp_creationDate1.4dm",
+					"events": [
+						"onLoad"
+					],
+					"focusable": true
+				},
+				"dp_targetCloseDate": {
+					"type": "subform",
+					"top": 37,
+					"left": 413,
+					"width": 19,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.targetCloseDate",
+					"dataSourceTypeHint": "date",
+					"detailForm": "DateButton",
+					"deletableInList": false,
+					"doubleClickInRowAction": "editSubrecord",
+					"doubleClickInEmptyAreaAction": "addSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"method": "ObjectMethods/dp_targetCloseDate.4dm",
+					"events": [
+						"onLoad"
+					],
+					"focusable": true
+				},
+				"label_car": {
+					"type": "text",
+					"top": 12,
+					"left": 444,
+					"width": 75,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "CAR #"
+				},
+				"Field_qcarNumber": {
+					"type": "input",
+					"top": 12,
+					"left": 520,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.qcarNumber",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "number"
+				},
+				"entryField_rb_internal": {
+					"type": "radio",
+					"text": "Internal",
+					"top": 87,
+					"left": 653,
+					"width": 60,
+					"height": 17,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"radioGroup": "grp_internal",
+					"dataSource": "Form:C1466.current_item.internal"
+				},
+				"entryField_rb_notInternal": {
+					"type": "radio",
+					"text": "External",
+					"top": 87,
+					"left": 803,
+					"width": 60,
+					"height": 17,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"radioGroup": "grp_internal",
+					"dataSource": "Not:C34(Form:C1466.current_item.internal)"
+				},
+				"label_device1": {
+					"type": "text",
+					"top": 87,
+					"left": 748,
+					"width": 20,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "or",
+					"textAlign": "center",
+					"fontWeight": "bold"
+				},
+				"label_device2": {
+					"type": "text",
+					"top": 62,
+					"left": 653,
+					"width": 65,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Category"
+				},
+				"entryField_category": {
+					"type": "input",
+					"top": 62,
+					"left": 723,
+					"width": 202,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.category",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"right": 925,
+					"choiceList": {
+						"$ref": "/SOURCES/lists.json#/Reject_Criteria"
+					}
+				},
+				"dp_actualCloseDate": {
+					"type": "subform",
+					"top": 37,
+					"left": 844,
+					"width": 19,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.actualCloseDate",
+					"dataSourceTypeHint": "date",
+					"detailForm": "DateButton",
+					"deletableInList": false,
+					"doubleClickInRowAction": "editSubrecord",
+					"doubleClickInEmptyAreaAction": "addSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"method": "ObjectMethods/dp_actualCloseDate.4dm",
+					"events": [
+						"onLoad"
+					],
+					"focusable": true
+				},
+				"label_externalParty": {
+					"type": "text",
+					"top": 87,
+					"left": 874,
+					"width": 87,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "External Party"
+				},
+				"EntryField_externalParty": {
+					"type": "input",
+					"top": 87,
+					"left": 958,
+					"width": 310,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.externalParty",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				}
+			}
+		},
+		{
+			"objects": {
+				"header_bkgd2": {
+					"type": "rectangle",
+					"top": 150,
+					"left": 0,
+					"width": 905,
+					"height": 30,
+					"sizingX": "grow",
+					"fill": "#A2C6D8",
+					"stroke": "transparent",
+					"right": 905
+				},
+				"lbl_address1": {
+					"type": "text",
+					"top": 157,
+					"left": 7,
+					"width": 250,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "QCAR Information",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"header_bkgd4": {
+					"type": "rectangle",
+					"top": 183,
+					"left": 0,
+					"width": 905,
+					"height": 80,
+					"sizingX": "grow",
+					"fill": "#E4E4E4",
+					"stroke": "transparent",
+					"right": 905
+				},
+				"label_inactive": {
+					"type": "text",
+					"top": 191,
+					"left": 296,
+					"width": 50,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Verified"
+				},
+				"label_0_16": {
+					"type": "text",
+					"top": 191,
+					"left": 8,
+					"width": 70,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Issued By"
+				},
+				"EntryField_issuedBy": {
+					"type": "input",
+					"top": 191,
+					"left": 93,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.issuedBy",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"sizingX": "grow",
+					"dataSourceTypeHint": "date",
+					"dateFormat": "short blankIfNull",
+					"method": "ObjectMethods/EntryField_issuedBy.4dm"
+				},
+				"entryField_verified": {
+					"type": "checkbox",
+					"text": "Verified",
+					"top": 189,
+					"left": 369,
+					"width": 110,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.current_item.verified",
+					"method": "ObjectMethods/entryField_verified.4dm"
+				},
+				"label_hireDate": {
+					"type": "text",
+					"top": 216,
+					"left": 8,
+					"width": 70,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Issued To"
+				},
+				"entryField_issuedTo": {
+					"type": "input",
+					"top": 216,
+					"left": 93,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.issuedTo",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"sizingX": "grow",
+					"dataSourceTypeHint": "date",
+					"dateFormat": "short blankIfNull",
+					"method": "ObjectMethods/entryField_issuedTo.4dm"
+				},
+				"label_retrainDate": {
+					"type": "text",
+					"top": 241,
+					"left": 8,
+					"width": 70,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Issued Date"
+				},
+				"entryField_issuedDate": {
+					"type": "input",
+					"top": 241,
+					"left": 93,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.issuedDate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"sizingX": "grow",
+					"method": "ObjectMethods/entryField_issuedDate.4dm",
+					"dataSourceTypeHint": "date",
+					"dateFormat": "short"
+				},
+				"dp_issuedDate": {
+					"type": "subform",
+					"top": 241,
+					"left": 184,
+					"width": 19,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.issuedDate",
+					"dataSourceTypeHint": "date",
+					"detailForm": "DateButton",
+					"deletableInList": false,
+					"doubleClickInRowAction": "editSubrecord",
+					"doubleClickInEmptyAreaAction": "addSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"method": "ObjectMethods/dp_issuedDate.4dm",
+					"events": [
+						"onLoad"
+					],
+					"focusable": true
+				},
+				"label_hireDate1": {
+					"type": "text",
+					"top": 216,
+					"left": 296,
+					"width": 63,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Verified By"
+				},
+				"entryField_verifiedBy": {
+					"type": "input",
+					"top": 216,
+					"left": 370,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.verifiedBy",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"sizingX": "grow",
+					"dataSourceTypeHint": "date",
+					"dateFormat": "short blankIfNull",
+					"method": "ObjectMethods/entryField_verifiedBy.4dm"
+				},
+				"label_hireDate2": {
+					"type": "text",
+					"top": 241,
+					"left": 296,
+					"width": 70,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Verified Date"
+				},
+				"entryField_verifiedDate": {
+					"type": "input",
+					"top": 241,
+					"left": 370,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.verifiedDate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"sizingX": "grow",
+					"dataSourceTypeHint": "date",
+					"dateFormat": "short blankIfNull",
+					"method": "ObjectMethods/entryField_verifiedDate.4dm"
+				},
+				"dp_verifiedDate": {
+					"type": "subform",
+					"top": 241,
+					"left": 461,
+					"width": 19,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.verifiedDate",
+					"dataSourceTypeHint": "date",
+					"detailForm": "DateButton",
+					"deletableInList": false,
+					"doubleClickInRowAction": "editSubrecord",
+					"doubleClickInEmptyAreaAction": "addSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"method": "ObjectMethods/dp_verifiedDate.4dm",
+					"events": [
+						"onLoad"
+					],
+					"focusable": true
+				},
+				"label_inactive1": {
+					"type": "text",
+					"top": 191,
+					"left": 536,
+					"width": 110,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Void"
+				},
+				"entryField_void": {
+					"type": "checkbox",
+					"text": "Voided",
+					"top": 189,
+					"left": 649,
+					"width": 130,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.current_item.void"
+				},
+				"label_inactive2": {
+					"type": "text",
+					"top": 216,
+					"left": 536,
+					"width": 110,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Submit for Approval"
+				},
+				"entryField_submit": {
+					"type": "checkbox",
+					"text": "Submit for Approval",
+					"top": 214,
+					"left": 649,
+					"width": 130,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.current_item.submit"
+				},
+				"label_hireDate3": {
+					"type": "text",
+					"top": 241,
+					"left": 536,
+					"width": 130,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Submittal Date"
+				},
+				"entryField_submitDate": {
+					"type": "input",
+					"top": 241,
+					"left": 650,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.submitDate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"sizingX": "grow",
+					"dataSourceTypeHint": "date",
+					"dateFormat": "short blankIfNull",
+					"method": "ObjectMethods/entryField_submitDate.4dm"
+				},
+				"dp_submitDate": {
+					"type": "subform",
+					"top": 241,
+					"left": 741,
+					"width": 19,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.submitDate",
+					"dataSourceTypeHint": "date",
+					"detailForm": "DateButton",
+					"deletableInList": false,
+					"doubleClickInRowAction": "editSubrecord",
+					"doubleClickInEmptyAreaAction": "addSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"method": "ObjectMethods/dp_submitDate.4dm",
+					"events": [
+						"onLoad"
+					],
+					"focusable": true
+				}
+			}
+		},
+		{
+			"objects": {
+				"subform_qcar": {
+					"type": "subform",
+					"left": 0,
+					"top": 146,
+					"width": 895,
+					"height": 408,
+					"detailForm": "sub_panel_qcar",
+					"scrollbarVertical": "visible",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.subForm_qcar",
+					"method": "ObjectMethods/subform_qcar.4dm"
+				}
+			}
+		},
+		{
+			"objects": {
+				"rec_bkgd_1": {
+					"type": "rectangle",
+					"top": 150,
+					"left": 0,
+					"width": 100,
+					"height": 442,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent",
+					"right": 100,
+					"bottom": 592
+				},
+				"lb_documents1": {
+					"type": "listbox",
+					"top": 151,
+					"left": 102,
+					"width": 402,
+					"height": 440,
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"focusable": false,
+					"movableRows": false,
+					"dataSource": "Form:C1466.lb_documents",
+					"currentItemSource": "Form:C1466.selectedDocument",
+					"currentItemPositionSource": "",
+					"metaSource": "",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "#c0c0c0",
+					"verticalLineStroke": "#C0C0C0",
+					"events": [
+						"onClick",
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"alternateFill": "#F7F9FC",
+					"method": "ObjectMethods/lb_documents1.4dm",
+					"selectionMode": "single",
+					"singleClickEdit": false,
+					"rowFillSource": "highlightExpiredCertification",
+					"columns": [
+						{
+							"name": "header_certifName",
+							"dataSource": "This:C1470.name",
+							"width": 330,
+							"minWidth": 200,
+							"maxWidth": 340,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "Entête3",
+								"text": "Name",
+								"fontTheme": "normal",
+								"textAlign": "left",
+								"fontWeight": "bold"
+							},
+							"footer": {
+								"name": "Pied3",
+								"timeFormat": "hh_mm_ss",
+								"fontFamily": "System Font Regular",
+								"fontSize": 10
+							},
+							"fontTheme": "normal",
+							"enterable": false,
+							"resizable": false
+						}
+					]
+				},
+				"Text2": {
+					"type": "text",
+					"text": "Objective Evidences",
+					"top": 157,
+					"left": 4,
+					"width": 92,
+					"height": 36,
+					"fontWeight": "bold",
+					"right": 96
+				},
+				"bActionManageDocuments1": {
+					"type": "button",
+					"text": "Actions",
+					"top": 567,
+					"left": 11,
+					"width": 80,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionManageDocuments1.4dm",
+					"visibility": "visible",
+					"sizingX": "fixed",
+					"sizingY": "fixed"
+				}
+			}
+		}
+	],
+	"inheritedForm": "sfw_bkgd_header_4lines",
+	"geometryStamp": 2790,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

@@ -1,0 +1,74 @@
+﻿{
+	"ident": "versionReferenceRecords_closeDay",
+	"version": 2,
+	"stmp": 692991070,
+	"date": "2024-12-16",
+	"records": [
+		{
+			"UUID": "51FC8C190B35CD4AAA240973558A4952",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"dateOff": "2025-05-02",
+			"label": "pont du 1ermai",
+			"typeID": 1,
+			"company": {
+				"__KEY": "3B6E6626CAA0D401CBF149D88652E865"
+			},
+			"type": "French closing day"
+		},
+		{
+			"UUID": "F7F05792A2B86E45BF2078B50369825A",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"dateOff": "2025-05-09",
+			"label": "pont du 8 mai",
+			"typeID": 1,
+			"company": {
+				"__KEY": "3B6E6626CAA0D401CBF149D88652E865"
+			},
+			"type": "French closing day"
+		},
+		{
+			"UUID": "B81E257C0ADBFD4A96E7A86225BEAEAB",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"dateOff": "2025-04-18",
+			"label": "week-end de Pâques",
+			"typeID": 1,
+			"company": {
+				"__KEY": "3B6E6626CAA0D401CBF149D88652E865"
+			},
+			"type": "French closing day"
+		},
+		{
+			"UUID": "8437AFCAF9575048B239FE03EDB59954",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"dateOff": "2025-06-09",
+			"label": "pentecôte",
+			"typeID": 1,
+			"company": {
+				"__KEY": "3B6E6626CAA0D401CBF149D88652E865"
+			},
+			"type": "French closing day"
+		},
+		{
+			"UUID": "035828AD8D820F448F5B1D7459CCC718",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"dateOff": "2025-11-10",
+			"label": "pont - armistice du 11 novembre",
+			"typeID": 1,
+			"company": {
+				"__KEY": "3B6E6626CAA0D401CBF149D88652E865"
+			},
+			"type": "French closing day"
+		},
+		{
+			"UUID": "D5025721B34ABA48A06385944B3946FC",
+			"UUID_Company": "3B6E6626CAA0D401CBF149D88652E865",
+			"dateOff": "2025-12-26",
+			"label": "pont de Noel",
+			"typeID": 1,
+			"company": {
+				"__KEY": "3B6E6626CAA0D401CBF149D88652E865"
+			},
+			"type": "French closing day"
+		}
+	]
+}

@@ -1,0 +1,91 @@
+﻿Class extends DataStoreImplementation
+
+exposed Function sfw_getXliffs($resnames : Object)->$labels : Object
+	$labels:=New object:C1471()
+	For each ($attribut; $resnames)
+		$labels[$attribut]:=This:C1470.sfw_readXliff($resnames[$attribut]; $attribut)
+	End for each 
+	
+	
+local exposed Function sfw_readXliff($xliff : Text; $label : Text)->$string : Text
+	$string:=$label
+	If ($xliff#Null:C1517)
+		$xliff:=Localized string:C991($xliff)
+		If ($xliff#"")
+			$string:=$xliff
+		Else 
+			// write in a log file for missing xliff
+		End if 
+	Else 
+		// write in a log file for missing xliff
+	End if 
+	
+	//Mark:-Comment
+Function sfw_getNbComments($uuid_target : Text)->$nbComments : Integer
+	
+	$nbComments:=ds:C1482.sfw_Comment.query("UUID_target = :1"; $uuid_target).length
+	
+	
+Function sfw_getNbEvents($uuid_target : Text; $entry : cs:C1710.sfw_definitionEntry)->$nbEvents : Integer
+	
+	$nbEvents:=ds:C1482[$entry.event.dataclass].query($entry.event.linkedAttribute+" = :1"; $uuid_target).length
+	
+	
+	//Mark:-Execute formula on server from client
+Function sfw_callFormula($formula : 4D:C1709.Function;  ...  : Variant)
+	
+	var $params : Collection:=New collection:C1472
+	var $p : Integer
+	
+	For ($p; 2; Count parameters:C259)
+		$params.push(${$p})
+	End for 
+	$formula.apply(This:C1470; $params)
+	
+	
+Function sfw_askFormula($formula : 4D:C1709.Function;  ...  : Variant)->$result : Variant
+	
+	var $params : Collection:=New collection:C1472
+	var $p : Integer
+	
+	For ($p; 2; Count parameters:C259)
+		$params.push(${$p})
+	End for 
+	$result:=$formula.apply(Null:C1517; $params)
+	
+	
+Function sfw_fireAndForgetFormula($formula : 4D:C1709.Function; $workerName : Text;  ...  : Variant)
+	var $params : Collection:=New collection:C1472
+	var $p : Integer
+	var $kill : Boolean
+	
+	For ($p; 3; Count parameters:C259)
+		$params.push(${$p})
+	End for 
+	If ($workerName="")
+		$workerName:="Worker"+Generate UUID:C1066
+		$kill:=True:C214
+	Else 
+		$kill:=False:C215
+	End if 
+	CALL WORKER:C1389($workerName; Formula:C1597(ds:C1482._sfw_fireAndForgetWorker($1; $2; $3)); $formula; $kill; $params)
+	
+Function _sfw_fireAndForgetWorker($formula : 4D:C1709.Function; $kill : Boolean; $params : Collection)
+	$formula.apply(This:C1470; $params)
+	If ($kill)
+		KILL WORKER:C1390
+	End if 
+	
+	
+Function sfw_checkValidationRuleUnique($dataclassName : Text; $attributeName : Text; $value : Variant; $uuid : Text)->$isUnique : Boolean
+	var $esFound : Object
+	
+	$esFound:=ds:C1482[$dataclassName].query($attributeName+" = :1 and UUID # :2"; $value; $uuid)
+	
+	$isUnique:=($esFound.length=0)
+	
+	
+Function sfw_reloadProjectOnServer()
+	RELOAD PROJECT:C1739
+	
+	// mark:- data maintenance

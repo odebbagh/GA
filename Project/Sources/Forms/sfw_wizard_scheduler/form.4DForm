@@ -1,0 +1,297 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "Scheduler",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"bkgd_topBar": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 800,
+					"height": 60,
+					"sizingX": "grow",
+					"fill": "#A6C1D5",
+					"stroke": "transparent"
+				},
+				"bkgd_bottomBar": {
+					"type": "rectangle",
+					"top": 554,
+					"left": 0,
+					"width": 800,
+					"height": 60,
+					"sizingX": "grow",
+					"sizingY": "move",
+					"fill": "#C0C0C0",
+					"stroke": "transparent"
+				},
+				"scheduler": {
+					"type": "text",
+					"top": 24,
+					"left": 72,
+					"width": 237,
+					"height": 17,
+					"text": ""
+				},
+				"Image1": {
+					"type": "picture",
+					"top": 5,
+					"left": 5,
+					"width": 50,
+					"height": 50,
+					"pictureFormat": "scaled",
+					"picture": "/RESOURCES/sfw/entry/scheduler-50x50.png"
+				}
+			}
+		},
+		{
+			"objects": {
+				"bAddAndClose": {
+					"type": "button",
+					"top": 709,
+					"left": 693,
+					"width": 100,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "Close",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/return-32x32.png",
+					"iconFrames": 4,
+					"textPlacement": "right",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "accept"
+				},
+				"lb_schedulers": {
+					"type": "listbox",
+					"left": 10,
+					"top": 70,
+					"width": 781,
+					"height": 201,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.lb_schedulers",
+					"resizingMode": "legacy",
+					"focusable": false,
+					"scrollbarHorizontal": "hidden",
+					"currentItemSource": "Form:C1466.current_scheduler",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"fill": "#E8FFFE",
+					"alternateFill": "#FFFFFF",
+					"metaSource": "This:C1470.meta",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"selectionMode": "single",
+					"columns": [
+						{
+							"header": {
+								"name": "Header3",
+								"text": ""
+							},
+							"name": "Column3",
+							"dataSource": "This:C1470.active",
+							"dataSourceTypeHint": "boolean",
+							"width": 24,
+							"footer": {
+								"name": "Footer3"
+							}
+						},
+						{
+							"header": {
+								"text": "Type",
+								"name": "Header1"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "ds:C1482.sfw_readXliff(\"scheduler.\"+Lowercase:C14(This:C1470.type); This:C1470.type)"
+						},
+						{
+							"header": {
+								"name": "name",
+								"text": "Name",
+								"dataSource": ""
+							},
+							"name": "Column2",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This:C1470.name",
+							"width": 220
+						},
+						{
+							"header": {
+								"name": "lastEx",
+								"text": "Last execution"
+							},
+							"name": "Column4",
+							"dataSource": "ds:C1482.sfw_readXliff(\"scheduler.\"+Lowercase:C14(This:C1470.lastExecution); This:C1470.lastExecution)",
+							"footer": {
+								"name": "Footer4"
+							}
+						}
+					]
+				},
+				"Splitter": {
+					"type": "splitter",
+					"left": -4,
+					"top": 278,
+					"width": 895,
+					"height": 4,
+					"sizingX": "grow",
+					"borderStyle": "dotted"
+				},
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 819,
+					"width": 14,
+					"height": 153,
+					"fill": "#ffff00",
+					"sizingX": "move"
+				},
+				"Rectangle1": {
+					"type": "rectangle",
+					"top": 284,
+					"left": 819,
+					"width": 14,
+					"height": 93,
+					"fill": "#ffff00",
+					"sizingX": "move"
+				},
+				"lb_schedulerLogs": {
+					"type": "listbox",
+					"left": 10,
+					"top": 286,
+					"width": 781,
+					"height": 241,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.current_scheduler.schedulerLogs.orderBy(\"stmp desc\")",
+					"resizingMode": "legacy",
+					"focusable": false,
+					"scrollbarHorizontal": "hidden",
+					"currentItemSource": "Form:C1466.templateProject",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"fill": "#E8FFFE",
+					"alternateFill": "#FFFFFF",
+					"metaSource": "This:C1470.meta",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"selectionMode": "none",
+					"columns": [
+						{
+							"header": {
+								"text": "Date",
+								"name": "Header6"
+							},
+							"name": "Column6",
+							"footer": {
+								"name": "Footer6"
+							},
+							"dataSource": "cs:C1710.sfw_stmp.me.getDate(This:C1470.stmp)",
+							"width": 102,
+							"dataSourceTypeHint": "date",
+							"textAlign": "center"
+						},
+						{
+							"header": {
+								"name": "time",
+								"text": ""
+							},
+							"name": "Column7",
+							"footer": {
+								"name": "Footer7"
+							},
+							"dataSource": "cs:C1710.sfw_stmp.me.getTime(This:C1470.stmp)",
+							"width": 114,
+							"dataSourceTypeHint": "time",
+							"textAlign": "center"
+						},
+						{
+							"header": {
+								"name": "Header8",
+								"text": ""
+							},
+							"name": "Column8",
+							"dataSource": "",
+							"footer": {
+								"name": "Footer8"
+							}
+						}
+					]
+				},
+				"Input": {
+					"type": "input",
+					"left": 11,
+					"top": 531,
+					"width": 165,
+					"height": 17,
+					"dataSource": "Form:C1466.current_scheduler.schedulerLogs.length",
+					"dataSourceTypeHint": "number",
+					"numberFormat": "###,##0 logs;;",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"stroke": "#808080"
+				}
+			}
+		}
+	],
+	"geometryStamp": 108,
+	"formSizeAnchor": "bkgd_bottomBar",
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

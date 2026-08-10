@@ -1,0 +1,249 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 5,
+	"bottomMargin": 5,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"lb_attributes": {
+					"type": "listbox",
+					"left": 304,
+					"top": 29,
+					"width": 328,
+					"height": 175,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"scrollbarHorizontal": "automatic",
+					"scrollbarVertical": "automatic",
+					"fill": "#E7FBE6",
+					"borderStyle": "system",
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.lb_attributes",
+					"singleClickEdit": true,
+					"currentItemSource": "Form:C1466.attribute",
+					"currentItemPositionSource": "Form:C1466.position_attribute",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"alternateFill": "#FAFBF4",
+					"method": "ObjectMethods/lb_attributes.4dm",
+					"hideFocusRing": true,
+					"resizingMode": "legacy",
+					"columns": [
+						{
+							"header": {
+								"text": ":xliff:collection.editor.lb_attributs.attribut",
+								"name": "Header1"
+							},
+							"name": "col_element_attribute",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.attribute"
+						},
+						{
+							"header": {
+								"name": "Header3",
+								"text": ":xliff:collection.editor.lb_attributs.type"
+							},
+							"name": "Column1",
+							"width": 72,
+							"dataSource": "This:C1470.type",
+							"footer": {
+								"name": "Footer3"
+							},
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": ":xliff:collection.editor.lb_attributs.value"
+							},
+							"name": "col_element_value",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This:C1470.value",
+							"events": [
+								"onDataChange"
+							],
+							"textAlign": "left",
+							"timeFormat": "hh_mm_ss"
+						}
+					]
+				},
+				"bSave": {
+					"type": "button",
+					"text": "",
+					"top": 209,
+					"left": 608,
+					"width": 24,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"icon": "/RESOURCES/image/btn4states/save-24x24.png",
+					"style": "custom",
+					"iconFrames": 4,
+					"dataSource": "",
+					"sizingY": "move",
+					"sizingX": "move",
+					"focusable": false,
+					"action": "accept"
+				},
+				"bCancel": {
+					"type": "button",
+					"text": "",
+					"top": 209,
+					"left": 580,
+					"width": 24,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"icon": "/RESOURCES/image/btn4states/cancel-24x24.png",
+					"style": "custom",
+					"iconFrames": 4,
+					"dataSource": "",
+					"sizingY": "move",
+					"sizingX": "move",
+					"focusable": false,
+					"action": "cancel"
+				},
+				"lb_elements": {
+					"type": "listbox",
+					"left": 5,
+					"top": 29,
+					"width": 289,
+					"height": 175,
+					"events": [
+						"onClick",
+						"onDrop",
+						"onSelectionChange",
+						"onHeaderClick"
+					],
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"scrollbarHorizontal": "automatic",
+					"scrollbarVertical": "automatic",
+					"fill": "#EDF3FB",
+					"borderStyle": "system",
+					"dataSource": "Form:C1466.elements",
+					"listboxType": "collection",
+					"currentItemSource": "Form:C1466.element",
+					"currentItemPositionSource": "Form:C1466.position_element",
+					"method": "ObjectMethods/lb_elements.4dm",
+					"resizingMode": "legacy",
+					"alternateFill": "#F5F8FB",
+					"hideFocusRing": true,
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"dragging": "custom",
+					"dropping": "custom",
+					"columns": [
+						{
+							"header": {
+								"name": "Header4",
+								"text": ":xliff:collection.editor.lb_items.item"
+							},
+							"name": "col_value",
+							"footer": {
+								"name": "Footer4"
+							},
+							"dataSource": "JSON Stringify:C1217(This:C1470)",
+							"width": 287,
+							"enterable": false
+						}
+					]
+				},
+				"Splitter": {
+					"type": "splitter",
+					"left": 298,
+					"top": 5,
+					"width": 5,
+					"height": 203,
+					"sizingY": "grow",
+					"borderStyle": "solid",
+					"stroke": "#c0c0c0"
+				},
+				"Text": {
+					"type": "text",
+					"text": ":xliff:collection.editor.lb_items",
+					"top": 5,
+					"left": 5,
+					"width": 183,
+					"height": 16,
+					"fontWeight": "bold",
+					"stroke": "#0000cd"
+				},
+				"bOpenForm": {
+					"type": "button",
+					"text": "Button",
+					"top": 1,
+					"left": 2,
+					"width": 42,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"display": false,
+					"method": "ObjectMethods/bOpenForm.4dm"
+				},
+				"Text1": {
+					"type": "text",
+					"text": ":xliff:collection.editor.lb_attributs",
+					"top": 5,
+					"left": 304,
+					"width": 183,
+					"height": 16,
+					"fontWeight": "bold",
+					"stroke": "#0000cd"
+				}
+			}
+		}
+	],
+	"geometryStamp": 3,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

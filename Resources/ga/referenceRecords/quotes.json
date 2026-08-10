@@ -1,0 +1,71 @@
+﻿{
+	"ident": "versionReferenceRecords_quotes",
+	"version": 2,
+	"stmp": 708861391,
+	"date": "2025-06-18",
+	"records": [
+		{
+			"UUID": "BC675EF84586AD4683DB9E1B357F9639",
+			"statusID": 1,
+			"code": "A",
+			"name": "Active",
+			"color": "#00BFFF",
+			"nameInWindowTitle": "Active",
+			"colorPicto": "[object Picture]"
+		},
+		{
+			"UUID": "7FBD2279F81F9E448B6F53C85118CE8D",
+			"statusID": 2,
+			"code": "C",
+			"name": "Close",
+			"color": "#8B0000",
+			"nameInWindowTitle": "Close",
+			"colorPicto": "[object Picture]"
+		},
+		{
+			"UUID": "5DCC768F27CF98428FEED5A8B0D92E5F",
+			"statusID": 3,
+			"code": "CS",
+			"name": "Closed successfully",
+			"color": "#00FF00",
+			"nameInWindowTitle": "Closed successfully",
+			"colorPicto": "[object Picture]"
+		},
+		{
+			"UUID": "217956C5EB35D64DB43F03DB9DA2C681",
+			"statusID": 4,
+			"code": "RO",
+			"name": "Received Order",
+			"color": "#9370DB",
+			"nameInWindowTitle": "Received Order",
+			"colorPicto": "[object Picture]"
+		},
+		{
+			"UUID": "05980C193350C54AB5ED21533C90EF71",
+			"statusID": 5,
+			"code": "LO",
+			"name": "Lost Order",
+			"color": "#FF0000",
+			"nameInWindowTitle": "Lost Order",
+			"colorPicto": "[object Picture]"
+		},
+		{
+			"UUID": "C940457CBE30E14BBCFA4EC3E625D32E",
+			"statusID": 6,
+			"code": "RFU",
+			"name": "Require Follow-Up",
+			"color": "#FFA500",
+			"nameInWindowTitle": "Require Follow-Up",
+			"colorPicto": "[object Picture]"
+		},
+		{
+			"UUID": "E0D9C2AFDA1D544DBDAFEA3316A72356",
+			"statusID": 7,
+			"code": "UCR",
+			"name": "Under Customer Review",
+			"color": "#008080",
+			"nameInWindowTitle": "Under Customer Review",
+			"colorPicto": "[object Picture]"
+		}
+	]
+}

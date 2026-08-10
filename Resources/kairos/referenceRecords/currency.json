@@ -1,0 +1,38 @@
+﻿{
+	"ident": "versionReferenceRecords_currency",
+	"version": 2,
+	"stmp": 693832061,
+	"date": "2024-12-26",
+	"records": [
+		{
+			"UUID": "39CF7926F8D71E4C9A3541C804385BBA",
+			"symbol": "USD",
+			"name": "United States Dollar",
+			"contracts": "[object EntityCollection]"
+		},
+		{
+			"UUID": "13C6309B6C8DF844B3856EB290E15FAA",
+			"symbol": "EUR",
+			"name": "Euro",
+			"contracts": "[object EntityCollection]"
+		},
+		{
+			"UUID": "380E6B0C37E4554EBA2D35E0A617717A",
+			"symbol": "MAD",
+			"name": "Moroccan Dirham\r\n",
+			"contracts": "[object EntityCollection]"
+		},
+		{
+			"UUID": "5B40E82B9E7D484D8B7BF18CD0E772F9",
+			"symbol": "CAN",
+			"name": "Canadian Dollar",
+			"contracts": "[object EntityCollection]"
+		},
+		{
+			"UUID": "354989E753C342499FA0DA25EC1B25D1",
+			"symbol": "GBP",
+			"name": "Livre sterling",
+			"contracts": "[object EntityCollection]"
+		}
+	]
+}

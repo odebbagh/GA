@@ -1,0 +1,198 @@
+{
+	"destination": "detailScreen",
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "842pt",
+		"paperHeight": "595pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"Texte": {
+					"type": "text",
+					"top": 9,
+					"left": 13,
+					"width": 103,
+					"height": 17,
+					"stroke": "#888888",
+					"text": ":xliff:entry.sfw_country.field.name"
+				},
+				"entryField_name": {
+					"type": "input",
+					"top": 9,
+					"left": 127,
+					"width": 272,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.name",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"Texte1": {
+					"type": "text",
+					"top": 33,
+					"left": 13,
+					"width": 103,
+					"height": 17,
+					"stroke": "#888888",
+					"text": ":xliff:entry.sfw_country.field.capital"
+				},
+				"entryField_capitalCity": {
+					"type": "input",
+					"top": 33,
+					"left": 127,
+					"width": 272,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.capitalCity",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"Texte2": {
+					"type": "text",
+					"top": 57,
+					"left": 13,
+					"width": 103,
+					"height": 17,
+					"stroke": "#888888",
+					"text": ":xliff:entry.sfw_country.isoCodes"
+				},
+				"entryField_iso_code_2": {
+					"type": "input",
+					"top": 57,
+					"left": 127,
+					"width": 54,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.iso_code_2",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"entryField_iso_Code_3": {
+					"type": "input",
+					"top": 57,
+					"left": 186,
+					"width": 54,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.iso_code_3",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"Champ4": {
+					"type": "input",
+					"top": 57,
+					"left": 246,
+					"width": 54,
+					"height": 17,
+					"dataSource": "[Group:12]",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dragging": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"entryField_flag": {
+					"type": "input",
+					"top": 9,
+					"left": 406,
+					"width": 33,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.flag",
+					"dataSourceTypeHint": "picture",
+					"pictureFormat": "proportionalCenter",
+					"dragging": "custom",
+					"events": [
+						"onDataChange"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"address_L1C1": {
+					"type": "button",
+					"top": 154,
+					"left": 83,
+					"width": 106,
+					"height": 21,
+					"fontFamily": "System Font",
+					"fontSize": 11,
+					"focusable": false,
+					"text": "address_L1C1",
+					"icon": "/RESOURCES/sfw/address/itemType/street.png",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/address_L1C1.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"Texte4": {
+					"type": "text",
+					"top": 133,
+					"left": 15,
+					"width": 270,
+					"height": 21,
+					"stroke": "#888888",
+					"text": ":xliff:address.format"
+				}
+			}
+		},
+		null
+	],
+	"geometryStamp": 5,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"editor": {
+		"groups": {
+			"Group": [
+				"address_L1C1",
+				"Texte4"
+			]
+		},
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"inheritedForm": "sfw_bkgd_header_3lines"
+}

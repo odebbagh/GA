@@ -1,0 +1,641 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "NMN",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"form_bkgd": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 470,
+					"height": 745,
+					"fill": "#BFC8DC",
+					"stroke": "transparent",
+					"strokeWidth": 0
+				},
+				"title_bar": {
+					"type": "rectangle",
+					"top": 22,
+					"left": 0,
+					"width": 470,
+					"height": 30,
+					"fill": "#69B2B4",
+					"stroke": "transparent"
+				},
+				"title_text": {
+					"type": "text",
+					"top": 29,
+					"left": 26,
+					"width": 380,
+					"height": 16,
+					"text": "NON-CONFORMING MATERIAL NOTICE (NMN)",
+					"fontWeight": "bold",
+					"fontSize": 12,
+					"stroke": "#000000"
+				},
+				"customer_label_bkgd": {
+					"type": "rectangle",
+					"top": 84,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"customer_value_bkgd": {
+					"type": "rectangle",
+					"top": 83,
+					"left": 150,
+					"width": 290,
+					"height": 25,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_customer": {
+					"type": "text",
+					"top": 89,
+					"left": 26,
+					"width": 115,
+					"height": 15,
+					"text": "Customer"
+				},
+				"field_customer": {
+					"type": "input",
+					"top": 86,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.customer",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"enterable": false,
+					"focusable": false
+				},
+				"traveller_label_bkgd": {
+					"type": "rectangle",
+					"top": 108,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"traveller_value_bkgd": {
+					"type": "rectangle",
+					"top": 108,
+					"left": 150,
+					"width": 290,
+					"height": 25,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_traveller": {
+					"type": "text",
+					"top": 114,
+					"left": 26,
+					"width": 115,
+					"height": 15,
+					"text": "Traveller"
+				},
+				"field_traveller": {
+					"type": "input",
+					"top": 111,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.lotNumber",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "left",
+					"enterable": false,
+					"focusable": false
+				},
+				"lot_quantity_label_bkgd": {
+					"type": "rectangle",
+					"top": 142,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"lot_quantity_value_bkgd": {
+					"type": "rectangle",
+					"top": 142,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_lot_quantity": {
+					"type": "text",
+					"top": 148,
+					"left": 26,
+					"width": 115,
+					"height": 15,
+					"text": "Lot Quantity"
+				},
+				"field_lot_quantity": {
+					"type": "input",
+					"top": 145,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.lotQuantity",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "right",
+					"dataSourceTypeHint": "integer"
+				},
+				"quantity_inspected_label_bkgd": {
+					"type": "rectangle",
+					"top": 166,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"quantity_inspected_value_bkgd": {
+					"type": "rectangle",
+					"top": 166,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_quantity_inspected": {
+					"type": "text",
+					"top": 172,
+					"left": 26,
+					"width": 115,
+					"height": 15,
+					"text": "Quantity Inspected"
+				},
+				"field_quantity_inspected": {
+					"type": "input",
+					"top": 169,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.quantityInspected",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"dataSourceTypeHint": "integer",
+					"textAlign": "right"
+				},
+				"quantity_accepted_label_bkgd": {
+					"type": "rectangle",
+					"top": 190,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"quantity_accepted_value_bkgd": {
+					"type": "rectangle",
+					"top": 190,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_quantity_accepted": {
+					"type": "text",
+					"top": 196,
+					"left": 26,
+					"width": 115,
+					"height": 15,
+					"text": "Quantity Accepted"
+				},
+				"field_quantity_accepted": {
+					"type": "input",
+					"top": 193,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.quantityAccepted",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "right",
+					"dataSourceTypeHint": "integer"
+				},
+				"quantity_rejected_label_bkgd": {
+					"type": "rectangle",
+					"top": 214,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"quantity_rejected_value_bkgd": {
+					"type": "rectangle",
+					"top": 214,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_quantity_rejected": {
+					"type": "text",
+					"top": 220,
+					"left": 26,
+					"width": 115,
+					"height": 15,
+					"text": "Quantity Rejected"
+				},
+				"field_quantity_rejected": {
+					"type": "input",
+					"top": 217,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.quantityRejected",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"dataSourceTypeHint": "number",
+					"textAlign": "right"
+				},
+				"section_problem": {
+					"type": "text",
+					"top": 250,
+					"left": 26,
+					"width": 180,
+					"height": 16,
+					"text": "Problem Description",
+					"fontWeight": "bold"
+				},
+				"originator_label_bkgd": {
+					"type": "rectangle",
+					"top": 275,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"originator_value_bkgd": {
+					"type": "rectangle",
+					"top": 275,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_originator": {
+					"type": "text",
+					"top": 281,
+					"left": 26,
+					"width": 115,
+					"height": 15,
+					"text": "Originator"
+				},
+				"field_originator": {
+					"type": "input",
+					"top": 278,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.originator",
+					"borderStyle": "none",
+					"fill": "transparent"
+				},
+				"date_label_bkgd": {
+					"type": "rectangle",
+					"top": 299,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"date_value_bkgd": {
+					"type": "rectangle",
+					"top": 299,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_date": {
+					"type": "text",
+					"top": 305,
+					"left": 26,
+					"width": 115,
+					"height": 15,
+					"text": "Date"
+				},
+				"field_date": {
+					"type": "input",
+					"top": 302,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.problemDate",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "right"
+				},
+				"time_label_bkgd": {
+					"type": "rectangle",
+					"top": 323,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"time_value_bkgd": {
+					"type": "rectangle",
+					"top": 323,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_time": {
+					"type": "text",
+					"top": 329,
+					"left": 26,
+					"width": 115,
+					"height": 15,
+					"text": "Time"
+				},
+				"field_time": {
+					"type": "input",
+					"top": 326,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.problemTime",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "right"
+				},
+				"machine_label_bkgd": {
+					"type": "rectangle",
+					"top": 347,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"machine_value_bkgd": {
+					"type": "rectangle",
+					"top": 347,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_machine": {
+					"type": "text",
+					"top": 353,
+					"left": 26,
+					"width": 115,
+					"height": 15,
+					"text": "M/C #"
+				},
+				"field_machine": {
+					"type": "input",
+					"top": 350,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.machine",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "right"
+				},
+				"detail_label_bkgd": {
+					"type": "rectangle",
+					"top": 371,
+					"left": 0,
+					"width": 470,
+					"height": 116,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"detail_value_bkgd": {
+					"type": "rectangle",
+					"top": 371,
+					"left": 150,
+					"width": 290,
+					"height": 116,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_problem_detail": {
+					"type": "text",
+					"top": 377,
+					"left": 26,
+					"width": 115,
+					"height": 30,
+					"text": "Problem in Detail"
+				},
+				"field_problem_detail": {
+					"type": "input",
+					"top": 375,
+					"left": 158,
+					"width": 270,
+					"height": 108,
+					"multiline": "yes",
+					"dataSource": "Form:C1466.problemDetail",
+					"borderStyle": "none",
+					"fill": "transparent"
+				},
+				"disposition_label_bkgd": {
+					"type": "rectangle",
+					"top": 500,
+					"left": 0,
+					"width": 470,
+					"height": 116,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"disposition_value_bkgd": {
+					"type": "rectangle",
+					"top": 500,
+					"left": 150,
+					"width": 290,
+					"height": 116,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_disposition": {
+					"type": "text",
+					"top": 506,
+					"left": 26,
+					"width": 120,
+					"height": 45,
+					"text": "Disposition (Action Plan)"
+				},
+				"field_disposition": {
+					"type": "input",
+					"top": 504,
+					"left": 158,
+					"width": 270,
+					"height": 108,
+					"multiline": "yes",
+					"dataSource": "Form:C1466.disposition",
+					"borderStyle": "none",
+					"fill": "transparent"
+				},
+				"section_approvals": {
+					"type": "text",
+					"top": 630,
+					"left": 11,
+					"width": 120,
+					"height": 16,
+					"text": "Approvals",
+					"fontWeight": "bold"
+				},
+				"chk_customer_service": {
+					"type": "checkbox",
+					"text": "",
+					"top": 658,
+					"left": 11,
+					"width": 17,
+					"height": 17,
+					"dataSource": "Form:C1466.approvalCustomerService",
+					"method": "ObjectMethods/chk_approval.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"lbl_customer_service": {
+					"type": "text",
+					"top": 661,
+					"left": 43,
+					"width": 100,
+					"height": 15,
+					"text": "Customer Service"
+				},
+				"date_customer_service_label_bkgd": {
+					"type": "rectangle",
+					"top": 654,
+					"left": 192,
+					"width": 277,
+					"height": 23,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"lbl_date_customer_service": {
+					"type": "text",
+					"top": 659,
+					"left": 198,
+					"width": 30,
+					"height": 15,
+					"text": "Date"
+				},
+				"btn_cancel": {
+					"type": "button",
+					"text": "Cancel",
+					"top": 700,
+					"left": 280,
+					"width": 70,
+					"height": 24,
+					"action": "cancel"
+				},
+				"btn_save": {
+					"type": "button",
+					"text": "Save",
+					"top": 700,
+					"left": 370,
+					"width": 70,
+					"height": 24,
+					"action": "accept"
+				},
+				"originator_value_bkgd1": {
+					"type": "rectangle",
+					"top": 654,
+					"left": 231,
+					"width": 209,
+					"height": 23,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"field_date_customer_service": {
+					"type": "input",
+					"top": 657,
+					"left": 236,
+					"width": 190,
+					"height": 18,
+					"dataSource": "Form:C1466.dateCustomerService",
+					"borderStyle": "none",
+					"fill": "#FFFFFF",
+					"textAlign": "right",
+					"enterable": false
+				},
+				"btnDatePicker_commitDate": {
+					"type": "button",
+					"text": "",
+					"top": 300,
+					"left": 441,
+					"width": 28,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"method": "ObjectMethods/btnDatePicker_commitDate.4dm"
+				}
+			}
+		}
+	],
+	"method": "method.4dm",
+	"geometryStamp": 241,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

@@ -1,0 +1,126 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 280,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDragOver",
+		"onCloseBox",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"windowTitle": "Comments",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"subFormCommentList": {
+					"type": "subform",
+					"left": 0,
+					"top": -1,
+					"width": 350,
+					"height": 255,
+					"scrollbarVertical": "visible",
+					"dataSource": "Form:C1466.subFormCommentList",
+					"sizingY": "grow",
+					"method": "ObjectMethods/subFormCommentList.4dm",
+					"right": 350
+				},
+				"text_calculator": {
+					"type": "input",
+					"left": 25,
+					"top": 488,
+					"width": 234,
+					"height": 17,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.text_calculator"
+				},
+				"bAction": {
+					"type": "button",
+					"text": "Actions",
+					"top": 255,
+					"left": 4,
+					"width": 80,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bAction.4dm",
+					"sizingY": "move"
+				},
+				"bAddComment": {
+					"type": "button",
+					"text": "Add a new comment",
+					"top": 255,
+					"left": 98,
+					"width": 159,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/sfw/image/picto/plus-circle.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bAddComment.4dm",
+					"sizingY": "move"
+				},
+				"noComment_picto": {
+					"type": "picture",
+					"top": 106,
+					"left": 83,
+					"width": 50,
+					"height": 50,
+					"picture": "/RESOURCES/sfw/image/icon/noComment-50x50.png"
+				},
+				"noComment_text": {
+					"type": "text",
+					"text": "There is no comment at this moment for the current item",
+					"top": 108,
+					"left": 151,
+					"width": 131,
+					"height": 46
+				}
+			}
+		}
+	],
+	"geometryStamp": 271,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"width": 366,
+	"height": 280
+}

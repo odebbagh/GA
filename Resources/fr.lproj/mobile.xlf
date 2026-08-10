@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="mobile">
+            <trans-unit id="1" resname="mobile.title">
+               <source>New appointement</source>
+               <target>Nouvelle réservation</target>
+            </trans-unit>
+            <trans-unit id="2" resname="mobile.date">
+               <source>Date</source>
+               <target>Date</target>
+            </trans-unit>
+            <trans-unit id="3" resname="mobile.centre">
+               <source>Medical house</source>
+               <target>Maison médicale</target>
+            </trans-unit>
+            <trans-unit id="4" resname="mobile.doctor">
+               <source>Doctor</source>
+               <target>Docteur</target>
+            </trans-unit>
+            <trans-unit id="5" resname="mobile.slot">
+               <source>Slot</source>
+               <target>Horaire</target>
+            </trans-unit>
+            <trans-unit id="6" resname="mobile.status_1">
+               <source>Appointment taking</source>
+               <target>Prise rdv</target>
+            </trans-unit>
+            <trans-unit id="7" resname="mobile.error_1">
+               <source>Error occurred</source>
+               <target>Erreur survenue</target>
+            </trans-unit>
+            <trans-unit id="8" resname="mobile.error_2">
+               <source>Unknown request send</source>
+               <target>Requête inconnue envoyée</target>
+            </trans-unit>
+            <trans-unit id="9" resname="mobile.cancel">
+               <source>Cancel</source>
+               <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="10" resname="mobile.next">
+               <source>Next</source>
+               <target>Suivant</target>
+            </trans-unit>
+            <trans-unit id="11" resname="mobile.done">
+               <source>Done</source>
+               <target>Terminer</target>
+            </trans-unit>
+            <trans-unit id="12" resname="mobile.connected">
+               <source>You are successfully authenticated</source>
+               <target>Vous êtes authentifié avec succès</target>
+            </trans-unit>
+            <trans-unit id="13" resname="mobile.notAuthorized">
+               <source>Sorry, you are not authorized to use this application</source>
+               <target>Vous n'êtes pas autorisé à utiliser cette application</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

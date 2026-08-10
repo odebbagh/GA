@@ -1,0 +1,1 @@
+cs:C1710.sfw_calendarManager.me.datePickerIcon("Form.deadlineDate")

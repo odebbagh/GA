@@ -1,0 +1,552 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"header_bkgd5": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 0,
+					"width": 1000,
+					"height": 805,
+					"sizingX": "fixed",
+					"fill": "#E4E4E4",
+					"stroke": "transparent"
+				},
+				"label_assetNumber": {
+					"type": "text",
+					"top": 12,
+					"left": 12,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Asset #",
+					"textAlign": "right",
+					"right": 132
+				},
+				"entryField_assetNumber": {
+					"type": "input",
+					"top": 12,
+					"left": 142,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.assetNumber",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_type": {
+					"type": "text",
+					"top": 37,
+					"left": 12,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Type",
+					"textAlign": "right",
+					"right": 132
+				},
+				"pup_type": {
+					"type": "button",
+					"top": 34,
+					"left": 142,
+					"width": 268,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_type.4dm",
+					"events": [
+						"onClick"
+					],
+					"bottom": 57,
+					"textAlign": "left"
+				}
+			}
+		},
+		{
+			"objects": {
+				"header_bkgd2": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 0,
+					"width": 1500,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent",
+					"right": 1500
+				},
+				"Text": {
+					"type": "text",
+					"top": 121,
+					"left": 8,
+					"width": 250,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Asset Informations",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"label_vendor": {
+					"type": "text",
+					"top": 161,
+					"left": 34,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Vendor",
+					"textAlign": "right",
+					"right": 154
+				},
+				"pup_vendor": {
+					"type": "button",
+					"top": 158,
+					"left": 164,
+					"width": 268,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_vendor.4dm",
+					"events": [
+						"onClick"
+					],
+					"bottom": 181,
+					"textAlign": "left"
+				},
+				"label_description": {
+					"type": "text",
+					"top": 189,
+					"left": 34,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Description",
+					"textAlign": "right",
+					"right": 154
+				},
+				"entryField_description": {
+					"type": "input",
+					"top": 189,
+					"left": 164,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.description",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_lifePerTax": {
+					"type": "text",
+					"top": 378,
+					"left": 34,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Life Per Tax",
+					"textAlign": "right",
+					"right": 154
+				},
+				"entryField_lifePerTax": {
+					"type": "input",
+					"top": 378,
+					"left": 164,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.life",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_salvage": {
+					"type": "text",
+					"top": 356,
+					"left": 34,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Salvage",
+					"textAlign": "right",
+					"right": 154
+				},
+				"entryField_salvage": {
+					"type": "input",
+					"top": 356,
+					"left": 164,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.salvage",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_PurchaseDate": {
+					"type": "text",
+					"top": 336,
+					"left": 34,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Purchase Date",
+					"textAlign": "right",
+					"right": 154
+				},
+				"entryField_purchaseDate": {
+					"type": "input",
+					"top": 336,
+					"left": 164,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.acquiredDate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_currentMonthDepreciation": {
+					"type": "text",
+					"top": 307,
+					"left": 34,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Current Month Depreciation",
+					"textAlign": "right",
+					"right": 154
+				},
+				"entryField_currentMonth": {
+					"type": "input",
+					"top": 307,
+					"left": 164,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.currentMonth",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_bookValue": {
+					"type": "text",
+					"top": 283,
+					"left": 34,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Book Value",
+					"textAlign": "right",
+					"right": 154
+				},
+				"entryField_bookValue": {
+					"type": "input",
+					"top": 283,
+					"left": 164,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.bookValue",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_monthInService": {
+					"type": "text",
+					"top": 260,
+					"left": 34,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Month In Service",
+					"textAlign": "right",
+					"right": 154
+				},
+				"entryField_monthInService": {
+					"type": "input",
+					"top": 260,
+					"left": 164,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.monthInService",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_originalCost": {
+					"type": "text",
+					"top": 235,
+					"left": 34,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Original Cost",
+					"textAlign": "right",
+					"right": 154
+				},
+				"entryField_originalCost": {
+					"type": "input",
+					"top": 235,
+					"left": 164,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.originalCost",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_purchaseOrder": {
+					"type": "text",
+					"top": 213,
+					"left": 34,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Purchase Order #",
+					"textAlign": "right",
+					"right": 154
+				},
+				"entryField_purchaseOrder": {
+					"type": "input",
+					"top": 213,
+					"left": 164,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.purchaseOrder",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_totalAccumDepreciation": {
+					"type": "text",
+					"top": 399,
+					"left": 34,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Total Accum Depreciation",
+					"textAlign": "right",
+					"right": 154
+				},
+				"entryField_totalAccDepreciation": {
+					"type": "input",
+					"top": 399,
+					"left": 164,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.totalAccDepreciation",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_divestDate": {
+					"type": "text",
+					"top": 423,
+					"left": 34,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Divest Date",
+					"textAlign": "right",
+					"right": 154
+				},
+				"entryField_divestDate": {
+					"type": "input",
+					"top": 423,
+					"left": 164,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.divestDate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"Check Box": {
+					"type": "checkbox",
+					"text": "Scapped",
+					"top": 453,
+					"left": 164,
+					"width": 70,
+					"height": 17,
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"label_deprecationHistory": {
+					"type": "text",
+					"top": 134,
+					"left": 108,
+					"width": 200,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Deprecation history",
+					"textAlign": "left"
+				},
+				"entryField_deprecationHistory": {
+					"type": "input",
+					"top": 164,
+					"left": 108,
+					"width": 750,
+					"height": 192,
+					"dataSource": "Form:C1466.current_item.deprecationHistory",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"scrollbarVertical": "automatic"
+				}
+			}
+		}
+	],
+	"geometryStamp": 90,
+	"inheritedForm": "sfw_bkgd_header_3lines",
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

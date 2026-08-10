@@ -1,0 +1,303 @@
+{
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"markerBody": 52,
+	"markerBreak": 52,
+	"markerFooter": 52,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onHeader",
+		"onPrintingBreak",
+		"onPrintingFooter",
+		"onDisplayDetail",
+		"onOutsideCall",
+		"onActivate",
+		"onDeactivate",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onCloseBox",
+		"onPrintingDetail",
+		"onOpenDetail",
+		"onCloseDetail",
+		"onTimer",
+		"onAfterKeystroke",
+		"onResize"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "Letter",
+		"paperWidth": "612pt",
+		"paperHeight": "792pt"
+	},
+	"pages": [
+		null,
+		{
+			"objects": {
+				"Rectangle1": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 1,
+					"width": 725,
+					"height": 52,
+					"fill": "transparent",
+					"stroke": "#AAAAAA"
+				},
+				"Text1": {
+					"type": "text",
+					"top": 3,
+					"left": 6,
+					"width": 20,
+					"height": 12,
+					"stroke": "#000000",
+					"class": "Print_font",
+					"text": "#"
+				},
+				"Text2": {
+					"type": "text",
+					"top": 3,
+					"left": 32,
+					"width": 160,
+					"height": 12,
+					"stroke": "#000000",
+					"class": "Print_font",
+					"text": "step"
+				},
+				"Line1": {
+					"type": "line",
+					"top": 16,
+					"left": 2,
+					"width": 723,
+					"stroke": "#AAAAAA"
+				},
+				"VLine1": {
+					"type": "line",
+					"top": 0,
+					"left": 28,
+					"width": 1,
+					"height": 52,
+					"stroke": "#AAAAAA"
+				},
+				"VLine2": {
+					"type": "line",
+					"top": 0,
+					"left": 563,
+					"width": 1,
+					"height": 52,
+					"stroke": "#AAAAAA"
+				},
+				"Text3": {
+					"type": "text",
+					"top": 3,
+					"left": 566,
+					"width": 76,
+					"height": 12,
+					"stroke": "#000000",
+					"class": "Print_font",
+					"text": "date/time"
+				},
+				"Text4": {
+					"type": "text",
+					"top": 3,
+					"left": 649,
+					"width": 33,
+					"height": 12,
+					"stroke": "#000000",
+					"class": "Print_font",
+					"text": "Oper "
+				},
+				"QAorSupText": {
+					"type": "text",
+					"top": 3,
+					"left": 688,
+					"width": 33,
+					"height": 12,
+					"stroke": "#000000",
+					"class": "Print_font",
+					"text": "Supv "
+				},
+				"Line4": {
+					"type": "line",
+					"top": 0,
+					"left": 646,
+					"width": 1,
+					"height": 52,
+					"stroke": "#AAAAAA"
+				},
+				"Line5": {
+					"type": "line",
+					"top": 0,
+					"left": 685,
+					"width": 1,
+					"height": 52,
+					"stroke": "#AAAAAA"
+				},
+				"Field4": {
+					"type": "input",
+					"top": 19,
+					"left": 3,
+					"width": 24,
+					"height": 11,
+					"dataSource": "[LotSteps:22]LotStepNumber:2",
+					"dataSourceTypeHint": "number",
+					"stroke": "#000000",
+					"class": "PrintFontSmall",
+					"focusable": false,
+					"fill": "#FFFFFF",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"events": [
+						"onLoad",
+						"onValidate",
+						"onClick",
+						"onHeader",
+						"onPrintingBreak",
+						"onPrintingFooter",
+						"onDisplayDetail",
+						"onDataChange",
+						"onPrintingDetail"
+					]
+				},
+				"Field1": {
+					"type": "input",
+					"top": 19,
+					"left": 30,
+					"width": 532,
+					"height": 26,
+					"dataSource": "[LotSteps:22]StepDesc:3",
+					"stroke": "#000000",
+					"class": "Print_font",
+					"focusable": false,
+					"fill": "#FFFFFF",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"events": [
+						"onLoad",
+						"onValidate",
+						"onClick",
+						"onHeader",
+						"onPrintingBreak",
+						"onPrintingFooter",
+						"onDisplayDetail",
+						"onDataChange",
+						"onPrintingDetail"
+					]
+				},
+				"Variable1": {
+					"type": "input",
+					"top": 19,
+					"left": 565,
+					"width": 80,
+					"height": 13,
+					"dataSource": "sdateout",
+					"stroke": "#000000",
+					"class": "Print_font",
+					"focusable": false,
+					"fill": "#FFFFFF",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/Variable1.4dm",
+					"events": [
+						"onLoad",
+						"onValidate",
+						"onClick",
+						"onHeader",
+						"onPrintingBreak",
+						"onPrintingFooter",
+						"onDisplayDetail",
+						"onDataChange",
+						"onPrintingDetail"
+					]
+				},
+				"Field2": {
+					"type": "input",
+					"top": 19,
+					"left": 649,
+					"width": 35,
+					"height": 13,
+					"dataSource": "[LotSteps:22]Operator:10",
+					"stroke": "#000000",
+					"class": "Print_font",
+					"textAlign": "right",
+					"focusable": false,
+					"fill": "#FFFFFF",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"events": [
+						"onLoad",
+						"onValidate",
+						"onClick",
+						"onHeader",
+						"onPrintingBreak",
+						"onPrintingFooter",
+						"onDisplayDetail",
+						"onDataChange",
+						"onPrintingDetail"
+					]
+				},
+				"Field3": {
+					"type": "input",
+					"top": 19,
+					"left": 687,
+					"width": 37,
+					"height": 13,
+					"dataSource": "[LotSteps:22]Supervisor:11",
+					"stroke": "#000000",
+					"class": "Print_font",
+					"textAlign": "right",
+					"focusable": false,
+					"fill": "#FFFFFF",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"events": [
+						"onLoad",
+						"onValidate",
+						"onClick",
+						"onHeader",
+						"onPrintingBreak",
+						"onPrintingFooter",
+						"onDisplayDetail",
+						"onDataChange",
+						"onPrintingDetail"
+					]
+				}
+			}
+		}
+	],
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {},
+			"View 2": {},
+			"View 3": {},
+			"View 4": {},
+			"View 5": {},
+			"View 6": {},
+			"View 7": {},
+			"View 8": {},
+			"View 9": {}
+		}
+	}
+}

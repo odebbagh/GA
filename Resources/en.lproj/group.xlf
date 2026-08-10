@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+   <!--Translation file.This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="en">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="1" resname="entry.groups">
+               <source>Groups</source>
+               <target>Groups</target>
+            </trans-unit>
+            <trans-unit id="2" resname="entry.group">
+               <source>Group</source>
+               <target>Group</target>
+            </trans-unit>
+            <trans-unit id="3" resname="entry.group.field.name">
+               <source>Name</source>
+               <target>Name</target>
+            </trans-unit>
+            <trans-unit id="6" resname="entry.group.field.maxMember">
+               <source>max members</source>
+               <target>max members</target>
+            </trans-unit>
+            <trans-unit id="4" resname="entry.group.unit1">
+               <source>group</source>
+               <target>group</target>
+            </trans-unit>
+            <trans-unit id="5" resname="entry.group.unitN">
+               <source>groups</source>
+               <target>groups</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

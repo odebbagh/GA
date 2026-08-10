@@ -1,0 +1,384 @@
+﻿{
+	"destination": "detailScreen",
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "842pt",
+		"paperHeight": "595pt"
+	},
+	"pages": [
+		null,
+		{
+			"objects": {
+				"lb_periods": {
+					"type": "listbox",
+					"top": 0,
+					"left": 25,
+					"width": 628,
+					"height": 147,
+					"sizingX": "grow",
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"focusable": false,
+					"movableRows": false,
+					"dataSource": "Form:C1466.periods",
+					"currentItemSource": "Form:C1466.period",
+					"currentItemPositionSource": "Form:C1466.period_position",
+					"selectionMode": "single",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "automatic",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"method": "ObjectMethods/lb_periods.4dm",
+					"events": [
+						"onSelectionChange"
+					],
+					"columns": [
+						{
+							"name": "Column1",
+							"dataSource": "This:C1470.name",
+							"width": 174,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "Header1",
+								"text": ":xliff:period.label"
+							},
+							"footer": {
+								"name": "Footer1",
+								"timeFormat": "hh_mm_ss"
+							}
+						},
+						{
+							"name": "Column3",
+							"dataSource": "This:C1470.ranges",
+							"width": 368,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "Header3",
+								"text": ":xliff:workingRanges.label"
+							},
+							"footer": {
+								"name": "Footer3",
+								"timeFormat": "hh_mm_ss"
+							}
+						},
+						{
+							"name": "Column2",
+							"dataSource": "This:C1470.min",
+							"width": 86,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"dateFormat": "iso8601",
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "Header2",
+								"text": ":xliff:dateAndTime.minDuration"
+							},
+							"footer": {
+								"name": "Footer2",
+								"timeFormat": "hh_mm_ss"
+							}
+						}
+					]
+				},
+				"B_add": {
+					"type": "button",
+					"top": 17,
+					"left": 0,
+					"width": 21,
+					"height": 21,
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"focusable": false,
+					"text": "+",
+					"iconFrames": 4,
+					"style": "bevel",
+					"method": "ObjectMethods/B_add.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"B_delete": {
+					"type": "button",
+					"top": 37,
+					"left": 0,
+					"width": 21,
+					"height": 21,
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"focusable": false,
+					"text": "-",
+					"iconFrames": 4,
+					"style": "bevel",
+					"method": "ObjectMethods/B_delete.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"B_duplicate": {
+					"type": "button",
+					"top": 57,
+					"left": 0,
+					"width": 21,
+					"height": 21,
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"focusable": false,
+					"text": "D",
+					"iconFrames": 4,
+					"style": "bevel",
+					"method": "ObjectMethods/B_duplicate.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"label_period": {
+					"type": "text",
+					"top": 152,
+					"left": 25,
+					"width": 114,
+					"height": 13,
+					"visibility": "hidden",
+					"stroke": "#808080",
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"text": ":xliff:period.label"
+				},
+				"label_minDuration": {
+					"type": "text",
+					"top": 195,
+					"left": 25,
+					"width": 114,
+					"height": 13,
+					"visibility": "hidden",
+					"stroke": "#808080",
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"text": ":xliff:dateAndTime.minDuration"
+				},
+				"label_periodType": {
+					"type": "text",
+					"top": 174,
+					"left": 25,
+					"width": 114,
+					"height": 13,
+					"visibility": "hidden",
+					"stroke": "#808080",
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"text": ":xliff:period.type.label"
+				},
+				"Pup_period": {
+					"type": "button",
+					"top": 152,
+					"left": 146,
+					"width": 123,
+					"height": 18,
+					"visibility": "hidden",
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"focusable": false,
+					"text": "--period--",
+					"popupPlacement": "linked",
+					"style": "bevel",
+					"method": "ObjectMethods/Pup_period.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"Pup_subperiod": {
+					"type": "button",
+					"top": 152,
+					"left": 275,
+					"width": 129,
+					"height": 22,
+					"visibility": "hidden",
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"focusable": false,
+					"text": "--subperiod--",
+					"popupPlacement": "linked",
+					"style": "bevel",
+					"method": "ObjectMethods/Pup_subperiod.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"Pup_subperiodyear": {
+					"type": "button",
+					"top": 152,
+					"left": 275,
+					"width": 62,
+					"height": 18,
+					"visibility": "hidden",
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"focusable": false,
+					"text": "--subperiod--",
+					"popupPlacement": "linked",
+					"style": "bevel",
+					"method": "ObjectMethods/Pup_subperiodyear.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"Pup_subperiodmonth": {
+					"type": "button",
+					"top": 152,
+					"left": 343,
+					"width": 62,
+					"height": 18,
+					"visibility": "hidden",
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"focusable": false,
+					"text": "--subperiod--",
+					"popupPlacement": "linked",
+					"style": "bevel",
+					"method": "ObjectMethods/Pup_subperiodmonth.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"Pup_subperiodday": {
+					"type": "button",
+					"top": 152,
+					"left": 411,
+					"width": 62,
+					"height": 18,
+					"visibility": "hidden",
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"focusable": false,
+					"text": "--subperiod--",
+					"popupPlacement": "linked",
+					"style": "bevel",
+					"method": "ObjectMethods/Pup_subperiodday.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"Pup_duration": {
+					"type": "button",
+					"top": 194,
+					"left": 146,
+					"width": 123,
+					"height": 18,
+					"visibility": "hidden",
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"focusable": false,
+					"text": "--duration--",
+					"popupPlacement": "linked",
+					"style": "bevel",
+					"method": "ObjectMethods/Pup_duration.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"Pup_periodtype": {
+					"type": "button",
+					"top": 173,
+					"left": 146,
+					"width": 123,
+					"height": 18,
+					"visibility": "hidden",
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"focusable": false,
+					"text": "--periodType--",
+					"popupPlacement": "linked",
+					"style": "bevel",
+					"method": "ObjectMethods/Pup_periodtype.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"working_ranges_label": {
+					"type": "text",
+					"top": 223,
+					"left": 25,
+					"width": 114,
+					"height": 13,
+					"visibility": "hidden",
+					"stroke": "#808080",
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"text": ":xliff:workingRanges.label"
+				},
+				"working_ranges_pict": {
+					"type": "input",
+					"top": 217,
+					"left": 147,
+					"width": 480,
+					"height": 22,
+					"dataSourceTypeHint": "picture",
+					"focusable": false,
+					"enterable": false,
+					"hideFocusRing": true,
+					"contextMenu": "none",
+					"dragging": "custom",
+					"method": "ObjectMethods/working_ranges_pict.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"Pup_exception": {
+					"type": "button",
+					"top": 173,
+					"left": 275,
+					"width": 198,
+					"height": 18,
+					"visibility": "hidden",
+					"fontFamily": "System Font Regular",
+					"fontSize": 10,
+					"focusable": false,
+					"text": "--exception--",
+					"popupPlacement": "linked",
+					"style": "bevel",
+					"method": "ObjectMethods/Pup_exception.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		}
+	]
+}

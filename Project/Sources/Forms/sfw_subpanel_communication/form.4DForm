@@ -1,0 +1,155 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onClick",
+		"onDataChange",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"communication_bkgd": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 531,
+					"height": 302,
+					"fill": "#DEDEDE",
+					"stroke": "transparent"
+				}
+			}
+		},
+		{
+			"objects": {
+				"lb_communications": {
+					"type": "listbox",
+					"left": 0,
+					"top": 0,
+					"width": 463,
+					"height": 127,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"lockedColumnCount": 0,
+					"showHeaders": false,
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.lb_communications",
+					"scrollbarHorizontal": "hidden",
+					"borderStyle": "none",
+					"currentItemSource": "Form:C1466.communicationMean",
+					"currentItemPositionSource": "Form:C1466.communicationMeanPosition",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"fill": "#F6F6F6",
+					"alternateFill": "#FFFFFF",
+					"resizingMode": "legacy",
+					"columns": [
+						{
+							"header": {
+								"name": "Header1",
+								"text": "Header1"
+							},
+							"name": "col_icon",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.displayedIcon",
+							"enterable": false,
+							"width": 20,
+							"dataSourceTypeHint": "picture",
+							"pictureFormat": "truncatedCenter",
+							"minWidth": 20,
+							"maxWidth": 20,
+							"resizable": false
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Header2"
+							},
+							"name": "col_type",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "ds:C1482.sfw_readXliff(\"communication.\"+Replace string:C233(Lowercase:C14(This:C1470.displayedType); \" \"; \"\"); This:C1470.displayedType)",
+							"enterable": false,
+							"width": 100,
+							"minWidth": 100,
+							"maxWidth": 100,
+							"resizable": false
+						},
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Header3"
+							},
+							"name": "col_contact",
+							"footer": {
+								"name": "Footer3"
+							},
+							"dataSource": "This:C1470.contact",
+							"width": 200,
+							"minWidth": 150,
+							"maxWidth": 500
+						},
+						{
+							"header": {
+								"name": "Header4",
+								"text": "Header4"
+							},
+							"name": "col_comment",
+							"footer": {
+								"name": "Footer4"
+							},
+							"dataSource": "This:C1470.comment",
+							"width": 150,
+							"minWidth": 150
+						}
+					]
+				},
+				"bActions": {
+					"type": "button",
+					"text": "Actions...",
+					"top": 135,
+					"left": 6,
+					"width": 103,
+					"height": 19,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"focusable": false,
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right"
+				}
+			}
+		}
+	],
+	"geometryStamp": 20,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

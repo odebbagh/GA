@@ -1,0 +1,17 @@
+ {
+     "_requiered":["top","left","width","height"],
+     "top": "long",
+     "left": "long",
+     "width": "long;100",
+     "height": "long;20",
+     "fill": "text;lightgray",
+     "stroke": "text;grey",
+     "strokeWidth":"long;0,1",
+	 "visibility":"text;visible;hidden",
+     "borderRadius":"long;20",
+     "strokeDashArray": "text;1 3",
+     "_fillEven":"text;#e0e0e0",
+     "_fillOdd":"text;#eaeaea",
+	 "_strokeEven":"text;#e0e0e0",
+     "_strokeOdd":"text;#eaeaea"
+ }

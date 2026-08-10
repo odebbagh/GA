@@ -1,0 +1,35 @@
+﻿{
+	"ident": "versionReferenceRecords_serviceType",
+	"version": 1,
+	"stmp": 708860231,
+	"date": "2025-06-18",
+	"records": [
+		{
+			"UUID": "395630F836FB7445B8ECDD0779374B36",
+			"code": "MS",
+			"name": "Marking With Serialization",
+			"color": "#FFA500",
+			"leads": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Marking With Serialization"
+		},
+		{
+			"UUID": "81DCEAF2D68AB74EB60C1C771ABAB100",
+			"code": "SL",
+			"name": "Sealing",
+			"color": "#FF1493",
+			"leads": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Sealing"
+		},
+		{
+			"UUID": "D602B57F29977D41967F50F9375C604A",
+			"code": "LT",
+			"name": "Leak Test",
+			"color": "#FFFF00",
+			"leads": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Leak Test"
+		}
+	]
+}

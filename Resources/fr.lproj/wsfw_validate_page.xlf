@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="1" resname="wsfw.verificationNumber">
+               <source>Enter here the code communicated by email to this address</source>
+               <target>Saisissez ici le code communiqué par mail à l'adresse</target>
+            </trans-unit>
+            <trans-unit id="2" resname="wsfw.verificationCode">
+               <source>Verification code</source>
+               <target>Code de vérification</target>
+            </trans-unit>
+            <trans-unit id="3" resname="wsfw.validate">
+               <source>Validate</source>
+               <target>Valider</target>
+            </trans-unit>
+            <trans-unit id="4" resname="wsfw.wrongVerificationCode">
+               <source>THE CONFIRMATION CODE IS NOT CORRECT</source>
+               <target>LE CODE DE CONFIRMATION N'EST PAS CORRECT</target>
+            </trans-unit>
+            <trans-unit id="5" resname="wsfw.emailNotReceived">
+               <source>You haven't received the email ?</source>
+               <target>Vous n'avez pas reçu le mail ?</target>
+            </trans-unit>
+             <trans-unit id="5" resname="wsfw.sendVerificationCode">
+               <source>to resend a new number.</source>
+               <target>pour renvoyer un nouveau numéro.</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

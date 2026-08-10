@@ -1,0 +1,135 @@
+{
+    "consultationKinds": [
+        {
+            "UUID": "8A506D7DF0E24C2692C90BF46F3F29B0",
+            "name": "Médecine générale",
+            "nbMedicalStaff": 9,
+            "nbMedicalHouse": 5,
+            "exclusiveKind": true,
+            "schedule": {
+                "morning": {
+                    "work": [32400, 43200]
+                },
+                "afternoon": {
+                    "work": [50400, 64800]
+                },
+                "fullday": {
+                    "work": [27000, 45000, 50400, 57600]
+                }
+            }
+        }, {
+            "UUID": "E5609235EE6E4ED0ABA756A3805AE7B4",
+            "name": "Pédiatrie",
+            "nbMedicalStaff": 3,
+            "nbMedicalHouse": 4,
+            "exclusiveKind": true,
+            "minDuration": 1800,
+            "schedule": {
+                "morning": {
+                    "work": [32400, 43200]
+                },
+                "afternoon": {
+                    "work": [50400, 64800]
+                }
+            }
+        }, {
+            "UUID": "39DF5F11452446CD990AEC65C82A105D",
+            "name": "Assistance psychologique",
+            "nbMedicalStaff": 1,
+            "nbMedicalHouse": 3,
+            "exclusiveKind": true,
+            "minDuration": 3600,
+            "schedule": {
+                "fullday": {
+                    "work": [32400, 43200, 50400, 61200]
+                },
+                "fullday1": {
+                    "work": [32400, 43200, 50400, 57600]
+                }
+            }
+        }, {
+            "UUID": "7DD8D7E01491448DA2408733CFF51938",
+            "name": "Diététique",
+            "nbMedicalStaff": 2,
+            "nbMedicalHouse": 5,
+            "exclusiveKind": true,
+            "minDuration": 1800,
+            "schedule": {
+                "fullday": {
+                    "work": [32400, 43200, 50400, 64800]
+                },
+                "fullday1": {
+                    "work": [27000, 45000, 50400, 57600]
+                }
+            }
+        }, {
+            "UUID": "13DFD70875954DEC95DEFF7F5F242C1F",
+            "name": "Kinesithérapie",
+            "nbMedicalStaff": 3,
+            "nbMedicalHouse": 4,
+            "exclusiveKind": true,
+            "minDuration": 1800,
+            "schedule": {
+                "fullday": {
+                    "work": [27000, 45000, 50400, 57600]
+                },
+                "fullday1": {
+                    "work": [32400, 43200, 50400, 57600]
+                }
+            }
+        }, {
+            "UUID": "03F689B7BC2E400185C4CA4BB15E2904",
+            "name": "Ophthalmologie",
+            "nbMedicalStaff": 2,
+            "nbMedicalHouse": 2,
+            "exclusiveKind": true,
+            "minDuration": 1800,
+            "schedule": {
+                "fullday": {
+                    "work": [27000, 45000, 50400, 57600]
+                },
+                "fullday1": {
+                    "work": [32400, 43200, 50400, 57600]
+                }
+            }
+        }, {
+            "UUID": "81C66C576E0E4ED2941510DFB253BCC2",
+            "name": "Soins infirmiers",
+            "nbMedicalStaff": 5,
+            "exclusiveKind": true,
+            "schedule": {
+                "morning": {
+                    "work": [27000, 45000]
+                },
+                "afternoon": {
+                    "work": [50400, 64800]
+                }
+            }
+        }, {
+            "UUID": "A666A1DBDEF94465853202EF09B31E3E",
+            "name": "Sophrologie",
+            "nbMedicalStaff": 1,
+            "nbMedicalHouse": 1,
+            "exclusiveKind": true,
+            "minDuration": 3600,
+            "schedule": {
+                "fullday": {
+                    "work": [27000, 45000, 50400, 57600]
+                }
+            }
+        }, {
+            "UUID": "C008CE71DD38449BAAB751A42BC70984",
+            "name": "Vaccination",
+            "nbMedicalStaff": 20,
+            "nbMedicalHouse": 5,
+            "schedule": {
+                "morning": {
+                    "work": [27000, 45000]
+                },
+                "afternoon": {
+                    "work": [48600, 64800]
+                }
+            }
+        }
+    ]
+}

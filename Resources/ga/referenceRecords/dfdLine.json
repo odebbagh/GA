@@ -1,0 +1,2814 @@
+﻿{
+	"ident": "versionReferenceRecords_dfdLine",
+	"version": 1,
+	"stmp": 742292182,
+	"date": "2026-07-10",
+	"records": [
+		{
+			"UUID": "56A8BD00ED67410CB6E7629B3E0333EB",
+			"name": "LT - Header",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "picture_1",
+						"order": 1,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 10,
+							"left": 10,
+							"width": 120,
+							"height": 70,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/GA_logo.png"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_1",
+						"order": 2,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 90,
+							"left": 10,
+							"width": 170,
+							"height": 30,
+							"text": "44061 Old Warm Springs Blvd\rFremont, CA 94538\rTel: (408) 956-1010\r",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "dynPict_1",
+						"order": 3,
+						"properties": {
+							"type": "input",
+							"_origineType": "dynPict",
+							"top": 10,
+							"left": 150,
+							"width": 120,
+							"height": 24,
+							"dataSource": "##lotBarcode##",
+							"dataSourceTypeHint": "picture",
+							"pictureFormat": "scaled",
+							"borderStyle": "none",
+							"fill": "transparent",
+							"enterable": false,
+							"focusable": false,
+							"contextMenu": "none"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "input_1",
+						"order": 4,
+						"properties": {
+							"type": "input",
+							"_origineType": "dynPict",
+							"top": 36,
+							"left": 150,
+							"width": 120,
+							"height": 24,
+							"dataSource": "##jobBarcode##",
+							"dataSourceTypeHint": "picture",
+							"pictureFormat": "scaled",
+							"borderStyle": "none",
+							"fill": "transparent",
+							"enterable": false,
+							"focusable": false,
+							"contextMenu": "none"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "picture_2",
+						"order": 5,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 10,
+							"left": 330,
+							"width": 90,
+							"height": 90,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/iso_logo.png"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_4",
+						"order": 8,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 20,
+							"left": 430,
+							"width": 140,
+							"height": 80,
+							"text": "ISO 9001 Certified\r\rDLA QLM Listed\r\rDLA Commercial Lab Suitability\r\rITAR Registered",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_5",
+						"order": 9,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 130,
+							"left": 10,
+							"width": 100,
+							"height": 15,
+							"text": "Lot Traveler",
+							"fontFamily": "Helvetica",
+							"fontSize": 12,
+							"fontWeight": "bold"
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": [
+					{
+						"tag": "##lotBarcode##",
+						"objects": [
+							"dynPict_1"
+						]
+					},
+					{
+						"tag": "##jobBarcode##",
+						"objects": [
+							"input_1"
+						]
+					}
+				]
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - Header"
+		},
+		{
+			"UUID": "DDEBEFAD219C4EBE94D649C3EE8D331D",
+			"name": "LT - HAP",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "rectangle_1",
+						"order": 1,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 0,
+							"left": 0,
+							"width": 575,
+							"height": 70
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "picture_1",
+						"order": 2,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 13,
+							"left": 510,
+							"width": 50,
+							"height": 45,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/esd.png"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_2",
+						"order": 3,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 0,
+							"left": 0,
+							"width": 30,
+							"height": 70,
+							"fill": "lightgray"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_1",
+						"order": 4,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 5,
+							"left": 35,
+							"width": 50,
+							"height": 10,
+							"text": "Customer: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_2",
+						"order": 5,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 5,
+							"left": 90,
+							"width": 150,
+							"height": 10,
+							"text": "##customerName##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_3",
+						"order": 6,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 5,
+							"left": 250,
+							"width": 30,
+							"height": 10,
+							"text": "P.O #: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_4",
+						"order": 7,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 5,
+							"left": 280,
+							"width": 50,
+							"height": 10,
+							"text": "##PONumber##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_5",
+						"order": 8,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 5,
+							"left": 335,
+							"width": 35,
+							"height": 10,
+							"text": "Date In: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_6",
+						"order": 9,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 5,
+							"left": 375,
+							"width": 70,
+							"height": 10,
+							"text": "##dateIn##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_7",
+						"order": 10,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 20,
+							"left": 35,
+							"width": 110,
+							"height": 10,
+							"text": "NOTE: Our Lot Traveler No: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_8",
+						"order": 11,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 20,
+							"left": 150,
+							"width": 70,
+							"height": 10,
+							"text": "##lotNumber##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_9",
+						"order": 12,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 20,
+							"left": 225,
+							"width": 130,
+							"height": 10,
+							"text": "corresponds to Customer Lot No: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_10",
+						"order": 13,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 20,
+							"left": 360,
+							"width": 70,
+							"height": 10,
+							"text": "##customerLotNumber##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_11",
+						"order": 14,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 35,
+							"left": 35,
+							"width": 40,
+							"height": 10,
+							"text": "Process: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_12",
+						"order": 15,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 50,
+							"left": 35,
+							"width": 60,
+							"height": 10,
+							"text": "Original Count: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_13",
+						"order": 16,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 35,
+							"left": 70,
+							"width": 100,
+							"height": 10,
+							"text": "##process##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_14",
+						"order": 17,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 35,
+							"left": 175,
+							"width": 35,
+							"height": 10,
+							"text": "Device: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_15",
+						"order": 18,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 35,
+							"left": 205,
+							"width": 120,
+							"height": 10,
+							"text": "##devide##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_16",
+						"order": 19,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 35,
+							"left": 325,
+							"width": 40,
+							"height": 10,
+							"text": "Package: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_17",
+						"order": 20,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 35,
+							"left": 365,
+							"width": 60,
+							"height": 10,
+							"text": "##package##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_18",
+						"order": 21,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 35,
+							"left": 430,
+							"width": 50,
+							"height": 10,
+							"text": "Date Code:",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_19",
+						"order": 22,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 35,
+							"left": 475,
+							"width": 35,
+							"height": 10,
+							"text": "##dateCode##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_20",
+						"order": 23,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 50,
+							"left": 100,
+							"width": 60,
+							"height": 10,
+							"text": "##originalCount##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": [
+					{
+						"tag": "customerName",
+						"objects": [
+							"text_2"
+						]
+					},
+					{
+						"tag": "PONumber",
+						"objects": [
+							"text_4"
+						]
+					},
+					{
+						"tag": "dateIn",
+						"objects": [
+							"text_6"
+						]
+					},
+					{
+						"tag": "lotNumber",
+						"objects": [
+							"text_8"
+						]
+					},
+					{
+						"tag": "customerLotNumber",
+						"objects": [
+							"text_10"
+						]
+					},
+					{
+						"tag": "process",
+						"objects": [
+							"text_13"
+						]
+					},
+					{
+						"tag": "devide",
+						"objects": [
+							"text_15"
+						]
+					},
+					{
+						"tag": "package",
+						"objects": [
+							"text_17"
+						]
+					},
+					{
+						"tag": "dateCode",
+						"objects": [
+							"text_19"
+						]
+					},
+					{
+						"tag": "originalCount",
+						"objects": [
+							"text_20"
+						]
+					}
+				]
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - HAP"
+		},
+		{
+			"UUID": "C5985F638E6D46D4B287226A720BBAF5",
+			"name": "LT - SL",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "text_1",
+						"order": 1,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 0,
+							"left": 0,
+							"width": 50,
+							"height": 15,
+							"text": " ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": []
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - SL"
+		},
+		{
+			"UUID": "1B614D568A944EFF91A69217E434558F",
+			"name": "LT - Step",
+			"calculs": {
+				"rules": [
+					{
+						"rule": "line_1.bottom:=description.bottom+5"
+					},
+					{
+						"rule": "line_2.bottom:=description.bottom+5"
+					},
+					{
+						"rule": "line_3.bottom:=description.bottom+5"
+					},
+					{
+						"rule": "line_4.bottom:=description.bottom+5"
+					}
+				]
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "text_1",
+						"order": 1,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 5,
+							"left": 2,
+							"width": 26,
+							"height": "auto",
+							"text": "##this.order##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_4",
+						"order": 2,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 9,
+							"left": 278,
+							"width": 30,
+							"height": 13
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_5",
+						"order": 3,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 9,
+							"left": 307,
+							"width": 70,
+							"height": 13
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_6",
+						"order": 4,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 9,
+							"left": 376,
+							"width": 30,
+							"height": 13
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_7",
+						"order": 5,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 9,
+							"left": 405,
+							"width": 30,
+							"height": 13
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_8",
+						"order": 6,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 9,
+							"left": 434,
+							"width": 70,
+							"height": 13
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_9",
+						"order": 7,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 9,
+							"left": 503,
+							"width": 30,
+							"height": 13
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "picture_1",
+						"order": 8,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 8,
+							"left": 540,
+							"width": 33,
+							"height": 33,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/GA08.png"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_10",
+						"order": 9,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 20,
+							"left": 278,
+							"width": 30,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_11",
+						"order": 10,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 20,
+							"left": 307,
+							"width": 70,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_12",
+						"order": 11,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 20,
+							"left": 376,
+							"width": 30,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_13",
+						"order": 12,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 20,
+							"left": 405,
+							"width": 30,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_14",
+						"order": 13,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 20,
+							"left": 434,
+							"width": 70,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_15",
+						"order": 14,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 20,
+							"left": 503,
+							"width": 30,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_3",
+						"order": 15,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 10,
+							"left": 279,
+							"width": 29,
+							"height": 11,
+							"text": "qty in",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_4",
+						"order": 16,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 10,
+							"left": 308,
+							"width": 69,
+							"height": 11,
+							"text": "date/time in",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_5",
+						"order": 17,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 10,
+							"left": 377,
+							"width": 29,
+							"height": 11,
+							"text": "rejects",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_6",
+						"order": 18,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 10,
+							"left": 406,
+							"width": 29,
+							"height": 11,
+							"text": "qty out",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_7",
+						"order": 19,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 10,
+							"left": 435,
+							"width": 69,
+							"height": 11,
+							"text": "date/time out",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_8",
+						"order": 20,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 24,
+							"left": 504,
+							"width": 29,
+							"height": 11,
+							"text": "##this.operator##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_9",
+						"order": 21,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 24,
+							"left": 279,
+							"width": 29,
+							"height": 11,
+							"text": "##this.qtyIn##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_10",
+						"order": 22,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 24,
+							"left": 308,
+							"width": 69,
+							"height": 11,
+							"text": "##this.dateIn##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_11",
+						"order": 23,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 24,
+							"left": 377,
+							"width": 29,
+							"height": 11,
+							"text": "##this.rejects##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_12",
+						"order": 24,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 24,
+							"left": 406,
+							"width": 29,
+							"height": 11,
+							"text": "##this.qtyOut##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_13",
+						"order": 25,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 24,
+							"left": 435,
+							"width": 69,
+							"height": 11,
+							"text": "##this.dateOut##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_14",
+						"order": 26,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 10,
+							"left": 504,
+							"width": 29,
+							"height": 11,
+							"text": "oper",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "toolsBlock",
+						"order": 26,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 42,
+							"left": 279,
+							"width": 295,
+							"height": "auto",
+							"text": "##this.toolsBlock##",
+							"visibility": "##this.hasTools##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "description",
+						"order": 27,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 5,
+							"left": 31,
+							"width": 240,
+							"height": "auto",
+							"text": "##this.description##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_1",
+						"order": 28,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": -1,
+							"left": 0,
+							"width": 0,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_2",
+						"order": 31,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": -1,
+							"left": 29,
+							"width": 0,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_3",
+						"order": 32,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": -1,
+							"left": 275,
+							"width": 0,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_4",
+						"order": 33,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": -1,
+							"left": 574,
+							"width": 0,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": [
+					{
+						"tag": "this.order",
+						"objects": [
+							"text_1"
+						]
+					},
+					{
+						"tag": "this.operator",
+						"objects": [
+							"text_8"
+						]
+					},
+					{
+						"tag": "this.qtyIn",
+						"objects": [
+							"text_9"
+						]
+					},
+					{
+						"tag": "this.dateIn",
+						"objects": [
+							"text_10"
+						]
+					},
+					{
+						"tag": "this.rejects",
+						"objects": [
+							"text_11"
+						]
+					},
+					{
+						"tag": "this.qtyOut",
+						"objects": [
+							"text_12"
+						]
+					},
+					{
+						"tag": "this.dateOut",
+						"objects": [
+							"text_13"
+						]
+					},
+					{
+						"tag": "this.description",
+						"objects": [
+							"description"
+						]
+					},
+					{
+						"tag": "this.toolsBlock",
+						"objects": [
+							"toolsBlock"
+						]
+					},
+					{
+						"tag": "this.hasTools",
+						"objects": [
+							"toolsBlock"
+						]
+					}
+				]
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - Step"
+		},
+		{
+			"UUID": "14D8DBF0EDAE4CF8AA240D3E05795E9B",
+			"name": "LT - Binning",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "text_1",
+						"order": 1,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 2,
+							"left": 300,
+							"width": 40,
+							"height": 15,
+							"text": "##this.leftBinTitle##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_1",
+						"order": 2,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 0,
+							"left": 345,
+							"width": 35,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_2",
+						"order": 3,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 2,
+							"left": 350,
+							"width": 30,
+							"height": 15,
+							"text": "##this.leftBinValue##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_3",
+						"order": 4,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 2,
+							"left": 390,
+							"width": 40,
+							"height": 15,
+							"text": "##this.centerBinTitle##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_2",
+						"order": 5,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 0,
+							"left": 435,
+							"width": 35,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_4",
+						"order": 6,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 2,
+							"left": 440,
+							"width": 30,
+							"height": 15,
+							"text": "##this.centerBinValue##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_5",
+						"order": 7,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 2,
+							"left": 480,
+							"width": 40,
+							"height": 15,
+							"text": "##this.rightBinTitle##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_3",
+						"order": 8,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 0,
+							"left": 525,
+							"width": 35,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_6",
+						"order": 9,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 2,
+							"left": 530,
+							"width": 30,
+							"height": 15,
+							"text": "##this.rightBinValue##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_2",
+						"order": 10,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 0,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_1",
+						"order": 11,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 29,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_3",
+						"order": 13,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 275,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_4",
+						"order": 14,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 574,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": [
+					{
+						"tag": "this.leftBinTitle",
+						"objects": [
+							"text_1"
+						]
+					},
+					{
+						"tag": "this.leftBinValue",
+						"objects": [
+							"text_2"
+						]
+					},
+					{
+						"tag": "this.centerBinTitle",
+						"objects": [
+							"text_3"
+						]
+					},
+					{
+						"tag": "this.centerBinValue",
+						"objects": [
+							"text_4"
+						]
+					},
+					{
+						"tag": "this.rightBinTitle",
+						"objects": [
+							"text_5"
+						]
+					},
+					{
+						"tag": "this.rightBinValue",
+						"objects": [
+							"text_6"
+						]
+					}
+				]
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - Binning"
+		},
+		{
+			"UUID": "362D45B1D7094A4A8B9EDAD13A73A2FC",
+			"name": "LT - DT1Col",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "rectangle_1",
+						"order": 1,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 0,
+							"left": 280,
+							"width": 280,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_1",
+						"order": 2,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 3,
+							"left": 285,
+							"width": 270,
+							"height": 15,
+							"text": "##this.col1##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": [
+					{
+						"tag": "this.col1",
+						"objects": [
+							"text_1"
+						]
+					}
+				]
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - DT1Col"
+		},
+		{
+			"UUID": "0AA429F5ADD047B4885A1225734D2B05",
+			"name": "LT - DT2Col",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "rectangle_1",
+						"order": 1,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": -2,
+							"left": 280,
+							"width": 141,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_1",
+						"order": 2,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 3,
+							"left": 285,
+							"width": 130,
+							"height": 15,
+							"text": "##this.col1##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_2",
+						"order": 3,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": -2,
+							"left": 420,
+							"width": 140,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_2",
+						"order": 4,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 3,
+							"left": 425,
+							"width": 130,
+							"height": 15,
+							"text": "##this.col2##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_1",
+						"order": 5,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": -2,
+							"left": 275,
+							"width": 0,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_2",
+						"order": 6,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": -2,
+							"left": 574,
+							"width": 0,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_3",
+						"order": 7,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": -2,
+							"left": 29,
+							"width": 0,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_4",
+						"order": 8,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": -2,
+							"left": 0,
+							"width": 0,
+							"height": 20
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": [
+					{
+						"tag": "this.col1",
+						"objects": [
+							"text_1"
+						]
+					},
+					{
+						"tag": "this.col2",
+						"objects": [
+							"text_2"
+						]
+					}
+				]
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - DT2Col"
+		},
+		{
+			"UUID": "1746315638DC4EF69927EB5D629B64C2",
+			"name": "LT - DT2Col Header",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "rectangle_1",
+						"order": 1,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 20,
+							"left": 280,
+							"width": 141,
+							"height": 20,
+							"fill": "lightgray"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_1",
+						"order": 2,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 23,
+							"left": 285,
+							"width": 130,
+							"height": 15,
+							"text": "##this.col1##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "rectangle_2",
+						"order": 3,
+						"properties": {
+							"type": "rectangle",
+							"_origineType": "rectangle",
+							"top": 20,
+							"left": 420,
+							"width": 140,
+							"height": 20,
+							"fill": "lightgray"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_2",
+						"order": 4,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 23,
+							"left": 425,
+							"width": 130,
+							"height": 15,
+							"text": "##this.col2##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9,
+							"textAlign": "center"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_3",
+						"order": 5,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 0,
+							"left": 280,
+							"width": 100,
+							"height": 15,
+							"text": "##this.dataTableLabel##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_1",
+						"order": 6,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": -2,
+							"left": 0,
+							"width": 0,
+							"height": 42
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_2",
+						"order": 7,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": -2,
+							"left": 29,
+							"width": 0,
+							"height": 42
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_3",
+						"order": 8,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": -2,
+							"left": 275,
+							"width": 0,
+							"height": 42
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_4",
+						"order": 9,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": -2,
+							"left": 574,
+							"width": 0,
+							"height": 42
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": [
+					{
+						"tag": "this.col1",
+						"objects": [
+							"text_1"
+						]
+					},
+					{
+						"tag": "this.col2",
+						"objects": [
+							"text_2"
+						]
+					},
+					{
+						"tag": "this.dataTableLabel",
+						"objects": [
+							"text_3"
+						]
+					}
+				]
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - DT2Col Header"
+		},
+		{
+			"UUID": "FBCC5DA2DEE14CB7A1F570A8F64941B9",
+			"name": "LT - Binning Header",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "text_1",
+						"order": 1,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 2,
+							"left": 300,
+							"width": 100,
+							"height": 15,
+							"text": "##this.binningHeader##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_2",
+						"order": 10,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 0,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_1",
+						"order": 11,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 29,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_3",
+						"order": 13,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 275,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_4",
+						"order": 14,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 574,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": [
+					{
+						"tag": "this.binningHeader",
+						"objects": [
+							"text_1"
+						]
+					}
+				]
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - Binning Header"
+		},
+		{
+			"UUID": "C4E8F1A2B3D5467091ABCDEF234567890",
+			"name": "LT - Tools",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "text_value",
+						"order": 1,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 2,
+							"left": 279,
+							"width": 295,
+							"height": 15,
+							"text": "##this.toolText##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_1",
+						"order": 2,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 0,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_2",
+						"order": 3,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 29,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_3",
+						"order": 4,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 275,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_4",
+						"order": 5,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 574,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": [
+					{
+						"tag": "this.toolText",
+						"objects": [
+							"text_value"
+						]
+					}
+				]
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - Tools"
+		},
+		{
+			"UUID": "D5F9A2B3C4E6478092BCDEF3456789012",
+			"name": "LT - Tools Header",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "text_label",
+						"order": 1,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 2,
+							"left": 279,
+							"width": 295,
+							"height": 15,
+							"text": "##this.toolsHeader##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_1",
+						"order": 2,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 0,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_2",
+						"order": 3,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 29,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_3",
+						"order": 4,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 275,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_4",
+						"order": 5,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 574,
+							"width": 0,
+							"height": 25
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": [
+					{
+						"tag": "this.toolsHeader",
+						"objects": [
+							"text_label"
+						]
+					}
+				]
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - Tools Header"
+		},
+		{
+			"UUID": "886778AA3AD84BE7A62E41E4E4FD3F51",
+			"name": "LT - Step Footer",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "line_bottom",
+						"order": 1,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 0,
+							"left": 0,
+							"width": 574,
+							"height": 0
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": []
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - Step Footer"
+		},
+		{
+			"UUID": "8FD632BCFE0B42858396874085F4C15C",
+			"name": "LT - Page Footer",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "text_1",
+						"order": 1,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 0,
+							"left": 0,
+							"width": 450,
+							"height": 15,
+							"text": "Golden Altos Corporation certifies that all processing has been in accordance with the purchase order and/or the methods specified above.",
+							"fontFamily": "Helvetica",
+							"fontSize": 7
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_2",
+						"order": 2,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 20,
+							"left": 0,
+							"width": 480,
+							"height": 15,
+							"text": "CONFIDENTIAL. For the exclusive use of the customer named herein. Please destroy or return to sender immediately if you are not the customer named.",
+							"fontFamily": "Helvetica",
+							"fontSize": 7,
+							"fill": "white",
+							"fontStyle": "none",
+							"stroke": "red"
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": []
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LT - Page Footer"
+		},
+		{
+			"UUID": "8B314174C2FD464182110CA7BB11BD30",
+			"name": "PLT - Header All Pages",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "picture_1",
+						"order": 1,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 10,
+							"left": 10,
+							"width": 120,
+							"height": 70,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/GA_logo.png"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "picture_2",
+						"order": 2,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 10,
+							"left": 300,
+							"width": 120,
+							"height": 70,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/itar.png"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "picture_3",
+						"order": 3,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 20,
+							"left": 520,
+							"width": 45,
+							"height": 50,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/esd.png"
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": []
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "PLT - Header All Pages"
+		},
+		{
+			"UUID": "D4A245CF6F094DC4B482720D32B1399A",
+			"name": "PLT - Header First Page",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "picture_1",
+						"order": 1,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 10,
+							"left": 10,
+							"width": 120,
+							"height": 70,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/GA_logo.png"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "picture_2",
+						"order": 2,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 10,
+							"left": 300,
+							"width": 120,
+							"height": 70,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/itar.png"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "picture_3",
+						"order": 3,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 20,
+							"left": 520,
+							"width": 45,
+							"height": 50,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/esd.png"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_1",
+						"order": 4,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 90,
+							"left": 0,
+							"width": 574,
+							"height": 0
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": []
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "PLT - Header First Page"
+		},
+		{
+			"UUID": "FD57362B4C2447ADA3FA33881CF53CF8",
+			"name": "LTP - Header First Page",
+			"calculs": {
+				"rules": []
+			},
+			"objectsForm": {
+				"objects": [
+					{
+						"name": "picture_1",
+						"order": 1,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 20,
+							"left": 510,
+							"width": 50,
+							"height": 45,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/esd.png"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_1",
+						"order": 2,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 90,
+							"left": 0,
+							"width": 50,
+							"height": 10,
+							"text": "Customer: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_2",
+						"order": 3,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 90,
+							"left": 55,
+							"width": 150,
+							"height": 10,
+							"text": "##customerName##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_3",
+						"order": 4,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 90,
+							"left": 215,
+							"width": 30,
+							"height": 10,
+							"text": "P.O #: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_4",
+						"order": 5,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 90,
+							"left": 245,
+							"width": 50,
+							"height": 10,
+							"text": "##PONumber##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_5",
+						"order": 6,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 90,
+							"left": 300,
+							"width": 35,
+							"height": 10,
+							"text": "Date In: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_6",
+						"order": 7,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 90,
+							"left": 340,
+							"width": 70,
+							"height": 10,
+							"text": "##dateIn##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_7",
+						"order": 8,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 105,
+							"left": 0,
+							"width": 110,
+							"height": 10,
+							"text": "NOTE: Our Lot Traveler No: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_8",
+						"order": 9,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 105,
+							"left": 115,
+							"width": 70,
+							"height": 10,
+							"text": "##lotNumber##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_9",
+						"order": 10,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 105,
+							"left": 190,
+							"width": 130,
+							"height": 10,
+							"text": "corresponds to Customer Lot No: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_10",
+						"order": 11,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 105,
+							"left": 325,
+							"width": 70,
+							"height": 10,
+							"text": "##customerLotNumber##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_11",
+						"order": 12,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 120,
+							"left": 0,
+							"width": 40,
+							"height": 10,
+							"text": "Process: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_12",
+						"order": 13,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 135,
+							"left": 0,
+							"width": 60,
+							"height": 10,
+							"text": "Original Count: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_13",
+						"order": 14,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 120,
+							"left": 40,
+							"width": 100,
+							"height": 10,
+							"text": "##process##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_14",
+						"order": 15,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 120,
+							"left": 140,
+							"width": 35,
+							"height": 10,
+							"text": "Device: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_15",
+						"order": 16,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 120,
+							"left": 170,
+							"width": 120,
+							"height": 10,
+							"text": "##devide##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_16",
+						"order": 17,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 120,
+							"left": 300,
+							"width": 40,
+							"height": 10,
+							"text": "Package: ",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_17",
+						"order": 18,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 120,
+							"left": 340,
+							"width": 60,
+							"height": 10,
+							"text": "##package##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_18",
+						"order": 19,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 120,
+							"left": 410,
+							"width": 50,
+							"height": 10,
+							"text": "Date Code:",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_19",
+						"order": 20,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 120,
+							"left": 460,
+							"width": 35,
+							"height": 10,
+							"text": "##dateCode##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "text_20",
+						"order": 21,
+						"properties": {
+							"type": "text",
+							"_origineType": "text",
+							"top": 135,
+							"left": 65,
+							"width": 60,
+							"height": 10,
+							"text": "##originalCount##",
+							"fontFamily": "Helvetica",
+							"fontSize": 9
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "picture_2",
+						"order": 22,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 10,
+							"left": 10,
+							"width": 120,
+							"height": 60,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/GA_Logo.png"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "picture_3",
+						"order": 23,
+						"properties": {
+							"type": "picture",
+							"_origineType": "picture",
+							"top": 10,
+							"left": 350,
+							"width": 120,
+							"height": 60,
+							"pictureFormat": "scaled",
+							"picture": "/RESOURCES/image/modeles/itar.png"
+						},
+						"pict": "[object Picture]"
+					},
+					{
+						"name": "line_1",
+						"order": 24,
+						"properties": {
+							"type": "line",
+							"_origineType": "line",
+							"top": 80,
+							"left": 0,
+							"width": 574,
+							"height": 0
+						},
+						"pict": "[object Picture]"
+					}
+				]
+			},
+			"variableItems": {
+				"tags": [
+					{
+						"tag": "customerName",
+						"objects": [
+							"text_2"
+						]
+					},
+					{
+						"tag": "PONumber",
+						"objects": [
+							"text_4"
+						]
+					},
+					{
+						"tag": "dateIn",
+						"objects": [
+							"text_6"
+						]
+					},
+					{
+						"tag": "lotNumber",
+						"objects": [
+							"text_8"
+						]
+					},
+					{
+						"tag": "customerLotNumber",
+						"objects": [
+							"text_10"
+						]
+					},
+					{
+						"tag": "process",
+						"objects": [
+							"text_13"
+						]
+					},
+					{
+						"tag": "devide",
+						"objects": [
+							"text_15"
+						]
+					},
+					{
+						"tag": "package",
+						"objects": [
+							"text_17"
+						]
+					},
+					{
+						"tag": "dateCode",
+						"objects": [
+							"text_19"
+						]
+					},
+					{
+						"tag": "originalCount",
+						"objects": [
+							"text_20"
+						]
+					}
+				]
+			},
+			"moreData": {
+				"settings": {
+					"format": "A4",
+					"orientation": "portrait"
+				}
+			},
+			"nameInWindowTitle": "LTP - Header First Page"
+		}
+	]
+}

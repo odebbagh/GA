@@ -1,0 +1,159 @@
+{
+    "activities": [
+        {
+            "UUID": "C97874085AC941A29DE78C54DFB27344",
+            "name": "Aerobic",
+            "nbCoach": 3,
+            "nbMedicalHouse": 5,
+            "minDuration": 1800,
+            "exclusiveActivity": true,
+            "schedule": {
+                "morning": {
+                    "work": [32400, 43200]
+                },
+                "afternoon": {
+                    "work": [50400, 64800]
+                },
+                "fullday": {
+                    "work": [27000, 45000, 50400, 57600]
+                }
+            }
+        },
+        {
+            "UUID": "B6ECD12B6CC5414F9BD82B82F6AD09FF",
+            "name": "Dance",
+            "nbCoach": 3,
+            "nbMedicalHouse": 4,
+            "minDuration": 1800,
+            "exclusiveActivity": true,
+            "schedule": {
+                "fullday": {
+                    "work": [27000, 45000, 50400, 57600]
+                }
+            }
+        },
+        {
+            "UUID": "8F81D8CC2DEF4909ADC455473BA20EEF",
+            "name": "Marche nordique",
+            "nbCoach": 2,
+            "nbMedicalHouse": 3,
+            "minDuration": 7200,
+            "exclusiveActivity": true,
+            "schedule": {
+                "morning": {
+                    "work": [27000, 45000]
+                },
+                "afternoon": {
+                    "work": [48600, 64800]
+                }
+            }
+        },
+        {
+            "UUID": "213B86CFDF6347D09318153D7530114E",
+            "name": "Meditation",
+            "nbCoach": 2,
+            "nbMedicalHouse": 2,
+            "minDuration": 3600,
+            "exclusiveActivity": true,
+            "schedule": {
+                "fullday": {
+                    "work": [27000, 45000, 50400, 57600]
+                }
+            }
+        },
+        {
+            "UUID": "C546216CE0E74B93854A6DBCF217D97D",
+            "name": "Pilates",
+            "nbCoach": 1,
+            "nbMedicalHouse": 3,
+            "exclusiveActivity": true,
+            "schedule": {
+                "morning": {
+                    "work": [27000, 45000]
+                },
+                "afternoon": {
+                    "work": [48600, 64800]
+                }
+            }
+        },
+        {
+            "UUID": "A3CF3A246DBF44A69197905FAB297D27",
+            "name": "Qi Gong",
+            "nbCoach": 2,
+            "nbMedicalHouse": 5,
+            "exclusiveActivity": true,
+            "schedule": {
+                "morning": {
+                    "work": [21600, 32400]
+                }
+            }
+        },
+        {
+            "UUID": "B9C10EFB1E6E4919A31FFA902AE5D57E",
+            "name": "Relaxation",
+            "nbCoach": 3,
+            "nbMedicalHouse": 4,
+            "minDuration": 1800,
+            "exclusiveActivity": true,
+            "schedule": {
+                "fullday": {
+                    "work": [27000, 45000, 50400, 57600]
+                }
+            }
+        },
+        {
+            "UUID": "E4F1331572F44E688130FE97422798DC",
+            "name": "Tai-Chi",
+            "nbCoach": 1,
+            "nbMedicalHouse": 1,
+            "minDuration": 1800,
+            "exclusiveActivity": true,
+            "schedule": {
+                "morning": {
+                    "work": [21600, 32400]
+                }
+            }
+        },
+        {
+            "UUID": "932669988A5D416E8902ACB669B15B53",
+            "name": "Taïso",
+            "nbCoach": 3,
+            "nbMedicalHouse": 3,
+            "minDuration": 1800,
+            "exclusiveActivity": true,
+            "schedule": {
+                "fullday": {
+                    "work": [27000, 45000, 50400, 57600]
+                },
+                "fullday1": {
+                    "work": [32400, 43200, 50400, 57600]
+                }
+            }
+        },
+        {
+            "UUID": "E75917028D5D40DCB9611CCD4D619DA2",
+            "name": "Yoga",
+            "nbCoach": 2,
+            "minDuration": 1800,
+            "exclusiveActivity": true,
+            "schedule": {
+                "fullday": {
+                    "work": [27000, 45000, 50400, 57600]
+                }
+            }
+        },
+        {
+            "UUID": "C5B7B254B05741289A2B8242D46F5C63",
+            "name": "Zumba",
+            "nbCoach": 20,
+            "nbMedicalHouse": 5,
+            "minDuration": 1800,
+            "exclusiveActivity": true,
+            "schedule": {
+                "fullday": {
+                    "work": [27000, 45000, 50400, 57600]
+                }
+            }
+        }
+    ]
+}

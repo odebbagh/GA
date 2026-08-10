@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+   <!--Translation file.This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="en">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="flyerCoach">
+            <trans-unit id="2" resname="flyerCoach.yogaTitleIntro">
+               <source>Reduce Anxiety &amp; Stress through Yoga Practice.</source>
+               <target>Reduce Anxiety &amp; Stress through Yoga Practice.</target>
+            </trans-unit>
+            <trans-unit id="7" resname="flyerCoach.yogaRequirments">
+               <source>Things You Need for Yoga: </source>
+               <target>Things You Need for Yoga: </target>
+            </trans-unit>
+            <trans-unit id="7" resname="flyerCoach.workingDaysExcept">
+               <source>Everyday except </source>
+               <target>Everyday except </target>
+            </trans-unit>
+            <trans-unit id="8" resname="flyerCoach.workingDaysOnly">
+               <source>Only </source>
+               <target>Only </target>
+            </trans-unit>
+            <trans-unit id="9" resname="flyerCoach.workingDaysEvery">
+               <source>Join us every: </source>
+               <target>Join us every: </target>
+            </trans-unit>
+            <trans-unit id="10" resname="flyerCoach.workingDaysLast">
+               <source>Last for at least: </source>
+               <target>Last for at least: </target>
+            </trans-unit>
+            <trans-unit id="7" resname="flyerCoach.yogaRequirmentsDetails">
+               <source>For hundreds or even thousands of years, there was no yoga equipment. Practicing yoga required only your body, mind, and spirit. And while that's still all you need, we still offer straps, blocks, and other props for you to use.</source>
+               <target>For hundreds or even thousands of years, there was no yoga equipment. Practicing yoga required only your body, mind, and spirit. And while that's still all you need, we still offer straps, blocks, and other props for you to use.</target>
+            </trans-unit>
+            <trans-unit id="8" resname="flyerCoach.danceAbout">
+               <source>About </source>
+               <target>About </target>
+            </trans-unit>
+            <trans-unit id="9" resname="flyerCoach.avblProgm">
+               <source>Available Programs:</source>
+               <target>Available Programs:</target>
+            </trans-unit>
+            <trans-unit id="10" resname="flyerCoach.danceIntro">
+               <source>We make this fun and rewarding physical activity available to a wider audience by ensuring that all programs we offer give you the best bang for your buck.</source>
+               <target>We make this fun and rewarding physical activity available to a wider audience by ensuring that all programs we offer give you the best bang for your buck.</target>
+            </trans-unit>
+            <trans-unit id="11" resname="flyerCoach.danceFacilities">
+               <source>Well Kept Dance Facilities:</source>
+               <target>Well Kept Dance Facilities:</target>
+            </trans-unit>
+            <trans-unit id="12" resname="flyerCoach.danceFacilitiesDescription">
+               <source>We have some of the best dancing facilities in the whole state. These facilities include personal lockers with padlocks &amp; keys, shower rooms, dance rooms with mirror, ballet bars and hardwood floors, cafeteria and snack bar, free water station and 24 hour security system.</source>
+               <target>We have some of the best dancing facilities in the whole state. These facilities include personal lockers with padlocks &amp; keys, shower rooms, dance rooms with mirror, ballet bars and hardwood floors, cafeteria and snack bar, free water station and 24 hour security system.</target>
+            </trans-unit>
+            <trans-unit id="13" resname="flyerCoach.yogaHeaderSlogan">
+               <source>EXPERIENCE TRANQUILITY AND BLISS</source>
+               <target>EXPERIENCE TRANQUILITY AND BLISS</target>
+            </trans-unit>
+            <trans-unit id="14" resname="flyerCoach.yogaMidSlogan">
+               <source>RESTORE LIFE AND BALANCE</source>
+               <target>RESTORE LIFE AND BALANCE</target>
+            </trans-unit>
+            <trans-unit id="15" resname="flyerCoach.danceSlogan">
+               <source>Get Moving and Dance With Us!</source>
+               <target>Get Moving and Dance With Us!</target>
+            </trans-unit>
+            <trans-unit id="16" resname="flyerCoach.danceStudioName">
+               <source>Dance Studio</source>
+               <target>Dance Studio</target>
+            </trans-unit>
+            <trans-unit id="17" resname="flyerCoach.danceMidSlogan">
+               <source>Leave
+Your Mark
+On The
+Dance Floor</source>
+               <target>Leave
+Your Mark
+On The
+Dance Floor</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

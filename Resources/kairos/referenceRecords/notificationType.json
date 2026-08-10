@@ -1,0 +1,48 @@
+﻿{
+	"ident": "versionReferenceRecords_notificationType",
+	"version": 1,
+	"stmp": 696256708,
+	"date": "2025-01-23",
+	"records": [
+		{
+			"UUID": "45A6D71CFD19B74E829C8B9760FC4C23",
+			"ident": "TSKAssigned",
+			"label": "Task Assigned",
+			"description": "Sent when a task is assigned to a user",
+			"moreData": {},
+			"active": false,
+			"notifications": "[object EntityCollection]",
+			"nameInWindowTitle": "Task Assigned"
+		},
+		{
+			"UUID": "774F2CA8F7015F43B23FE4343A3AE58C",
+			"ident": "TSKCompeted",
+			"label": "Task Completed",
+			"description": "Sent When A Task Is Marked As Completed",
+			"moreData": {},
+			"active": true,
+			"notifications": "[object EntityCollection]",
+			"nameInWindowTitle": "Task Completed"
+		},
+		{
+			"UUID": "4CE005C3BA63B44CB8924CC8C530ED07",
+			"ident": "PRJCreated",
+			"label": "Project Created",
+			"description": "Sent when a new project is created",
+			"moreData": {},
+			"active": false,
+			"notifications": "[object EntityCollection]",
+			"nameInWindowTitle": "Project Created"
+		},
+		{
+			"UUID": "9A90281F94F40E4FAEE7EBBFFACA938D",
+			"ident": "CMTAdded",
+			"label": "Comment Added",
+			"description": "Sent when a comment is added to a task or project",
+			"moreData": {},
+			"active": false,
+			"notifications": "[object EntityCollection]",
+			"nameInWindowTitle": "Comment Added"
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+    "tableDataSource": "Form.current_item.team.teamMembers",
+    "columns": [{
+            "check": true,
+            "header": "Name",
+            "source": "This.item.name"
+        }, {
+            "check": true,
+            "header": "Title",
+            "source": "This.item.title"
+        }
+    ]
+}

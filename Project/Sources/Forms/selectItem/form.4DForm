@@ -1,0 +1,136 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"lb_items": {
+					"type": "listbox",
+					"left": 0,
+					"top": 37,
+					"width": 355,
+					"height": 216,
+					"events": [
+						"onDoubleClick",
+						"onDataChange",
+						"onSelectionChange",
+						"onHeaderClick"
+					],
+					"showHeaders": false,
+					"selectionMode": "single",
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.lb_items",
+					"currentItemSource": "Form:C1466.item",
+					"focusable": false,
+					"scrollbarVertical": "automatic",
+					"scrollbarHorizontal": "hidden",
+					"method": "ObjectMethods/lb_items.4dm",
+					"alternateFill": "#F1F1F1",
+					"borderStyle": "none",
+					"hideExtraBlankRows": false,
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"columns": [
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Customer Code",
+								"textAlign": "automatic"
+							},
+							"name": "Column3",
+							"dataSource": "This:C1470.value",
+							"width": 350,
+							"footer": {
+								"name": "Footer3"
+							}
+						}
+					]
+				},
+				"searchbox_roundRectangle1": {
+					"type": "rectangle",
+					"top": 8,
+					"left": 5,
+					"width": 350,
+					"height": 27,
+					"sizingX": "move",
+					"stroke": "#008B8B",
+					"borderRadius": 16,
+					"fill": "#EDEDED",
+					"strokeWidth": 3
+				},
+				"Image7": {
+					"type": "picture",
+					"top": 13,
+					"left": 19,
+					"width": 16,
+					"height": 16,
+					"sizingX": "move",
+					"pictureFormat": "scaled",
+					"picture": "/RESOURCES/image/logo/loupe.png"
+				},
+				"search": {
+					"type": "input",
+					"top": 13,
+					"left": 42,
+					"width": 287,
+					"height": 17,
+					"sizingX": "move",
+					"dataSource": "",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"hideFocusRing": true,
+					"placeholder": "search...",
+					"dragging": "none",
+					"dropping": "custom",
+					"method": "ObjectMethods/search.4dm",
+					"events": [
+						"onBeforeKeystroke",
+						"onDataChange",
+						"onAfterKeystroke",
+						"onAfterEdit"
+					]
+				}
+			}
+		}
+	],
+	"geometryStamp": 99,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"rightMargin": 0,
+	"method": "method.4dm"
+}

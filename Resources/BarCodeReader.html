@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="quagga.js"></script>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; padding: 15px; }
+        #result-box { 
+            padding: 10px; border: 2px solid #007bff; background: white;
+            min-height: 40px; word-break: break-all; font-weight: bold;
+        }
+        #preview-img { max-width: 400px; display: block; margin-bottom: 10px; border: 1px solid #ccc; }
+        #preview-canvas { display: none; }
+    </style>
+</head>
+<body>
+    <div id="status">Statut : En attente...</div>
+    <img id="preview-img" src="" style="display:none;"/>
+    <canvas id="preview-canvas"></canvas>
+    
+    <div id="result-box" data-status="waiting"></div>
+
+    <script>
+        function preprocessImage(base64Image) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.getElementById('preview-canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Optimiser la taille - idéal entre 400-800px pour Quagga
+                    const maxWidth = 600;
+                    const maxHeight = 600;
+                    let width = img.width;
+                    let height = img.height;
+                    
+                    // Redimensionner si nécessaire
+                    if (width > maxWidth || height > maxHeight) {
+                        const ratio = Math.min(maxWidth / width, maxHeight / height);
+                        width = width * ratio;
+                        height = height * ratio;
+                    }
+                    
+                    canvas.width = width;
+                    canvas.height = height;
+                    
+                    // Dessiner l'image
+                    ctx.drawImage(img, 0, 0, width, height);
+                    
+                    // Améliorer le contraste (optionnel)
+                    const imageData = ctx.getImageData(0, 0, width, height);
+                    const data = imageData.data;
+                    
+                    // Augmenter le contraste légèrement
+                    for(let i = 0; i < data.length; i += 4) {
+                        const avg = (data[i] + data[i+1] + data[i+2]) / 3;
+                        data[i] = data[i] < 128 ? Math.max(0, data[i] - 30) : Math.min(255, data[i] + 30);
+                        data[i+1] = data[i+1] < 128 ? Math.max(0, data[i+1] - 30) : Math.min(255, data[i+1] + 30);
+                        data[i+2] = data[i+2] < 128 ? Math.max(0, data[i+2] - 30) : Math.min(255, data[i+2] + 30);
+                    }
+                    
+                    ctx.putImageData(imageData, 0, 0);
+                    
+                    // Retourner l'image traitée
+                    resolve(canvas.toDataURL('image/jpeg', 0.9));
+                };
+                img.src = base64Image;
+            });
+        }
+
+        function decodeBarcode(base64Image) {
+            const status = document.getElementById('status');
+            const resultBox = document.getElementById('result-box');
+            const preview = document.getElementById('preview-img');
+            
+            status.innerText = "Statut : Prétraitement de l'image...";
+            
+            // Prétraiter l'image
+            preprocessImage(base64Image).then(processedImage => {
+                // Afficher l'aperçu
+                preview.src = processedImage;
+                preview.style.display = "block";
+                status.innerText = "Statut : Analyse en cours...";
+                
+                // Configuration optimisée pour CODE128
+                Quagga.decodeSingle({
+                    src: processedImage,
+                    numOfWorkers: 0,
+                    locate: true,
+                    decoder: {
+                        readers: ["code_128_reader"], // Seulement CODE128
+                    },
+                    locate: true,
+                    patchSize: "medium", // Essayer "small", "medium", "large"
+                    halfSample: true,
+                    inputStream: {
+                        size: 800, // Taille maximum
+                        singleChannel: false // false = couleur, true = noir et blanc
+                    },
+                    decoder: {
+                        readers: ["code_128_reader"],
+                        debug: {
+                            drawBoundingBox: true,
+                            showFrequency: true,
+                            drawScanline: true,
+                            showPattern: true
+                        }
+                    },
+                    debug: true,
+                    locator: {
+                        patchSize: "medium",
+                        halfSample: true
+                    }
+                }, function(result) {
+                    console.log("Résultat Quagga:", result); // Pour déboguer
+                    
+                    if(result && result.codeResult) {
+                        const code = result.codeResult.code;
+                        resultBox.innerText = code;
+                        resultBox.setAttribute("data-status", "ready");
+                        status.innerText = "Statut : ✅ Succès (" + result.codeResult.format + ")";
+                        document.title = "DECODAGE_TERMINE: " + code;
+                    } else {
+                        // Essayer avec une approche différente
+                        resultBox.innerText = "ERREUR : Tentative alternative...";
+                        
+                        // Essai avec paramètres différents
+                        Quagga.decodeSingle({
+                            src: processedImage,
+                            numOfWorkers: 0,
+                            locate: true,
+                            decoder: {
+                                readers: ["code_128_reader"]
+                            },
+                            locate: true,
+                            patchSize: "x-large",
+                            halfSample: false,
+                            inputStream: {
+                                size: 800,
+                                singleChannel: true // Essayer en noir et blanc
+                            }
+                        }, function(retryResult) {
+                            if(retryResult && retryResult.codeResult) {
+                                const code = retryResult.codeResult.code;
+                                resultBox.innerText = code;
+                                resultBox.setAttribute("data-status", "ready");
+                                status.innerText = "Statut : ✅ Succès (" + retryResult.codeResult.format + ")";
+                                document.title = "DECODAGE_TERMINE: " + code;
+                            } else {
+                                resultBox.innerText = "ERREUR : Code-barres non détecté";
+                                resultBox.setAttribute("data-status", "error");
+                                status.innerText = "Statut : ❌ Échec - Vérifiez :\n1. Le code-barres est bien CODE128\n2. L'image est nette\n3. Le contraste est suffisant";
+                                document.title = "DECODAGE_TERMINE";
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let imgData = urlParams.get('image');
+            
+            if (imgData) {
+                // Nettoyer l'URL
+                imgData = decodeURIComponent(imgData.trim());
+                
+                // S'assurer que c'est du Base64 valide
+                if (!imgData.startsWith('data:image/')) {
+                    // Essayer différents formats
+                    const formats = ['image/png', 'image/jpeg', 'image/gif'];
+                    for (const format of formats) {
+                        const testData = `data:${format};base64,${imgData}`;
+                        const img = new Image();
+                        img.onerror = () => {
+                            // Continuer avec le prochain format
+                        };
+                        img.onload = () => {
+                            decodeBarcode(testData);
+                            return;
+                        };
+                        img.src = testData;
+                    }
+                    // Si aucun format ne fonctionne, essayer avec PNG
+                    imgData = "data:image/png;base64," + imgData;
+                }
+                
+                decodeBarcode(imgData);
+            } else {
+                // Utiliser l'image de test
+                const testImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAACOCAYAAABe6bZAAAAAElFTkSuQmCC"; // Code128 simple
+                decodeBarcode(testImage);
+            }
+        };
+    </script>
+</body>
+</html>

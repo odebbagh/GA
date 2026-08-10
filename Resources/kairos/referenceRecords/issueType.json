@@ -1,0 +1,71 @@
+﻿{
+	"ident": "versionReferenceRecords_issueType",
+	"version": 6,
+	"stmp": 695729453,
+	"date": "2025-01-17",
+	"records": [
+		{
+			"UUID": "16A6B211D026CC4DA19EDDCEEF1F1079",
+			"code": "FCT",
+			"name": "Functional",
+			"color": "#32CD32",
+			"issues": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Functional"
+		},
+		{
+			"UUID": "FEFA1D726AC9024DBD00E6864E5885F6",
+			"code": "PRF",
+			"name": "Performance",
+			"color": "#FA8072",
+			"issues": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Performance"
+		},
+		{
+			"UUID": "ECD6E8B2692A184B8E82122CFA2D20FE",
+			"code": "UIX",
+			"name": "User Interface",
+			"color": "#FFFF00",
+			"issues": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "User Interface"
+		},
+		{
+			"UUID": "C1F9A76379BB6E439D63794B5C161DCE",
+			"code": "SEC",
+			"name": "Security",
+			"color": "#B22222",
+			"issues": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Security"
+		},
+		{
+			"UUID": "7F6544120D42184EA05BEAFFA07296C0",
+			"code": "LCL",
+			"name": "Localization",
+			"color": "#FFA500",
+			"issues": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Localization"
+		},
+		{
+			"UUID": "8871C9AC9C96B843A133BC4A4B88AFFE",
+			"code": "LOG",
+			"name": "Logic",
+			"color": "#808080",
+			"issues": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Logic"
+		},
+		{
+			"UUID": "D5D7461F3795AA4EA09089EBE781DE62",
+			"code": "CMP",
+			"name": "Compatibility",
+			"color": "#87CEFA",
+			"issues": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Compatibility"
+		}
+	]
+}

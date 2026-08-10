@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="qrcode.js"></script> <style>
+        #qrcode { display: none; } /* Masqué car on veut juste l'image */
+    </style>
+</head>
+<body>
+    <div id="qrcode"></div>
+
+    <script type="text/javascript">
+        
+        function generateQR(data) {
+            // Nettoyer l'ancien QR Code
+            document.getElementById("qrcode").innerHTML = "";
+            
+            // Générer le nouveau
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: data,
+                width: 256,
+                height: 256,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
+            // Attendre un court instant que le canvas soit rendu et retourner le Base64
+            // On récupère l'image générée par QRCode.js
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const img = document.querySelector('#qrcode img');
+                    resolve(img ? img.src : "");
+                }, 50);
+            });
+        }
+    </script>
+</body>
+</html>

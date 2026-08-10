@@ -1,0 +1,20 @@
+//%attributes = {}
+// carriers first: _import_customers only links to the CustomerCarrier records
+_import_customerCarriers
+_import_customers
+_import_purchaseOrders
+_import_poItems
+_import_receiver
+_import_jobsFromReceiver
+_import_lotinfo
+
+_import_warehouseBins
+_import_inventoryClassification
+_import_inventoryUnits
+_import_inventory
+//Housekeeping
+_import_operationProcesses
+_import_certifications
+_import_toolTypes
+
+TRACE:C157

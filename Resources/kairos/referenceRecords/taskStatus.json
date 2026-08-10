@@ -1,0 +1,140 @@
+﻿{
+	"ident": "versionReferenceRecords_taskStatus",
+	"version": 7,
+	"stmp": 694524805,
+	"date": "2025-01-03",
+	"records": [
+		{
+			"UUID": "3DC9BEDC49F66A4E83B928467378E10B",
+			"statusID": 9,
+			"code": "APT",
+			"name": "Approved by tester",
+			"color": "#FFA07A",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"numAndName": "[9] Approved by tester",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Approved by tester"
+		},
+		{
+			"UUID": "5033917947C395469D8F15E16E4D1702",
+			"statusID": 5,
+			"code": "BLK",
+			"name": "Blocked",
+			"color": "#FF0000",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"numAndName": "[5] Blocked",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Blocked"
+		},
+		{
+			"UUID": "643134C8B39366428401DB1C70412572",
+			"statusID": 11,
+			"code": "TBT",
+			"name": "To be tested",
+			"color": "#9400D3",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"numAndName": "[11] To be tested",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "To be tested"
+		},
+		{
+			"UUID": "39FAD8DD3DCC11439F46A5F90485F192",
+			"statusID": 3,
+			"code": "CMP",
+			"name": "Work Completed",
+			"color": "#808000",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"numAndName": "[3] Work Completed",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Work Completed"
+		},
+		{
+			"UUID": "E5369DC6E7C7C044B3AB34B971B0AFF5",
+			"statusID": 12,
+			"code": "CLS",
+			"name": "Closed",
+			"color": "#8B0000",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"numAndName": "[12] Closed",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Closed"
+		},
+		{
+			"UUID": "9D21922A95FA044786846902DB539379",
+			"statusID": 2,
+			"code": "PRG",
+			"name": "In Progress",
+			"color": "#9ACD32",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"numAndName": "[2] In Progress",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "In Progress"
+		},
+		{
+			"UUID": "C6D3F3048FBDD34F93DC388A880C49D1",
+			"statusID": 1,
+			"code": "NST",
+			"name": "Not Started",
+			"color": "#00FFFF",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"numAndName": "[1] Not Started",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Not Started"
+		},
+		{
+			"UUID": "3EE8E75B449C6F468E6CC4482779803D",
+			"statusID": 4,
+			"code": "HLD",
+			"name": "On Hold",
+			"color": "#CD5C5C",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"numAndName": "[4] On Hold",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "On Hold"
+		},
+		{
+			"UUID": "0AEF3098943B654B9DEDC9D936C30204",
+			"statusID": 10,
+			"code": "RVW",
+			"name": "Reviewed",
+			"color": "#00FF00",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"numAndName": "[10] Reviewed",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Reviewed"
+		},
+		{
+			"UUID": "637BC354E111764CA4A60EDF9A391379",
+			"statusID": 6,
+			"code": "REV",
+			"name": "Waiting for Review",
+			"color": "#FFA500",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"numAndName": "[6] Waiting for Review",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Waiting for Review"
+		},
+		{
+			"UUID": "549F569F428F49E2B7BE266669E817A9",
+			"statusID": 0,
+			"code": "PRE",
+			"name": "In preparation",
+			"color": "#FFFF00",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"numAndName": "[0] In preparation",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "In preparation"
+		},
+		{
+			"UUID": "158960D0A760D24ABD146B976F74D0CD",
+			"statusID": 13,
+			"code": "ROP",
+			"name": "Re-open",
+			"color": "#696969",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"numAndName": "[13] Re-open",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Re-open"
+		}
+	]
+}

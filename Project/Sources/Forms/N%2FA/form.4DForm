@@ -1,0 +1,246 @@
+{
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"markerBody": 48,
+	"markerBreak": 61,
+	"markerFooter": 61,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onHeader",
+		"onPrintingBreak",
+		"onPrintingFooter",
+		"onDisplayDetail",
+		"onOutsideCall",
+		"onActivate",
+		"onDeactivate",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onCloseBox",
+		"onPrintingDetail",
+		"onOpenDetail",
+		"onCloseDetail",
+		"onTimer",
+		"onAfterKeystroke",
+		"onResize"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "Letter",
+		"paperWidth": "612pt",
+		"paperHeight": "792pt"
+	},
+	"pages": [
+		null,
+		{
+			"objects": {
+				"Rectangle1": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 1,
+					"width": 725,
+					"height": 49,
+					"fill": "transparent",
+					"stroke": "#AAAAAA"
+				},
+				"Text1": {
+					"type": "text",
+					"top": 3,
+					"left": 6,
+					"width": 17,
+					"height": 12,
+					"stroke": "#000000",
+					"class": "Print_font",
+					"text": "#"
+				},
+				"VLine1": {
+					"type": "line",
+					"top": 1,
+					"left": 28,
+					"width": 1,
+					"height": 47,
+					"stroke": "#AAAAAA"
+				},
+				"VLine2": {
+					"type": "line",
+					"top": 1,
+					"left": 343,
+					"width": 1,
+					"height": 48,
+					"stroke": "#AAAAAA",
+					"startPoint": "bottomLeft"
+				},
+				"Text3": {
+					"type": "text",
+					"top": 3,
+					"left": 32,
+					"width": 148,
+					"height": 12,
+					"stroke": "#000000",
+					"class": "Print_font",
+					"fontWeight": "bold",
+					"text": "Not Applicable"
+				},
+				"QAorSupText": {
+					"type": "text",
+					"top": 3,
+					"left": 688,
+					"width": 30,
+					"height": 12,
+					"stroke": "#000000",
+					"class": "Print_font",
+					"text": "Supv "
+				},
+				"Line6": {
+					"type": "line",
+					"top": 1,
+					"left": 343,
+					"width": 342,
+					"height": 34,
+					"stroke": "#AAAAAA"
+				},
+				"Field3": {
+					"type": "input",
+					"top": 21,
+					"left": 2,
+					"width": 25,
+					"height": 11,
+					"dataSource": "[LotSteps:22]LotStepNumber:2",
+					"dataSourceTypeHint": "number",
+					"stroke": "#000000",
+					"class": "PrintFontSmall",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"numberFormat": "##0.00",
+					"dragging": "none",
+					"dropping": "none",
+					"events": [
+						"onLoad",
+						"onValidate",
+						"onClick",
+						"onHeader",
+						"onPrintingBreak",
+						"onPrintingFooter",
+						"onDisplayDetail",
+						"onDataChange",
+						"onPrintingDetail"
+					]
+				},
+				"Field1": {
+					"type": "input",
+					"top": 18,
+					"left": 32,
+					"width": 306,
+					"height": 13,
+					"dataSource": "[LotSteps:22]StepDesc:3",
+					"stroke": "#000000",
+					"class": "Print_font",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/Field1.4dm",
+					"events": [
+						"onLoad",
+						"onValidate",
+						"onClick",
+						"onHeader",
+						"onPrintingBreak",
+						"onPrintingFooter",
+						"onDisplayDetail",
+						"onDataChange",
+						"onPrintingDetail"
+					]
+				},
+				"Field2": {
+					"type": "input",
+					"top": 20,
+					"left": 687,
+					"width": 37,
+					"height": 12,
+					"dataSource": "[LotSteps:22]Supervisor:11",
+					"stroke": "#000000",
+					"class": "Print_font",
+					"textAlign": "right",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"events": [
+						"onLoad",
+						"onValidate",
+						"onClick",
+						"onHeader",
+						"onPrintingBreak",
+						"onPrintingFooter",
+						"onDisplayDetail",
+						"onDataChange",
+						"onPrintingDetail"
+					]
+				},
+				"Line13": {
+					"type": "line",
+					"top": 1,
+					"left": 344,
+					"width": 341,
+					"height": 34,
+					"stroke": "#AAAAAA",
+					"startPoint": "bottomLeft"
+				},
+				"Line1": {
+					"type": "line",
+					"top": 18,
+					"left": 685,
+					"width": 40,
+					"height": 1,
+					"stroke": "#AAAAAA"
+				},
+				"Line10": {
+					"type": "line",
+					"top": 35,
+					"left": 343,
+					"width": 382,
+					"stroke": "#AAAAAA",
+					"strokeWidth": 0.1
+				},
+				"Line8": {
+					"type": "line",
+					"top": 1,
+					"left": 685,
+					"height": 34,
+					"stroke": "#AAAAAA"
+				}
+			}
+		}
+	],
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {},
+			"View 2": {},
+			"View 3": {},
+			"View 4": {},
+			"View 5": {},
+			"View 6": {},
+			"View 7": {},
+			"View 8": {},
+			"View 9": {}
+		}
+	}
+}

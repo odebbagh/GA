@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+   <!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="1" resname="wsfw.unconfirmedAppointment">
+               <source>Unconfirmed appointment</source>
+               <target>RDV non confirmé</target>
+            </trans-unit>
+            <trans-unit id="2" resname="wsfw.confirm">
+               <source>Confirm</source>
+               <target>Confirmer</target>
+            </trans-unit>
+            <trans-unit id="3" resname="wsfw.cancel">
+               <source>Cancel</source>
+               <target>Annuler</target>
+            </trans-unit>
+             <trans-unit id="4" resname="wsfw.sure">
+               <source>Are you sure?</source>
+               <target>êtes-vous sûr?</target>
+            </trans-unit>
+             <trans-unit id="5" resname="wsfw.cancelAppointment">
+               <source>Do you want to cancel this appointment ?</source>
+               <target>Voulez-vous annuler ce rendez-vous</target>
+            </trans-unit>
+             <trans-unit id="5" resname="wsfw.yes">
+               <source>Yes</source>
+               <target>Oui</target>
+            </trans-unit>
+             <trans-unit id="5" resname="wsfw.no">
+               <source>No</source>
+               <target>Non</target>
+            </trans-unit>
+             <trans-unit id="6" resname="wsfw.chooseMedicalHouse">
+               <source>Choose a medical house</source>
+               <target>Choisir une maison médicale</target>
+            </trans-unit>
+             
+         </group>
+      </body>
+   </file>
+</xliff>

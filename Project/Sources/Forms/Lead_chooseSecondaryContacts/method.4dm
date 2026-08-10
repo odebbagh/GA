@@ -1,0 +1,1 @@
+//OBJECT SET ENABLED(*; "Button1"; Form.choosen_contacts#Null)

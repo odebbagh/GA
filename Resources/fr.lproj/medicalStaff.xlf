@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="2" resname="entry.doctors">
+               <source>Doctors</source>
+               <target>Docteurs</target>
+            </trans-unit>
+            <trans-unit id="6" resname="entry.doctor">
+               <source>Doctor</source>
+               <target>Docteur</target>
+            </trans-unit>
+            <trans-unit id="3" resname="entry.medicalStaff.field.firstName">
+               <source>First name</source>
+               <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="4" resname="entry.medicalStaff.field.lastName">
+               <source>Last name</source>
+               <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="5" resname="entry.medicalStaff.field.civility">
+               <source>Civility</source>
+               <target>Civilité</target>
+            </trans-unit>
+            <trans-unit id="10" resname="entry.medicalStaff.field.description">
+               <source>Description</source>
+               <target>Description</target>
+            </trans-unit>
+            <trans-unit id="7" resname="entry.doctor.unit1">
+               <source>doctor</source>
+               <target>docteur</target>
+            </trans-unit>
+            <trans-unit id="8" resname="entry.doctor.unitN">
+               <source>doctors</source>
+               <target>docteurs</target>
+            </trans-unit>
+         </group>
+         <group id="" resname="vision">
+            <trans-unit id="4" resname="vision.health">
+               <source>Health</source>
+               <target>Santé</target>
+            </trans-unit>
+         </group>
+         <group resname="medicalStaff">
+            <trans-unit id="9" resname="medicalStaff.selectADoctor">
+               <source>Select a doctor...</source>
+               <target>Selectionner un docteur ...</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

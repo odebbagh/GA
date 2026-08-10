@@ -1,0 +1,186 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"lb_compilationErrors": {
+					"type": "listbox",
+					"left": 5,
+					"top": 47,
+					"width": 827,
+					"height": 407,
+					"events": [
+						"onDoubleClick"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.compilationErrors",
+					"currentItemSource": "Form:C1466.compilationError",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"method": "ObjectMethods/lb_compilationErrors.4dm",
+					"scrollbarHorizontal": "automatic",
+					"scrollbarVertical": "hidden",
+					"alternateFill": "automatic",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"hideFocusRing": true,
+					"rowFillSource": "",
+					"rowStyleSource": "",
+					"metaSource": "sfw_compilation_metaInfo(This:C1470)",
+					"currentItemPositionSource": "",
+					"selectedItemsSource": "Form:C1466.selected_compilationErrors",
+					"columns": [
+						{
+							"header": {
+								"text": "Message",
+								"name": "Entête1"
+							},
+							"name": "Colonne1",
+							"footer": {
+								"name": "Pied1"
+							},
+							"dataSource": "This:C1470.message",
+							"width": 408
+						},
+						{
+							"header": {
+								"name": "Entête4",
+								"text": "Line"
+							},
+							"name": "Colonne4",
+							"dataSource": "This:C1470.lineInFile",
+							"footer": {
+								"name": "Pied4"
+							},
+							"width": 52
+						},
+						{
+							"header": {
+								"name": "Entête3",
+								"text": "Type"
+							},
+							"name": "Colonne3",
+							"dataSource": "This:C1470.code.type",
+							"footer": {
+								"name": "Pied3"
+							},
+							"width": 94
+						},
+						{
+							"header": {
+								"name": "Entête2",
+								"text": "Method"
+							},
+							"name": "Colonne2",
+							"footer": {
+								"name": "Pied2"
+							},
+							"dataSource": "This:C1470.code.path",
+							"width": 271
+						}
+					]
+				},
+				"compilation_label": {
+					"type": "input",
+					"left": 5,
+					"top": 22,
+					"width": 989,
+					"height": 17,
+					"dataSource": "Form:C1466.compilation_label",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"hideFocusRing": true,
+					"enterable": false,
+					"focusable": false,
+					"method": "ObjectMethods/compilation_label.4dm"
+				},
+				"compilation_ResultLabel": {
+					"type": "input",
+					"left": 5,
+					"top": 466,
+					"width": 233,
+					"height": 17,
+					"dataSource": "Form:C1466.compilation_ResultLabel",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"hideFocusRing": true,
+					"enterable": false,
+					"focusable": false,
+					"sizingY": "move"
+				},
+				"compilation_nbErrors": {
+					"type": "input",
+					"left": 537,
+					"top": 466,
+					"width": 162,
+					"height": 17,
+					"dataSource": "Form:C1466.compilation_nbErrors",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#ff6347",
+					"hideFocusRing": true,
+					"enterable": false,
+					"focusable": false,
+					"sizingY": "move"
+				},
+				"compilation_nbWarnings": {
+					"type": "input",
+					"left": 699,
+					"top": 466,
+					"width": 153,
+					"height": 17,
+					"dataSource": "Form:C1466.compilation_nbWarnings",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#F1CC6B",
+					"hideFocusRing": true,
+					"enterable": false,
+					"focusable": false,
+					"sizingY": "move"
+				}
+			}
+		}
+	],
+	"geometryStamp": 71,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

@@ -1,0 +1,166 @@
+{
+    "bankHolidays": [
+        "2020/1/1", "2020/4/5", "2020/5/1", "2020/5/8", "2020/5/13", "2020/5/24", "2020/7/14", "2020/8/15", "2020/11/1", "2020/12/25"
+    ],
+    "consultationKinds": [
+        {
+            "UUID": "8A506D7DF0E24C2692C90BF46F3F29B0",
+            "name": "Médecine générale",
+            "nbPatients":[50,300],
+            "appointmentsByDay":[
+                {
+                    "nbByDays":[15,20],
+                    "duration":900,
+                    "delay":3
+                },{
+                    "nbByDays":[8,10],
+                    "duration":1800,
+                    "delay":4
+                },{
+                    "nbByDays":[1,3],
+                    "duration":2700,
+                    "delay":6
+                },{
+                    "nbByDays":[0,1],
+                    "duration":3600,
+                    "delay":10
+                }
+            ]
+        }, {
+            "UUID": "39DF5F11452446CD990AEC65C82A105D",
+            "name": "Assistance psychologique",
+            "nbPatients":[150,200],
+            "appointmentsByDay":[
+                {
+                    "nbByDays":[3,6],
+                    "duration":3600,
+                    "delay":10
+                }
+            ]
+        }, {
+            "UUID": "7DD8D7E01491448DA2408733CFF51938",
+            "name": "Diététique",
+            "nbPatients":[200,400],
+            "appointmentsByDay":[
+                {
+                    "nbByDays":[6,10],
+                    "duration":1800,
+                    "delay":4
+                },{
+                    "nbByDays":[0,4],
+                    "duration":2700,
+                    "delay":8
+                },{
+                    "nbByDays":[0,2],
+                    "duration":3600,
+                    "delay":15
+                }
+            ]
+        }, {
+            "UUID": "13DFD70875954DEC95DEFF7F5F242C1F",
+            "name": "Kinesithérapie",
+            "nbPatients":[150,350],
+            "appointmentsByDay":[
+                {
+                    "nbByDays":[10,18],
+                    "duration":1800,
+                    "delay":5
+                },{
+                    "nbByDays":[1,3],
+                    "duration":2700,
+                    "delay":8
+                },{
+                    "nbByDays":[0,1],
+                    "duration":3600,
+                    "delay":20
+                }
+            ]
+        }, {
+            "UUID": "03F689B7BC2E400185C4CA4BB15E2904",
+            "name": "Ophthalmologie",
+            "nbPatients":[100,600],
+            "appointmentsByDay":[
+                {
+                    "nbByDays":[6,15],
+                    "duration":1800,
+                    "delay":10
+                },{
+                    "nbByDays":[2,4],
+                    "duration":2700,
+                    "delay":18
+                },{
+                    "nbByDays":[1,3],
+                    "duration":3600,
+                    "delay":30
+                }
+            ]
+        }, {
+            "UUID": "E5609235EE6E4ED0ABA756A3805AE7B4",
+            "name": "Pédiatrie",
+            "nbPatients":[80,400],
+            "appointmentsByDay":[
+                {
+                    "nbByDays":[8,15],
+                    "duration":1800,
+                    "delay":4
+                },{
+                    "nbByDays":[1,5],
+                    "duration":2700,
+                    "delay":6
+                },{
+                    "nbByDays":[1,3],
+                    "duration":3600,
+                    "delay":8
+                }
+            ]
+        }, {
+            "UUID": "81C66C576E0E4ED2941510DFB253BCC2",
+            "name": "Soins infirmiers",
+            "nbPatients":[50,300],
+            "appointmentsByDay":[
+                {
+                    "nbByDays":[10,30],
+                    "duration":900,
+                    "delay":3
+                },{
+                    "nbByDays":[8,16],
+                    "duration":1800,
+                    "delay":4
+                },{
+                    "nbByDays":[4,8],
+                    "duration":2700,
+                    "delay":6
+                },{
+                    "nbByDays":[2,4],
+                    "duration":3600,
+                    "delay":8
+                }
+            ]
+        }, {
+            "UUID": "A666A1DBDEF94465853202EF09B31E3E",
+            "name": "Sophrologie",
+            "nbPatients":[50,100],
+            "appointmentsByDay":[
+                {
+                    "nbByDays":[5,8],
+                    "duration":3600,
+                    "delay":20
+                }
+            ]
+        }, {
+            "UUID": "C008CE71DD38449BAAB751A42BC70984",
+            "name": "Vaccination",
+            "nbPatients":[50,300],
+            "appointmentsByDay":[
+                {
+                    "nbByDays":[20,30],
+                    "duration":900,
+                    "delay":1
+                },{
+                    "nbByDays":[5,8],
+                    "duration":1800,
+                    "delay":2
+                }
+            ]
+    }]
+}

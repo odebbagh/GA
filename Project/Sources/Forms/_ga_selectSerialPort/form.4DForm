@@ -1,0 +1,173 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "Select the Scanner Port",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 1,
+					"left": 1,
+					"width": 506,
+					"height": 349,
+					"strokeWidth": 1,
+					"stroke": "transparent",
+					"bottom": 350
+				}
+			}
+		},
+		{
+			"objects": {
+				"teams": {
+					"type": "listbox",
+					"left": 2,
+					"top": 0,
+					"width": 502,
+					"height": 264,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"horizontalLineStroke": "transparent",
+					"dataSource": "Form:C1466.ports",
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"verticalLineStroke": "transparent",
+					"selectionMode": "single",
+					"currentItemSource": "Form:C1466.currentPort",
+					"currentItemPositionSource": "Form:C1466.currentPortPos",
+					"selectedItemsSource": "Form:C1466.currentSelectedPort",
+					"scrollbarHorizontal": "automatic",
+					"scrollbarVertical": "automatic",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#000000",
+					"sizingX": "fixed",
+					"sizingY": "grow",
+					"method": "ObjectMethods/teams.4dm",
+					"columns": [
+						{
+							"header": {
+								"text": "",
+								"name": "Header1",
+								"fontWeight": "bold"
+							},
+							"name": "CheckBox",
+							"footer": {
+								"name": "Footer1"
+							},
+							"width": 39,
+							"dataSource": "This:C1470.selected",
+							"dataSourceTypeHint": "boolean",
+							"textAlign": "right",
+							"stroke": "#000000",
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"enterable": true,
+							"method": "ObjectMethods/CheckBox.4dm",
+							"truncateMode": "none"
+						},
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Device ID",
+								"fontWeight": "bold"
+							},
+							"name": "Column1",
+							"width": 92,
+							"footer": {
+								"name": "Footer3"
+							},
+							"dataSource": "This:C1470.deviceID"
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Name",
+								"fontWeight": "bold"
+							},
+							"name": "Column2",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This:C1470.name",
+							"textAlign": "left",
+							"stroke": "#000000",
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"enterable": false
+						}
+					]
+				},
+				"bOk": {
+					"type": "button",
+					"top": 303,
+					"left": 463,
+					"width": 30,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/check-24x24.png",
+					"iconFrames": 4,
+					"textPlacement": "center",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "accept",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "[Return]",
+					"sizingX": "move"
+				}
+			}
+		}
+	],
+	"geometryStamp": 24,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

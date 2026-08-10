@@ -1,0 +1,19 @@
+{
+    "tableDataSource": "Form.current_item.activities.collection",
+    "columns": [{
+            "check": true,
+            "header": "Auditor",
+            "source": "This.item.auditor"
+        }, {
+            "check": true,
+            "header": "Date",
+            "source": "String(This.item.date)"
+        }, {
+            "check": true,
+            "header": "Process",
+            "source": "This.item.process"
+        }
+        
+    ]
+   
+}

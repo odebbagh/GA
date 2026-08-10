@@ -1,0 +1,1090 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"destination": "detailScreen",
+	"windowTitle": "Split Lot Wizard",
+	"events": [
+		"onLoad",
+		"onPageChange"
+	],
+	"pages": [
+		{
+			"objects": {
+				"bg4": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 0,
+					"width": 640,
+					"height": 411,
+					"fill": "#F5F7FA",
+					"stroke": "transparent"
+				}
+			}
+		},
+		{
+			"objects": {
+				"title1": {
+					"type": "text",
+					"left": 20,
+					"top": 20,
+					"width": 600,
+					"height": 26,
+					"fontSize": 18,
+					"fontWeight": "bold",
+					"text": "Split Lot - Step 1 of 3"
+				},
+				"desc1": {
+					"type": "text",
+					"left": 20,
+					"top": 113,
+					"width": 600,
+					"height": 18,
+					"multiLine": true,
+					"text": "Current lot steps"
+				},
+				"lab_motherLot": {
+					"type": "text",
+					"left": 20,
+					"top": 52,
+					"width": 100,
+					"height": 18,
+					"fontWeight": "bold",
+					"text": "Mother Lot :"
+				},
+				"inp_motherLot": {
+					"type": "input",
+					"left": 125,
+					"top": 50,
+					"width": 220,
+					"height": 18,
+					"dataSource": "Form:C1466.lot.lotNumber",
+					"enterable": false,
+					"borderStyle": "none",
+					"fill": "transparent"
+				},
+				"lab_splitStep": {
+					"type": "text",
+					"left": 360,
+					"top": 52,
+					"width": 90,
+					"height": 18,
+					"fontWeight": "bold",
+					"text": "Split Step :"
+				},
+				"inp_splitStep": {
+					"type": "input",
+					"left": 455,
+					"top": 50,
+					"width": 155,
+					"height": 18,
+					"dataSource": "Form:C1466.lastCompletedStep",
+					"enterable": false,
+					"borderStyle": "none",
+					"fill": "transparent"
+				},
+				"lb_splitLotSteps": {
+					"type": "listbox",
+					"left": 20,
+					"top": 140,
+					"width": 590,
+					"height": 205,
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.lot.lotSteps.orderBy(\"order asc\")",
+					"showHeaders": true,
+					"headerHeight": "22px",
+					"selectionMode": "single",
+					"scrollbarVertical": "visible",
+					"scrollbarHorizontal": "hidden",
+					"alternateFill": "#F7F9FC",
+					"rowFillSource": "highlightSplitLotStep",
+					"fill": "#FFFFFF",
+					"borderStyle": "system",
+					"columns": [
+						{
+							"header": {
+								"text": "#",
+								"name": "Header_splitLotStepOrder"
+							},
+							"name": "Column_splitLotStepOrder",
+							"footer": {
+								"name": "Footer_splitLotStepOrder"
+							},
+							"dataSource": "This:C1470.order",
+							"width": 60,
+							"textAlign": "center",
+							"enterable": false,
+							"resizable": false,
+							"minWidth": 50
+						},
+						{
+							"header": {
+								"text": "Description",
+								"name": "Header_splitLotStepDescription"
+							},
+							"name": "Column_splitLotStepDescription",
+							"footer": {
+								"name": "Footer_splitLotStepDescription"
+							},
+							"dataSource": "This:C1470.description",
+							"width": 300,
+							"textAlign": "left",
+							"enterable": false,
+							"resizable": true,
+							"minWidth": 160
+						},
+						{
+							"header": {
+								"text": "QTY OUT",
+								"name": "Header_splitLotStepQtyOut"
+							},
+							"name": "Column_splitLotStepQtyOut",
+							"footer": {
+								"name": "Footer_splitLotStepQtyOut"
+							},
+							"dataSource": "This:C1470.qtyOut",
+							"width": 90,
+							"textAlign": "center",
+							"enterable": false,
+							"resizable": false,
+							"minWidth": 80
+						},
+						{
+							"header": {
+								"text": "Date OUT",
+								"name": "Header_splitLotStepDateOut"
+							},
+							"name": "Column_splitLotStepDateOut",
+							"footer": {
+								"name": "Footer_splitLotStepDateOut"
+							},
+							"dataSource": "This:C1470.dateOut",
+							"dataSourceTypeHint": "date",
+							"width": 130,
+							"textAlign": "center",
+							"enterable": false,
+							"resizable": false,
+							"minWidth": 110
+						}
+					]
+				},
+				"btn_cancel_1": {
+					"type": "button",
+					"left": 390,
+					"top": 360,
+					"width": 100,
+					"height": 26,
+					"text": "Cancel",
+					"action": "cancel",
+					"method": "ObjectMethods/btn_cancel_1.4dm"
+				},
+				"btn_next_1": {
+					"type": "button",
+					"left": 510,
+					"top": 360,
+					"width": 100,
+					"height": 26,
+					"text": "Next >",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/btn_next_1.4dm"
+				},
+				"desc4": {
+					"type": "text",
+					"left": 20,
+					"top": 83,
+					"width": 71,
+					"height": 15,
+					"multiLine": true,
+					"text": "Child Lots :",
+					"fontWeight": "bold"
+				},
+				"inp_splitLotCount1": {
+					"type": "input",
+					"left": 125,
+					"top": 81,
+					"width": 56,
+					"height": 18,
+					"dataSource": "Form:C1466.splitLotCount",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"textAlign": "center"
+				},
+				"btn_splitLotCountMinus1": {
+					"type": "button",
+					"left": 187,
+					"top": 80,
+					"width": 20,
+					"height": 20,
+					"text": "-",
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/btn_splitLotCountMinus1.4dm"
+				},
+				"btn_splitLotCountPlus1": {
+					"type": "button",
+					"left": 211,
+					"top": 80,
+					"width": 20,
+					"height": 20,
+					"text": "+",
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/btn_splitLotCountPlus1.4dm"
+				}
+			}
+		},
+		{
+			"objects": {
+				"title2": {
+					"type": "text",
+					"left": 20,
+					"top": 20,
+					"width": 600,
+					"height": 26,
+					"fontSize": 18,
+					"fontWeight": "bold",
+					"text": "Split Lot - Step 2 of 3"
+				},
+				"subtitle2": {
+					"type": "text",
+					"left": 20,
+					"top": 60,
+					"width": 600,
+					"height": 18,
+					"fontWeight": "bold",
+					"text": "Define Split Details"
+				},
+				"lb_transferWithoutBins": {
+					"type": "listbox",
+					"left": 20,
+					"top": 98,
+					"width": 590,
+					"height": 247,
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.child_lots",
+					"events": [],
+					"method": "ObjectMethods/lb_transferWithoutBins.4dm",
+					"showHeaders": true,
+					"headerHeight": "22px",
+					"selectionMode": "single",
+					"scrollbarVertical": "visible",
+					"scrollbarHorizontal": "hidden",
+					"alternateFill": "#F7F9FC",
+					"fill": "#FFFFFF",
+					"borderStyle": "system",
+					"currentItemPositionSource": "Form:C1466.splitDetailsPos",
+					"columns": [
+						{
+							"header": {
+								"text": "Lot Name",
+								"name": "Header_splitTargetLotName"
+							},
+							"name": "Column_splitTargetLotName",
+							"footer": {
+								"name": "Footer_splitTargetLotName"
+							},
+							"dataSource": "This:C1470.lotSubNumber",
+							"width": 100,
+							"textAlign": "left",
+							"enterable": false,
+							"resizable": true,
+							"minWidth": 100
+						},
+						{
+							"header": {
+								"text": "Quantity IN",
+								"name": "Header_splitTargetQuantity"
+							},
+							"name": "Column_splitTargetQuantity",
+							"footer": {
+								"name": "Footer_splitTargetQuantity"
+							},
+							"dataSource": "This:C1470.totalTransferred",
+							"width": 180,
+							"textAlign": "center",
+							"enterable": false,
+							"resizable": true,
+							"minWidth": 100
+						},
+						{
+							"header": {
+								"name": "Entête1",
+								"text": "Goods"
+							},
+							"name": "Colonne1",
+							"footer": {
+								"name": "Pied1"
+							},
+							"dataSource": "This:C1470.transferedGoods",
+							"method": "ObjectMethods/Colonne1.4dm",
+							"events": [
+								"onClick",
+								"onDataChange"
+							]
+						},
+						{
+							"header": {
+								"name": "Entête2",
+								"text": "Rejects"
+							},
+							"name": "Colonne2",
+							"footer": {
+								"name": "Pied2"
+							},
+							"dataSource": "This:C1470.transferedRejects",
+							"events": [
+								"onDataChange"
+							],
+							"method": "ObjectMethods/Colonne2.4dm"
+						}
+					]
+				},
+				"btn_cancel_2": {
+					"type": "button",
+					"left": 270,
+					"top": 360,
+					"width": 100,
+					"height": 26,
+					"text": "Cancel",
+					"action": "cancel"
+				},
+				"btn_back_2": {
+					"type": "button",
+					"left": 390,
+					"top": 360,
+					"width": 100,
+					"height": 26,
+					"text": "< Back",
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/btn_back_2.4dm"
+				},
+				"btn_next_2": {
+					"type": "button",
+					"left": 510,
+					"top": 360,
+					"width": 100,
+					"height": 26,
+					"text": "Next >",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/btn_next_2.4dm"
+				}
+			}
+		},
+		{
+			"objects": {
+				"title3": {
+					"type": "text",
+					"left": 20,
+					"top": 20,
+					"width": 600,
+					"height": 26,
+					"fontSize": 18,
+					"fontWeight": "bold",
+					"text": "Split Lot - Step 3 of 3"
+				},
+				"subtitle3": {
+					"type": "text",
+					"left": 20,
+					"top": 60,
+					"width": 600,
+					"height": 18,
+					"fontWeight": "bold",
+					"text": "Review & Confirm"
+				},
+				"desc3": {
+					"type": "text",
+					"left": 20,
+					"top": 90,
+					"width": 600,
+					"height": 200,
+					"multiLine": true,
+					"dataSource": "Form:C1466.splitReviewText",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"borderStyle": "none",
+					"fill": "transparent",
+					"text": ""
+				},
+				"btn_cancel_3": {
+					"type": "button",
+					"left": 270,
+					"top": 360,
+					"width": 100,
+					"height": 26,
+					"text": "Cancel",
+					"action": "cancel"
+				},
+				"btn_back_3": {
+					"type": "button",
+					"left": 390,
+					"top": 360,
+					"width": 100,
+					"height": 26,
+					"text": "< Back",
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/btn_back_3.4dm"
+				},
+				"btn_finish_3": {
+					"type": "button",
+					"left": 510,
+					"top": 360,
+					"width": 100,
+					"height": 26,
+					"text": "Finish",
+					"defaultButton": true,
+					"action": "accept"
+				},
+				"lb_transferWithBins": {
+					"type": "listbox",
+					"left": 20,
+					"top": 98,
+					"width": 590,
+					"height": 247,
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.transferWithBins",
+					"events": [],
+					"method": "ObjectMethods/lb_transferWithBins.4dm",
+					"showHeaders": true,
+					"headerHeight": "22px",
+					"selectionMode": "single",
+					"scrollbarVertical": "visible",
+					"scrollbarHorizontal": "visible",
+					"alternateFill": "#F7F9FC",
+					"fill": "#FFFFFF",
+					"borderStyle": "system",
+					"currentItemPositionSource": "Form:C1466.splitDetailsPos",
+					"columns": [
+						{
+							"header": {
+								"text": "Lot Name",
+								"name": "Header_splitTargetLotName2"
+							},
+							"name": "Column_splitTargetLotName2",
+							"footer": {
+								"name": "Footer_splitTargetLotName2"
+							},
+							"dataSource": "This:C1470.lotSubNumber",
+							"width": 100,
+							"textAlign": "left",
+							"enterable": false,
+							"resizable": true,
+							"minWidth": 100
+						},
+						{
+							"header": {
+								"text": "Quantity IN",
+								"name": "Header_splitTargetQuantity2"
+							},
+							"name": "Column_splitTargetQuantity2",
+							"footer": {
+								"name": "Footer_splitTargetQuantity2"
+							},
+							"dataSource": "This:C1470.totalTransferred",
+							"width": 80,
+							"textAlign": "center",
+							"enterable": false,
+							"resizable": true,
+							"minWidth": 80
+						},
+						{
+							"header": {
+								"name": "Entête5",
+								"text": "Goods"
+							},
+							"name": "Colonne5",
+							"footer": {
+								"name": "Pied5"
+							},
+							"dataSource": "This:C1470.transferedGoods",
+							"method": "ObjectMethods/Colonne5.4dm",
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"minWidth": 60,
+							"width": 60
+						},
+						{
+							"header": {
+								"name": "Entête6",
+								"text": "Rejects"
+							},
+							"name": "Colonne6",
+							"footer": {
+								"name": "Pied6"
+							},
+							"dataSource": "This:C1470.transferedRejects",
+							"events": [
+								"onDataChange"
+							],
+							"method": "ObjectMethods/Colonne6.4dm",
+							"minWidth": 60,
+							"width": 60
+						},
+						{
+							"header": {
+								"name": "Entête7",
+								"text": "Bin 1"
+							},
+							"name": "Colonne7",
+							"footer": {
+								"name": "Pied7"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin1",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête8",
+								"text": "Bin 2"
+							},
+							"name": "Colonne8",
+							"footer": {
+								"name": "Pied8"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin2",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête9",
+								"text": "Bin 3"
+							},
+							"name": "Colonne9",
+							"footer": {
+								"name": "Pied9"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin3",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête10",
+								"text": "Bin 4"
+							},
+							"name": "Colonne10",
+							"footer": {
+								"name": "Pied10"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin4",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête11",
+								"text": "Bin 5"
+							},
+							"name": "Colonne11",
+							"footer": {
+								"name": "Pied11"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin5",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête12",
+								"text": "Bin 6"
+							},
+							"name": "Colonne12",
+							"footer": {
+								"name": "Pied12"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin6",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête13",
+								"text": "Bin 7"
+							},
+							"name": "Colonne13",
+							"footer": {
+								"name": "Pied13"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin7",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête14",
+								"text": "Bin 8"
+							},
+							"name": "Colonne14",
+							"footer": {
+								"name": "Pied14"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin8",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête15",
+								"text": "Bin 9"
+							},
+							"name": "Colonne15",
+							"footer": {
+								"name": "Pied15"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin9",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête16",
+								"text": "Bin 10"
+							},
+							"name": "Colonne16",
+							"footer": {
+								"name": "Pied16"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin10",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête17",
+								"text": "Bin 11"
+							},
+							"name": "Colonne17",
+							"footer": {
+								"name": "Pied17"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin11",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête18",
+								"text": "Bin 12"
+							},
+							"name": "Colonne18",
+							"footer": {
+								"name": "Pied18"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin12",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête19",
+								"text": "Bin 13"
+							},
+							"name": "Colonne19",
+							"footer": {
+								"name": "Pied19"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin13",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête20",
+								"text": "Bin 14"
+							},
+							"name": "Colonne20",
+							"footer": {
+								"name": "Pied20"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin14",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête21",
+								"text": "Bin 15"
+							},
+							"name": "Colonne21",
+							"footer": {
+								"name": "Pied21"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin15",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête22",
+								"text": "Bin 16"
+							},
+							"name": "Colonne22",
+							"footer": {
+								"name": "Pied22"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin16",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête23",
+								"text": "Bin 17"
+							},
+							"name": "Colonne23",
+							"footer": {
+								"name": "Pied23"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin17",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête24",
+								"text": "Bin 18"
+							},
+							"name": "Colonne24",
+							"footer": {
+								"name": "Pied24"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin18",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête25",
+								"text": "Bin 19"
+							},
+							"name": "Colonne25",
+							"footer": {
+								"name": "Pied25"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin19",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête26",
+								"text": "Bin 20"
+							},
+							"name": "Colonne26",
+							"footer": {
+								"name": "Pied26"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin20",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête27",
+								"text": "Bin 21"
+							},
+							"name": "Colonne27",
+							"footer": {
+								"name": "Pied27"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin21",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête28",
+								"text": "Bin 22"
+							},
+							"name": "Colonne28",
+							"footer": {
+								"name": "Pied28"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin22",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête29",
+								"text": "Bin 23"
+							},
+							"name": "Colonne29",
+							"footer": {
+								"name": "Pied29"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin23",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête30",
+								"text": "Bin 24"
+							},
+							"name": "Colonne30",
+							"footer": {
+								"name": "Pied30"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin24",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête31",
+								"text": "Bin 25"
+							},
+							"name": "Colonne31",
+							"footer": {
+								"name": "Pied31"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin25",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête32",
+								"text": "Bin 26"
+							},
+							"name": "Colonne32",
+							"footer": {
+								"name": "Pied32"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin26",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête33",
+								"text": "Bin 27"
+							},
+							"name": "Colonne33",
+							"footer": {
+								"name": "Pied33"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin27",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête34",
+								"text": "Bin 28"
+							},
+							"name": "Colonne34",
+							"footer": {
+								"name": "Pied34"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin28",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête35",
+								"text": "Bin 29"
+							},
+							"name": "Colonne35",
+							"footer": {
+								"name": "Pied35"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin29",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête36",
+								"text": "Bin 30"
+							},
+							"name": "Colonne36",
+							"footer": {
+								"name": "Pied36"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin30",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête37",
+								"text": "Bin 31"
+							},
+							"name": "Colonne37",
+							"footer": {
+								"name": "Pied37"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "This:C1470.bin31",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
+								"name": "Entête38",
+								"text": "Bin 32"
+							},
+							"name": "Colonne38",
+							"footer": {
+								"name": "Pied38"
+							},
+							"minWidth": 40,
+							"width": 40,
+							"dataSource": "Bin32",
+							"dataSourceTypeHint": "number"
+						}
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"lb_splitTargets1": {
+					"type": "listbox",
+					"left": 17,
+					"top": 53,
+					"width": 590,
+					"height": 247,
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.child_lots",
+					"events": [],
+					"method": "ObjectMethods/lb_splitTargets1.4dm",
+					"showHeaders": true,
+					"headerHeight": "22px",
+					"selectionMode": "single",
+					"scrollbarVertical": "visible",
+					"scrollbarHorizontal": "hidden",
+					"alternateFill": "#F7F9FC",
+					"fill": "#FFFFFF",
+					"borderStyle": "system",
+					"currentItemPositionSource": "Form:C1466.splitDetailsPos",
+					"columns": [
+						{
+							"header": {
+								"text": "Lot Name",
+								"name": "Header_splitTargetLotName1"
+							},
+							"name": "Column_splitTargetLotName1",
+							"footer": {
+								"name": "Footer_splitTargetLotName1"
+							},
+							"dataSource": "This:C1470.lotSubNumber",
+							"width": 100,
+							"textAlign": "left",
+							"enterable": false,
+							"resizable": true,
+							"minWidth": 100
+						},
+						{
+							"header": {
+								"text": "Quantity IN",
+								"name": "Header_splitTargetQuantity1"
+							},
+							"name": "Column_splitTargetQuantity1",
+							"footer": {
+								"name": "Footer_splitTargetQuantity1"
+							},
+							"dataSource": "This:C1470.totalTransferred",
+							"width": 180,
+							"textAlign": "center",
+							"enterable": false,
+							"resizable": true,
+							"minWidth": 100
+						},
+						{
+							"header": {
+								"name": "Entête3",
+								"text": "Goods"
+							},
+							"name": "Colonne3",
+							"footer": {
+								"name": "Pied3"
+							},
+							"dataSource": "This:C1470.transferedGoods",
+							"method": "ObjectMethods/Colonne3.4dm",
+							"events": [
+								"onClick",
+								"onDataChange"
+							]
+						},
+						{
+							"header": {
+								"name": "Entête4",
+								"text": "Rejects"
+							},
+							"name": "Colonne4",
+							"footer": {
+								"name": "Pied4"
+							},
+							"dataSource": "This:C1470.transferedRejects",
+							"events": [
+								"onDataChange"
+							],
+							"method": "ObjectMethods/Colonne4.4dm"
+						}
+					]
+				}
+			}
+		}
+	],
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"geometryStamp": 60
+}

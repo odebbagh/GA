@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+   <!--Translation file.This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="1" resname="entry.coachs">
+               <source>Coaches</source>
+               <target>Coachs</target>
+            </trans-unit>
+            <trans-unit id="3" resname="entry.coach">
+               <source>Coach</source>
+               <target>Coach</target>
+            </trans-unit>
+            <trans-unit id="4" resname="entry.coach.field.firstName">
+               <source>First name</source>
+               <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="5" resname="entry.coach.field.lastName">
+               <source>Last name</source>
+               <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="6" resname="entry.coach.field.civility">
+               <source>Civility</source>
+               <target>Civité</target>
+            </trans-unit>
+            <trans-unit id="7" resname="entry.coach.unit1">
+               <source>coach</source>
+               <target>coach</target>
+            </trans-unit>
+            <trans-unit id="8" resname="entry.coach.unitN">
+               <source>coaches</source>
+               <target>coachs</target>
+            </trans-unit>
+         </group>
+         <group resname="vision">
+            <trans-unit id="2" resname="vision.wellness">
+               <source>Wellness</source>
+               <target>Bien-être</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

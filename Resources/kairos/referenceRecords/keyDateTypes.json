@@ -1,0 +1,151 @@
+﻿{
+	"ident": "versionReferenceRecords_keyDateTypes",
+	"version": 2,
+	"stmp": 695142815,
+	"date": "2025-01-10",
+	"records": [
+		{
+			"UUID": "C9DD482D876C3C48AC3BEB4215B90C8B",
+			"code": "PLN",
+			"name": "Project Launch",
+			"color": "#0000FF",
+			"descriptionWP": {},
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Project Launch"
+		},
+		{
+			"UUID": "2AB9AE436AAC456E8DC987E014FB5E19",
+			"code": "LEA",
+			"name": "Lead arriving",
+			"color": "#FFFF00",
+			"descriptionWP": null,
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Lead arriving"
+		},
+		{
+			"UUID": "726875E88682417EBC78DF95DC56B9C6",
+			"code": "QUO",
+			"name": "Quote sending",
+			"color": "#FFFFE0",
+			"descriptionWP": null,
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Quote sending"
+		},
+		{
+			"UUID": "FBEFB4E33B6942E2ABB5F01430BB9838",
+			"code": "COM",
+			"name": "Command received",
+			"color": "#FFA500",
+			"descriptionWP": null,
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Command received"
+		},
+		{
+			"UUID": "82320E26EC90744FB57E27253823B651",
+			"code": "KOM",
+			"name": "Kickoff Meeting",
+			"color": "#32CD32",
+			"descriptionWP": {},
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Kickoff Meeting"
+		},
+		{
+			"UUID": "043FA30B6C41694A90209620EBFB910D",
+			"code": "REQ",
+			"name": "Requirement Gathering",
+			"color": "#FF7F50",
+			"descriptionWP": {},
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Requirement Gathering"
+		},
+		{
+			"UUID": "9C4297D53D634F4B9C7D53A5F883063D",
+			"code": "DAP",
+			"name": "Design Approval",
+			"color": "#8A2BE2",
+			"descriptionWP": {},
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Design Approval"
+		},
+		{
+			"UUID": "6421D50E441D8141838D0439061D2134",
+			"code": "PTF",
+			"name": "Prototype Finalization",
+			"color": "#DC143C",
+			"descriptionWP": {},
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Prototype Finalization"
+		},
+		{
+			"UUID": "0948001C45AACA49A48DDD8ACDBE61A2",
+			"code": "PLC",
+			"name": "Planning Completion",
+			"color": "#FFD700",
+			"descriptionWP": {},
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Planning Completion"
+		},
+		{
+			"UUID": "05B5C5EF82B68642A8DB74673FCD7F7F",
+			"code": "TST",
+			"name": "Testing Start",
+			"color": "#40E0D0",
+			"descriptionWP": {},
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Testing Start"
+		},
+		{
+			"UUID": "33C831CA4F232242BD74959EC4522DB0",
+			"code": "TED",
+			"name": "Testing End",
+			"color": "#FF00FF",
+			"descriptionWP": {},
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Testing End"
+		},
+		{
+			"UUID": "1DE1378254605F49A5947E8532E6D4F5",
+			"code": "GLD",
+			"name": "Go-Live/Deployment",
+			"color": "#808080",
+			"descriptionWP": {},
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Go-Live/Deployment"
+		},
+		{
+			"UUID": "AC00E4A33916CD4EA7EFF06961735025",
+			"code": "PIR",
+			"name": "Post-Implementation Review",
+			"color": "#2F4F4F",
+			"descriptionWP": {},
+			"keyDates": "[object EntityCollection]",
+			"projectStatus": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Post-Implementation Review"
+		}
+	]
+}

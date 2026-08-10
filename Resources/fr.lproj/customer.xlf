@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="4DPop XLIFF Pro">
+            <prop prop-type="version">3.1</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="3" resname="entry.customer">
+               <source>Customer</source>
+               <target>Client</target>
+            </trans-unit>
+            <trans-unit id="6" resname="entry.customer.field.civility">
+               <source>Civility</source>
+               <target>Civilité</target>
+            </trans-unit>
+            <trans-unit id="4" resname="entry.customer.field.firstName">
+               <source>First Name</source>
+               <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="5" resname="entry.customer.field.lastName">
+               <source>Last name</source>
+               <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="7" resname="entry.customer.unit1">
+               <source>person</source>
+               <target>personne</target>
+            </trans-unit>
+            <trans-unit id="8" resname="entry.customer.unitN">
+               <source>persons</source>
+               <target>personnes</target>
+            </trans-unit>
+            <trans-unit id="1" resname="entry.customers">
+               <source>Customers</source>
+               <target>Clients</target>
+            </trans-unit>
+            <trans-unit id="10" resname="entry.member.field.endDate">
+               <source>End</source>
+               <target>Fin</target>
+            </trans-unit>
+            <trans-unit id="9" resname="entry.member.field.startDate">
+               <source>Start</source>
+               <target>Début</target>
+            </trans-unit>
+            <trans-unit id="11" resname="entry.customer.field.birthdate">
+               <source>Birthdate</source>
+               <target>Date naissance</target>
+            </trans-unit>
+         <trans-unit id="htz8CPFWIcqECA8JEh4_LA" resname="entry.customer.actions.alert">
+          <source>Alert</source>
+          <target>Alerte</target>
+        </trans-unit>
+      </group>
+         <group resname="vision">
+            <trans-unit id="2" resname="vision.customer">
+               <source>Customer</source>
+               <target>Client</target>
+            </trans-unit>
+         </group>
+         <group resname="person">
+            <trans-unit id="12" resname="person.label">
+               <source>Person</source>
+               <target>Personne</target>
+            </trans-unit>
+            <trans-unit id="13" resname="person.patient">
+               <source>Patient</source>
+               <target>Patient</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+
+</xliff>

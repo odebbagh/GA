@@ -1,0 +1,155 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 575,
+					"height": 552,
+					"fill": "#E0E0E0",
+					"stroke": "transparent"
+				}
+			}
+		},
+		{
+			"objects": {
+				"List Box": {
+					"type": "listbox",
+					"left": 0,
+					"top": 0,
+					"width": 575,
+					"height": 502,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "automatic",
+					"alternateFill": "#DFDFDF",
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.data",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "automatic",
+					"selectedItemsSource": "Form:C1466.dataSelected",
+					"columns": [
+						{
+							"header": {
+								"text": "Name",
+								"name": "Header1",
+								"fontWeight": "bold",
+								"textAlign": "left"
+							},
+							"name": "stepName",
+							"footer": {
+								"name": "Footer1"
+							},
+							"width": 220,
+							"dataSource": "This:C1470.name"
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Description",
+								"fontWeight": "bold",
+								"textAlign": "left"
+							},
+							"name": "StepDescription",
+							"footer": {
+								"name": "Footer2"
+							},
+							"width": 356,
+							"dataSource": "This:C1470.description"
+						}
+					]
+				},
+				"bOk": {
+					"type": "button",
+					"top": 511,
+					"left": 532,
+					"width": 30,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/check-24x24.png",
+					"iconFrames": 4,
+					"textPlacement": "center",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "accept",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "[Return]",
+					"method": "ObjectMethods/bOk.4dm"
+				},
+				"bCancel": {
+					"type": "button",
+					"top": 511,
+					"left": 486,
+					"width": 32,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/return-24x24.png",
+					"iconFrames": 4,
+					"textPlacement": "center",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "cancel",
+					"method": "ObjectMethods/bCancel.4dm"
+				}
+			}
+		}
+	],
+	"geometryStamp": 30,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

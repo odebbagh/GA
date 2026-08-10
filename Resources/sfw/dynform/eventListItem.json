@@ -1,0 +1,103 @@
+{
+    "objects": {
+        "header_bkgd_##1##": {
+            "type": "rectangle",
+            "top": 0,
+            "left": 0,
+            "width": 350,
+            "height": 23,
+            "stroke": "transparent",
+            "fill": "#BAD6ED"
+        },
+        "body_bkgd_##1##": {
+            "type": "rectangle",
+            "top": 23,
+            "left": 0,
+            "width": 350,
+            "height": 109,
+            "stroke": "transparent",
+            "fill": "#D2E4ED",
+            "_expand":true
+        },
+        "date_##1##": {
+            "type": "input",
+            "left": 26,
+            "top": 3,
+            "width": 90,
+            "height": 17,
+            "enterable": false,
+            "focusable": false,
+            "fill": "transparent",
+            "borderStyle": "none",
+            "dataSource": "Form:C1466.events[##1##].date",
+            "dataSourceTypeHint": "date"
+        },
+        "title_##1##": {
+            "type": "input",
+            "left": 120,
+            "top": 3,
+            "width": 227,
+            "height": 17,
+            "enterable": false,
+            "focusable": false,
+            "fill": "transparent",
+            "borderStyle": "none",
+            "dataSource": "Form:C1466.events[##1##].eventTypeTitle"
+        },
+        "time_##1##": {
+            "type": "input",
+            "left": 26,
+            "top": 26,
+            "width": 90,
+            "height": 17,
+            "enterable": false,
+            "focusable": false,
+            "fill": "transparent",
+            "borderStyle": "none",
+            "dataSource": "Form:C1466.events[##1##].time",
+            "stroke": "#000000",
+            "_expand":true
+        },
+        "user_##1##": {
+            "type": "input",
+            "left": 120,
+            "top": 26,
+            "width": 127,
+            "height": 17,
+            "enterable": false,
+            "focusable": false,
+            "fill": "transparent",
+            "borderStyle": "none",
+            "dataSource": "Form:C1466.events[##1##].user",
+            "_expand":true
+        },
+        "bCollapse_event_##1##": {
+            "type": "checkbox",
+            "text": "Checkbox",
+            "top": 3,
+            "left": 3,
+            "width": 16,
+            "height": 16,
+            "events": [
+                "onClick"
+            ],
+            "style": "disclosure",
+            "focusable": false,
+            "enterable": true
+        },
+        "comment_##1##": {
+            "type": "input",
+            "left": 26,
+            "top": 46,
+            "width": 321,
+            "height": 49,
+            "enterable": false,
+            "focusable": false,
+            "fill": "transparent",
+            "borderStyle": "none",
+            "dataSource": "Form:C1466.events[##1##].comment",
+            "stroke": "#000000",
+            "_expand":true
+        }
+    }
+}

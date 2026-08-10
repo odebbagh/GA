@@ -1,0 +1,118 @@
+﻿{
+	"ident": "versionReferenceRecords_projectStatus",
+	"version": 3,
+	"stmp": 694959021,
+	"date": "2025-01-08",
+	"records": [
+		{
+			"UUID": "EC1E7223FE466244A393161D6C086EE2",
+			"statusID": 1,
+			"code": "QIP",
+			"name": "Quote in Progress",
+			"color": "#00BFFF",
+			"projectNotifyStatusChanges": "[object EntityCollection]",
+			"numAndName": "[1] Quote in Progress",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Quote in Progress"
+		},
+		{
+			"UUID": "F3E7407C774522439362FDFF9F310027",
+			"statusID": 2,
+			"code": "QSC",
+			"name": "Quote Sent to Client",
+			"color": "#0000FF",
+			"projectNotifyStatusChanges": "[object EntityCollection]",
+			"numAndName": "[2] Quote Sent to Client",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Quote Sent to Client"
+		},
+		{
+			"UUID": "0DA1CD12973C5A42A778F1B60B166C03",
+			"statusID": 4,
+			"code": "OCO",
+			"name": "Order Confirmed",
+			"color": "#008000",
+			"projectNotifyStatusChanges": "[object EntityCollection]",
+			"numAndName": "[4] Order Confirmed",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Order Confirmed"
+		},
+		{
+			"UUID": "1767C67BA71B874CA58747593906ED97",
+			"statusID": 5,
+			"code": "INP",
+			"name": "In Progress",
+			"color": "#FFA500",
+			"projectNotifyStatusChanges": "[object EntityCollection]",
+			"numAndName": "[5] In Progress",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "In Progress"
+		},
+		{
+			"UUID": "CD6EFAA23A63CD4B9FA0B5FACC6A3825",
+			"statusID": 9,
+			"code": "ONH",
+			"name": "On Hold",
+			"color": "#FFFF00",
+			"projectNotifyStatusChanges": "[object EntityCollection]",
+			"numAndName": "[9] On Hold",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "On Hold"
+		},
+		{
+			"UUID": "B59BBF46016F84418AD98215A126DC17",
+			"statusID": 6,
+			"code": "INT",
+			"name": "Internal Testing",
+			"color": "#800080",
+			"projectNotifyStatusChanges": "[object EntityCollection]",
+			"numAndName": "[6] Internal Testing",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Internal Testing"
+		},
+		{
+			"UUID": "E62B0AD977B57148B817184E28D5A5AE",
+			"statusID": 7,
+			"code": "CAT",
+			"name": "Client Acceptance Testing",
+			"color": "#FFC0CB",
+			"projectNotifyStatusChanges": "[object EntityCollection]",
+			"numAndName": "[7] Client Acceptance Testing",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Client Acceptance Testing"
+		},
+		{
+			"UUID": "A020C023582BAB498C69CCF14625CBBA",
+			"statusID": 8,
+			"code": "PDC",
+			"name": "Production Deployment Completed",
+			"color": "#00FF00",
+			"projectNotifyStatusChanges": "[object EntityCollection]",
+			"numAndName": "[8] Production Deployment Completed",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Production Deployment Completed"
+		},
+		{
+			"UUID": "AD76E91187FA014DB376F44CDA955F91",
+			"statusID": 10,
+			"code": "CLD",
+			"name": "Closed",
+			"color": "#808080",
+			"projectNotifyStatusChanges": "[object EntityCollection]",
+			"numAndName": "[10] Closed",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Closed"
+		},
+		{
+			"UUID": "22760144859917439E599C5571969FF6",
+			"statusID": 3,
+			"code": "DLT",
+			"name": "Deal lost",
+			"color": "#FF0000",
+			"projectNotifyStatusChanges": "[object EntityCollection]",
+			"numAndName": "[3] Deal lost",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Deal lost"
+		}
+	]
+}

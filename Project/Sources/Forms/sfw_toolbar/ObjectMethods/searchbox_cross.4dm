@@ -1,0 +1,1 @@
+sfw_toolbar_searchBox_cross

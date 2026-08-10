@@ -1,0 +1,90 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 350,
+	"windowMinHeight": 280,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "Events",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"subFormEventList": {
+					"type": "subform",
+					"left": 0,
+					"top": 0,
+					"width": 350,
+					"height": 258,
+					"scrollbarVertical": "visible",
+					"dataSource": "Form:C1466.subFormEventList",
+					"method": "ObjectMethods/subFormEventList.4dm",
+					"sizingY": "grow"
+				},
+				"noEvent_picto": {
+					"type": "picture",
+					"top": 111,
+					"left": 86,
+					"width": 50,
+					"height": 50,
+					"picture": "/RESOURCES/sfw/image/icon/noEvent-50x50.png"
+				},
+				"noEvent_text": {
+					"type": "text",
+					"text": "There is no event at this moment for the current item",
+					"top": 113,
+					"left": 154,
+					"width": 131,
+					"height": 46
+				},
+				"text_calculator": {
+					"type": "input",
+					"left": 25,
+					"top": 318,
+					"width": 234,
+					"height": 17,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.text_calculator"
+				}
+			}
+		}
+	],
+	"geometryStamp": 40,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"width": 366,
+	"height": 280
+}

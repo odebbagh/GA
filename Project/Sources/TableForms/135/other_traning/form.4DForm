@@ -1,0 +1,143 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "listPrinter",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Rectangle2": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 20,
+					"width": 574,
+					"height": 24,
+					"fill": "#E0F0FF"
+				},
+				"Line1": {
+					"type": "line",
+					"top": 1,
+					"left": 444,
+					"width": 0,
+					"height": 23
+				},
+				"Text8": {
+					"type": "text",
+					"text": "Other Training",
+					"top": 4,
+					"left": 24,
+					"width": 408,
+					"height": 15,
+					"fontWeight": "bold",
+					"fontFamily": "Arial",
+					"fontSize": 12
+				},
+				"Text9": {
+					"type": "text",
+					"text": "Cert. Date",
+					"top": 4,
+					"left": 449,
+					"width": 141,
+					"height": 15,
+					"fontWeight": "bold",
+					"fontFamily": "Arial",
+					"fontSize": 12,
+					"textAlign": "right"
+				},
+				"Line2": {
+					"type": "line",
+					"top": 24,
+					"left": 593,
+					"width": 0,
+					"height": 23
+				},
+				"Line3": {
+					"type": "line",
+					"top": 47,
+					"left": 20,
+					"width": 574,
+					"height": 0
+				},
+				"Line4": {
+					"type": "line",
+					"top": 24,
+					"left": 444,
+					"width": 0,
+					"height": 23
+				},
+				"Input": {
+					"type": "input",
+					"left": 23,
+					"top": 27,
+					"width": 418,
+					"height": 16,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.certificationName"
+				},
+				"Input1": {
+					"type": "input",
+					"left": 449,
+					"top": 27,
+					"width": 141,
+					"height": 16,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.certificationDate",
+					"dataSourceTypeHint": "date",
+					"dateFormat": "short"
+				},
+				"Line5": {
+					"type": "line",
+					"top": 24,
+					"left": 20,
+					"width": 0,
+					"height": 23
+				}
+			}
+		}
+	],
+	"geometryStamp": 78,
+	"markerFooter": 47,
+	"markerBreak": 47,
+	"markerBody": 47,
+	"markerHeader": 23,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

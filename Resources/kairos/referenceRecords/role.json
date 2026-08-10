@@ -1,0 +1,118 @@
+﻿{
+	"ident": "versionReferenceRecords_role",
+	"version": 2,
+	"stmp": 694524785,
+	"date": "2025-01-03",
+	"records": [
+		{
+			"UUID": "1874004B7AEFCB409C6A50C14FAE80C5",
+			"code": "SUP",
+			"name": "Support engineer",
+			"teamMembers": "[object EntityCollection]",
+			"skills": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"nameInWindowTitle": "Support engineer"
+		},
+		{
+			"UUID": "7673611F7F2FAF4E8C3AE8EE2E56C678",
+			"code": "EXP",
+			"name": "Expert",
+			"teamMembers": "[object EntityCollection]",
+			"skills": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"nameInWindowTitle": "Expert"
+		},
+		{
+			"UUID": "2605A64D94377E4EAC8AF3032D12CF4C",
+			"code": "SRD",
+			"name": "Developer senior",
+			"teamMembers": "[object EntityCollection]",
+			"skills": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"nameInWindowTitle": "Developer senior"
+		},
+		{
+			"UUID": "D4EF8778C6D9A640A515FB5E9E536F31",
+			"code": "TST",
+			"name": "Tester",
+			"teamMembers": "[object EntityCollection]",
+			"skills": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"nameInWindowTitle": "Tester"
+		},
+		{
+			"UUID": "E0BBD323B1F9AD41B2BF1349991F3427",
+			"code": "PMG",
+			"name": "Project manager",
+			"teamMembers": "[object EntityCollection]",
+			"skills": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"nameInWindowTitle": "Project manager"
+		},
+		{
+			"UUID": "14BA2E12D71CD943972BE7BB663F83E3",
+			"code": "SAL",
+			"name": "Sales executive",
+			"teamMembers": "[object EntityCollection]",
+			"skills": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"nameInWindowTitle": "Sales executive"
+		},
+		{
+			"UUID": "2E9A4B1EE224234FB924B8D64F255FCB",
+			"code": "UXD",
+			"name": "UX/UI designer",
+			"teamMembers": "[object EntityCollection]",
+			"skills": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"nameInWindowTitle": "UX/UI designer"
+		},
+		{
+			"UUID": "83E8F08F32298D40B8F78782271CF94F",
+			"code": "ARC",
+			"name": "Architect",
+			"teamMembers": "[object EntityCollection]",
+			"skills": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"nameInWindowTitle": "Architect"
+		},
+		{
+			"UUID": "81989D0E348A5D43B089F9800394F51F",
+			"code": "JRD",
+			"name": "Developer junior",
+			"teamMembers": "[object EntityCollection]",
+			"skills": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"nameInWindowTitle": "Developer junior"
+		},
+		{
+			"UUID": "DDA93FA971FCBC4A9F517A66717ADF41",
+			"code": "TLD",
+			"name": "Technical leader",
+			"teamMembers": "[object EntityCollection]",
+			"skills": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"nameInWindowTitle": "Technical leader"
+		},
+		{
+			"UUID": "DECE059E14918D47BBA0093DF52C7A89",
+			"code": "SEC",
+			"name": "Security analyst",
+			"teamMembers": "[object EntityCollection]",
+			"skills": "[object EntityCollection]",
+			"capabilities": "[object EntityCollection]",
+			"nofityStatusChanges": "[object EntityCollection]",
+			"nameInWindowTitle": "Security analyst"
+		}
+	]
+}

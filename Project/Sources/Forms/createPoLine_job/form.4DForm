@@ -1,0 +1,243 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"windowTitle": "Add a Line",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 480,
+					"height": 400,
+					"fill": "#E6E6E6",
+					"stroke": "transparent",
+					"strokeWidth": 0
+				},
+				"header_bkgd1": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 482,
+					"height": 35,
+					"sizingX": "fixed",
+					"fill": "#69A4C0",
+					"stroke": "transparent"
+				},
+				"lbl_address": {
+					"type": "text",
+					"top": 10,
+					"left": 38,
+					"width": 250,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Attach a PO Line",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"Static Picture1": {
+					"type": "picture",
+					"top": 6,
+					"left": 6,
+					"width": 24,
+					"height": 24,
+					"picture": "/RESOURCES/image/button/add-24x24.png"
+				}
+			}
+		},
+		{
+			"objects": {
+				"header_bkgd4": {
+					"type": "rectangle",
+					"top": 40,
+					"left": 144,
+					"width": 306,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"Input": {
+					"type": "input",
+					"left": 151,
+					"top": 45,
+					"width": 293,
+					"height": 18,
+					"borderStyle": "none",
+					"fill": "transparent",
+					"dataSource": "Form:C1466.searchBox",
+					"enterable": true,
+					"events": [
+						"onDataChange"
+					],
+					"method": "ObjectMethods/Input.4dm"
+				},
+				"header_bkgd2": {
+					"type": "rectangle",
+					"top": 40,
+					"left": 0,
+					"width": 140,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#B1CFDE",
+					"stroke": "transparent"
+				},
+				"header_bkgd6": {
+					"type": "rectangle",
+					"top": 40,
+					"left": 450,
+					"width": 32,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#B1CFDE",
+					"stroke": "transparent"
+				},
+				"Text": {
+					"type": "text",
+					"text": "PO Line Description",
+					"top": 46,
+					"left": 7,
+					"width": 122,
+					"height": 15,
+					"fontWeight": "bold"
+				},
+				"Text1": {
+					"type": "text",
+					"text": ":",
+					"top": 46,
+					"left": 114,
+					"width": 22,
+					"height": 15,
+					"textAlign": "right",
+					"fontWeight": "bold"
+				},
+				"Button": {
+					"type": "button",
+					"top": 368,
+					"left": 322,
+					"width": 70,
+					"height": 20,
+					"sizingX": "move",
+					"sizingY": "move",
+					"dataSource": "Button",
+					"action": "cancel",
+					"shortcutKey": "",
+					"text": "Cancel",
+					"events": [
+						"onClick"
+					],
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false
+				},
+				"List Box": {
+					"type": "listbox",
+					"left": 10,
+					"top": 76,
+					"width": 462,
+					"height": 283,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.poLines",
+					"method": "ObjectMethods/List Box.4dm",
+					"selectedItemsSource": "Form:C1466.selectedPoLines",
+					"columns": [
+						{
+							"header": {
+								"text": "Description",
+								"name": "Header1"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer1"
+							},
+							"width": 410,
+							"dataSource": "This:C1470.description",
+							"enterable": false
+						},
+						{
+							"name": "Column2",
+							"width": 35,
+							"dataSource": "This:C1470.qtyOrdered",
+							"header": {
+								"name": "Header2",
+								"text": "Qty"
+							},
+							"footer": {
+								"name": "2"
+							}
+						}
+					]
+				},
+				"Static Picture2": {
+					"type": "picture",
+					"top": 45,
+					"left": 458,
+					"width": 16,
+					"height": 18,
+					"picture": "Images/loop.png",
+					"pictureFormat": "scaled"
+				},
+				"Button2": {
+					"type": "button",
+					"text": "OK",
+					"top": 368,
+					"left": 402,
+					"width": 70,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/Button2.4dm",
+					"right": 472
+				}
+			}
+		}
+	],
+	"geometryStamp": 3187,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm",
+	"formSizeAnchor": "Column2"
+}

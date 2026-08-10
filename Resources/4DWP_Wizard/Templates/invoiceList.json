@@ -1,0 +1,43 @@
+{
+    "tableDataSource": "Form.sfw.lb_items",
+    "columns": [{
+            "check": true,
+            "header": "Invoice#",
+            "source": "This.item.invoiceNumber"
+        }, {
+            "check": true,
+            "header": "Customer",
+            "source": "This.item.job.purchaseOrder.customer.name"
+        }, {
+            "check": true,
+            "header": "job#",
+            "source": "This.item.job.jobNumber"
+        }
+        , {
+            "check": true,
+            "header": "PO#",
+            "source": "This.item.job.purchaseOrder.poNumber"
+        }, {
+            "check": true,
+            "header": "PO Based Charges",
+            "source": "This.item.poBasedCharges"
+        }, {
+            "check": true,
+            "header": "MISC Charges",
+            "source": "This.item.job.miscCharges"
+        }, {
+            "check": true,
+            "header": "Taxes",
+            "source": "This.item.job.totalTax"
+        }, {
+            "check": true,
+            "header": "Freight",
+            "source": "This.item.job.freight"
+        }, {
+            "check": true,
+            "header": "Total",
+            "source": "This.item.total"
+        }
+    ]
+   
+}

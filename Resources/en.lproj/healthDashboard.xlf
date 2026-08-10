@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+   <!--Translation file.This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="en">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="1" resname="entry.healthdashboard">
+               <source>Dashboards</source>
+               <target>Dashboards</target>
+            </trans-unit>
+         </group>
+         <group resname="healthdasboard">
+            <trans-unit id="2" resname="healthdasboard.title.oneYearOfAppointmets">
+               <source>One year of appointments</source>
+               <target>One year of appointments</target>
+            </trans-unit>
+            <trans-unit id="3" resname="healthdashboard.lb_items.hearder1">
+               <source>Name</source>
+               <target>Name</target>
+            </trans-unit>
+            <trans-unit id="4" resname="healthdasboard.title.splitConsultationKind">
+               <source>Consultation type breakdowns</source>
+               <target>Consultation type breakdowns</target>
+            </trans-unit>
+            <trans-unit id="5" resname="healthdasboard.title.AppointmentsPerMedicalHouse">
+               <source>Appointments per medical house</source>
+               <target>Appointments per medical house</target>
+            </trans-unit>
+            <trans-unit id="6" resname="healthdasboard.title.AppointmentsPerDoctor">
+               <source>Appointments per doctor</source>
+               <target>Appointments per doctor</target>
+            </trans-unit>
+            <trans-unit id="7" resname="healthdasboard.title.AppointmentsPerPatient">
+               <source>Appointments per patient</source>
+               <target>Appointments per patient</target>
+            </trans-unit>
+         </group>
+         <group resname="AppPerMH">
+            <trans-unit id="8" resname="appPerMH.avTimeGetApp">
+               <source>Average time to get an appointment</source>
+               <target>Average time to get an appointment</target>
+            </trans-unit>
+            <trans-unit id="9" resname="appPerMH.avWaitTimePatient">
+               <source>Average waiting time of the patient on arrival</source>
+               <target>Average waiting time of the patient on arrival</target>
+            </trans-unit>
+            <trans-unit id="10" resname="appPerMH.nbHonoredApp">
+               <source>Number of honored appointments</source>
+               <target>Number of honored appointments</target>
+            </trans-unit>
+            <trans-unit id="11" resname="appPerMH.nbAppCancelByMH">
+               <source>Number of appointments cancelled by the medical house</source>
+               <target>Number of appointments cancelled by the medical house</target>
+            </trans-unit>
+            <trans-unit id="12" resname="appPerMH.nbAppCancelByPatient">
+               <source>Number of appointments cancelled by the patient</source>
+               <target>Number of appointments cancelled by the patient</target>
+            </trans-unit>
+            <trans-unit id="13" resname="appPerMH.nbNotHonoredApp">
+               <source>Number of missed appointments</source>
+               <target>Number of missed appointments</target>
+            </trans-unit>
+            <trans-unit id="14" resname="appPerMH.nbAppCreateCS">
+               <source>Number of appointments created C/S</source>
+               <target>Number of appointments created C/S</target>
+            </trans-unit>
+            <trans-unit id="15" resname="appPerMH.nbAppCreateWeb">
+               <source>Number of appointments created Web</source>
+               <target>Number of appointments created Web</target>
+            </trans-unit>
+            <trans-unit id="16" resname="appPerMH.nbAppCreateMobile">
+               <source>Number of appointments created mobile</source>
+               <target>Number of appointments created mobile</target>
+            </trans-unit>
+            <trans-unit id="17" resname="appPerMH.nbPatients">
+               <source>Patients</source>
+               <target>Patients</target>
+            </trans-unit>
+            <trans-unit id="27" resname="appPerMH.evolnbNotHonoredApp">
+               <source>Evolution of number of missed appointments</source>
+               <target>Evolution of number of missed appointments</target>
+            </trans-unit>
+            <trans-unit id="18" resname="appPerMH.numMH">
+               <source># medical house</source>
+               <target># medical house</target>
+            </trans-unit>
+            <trans-unit id="19" resname="appPerMH.nameMH">
+               <source>Medical house name</source>
+               <target>Medical house name</target>
+            </trans-unit>
+            <trans-unit id="20" resname="appPerMH.address">
+               <source>Address</source>
+               <target>Address</target>
+            </trans-unit>
+            <trans-unit id="21" resname="appPerMH.evolutionY1Y2">
+               <source>Evolution ##Y1 / ##Y2</source>
+               <target>Evolution ##Y1 / ##Y2</target>
+            </trans-unit>
+            <trans-unit id="22" resname="appPerMH.evolAvTimeGetApp">
+               <source>Evolution of the average time to obtain an appointment</source>
+               <target>Evolution of the average time to obtain an appointment</target>
+            </trans-unit>
+            <trans-unit id="23" resname="appPerMH.evolAvWaitTimePatient">
+               <source>Evolution of the average waiting time of the patient on arrival</source>
+               <target>Evolution of the average waiting time of the patient on arrival</target>
+            </trans-unit>
+            <trans-unit id="24" resname="appPerMH.evolnbHonoredApp">
+               <source>Evolution of number of honored appointments</source>
+               <target>Evolution of number of honored appointments</target>
+            </trans-unit>
+            <trans-unit id="25" resname="appPerMH.evolnbAppCancelByMH">
+               <source>Evolution of the number of appointments cancelled by the medical house</source>
+               <target>Evolution of the number of appointments cancelled by the medical house</target>
+            </trans-unit>
+            <trans-unit id="26" resname="appPerMH.evolnbAppCancelByPatient">
+               <source>Evolution of the number of appointments cancelled by patient</source>
+               <target>Evolution of the number of appointments cancelled by patient</target>
+            </trans-unit>
+            <trans-unit id="28" resname="appPerMH.evolnbAppCreateCS">
+               <source>Evolution of the number of appointments created C/S</source>
+               <target>Evolution of the number of appointments created C/S</target>
+            </trans-unit>
+            <trans-unit id="29" resname="appPerMH.evolnbAppCreateWeb">
+               <source>Evolution of the number of appointments created web</source>
+               <target>Evolution of the number of appointments created web</target>
+            </trans-unit>
+            <trans-unit id="30" resname="appPerMH.evolnbAppCreateMobile">
+               <source>Evolution of the number of appointments created mobile</source>
+               <target>Evolution of the number of appointments created mobile</target>
+            </trans-unit>
+            <trans-unit id="31" resname="appPerMH.evolnbPatient">
+               <source>Evolution of the number of patient</source>
+               <target>Evolution of the number of patient</target>
+            </trans-unit>
+			 <trans-unit id="32" resname="appPerMH.numDr">
+               <source># doctor</source>
+               <target># doctor</target>
+            </trans-unit>
+            <trans-unit id="33" resname="appPerMH.nameDr">
+               <source>Doctor name</source>
+               <target>Doctor name</target>
+            </trans-unit>
+            <trans-unit id="34" resname="appPerMH.specialities">
+               <source>Specialities</source>
+               <target>Specialities</target>
+            </trans-unit>			 
+			<trans-unit id="35" resname="appPerMH.numPt">
+               <source># patient</source>
+               <target># patient</target>
+            </trans-unit>
+            <trans-unit id="36" resname="appPerMH.namePt">
+               <source>Patient name</source>
+               <target>Patient name</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

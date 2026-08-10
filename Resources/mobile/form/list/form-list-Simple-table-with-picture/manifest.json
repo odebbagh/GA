@@ -1,0 +1,10 @@
+{
+  "type": "listform",
+  "name": "Simple Table with pictures",
+  "fields": {
+    "count": 2
+  },
+  "tags": {
+    "___LISTFORMTYPE___": "Table"
+  }
+}

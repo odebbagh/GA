@@ -1,0 +1,176 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"label_name": {
+					"type": "text",
+					"top": 12,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Name"
+				},
+				"entryField_name": {
+					"type": "input",
+					"top": 12,
+					"left": 132,
+					"width": 320,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.name",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				}
+			}
+		},
+		{
+			"objects": {
+				"rec_bkgd_1": {
+					"type": "rectangle",
+					"top": 118,
+					"left": 5,
+					"width": 100,
+					"height": 442,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent",
+					"right": 105,
+					"bottom": 560
+				},
+				"lb_tools": {
+					"type": "listbox",
+					"left": 107,
+					"top": 118,
+					"width": 408,
+					"height": 441,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"headerHeight": "24px",
+					"listboxType": "collection",
+					"visibility": "visible",
+					"dataSource": "Form:C1466.lb_tools",
+					"selectionMode": "single",
+					"verticalLineStroke": "#C0C0C0",
+					"alternateFill": "#F7F9FC",
+					"currentItemSource": "Form:C1466.currentTool",
+					"currentItemPositionSource": "Form:C1466.currentToolPos",
+					"method": "ObjectMethods/lb_tools.4dm",
+					"columns": [
+						{
+							"header": {
+								"text": "Name",
+								"name": "Header10",
+								"fontWeight": "bold"
+							},
+							"name": "Column10",
+							"footer": {
+								"name": "Footer10"
+							},
+							"width": 300,
+							"dataSource": "This:C1470.name",
+							"enterable": false,
+							"resizable": false
+						},
+						{
+							"header": {
+								"name": "Header1",
+								"text": "Date",
+								"fontWeight": "bold"
+							},
+							"name": "Column1",
+							"width": 90,
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.date",
+							"resizable": false,
+							"enterable": false,
+							"dateFormat": "short",
+							"textAlign": "center",
+							"dataSourceTypeHint": "date"
+						}
+					]
+				},
+				"bActionTools": {
+					"type": "button",
+					"text": "Actions",
+					"top": 535,
+					"left": 16,
+					"width": 80,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionTools.4dm",
+					"visibility": "visible"
+				},
+				"Text": {
+					"type": "text",
+					"text": "Tools",
+					"top": 125,
+					"left": 9,
+					"width": 92,
+					"height": 16,
+					"fontWeight": "bold",
+					"right": 101
+				}
+			}
+		}
+	],
+	"geometryStamp": 190,
+	"inheritedForm": "sfw_bkgd_header_3lines",
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

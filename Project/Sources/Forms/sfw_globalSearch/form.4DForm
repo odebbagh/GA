@@ -1,0 +1,107 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 5,
+	"events": [
+		"onLoad",
+		"onUnload"
+	],
+	"windowTitle": " ",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"lb_results": {
+					"type": "listbox",
+					"left": 0,
+					"top": 0,
+					"width": 541,
+					"height": 530,
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onDataChange",
+						"onSelectionChange",
+						"onHeaderClick"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.lb_results",
+					"showHeaders": false,
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "visible",
+					"focusable": true,
+					"hideFocusRing": true,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"metaSource": "This:C1470.meta",
+					"method": "ObjectMethods/lb_results.4dm",
+					"resizingMode": "legacy",
+					"columns": [
+						{
+							"header": {
+								"text": "Header1",
+								"name": "Header1"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.pict",
+							"width": 30
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Header2"
+							},
+							"name": "Column2",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This:C1470.text",
+							"width": 500
+						}
+					]
+				},
+				"nbItems": {
+					"type": "input",
+					"left": 334,
+					"top": 534,
+					"width": 200,
+					"height": 17,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#808080",
+					"textAlign": "right",
+					"sizingX": "move",
+					"sizingY": "move"
+				}
+			}
+		}
+	],
+	"geometryStamp": 21,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

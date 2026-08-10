@@ -1,0 +1,19 @@
+{
+    "tableDataSource": " Form.current_item.repairLogs",
+    "columns": [{
+            "check": true,
+            "header": "Problem",
+            "source": "This.item.problem"
+        }, {
+            "check": true,
+            "header": "date",
+            "source": "This.item.reportDate"
+        }, {
+            "check": true,
+            "header": "Down hrs",
+            "source": "This.item.downHrs"
+        }
+        
+    ]
+   
+}

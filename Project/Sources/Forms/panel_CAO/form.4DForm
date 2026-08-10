@@ -1,0 +1,298 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"header_bkgd5": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 0,
+					"width": 1000,
+					"height": 805,
+					"sizingX": "fixed",
+					"fill": "#E4E4E4",
+					"stroke": "transparent"
+				},
+				"label_name": {
+					"type": "text",
+					"top": 12,
+					"left": 12,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Account Name",
+					"textAlign": "right",
+					"right": 132
+				},
+				"entryField_name": {
+					"type": "input",
+					"top": 12,
+					"left": 142,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.name",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_type": {
+					"type": "text",
+					"top": 37,
+					"left": 12,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Type",
+					"textAlign": "right",
+					"right": 132
+				},
+				"pup_type": {
+					"type": "button",
+					"top": 34,
+					"left": 142,
+					"width": 268,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_type.4dm",
+					"events": [
+						"onClick"
+					],
+					"bottom": 57,
+					"textAlign": "left"
+				}
+			}
+		},
+		{
+			"objects": {
+				"header_bkgd2": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 0,
+					"width": 1500,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent",
+					"right": 1500
+				},
+				"Text": {
+					"type": "text",
+					"top": 121,
+					"left": 8,
+					"width": 250,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Account Informations",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"label_typeDetail": {
+					"type": "text",
+					"top": 183,
+					"left": 12,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Type Details",
+					"textAlign": "right",
+					"right": 132
+				},
+				"pup_typeDetail": {
+					"type": "button",
+					"top": 180,
+					"left": 142,
+					"width": 268,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_typeDetail.4dm",
+					"events": [
+						"onClick"
+					],
+					"bottom": 203,
+					"textAlign": "left"
+				},
+				"label_number": {
+					"type": "text",
+					"top": 210,
+					"left": 12,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Account Number",
+					"textAlign": "right",
+					"right": 132
+				},
+				"entryField_accountNumber": {
+					"type": "input",
+					"top": 210,
+					"left": 142,
+					"width": 268,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.accountNumber",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_description": {
+					"type": "text",
+					"top": 237,
+					"left": 12,
+					"width": 120,
+					"height": 16,
+					"stroke": "#808080",
+					"text": "Account Description",
+					"textAlign": "right",
+					"right": 132
+				},
+				"entryField_name2": {
+					"type": "input",
+					"top": 237,
+					"left": 142,
+					"width": 250,
+					"height": 48,
+					"dataSource": "Form:C1466.current_item.name",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left",
+					"scrollbarVertical": "automatic"
+				},
+				"entryField_isSubAccount": {
+					"type": "checkbox",
+					"text": "Make this a subaccount",
+					"top": 295,
+					"left": 142,
+					"width": 268,
+					"height": 17,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.current_item.isSubaccount"
+				},
+				"label_parentAccount": {
+					"type": "text",
+					"top": 328,
+					"left": 12,
+					"width": 120,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Parent account",
+					"textAlign": "right",
+					"right": 132
+				},
+				"pup_subAccount": {
+					"type": "button",
+					"top": 325,
+					"left": 142,
+					"width": 268,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_subAccount.4dm",
+					"events": [
+						"onClick"
+					],
+					"bottom": 348,
+					"textAlign": "left"
+				},
+				"entryField_isInactive": {
+					"type": "checkbox",
+					"text": "Inactive Account",
+					"top": 358,
+					"left": 142,
+					"width": 268,
+					"height": 17,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.current_item.isInacActive"
+				}
+			}
+		}
+	],
+	"geometryStamp": 113,
+	"inheritedForm": "sfw_bkgd_header_3lines",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

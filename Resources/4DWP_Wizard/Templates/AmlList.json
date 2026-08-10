@@ -1,0 +1,27 @@
+{
+    "tableDataSource": "Form.sfw.lb_items",
+    "columns": [{
+            "check": true,
+            "header": "Division",
+            "source": "This.item.division.name"
+        }, {
+            "check": true,
+            "header": "Internal part#",
+            "source": "This.item.partData.internalPartNum"
+        }, {
+            "check": true,
+            "header": "Vendor",
+            "source": "This.item.vendorPartnum"
+        }
+        , {
+            "check": true,
+            "header": "Comments",
+            "source": "This.item.comment"
+        }, {
+            "check": true,
+            "header": "Critical?",
+            "source": "This.item.critical?\"Yes\":\"No\""
+        }
+    ]
+   
+}

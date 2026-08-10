@@ -1,0 +1,36 @@
+﻿{
+	"ident": "versionReferenceRecords_meeting",
+	"version": 3,
+	"stmp": 695169455,
+	"date": "2025-01-10",
+	"records": [
+		{
+			"UUID": "3C56B7A2378B674CB6D5D0A4BD8825C5",
+			"code": "KRS",
+			"name": "4D Kairos - Next Steps",
+			"stmpStart": 693912600,
+			"stmpDuration": 693882000,
+			"attendees": "[object EntityCollection]",
+			"nameInWindowTitle": "4D Kairos - Next Steps",
+			"dateStart": "2024-12-27",
+			"timeDuration": 3600,
+			"timeStart": 34200,
+			"timeStartText": "09:30",
+			"durationWork": "01:00"
+		},
+		{
+			"UUID": "5DCAB5D34A1B224D88B52E750AF65F34",
+			"code": "NSF",
+			"name": "Newton System Fidu - Réunion De Suivi",
+			"stmpStart": 694798200,
+			"stmpDuration": 694748700,
+			"attendees": "[object EntityCollection]",
+			"nameInWindowTitle": "Newton System Fidu - Réunion De Suivi",
+			"dateStart": "2025-01-06",
+			"timeDuration": 6300,
+			"timeStart": 55800,
+			"timeStartText": "15:30",
+			"durationWork": "01:45"
+		}
+	]
+}

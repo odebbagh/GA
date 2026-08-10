@@ -1,0 +1,36 @@
+﻿{
+	"destination": "detailScreen",
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onResize",
+		"onBoundVariableChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "842pt",
+		"paperHeight": "595pt"
+	},
+	"pages": [
+		null,
+		{
+			"objects": {
+				"mainLogo": {
+					"type": "picture",
+					"top": 0,
+					"left": 0,
+					"width": 512,
+					"height": 452,
+					"pictureFormat": "scaled",
+					"picture": "/RESOURCES/image/logo/HWMH-512x452.png"
+				}
+			}
+		}
+	]
+}

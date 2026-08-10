@@ -1,0 +1,206 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "Generate Barcode",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"header_bkgd2": {
+					"type": "rectangle",
+					"top": 10,
+					"left": 0,
+					"width": 140,
+					"height": 23,
+					"sizingX": "fixed",
+					"fill": "#B1CFDE",
+					"stroke": "transparent",
+					"visibility": "hidden"
+				},
+				"Text3": {
+					"type": "text",
+					"text": "Table",
+					"top": 14,
+					"left": 7,
+					"width": 102,
+					"height": 15,
+					"fontWeight": "bold",
+					"visibility": "hidden"
+				},
+				"Text4": {
+					"type": "text",
+					"text": ":",
+					"top": 14,
+					"left": 114,
+					"width": 22,
+					"height": 15,
+					"textAlign": "right",
+					"fontWeight": "bold",
+					"visibility": "hidden"
+				},
+				"entry_Table": {
+					"type": "input",
+					"left": 148,
+					"top": 10,
+					"width": 243,
+					"height": 23,
+					"dataSource": "Form:C1466.table",
+					"visibility": "hidden"
+				},
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 470,
+					"height": 320,
+					"stroke": "transparent",
+					"fill": "#E6E6E6"
+				}
+			}
+		},
+		{
+			"objects": {
+				"Button": {
+					"type": "button",
+					"text": "Generate Barcode",
+					"top": 72,
+					"left": 7,
+					"width": 140,
+					"height": 23,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/Button.4dm"
+				},
+				"barCode": {
+					"type": "input",
+					"left": 11,
+					"top": 111,
+					"width": 448,
+					"height": 160,
+					"dataSourceTypeHint": "picture",
+					"dataSource": "Form:C1466.barCode",
+					"scrollbarVertical": "automatic",
+					"scrollbarHorizontal": "automatic",
+					"pictureFormat": "truncatedCenter",
+					"borderStyle": "none"
+				},
+				"bPtintBarcode": {
+					"type": "button",
+					"text": "Print barCode",
+					"top": 287,
+					"left": 7,
+					"width": 144,
+					"height": 23,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "",
+					"method": "ObjectMethods/bPtintBarcode.4dm"
+				},
+				"bCancel": {
+					"type": "button",
+					"text": "Close",
+					"top": 287,
+					"left": 311,
+					"width": 144,
+					"height": 23,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "",
+					"method": "ObjectMethods/bCancel.4dm"
+				},
+				"header_bkgd1": {
+					"type": "rectangle",
+					"top": 38,
+					"left": 11,
+					"width": 165,
+					"height": 23,
+					"sizingX": "fixed",
+					"fill": "#B1CFDE",
+					"stroke": "transparent",
+					"visibility": "visible"
+				},
+				"label": {
+					"type": "text",
+					"text": "Choose data to display",
+					"top": 42,
+					"left": 18,
+					"width": 130,
+					"height": 15,
+					"fontWeight": "bold",
+					"visibility": "visible"
+				},
+				"pup_fields": {
+					"type": "dropdown",
+					"left": 180,
+					"top": 38,
+					"width": 275,
+					"height": 23,
+					"events": [
+						"onDataChange"
+					],
+					"dataSource": "Form:C1466.pup_fields",
+					"visibility": "visible"
+				},
+				"Check Box": {
+					"type": "checkbox",
+					"text": "Display data barcode",
+					"top": 16,
+					"left": 11,
+					"width": 152,
+					"height": 17,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/Check Box.4dm",
+					"dataSource": "Form:C1466.displayData"
+				}
+			}
+		}
+	],
+	"geometryStamp": 158,
+	"editor": {
+		"groups": {
+			"fieldInputGroup": [
+				"header_bkgd1",
+				"label",
+				"pup_fields"
+			]
+		},
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

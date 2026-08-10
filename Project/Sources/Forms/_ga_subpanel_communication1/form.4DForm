@@ -1,0 +1,170 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onClick",
+		"onDataChange",
+		"onResize",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"communication_bkgd": {
+					"type": "rectangle",
+					"top": 30,
+					"left": 0,
+					"width": 450,
+					"height": 307,
+					"fill": "#DEDEDE",
+					"stroke": "transparent"
+				}
+			}
+		},
+		{
+			"objects": {
+				"lb_communications": {
+					"type": "listbox",
+					"left": 0,
+					"top": 31,
+					"width": 450,
+					"height": 306,
+					"events": [
+						"onDoubleClick",
+						"onDataChange",
+						"onSelectionChange",
+						"onHeaderClick"
+					],
+					"lockedColumnCount": 0,
+					"showHeaders": true,
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.lb_communications",
+					"scrollbarHorizontal": "hidden",
+					"borderStyle": "none",
+					"currentItemSource": "Form:C1466.communicationMean",
+					"currentItemPositionSource": "Form:C1466.communicationMeanPosition",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "#C0C0C0",
+					"fill": "automatic",
+					"alternateFill": "#DFDFDF",
+					"resizingMode": "legacy",
+					"selectionMode": "single",
+					"headerHeight": "1em",
+					"singleClickEdit": false,
+					"columns": [
+						{
+							"header": {
+								"name": "Header1",
+								"text": ""
+							},
+							"name": "col_icon",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.displayedIcon",
+							"enterable": false,
+							"width": 20,
+							"dataSourceTypeHint": "picture",
+							"pictureFormat": "truncatedCenter",
+							"minWidth": 20,
+							"maxWidth": 20,
+							"resizable": false
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Type",
+								"fontWeight": "bold"
+							},
+							"name": "col_type",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This:C1470.displayedType",
+							"enterable": false,
+							"width": 100,
+							"minWidth": 100,
+							"maxWidth": 100,
+							"resizable": true
+						},
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Contact",
+								"fontWeight": "bold"
+							},
+							"name": "col_contact",
+							"footer": {
+								"name": "Footer3"
+							},
+							"dataSource": "This:C1470.contact",
+							"width": 200,
+							"minWidth": 150,
+							"maxWidth": 500,
+							"resizable": false,
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header4",
+								"text": "Comment",
+								"fontWeight": "bold"
+							},
+							"name": "col_comment",
+							"footer": {
+								"name": "Footer4"
+							},
+							"dataSource": "This:C1470.comment",
+							"width": 150,
+							"minWidth": 150,
+							"enterable": false
+						}
+					]
+				},
+				"header_bkgd": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 450,
+					"height": 32,
+					"sizingX": "fixed",
+					"fill": "#00A4A4",
+					"stroke": "transparent"
+				},
+				"lbl_mainContact": {
+					"type": "text",
+					"top": 9,
+					"left": 12,
+					"width": 250,
+					"height": 16,
+					"stroke": "#000000",
+					"text": "Communication",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				}
+			}
+		}
+	],
+	"geometryStamp": 73,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

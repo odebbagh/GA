@@ -1,0 +1,63 @@
+[
+    {
+        "UUID":"39CF7926F8D71E4C9A3541C804385BBE",
+        "code": "DEV",
+		"name": "Development"
+    },
+    {
+        "UUID":"13C6309B6C8DF844B3856EB290E15FA5",
+        "code": "DCA",
+		"name": "Deep code analysis"
+    },
+    {
+        "UUID":"380E6B0C37E4554EBA2D35E0A6177170",
+        "code": "SA",
+		"name": "Security Audit"
+
+    },
+    {
+        "UUID":"380E6B0C37E4554EBA2D35E0A6177170",
+        "code": "PT",
+		"name": "Performance Tuning"
+
+    },
+    {
+        "UUID":"CC716DDB252A024693D44188F698A942",
+        "code": "OPT",
+		"name": "Optimization"
+    },
+    {
+        "UUID":"15684CF6B9986548A95C1B74A9C39CBC",
+        "code": "MAINT",
+		"name": "Maintenance"
+
+    },
+    {
+        "UUID":"B3AF54308192674F8D5029D202631B93",
+        "code": "MIG",
+		"name": "Migration"
+    },
+    {
+        "UUID":"229DF58D5FAB9A47A3903DB3DB46A87B",
+        "code": "CONV",
+		"name": "Conversion"
+
+    },
+    {
+        "UUID":"6D3DE76FA5F8214795E923E4EEC28BF5",
+        "code": "QA",
+		"name": "Quality Assurance and Testing"
+    },
+    {
+        "UUID":"6E0888B7D4D3714983CF3CEB281253D6",
+        "code": "CONS",
+		"name": "Consulting"
+
+    },
+    {
+        "UUID":"7640839D5B201F4FA3EBABBD5BEFDC26",
+        "code": "TTW",
+		"name": "Technical Training and Workshops"
+    }
+
+]

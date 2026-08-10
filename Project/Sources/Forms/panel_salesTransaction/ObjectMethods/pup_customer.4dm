@@ -1,0 +1,1 @@
+cs:C1710.panel_salesTransaction.me.selectCustomer()

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+   <!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="1" resname="wsfw.placeConsultation">
+               <source>Place of consultation</source>
+               <target>Lieu de la consultation</target>
+            </trans-unit>
+            <trans-unit id="2" resname="wsfw.practitioner">
+               <source>Practitioner</source>
+               <target>Praticien</target>
+            </trans-unit>
+            <trans-unit id="3" resname="wsfw.reasonConsultation">
+               <source>Reason for consultation</source>
+               <target>Motif de consultation</target>
+            </trans-unit>
+            <trans-unit id="4" resname="wsfw.dateTime">
+               <source>Date and time</source>
+               <target>Date et heure</target>
+            </trans-unit>
+            <trans-unit id="5" resname="wsfw.from">
+               <source>From</source>
+               <target>De</target>
+            </trans-unit>
+            <trans-unit id="6" resname="wsfw.to">
+               <source>To</source>
+               <target>à</target>
+            </trans-unit>
+             <trans-unit id="7" resname="wsfw.takeAppointment">
+               <source>Take this appointment</source>
+               <target>Prendre le rendez vous</target>
+            </trans-unit>
+             <trans-unit id="8" resname="wsfw.verification">
+               <source>Verification</source>
+               <target>Vérification</target>
+            </trans-unit>
+             <trans-unit id="9" resname="wsfw.emailVerification">
+               <source>Email verification</source>
+               <target>Vérification par mail</target>
+            </trans-unit>
+             <trans-unit id="9" resname="wsfw.finish">
+               <source>Finish</source>
+               <target>Términé</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

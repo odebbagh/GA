@@ -1,0 +1,469 @@
+{
+	"destination": "detailScreen",
+	"rightMargin": 19,
+	"bottomMargin": 20,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "842pt",
+		"paperHeight": "595pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"address_bkgd": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 531,
+					"height": 302,
+					"fill": "#DEDEDE",
+					"stroke": "transparent"
+				}
+			}
+		},
+		{
+			"objects": {
+				"address_item_street_1": {
+					"type": "input",
+					"top": 24,
+					"left": 10,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.street_1",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_country": {
+					"type": "button",
+					"top": 224,
+					"left": 578,
+					"width": 138,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "Pays",
+					"icon": "/RESOURCES/image/flags/tiny/SC.png",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/address_item_country.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"address_item_street_2": {
+					"type": "input",
+					"top": 24,
+					"left": 199,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.street_2",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_postcode": {
+					"type": "input",
+					"top": 24,
+					"left": 388,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.postcode",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_service": {
+					"type": "input",
+					"top": 24,
+					"left": 578,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.service",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_city": {
+					"type": "input",
+					"top": 48,
+					"left": 10,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.city",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_commune": {
+					"type": "input",
+					"top": 48,
+					"left": 199,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.commune",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_municipality": {
+					"type": "input",
+					"top": 48,
+					"left": 388,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.municipality",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_quartier": {
+					"type": "input",
+					"top": 48,
+					"left": 578,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.quartier",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_island": {
+					"type": "input",
+					"top": 72,
+					"left": 10,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.island",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_state": {
+					"type": "input",
+					"top": 72,
+					"left": 199,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.state",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_prefecture": {
+					"type": "input",
+					"top": 72,
+					"left": 388,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.prefecture",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_comitat": {
+					"type": "input",
+					"top": 72,
+					"left": 578,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.comitat",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_canton": {
+					"type": "input",
+					"top": 96,
+					"left": 10,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.canton",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_paroisse": {
+					"type": "input",
+					"top": 96,
+					"left": 199,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.paroisse",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_suburb": {
+					"type": "input",
+					"top": 96,
+					"left": 388,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.suburb",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_district": {
+					"type": "input",
+					"top": 96,
+					"left": 577,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.district",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_region": {
+					"type": "input",
+					"top": 120,
+					"left": 10,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.region",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_land": {
+					"type": "input",
+					"top": 120,
+					"left": 199,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.land",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_province": {
+					"type": "input",
+					"top": 120,
+					"left": 388,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.province",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_department": {
+					"type": "input",
+					"top": 120,
+					"left": 577,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.department",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_arrondissement": {
+					"type": "input",
+					"top": 144,
+					"left": 10,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.arrondissement",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_voisinage": {
+					"type": "input",
+					"top": 144,
+					"left": 199,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.voisinage",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_gouvernorat": {
+					"type": "input",
+					"top": 144,
+					"left": 388,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.gouvernorat",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_buildingnamenumber": {
+					"type": "input",
+					"top": 168,
+					"left": 10,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.buildingnamenumber",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_street": {
+					"type": "input",
+					"top": 168,
+					"left": 199,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.street",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_town": {
+					"type": "input",
+					"top": 168,
+					"left": 388,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.town",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"address_item_regionstate": {
+					"type": "input",
+					"top": 168,
+					"left": 577,
+					"width": 181,
+					"height": 17,
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.address.detail.regionstate",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				}
+			}
+		}
+	],
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {},
+			"View 2": {},
+			"View 3": {},
+			"View 4": {},
+			"View 5": {},
+			"View 6": {},
+			"View 7": {},
+			"View 8": {},
+			"View 9": {}
+		}
+	},
+	"geometryStamp": 10,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
+}

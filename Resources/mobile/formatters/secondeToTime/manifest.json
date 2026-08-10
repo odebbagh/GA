@@ -1,0 +1,5 @@
+{
+	"name": "secondeToTime",
+	"binding": "secondeToTime",
+	"type" : "integer"
+}

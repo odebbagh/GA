@@ -1,0 +1,179 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "Callbacks selector",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Static Picture1": {
+					"type": "picture",
+					"top": 30,
+					"left": 10,
+					"width": 50,
+					"height": 50,
+					"picture": "/RESOURCES/sfw/image/icon/question-50x50.png"
+				},
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 580,
+					"height": 21,
+					"stroke": "transparent",
+					"fill": "#4BC02C",
+					"sizingX": "grow"
+				},
+				"Text": {
+					"type": "text",
+					"text": "Please select the callback to add in the current class:",
+					"top": 47,
+					"left": 87,
+					"width": 446,
+					"height": 16
+				},
+				"lb_callbacks": {
+					"type": "listbox",
+					"left": 14,
+					"top": 94,
+					"width": 552,
+					"height": 244,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.callbacks",
+					"resizingMode": "legacy",
+					"focusable": false,
+					"scrollbarHorizontal": "hidden",
+					"currentItemSource": "Form:C1466.templateProject",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"fill": "#E9FFF1",
+					"alternateFill": "#FFFFFF",
+					"metaSource": "This:C1470.meta",
+					"columns": [
+						{
+							"header": {
+								"name": "Header3",
+								"text": ""
+							},
+							"name": "Column3",
+							"dataSource": "This:C1470.selected",
+							"dataSourceTypeHint": "boolean",
+							"width": 24,
+							"footer": {
+								"name": "Footer3"
+							}
+						},
+						{
+							"header": {
+								"text": "Callback",
+								"name": "Header1"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.title"
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Comment"
+							},
+							"name": "Column2",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This:C1470.comment"
+						}
+					]
+				},
+				"bOk": {
+					"type": "button",
+					"top": 346,
+					"left": 437,
+					"width": 120,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "Add selected",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/check-24x24.png",
+					"iconFrames": 4,
+					"textPlacement": "right",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "accept",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "[Return]"
+				},
+				"bCancel": {
+					"type": "button",
+					"top": 346,
+					"left": 297,
+					"width": 120,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "Cancel",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/return-24x24.png",
+					"iconFrames": 4,
+					"textPlacement": "right",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "cancel"
+				}
+			}
+		}
+	],
+	"geometryStamp": 38,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

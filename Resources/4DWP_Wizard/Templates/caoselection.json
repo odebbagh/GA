@@ -1,0 +1,22 @@
+{
+    "tableDataSource": "Form.sfw.lb_items",
+    "columns": [
+        {
+            "check": true,
+            "header": "Name",
+            "source": "This.item.name"
+        }, {
+            "check": true,
+            "header": "Type",
+            "source": "This.item.type.name"
+        }, {
+            "check": true,
+            "header": "Type Details",
+            "source": "This.item.typeDetail.name"
+        }, {
+            "check": true,
+            "header": "Balance",
+            "source": "This.item.balance"
+        }
+    ]
+}

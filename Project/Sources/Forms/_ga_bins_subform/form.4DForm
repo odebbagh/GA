@@ -1,0 +1,1756 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onClick",
+		"onDataChange",
+		"onResize",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 464,
+					"height": 615,
+					"fill": "#E6E6E6",
+					"stroke": "transparent",
+					"strokeWidth": 0
+				}
+			}
+		},
+		{
+			"objects": {
+				"entryField_num": {
+					"type": "input",
+					"top": 37,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[0].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num30": {
+					"type": "input",
+					"top": 577,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[30].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num29": {
+					"type": "input",
+					"top": 559,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[29].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num28": {
+					"type": "input",
+					"top": 541,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[28].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num27": {
+					"type": "input",
+					"top": 523,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[27].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num26": {
+					"type": "input",
+					"top": 505,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[26].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num25": {
+					"type": "input",
+					"top": 487,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[25].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num24": {
+					"type": "input",
+					"top": 469,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[24].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num23": {
+					"type": "input",
+					"top": 451,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[23].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num22": {
+					"type": "input",
+					"top": 433,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[22].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num21": {
+					"type": "input",
+					"top": 415,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[21].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num20": {
+					"type": "input",
+					"top": 397,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[20].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num19": {
+					"type": "input",
+					"top": 379,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[19].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num18": {
+					"type": "input",
+					"top": 361,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[18].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num17": {
+					"type": "input",
+					"top": 343,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[17].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num16": {
+					"type": "input",
+					"top": 325,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[16].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num15": {
+					"type": "input",
+					"top": 307,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[15].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num14": {
+					"type": "input",
+					"top": 289,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[14].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num13": {
+					"type": "input",
+					"top": 271,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[13].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num12": {
+					"type": "input",
+					"top": 253,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[12].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num11": {
+					"type": "input",
+					"top": 235,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[11].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num10": {
+					"type": "input",
+					"top": 217,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[10].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num9": {
+					"type": "input",
+					"top": 199,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[9].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num8": {
+					"type": "input",
+					"top": 181,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[8].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num7": {
+					"type": "input",
+					"top": 163,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[7].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num6": {
+					"type": "input",
+					"top": 145,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[6].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num5": {
+					"type": "input",
+					"top": 127,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[5].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num4": {
+					"type": "input",
+					"top": 109,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[4].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num3": {
+					"type": "input",
+					"top": 91,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[3].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num2": {
+					"type": "input",
+					"top": 73,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[2].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_num1": {
+					"type": "input",
+					"top": 55,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[1].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition": {
+					"type": "input",
+					"top": 37,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[0].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty": {
+					"type": "input",
+					"top": 37,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[0].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition2": {
+					"type": "input",
+					"top": 577,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[30].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition3": {
+					"type": "input",
+					"top": 559,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[29].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition4": {
+					"type": "input",
+					"top": 541,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[28].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition5": {
+					"type": "input",
+					"top": 523,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[27].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition6": {
+					"type": "input",
+					"top": 505,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[26].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition7": {
+					"type": "input",
+					"top": 487,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[25].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition8": {
+					"type": "input",
+					"top": 469,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[24].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition9": {
+					"type": "input",
+					"top": 451,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[23].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition10": {
+					"type": "input",
+					"top": 433,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[22].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition11": {
+					"type": "input",
+					"top": 415,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[21].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition12": {
+					"type": "input",
+					"top": 397,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[20].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition13": {
+					"type": "input",
+					"top": 379,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[19].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition14": {
+					"type": "input",
+					"top": 361,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[18].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition15": {
+					"type": "input",
+					"top": 343,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[17].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition16": {
+					"type": "input",
+					"top": 325,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[16].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition17": {
+					"type": "input",
+					"top": 307,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[15].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition18": {
+					"type": "input",
+					"top": 289,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[14].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition19": {
+					"type": "input",
+					"top": 271,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[13].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition20": {
+					"type": "input",
+					"top": 253,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[12].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition21": {
+					"type": "input",
+					"top": 235,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[11].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition22": {
+					"type": "input",
+					"top": 217,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[10].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition23": {
+					"type": "input",
+					"top": 199,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[9].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition24": {
+					"type": "input",
+					"top": 181,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[8].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition25": {
+					"type": "input",
+					"top": 163,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[7].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition26": {
+					"type": "input",
+					"top": 145,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[6].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition27": {
+					"type": "input",
+					"top": 127,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[5].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition28": {
+					"type": "input",
+					"top": 109,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[4].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition29": {
+					"type": "input",
+					"top": 91,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[3].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition30": {
+					"type": "input",
+					"top": 73,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[2].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition31": {
+					"type": "input",
+					"top": 55,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[1].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty2": {
+					"type": "input",
+					"top": 577,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[30].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty3": {
+					"type": "input",
+					"top": 559,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[29].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty4": {
+					"type": "input",
+					"top": 541,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[28].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty5": {
+					"type": "input",
+					"top": 523,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[27].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty6": {
+					"type": "input",
+					"top": 505,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[26].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty7": {
+					"type": "input",
+					"top": 487,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[25].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty8": {
+					"type": "input",
+					"top": 469,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[24].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty9": {
+					"type": "input",
+					"top": 451,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[23].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty10": {
+					"type": "input",
+					"top": 433,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[22].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty11": {
+					"type": "input",
+					"top": 415,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[21].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty12": {
+					"type": "input",
+					"top": 397,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[20].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty13": {
+					"type": "input",
+					"top": 379,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[19].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty14": {
+					"type": "input",
+					"top": 361,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[18].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty15": {
+					"type": "input",
+					"top": 343,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[17].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty16": {
+					"type": "input",
+					"top": 325,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[16].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty17": {
+					"type": "input",
+					"top": 307,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[15].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty18": {
+					"type": "input",
+					"top": 289,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[14].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty19": {
+					"type": "input",
+					"top": 271,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[13].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty20": {
+					"type": "input",
+					"top": 253,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[12].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty21": {
+					"type": "input",
+					"top": 235,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[11].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty22": {
+					"type": "input",
+					"top": 217,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[10].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty23": {
+					"type": "input",
+					"top": 199,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[9].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty24": {
+					"type": "input",
+					"top": 181,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[8].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty25": {
+					"type": "input",
+					"top": 163,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[7].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty26": {
+					"type": "input",
+					"top": 145,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[6].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty27": {
+					"type": "input",
+					"top": 127,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[5].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty28": {
+					"type": "input",
+					"top": 109,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[4].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty29": {
+					"type": "input",
+					"top": 91,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[3].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty30": {
+					"type": "input",
+					"top": 73,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[2].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty31": {
+					"type": "input",
+					"top": 55,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[1].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"header_bkgd5": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 467,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_binning": {
+					"type": "text",
+					"top": 7,
+					"left": 5,
+					"width": 278,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Binning",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"bActionBins": {
+					"type": "button",
+					"text": " ",
+					"top": 5,
+					"left": 437,
+					"width": 26,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionBins.4dm",
+					"visibility": "visible"
+				},
+				"entryField_num31": {
+					"type": "input",
+					"top": 595,
+					"left": 5,
+					"width": 70,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[31].num",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_definition32": {
+					"type": "input",
+					"top": 595,
+					"left": 78,
+					"width": 310,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[31].definition",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				},
+				"entryField_qty32": {
+					"type": "input",
+					"top": 595,
+					"left": 391,
+					"width": 60,
+					"height": 12,
+					"dataSource": "Form:C1466.bins[31].value",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "automatic",
+					"borderStyle": "none"
+				}
+			},
+			"entryOrder": [
+				"entryField_qty",
+				"entryField_qty31",
+				"entryField_qty30",
+				"entryField_qty29",
+				"entryField_qty28",
+				"entryField_qty27",
+				"entryField_qty26",
+				"entryField_qty25",
+				"entryField_qty24",
+				"entryField_qty23",
+				"entryField_qty22",
+				"entryField_qty21",
+				"entryField_qty20",
+				"entryField_qty19",
+				"entryField_qty18",
+				"entryField_qty17",
+				"entryField_qty16",
+				"entryField_qty15",
+				"entryField_qty14",
+				"entryField_qty13",
+				"entryField_qty12",
+				"entryField_qty11",
+				"entryField_qty10",
+				"entryField_qty9",
+				"entryField_qty8",
+				"entryField_qty7",
+				"entryField_qty6",
+				"entryField_qty5",
+				"entryField_qty4",
+				"entryField_qty3",
+				"entryField_qty2",
+				"entryField_qty32"
+			]
+		}
+	],
+	"geometryStamp": 71,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

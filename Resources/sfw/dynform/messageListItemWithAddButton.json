@@ -1,0 +1,120 @@
+{
+    "objects": {
+        "header_bkgd_##1##": {
+            "type": "rectangle",
+            "top": 0,
+            "left": 0,
+            "width": 350,
+            "height": 31,
+            "stroke": "transparent",
+            "fill": "#f5deb3"
+        },
+        "message_bkgd_##1##": {
+            "type": "rectangle",
+            "top": 31,
+            "left": 0,
+            "width": 350,
+            "height": 190,
+            "stroke": "transparent",
+            "fill": "#fffacd"
+        },
+        "stmp_##1##": {
+            "type": "input",
+            "left": 36,
+            "top": 8,
+            "width": 100,
+            "height": 17,
+            "enterable": false,
+            "focusable": false,
+            "fill": "transparent",
+            "borderStyle": "none",
+            "dataSource": "cs.sfw_stmp.me.getFullRelative(Form:C1466.messages[##1##].stmp)"
+        },
+        "user_##1##": {
+            "type": "input",
+            "left": 150,
+            "top": 8,
+            "width": 190,
+            "height": 17,
+            "enterable": false,
+            "focusable": false,
+            "fill": "transparent",
+            "borderStyle": "none",
+            "dataSource": "Form:C1466.messages[##1##].user"
+        },
+        "pup_priority_##1##": {
+            "type": "button",
+            "text": "--priority--",
+            "top": 33,
+            "left": 8,
+            "width": 177,
+            "height": 23,
+            "events": [
+                "onClick"
+            ],
+            "focusable": false,
+            "style": "custom",
+            "popupPlacement": "linked",
+            "fontSize": 10,
+            "textAlign": "left"
+        },
+        "message_##1##": {
+            "type": "input",
+            "left": 9,
+            "top": 63,
+            "width": 332,
+            "height": 119,
+            "enterable": true,
+            "focusable": false,
+            "fill": "transparent",
+            "borderStyle": "none",
+            "dataSource": "Form:C1466.messages[##1##].message"
+        },
+        "Check Box": {
+            "type": "checkbox",
+            "text": "Checkbox",
+            "top": 9,
+            "left": 9,
+            "width": 16,
+            "height": 16,
+            "events": [
+                "onClick"
+            ],
+            "style": "disclosure",
+            "focusable": false,
+            "enterable": true
+        },
+        "bCreateComment": {
+            "type": "button",
+            "text": "Save comment",
+            "top": 190,
+            "left": 215,
+            "width": 126,
+            "height": 24,
+            "events": [
+                "onClick"
+            ],
+            "style": "custom",
+            "focusable": false,
+            "icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/check-24x24.png",
+            "textPlacement": "right",
+            "iconFrames": 4
+        },
+        "bCancelComment": {
+            "type": "button",
+            "text": "Erase",
+            "top": 190,
+            "left": 80,
+            "width": 126,
+            "height": 24,
+            "events": [
+                "onClick"
+            ],
+            "style": "custom",
+            "focusable": false,
+            "textPlacement": "right",
+            "iconFrames": 4,
+            "icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/delete-24x24.png"
+        }
+    }
+}

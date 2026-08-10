@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+   <!--
+Translation file.
+This file is distributed under the same license as the product package.-->
+
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="1" resname="wsfw.appointmentsList">
+               <source>List of appointments</source>
+               <target>Liste des rendez-vous</target>
+            </trans-unit>
+            <trans-unit id="2" resname="wsfw.consultation">
+               <source>Consultation</source>
+               <target>Consultation</target>
+            </trans-unit>
+            <trans-unit id="3" resname="wsfw.date">
+               <source>Date</source>
+               <target>Date</target>
+            </trans-unit>
+            <trans-unit id="4" resname="wsfw.visitTime">
+               <source>Visit time</source>
+               <target>Heure de la visite</target>
+            </trans-unit>
+            <trans-unit id="5" resname="wsfw.status">
+               <source>Status</source>
+               <target>Statut</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

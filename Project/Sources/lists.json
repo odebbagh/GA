@@ -1,0 +1,831 @@
+{
+	"Carriers": {
+		"editable": false,
+		"items": [
+			{
+				"text": "GAC Driver",
+				"ref": 1,
+				"editable": true
+			},
+			{
+				"text": "Fed-Ex Priority ",
+				"ref": 2,
+				"editable": true
+			},
+			{
+				"text": "fedex Std Overnight",
+				"ref": 3,
+				"editable": true
+			},
+			{
+				"text": "fedex",
+				"ref": 4,
+				"editable": true
+			},
+			{
+				"text": "fedex Ground",
+				"ref": 5,
+				"editable": true
+			},
+			{
+				"text": "Customer Pickup",
+				"ref": 6,
+				"editable": true
+			},
+			{
+				"text": "UPS 2nd Day",
+				"ref": 8,
+				"editable": true
+			},
+			{
+				"text": "DHL",
+				"ref": 9,
+				"editable": true
+			},
+			{
+				"text": "UPS Next Day",
+				"ref": 10,
+				"editable": true
+			},
+			{
+				"text": "UPS Ground",
+				"ref": 11,
+				"editable": true
+			}
+		]
+	},
+	"Areas": {
+		"editable": false,
+		"items": [
+			{
+				"text": "LAB",
+				"ref": 1,
+				"editable": true
+			},
+			{
+				"text": "BACK-END",
+				"ref": 2,
+				"editable": true
+			},
+			{
+				"text": "VENDOR",
+				"ref": 3,
+				"editable": true
+			},
+			{
+				"text": "CSI",
+				"ref": 4,
+				"editable": true
+			},
+			{
+				"text": "QC",
+				"ref": 5,
+				"editable": true
+			},
+			{
+				"text": "LAB_BACK-END",
+				"ref": 6,
+				"editable": true
+			},
+			{
+				"text": "PACKING",
+				"ref": 7,
+				"editable": true
+			},
+			{
+				"text": "FRONT LINE",
+				"ref": 8,
+				"editable": true
+			},
+			{
+				"text": "TEST",
+				"ref": 9,
+				"editable": true
+			},
+			{
+				"text": "BURN-IN",
+				"ref": 10,
+				"editable": true
+			},
+			{
+				"text": "LAB_BACK-END QC",
+				"ref": 11,
+				"editable": true
+			}
+		]
+	},
+	"OperationCodes": {
+		"editable": false,
+		"items": [
+			{
+				"text": "2nd Optical",
+				"ref": 1,
+				"editable": true
+			},
+			{
+				"text": "3rd Optical",
+				"ref": 2,
+				"editable": true
+			},
+			{
+				"text": "4th Optical",
+				"ref": 3,
+				"editable": true
+			},
+			{
+				"text": "Adhesion",
+				"ref": 4,
+				"editable": true
+			},
+			{
+				"text": "Burn In",
+				"ref": 5,
+				"editable": true
+			},
+			{
+				"text": "Centrifuge",
+				"ref": 6,
+				"editable": true
+			},
+			{
+				"text": "Component Attach",
+				"ref": 7,
+				"editable": true
+			},
+			{
+				"text": "Conv Heat Solder",
+				"ref": 8,
+				"editable": true
+			},
+			{
+				"text": "CSI",
+				"ref": 9,
+				"editable": true
+			},
+			{
+				"text": "Dest Phy Analysis",
+				"ref": 10,
+				"editable": true
+			},
+			{
+				"text": "Die Attach",
+				"ref": 11,
+				"editable": true
+			},
+			{
+				"text": "Die Attach Cure",
+				"ref": 12,
+				"editable": true
+			},
+			{
+				"text": "Die Attach Monitor",
+				"ref": 13,
+				"editable": true
+			},
+			{
+				"text": "Electrical Test",
+				"ref": 14,
+				"editable": true
+			},
+			{
+				"text": "ESD Class",
+				"ref": 15,
+				"editable": true
+			},
+			{
+				"text": "Fine Leak",
+				"ref": 16,
+				"editable": true
+			},
+			{
+				"text": "Forming Gas",
+				"ref": 17,
+				"editable": true
+			},
+			{
+				"text": "Frame Attach",
+				"ref": 18,
+				"editable": true
+			},
+			{
+				"text": "Gross Leak",
+				"ref": 19,
+				"editable": true
+			},
+			{
+				"text": "High Temp Stor",
+				"ref": 20,
+				"editable": true
+			},
+			{
+				"text": "Incoming QC",
+				"ref": 21,
+				"editable": true
+			},
+			{
+				"text": "Lead Integrity",
+				"ref": 22,
+				"editable": true
+			},
+			{
+				"text": "Lid Pull",
+				"ref": 23,
+				"editable": true
+			},
+			{
+				"text": "Marking",
+				"ref": 24,
+				"editable": true
+			},
+			{
+				"text": "Mech Shock",
+				"ref": 25,
+				"editable": true
+			},
+			{
+				"text": "Moisture Res",
+				"ref": 26,
+				"editable": true
+			},
+			{
+				"text": "Non Destructive",
+				"ref": 27,
+				"editable": true
+			},
+			{
+				"text": "Organic Burn Out",
+				"ref": 28,
+				"editable": true
+			},
+			{
+				"text": "Others",
+				"ref": 29,
+				"editable": true
+			},
+			{
+				"text": "Outgoing QC",
+				"ref": 30,
+				"editable": true
+			},
+			{
+				"text": "Outside Service",
+				"ref": 31,
+				"editable": true
+			},
+			{
+				"text": "Photo",
+				"ref": 32,
+				"editable": true
+			},
+			{
+				"text": "Phy Dim",
+				"ref": 33,
+				"editable": true
+			},
+			{
+				"text": "PIND",
+				"ref": 34,
+				"editable": true
+			},
+			{
+				"text": "Plasma Clean",
+				"ref": 35,
+				"editable": true
+			},
+			{
+				"text": "Random Vib",
+				"ref": 36,
+				"editable": true
+			},
+			{
+				"text": "Reflow",
+				"ref": 37,
+				"editable": true
+			},
+			{
+				"text": "Res to Solder",
+				"ref": 38,
+				"editable": true
+			},
+			{
+				"text": "Salt",
+				"ref": 39,
+				"editable": true
+			},
+			{
+				"text": "Sealing",
+				"ref": 40,
+				"editable": true
+			},
+			{
+				"text": "Solder Dip",
+				"ref": 41,
+				"editable": true
+			},
+			{
+				"text": "Solderability",
+				"ref": 42,
+				"editable": true
+			},
+			{
+				"text": "Sta Bake",
+				"ref": 43,
+				"editable": true
+			},
+			{
+				"text": "Temp Cycle",
+				"ref": 44,
+				"editable": true
+			},
+			{
+				"text": "Temp Hum",
+				"ref": 45,
+				"editable": true
+			},
+			{
+				"text": "Thermal Shock",
+				"ref": 46,
+				"editable": true
+			},
+			{
+				"text": "Trim",
+				"ref": 47,
+				"editable": true
+			},
+			{
+				"text": "Vib Var Freq",
+				"ref": 48,
+				"editable": true
+			},
+			{
+				"text": "Wafer Saw",
+				"ref": 49,
+				"editable": true
+			},
+			{
+				"text": "Wirebond",
+				"ref": 50,
+				"editable": true
+			},
+			{
+				"text": "Wirebond Monitor",
+				"ref": 51,
+				"editable": true
+			}
+		]
+	},
+	"Reject_Criteria": {
+		"lineHeight": 18,
+		"editable": false,
+		"items": [
+			{
+				"text": "Audits",
+				"ref": 8,
+				"editable": true,
+				"subTree": {
+					"lineHeight": 18,
+					"editable": false,
+					"items": [
+						{
+							"text": "G2*External (customer) audit",
+							"ref": -2147483648,
+							"editable": true
+						},
+						{
+							"text": "G3*External (supplier) audit",
+							"ref": 559406516,
+							"editable": true
+						},
+						{
+							"text": "G4*ESD Prevention",
+							"ref": 1118813032,
+							"editable": true
+						},
+						{
+							"text": "G5*Calibration issue",
+							"ref": 1678219548,
+							"editable": true
+						},
+						{
+							"text": "G6*Facilities/Plant issue",
+							"ref": 559406532,
+							"editable": true
+						}
+					]
+				}
+			},
+			{
+				"text": "chip",
+				"ref": 2478315,
+				"editable": true
+			},
+			{
+				"text": "CHIPPED",
+				"ref": 559323259,
+				"editable": true
+			},
+			{
+				"text": "",
+				"ref": -1,
+				"editable": true
+			},
+			{
+				"text": "Chipped and Imcomplete fill",
+				"ref": 0,
+				"editable": true
+			},
+			{
+				"text": "Failed PDA",
+				"ref": 1,
+				"editable": true
+			},
+			{
+				"text": "Marking",
+				"ref": 2,
+				"editable": true,
+				"subTree": {
+					"lineHeight": 18,
+					"editable": false,
+					"items": [
+						{
+							"text": "F1*Faded/blurred marking",
+							"ref": 1118813064,
+							"editable": true
+						},
+						{
+							"text": "F2*Incomplete/missing mark",
+							"ref": 1678219596,
+							"editable": true
+						},
+						{
+							"text": "F3*Wrong mark (orientation)",
+							"ref": 62765,
+							"editable": true
+						},
+						{
+							"text": "F4*Wrong Mark (imprint)",
+							"ref": 123518,
+							"editable": true
+						}
+					]
+				}
+			},
+			{
+				"text": "Mechanical",
+				"ref": 3,
+				"editable": true,
+				"subTree": {
+					"lineHeight": 18,
+					"editable": false,
+					"items": [
+						{
+							"text": "A1*Bentleads",
+							"ref": 198955,
+							"editable": true
+						},
+						{
+							"text": "A2*Coplanarity",
+							"ref": 230403,
+							"editable": true
+						}
+					]
+				}
+			},
+			{
+				"text": "Others",
+				"ref": 4,
+				"editable": true,
+				"subTree": {
+					"lineHeight": 18,
+					"editable": false,
+					"items": [
+						{
+							"text": "E1*Contamination/Discoloration",
+							"ref": 287346,
+							"editable": true
+						},
+						{
+							"text": "E10*Wrong Lot#",
+							"ref": 342577,
+							"editable": true
+						},
+						{
+							"text": "E11*cracked/Void/Chips",
+							"ref": 360970,
+							"editable": true
+						},
+						{
+							"text": "E12*incorrect labelling",
+							"ref": 420067,
+							"editable": true
+						},
+						{
+							"text": "E13*Mixed binning (test)",
+							"ref": 460965,
+							"editable": true
+						},
+						{
+							"text": "E14*Lost Summary (test)",
+							"ref": 522500,
+							"editable": true
+						},
+						{
+							"text": "E15*Incomplete Processing",
+							"ref": 570048,
+							"editable": true
+						},
+						{
+							"text": "E2*Count Discrepancy",
+							"ref": 630378,
+							"editable": true
+						},
+						{
+							"text": "E3*Under burn-in/temp-cycle",
+							"ref": 693840,
+							"editable": true
+						},
+						{
+							"text": "E4*Corelation not done",
+							"ref": 737740,
+							"editable": true
+						},
+						{
+							"text": "E5*Skew not done",
+							"ref": 783760,
+							"editable": true
+						},
+						{
+							"text": "E6*Mixed Lot numbers",
+							"ref": 850640,
+							"editable": true
+						},
+						{
+							"text": "E7*Mixed devices",
+							"ref": 889471,
+							"editable": true
+						},
+						{
+							"text": "E8*Surface scratches",
+							"ref": 919840,
+							"editable": true
+						},
+						{
+							"text": "E9*Wrong Device#",
+							"ref": 990535,
+							"editable": true
+						}
+					]
+				}
+			},
+			{
+				"text": "Packaging",
+				"ref": 5,
+				"editable": true,
+				"subTree": {
+					"lineHeight": 18,
+					"editable": false,
+					"items": [
+						{
+							"text": "C1*No antistatic bag",
+							"ref": 1109709,
+							"editable": true
+						},
+						{
+							"text": "C2*Wrong box/tubes/trays",
+							"ref": 1156754,
+							"editable": true
+						},
+						{
+							"text": "C3*Wrong Device Orientation",
+							"ref": 1200170,
+							"editable": true
+						},
+						{
+							"text": "C4*Wrong Customer Shipper",
+							"ref": 1251209,
+							"editable": true
+						}
+					]
+				}
+			},
+			{
+				"text": "Paperwork",
+				"ref": 6,
+				"editable": true,
+				"subTree": {
+					"lineHeight": 18,
+					"editable": false,
+					"items": [
+						{
+							"text": "b1*incomp info on trav/ERP system",
+							"ref": 1319094,
+							"editable": true
+						},
+						{
+							"text": "b2*wrong info on trav/ERP system",
+							"ref": 1402544,
+							"editable": true
+						},
+						{
+							"text": "b3*incomplete supporting docs",
+							"ref": 1461870,
+							"editable": true
+						},
+						{
+							"text": "b4*incorrect test pgm/spec",
+							"ref": 1499705,
+							"editable": true
+						},
+						{
+							"text": "b5*no papaerwork",
+							"ref": 1535883,
+							"editable": true
+						},
+						{
+							"text": "b6*writeover",
+							"ref": 1569110,
+							"editable": true
+						}
+					]
+				}
+			},
+			{
+				"text": "Testware problems",
+				"ref": 9,
+				"editable": true,
+				"subTree": {
+					"lineHeight": 18,
+					"editable": false,
+					"items": [
+						{
+							"text": "H1*No burn-in board",
+							"ref": 1620710,
+							"editable": true
+						},
+						{
+							"text": "H2*No test hardware",
+							"ref": 1661237,
+							"editable": true
+						},
+						{
+							"text": "H3*No test program",
+							"ref": 1689665,
+							"editable": true
+						},
+						{
+							"text": "H4*No Burn-in Spec",
+							"ref": 1757820,
+							"editable": true
+						}
+					]
+				}
+			},
+			{
+				"text": "Wafersort",
+				"ref": 7,
+				"editable": true,
+				"subTree": {
+					"lineHeight": 18,
+					"editable": false,
+					"items": [
+						{
+							"text": "D1*Probe damage (minor)",
+							"ref": 1818014,
+							"editable": true
+						},
+						{
+							"text": "D10*Ink dots too small",
+							"ref": 1876173,
+							"editable": true
+						},
+						{
+							"text": "D11*Ink dots too large",
+							"ref": 1913839,
+							"editable": true
+						},
+						{
+							"text": "D2*Incomplete/Missing probes",
+							"ref": 2000435,
+							"editable": true
+						},
+						{
+							"text": "D3*Unnecessary/Improper wash",
+							"ref": 2051451,
+							"editable": true
+						},
+						{
+							"text": "D4*Broken Wafer",
+							"ref": 2091078,
+							"editable": true
+						},
+						{
+							"text": "D5*Contamination",
+							"ref": 2145236,
+							"editable": true
+						},
+						{
+							"text": "D6*Scratches",
+							"ref": 2194358,
+							"editable": true
+						},
+						{
+							"text": "D7*Probe damage (major)",
+							"ref": 2237086,
+							"editable": true
+						},
+						{
+							"text": "D8*MIssing ink dots",
+							"ref": 2309999,
+							"editable": true
+						},
+						{
+							"text": "D9*Ink smearing",
+							"ref": 2367620,
+							"editable": true
+						}
+					]
+				}
+			}
+		]
+	},
+	"StepProperty": {
+		"editable": false,
+		"items": [
+			{
+				"text": "Hold Point",
+				"ref": 1,
+				"editable": true
+			},
+			{
+				"text": "Supervisor's Signoff is required",
+				"ref": 2,
+				"editable": true
+			},
+			{
+				"text": "QA signoff is required",
+				"ref": 3,
+				"editable": true
+			},
+			{
+				"text": "SN loggiing for all units in current-step",
+				"ref": 4,
+				"editable": true
+			},
+			{
+				"text": "SN logging for current-step Fails",
+				"ref": 5,
+				"editable": true
+			},
+			{
+				"text": "SN logging at Punch-IN",
+				"ref": 6,
+				"editable": true
+			},
+			{
+				"text": "Step may be performed non-sequentially",
+				"ref": 7,
+				"editable": true
+			},
+			{
+				"text": "Outside of Count Rules",
+				"ref": 8,
+				"editable": true
+			},
+			{
+				"text": "Final QA Approval with Stamp",
+				"ref": 9,
+				"editable": true
+			},
+			{
+				"text": "Pareto in Traveler",
+				"ref": 10,
+				"editable": true
+			},
+			{
+				"text": "QA Final Review",
+				"ref": 11,
+				"editable": true
+			}
+		]
+	},
+	"serializationStatus": {
+		"editable": false,
+		"items": [
+			{
+				"text": "PASS",
+				"ref": 1,
+				"editable": true
+			},
+			{
+				"text": "FAIL",
+				"ref": 2,
+				"editable": true
+			},
+			{
+				"text": "NOT-TESTED",
+				"ref": 3,
+				"editable": true
+			}
+		]
+	}
+}

@@ -1,0 +1,53 @@
+﻿{
+	"ident": "versionReferenceRecords_issuePriority",
+	"version": 6,
+	"stmp": 695729487,
+	"date": "2025-01-17",
+	"records": [
+		{
+			"UUID": "3AF4962ADC1F22439106A481D5C7921C",
+			"code": "PRC",
+			"name": "Critical",
+			"color": "#FF0000",
+			"issueAffectations": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Critical"
+		},
+		{
+			"UUID": "4770B87AB1E7424BB39DFF4E0AB75464",
+			"code": "PRH",
+			"name": "High",
+			"color": "#FFA500",
+			"issueAffectations": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "High"
+		},
+		{
+			"UUID": "1F34E21906F7B1469B7FCFAD5692A751",
+			"code": "PRL",
+			"name": "Low",
+			"color": "#00FF00",
+			"issueAffectations": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Low"
+		},
+		{
+			"UUID": "B2F8BAD4C43B2544909558F185658C44",
+			"code": "PRM",
+			"name": "Medium",
+			"color": "#FFD700",
+			"issueAffectations": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Medium"
+		},
+		{
+			"UUID": "361ACAD3CDB5CA4D8AC7082DF0C2F9D1",
+			"code": "PRN",
+			"name": "None",
+			"color": "#E6E6FA",
+			"issueAffectations": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "None"
+		}
+	]
+}

@@ -1,0 +1,193 @@
+{
+	"destination": "detailScreen",
+	"rightMargin": 19,
+	"bottomMargin": 20,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "842pt",
+		"paperHeight": "595pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"listbox": {
+					"type": "listbox",
+					"dataSource": "Form:C1466.currentSelection",
+					"top": 10,
+					"left": 10,
+					"width": 610,
+					"height": 300,
+					"visibility": "visible",
+					"sizingX": "fixed",
+					"sizingY": "grow",
+					"headerHeight": "2em",
+					"listboxType": "collection",
+					"scrollbarHorizontal": "automatic",
+					"scrollbarVertical": "automatic",
+					"resizingMode": "legacy",
+					"columns": [
+						{
+							"name": "civility",
+							"dataSource": "This:C1470.civility",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": "Civility",
+								"name": ""
+							},
+							"footer": {
+								"name": "1"
+							}
+						},
+						{
+							"name": "firstName",
+							"dataSource": "This:C1470.firstName",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": "First Name",
+								"name": "2"
+							},
+							"footer": {
+								"name": "3"
+							}
+						},
+						{
+							"name": "lastName",
+							"dataSource": "This:C1470.lastName",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": "Last Name",
+								"name": "4"
+							},
+							"footer": {
+								"name": "5"
+							}
+						},
+						{
+							"name": "photo",
+							"dataSource": "This:C1470.photo",
+							"width": 120,
+							"enterable": false,
+							"header": {
+								"text": "Photo",
+								"name": "6"
+							},
+							"footer": {
+								"name": "7"
+							}
+						},
+						{
+							"name": "UUID",
+							"dataSource": "This:C1470.UUID",
+							"width": 120,
+							"enterable": false,
+							"header": {
+								"text": "Uuid",
+								"name": "8"
+							},
+							"footer": {
+								"name": "9"
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"Rectangle4": {
+					"type": "rectangle",
+					"top": 269,
+					"left": 461,
+					"width": 601,
+					"height": 321,
+					"sizingX": "grow",
+					"sizingY": "move",
+					"fill": "#D7E6A9",
+					"stroke": "transparent"
+				},
+				"bkgd_tables": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 193,
+					"height": 590,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#045B92",
+					"stroke": "transparent"
+				},
+				"bkgd_items": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 193,
+					"width": 267,
+					"height": 590,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#97BF0D",
+					"stroke": "transparent"
+				},
+				"Rectangle2": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 460,
+					"width": 601,
+					"height": 269,
+					"sizingX": "grow",
+					"fill": "#A6C1D5",
+					"stroke": "transparent"
+				},
+				"Popup Dropdown List": {
+					"type": "dropdown",
+					"left": 67,
+					"top": 617,
+					"width": 271,
+					"height": 28,
+					"events": [
+						"onDataChange"
+					],
+					"dataSource": "Form:C1466.hl",
+					"dataSourceTypeHint": "integer"
+				}
+			}
+		}
+	],
+	"geometryStamp": 15,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

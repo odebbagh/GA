@@ -1,0 +1,23 @@
+{
+    "tableDataSource": "Form.sfw.lb_items",
+    "columns": [{
+            "check": true,
+            "header": "assigned ID",
+            "source": "This.item.assignedID"
+        }, {
+            "check": true,
+            "header": "Location",
+            "source": "This.item.location.name"
+        }, {
+            "check": true,
+            "header": "Model",
+            "source": "This.item.model"
+        }
+        , {
+            "check": true,
+            "header": "Serial Number",
+            "source": "This.item.serialNumber"
+        }
+    ]
+   
+}

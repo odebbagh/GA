@@ -1,0 +1,109 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"markerHeader": 30,
+	"markerBody": 60,
+	"events": [
+		"onLoad"
+	],
+	"windowTitle": "window title",
+	"destination": "listScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"background": {
+					"type": "rectangle",
+					"fill": "automatic",
+					"stroke": "transparent",
+					"top": 30,
+					"height": 30,
+					"left": 0,
+					"right": 790
+				},
+				"label_UUID": {
+					"type": "text",
+					"text": "UUID",
+					"top": 10,
+					"left": 10,
+					"height": 17,
+					"width": 250,
+					"fontWeight": "bold",
+					"textAlign": "center"
+				},
+				"field_UUID": {
+					"type": "input",
+					"dataSource": "[sfw_UserProfile]UUID",
+					"top": 37,
+					"left": 10,
+					"width": 250,
+					"height": 17,
+					"borderStyle": "none"
+				},
+				"line_1": {
+					"type": "line",
+					"top": 0,
+					"height": 60,
+					"left": 265
+				},
+				"label_ident": {
+					"type": "text",
+					"text": "ident",
+					"top": 10,
+					"left": 270,
+					"height": 17,
+					"width": 250,
+					"fontWeight": "bold",
+					"textAlign": "center"
+				},
+				"field_ident": {
+					"type": "input",
+					"dataSource": "[sfw_UserProfile]ident",
+					"top": 37,
+					"left": 270,
+					"width": 250,
+					"height": 17,
+					"borderStyle": "none"
+				},
+				"line_2": {
+					"type": "line",
+					"top": 0,
+					"height": 60,
+					"left": 525
+				},
+				"label_name": {
+					"type": "text",
+					"text": "name",
+					"top": 10,
+					"left": 530,
+					"height": 17,
+					"width": 250,
+					"fontWeight": "bold",
+					"textAlign": "center"
+				},
+				"field_name": {
+					"type": "input",
+					"dataSource": "[sfw_UserProfile]name",
+					"top": 37,
+					"left": 530,
+					"width": 250,
+					"height": 17,
+					"borderStyle": "none"
+				}
+			}
+		}
+	],
+	"geometryStamp": 1
+}

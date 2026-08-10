@@ -1,0 +1,1 @@
+OBJECT SET ENABLED:C1123(*; "pup_contact"; Form:C1466.current_item.contacts().length>0)

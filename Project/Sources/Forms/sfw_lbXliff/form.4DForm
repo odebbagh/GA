@@ -1,0 +1,139 @@
+{
+	"destination": "detailScreen",
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "842pt",
+		"paperHeight": "595pt"
+	},
+	"pages": [
+		null,
+		{
+			"objects": {
+				"List Box": {
+					"type": "listbox",
+					"left": 15,
+					"top": 18,
+					"width": 399,
+					"height": 303,
+					"events": [
+						"onLoad",
+						"onClick",
+						"onDataChange",
+						"onSelectionChange",
+						"onHeaderClick"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.listObjects",
+					"selectedItemsSource": "Form:C1466.currentSelection",
+					"selectionMode": "multiple",
+					"sizingY": "grow",
+					"scrollbarVertical": "automatic",
+					"scrollbarHorizontal": "automatic",
+					"method": "ObjectMethods/List Box.4dm",
+					"sizingX": "grow",
+					"hideFocusRing": true,
+					"columns": [
+						{
+							"header": {
+								"text": "Object Name",
+								"name": "Header1"
+							},
+							"name": "Column1",
+							"width": 200,
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.name",
+							"enterable": true,
+							"minWidth": 200,
+							"maxWidth": 500
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Type"
+							},
+							"name": "Column2",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This:C1470.type",
+							"minWidth": 100,
+							"maxWidth": 300,
+							"width": 100
+						},
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Text"
+							},
+							"name": "Column3",
+							"footer": {
+								"name": "Footer3"
+							},
+							"dataSource": "This:C1470.text",
+							"width": 100,
+							"minWidth": 100,
+							"maxWidth": 300
+						}
+					]
+				},
+				"Button": {
+					"type": "button",
+					"text": "Select",
+					"top": 336,
+					"left": 353,
+					"width": 61,
+					"height": 18,
+					"focusable": false,
+					"events": [
+						"onClick"
+					],
+					"action": "cancel",
+					"sizingX": "move",
+					"sizingY": "move"
+				}
+			}
+		}
+	],
+	"geometryStamp": 24,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowSizingX": "variable"
+}

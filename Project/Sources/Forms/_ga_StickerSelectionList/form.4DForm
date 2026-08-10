@@ -1,0 +1,167 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"header_bkgd1": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 912,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_selectionList": {
+					"type": "text",
+					"top": 9,
+					"left": 11,
+					"width": 250,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Select items to print stickers",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"lb_equipments": {
+					"type": "listbox",
+					"left": 0,
+					"top": 33,
+					"width": 912,
+					"height": 692,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"resizingMode": "rightToLeft",
+					"alternateFill": "#CCCCCC",
+					"scrollbarHorizontal": "automatic",
+					"stroke": "#000000",
+					"borderStyle": "none",
+					"horizontalLineStroke": "transparent",
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.lb_equipments",
+					"currentItemSource": "Form:C1466.lb_currentEquipment",
+					"currentItemPositionSource": "Form:C1466.lb_currentEquipmentPos",
+					"selectedItemsSource": "Form:C1466.lb_selectedEquipments",
+					"verticalLineStroke": "transparent",
+					"focusable": true,
+					"singleClickEdit": false,
+					"columns": [
+						{
+							"header": {
+								"text": "ID",
+								"name": "hdr_id",
+								"fontWeight": "bold"
+							},
+							"name": "col_ID",
+							"footer": {
+								"name": "Footer1"
+							},
+							"width": 140,
+							"dataSource": "This:C1470.assignedID"
+						},
+						{
+							"header": {
+								"name": "hdr_model",
+								"text": "Model",
+								"fontWeight": "bold"
+							},
+							"name": "col_model",
+							"footer": {
+								"name": "Footer2"
+							},
+							"width": 215,
+							"dataSource": "This:C1470.model"
+						},
+						{
+							"header": {
+								"name": "hdr_description",
+								"text": "Description",
+								"fontWeight": "bold"
+							},
+							"name": "col_description",
+							"footer": {
+								"name": "Footer3"
+							},
+							"width": 350,
+							"dataSource": "This:C1470.description"
+						},
+						{
+							"header": {
+								"name": "hdr_nextCalDate",
+								"text": "Next Cal Date",
+								"fontWeight": "bold"
+							},
+							"name": "col_nextCalDate",
+							"footer": {
+								"name": "Footer4"
+							},
+							"dataSource": "This:C1470.nextCalDate",
+							"dataSourceTypeHint": "date",
+							"width": 125
+						}
+					]
+				},
+				"btn_printLabels": {
+					"type": "button",
+					"text": "Print Labels",
+					"top": 735,
+					"left": 803,
+					"width": 90,
+					"height": 25,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "printLabels",
+					"method": "ObjectMethods/btn_printLabels.4dm"
+				}
+			}
+		}
+	],
+	"geometryStamp": 45,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

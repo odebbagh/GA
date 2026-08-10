@@ -1,0 +1,22 @@
+<svg viewBox="0 0 1000 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" vector-effect="non-scaling-stroke" xmlns:ns4D="http://www.4D.com" ns4D:vp-deflate="0.5" ns4D:renderOffScreen="false">
+	<rect width="1000" height="1000" fill="#DDDDDD" stroke="none"/>
+	<line x1="0" y1="0" x2="1000" y2="0" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="0" y1="200" x2="1000" y2="200" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="0" y1="400" x2="1000" y2="400" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="0" y1="600" x2="1000" y2="600" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="0" y1="800" x2="1000" y2="800" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="0" y1="1000" x2="1000" y2="1000" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="0" y1="0" x2="0" y2="1000" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="100" y1="0" x2="100" y2="1000" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="200" y1="0" x2="200" y2="1000" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="300" y1="0" x2="300" y2="1000" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="400" y1="0" x2="400" y2="1000" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="500" y1="0" x2="500" y2="1000" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="600" y1="0" x2="600" y2="1000" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="700" y1="0" x2="700" y2="1000" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="800" y1="0" x2="800" y2="1000" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="900" y1="0" x2="900" y2="1000" stroke="#999999"  vector-effect="non-scaling-stroke" />
+	<line x1="1000" y1="0" x2="1000" y2="1000" stroke="#999999"  vector-effect="non-scaling-stroke" />
+
+	<rect width="1000" height="1000" fill="none" stroke="#999999"  vector-effect="non-scaling-stroke"/>
+</svg>

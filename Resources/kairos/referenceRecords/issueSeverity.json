@@ -1,0 +1,53 @@
+﻿{
+	"ident": "versionReferenceRecords_issueSeverity",
+	"version": 3,
+	"stmp": 695729491,
+	"date": "2025-01-17",
+	"records": [
+		{
+			"UUID": "6BBE8E4D8F87E74D8B789AE805F9E3AF",
+			"code": "SVN",
+			"name": "None",
+			"color": "#E6E6FA",
+			"issues": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "None"
+		},
+		{
+			"UUID": "DD1D188E2E778F478AB7666439A30AC5",
+			"code": "SVC",
+			"name": "Critical",
+			"color": "#FF0000",
+			"issues": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Critical"
+		},
+		{
+			"UUID": "ED5424F855B424429A4073126E80873F",
+			"code": "SVH",
+			"name": "High",
+			"color": "#FFA500",
+			"issues": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "High"
+		},
+		{
+			"UUID": "D76FF723D68809439FA2F4C465E35BE1",
+			"code": "SVM",
+			"name": "Medium",
+			"color": "#FFD700",
+			"issues": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Medium"
+		},
+		{
+			"UUID": "836EE0322228D64D9B88FF770C00B5DF",
+			"code": "SVL",
+			"name": "Low",
+			"color": "#00FF00",
+			"issues": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Low"
+		}
+	]
+}

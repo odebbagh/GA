@@ -1,0 +1,108 @@
+﻿{
+	"ident": "versionReferenceRecords_issueStatus",
+	"version": 5,
+	"stmp": 695729477,
+	"date": "2025-01-17",
+	"records": [
+		{
+			"UUID": "217C007E3AA8E048B4186D6B77533615",
+			"code": "OPN",
+			"name": "Open",
+			"color": "#FF0000",
+			"issues": "[object EntityCollection]",
+			"issueSteps": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Open"
+		},
+		{
+			"UUID": "1DAA424D60D75648A2DBB4D1393A45EE",
+			"code": "ASS",
+			"name": "Assigned",
+			"color": "#7FFFD4",
+			"issues": "[object EntityCollection]",
+			"issueSteps": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Assigned"
+		},
+		{
+			"UUID": "CA24D5E8F8992F46A828356CBFDA6B7D",
+			"code": "INP",
+			"name": "In Progress",
+			"color": "#00BFFF",
+			"issues": "[object EntityCollection]",
+			"issueSteps": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "In Progress"
+		},
+		{
+			"UUID": "012AB0B5FE3AED408988A5D193DCBA63",
+			"code": "RES",
+			"name": "Resolved",
+			"color": "#008000",
+			"issues": "[object EntityCollection]",
+			"issueSteps": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Resolved"
+		},
+		{
+			"UUID": "24CD633F70D1D045801F17EA8FAC4C1A",
+			"code": "ROO",
+			"name": "Re Opened",
+			"color": "#FF1493",
+			"issues": "[object EntityCollection]",
+			"issueSteps": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Re Opened"
+		},
+		{
+			"UUID": "8F51210B3C8B5940A82105E9973343AE",
+			"code": "DEF",
+			"name": "Deferred",
+			"color": "#FFFF00",
+			"issues": "[object EntityCollection]",
+			"issueSteps": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Deferred"
+		},
+		{
+			"UUID": "3E5B7F1FAA8B2B4C99DB70C52F513767",
+			"code": "REJ",
+			"name": "Rejected",
+			"color": "#8A2BE2",
+			"issues": "[object EntityCollection]",
+			"issueSteps": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Rejected"
+		},
+		{
+			"UUID": "440FB5876633904687B90EB1C185EEB2",
+			"code": "CLO",
+			"name": "Closed",
+			"color": "#32CD32",
+			"issues": "[object EntityCollection]",
+			"issueSteps": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Closed"
+		},
+		{
+			"UUID": "3982BE953A50E849A939109A6D56CB5F",
+			"code": "DUP",
+			"name": "Duplicate",
+			"color": "#FFA500",
+			"issues": "[object EntityCollection]",
+			"issueSteps": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Duplicate"
+		},
+		{
+			"UUID": "4C3D82CB37C3914ABF8BE4C1D6DEEAC7",
+			"code": "CNR",
+			"name": "Not Reproduiced",
+			"color": "#D3D3D3",
+			"issues": "[object EntityCollection]",
+			"issueSteps": "[object EntityCollection]",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Not Reproduiced"
+		}
+	]
+}

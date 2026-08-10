@@ -1,0 +1,80 @@
+﻿{
+	"ident": "versionReferenceRecords_leadStage",
+	"version": 1,
+	"stmp": 708860135,
+	"date": "2025-06-18",
+	"records": [
+		{
+			"UUID": "15D2CF9212089540843E9859B3ACD9E0",
+			"stageID": "0",
+			"code": "NE",
+			"name": "New",
+			"color": "#D3D3D3",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "New"
+		},
+		{
+			"UUID": "152FC38EBE41AA4DAD0087978DC3700D",
+			"stageID": "1",
+			"code": "CN",
+			"name": "Contacted",
+			"color": "#87CEEB",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Contacted"
+		},
+		{
+			"UUID": "8461BC6D3323A745B3CCD32B1FCE378F",
+			"stageID": "2",
+			"code": "QA",
+			"name": "Qualified",
+			"color": "#008080",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Qualified"
+		},
+		{
+			"UUID": "FDBCC4D823632C4380BFABD11A3E2A56",
+			"stageID": "3",
+			"code": "DC",
+			"name": "In Discussion",
+			"color": "#FFA500",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "In Discussion"
+		},
+		{
+			"UUID": "02F03D0DF390264A9BF259C5F3ADC5EA",
+			"stageID": "4",
+			"code": "QO",
+			"name": "Quote Sent",
+			"color": "#9370DB",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Quote Sent"
+		},
+		{
+			"UUID": "525E1B2C9E7E1E468565EF5E082CD036",
+			"stageID": "5",
+			"code": "NG",
+			"name": "Negotiation",
+			"color": "#FF8C00",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Negotiation"
+		},
+		{
+			"UUID": "AA0432E44E68314BAA179AEFC878AA1E",
+			"stageID": "6",
+			"code": "WN",
+			"name": "Won",
+			"color": "#00FF00",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Won"
+		},
+		{
+			"UUID": "5DFE33D48D116448AE92E31E00F5234D",
+			"stageID": "7",
+			"code": "LS",
+			"name": "Lost",
+			"color": "#FF0000",
+			"colorPicto": "[object Picture]",
+			"nameInWindowTitle": "Lost"
+		}
+	]
+}

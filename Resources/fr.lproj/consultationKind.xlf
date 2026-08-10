@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+   <!--Translation file.This file is distributed under the same license as the product package.-->
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" source-language="en" target-language="fr">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="entry">
+            <trans-unit id="1" resname="entry.consultationKinds">
+               <source>Consultation types</source>
+               <target>Types de consultation</target>
+            </trans-unit>
+            <trans-unit id="2" resname="entry.consultationKind">
+               <source>Consultation type</source>
+               <target>Type de consultation</target>
+            </trans-unit>
+            <trans-unit id="3" resname="entry.consultationKind.field.name">
+               <source>Name</source>
+               <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="4" resname="entry.consultationKind.unit1">
+               <source>consultation type</source>
+               <target>type de consultation</target>
+            </trans-unit>
+            <trans-unit id="5" resname="entry.consultationKind.unitN">
+               <source>consultation types</source>
+               <target>types de consultation</target>
+            </trans-unit>
+         </group>
+         <group resname="consultationKind">
+            <trans-unit id="6" resname="consultationKind.daysDefault">
+               <source>Days default</source>
+               <target>Jours défaut</target>
+            </trans-unit>
+            <trans-unit id="7" resname="consultationKind.selectAConsultationKind">
+               <source>Select a consultation kind...</source>
+               <target>Choisir un type de consultation ...</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

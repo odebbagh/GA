@@ -1,0 +1,21 @@
+{
+    "_requiered":["top","left","width","height","dataSource","dataSourceTypeHint","pictureFormat","borderStyle","fill","enterable","focusable","contextMenu"],
+    "type": "input",
+    "top": "long",
+    "left": "long",
+    "width": "long;135",
+    "height": "long;50",
+    "dataSource": "text;##dynPict##",
+    "dataSourceTypeHint": "text;picture",
+    "pictureFormat": "text;proportionalCenter;scaled;tiled;proportionalTopLeft;truncatedCenter;truncatedTopLeft",
+    "borderStyle": "text;none",
+    "fill": "text;transparent",
+    "enterable": "boolean;false",
+    "focusable": "boolean;false",
+    "contextMenu": "text;none",
+    "visibility":"text;visible;hidden",
+    "_fillEven":"text;#e0e0e0",
+    "_fillOdd":"text;#eaeaea",
+    "_strokeEven":"text;#e0e0e0",
+    "_strokeOdd":"text;#eaeaea"
+}
