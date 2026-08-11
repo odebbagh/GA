@@ -137,6 +137,7 @@
 					"sizingY": "grow",
 					"dataSource": "Form:C1466.currentTeam.members",
 					"selectedItemsSource": "Form:C1466.staffSelection",
+					"method": "ObjectMethods/teamMembers.4dm",
 					"columns": [
 						{
 							"header": {
@@ -236,7 +237,7 @@
 			}
 		}
 	],
-	"geometryStamp": 79,
+	"geometryStamp": 80,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",

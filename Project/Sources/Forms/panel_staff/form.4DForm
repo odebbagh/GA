@@ -17,12 +17,9 @@
 		"onClick",
 		"onOutsideCall",
 		"onDoubleClick",
-		"onLosingFocus",
-		"onGettingFocus",
 		"onDrop",
 		"onMenuSelect",
 		"onPluginArea",
-		"onDataChange",
 		"onDragOver",
 		"onTimer",
 		"onAfterKeystroke",
@@ -250,6 +247,47 @@
 					],
 					"fontWeight": "normal",
 					"dataSource": ""
+				},
+				"entryField_shift1": {
+					"type": "radio",
+					"text": "1",
+					"top": 61,
+					"left": 432,
+					"width": 30,
+					"height": 19,
+					"events": [
+						"onClick"
+					],
+					"radioGroup": "shift",
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.shift1",
+					"method": "ObjectMethods/entryField_shift.4dm",
+					"style": "regular"
+				},
+				"entryField_shift2": {
+					"type": "radio",
+					"text": "2",
+					"top": 61,
+					"left": 488,
+					"width": 30,
+					"height": 19,
+					"events": [
+						"onClick"
+					],
+					"radioGroup": "shift",
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Not:C34(Form:C1466.shift1)",
+					"method": "ObjectMethods/entryField_shift.4dm"
+				},
+				"label_shift": {
+					"type": "text",
+					"top": 62,
+					"left": 312,
+					"width": 110,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Shift",
+					"textAlign": "right"
 				}
 			}
 		},
@@ -613,7 +651,8 @@
 					"verticalLineStroke": "#C0C0C0",
 					"events": [
 						"onClick",
-						"onDataChange"
+						"onDataChange",
+						"onSelectionChange"
 					],
 					"fill": "automatic",
 					"alternateFill": "#F7F9FC",
@@ -625,9 +664,9 @@
 						{
 							"name": "header_certifName",
 							"dataSource": "This:C1470.name",
-							"width": 330,
-							"minWidth": 200,
-							"maxWidth": 340,
+							"width": 180,
+							"minWidth": 120,
+							"maxWidth": 220,
 							"events": [
 								"onClick",
 								"onDataChange"
@@ -648,6 +687,44 @@
 							"fontTheme": "normal",
 							"enterable": false,
 							"resizable": false
+						},
+						{
+							"name": "col_certified_at",
+							"dataSource": "This:C1470.certifiedAt",
+							"width": 75,
+							"minWidth": 70,
+							"maxWidth": 90,
+							"textAlign": "center",
+							"enterable": false,
+							"resizable": false,
+							"header": {
+								"name": "hd_certifiedAt",
+								"text": "Certified At",
+								"fontWeight": "bold",
+								"textAlign": "center"
+							},
+							"footer": {
+								"name": "ft_certifiedAt"
+							}
+						},
+						{
+							"name": "col_expired_in",
+							"dataSource": "This:C1470.expiredIn",
+							"width": 75,
+							"minWidth": 70,
+							"maxWidth": 90,
+							"textAlign": "center",
+							"enterable": false,
+							"resizable": false,
+							"header": {
+								"name": "hd_expiredIn",
+								"text": "Expired In",
+								"fontWeight": "bold",
+								"textAlign": "center"
+							},
+							"footer": {
+								"name": "ft_expiredIn"
+							}
 						},
 						{
 							"header": {
@@ -802,7 +879,7 @@
 					"height": 0,
 					"stroke": "#808080"
 				},
-				"Button": {
+				"bRenewCertification": {
 					"type": "button",
 					"text": "Re-New",
 					"top": 171,
@@ -811,7 +888,8 @@
 					"height": 22,
 					"events": [
 						"onClick"
-					]
+					],
+					"method": "ObjectMethods/bRenewCertification.4dm"
 				},
 				"bActionCertifications": {
 					"type": "button",
@@ -868,7 +946,7 @@
 		}
 	],
 	"inheritedForm": "sfw_bkgd_header_3lines",
-	"geometryStamp": 1124,
+	"geometryStamp": 1159,
 	"editor": {
 		"groups": {
 			"Group": [
