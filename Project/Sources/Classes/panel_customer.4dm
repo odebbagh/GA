@@ -54,6 +54,7 @@ Function redrawAndSetVisible()
 	
 	OBJECT GET SUBFORM CONTAINER SIZE:C1148($widthSubform; $heightSubform)
 	$offset:=4
+	
 	Case of 
 			
 		: (FORM Get current page:C276(*)=1)
@@ -63,38 +64,50 @@ Function redrawAndSetVisible()
 			
 		: (FORM Get current page:C276(*)=2)
 			
-			OBJECT GET COORDINATES:C663(*; "lb_POs"; $left_lb; $top_lb; $right_lb; $bottom_lb)
+			OBJECT GET COORDINATES:C663(*; "rec_bkgd_2"; $left; $top; $right; $bottom)
+			OBJECT SET COORDINATES:C1248(*; "rec_bkgd_2"; $left; $top; $right; $heightSubform-$offset)
 			
+			OBJECT GET COORDINATES:C663(*; "lb_POs"; $left_lb; $top_lb; $right_lb; $bottom_lb)
 			OBJECT SET COORDINATES:C1248(*; "lb_POs"; $left_lb; $top_lb; $widthSubform-$offset; $heightSubform-$offset-1)
 			
 		: (FORM Get current page:C276(*)=3)
 			
-			OBJECT GET COORDINATES:C663(*; "lb_Jobs"; $left_lb; $top_lb; $right_lb; $bottom_lb)
+			OBJECT GET COORDINATES:C663(*; "rec_bkgd_3"; $left; $top; $right; $bottom)
+			OBJECT SET COORDINATES:C1248(*; "rec_bkgd_3"; $left; $top; $right; $heightSubform-$offset)
 			
+			OBJECT GET COORDINATES:C663(*; "lb_Jobs"; $left_lb; $top_lb; $right_lb; $bottom_lb)
 			OBJECT SET COORDINATES:C1248(*; "lb_Jobs"; $left_lb; $top_lb; $widthSubform-$offset; $heightSubform-$offset-1)
 			
 		: (FORM Get current page:C276(*)=4)
 			
-			OBJECT GET COORDINATES:C663(*; "lb_Planning"; $left_lb; $top_lb; $right_lb; $bottom_lb)
+			OBJECT GET COORDINATES:C663(*; "rec_bkgd_4"; $left; $top; $right; $bottom)
+			OBJECT SET COORDINATES:C1248(*; "rec_bkgd_4"; $left; $top; $right; $heightSubform-$offset)
 			
+			OBJECT GET COORDINATES:C663(*; "lb_Planning"; $left_lb; $top_lb; $right_lb; $bottom_lb)
 			OBJECT SET COORDINATES:C1248(*; "lb_Planning"; $left_lb; $top_lb; $widthSubform-$offset; $heightSubform-$offset-1)
 			
 		: (FORM Get current page:C276(*)=5)
 			
-			OBJECT GET COORDINATES:C663(*; "lb_CFM_Receiving"; $left_lb; $top_lb; $right_lb; $bottom_lb)
+			OBJECT GET COORDINATES:C663(*; "rec_bkgd_5"; $left; $top; $right; $bottom)
+			OBJECT SET COORDINATES:C1248(*; "rec_bkgd_5"; $left; $top; $right; $heightSubform-$offset)
 			
+			OBJECT GET COORDINATES:C663(*; "lb_CFM_Receiving"; $left_lb; $top_lb; $right_lb; $bottom_lb)
 			OBJECT SET COORDINATES:C1248(*; "lb_CFM_Receiving"; $left_lb; $top_lb; $widthSubform-$offset; $heightSubform-$offset-1)
 			
 		: (FORM Get current page:C276(*)=6)
 			
-			OBJECT GET COORDINATES:C663(*; "lb_Invoices"; $left_lb; $top_lb; $right_lb; $bottom_lb)
+			OBJECT GET COORDINATES:C663(*; "rec_bkgd_6"; $left; $top; $right; $bottom)
+			OBJECT SET COORDINATES:C1248(*; "rec_bkgd_6"; $left; $top; $right; $heightSubform-$offset)
 			
+			OBJECT GET COORDINATES:C663(*; "lb_Invoices"; $left_lb; $top_lb; $right_lb; $bottom_lb)
 			OBJECT SET COORDINATES:C1248(*; "lb_Invoices"; $left_lb; $top_lb; $widthSubform-$offset; $heightSubform-$offset-1)
 			
 		: (FORM Get current page:C276(*)=7)
 			
-			OBJECT GET COORDINATES:C663(*; "lb_Contacts"; $left_lb; $top_lb; $right_lb; $bottom_lb)
+			OBJECT GET COORDINATES:C663(*; "rec_bkgd_7"; $left; $top; $right; $bottom)
+			OBJECT SET COORDINATES:C1248(*; "rec_bkgd_7"; $left; $top; $right; $heightSubform-$offset)
 			
+			OBJECT GET COORDINATES:C663(*; "lb_Contacts"; $left_lb; $top_lb; $right_lb; $bottom_lb)
 			OBJECT SET COORDINATES:C1248(*; "lb_Contacts"; $left_lb; $top_lb; $widthSubform-$offset; $heightSubform-$offset-1)
 			
 	End case 

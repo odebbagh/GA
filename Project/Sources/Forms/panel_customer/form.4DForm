@@ -457,12 +457,22 @@
 		},
 		{
 			"objects": {
+				"rec_bkgd_2": {
+					"type": "rectangle",
+					"top": 95,
+					"left": 5,
+					"width": 100,
+					"height": 442,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
 				"lb_POs": {
 					"type": "listbox",
-					"left": 132,
-					"top": 114,
+					"left": 107,
+					"top": 96,
 					"width": 800,
-					"height": 700,
+					"height": 441,
 					"events": [
 						"onClick",
 						"onDataChange",
@@ -479,10 +489,10 @@
 					"resizingMode": "rightToLeft",
 					"alternateFill": "#E6E6E6",
 					"horizontalLineStroke": "transparent",
-					"borderStyle": "none",
+					"borderStyle": "system",
 					"verticalLineStroke": "transparent",
 					"headerHeight": "2em",
-					"right": 932,
+					"right": 907,
 					"scrollbarHorizontal": "hidden",
 					"hideFocusRing": false,
 					"columns": [
@@ -592,9 +602,9 @@
 				"Text": {
 					"type": "text",
 					"text": "POs",
-					"top": 124,
+					"top": 104,
 					"left": 12,
-					"width": 112,
+					"width": 80,
 					"height": 15,
 					"fontWeight": "bold"
 				}
@@ -602,12 +612,22 @@
 		},
 		{
 			"objects": {
+				"rec_bkgd_3": {
+					"type": "rectangle",
+					"top": 95,
+					"left": 5,
+					"width": 100,
+					"height": 442,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
 				"lb_Jobs": {
 					"type": "listbox",
-					"left": 132,
-					"top": 114,
+					"left": 107,
+					"top": 96,
 					"width": 800,
-					"height": 700,
+					"height": 441,
 					"events": [
 						"onClick",
 						"onDataChange",
@@ -624,11 +644,12 @@
 					"resizingMode": "rightToLeft",
 					"horizontalLineStroke": "transparent",
 					"alternateFill": "#E6E6E6",
-					"borderStyle": "none",
+					"borderStyle": "system",
 					"verticalLineStroke": "transparent",
-					"right": 932,
+					"right": 907,
 					"scrollbarHorizontal": "hidden",
 					"headerHeight": "2em",
+					"bottom": 537,
 					"columns": [
 						{
 							"header": {
@@ -702,9 +723,9 @@
 				"Text4": {
 					"type": "text",
 					"text": "Jobs",
-					"top": 124,
+					"top": 104,
 					"left": 12,
-					"width": 112,
+					"width": 80,
 					"height": 15,
 					"fontWeight": "bold"
 				}
@@ -712,12 +733,22 @@
 		},
 		{
 			"objects": {
+				"rec_bkgd_4": {
+					"type": "rectangle",
+					"top": 95,
+					"left": 5,
+					"width": 100,
+					"height": 442,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
 				"lb_Planning": {
 					"type": "listbox",
-					"left": 132,
-					"top": 114,
+					"left": 107,
+					"top": 96,
 					"width": 800,
-					"height": 700,
+					"height": 441,
 					"events": [
 						"onClick",
 						"onDataChange",
@@ -734,9 +765,9 @@
 					"resizingMode": "rightToLeft",
 					"horizontalLineStroke": "transparent",
 					"alternateFill": "#E6E6E6",
-					"borderStyle": "none",
+					"borderStyle": "system",
 					"verticalLineStroke": "transparent",
-					"right": 932,
+					"right": 907,
 					"scrollbarHorizontal": "hidden",
 					"headerHeight": "2em",
 					"columns": [
@@ -841,9 +872,9 @@
 				"Text7": {
 					"type": "text",
 					"text": "Planning",
-					"top": 124,
+					"top": 104,
 					"left": 12,
-					"width": 112,
+					"width": 80,
 					"height": 15,
 					"fontWeight": "bold"
 				}
@@ -851,12 +882,22 @@
 		},
 		{
 			"objects": {
+				"rec_bkgd_5": {
+					"type": "rectangle",
+					"top": 95,
+					"left": 5,
+					"width": 100,
+					"height": 442,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
 				"lb_CFM_Receiving": {
 					"type": "listbox",
-					"left": 132,
-					"top": 114,
+					"left": 107,
+					"top": 96,
 					"width": 800,
-					"height": 700,
+					"height": 441,
 					"events": [
 						"onClick",
 						"onDataChange",
@@ -873,9 +914,9 @@
 					"resizingMode": "rightToLeft",
 					"horizontalLineStroke": "transparent",
 					"alternateFill": "#E6E6E6",
-					"borderStyle": "none",
+					"borderStyle": "system",
 					"verticalLineStroke": "transparent",
-					"right": 932,
+					"right": 907,
 					"scrollbarHorizontal": "automatic",
 					"headerHeight": "2em",
 					"columns": [
@@ -966,23 +1007,33 @@
 				},
 				"Text6": {
 					"type": "text",
-					"text": "CFM_Receiving",
-					"top": 124,
+					"text": "CFM Receiving",
+					"top": 104,
 					"left": 12,
-					"width": 112,
-					"height": 15,
+					"width": 88,
+					"height": 30,
 					"fontWeight": "bold"
 				}
 			}
 		},
 		{
 			"objects": {
+				"rec_bkgd_6": {
+					"type": "rectangle",
+					"top": 95,
+					"left": 5,
+					"width": 100,
+					"height": 442,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
 				"lb_Invoices": {
 					"type": "listbox",
-					"left": 132,
-					"top": 114,
+					"left": 107,
+					"top": 96,
 					"width": 800,
-					"height": 700,
+					"height": 441,
 					"events": [
 						"onClick",
 						"onDataChange",
@@ -999,9 +1050,9 @@
 					"resizingMode": "rightToLeft",
 					"horizontalLineStroke": "transparent",
 					"alternateFill": "#E6E6E6",
-					"borderStyle": "none",
+					"borderStyle": "system",
 					"verticalLineStroke": "transparent",
-					"right": 932,
+					"right": 907,
 					"scrollbarHorizontal": "hidden",
 					"headerHeight": "2em",
 					"columns": [
@@ -1080,9 +1131,9 @@
 				"Text5": {
 					"type": "text",
 					"text": "Invoices",
-					"top": 124,
+					"top": 104,
 					"left": 12,
-					"width": 112,
+					"width": 80,
 					"height": 15,
 					"fontWeight": "bold"
 				}
@@ -1090,12 +1141,22 @@
 		},
 		{
 			"objects": {
+				"rec_bkgd_7": {
+					"type": "rectangle",
+					"top": 95,
+					"left": 5,
+					"width": 100,
+					"height": 442,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
 				"lb_Contacts": {
 					"type": "listbox",
-					"left": 132,
-					"top": 114,
+					"left": 107,
+					"top": 96,
 					"width": 800,
-					"height": 700,
+					"height": 441,
 					"events": [
 						"onClick",
 						"onSelectionChange",
@@ -1109,9 +1170,9 @@
 					"resizingMode": "rightToLeft",
 					"horizontalLineStroke": "transparent",
 					"alternateFill": "#E6E6E6",
-					"borderStyle": "none",
+					"borderStyle": "system",
 					"verticalLineStroke": "transparent",
-					"right": 932,
+					"right": 907,
 					"scrollbarHorizontal": "hidden",
 					"headerHeight": "2em",
 					"columns": [
@@ -1177,16 +1238,16 @@
 				"Text8": {
 					"type": "text",
 					"text": "Contacts",
-					"top": 124,
+					"top": 104,
 					"left": 12,
-					"width": 112,
+					"width": 80,
 					"height": 15,
 					"fontWeight": "bold"
 				}
 			}
 		}
 	],
-	"geometryStamp": 1102,
+	"geometryStamp": 1208,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",
