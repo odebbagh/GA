@@ -24,6 +24,12 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.setLBItemsColumn("title"; "Title"; "width:200")
 	$entry.setLBItemsOrderBy("auditNumber")
 	
+	// Purpose: Mandatory fields on save — title, audit type, and status (company when External is enforced in panel_audit).
+	// modified by 4D/PS [2026-may-26]
+	$entry.setValidationRule("title"; "entryField_title"; "mandatory"; "trimSpace"; "message:Title is mandatory")
+	$entry.setValidationRule("type"; "pup_auditType"; "mandatory"; "message:Audit type is mandatory")
+	$entry.setValidationRule("UUID_AuditStatus"; ""; "UUIDNotNull"; "message:Audit status is mandatory")
+	
 	$entry.setItemAction("Print Audit Report"; "_ga_printAuditReport")
 	
 	$entry.setItemAction("Generate Barcode"; "_ga_openBarCodeForm")

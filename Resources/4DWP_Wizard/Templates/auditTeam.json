@@ -1,5 +1,5 @@
 {
-    "tableDataSource": "Form.current_item.team.teamMembers",
+    "tableDataSource": "Form.current_item.auditTeam.teamMembers",
     "columns": [{
             "check": true,
             "header": "Name",

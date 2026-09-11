@@ -27,11 +27,13 @@ If (OK=1)
 			)
 		
 		For each ($assignment_e; $assignment_es)
+			// Purpose: Due date uses certification date + expiredIn days (duration stored in expiredIn).
+			// modified by 4D/PS [2026-may-12]
 			$line:=$staff_e.firstName+$separator_col+\
 				$staff_e.lastName+$separator_col+\
 				$staff_e.code+$separator_col+\
 				$assignment_e.certification.name+$separator_col+\
-				String:C10(Add to date:C393(cs:C1710.sfw_stmp.me.getDate($assignment_e.expiredIn); 0; 0; 1); Internal date short:K1:7)
+				(($assignment_e.expiringDate=!00-00-00!) ? "" : String:C10($assignment_e.expiringDate; Internal date short:K1:7))
 			
 			$data.push($line)
 		End for each 

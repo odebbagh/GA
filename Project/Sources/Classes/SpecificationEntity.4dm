@@ -2,22 +2,22 @@ Class extends Entity
 
 
 local Function get revisionDate()->$revisionDate : Date
-	$revisionDate:=cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpRevisionDate; True:C214)
+	$revisionDate:=This:C1470.stmpRevisionDate=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpRevisionDate; True:C214)
 	
 local Function set revisionDate($revisionDate : Date)
-	This:C1470.stmpRevisionDate:=cs:C1710.sfw_stmp.me.build($revisionDate)
+	This:C1470.stmpRevisionDate:=$revisionDate=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($revisionDate)
 	
 local Function get reviewDate()->$reviewDate : Date
-	$reviewDate:=cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpReviewDate; True:C214)
+	$reviewDate:=This:C1470.stmpReviewDate=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpReviewDate; True:C214)
 	
 local Function set reviewDate($reviewDate : Date)
-	This:C1470.stmpReviewDate:=cs:C1710.sfw_stmp.me.build($reviewDate)
+	This:C1470.stmpReviewDate:=$reviewDate=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($reviewDate)
 	
 local Function get approvalDate()->$approvalDate : Date
-	$approvalDate:=cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpApproval; True:C214)
+	$approvalDate:=This:C1470.stmpApproval=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpApproval; True:C214)
 	
 local Function set approvalDate($approvalDate : Date)
-	This:C1470.stmpApproval:=cs:C1710.sfw_stmp.me.build($approvalDate)
+	This:C1470.stmpApproval:=$approvalDate=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($approvalDate)
 	
 local Function drowPup($dataClass; $queryField; $queryValue; $pupName)
 	
@@ -89,6 +89,9 @@ local Function afterCreation()
 	
 	
 local Function loadAfterCreation()
+	// Purpose: Assign a unique barcode in moreData for scanner lookup on new records.
+	// modified by 4D/PS [2026-june-29]
+	This:C1470.moreData.barcodeData:=String:C10(cs:C1710.Util_ScannerManager.me.getBarcodeData(Form:C1466.sfw.entry.dataclass); "0000000000")
 	// This callback is called after creating the new item but before displaying the panel.
 	This:C1470._initReports()
 	
@@ -128,6 +131,25 @@ local Function beforeSave()
 		cs:C1710.sfw_notificationManager.me.notify("SpecControlApproval"; $users; $context)
 		
 	End if 
+	
+	If (Form:C1466.subForm.bufferOfEvents#Null:C1517) && (Form:C1466.subForm.bufferOfEvents.length>0)
+		This:C1470._saveBufferOfEvents(Form:C1466.subForm.bufferOfEvents)
+		Form:C1466.subForm.bufferOfEvents:=New collection:C1472
+	End if 
+	
+	
+local Function beforeSaveCreation()
+	
+	This:C1470._saveBufferOfEvents(Form:C1466.subForm.bufferOfEvents)
+	
+	
+Function _saveBufferOfEvents($bufferOfEvents : Collection)
+	For each ($buffer; $bufferOfEvents)
+		$moreData:=New object:C1471
+		$moreData.comment:=$buffer.label
+		cs:C1710.sfw_eventManager.me.addEvent(Form:C1466.sfw.entry; $buffer.event; This:C1470.UUID; $moreData; $buffer.stmp)
+	End for each 
+	
 	
 	
 local Function get nameInWindowTitle()->$nameInWindowTitle : Text

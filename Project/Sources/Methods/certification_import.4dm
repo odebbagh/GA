@@ -33,8 +33,10 @@ If (OK=1)
 		
 		$certification_e.ref:=Num:C11($line_col[0])
 		$certification_e.name:=$line_col[1]
-		$certification_e.duration:=Num:C11($line_col[2])
 		$certification_e.oneTime:=($line_col[3]="true" ? True:C214 : False:C215)
+		// Purpose: CSV import — duration 0 becomes 365 unless one-time certification.
+		// modified by 4D/PS [2026-june-08]
+		$certification_e.duration:=_ga_certificationImportDuration(Num:C11($line_col[2]); $certification_e.oneTime)
 		
 		$res:=$certification_e.save()
 		
@@ -42,6 +44,10 @@ If (OK=1)
 			ALERT:C41($res.statusText)
 		End if 
 	End for each 
+	
+	// Purpose: Correct catalog rows left with duration 0 from earlier CSV imports.
+	// modified by 4D/PS [2026-june-08]
+	_ga_certFixZeroDuration()
 End if 
 
 cs:C1710.sfw_dialog.me.alert("Import Done !")

@@ -347,7 +347,7 @@
 					"width": 100,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "QCAR #",
+					"text": "CAR #",
 					"textAlign": "right",
 					"fontWeight": "normal"
 				},

@@ -391,20 +391,6 @@
 					"fontWeight": "normal",
 					"dataSourceTypeHint": "boolean"
 				},
-				"entryField_suppress": {
-					"type": "checkbox",
-					"text": "Suppress from publishing in table",
-					"top": 303,
-					"left": 160,
-					"width": 246,
-					"height": 17,
-					"events": [
-						"onClick"
-					],
-					"dataSource": "Form:C1466.current_item.suppress",
-					"fontWeight": "normal",
-					"dataSourceTypeHint": "boolean"
-				},
 				"btnDatePickerRevision": {
 					"type": "button",
 					"text": " ",
@@ -673,7 +659,7 @@
 		}
 	],
 	"inheritedForm": "sfw_bkgd_header_3lines",
-	"geometryStamp": 486,
+	"geometryStamp": 487,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",

@@ -1,0 +1,15 @@
+{
+    "tableDataSource": "Form.current_item.assignments",
+    "columns": [
+        {
+            "check": true,
+            "header": "Certifications for Traveler-processing Skills",
+            "source": "This.item.certification.name"
+        }, {
+            "check": true,
+            "header": "Cert Date",
+            "source": "This.item.certificationDate"
+        }
+    ]
+   
+}

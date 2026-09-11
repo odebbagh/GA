@@ -4,7 +4,7 @@ Class extends DataClass
 
 local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	//Mark: entry : Equipment
-	$entry:=cs:C1710.sfw_definitionEntry.new("ManagementReview"; ["qualityAssurance"]; "Reviews")
+	$entry:=cs:C1710.sfw_definitionEntry.new("ManagementReview"; ["qualityAssurance"]; "Reviews"; "ManagementReview")
 	$entry.setDataclass("ManagementReview")
 	$entry.setDisplayOrder(-900)
 	$entry.setIcon("image/entry/ManagementReview-50x50.png")
@@ -18,4 +18,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.setLBItemsColumn("title"; "Title"; "width:200")
 	$entry.setLBItemsOrderBy("managementReviewNumber")
 	
-	$entry.setValidationRule("creationDate"; "entryField_name"; "mandatory")
+	// Purpose: Mandatory title with correct form widget (replaces miswired creationDate → entryField_name copy-paste).
+	// modified by 4D/PS [2026-may-21]
+	$entry.setValidationRule("title"; "entryField_title"; "mandatory"; "trimSpace")
+	

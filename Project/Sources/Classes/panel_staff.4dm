@@ -9,6 +9,9 @@ Function formMethod()
 	Form:C1466.sfw.panelFormMethod()  //The main body of the form method and basic sfw functionalities 
 	If (Form:C1466.sfw.updateOfPanelNeeded())  //The current item is changed or reloaded, so it's necessary ti refresh 
 		//OBJECT SET VISIBLE(*; "wr30_@"; (Form.current_item.getCertiExpiredIn(30).length>0))
+		// Purpose: Mirror boolean drives the "Shift 1 / Shift 2" radio group; written back to current_item.shift on click (see ObjectMethods/entryField_shift.4dm).
+		// modified by 4D/PS [2026-may-21]
+		Form:C1466.shift1:=(Form:C1466.current_item.shift="1")
 		This:C1470.loadAllTabs()
 	End if 
 	If (Form:C1466.sfw.recalculationOfPanelPageNeeded())  //a page is displayed so it's time to load the sources of data to display
@@ -60,6 +63,7 @@ Function redrawAndSetVisible()
 			OBJECT SET COORDINATES:C1248(*; "rec_bkgd_1"; $left; $top; $right; $heightSubform-$offset)
 			OBJECT SET COORDINATES:C1248(*; "lb_assignments"; $left_lb; $top_lb; $right_lb; $heightSubform-$offset-1)
 			OBJECT SET COORDINATES:C1248(*; "bActionCertifications"; $left_bAc; $heightSubform-$offset_bAc-$height_bAc; $right_bAc; $heightSubform-$offset_bAc)
+			This:C1470._configureCertAssignmentColumns()
 	End case 
 	
 	//Form.sfw.drawHTab()
@@ -71,6 +75,12 @@ Function loadAllTabs()
 	This:C1470.loadCertifications()
 	
 Function loadCommunications()
+	If (Form:C1466.current_item.contactDetails=Null:C1517)
+		Form:C1466.current_item.contactDetails:=New object:C1471
+	End if 
+	If (Form:C1466.current_item.contactDetails.communications=Null:C1517)
+		Form:C1466.current_item.contactDetails.communications:=New collection:C1472
+	End if 
 	Form:C1466.subFormCommunication:=New object:C1471(\
 		"communications"; Form:C1466.current_item.contactDetails.communications; \
 		"situation"; Form:C1466.situation\
@@ -78,77 +88,362 @@ Function loadCommunications()
 	
 	Form:C1466.subFormCommunication:=Form:C1466.subFormCommunication
 	
+	// Purpose: True when the current user may manage staff certifications (qs, qm, dc per Karla 2.d).
+	// Returns: Boolean
+	// modified by 4D/PS [2026-june-02]
+Function _hasQaProfile()->$allowed : Boolean
+	
+	var $qaProfiles : Collection
+	
+	$qaProfiles:=_ga_qaCertModifyProfiles
+	$allowed:=cs:C1710.sfw_userManager.me.authorizedProfiles.find(Formula:C1597((Value type:C1509($1.value)=Is text:K8:3) && ($qaProfiles.indexOf($1.value)#-1)))#Null:C1517
+	
+	
+	// Purpose: True when the latest assignment has overrideCertExpired (punch-in allowed while expired).
+	// Parameters: $uuid_certification : Text — Certification.UUID
+	// Returns: Boolean
+	// modified by 4D/PS [2026-june-02]
+Function _assignmentOverrideActive($uuid_certification : Text)->$active : Boolean
+	
+	var $assignment_e : cs:C1710.CertificationAssignmentEntity
+	
+	$active:=False:C215
+	$assignment_e:=ds:C1482.CertificationAssignment\
+		.query("UUID_Staff = :1 AND UUID_Certification = :2"; Form:C1466.current_item.UUID; $uuid_certification)\
+		.orderBy("certificationStmp desc").first()
+	If ($assignment_e#Null:C1517) && ($assignment_e.moreData#Null:C1517)
+		$active:=Bool:C1537($assignment_e.moreData.overrideCertExpired)
+	End if 
+	
+	
 Function loadCertifications()
+	
+	var $assignmentByCert : Object
+	var $assignment_e : cs:C1710.CertificationAssignmentEntity
+	var $uuidCert : Text
+	var $certDt : Date
+	var $expDt : Date
+	var $daysUntilExpiry : Integer
+	var $selectedUuid : Text
+	var $row : Object
+	
 	GOTO OBJECT:C206(*; "lb_assignments")
-	Form:C1466.selectedCertification:=Form:C1466.selectedCertification
+	$selectedUuid:=""
+	If (Form:C1466.selectedCertification#Null:C1517)
+		$selectedUuid:=Form:C1466.selectedCertification.UUID
+	End if 
 	Form:C1466.lb_assignments:=New collection:C1472()
 	
+	// Purpose: Keep latest CertificationAssignment entity per cert UUID (do not store Date values inside a plain Object).
+	// modified by 4D/PS [2026-june-09]
+	$assignmentByCert:=New object:C1471()
+	For each ($assignment_e; ds:C1482.CertificationAssignment.query("UUID_Staff = :1"; Form:C1466.current_item.UUID))
+		$uuidCert:=$assignment_e.UUID_Certification
+		If ($assignmentByCert[$uuidCert]=Null:C1517)
+			$assignmentByCert[$uuidCert]:=$assignment_e
+		Else 
+			If ($assignment_e.certificationStmp>Num:C11($assignmentByCert[$uuidCert].certificationStmp))
+				$assignmentByCert[$uuidCert]:=$assignment_e
+			End if 
+		End if 
+	End for each 
+	
 	For each ($certification; ds:C1482.Certification.all().orderBy("ref asc"))
+		$assignment_e:=$assignmentByCert[$certification.UUID]
+		$certDt:=!00-00-00!
+		$expDt:=!00-00-00!
+		$daysUntilExpiry:=99999
+		If ($assignment_e#Null:C1517)
+			$certDt:=$assignment_e.certificationDate
+			$expDt:=This:C1470._staffCertExpiringDate($certDt; $certification; $assignment_e)
+			// Purpose: Precompute days until lapse for listbox rowFillSource (Date props in collection rows are unreliable there).
+			// modified by 4D/PS [2026-june-08]
+			If (Not:C34($certification.oneTime)) && ($expDt#!00-00-00!)
+				$daysUntilExpiry:=$expDt-Current date:C33()
+			End if 
+		End if 
 		Form:C1466.lb_assignments.push(New object:C1471(\
 			"UUID"; $certification.UUID; \
 			"name"; $certification.name; \
 			"duration"; $certification.duration; \
 			"oneTime"; $certification.oneTime; \
-			"expiredIn"; Form:C1466.current_item.getExpiredDate($certification.UUID); \
-			"certifiedAt"; Form:C1466.current_item.getCertificationDate($certification.UUID); \
-			"certified"; Form:C1466.current_item.hasCertification($certification.UUID)\
+			"hasAssignment"; ($assignment_e#Null:C1517); \
+			"expiringDate"; $expDt; \
+			"daysUntilExpiry"; $daysUntilExpiry; \
+			"certifiedAt"; This:C1470._formatStaffCertDate($certDt); \
+			"expiredIn"; This:C1470._formatStaffCertDate($expDt); \
+			"certified"; Form:C1466.current_item.hasCertification($certification.UUID); \
+			"overrideExpired"; This:C1470._assignmentOverrideActive($certification.UUID)\
+			))
+		
+	End for each 
+	
+	Form:C1466.lb_assignments:=Form:C1466.lb_assignments.orderBy("certified desc")
+	
+	// Purpose: Re-bind selectedCertification to the new collection so history list and columns stay in sync after reload/save.
+	// modified by 4D/PS [2026-june-09]
+	Form:C1466.selectedCertification:=Null:C1517
+	If ($selectedUuid#"")
+		For each ($row; Form:C1466.lb_assignments)
+			If ($row.UUID=$selectedUuid)
+				Form:C1466.selectedCertification:=$row
+				break
+			End if 
+		End for each 
+	End if 
+	
+	This:C1470._configureCertAssignmentColumns()
+	This:C1470.loadCertificationHistory()
+	
+	REDISPLAY:C113
+	
+	
+Function _formatStaffCertDate($date : Date) -> $text : Text
+	// Purpose: Format certification dates for listbox text columns (Certified At / Expired In).
+	// Parameters: $date : Date — calendar date (!00-00-00! when empty)
+	// Returns: Text — short date string or empty
+	// created by 4D/PS [2026-june-09]
+	
+	$text:=""
+	If ($date#Null:C1517) && ($date#!00-00-00!)
+		$text:=String:C10($date; System date short:K1:1)
+	End if 
+	
+	
+Function _staffCertExpiringDate($certificationDate : Date; $certification_e : cs:C1710.CertificationEntity; $assignment_e : cs:C1710.CertificationAssignmentEntity) -> $expiringDate : Date
+	// Purpose: Expired In = Certified At + catalog duration (or assignment snapshot when catalog has no duration).
+	// Parameters:
+	// $certificationDate : Date — assignment certification date
+	// $certification_e : cs.CertificationEntity — catalog row (duration / oneTime)
+	// $assignment_e : cs.CertificationAssignmentEntity — optional; expiredIn used when catalog resolves to 0 days
+	// Returns: Date — lapse date, or !00-00-00! when one-time or no validity window
+	// modified by 4D/PS [2026-june-08]
+	
+	var $validityDays : Integer
+	
+	$expiringDate:=!00-00-00!
+	If ($certificationDate=Null:C1517) || ($certificationDate=!00-00-00!)
+		return $expiringDate
+	End if 
+	If ($certification_e=Null:C1517) || ($certification_e.oneTime)
+		return $expiringDate
+	End if 
+	
+	$validityDays:=$certification_e.expiredInDaysForNewAssignment()
+	If ($validityDays<=0) && ($assignment_e#Null:C1517) && ($assignment_e.expiredIn>0)
+		$validityDays:=$assignment_e.expiredIn
+	End if 
+	If ($validityDays>0)
+		$expiringDate:=Add to date:C393($certificationDate; 0; 0; $validityDays)
+	End if 
+	
+	
+Function _configureCertAssignmentColumns()
+	
+	var $canEditCerts : Boolean
+	
+	// Purpose: Columns are static in form.4DForm — only toggle enterable (checkbox) and Re-New by profile/mode.
+	// modified by 4D/PS [2026-june-08]
+	If (FORM Get current page:C276(*)#2)
+		return 
+	End if 
+	
+	$canEditCerts:=This:C1470._hasQaProfile() && Form:C1466.sfw.checkIsInModification()
+	
+	OBJECT SET ENTERABLE:C238(*; "col_certified_at"; False:C215)
+	OBJECT SET ENTERABLE:C238(*; "col_expired_in"; False:C215)
+	OBJECT SET ENTERABLE:C238(*; "entryField_hasCertif"; $canEditCerts)
+	
+	OBJECT SET VISIBLE:C603(*; "col_certified_at"; True:C214)
+	OBJECT SET VISIBLE:C603(*; "col_expired_in"; True:C214)
+	OBJECT SET VISIBLE:C603(*; "hd_certifiedAt"; True:C214)
+	OBJECT SET VISIBLE:C603(*; "hd_expiredIn"; True:C214)
+	OBJECT SET HORIZONTAL ALIGNMENT:C706(*; "col_certified_at"; Align center:K42:3)
+	OBJECT SET HORIZONTAL ALIGNMENT:C706(*; "col_expired_in"; Align center:K42:3)
+	
+	OBJECT SET ENABLED:C1123(*; "bRenewCertification"; $canEditCerts && (Form:C1466.selectedCertification#Null:C1517))
+	
+	
+// Purpose: Open _ga_calendar centered for Staff certification listbox actions (GET MOUSE coords fail on this page).
+// Parameters:
+// $defaultDate : Date — initial selection (!00-00-00! → today)
+// Returns: Date — selected date, or !00-00-00! when cancelled
+// created by 4D/PS [2026-july-27]
+Function _pickCertificationDate($defaultDate : Date)->$date : Date
+	
+	var $form : Object
+	var $winRef : Integer
+	
+	If ($defaultDate=!00-00-00!)
+		$defaultDate:=Current date:C33(*)
+	End if 
+	
+	$form:=New object:C1471()
+	$form.date:=$defaultDate
+	
+	$winRef:=Open form window:C675("_ga_calendar"; Movable dialog box:K34:7; Horizontally centered:K39:1; Vertically centered:K39:4)
+	DIALOG:C40("_ga_calendar"; $form)
+	
+	If (OK=1)
+		$date:=$form.calendar.display.date
+	Else 
+		$date:=!00-00-00!
+	End if 
+	
+	
+Function renewCertification()
+	// Purpose: Re-New — append a CertificationAssignment with a chosen date (keeps history).
+	// Requires qs/qm/dc profile, modification mode, and a selected certification row.
+	// modified by 4D/PS [2026-july-27]
+	
+	var $certDate : Date
+	
+	If (Form:C1466.selectedCertification=Null:C1517) || (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	If (Not:C34(This:C1470._hasQaProfile()))
+		cs:C1710.sfw_dialog.me.info("Only Quality Manager, Quality Supervisor, or Document Control can renew certifications")
+		return 
+	End if 
+	If (Not:C34(Form:C1466.sfw.checkIsInModification()))
+		cs:C1710.sfw_dialog.me.info("Open the employee record in modification mode to renew a certification")
+		return 
+	End if 
+	
+	$certDate:=This:C1470._pickCertificationDate(Current date:C33(*))
+	If ($certDate=!00-00-00!)
+		return 
+	End if 
+	If ($certDate>Current date:C33(*))
+		cs:C1710.sfw_dialog.me.info("Certification date cannot be in the future.")
+		return 
+	End if 
+	
+	If (Not:C34(Form:C1466.current_item.createCertification(Form:C1466.selectedCertification.UUID; 0; $certDate)))
+		cs:C1710.sfw_dialog.me.alert("Could not renew this certification")
+		return 
+	End if 
+	
+	This:C1470._activate_save_cancel_button()
+	This:C1470.loadCertifications()
+	This:C1470.loadCertificationHistory()
+	
+	
+// Purpose: Assign or update certification date via Actions menu (backdate / correction — Karla UAT).
+// modified by 4D/PS [2026-july-27]
+Function setCertificationDateFromPicker()
+	
+	var $uuidCert : Text
+	var $defaultDate : Date
+	var $certDate : Date
+	var $saved : Boolean
+	
+	If (Form:C1466.selectedCertification=Null:C1517) || (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	If (Not:C34(This:C1470._hasQaProfile()))
+		cs:C1710.sfw_dialog.me.info("Only Quality Manager, Quality Supervisor, or Document Control can modify certifications")
+		return 
+	End if 
+	If (Not:C34(Form:C1466.sfw.checkIsInModification()))
+		cs:C1710.sfw_dialog.me.info("Open the employee record in modification mode to set a certification date")
+		return 
+	End if 
+	
+	$uuidCert:=Form:C1466.selectedCertification.UUID
+	If (Form:C1466.current_item.hasCertification($uuidCert))
+		$defaultDate:=Form:C1466.current_item.getCertificationDate($uuidCert)
+	Else 
+		$defaultDate:=Current date:C33(*)
+	End if 
+	
+	$certDate:=This:C1470._pickCertificationDate($defaultDate)
+	If ($certDate=!00-00-00!)
+		return 
+	End if 
+	If ($certDate>Current date:C33(*))
+		cs:C1710.sfw_dialog.me.info("Certification date cannot be in the future.")
+		return 
+	End if 
+	
+	If (Form:C1466.current_item.hasCertification($uuidCert))
+		$saved:=Form:C1466.current_item.updateCertificationDate($uuidCert; $certDate)
+	Else 
+		$saved:=Form:C1466.current_item.createCertification($uuidCert; 0; $certDate)
+	End if 
+	
+	If (Not:C34($saved))
+		cs:C1710.sfw_dialog.me.alert("Could not save the certification date")
+		return 
+	End if 
+	
+	This:C1470._activate_save_cancel_button()
+	This:C1470.loadCertifications()
+	This:C1470.loadCertificationHistory()
+	
+	
+Function loadCertificationHistory()
+	// Purpose: Assignment history for the selected certification (all past renewals — row 0 = latest).
+	// Main list shows the same latest dates for every cert; this list is the audit trail when one row is selected.
+	// modified by 4D/PS [2026-june-08]
+	
+	var $assignment_e : cs:C1710.CertificationAssignmentEntity
+	var $cert_e : cs:C1710.CertificationEntity
+	
+	Form:C1466.certifications:=New collection:C1472()
+	
+	If (Form:C1466.selectedCertification=Null:C1517) || (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	
+	$cert_e:=ds:C1482.Certification.get(Form:C1466.selectedCertification.UUID)
+	
+	For each ($assignment_e; ds:C1482.CertificationAssignment\
+		.query("UUID_Staff = :1 AND UUID_Certification = :2"; Form:C1466.current_item.UUID; Form:C1466.selectedCertification.UUID)\
+		.orderBy("certificationStmp desc"))
+		Form:C1466.certifications.push(New object:C1471(\
+			"certifiedAt"; This:C1470._formatStaffCertDate($assignment_e.certificationDate); \
+			"expiredIn"; This:C1470._formatStaffCertDate(This:C1470._staffCertExpiringDate($assignment_e.certificationDate; $cert_e; $assignment_e))\
 			))
 	End for each 
 	
-	$find:=""
+	Form:C1466.certifications:=Form:C1466.certifications
 	
-	$find:=cs:C1710.sfw_userManager.me.authorizedProfiles.find(Formula:C1597((Value type:C1509($1.value)=Is text:K8:3) && ($1.value=$2)); "qm")
+	OBJECT SET HORIZONTAL ALIGNMENT:C706(*; "Column2"; Align center:K42:3)
+	OBJECT SET HORIZONTAL ALIGNMENT:C706(*; "Column3"; Align center:K42:3)
+	This:C1470._configureCertAssignmentColumns()
 	
-	If ($find#"")
-		//TRACE
-		$nb_cols:=LISTBOX Get number of columns:C831(*; "lb_assignments")
-		
-		If ($nb_cols=2)
-			var $NilPtr : Pointer
-			var $width_new_col : Integer:=70
-			
-			LISTBOX INSERT COLUMN FORMULA:C970(*; "lb_assignments"; 2; "col_expired_in"; "This.expiredIn"; Is date:K8:7; "hd_expiredIn"; $NilPtr)
-			LISTBOX INSERT COLUMN FORMULA:C970(*; "lb_assignments"; 2; "col_certified_at"; "This.certifiedAt"; Is date:K8:7; "hd_certifiedAt"; $NilPtr)
-			
-			$width:=LISTBOX Get column width:C834(*; "header_certifName")
-			
-			$width:=LISTBOX SET COLUMN WIDTH:C833(*; "header_certifName"; $width-($width_new_col*2))
-			$width:=LISTBOX SET COLUMN WIDTH:C833(*; "col_certified_at"; $width_new_col)
-			$width:=LISTBOX SET COLUMN WIDTH:C833(*; "col_expired_in"; $width_new_col)
-			
-			OBJECT SET TITLE:C194(*; "hd_certifiedAt"; "Certified At")
-			OBJECT SET TITLE:C194(*; "hd_expiredIn"; "Expired In")
-			
-			OBJECT SET FONT STYLE:C166(*; "hd_certifiedAt"; Bold:K14:2)
-			OBJECT SET FONT STYLE:C166(*; "hd_expiredIn"; Bold:K14:2)
-			
-			OBJECT SET FORMAT:C236(*; "col_certified_at"; "dd/MM/yyyy blankIfNull")
-			OBJECT SET FORMAT:C236(*; "col_expired_in"; "dd/MM/yyyy blankIfNull")
-			
-			OBJECT SET HORIZONTAL ALIGNMENT:C706(*; "col_certified_at"; Align center:K42:3)
-			OBJECT SET HORIZONTAL ALIGNMENT:C706(*; "col_expired_in"; Align center:K42:3)
-		End if 
-	End if 
 	
 Function manageCertification()
 	Case of 
 		: (FORM Event:C1606.code=On Data Change:K2:15)
-			If (Form:C1466.selectedCertification.certified)
-				Form:C1466.current_item.createCertification(Form:C1466.selectedCertification.UUID; (Not:C34(Form:C1466.selectedCertification.oneTime)) ? Form:C1466.selectedCertification.duration : 0)
+			
+			// Purpose: Only qs, qm, dc may assign or remove certifications on staff.
+			// modified by 4D/PS [2026-june-02]
+			If (Not:C34(This:C1470._hasQaProfile()))
+				cs:C1710.sfw_dialog.me.info("Only Quality Manager, Quality Supervisor, or Document Control can modify certifications")
 				This:C1470.loadCertifications()
+				
 			Else 
-				Form:C1466.current_item.deleteCertification(Form:C1466.selectedCertification.UUID)
-				This:C1470.loadCertifications()
-			End if 
-			
-			This:C1470._activate_save_cancel_button()
-			
-		: (FORM Event:C1606.code=On Clicked:K2:4)
-			$find:=cs:C1710.sfw_userManager.me.authorizedProfiles.find(Formula:C1597((Value type:C1509($1.value)=Is text:K8:3) && ($1.value=$2)); "qm")
-			
-			If ($find#"")
+				
+				If (Form:C1466.selectedCertification.certified)
+					// Purpose: expiredIn from certification type frequencies / one time (_ga_certificationExpiredInDays).
+					// modified by 4D/PS [2026-june-02]
+					Form:C1466.current_item.createCertification(Form:C1466.selectedCertification.UUID; 0)
+					This:C1470.loadCertifications()
+				Else 
+					Form:C1466.current_item.deleteCertification(Form:C1466.selectedCertification.UUID)
+					This:C1470.loadCertifications()
+				End if 
+				
+				This:C1470.loadCertificationHistory()
+				This:C1470._activate_save_cancel_button()
 				
 			End if 
+			
+		: ((FORM Event:C1606.code=On Clicked:K2:4) || (FORM Event:C1606.code=On Selection Change:K2:29))
+			This:C1470.loadCertificationHistory()
+			
 	End case 
 	
 	//Function manageDataPicker($objectName : Text)
@@ -276,39 +571,89 @@ Function pup_user()
 	
 	
 Function bActionCertifications()
-	//If (Form.sfw.checkIsInModification())
+	
+	//var $refMenu : Integer
+	var $choose : Text
+	var $assignment_e : cs:C1710.CertificationAssignmentEntity
+	
+	$refMenu:=Create menu:C408
+	
+	// Purpose: Full employee training record (all valid + expired certifications) — available
+	// from the Certifications tab Actions menu as requested in client feedback.
+	// modified by 4D/PS [2026-may-21]
+	APPEND MENU ITEM:C411($refMenu; "Print Certification Training")
+	SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--printCertTraining")
+	
 	If (Form:C1466.selectedCertification#Null:C1517)
-		$refMenu:=Create menu:C408
+		APPEND MENU ITEM:C411($refMenu; "-")
 		APPEND MENU ITEM:C411($refMenu; "Print Certificate of Completion")
 		SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--print")
 		If (Not:C34(Form:C1466.current_item.hasCertification(Form:C1466.selectedCertification.UUID)))
 			DISABLE MENU ITEM:C150($refMenu; -1)
 		End if 
 		
-		$choose:=Dynamic pop up menu:C1006($refMenu)
+		// Purpose: Backdate or correct certification date (Karla UAT — checkbox still uses today).
+		// modified by 4D/PS [2026-july-27]
+		If (This:C1470._hasQaProfile()) && (Form:C1466.sfw.checkIsInModification())
+			APPEND MENU ITEM:C411($refMenu; "-")
+			APPEND MENU ITEM:C411($refMenu; "Set certification date...")
+			SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--setCertDate")
+		End if 
 		
-		Case of 
-			: ($choose="--print")
-				PRINT SETTINGS:C106()
-				
-				OPEN PRINTING JOB:C995
-				
-				SET PRINT OPTION:C733(Orientation option:K47:2; 2)
-				
-				$form:=New object:C1471(\
-					"staffName"; Form:C1466.current_item.fullName; \
-					"certificationName"; Form:C1466.selectedCertification.name; \
-					"issuedBy"; "GOLDEN ALTOS CORPORATION"; \
-					"date"; String:C10(Form:C1466.selectedCertification.expiredIn; System date long:K1:3)\
-					)
-				
-				Print form:C5([Certification:124]; "certification_of_completion"; $form; Form detail:K43:1)
-				
-				CLOSE PRINTING JOB:C996
-		End case 
-	Else 
-		cs:C1710.sfw_dialog.me.alert("No Certification Selected !")
+		// Purpose: QA punch-in override for expired certification (Karla 2.d — qs, qm, dc).
+		// modified by 4D/PS [2026-june-02]
+		If (This:C1470._hasQaProfile()) && (Form:C1466.sfw.checkIsInModification())
+			$assignment_e:=ds:C1482.CertificationAssignment\
+				.query("UUID_Staff = :1 AND UUID_Certification = :2"; Form:C1466.current_item.UUID; Form:C1466.selectedCertification.UUID)\
+				.orderBy("certificationStmp desc").first()
+			If ($assignment_e#Null:C1517) && (Not:C34($assignment_e.validityActive))
+				APPEND MENU ITEM:C411($refMenu; "-")
+				If (Bool:C1537($assignment_e.moreData.overrideCertExpired))
+					APPEND MENU ITEM:C411($refMenu; "Revoke punch-in override (expired cert)")
+					SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--revokeOverride")
+				Else 
+					APPEND MENU ITEM:C411($refMenu; "Allow punch-in despite expired certification")
+					SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--grantOverride")
+				End if 
+			End if 
+		End if 
 	End if 
+	
+	$choose:=Dynamic pop up menu:C1006($refMenu)
+	
+	Case of 
+		: ($choose="--printCertTraining")
+			staff_print_cert_training
+		: ($choose="--setCertDate")
+			This:C1470.setCertificationDateFromPicker()
+		: ($choose="--grantOverride")
+			If (Form:C1466.selectedCertification#Null:C1517)
+				Form:C1466.current_item.setCertificationOverride(Form:C1466.selectedCertification.UUID; True:C214)
+				This:C1470.loadCertifications()
+			End if 
+		: ($choose="--revokeOverride")
+			If (Form:C1466.selectedCertification#Null:C1517)
+				Form:C1466.current_item.setCertificationOverride(Form:C1466.selectedCertification.UUID; False:C215)
+				This:C1470.loadCertifications()
+			End if 
+		: ($choose="--print")
+			PRINT SETTINGS:C106()
+			
+			OPEN PRINTING JOB:C995
+			
+			SET PRINT OPTION:C733(Orientation option:K47:2; 2)
+			
+			$form:=New object:C1471(\
+				"staffName"; Form:C1466.current_item.fullName; \
+				"certificationName"; Form:C1466.selectedCertification.name; \
+				"issuedBy"; "GOLDEN ALTOS CORPORATION"; \
+				"date"; String:C10(Form:C1466.selectedCertification.expiredIn; System date long:K1:3)\
+				)
+			
+			Print form:C5([Certification:124]; "certification_of_completion"; $form; Form detail:K43:1)
+			
+			CLOSE PRINTING JOB:C996
+	End case 
 	//End if 
 	
 	///*
@@ -368,54 +713,6 @@ Function drawPup_Division()
 		
 	End if 
 	
-/*
-Function pup_division()
-	
-// Create pop up menu
-If (Form.sfw.checkIsInModification())
-	
-$menu:=Create menu
-	
-If (Storage.cache=Null) || (Storage.cache.divisions=Null)
-	
-ds.Division.cacheLoad()
-	
-End if 
-	
-For each ($equipmentDivision; Storage.cache.divisions)
-	
-APPEND MENU ITEM($menu; $equipmentDivision.name; *)
-SET MENU ITEM PARAMETER($menu; -1; $equipmentDivision.UUID)
-	
-If ($equipmentDivision.UUID=Form.current_item.UUID_Division)
-	
-SET MENU ITEM MARK($menu; -1; Char(18))
-	
-If (Is Windows)
-	
-SET MENU ITEM STYLE($menu; -1; Bold)
-	
-End if 
-End if 
-End for each 
-	
-$choose:=Dynamic pop up menu($menu)
-RELEASE MENU($menu)
-	
-Case of 
-	
-//________________________________________
-: (Length($choose)#0)
-	
-$equipmentDivision:=ds.Division.get($choose)
-Form.current_item.UUID_Division:=$equipmentDivision.UUID
-This._activate_save_cancel_button()
-//________________________________________
-End case 
-End if 
-	
-This.drawPup_Division()
-*/
 	
 Function pup_citizenshipStatus()
 	If (Form:C1466.sfw.checkIsInModification())
@@ -524,11 +821,10 @@ Function pup_department()
 		
 		Case of 
 				
-				//________________________________________
 			: (Length:C16($choose)#0)
 				
 				$team:=ds:C1482.Team.get($choose)
-				//START TRANSACTION
+				
 				If (Form:C1466.current_item.memberships.length>0)
 					
 					$memberShip:=ds:C1482.Membership.get(Form:C1466.current_item.memberships[0].UUID)
@@ -542,10 +838,9 @@ Function pup_department()
 					$res:=$memberShip.save()
 					
 				End if 
-				//VALIDATE TRANSACTION
+				
 				This:C1470._activate_save_cancel_button()
 				
-				//________________________________________
 		End case 
 	End if 
 	

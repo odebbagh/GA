@@ -42,7 +42,9 @@ For each ($staff_e; $staff_es)
 		
 		
 		$form.employee.certificationName:=$assignment_e.certification.name
-		$form.employee.certExpitedIn:=String:C10(Add to date:C393(cs:C1710.sfw_stmp.me.getDate($assignment_e.expiredIn); 0; 0; 1); Internal date short:K1:7)
+		// Purpose: Due date uses certification date + expiredIn days (duration stored in expiredIn).
+		// modified by 4D/PS [2026-may-12]
+		$form.employee.certExpitedIn:=(($assignment_e.expiringDate=!00-00-00!) ? "" : String:C10($assignment_e.expiringDate; Internal date short:K1:7))
 		
 		Print form:C5([Staff:135]; "staff_certifications"; $form; Form detail:K43:1)
 		

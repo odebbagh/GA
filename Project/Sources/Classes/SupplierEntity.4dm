@@ -135,13 +135,32 @@ local Function beforeSave()
 		cs:C1710.sfw_notificationManager.me.notify("CriticalSuppliersWithOverdueAudits"; $users; $context)
 		
 	End if 
+	If (Form:C1466.subForm.bufferOfEvents#Null:C1517) && (Form:C1466.subForm.bufferOfEvents.length>0)
+		This:C1470._saveBufferOfEvents(Form:C1466.subForm.bufferOfEvents)
+		Form:C1466.subForm.bufferOfEvents:=New collection:C1472
+	End if 
 	
+	
+local Function beforeSaveCreation()
+	
+	This:C1470._saveBufferOfEvents(Form:C1466.subForm.bufferOfEvents)
+	
+	
+Function _saveBufferOfEvents($bufferOfEvents : Collection)
+	For each ($buffer; $bufferOfEvents)
+		$moreData:=New object:C1471
+		$moreData.comment:=$buffer.label
+		cs:C1710.sfw_eventManager.me.addEvent(Form:C1466.sfw.entry; $buffer.event; This:C1470.UUID; $moreData; $buffer.stmp)
+	End for each 
 	
 local Function afterCreation()
 	This:C1470._initAddress()
 	This:C1470._initattachedDocuments()
 	
 local Function loadAfterCreation()
+	// Purpose: Assign a unique barcode in moreData for scanner lookup on new records.
+	// modified by 4D/PS [2026-june-29]
+	This:C1470.moreData.barcodeData:=String:C10(cs:C1710.Util_ScannerManager.me.getBarcodeData(Form:C1466.sfw.entry.dataclass); "0000000000")
 	// This callback is called after creating the new item but before displaying the panel.
 	This:C1470._initAddress()
 	This:C1470._initattachedDocuments()
@@ -244,13 +263,13 @@ local Function _initAddress()
 	End if 
 	
 	
-// Builds the aggregated monthly rating data for this supplier from its buying order lines.
-// Returns a collection of objects, one per month, with LAR and composite rating computed.
-// Used by panel_supplier.loadRatingData() and _ga_exportAllSupplierRatings.
+	// Builds the aggregated monthly rating data for this supplier from its buying order lines.
+	// Returns a collection of objects, one per month, with LAR and composite rating computed.
+	// Used by panel_supplier.loadRatingData() and _ga_exportAllSupplierRatings.
 local Function buildRatingData()->$data : Collection
 	var $buyingOrders : cs:C1710.BuyingOrderSelection
 	var $object : Object:=New object:C1471()
-	var $data : Collection:=New collection:C1472()
+	$data:=New collection:C1472()
 	var $quarter : Integer
 	
 	$buyingOrders:=ds:C1482.BuyingOrder.query("UUID_Supplier =:1"; This:C1470.UUID)
@@ -323,7 +342,7 @@ local Function buildRatingData()->$data : Collection
 		$data[$i].compositeOverAllRating:=($data[$i].receivingLAR+$data[$i].functionalLAR+$data[$i].deliveryLAR)/3
 	End for 
 	
-
+	
 local Function get nameInWindowTitle()->$nameInWindowTitle : Text
 	$nameInWindowTitle:=String:C10(This:C1470.name)
 	

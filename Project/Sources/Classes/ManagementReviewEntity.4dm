@@ -74,7 +74,7 @@ local Function pup($cacheCollection; $dataClass; $queryField; $queryValue)
 	
 local Function itemLoad()
 	// This callback is called when the item is selected in the itemList
-	This:C1470._initDocument()
+	//This._initDocument()
 	
 Function beforeSaveCreation()
 	This:C1470._initDocument()
@@ -87,13 +87,14 @@ Function beforeSaveCreation()
 	
 	
 local Function afterCreation()
-	This:C1470._initDocument()
+	//This._initDocument()
 	
 local Function _initDocument()
 	
 	If (Form:C1466.situation.mode="add")
 		
-		var $blob : Blob
+		// Purpose: New reviews attach files via sfw_Document; embedded blob is not used — UUID_sfwDocument links framework rows after upload (_ga_managementReview_replaceAttchment).
+		// modified by 4D/PS [2026-may-08]
 		$doc:=New object:C1471
 		
 		$doc.code:=""
@@ -104,7 +105,8 @@ local Function _initDocument()
 		$doc.approvalDate:=!00-00-00!
 		$doc.approvedBy:=""
 		$doc.isApproved:=False:C215
-		$doc.blob:=$blob
+		$doc.UUID_sfwDocument:=""
+		$doc.extension:=""
 		
 		This:C1470.document:=$doc
 		
@@ -113,7 +115,10 @@ local Function _initDocument()
 	
 local Function get nameInWindowTitle()->$nameInWindowTitle : Text
 	$nameInWindowTitle:=String:C10(This:C1470.managementReviewNumber)
-	
-	
-	
-	
+
+// Purpose: Initialize barcode data when a new record is created in the entry panel.
+// created by 4D/PS [2026-june-29]
+local Function loadAfterCreation()
+	// Purpose: Assign a unique barcode in moreData for scanner lookup on new records.
+	// modified by 4D/PS [2026-june-29]
+	This:C1470.moreData.barcodeData:=String:C10(cs:C1710.Util_ScannerManager.me.getBarcodeData(Form:C1466.sfw.entry.dataclass); "0000000000")

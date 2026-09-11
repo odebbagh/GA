@@ -2,10 +2,10 @@ Class extends Entity
 
 
 local Function get approvalDate()->$approvalDate : Date
-	$approvalDate:=cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpApproval; True:C214)
+	$approvalDate:=This:C1470.stmpApproval=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpApproval; True:C214)
 	
 local Function set approvalDate($approvalDate : Date)
-	This:C1470.stmpApproval:=cs:C1710.sfw_stmp.me.build($approvalDate)
+	This:C1470.stmpApproval:=$approvalDate=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($approvalDate)
 	
 	
 	
@@ -75,6 +75,9 @@ local Function afterCreation()
 	This:C1470._initattachedDocuments()
 	
 local Function loadAfterCreation()
+	// Purpose: Assign a unique barcode in moreData for scanner lookup on new records.
+	// modified by 4D/PS [2026-june-29]
+	This:C1470.moreData.barcodeData:=String:C10(cs:C1710.Util_ScannerManager.me.getBarcodeData(Form:C1466.sfw.entry.dataclass); "0000000000")
 	// This callback is called after creating the new item but before displaying the panel.
 	This:C1470._initattachedDocuments()
 	
@@ -98,6 +101,25 @@ local Function _initattachedDocuments()
 		
 	End if 
 	
+	
+local Function beforeSave()
+	If (Form:C1466.subForm.bufferOfEvents#Null:C1517) && (Form:C1466.subForm.bufferOfEvents.length>0)
+		This:C1470._saveBufferOfEvents(Form:C1466.subForm.bufferOfEvents)
+		Form:C1466.subForm.bufferOfEvents:=New collection:C1472
+	End if 
+	
+	
+local Function beforeSaveCreation()
+	
+	This:C1470._saveBufferOfEvents(Form:C1466.subForm.bufferOfEvents)
+	
+	
+Function _saveBufferOfEvents($bufferOfEvents : Collection)
+	For each ($buffer; $bufferOfEvents)
+		$moreData:=New object:C1471
+		$moreData.comment:=$buffer.label
+		cs:C1710.sfw_eventManager.me.addEvent(Form:C1466.sfw.entry; $buffer.event; This:C1470.UUID; $moreData; $buffer.stmp)
+	End for each 
 	
 local Function get nameInWindowTitle()->$nameInWindowTitle : Text
 	$nameInWindowTitle:=String:C10(This:C1470.ourPartNum)

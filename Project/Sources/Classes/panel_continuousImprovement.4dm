@@ -28,6 +28,8 @@ Function formMethod()
 Function redrawAndSetVisible()
 	//Adjusts the layout and visibility of form elements based on the current page and modification state
 	
+	var $procedureTitle : Text
+	
 	This:C1470.drawPup_priority()
 	This:C1470.drawPup_origin()
 	This:C1470.drawPup_category()
@@ -44,7 +46,10 @@ Function redrawAndSetVisible()
 	OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; Form:C1466.sfw.checkIsInModification())
 	
 	OBJECT SET ENTERABLE:C238(*; "entryField@"; Form:C1466.sfw.checkIsInModification())
-	If (OBJECT Get title:C1068(*; "pup_procedure")="QCAR#@")
+	// Purpose: Accept CAR#@ sentinel label alongside legacy QCAR#@ for procedure-type placeholder rows.
+	// modified by 4D/PS [2026-may-12]
+	$procedureTitle:=OBJECT Get title:C1068(*; "pup_procedure")
+	If (($procedureTitle="QCAR#@") | ($procedureTitle="CAR#@"))
 		OBJECT SET ENTERABLE:C238(*; "entryField_action"; Not:C34(Form:C1466.sfw.checkIsInModification()))
 	Else 
 		OBJECT SET ENTERABLE:C238(*; "entryField_action"; Form:C1466.sfw.checkIsInModification())
@@ -139,7 +144,9 @@ Function pup_yesNoQuestion()
 	
 Function drawPup_procedureType()
 	If (Form:C1466.current_item#Null:C1517)
-		If (Form:C1466.current_item.action="QCAR#@")
+		// Purpose: Match legacy QCAR#@ or new CAR#@ placeholder stored on improvement.action when linking to a CAR.
+		// modified by 4D/PS [2026-may-12]
+		If ((Form:C1466.current_item.action="QCAR#@") | (Form:C1466.current_item.action="CAR#@"))
 			OBJECT SET TITLE:C194(*; "pup_procedure"; Form:C1466.current_item.action)
 			
 		Else 

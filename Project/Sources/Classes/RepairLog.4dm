@@ -3,7 +3,9 @@ Class extends DataClass
 
 local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	//Mark: entry : Contact
-	$entry:=cs:C1710.sfw_definitionEntry.new("repairLog"; ["qualityAssurance"]; "Repair Logs")
+	// Purpose: Register Repair Logs under the Facilities vision instead of Quality Assurance.
+	// modified by 4D/PS [2026-september-11]
+	$entry:=cs:C1710.sfw_definitionEntry.new("repairLog"; ["facilities"]; "Repair Logs")
 	$entry.setDataclass("RepairLog")
 	
 	$entry.setDisplayOrder(100)

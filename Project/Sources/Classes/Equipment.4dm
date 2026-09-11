@@ -4,7 +4,9 @@ Class extends DataClass
 
 local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	//Mark: entry : Equipment
-	$entry:=cs:C1710.sfw_definitionEntry.new("equipment"; ["qualityAssurance"]; "Equipments")
+	// Purpose: Register Equipment under the Facilities vision instead of Quality Assurance.
+	// modified by 4D/PS [2026-september-11]
+	$entry:=cs:C1710.sfw_definitionEntry.new("equipment"; ["facilities"]; "Equipments")
 	$entry.setDataclass("Equipment")
 	$entry.setSearchboxField("assignedID")
 	$entry.setDisplayOrder(100)
