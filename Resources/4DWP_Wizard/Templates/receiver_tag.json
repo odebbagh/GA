@@ -1,0 +1,35 @@
+{
+    "tableDataSource": "Form.inventoriesCollection",
+    "columns": [{
+            "check": true,
+            "header": "Type",
+            "source": "This.item.type"
+        }, {
+            "check": true,
+            "header": "Lot#",
+            "source": "This.item.lotNumber"
+        }, {
+            "check": true,
+            "header": "Stated Qty",
+            "source": "This.item.statedQty"
+        }
+        , {
+            "check": true,
+            "header": "Our Count",
+            "source": "This.item.ourQty"
+        } , {
+            "check": true,
+            "header": "Date In",
+            "source": "This.item.dateIn"
+        } , {
+            "check": true,
+            "header": "Package Type/Description",
+            "source": "This.item.packageType"
+        } , {
+            "check": true,
+            "header": "Loc",
+            "source": "This.item.location"
+        }
+    ]
+   
+}

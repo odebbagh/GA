@@ -1,0 +1,211 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"lb_items": {
+					"type": "listbox",
+					"left": 3,
+					"top": 45,
+					"width": 512,
+					"height": 492,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"horizontalLineStroke": "transparent",
+					"dataSource": "Form:C1466.lb_items",
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"verticalLineStroke": "transparent",
+					"selectionMode": "single",
+					"currentItemSource": "Form:C1466.currentStaff",
+					"currentItemPositionSource": "Form:C1466.currentStaffPos",
+					"selectedItemsSource": "Form:C1466.currentSelectedStaffs",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "automatic",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#000000",
+					"sizingX": "fixed",
+					"sizingY": "grow",
+					"method": "ObjectMethods/lb_items.4dm",
+					"columns": [
+						{
+							"header": {
+								"text": "",
+								"name": "Header1"
+							},
+							"name": "StaffsCheckBox",
+							"footer": {
+								"name": "Footer1"
+							},
+							"width": 30,
+							"dataSource": "This:C1470.selected",
+							"dataSourceTypeHint": "boolean",
+							"textAlign": "right",
+							"stroke": "#000000",
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"enterable": true,
+							"method": "ObjectMethods/StaffsCheckBox.4dm",
+							"truncateMode": "none"
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Staff FullName",
+								"fontWeight": "bold"
+							},
+							"name": "Column2",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This:C1470.fullName",
+							"textAlign": "left",
+							"stroke": "#000000",
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"enterable": false,
+							"width": 225,
+							"resizable": false
+						},
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Title",
+								"fontWeight": "bold"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer3"
+							},
+							"dataSource": "This:C1470.role",
+							"enterable": false
+						}
+					]
+				},
+				"bOk": {
+					"type": "button",
+					"top": 573,
+					"left": 485,
+					"width": 30,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/check-24x24.png",
+					"iconFrames": 4,
+					"textPlacement": "center",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "[Return]",
+					"sizingX": "move",
+					"method": "ObjectMethods/bOk.4dm"
+				},
+				"bCancel": {
+					"type": "button",
+					"top": 573,
+					"left": 439,
+					"width": 32,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/return-24x24.png",
+					"iconFrames": 4,
+					"textPlacement": "center",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "cancel",
+					"method": "ObjectMethods/bCancel.4dm",
+					"sizingX": "move"
+				},
+				"searchbox_icon": {
+					"type": "picture",
+					"top": 11,
+					"left": 3,
+					"width": 23,
+					"height": 23,
+					"sizingX": "move",
+					"pictureFormat": "scaled",
+					"picture": "/RESOURCES/image/logo/loupe.png"
+				},
+				"word": {
+					"type": "input",
+					"left": 36,
+					"top": 11,
+					"width": 479,
+					"height": 23,
+					"dataSource": "Form:C1466.words",
+					"hideFocusRing": true,
+					"method": "ObjectMethods/word.4dm",
+					"events": [
+						"onDataChange",
+						"onAfterKeystroke",
+						"onAfterEdit"
+					],
+					"placeholder": "search ...",
+					"borderStyle": "none"
+				}
+			}
+		}
+	],
+	"geometryStamp": 19,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

@@ -3,6 +3,11 @@
 
 var $eContact : cs:C1710.ContactEntity
 var $contactSelection : cs:C1710.ContactSelection
+var $ePartData : cs:C1710.PartDataEntity
+var $partDataFile : 4D:C1709.File
+var $partDatas : Collection
+var $partData : Object
+var $res : Object
 
 $contactSelection:=ds:C1482.Contact.query("companyType =:1"; "Supplier")
 For each ($eContact; $contactSelection)
@@ -11,33 +16,31 @@ For each ($eContact; $contactSelection)
 		TRACE:C157
 	End if 
 End for each 
-/*
 
-//PartData
-var $ePartData : cs.PartDataEntity
+// Purpose: Import legacy [PartData] from partData_export.json (InternalPatnum → internalPartNum).
+// Parameters: reads DataJson/partData_export.json from the data folder.
+// Returns: nothing (truncates and reloads PartData).
+// modified by 4D/PS [2026-june-08]
+$partDataFile:=Folder:C1567(fk data folder:K87:12).file("DataJson/partData_export.json")
 
-$partData_log:=Folder(fk data folder).file("DataJson/partData_export.json")
-
-If ($partData_log.exists)
-$partDatas:=JSON Parse($partData_log.getText())
-
-TRUNCATE TABLE()
-
-For each ($partData; $partDatas)
-
-$ePartData:=ds.PartData.new()
-$ePartData.internalPartNum:=$partData.InternalPatnum
-
-$res:=$ePartData.save()
-If (Not($res.success))
-TRACE
+If ($partDataFile.exists)
+	$partDatas:=JSON Parse:C1218($partDataFile.getText())
+	
+	TRUNCATE TABLE:C1051([PartData:58])
+	
+	For each ($partData; $partDatas)
+		If ($partData.InternalPatnum#Null:C1517) && (String:C10($partData.InternalPatnum)#"")
+			$ePartData:=ds:C1482.PartData.new()
+			$ePartData.internalPartNum:=String:C10($partData.InternalPatnum)
+			$ePartData.moreData:=New object:C1471("legacy"; $partData)
+			$res:=$ePartData.save()
+			If (Not:C34($res.success))
+				TRACE:C157
+			End if 
+		End if 
+	End for each 
 End if 
 
-End for each 
-
-End if 
-
-*/
 //supplier table
 var $eSupplier : cs:C1710.SupplierEntity
 
@@ -332,24 +335,23 @@ If ($avml_log.exists)
 		
 		$eAvml.ourPartNum:=$avml.OUR_partnum
 		
-/*
-$partNum:=ds.PartData.query("internalPartNum =:1"; Split string($avml.OUR_partnum; "\r"; sk trim spaces).join("\r"))
-If ($partNum.length>0)
-$eAvml.UUID_PartData:=$partNum[0].UUID
-Else 
-		
-$ePartData:=ds.PartData.new()
-$ePartData.internalPartNum:=$avml.OUR_partnum
-		
-$res:=$ePartData.save()
-If (Not($res.success))
-TRACE
-End if 
-		
-$eAvml.UUID_PartData:=$ePartData.UUID
-		
-End if 
-*/
+		// Purpose: Link AML row to PartData by internal part number (PartData imported above).
+		// modified by 4D/PS [2026-june-08]
+		$partNum:=ds:C1482.PartData.query("internalPartNum = :1"; Split string:C1554($avml.OUR_partnum; "\r"; sk trim spaces:K86:2).join("\r"))
+		If ($partNum.length>0)
+			$eAvml.UUID_PartData:=$partNum[0].UUID
+		Else 
+			If (String:C10($avml.OUR_partnum)#"")
+				$ePartData:=ds:C1482.PartData.new()
+				$ePartData.internalPartNum:=String:C10($avml.OUR_partnum)
+				$res:=$ePartData.save()
+				If (Not:C34($res.success))
+					TRACE:C157
+				Else 
+					$eAvml.UUID_PartData:=$ePartData.UUID
+				End if 
+			End if 
+		End if 
 		
 		$supplier:=ds:C1482.Supplier.query("name =:1"; Split string:C1554($avml.Supplier; "\r"; sk trim spaces:K86:2).join("\r"))
 		If ($supplier.length>0)

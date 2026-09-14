@@ -188,7 +188,9 @@ Function btnOpenOperator($operatorType)
 Function btnOpenEquipment()
 	
 	If (Form:C1466.current_item.equipment#Null:C1517)
-		Form:C1466.sfw.openInANewWindow(Form:C1466.current_item.equipment; "qualityAssurance"; "equipment")
+		// Purpose: Equipment entry is registered under the facilities vision, not qualityAssurance.
+		// modified by 4D/PS [2026-september-11]
+		Form:C1466.sfw.openInANewWindow(Form:C1466.current_item.equipment; "facilities"; "equipment")
 	End if 
 	
 	

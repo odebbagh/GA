@@ -9,7 +9,7 @@ Function formMethod()
 	Form:C1466.sfw.panelFormMethod()  //The main body of the form method and basic sfw functionalities 
 	If (Form:C1466.sfw.updateOfPanelNeeded())  //The current item is changed or reloaded, so it's necessary ti refresh
 		This:C1470.displayBannerLotOnHold()
-	End if
+	End if 
 	If (Form:C1466.sfw.recalculationOfPanelPageNeeded())  //a page is displayed so it's time to load the sources of data to display
 		This:C1470.loadCurrentStep()
 		This:C1470.displayBannerLotOnHold()
@@ -88,32 +88,91 @@ Function displaySerialization()
 	OBJECT SET VISIBLE:C603(*; "Field_selectedItem_@"; Not:C34(Form:C1466.selectedItem=Null:C1517))
 	OBJECT SET VISIBLE:C603(*; "entryField_selectedItem_@"; Not:C34(Form:C1466.selectedItem=Null:C1517))
 	
+/*
+Function checkForCertifications()->$valid : Boolean
+	
+If (ds.sfw_User.query("login = :1"; Current user).length>0)
+$staff_es:=ds.sfw_User.query("login = :1"; Current user).first().staffs
+End if 
+	
+If ($staff_es.length>0)
+$staff_e:=$staff_es[0]
+	
+$missingCertifications:=New collection()
+	
+If (Form.currentStep#Null) && (Form.currentStep.requitedCertifications#Null)
+$certifications:=Form.currentStep.requitedCertifications.items
+	
+For each ($certification; $certifications)
+$assignments:=$staff_e.assignments.query("UUID_Certification = :1"; $certification.UUID_Certification)
+	
+If ($assignments.length=0)
+$missingCertifications.push($certification)
+End if 
+End for each 
+End if 
+	
+$valid:=($missingCertifications.length=0)
+End if 
+*/
 	
 Function checkForCertifications()->$valid : Boolean
+	// Purpose: Block punch-in when required certifications are missing or expired (uses StaffEntity.hasCertification / validityActive).
+	// Returns: Boolean — True when all required certifications are valid for the current step.
+	// modified by 4D/PS [2026-june-02]
+	
+	var $staff_es : cs:C1710.StaffSelection
+	var $staff_e : cs:C1710.StaffEntity
+	var $certifications : Collection
+	var $certification : Object
+	var $certName : Text
+	var $assignments : cs:C1710.CertificationAssignmentSelection
+	var $blockedLines : Collection
+	var $blockedMessage : Text
+	
+	$valid:=True:C214
+	$blockedLines:=New collection:C1472()
 	
 	If (ds:C1482.sfw_User.query("login = :1"; Current user:C182).length>0)
 		$staff_es:=ds:C1482.sfw_User.query("login = :1"; Current user:C182).first().staffs
 	End if 
 	
-	If ($staff_es.length>0)
-		$staff_e:=$staff_es[0]
+	If (Form:C1466.currentStep#Null:C1517) && (Form:C1466.currentStep.requitedCertifications#Null:C1517) && (Form:C1466.currentStep.requitedCertifications.items.length>0)
 		
-		$missingCertifications:=New collection:C1472()
-		
-		If (Form:C1466.currentStep#Null:C1517) && (Form:C1466.currentStep.requitedCertifications#Null:C1517)
-			$certifications:=Form:C1466.currentStep.requitedCertifications.items
-			
-			For each ($certification; $certifications)
-				$assignments:=$staff_e.assignments.query("UUID_Certification = :1"; $certification.UUID_Certification)
-				
-				If ($assignments.length=0)
-					$missingCertifications.push($certification)
-				End if 
-			End for each 
+		If ($staff_es.length=0)
+			$valid:=False:C215
+			cs:C1710.sfw_dialog.me.info("Punch-in blocked: no staff record linked to your user account")
+			return $valid
 		End if 
 		
-		$valid:=($missingCertifications.length=0)
+		$staff_e:=$staff_es[0]
+		$certifications:=Form:C1466.currentStep.requitedCertifications.items
+		
+		For each ($certification; $certifications)
+			If (Not:C34($staff_e.hasCertification($certification.UUID_Certification)))
+				$certName:=String:C10($certification.name)
+				If ($certName="")
+					$eCert:=ds:C1482.Certification.get($certification.UUID_Certification)
+					If ($eCert#Null:C1517)
+						$certName:=$eCert.name
+					End if 
+				End if 
+				$assignments:=$staff_e.assignments.query("UUID_Certification = :1"; $certification.UUID_Certification)
+				If ($assignments.length=0)
+					$blockedLines.push($certName+" — not assigned")
+				Else 
+					$blockedLines.push($certName+" — expired or invalid")
+				End if 
+			End if 
+		End for each 
+		
+		$valid:=($blockedLines.length=0)
+		If (Not:C34($valid))
+			$blockedMessage:="Punch-in blocked. Required certification(s):\r"+$blockedLines.join("\r")
+			cs:C1710.sfw_dialog.me.info($blockedMessage)
+		End if 
 	End if 
+	
 	
 Function loadCurrentStep()
 	Form:C1466.currentStep:=Null:C1517
@@ -218,10 +277,10 @@ Function loadDataTables()
 	
 Function displayBannerLotOnHold()
 	var $pict : Picture
-
+	
 	If (Form:C1466.current_item#Null:C1517) && (Form:C1466.current_item.onHold)
 		Form:C1466.notEditable:=True:C214
-
+		
 		$svg:=SVG_New(285; 184)
 		$group:=SVG_New_group($svg; "onHold")
 		$rect:=SVG_New_rect($group; 0; 0; 500; 30; 0; 0; "red:50"; "orangered:50"; 1)
@@ -232,10 +291,10 @@ Function displayBannerLotOnHold()
 		SVG_CLEAR($svg)
 		Form:C1466.bannerOnHold:=$pict
 		OBJECT SET VISIBLE:C603(*; "banner_lotOnHold"; True:C214)
-	Else
+	Else 
 		Form:C1466.notEditable:=False:C215
 		OBJECT SET VISIBLE:C603(*; "banner_lotOnHold"; False:C215)
-	End if
+	End if 
 	
 Function displayBanner($bannerMessage : Text)
 	var $pict : Picture

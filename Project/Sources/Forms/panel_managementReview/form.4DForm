@@ -293,7 +293,8 @@
 					"left": 8,
 					"width": 247,
 					"height": 17,
-					"textAlign": "left"
+					"textAlign": "left",
+					"visibility": "hidden"
 				},
 				"entryField_isApproved": {
 					"type": "checkbox",
@@ -388,7 +389,7 @@
 			}
 		}
 	],
-	"geometryStamp": 39,
+	"geometryStamp": 40,
 	"inheritedForm": "sfw_bkgd_header_3lines",
 	"editor": {
 		"activeView": "View 1",

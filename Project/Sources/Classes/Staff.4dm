@@ -9,18 +9,24 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	$entry.setSearchboxField("firstName")
 	$entry.setSearchboxField("lastName")
+	// Purpose: Allow searching staff by shift ("1" or "2") and by certification name.
+	// modified by 4D/PS [2026-may-21]
+	$entry.setSearchboxField("shift"; "placeholder:shift")
 	$entry.setSearchboxField("assignments.certification.name"; "placeholder:certification")
 	
 	
 	$entry.setPanel("panel_staff")
 	$entry.setPanelPage(1; ""; "Main")
 	$entry.setPanelPage(2; ""; "Certifications Assignment"; "")
-	$entry.setPanelPage(3; ""; "Settings"; "allowedProfiles:admin")
+	//$entry.setPanelPage(3; ""; "Settings"; "allowedProfiles:admin")
 	
 	
 	$entry.setLBItemsColumn("code"; "Code"; "width:50"; "center")
 	$entry.setLBItemsColumn("firstName"; "First Name"; "width:190")
 	$entry.setLBItemsColumn("lastName"; "Last Name"; "width:190")
+	// Purpose: Expose Shift ("1"/"2") in the items list for quick scanning by floor managers.
+	// modified by 4D/PS [2026-may-21]
+	$entry.setLBItemsColumn("shift"; "Shift"; "width:50"; "center")
 	
 	$entry.setItemAction("Generate Barcode"; "_ga_openBarCodeForm")
 	
@@ -47,7 +53,9 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$view.setPictoLabel("/RESOURCES/ga/image/picto/terminated-user-16x16.png")
 	$entry.setView($view)
 	
-	$entry.setAllowedProfiles("qm")
+	// Purpose: Quality profiles plus Document Control (dc) may open and modify Staff records.
+	// modified by 4D/PS [2026-june-02]
+	$entry.setAllowedProfiles("qs"; "qi"; "qm"; "dc")
 	
 	$entry.enableTransaction()
 	//$entry.setAllowedProfilesForDeletion("pm")
@@ -105,48 +113,146 @@ Function terminatedStaff()->$staffs : cs:C1710.StaffSelection
 Function retrainingStaff()->$staffs : cs:C1710.StaffSelection
 	$staffs:=ds:C1482.Staff.newSelection()
 	
+	// Purpose: Staff with retrain milestone or calendar validity expiry due within 30 days.
+	// modified by 4D/PS [2026-june-08]
 	For each ($staff; ds:C1482.Staff.all())
-		$certs:=$staff.getCertiExpiredIn(30)
-		
-		If ($certs.length>0)
+		If ($staff.getRetrainMilestonesDueIn(30).length>0) || ($staff.getCertiExpiredIn(30).length>0)
 			$staffs.add($staff)
 		End if 
 	End for each 
 	
 	
-Function checkRetraining($days : Integer)->$retraining : Collection
-	var $staff_es : cs:C1710.StaffSelection
+	// Purpose: Notify the linked sfw_User for each staff member when retrain milestones or validity expiry fall within $days.
+	// Uses moreData.retrainNotifiedMilestones (d90, d365, …) and validityExpiryNotified for calendar expiry.
+	// Parameters: $days : Integer — lookahead window in days (typically 30)
+	// Returns: Collection — one True entry per newly sent notification (drives UI refresh in callers)
+	// modified by 4D/PS [2026-june-12]
+Function checkRetraining($days : Integer)->$createdNotificationMarkers : Collection
+	
 	var $staff_e : cs:C1710.StaffEntity
+	var $assignment_e : cs:C1710.CertificationAssignmentEntity
+	var $users : Collection
+	var $context : Object
+	var $dueMilestones : Collection
+	var $due : Object
+	var $milestoneKey : Text
+	var $offsets : Collection
+	var $offset : Integer
+	var $certDt : Date
+	var $milestoneDate : Date
+	var $today : Date
+	var $limit : Date
+	var $res : Object
 	
-	$start:=cs:C1710.sfw_stmp.me.now()
-	$end:=cs:C1710.sfw_stmp.me.build(Add to date:C393(Current date:C33(); 0; 0; $days))
+	$createdNotificationMarkers:=New collection:C1472()
+	$today:=Current date:C33()
+	$limit:=Add to date:C393($today; 0; 0; $days)
 	
-	$staff_es:=ds:C1482.Staff.query("assignments.expiredIn >= :1 AND assignments.expiredIn <= :2"; $start; $end)
-	
-	$retraining:=New collection:C1472()
-	
-	For each ($staff_e; $staff_es)
-		// Apr 22, 2026 4DFix: Current date:C33 was missing () — was passing the command reference instead of the date value
-		$notif_es:=ds:C1482.sfw_Notification.query("moreData.UUID_Staff = :1 AND moreData.date = :2"; $staff_e.UUID; Current date:C33())
+	For each ($staff_e; ds:C1482.Staff.query("terminated = :1"; False:C215))
+		$dueMilestones:=$staff_e.getRetrainMilestonesDueIn($days)
 		
-		If ($notif_es.length=0)
-			CREATE RECORD:C68([sfw_Notification:69])
-			// Apr 22, 2026 4DFix: was using .all().first() which returns a random notification type — now queries for the correct "EmployeeRetrainRequired" type
-			[sfw_Notification:69]UUID_NotificationType:4:=ds:C1482.sfw_NotificationType.query("ident = :1"; "EmployeeRetrainRequired").first().UUID
-			[sfw_Notification:69]UUID_User:3:=cs:C1710.sfw_userManager.me.info.UUID
-			[sfw_Notification:69]UUID_target:2:=$staff_e.UUID
-			[sfw_Notification:69]comment:5:=$staff_e.firstName+" "+$staff_e.lastName+" :"+"Retraining for "+String:C10($staff_e.getCertiExpiredIn(30).length)+" certifications due within 30 days."
-			[sfw_Notification:69]moreData:8:=New object:C1471("targetDataclass"; "Staff"; "UUID_Staff"; $staff_e.UUID; "date"; Current date:C33())
-			[sfw_Notification:69]stmp:7:=cs:C1710.sfw_stmp.me.now()
-			SAVE RECORD:C53([sfw_Notification:69])
+		For each ($due; $dueMilestones)
+			$assignment_e:=$due.assignment
+			$milestoneKey:="d"+String:C10($due.milestoneDays)
 			
-			$retraining.push("")
-		End if 
+			If ($assignment_e.moreData=Null:C1517)
+				$assignment_e.moreData:=New object:C1471("retrainNotifiedMilestones"; New object:C1471)
+			Else 
+				If (Not:C34(OB Is defined:C1231($assignment_e.moreData; "retrainNotifiedMilestones")))
+					$assignment_e.moreData.retrainNotifiedMilestones:=New object:C1471
+				End if 
+			End if 
+			
+			If (Not:C34(Bool:C1537($assignment_e.moreData.retrainNotifiedMilestones[$milestoneKey])))
+				// Purpose: Notify only the staff member's linked user account (not qm/qs).
+				// modified by 4D/PS [2026-june-12]
+				If ($staff_e.user#Null:C1517)
+					$users:=New collection:C1472($staff_e.user.UUID)
+					$context:=New object:C1471(\
+						"target"; $staff_e.UUID; \
+						"targetDataclass"; "Staff"; \
+						"fullName"; $staff_e.fullName; \
+						"certName"; $assignment_e.certification.name; \
+						"expiringDate"; String:C10($due.milestoneDate; Null event:K17:1); \
+						"milestoneDays"; $due.milestoneDays; \
+						"days"; $days\
+						)
+					cs:C1710.sfw_notificationManager.me.notify("EmployeeRetrainRequired"; $users; $context)
+					$assignment_e.moreData.retrainNotifiedMilestones[$milestoneKey]:=True:C214
+					$res:=$assignment_e.save()
+					If ($res.success)
+						$createdNotificationMarkers.push(True:C214)
+					End if 
+				End if 
+			End if 
+		End for each 
+		
+		// Purpose: Notify when assignment calendar expiry (expiringDate) falls within the window.
+		// modified by 4D/PS [2026-june-08]
+		For each ($assignment_e; $staff_e.getCertiExpiredIn($days))
+			If ($assignment_e.moreData=Null:C1517)
+				$assignment_e.moreData:=New object:C1471
+			End if 
+			If (Not:C34(Bool:C1537($assignment_e.moreData.validityExpiryNotified)))
+				// Purpose: Notify only the staff member's linked user account (not qm/qs).
+				// modified by 4D/PS [2026-june-12]
+				If ($staff_e.user#Null:C1517)
+					$users:=New collection:C1472($staff_e.user.UUID)
+					$context:=New object:C1471(\
+						"target"; $staff_e.UUID; \
+						"targetDataclass"; "Staff"; \
+						"fullName"; $staff_e.fullName; \
+						"certName"; $assignment_e.certification.name; \
+						"expiringDate"; String:C10($assignment_e.expiringDate; Null event:K17:1); \
+						"days"; $days\
+						)
+					cs:C1710.sfw_notificationManager.me.notify("EmployeeRetrainRequired"; $users; $context)
+					$assignment_e.moreData.validityExpiryNotified:=True:C214
+					$res:=$assignment_e.save()
+					If ($res.success)
+						$createdNotificationMarkers.push(True:C214)
+					End if 
+				End if 
+			End if 
+		End for each 
+		
+		// Purpose: Clear validity expiry flag when assignment is outside the notification window.
+		// modified by 4D/PS [2026-june-08]
+		For each ($assignment_e; $staff_e.assignments)
+			If ($assignment_e.moreData#Null:C1517) && (OB Is defined:C1231($assignment_e.moreData; "validityExpiryNotified")) && (Bool:C1537($assignment_e.moreData.validityExpiryNotified))
+				If ($assignment_e.expiredIn<=0) || (($assignment_e.expiringDate#!00-00-00!) && (($assignment_e.expiringDate<$today) || ($assignment_e.expiringDate>$limit)))
+					$assignment_e.moreData.validityExpiryNotified:=False:C215
+					$res:=$assignment_e.save()
+				End if 
+			End if 
+		End for each 
+		
+		// Purpose: Clear milestone flags outside the notification window so a future cycle can notify again.
+		// modified by 4D/PS [2026-june-02]
+		For each ($assignment_e; $staff_e.assignments)
+			If ($assignment_e.moreData#Null:C1517) && (OB Is defined:C1231($assignment_e.moreData; "retrainNotifiedMilestones"))
+				If ($assignment_e.certification#Null:C1517) && ($assignment_e.certificationStmp#0)
+					$certDt:=$assignment_e.certificationDate
+					If ($certDt#!00-00-00!)
+						$offsets:=$assignment_e.certification.retrainMilestoneDayOffsets()
+						For each ($offset; $offsets)
+							$milestoneKey:="d"+String:C10($offset)
+							If (OB Is defined:C1231($assignment_e.moreData.retrainNotifiedMilestones; $milestoneKey)) && (Bool:C1537($assignment_e.moreData.retrainNotifiedMilestones[$milestoneKey]))
+								$milestoneDate:=Add to date:C393($certDt; 0; 0; $offset)
+								If ($milestoneDate<$today) || ($milestoneDate>$limit)
+									$assignment_e.moreData.retrainNotifiedMilestones[$milestoneKey]:=False:C215
+									$res:=$assignment_e.save()
+								End if 
+							End if 
+						End for each 
+					End if 
+				End if 
+			End if 
+		End for each 
 	End for each 
 	
-	If ($retraining.length>0)
-		// Apr 22, 2026 4DFix: typo "updateNodifications" corrected to "updateNotifications"
-		cs:C1710.sfw_notificationManager.me.updateNotifications()
+	If ($createdNotificationMarkers.length>0)
+		cs:C1710.sfw_notificationManager.me.updateNodifications()
 	End if 
 	
 	
@@ -166,7 +272,7 @@ local Function cacheLoad()
 	
 	
 Function _loadAsCollection()->$employees : Collection
-	$employees:=This:C1470.all().toCollection("UUID,firstName,lastName,code").orderBy("code")
+	$employees:=This:C1470.all().toCollection("UUID,firstName,lastName,fullName,code").orderBy("code")
 	
 	
 	

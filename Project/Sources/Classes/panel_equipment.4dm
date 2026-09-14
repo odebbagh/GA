@@ -351,7 +351,9 @@ Function bActionRepairLog()
 			//________________________________________
 		: ($choice="openInWindow")
 			
-			Form:C1466.sfw.openInANewWindow(Form:C1466.current_item.repairLogs.query("UUID=:1"; Form:C1466.selectedRepaiLog.UUID).first(); "qualityAssurance"; "repairLog")
+			// Purpose: RepairLog entry is registered under the facilities vision, not qualityAssurance.
+			// modified by 4D/PS [2026-september-11]
+			Form:C1466.sfw.openInANewWindow(Form:C1466.current_item.repairLogs.query("UUID=:1"; Form:C1466.selectedRepaiLog.UUID).first(); "facilities"; "repairLog")
 			
 			//________________________________________
 	End case 

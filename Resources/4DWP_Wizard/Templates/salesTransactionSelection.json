@@ -1,0 +1,29 @@
+{
+    "tableDataSource": "Form.sfw.lb_items",
+    "columns": [{
+            "check": true,
+            "header": "Num",
+            "source": "String(This.item.transactionNumber)"
+        }, {
+            "check": true,
+            "header": "Type",
+            "source": "This.item.type.name"
+        }, {
+            "check": true,
+            "header": "Date",
+            "source": "Choose((This.item.transactionDate=Null) | (This.item.transactionDate=!00-00-00!); \"\"; String(This.item.transactionDate))"
+        }, {
+            "check": true,
+            "header": "Customer",
+            "source": "This.item.customer.name"
+        }, {
+            "check": true,
+            "header": "Amount",
+            "source": "String(This.item.Amount; \"###,###,##0.00\")"
+        }, {
+            "check": true,
+            "header": "Open Balance",
+            "source": "String(This.item.openBalance; \"###,###,##0.00\")"
+        }
+    ]
+}

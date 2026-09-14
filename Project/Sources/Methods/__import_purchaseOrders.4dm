@@ -8,6 +8,7 @@ If (True:C214)
 	TRUNCATE TABLE:C1051([StepTemplate:121])
 	TRUNCATE TABLE:C1051([StepTemplateRule:92])
 	TRUNCATE TABLE:C1051([ContainerCode:93])
+	TRUNCATE TABLE:C1051([StepTemplateCertification:125])
 	
 	var $rulesToImport : Collection
 	$rulesToImport:=New collection:C1472(\
@@ -77,9 +78,55 @@ If (True:C214)
 	End for 
 	
 	
+	// Purpose: Load Certification catalog before StepTemplateCertification links (skill code = Certification.ref).
+	// modified by 4D/PS [2026-june-09]
+	TRUNCATE TABLE:C1051([Certification:124])
+	
+	var $certCatalogFile : 4D:C1709.File
+	var $certCatalogRecords : Collection
+	var $certCatalogRecord : Object
+	var $certification_e : cs:C1710.CertificationEntity
+	
+	$certCatalogFile:=Folder:C1567(fk data folder:K87:12).file("DataJson/certifications_export.json")
+	If ($certCatalogFile.exists)
+		$certCatalogRecords:=JSON Parse:C1218($certCatalogFile.getText())
+		For each ($certCatalogRecord; $certCatalogRecords)
+			$certification_e:=ds:C1482.Certification.new()
+			$certification_e.ref:=$certCatalogRecord.ref
+			$certification_e.name:=$certCatalogRecord.name
+			If ($certCatalogRecord.oneTime#Null:C1517)
+				$certification_e.oneTime:=Bool:C1537($certCatalogRecord.oneTime)
+			End if 
+			// Purpose: Store 365 when export duration is 0 or missing (legacy catalog); one-time stays 0.
+			// modified by 4D/PS [2026-june-08]
+			$certification_e.duration:=_ga_certificationImportDuration(\
+				($certCatalogRecord.duration#Null:C1517) ? Num:C11($certCatalogRecord.duration) : 0; \
+				$certification_e.oneTime)
+			$res:=$certification_e.save()
+			If (Not:C34($res.success))
+				TRACE:C157
+			End if 
+		End for each 
+	End if 
+	
+	// Purpose: Correct catalog rows left with duration 0 from earlier imports (non one-time only).
+	// modified by 4D/PS [2026-june-08]
+	_ga_certFixZeroDuration()
+	
 	$file:=Folder:C1567(fk data folder:K87:12).file("DataJson/step_template_export.json")
 	
 	$records:=JSON Parse:C1218($file.getText())
+	
+	// Purpose: Collect unmapped legacy skill codes for post-import report (same pattern as staff training import).
+	// modified by 4D/PS [2026-june-09]
+	var $stepTemplateCertReport : Collection
+	var $reportFile : 4D:C1709.File
+	var $unknownSkill : Object
+	var $reportLine : Text
+	var $reportLines : Collection
+	var $reportEntry : Object
+	
+	$stepTemplateCertReport:=New collection:C1472()
 	
 	For each ($record; $records)
 		$stepTemplate_e:=ds:C1482.StepTemplate.new()
@@ -168,8 +215,40 @@ If (True:C214)
 		
 		If (Not:C34($res.success))
 			TRACE:C157
+		Else 
+			// Purpose: Map legacy skill codes to Certification catalog (ref) and create StepTemplateCertification links.
+			// modified by 4D/PS [2026-june-09]
+			If ($record.requiredCertifications#Null:C1517) && ($record.requiredCertifications.length>0)
+				__import_stSeedTemplateCerts($stepTemplate_e.UUID; Num:C11($record.templateNumber); String:C10($record.name); $record.requiredCertifications; $stepTemplateCertReport)
+			End if 
+			// Purpose: Surface skill codes flagged at export time (unknown in EmployeeCertDef / <>ACL).
+			// modified by 4D/PS [2026-june-09]
+			If ($record.unknownSkillCodes#Null:C1517) && ($record.unknownSkillCodes.length>0)
+				For each ($unknownSkill; $record.unknownSkillCodes)
+					$stepTemplateCertReport.push(New object:C1471(\
+						"templateNumber"; Num:C11($record.templateNumber); \
+						"templateName"; String:C10($record.name); \
+						"skillCode"; Num:C11($unknownSkill.skillCode); \
+						"certName"; ""; \
+						"reason"; "export: "+String:C10($unknownSkill.reason)\
+						))
+				End for each 
+			End if 
 		End if 
 	End for each 
+	
+	// Purpose: Write post-import report for unmapped template skill codes (review after import).
+	// modified by 4D/PS [2026-june-09]
+	$reportFile:=Folder:C1567(fk data folder:K87:12).file("DataJson/step_template_cert_import_report.json")
+	$reportFile.setText(JSON Stringify:C1217($stepTemplateCertReport))
+	If ($stepTemplateCertReport.length>0)
+		$reportLines:=New collection:C1472()
+		For each ($reportEntry; $stepTemplateCertReport)
+			$reportLine:="Template "+String:C10($reportEntry.templateNumber)+" ("+String:C10($reportEntry.templateName)+"): skill "+String:C10($reportEntry.skillCode)+" — "+String:C10($reportEntry.reason)
+			$reportLines.push($reportLine)
+		End for each 
+		SET TEXT TO PASTEBOARD:C523($reportLines.join("\r"))
+	End if 
 End if 
 
 //MARK:- import StepTemplates -> [Step]
@@ -310,7 +389,7 @@ If (True:C214)
 		
 		$po.resaleNumber:=$record.resaleNumber
 		$po.identifier:=$record.identifier
-		$po.initials:=$record.initials
+		//$po.initials:=$record.initials//FOR TESTING PURPOSE
 		$po.division:=$record.division
 		$po.openPO:=$record.openPO
 		$po.address:=$record.address
@@ -724,8 +803,9 @@ If (True:C214)
 						
 					End for 
 					
-					$lotStep_e.skills:=New object:C1471("items"; New collection:C1472())
-					$lotStep_e.requitedCertifications:=New object:C1471("items"; New collection:C1472())
+					// Purpose: Fill skills + requitedCertifications from StepTemplate (LotStep.type = templateNumber), not empty collections.
+					// modified by 4D/PS [2026-june-09]
+					__import_stLotStepApplyCerts($lotStep_e)
 					
 					$lotStep_e.UUID_Lot:=$lot_e.UUID
 					
@@ -854,8 +934,8 @@ If (True:C214)
 			var $bin_e : cs:C1710.BinEntity
 			$bin_e:=$bin[0]
 			$inventory_e.UUID_Location:=$bin_e.UUID
-
-		Else
+			
+		Else 
 			$inventory_e.UUID_Location:="00"*16
 		End if 
 		
@@ -990,28 +1070,10 @@ If (True:C214)
 End if 
 
 /**
-import cetifications
+import cetifications — catalog loaded before step templates (see step template import block).
 **/
-If (True:C214)
-	TRUNCATE TABLE:C1051([Certification:124])
-	
-	$file:=Folder:C1567(fk data folder:K87:12).file("DataJson/certifications_export.json")
-	
-	$records:=JSON Parse:C1218($file.getText())
-	
-	For each ($record; $records)
-		$certification_e:=ds:C1482.Certification.new()
-		
-		$certification_e.ref:=$record.ref
-		$certification_e.name:=$record.name
-		
-		$res:=$certification_e.save()
-		
-		If (Not:C34($res.success))
-			TRACE:C157
-		End if 
-	End for each 
-End if 
+// Certification catalog import moved to step template section (before StepTemplateCertification links).
+
 
 /**
 import specifications
@@ -1037,7 +1099,7 @@ If (True:C214)
 		
 		$specification_e.spec:=$record.Spec
 		$specification_e.title:=$record.Spec_Title
-		$specification_e.stmpRevisionDate:=cs:C1710.sfw_stmp.me.build(Date:C102($record.Revsion_Date))
+		$specification_e.stmpRevisionDate:=Date:C102($record.Revsion_Date)=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build(Date:C102($record.Revsion_Date))
 		$specification_e.revision:=$record.Rev
 		
 		$division:=ds:C1482.Division.query("name =:1"; Split string:C1554($record.Division; "\r"; sk trim spaces:K86:2).join("\r"))
@@ -1060,7 +1122,7 @@ If (True:C214)
 		$specification_e.extension:=$record.Dosext
 		$specification_e.suppress:=$record.Suppress
 		$specification_e.reviewIntervalInDays:=$record.ReviewIntervalInDays
-		$specification_e.stmpReviewDate:=cs:C1710.sfw_stmp.me.build(Date:C102($record.Review_Date))
+		$specification_e.stmpReviewDate:=Date:C102($record.Review_Date)=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build(Date:C102($record.Review_Date))
 		
 		$specification_e.moreData:=New object:C1471(\
 			"dueReview"; False:C215; \
@@ -1203,6 +1265,9 @@ End if
 import staffs
 **/
 If (True:C214)
+	
+	$counter:=ds:C1482.Certification.all().extract("ref").max()
+	
 	$file_excel:=Folder:C1567(fk data folder:K87:12).file("DataJson/GA_employee_list.csv")
 	
 	$records_excel:=Split string:C1554($file_excel.getText(); "\r\n")
@@ -1220,126 +1285,204 @@ If (True:C214)
 			))
 	End for each 
 	
-	TRUNCATE TABLE:C1051([Team:136])
-	TRUNCATE TABLE:C1051([Membership:137])
-	TRUNCATE TABLE:C1051([Role:132])
-	TRUNCATE TABLE:C1051([StaffRole:63])
-	//TRUNCATE TABLE([Staff])
+	$remaingCertification:=New collection:C1472()
 	
-	//SET DATABASE PARAMETER([Staff]; Table sequence number; 2)
+	$trainingFile:=Folder:C1567(fk data folder:K87:12).file("DataJson/employeeTraining_export.json")
 	
-	For each ($staff; $staffs_excel)
+	$trainings:=JSON Parse:C1218($trainingFile.getText())
+	
+	$employee_Log:=Folder:C1567(fk data folder:K87:12).file("DataJson/staff_export.json")  //.file("DataJson/employees.json")
+	If ($employee_Log.exists)
+		$employees:=JSON Parse:C1218($employee_Log.getText())
 		
+		$employees:=$employees.map("_ga_normalizeEmployeeForQuery")
 		
-		$user:=ds:C1482.sfw_User.new()
-		$user.firstName:=$staff.firstName
-		$user.lastName:=$staff.lastName
-		$user.login:=Lowercase:C14($staff.firstName+$staff.lastName)
-		$user.accesses:=JSON Parse:C1218("{\"asDesigner\":true,\"password\":{\"temporary\":true,\"sendTemporaryByMail\":false,\"lastReset\":705253775,\"hash\":\"$2b$10$1KIfSf/DkyivGUKEeHHPDulQ51F9LSOuyFmHy6X9TvAXi1K79E4ri\",\"lastChange\":705253879}}")  //pSzjGX!Ey9P1c~p
-		$user.asDesigner:=True:C214
-		$user.isInactive:=False:C215
-		$user.moreData:=New object:C1471()
-		$recodNumber:=ds:C1482.sfw_Counter.getNextValue("sfw_User")
-		$user.moreData.barcodeData:=String:C10($recodNumber; "0000000000")
-		$res:=$user.save()
+		TRUNCATE TABLE:C1051([Team:136])
+		TRUNCATE TABLE:C1051([Membership:137])
+		TRUNCATE TABLE:C1051([Role:132])
+		TRUNCATE TABLE:C1051([StaffRole:63])
+		TRUNCATE TABLE:C1051([Staff:135])
+		TRUNCATE TABLE:C1051([sfw_User:16])
+		TRUNCATE TABLE:C1051([CertificationAssignment:134])
 		
-		If (Not:C34($res.success))
-			TRACE:C157
-		End if 
+		//SET DATABASE PARAMETER([Staff]; Table sequence number; 2)
 		
-		
-		$staff_e:=ds:C1482.Staff.new()
-		
-		$staff_e.UUID_User:=$user.UUID
-		$staff_e.code:=String:C10($staff_e.codeID; "00000#")
-		$staff_e.firstName:=$staff.firstName
-		$staff_e.lastName:=$staff.lastName
-		
-		//$division:=ds.Division.query("name =:1"; Split string($staff_e.division; "\r"; sk trim spaces).join("\r"))
-		
-		//If ($division.length>0)
-		//$staff_e.UUID_Division:=$division[0].UUID
-		//Else 
-		//$staff_e.UUID_Division:=16*"00"
-		//End if 
-		
-		$staff_e.contactDetails:=New object:C1471(\
-			"addresses"; New collection:C1472(); \
-			"communications"; New collection:C1472()\
-			)
-		
-		$staff_e.moreData:=New object:C1471(\
-			"retrainNotified"; False:C215\
-			)
-		
-		
-		$res:=$staff_e.save()
-		
-		
-		If ($res.success)
+		For each ($staff; $staffs_excel)
 			
-			For each ($team; $staff.teams)
-				$teams_es:=ds:C1482.Team.query("name = :1"; $team)
+			
+			$user:=ds:C1482.sfw_User.new()
+			$user.firstName:=$staff.firstName
+			$user.lastName:=$staff.lastName
+			$user.login:=Lowercase:C14($staff.firstName+$staff.lastName)
+			$user.accesses:=JSON Parse:C1218("{\"asDesigner\":true,\"password\":{\"temporary\":true,\"sendTemporaryByMail\":false,\"lastReset\":705253775,\"hash\":\"$2b$10$1KIfSf/DkyivGUKEeHHPDulQ51F9LSOuyFmHy6X9TvAXi1K79E4ri\",\"lastChange\":705253879}}")  //pSzjGX!Ey9P1c~p
+			$user.asDesigner:=True:C214
+			$user.isInactive:=False:C215
+			$user.moreData:=New object:C1471()
+			$recodNumber:=ds:C1482.sfw_Counter.getNextValue("sfw_User")
+			$user.moreData.barcodeData:=String:C10($recodNumber; "0000000000")
+			
+			$res:=$user.save()
+			
+			If (Not:C34($res.success))
+				TRACE:C157
+			End if 
+			
+			$staff_e:=ds:C1482.Staff.new()
+			
+			$staff_e.UUID_User:=$user.UUID
+			$staff_e.code:=String:C10($staff_e.codeID; "00000#")
+			$staff_e.firstName:=$staff.firstName
+			$staff_e.lastName:=$staff.lastName
+			
+			$existingStaff:=$employees.query(\
+				"Last_Name_key = :1 & First_Name_key = :2"; \
+				Replace string:C233($staff.lastName; " "; ""); \
+				Replace string:C233($staff.firstName; " "; ""))
+			$existingStaff:=$existingStaff.length>0 ? $existingStaff : $employees.query("Last_Name_key = :1 & First_Name_key = :2"; Replace string:C233($staff.firstName; " "; ""); Replace string:C233($staff.lastName; " "; ""))
+			
+			If ($existingStaff.length>0)
+				$employee:=$existingStaff[0]
+				$division:=ds:C1482.Division.query("name =:1"; Split string:C1554($employee.division; "\r"; sk trim spaces:K86:2).join("\r"))
 				
-				If ($teams_es.length>0)
-					$team_e:=$teams_es[0]
+				If ($division.length>0)
+					$staff_e.UUID_Division:=$division[0].UUID
 				Else 
-					$team_e:=ds:C1482.Team.new()
-					$team_e.levelID:=ds:C1482.Team.all().length+1
-					$team_e.name:=$team
+					$staff_e.UUID_Division:=16*"00"
+				End if 
+				
+				$staff_e.citizenShipStatus:=$employee.citizenShipStatus
+				$staff_e.contactDetails:=$employee.contactDetails
+				$staff_e.stmpRetrain:=Date:C102($employee.retrainDate)=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build(Date:C102($employee.retrainDate))
+				$staff_e.stmpCreation:=$employee.creationDate
+				$staff_e.stmpTermination:=Date:C102($employee.terminationDate)=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build(Date:C102($employee.terminationDate))
+				$staff_e.stmpHire:=Date:C102($employee.hireDate)=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build(Date:C102($employee.hireDate))
+				$staff_e.terminated:=$employee.terminated
+				$staff_e.shift:=Num:C11($employee.shift)=1 ? "A" : (Num:C11($employee.shift)=2 ? "B" : $employee.shift)
+				
+				
+			Else 
+				//
+			End if 
+			
+			$staff_e.moreData:=New object:C1471("retrainNotified"; False:C215)
+			
+			$res:=$staff_e.save()
+			
+			If ($res.success)
+				
+				
+/**
+import certification Assignment
+**/
+				$staffTrainings:=New collection:C1472()
+				If ($existingStaff.length>0)
+					$employee:=$existingStaff[0]
+					$staffTrainings:=$trainings.query("Employee_Code =:1"; $employee.employeeCode)
+				End if 
+				
+				For each ($training; $staffTrainings)
 					
-					$res:=$team_e.save()
+					var $certImport : Object
+					
+					$certificationAssigment_e:=ds:C1482.CertificationAssignment.new()
+					
+					// Purpose: Certification date from legacy Tdate; validity days from Certification.duration (default 365), not raw training row only.
+					// modified by 4D/PS [2026-june-02]
+					If (Date:C102($training.Tdate)=!00-00-00!)
+						$certificationAssigment_e.certificationStmp:=0
+					Else 
+						$certificationAssigment_e.certificationStmp:=cs:C1710.sfw_stmp.me.build(Date:C102($training.Tdate))
+					End if 
+					
+					$certificationAssigment_e.UUID_Staff:=$staff_e.UUID
+					
+					$certImport:=ds:C1482.Certification.importForLegacyTraining($training.T_Type; Num:C11($training.Duration); $counter)
+					$counter:=$certImport.refCounter
+					
+					If ($certImport.success) && ($certImport.certification#Null:C1517)
+						$certificationAssigment_e.UUID_Certification:=$certImport.certification.UUID
+						$certificationAssigment_e.expiredIn:=$certImport.validityDays
+					Else 
+						$remaingCertification.push($training.T_Type)
+					End if 
+					
+					$res:=$certificationAssigment_e.save()
 					
 					If (Not:C34($res.success))
 						TRACE:C157
 					End if 
+				End for each 
+				
+				// Purpose: Sync Staff.stmpRetrain from re-training milestones after legacy assignment import.
+				// modified by 4D/PS [2026-june-12]
+				If (ds:C1482.CertificationAssignment.query("UUID_Staff = :1"; $staff_e.UUID).length>0)
+					$staff_e.recomputeRetrainDate()
 				End if 
 				
-				$membership_e:=ds:C1482.Membership.new()
-				
-				$membership_e.UUID_Staff:=$staff_e.UUID
-				$membership_e.UUID_Team:=$team_e.UUID
-				
-				$res:=$membership_e.save()
-				
-				If (Not:C34($res.success))
-					TRACE:C157
-				End if 
-			End for each 
-			
-			For each ($role; $staff.roles)
-				$roles_es:=ds:C1482.Role.query("name = :1"; $role)
-				
-				If ($roles_es.length>0)
-					$role_e:=$roles_es[0]
-				Else 
-					$role_e:=ds:C1482.Role.new()
+				For each ($team; $staff.teams)
+					$teams_es:=ds:C1482.Team.query("name = :1"; $team)
 					
-					$role_e.name:=$role
+					If ($teams_es.length>0)
+						$team_e:=$teams_es[0]
+					Else 
+						$team_e:=ds:C1482.Team.new()
+						$team_e.levelID:=ds:C1482.Team.all().length+1
+						$team_e.name:=$team
+						
+						$res:=$team_e.save()
+						
+						If (Not:C34($res.success))
+							TRACE:C157
+						End if 
+					End if 
 					
-					$res:=$role_e.save()
+					$membership_e:=ds:C1482.Membership.new()
+					
+					$membership_e.UUID_Staff:=$staff_e.UUID
+					$membership_e.UUID_Team:=$team_e.UUID
+					
+					$res:=$membership_e.save()
 					
 					If (Not:C34($res.success))
 						TRACE:C157
 					End if 
-				End if 
+				End for each 
 				
-				$staffRole_e:=ds:C1482.StaffRole.new()
+				For each ($role; $staff.roles)
+					$roles_es:=ds:C1482.Role.query("name = :1"; $role)
+					
+					If ($roles_es.length>0)
+						$role_e:=$roles_es[0]
+					Else 
+						$role_e:=ds:C1482.Role.new()
+						
+						$role_e.name:=$role
+						
+						$res:=$role_e.save()
+						
+						If (Not:C34($res.success))
+							TRACE:C157
+						End if 
+					End if 
+					
+					$staffRole_e:=ds:C1482.StaffRole.new()
+					
+					$staffRole_e.UUID_Staff:=$staff_e.UUID
+					$staffRole_e.UUID_Role:=$role_e.UUID
+					
+					$res:=$staffRole_e.save()
+					
+					If (Not:C34($res.success))
+						TRACE:C157
+					End if 
+				End for each 
 				
-				$staffRole_e.UUID_Staff:=$staff_e.UUID
-				$staffRole_e.UUID_Role:=$role_e.UUID
-				
-				$res:=$staffRole_e.save()
-				
-				If (Not:C34($res.success))
-					TRACE:C157
-				End if 
-			End for each 
+			End if 
 			
-			
-			
-		End if 
-	End for each 
+		End for each 
+		
+		
+	End if 
 End if 
 
 /**
@@ -1351,29 +1494,53 @@ If (True:C214)
 	$file:=Folder:C1567(fk data folder:K87:12).file("DataJson/qcar_export.json")
 	
 	$records:=JSON Parse:C1218($file.getText())
-	
+	$remainingCategories:=New collection:C1472()
 	For each ($record; $records)
 		$qcar_e:=ds:C1482.Qcar.new()
 		
 		$qcar_e.qcarNumber:=$record.qcarNumber
 		$qcar_e.device:=$record.device
-		$qcar_e.closedDate:=$record.closedDate
-		$qcar_e.targetCloseDate:=$record.targetCloseDate
+		// Purpose: Map legacy Qcar date fields to Longint stmp columns (catalog *Stmp model).
+		// modified by 4D/PS [2026-september-11]
+		$qcar_e.closedStmp:=Date:C102($record.closedDate)=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build(Date:C102($record.closedDate))
+		$qcar_e.targetCloseStmp:=Date:C102($record.targetCloseDate)=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build(Date:C102($record.targetCloseDate))
 		//$qcar_e.actualCloseDate:=$record.actualCloseDate
 		$qcar_e.verifiedBy:=$record.verifiedBy
-		$qcar_e.verifiedDate:=$record.verifiedDate
+		$qcar_e.verifiedStmp:=Date:C102($record.verifiedDate)=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build(Date:C102($record.verifiedDate))
 		$qcar_e.void:=$record.void
 		$qcar_e.submit:=$record.submit
-		$qcar_e.submitDate:=$record.submitDate
-		$qcar_e.category:=$record.category
+		$qcar_e.submitStmp:=Date:C102($record.submitDate)=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build(Date:C102($record.submitDate))
+		
+		// Purpose: Map legacy text `category` from the source JSON onto the new FK pair
+		// (UUID_RejectCriteriaCategory + UUID_RejectCriteriaItem). When an item matches by name,
+		// also stamp the parent category UUID so the QCAR data model is fully consistent
+		// (panel pop-up and computed attribute assume both FKs travel together).
+		// modified by 4D/PS [2026-may-21]
+		$categoryItems:=ds:C1482.RejectCriteriaItem.query("name =:1"; $record.category)
+		If ($categoryItems.length>0)
+			$matchedItem:=$categoryItems[0]
+			$qcar_e.UUID_RejectCriteriaItem:=$matchedItem.UUID
+			$qcar_e.UUID_RejectCriteriaCategory:=$matchedItem.UUID_RejectCriteriaCategory
+		Else 
+			$categories:=ds:C1482.RejectCriteriaCategory.query("name =:1"; $record.category)
+			If ($categories.length>0)
+				$qcar_e.UUID_RejectCriteriaCategory:=$categories[0].UUID
+				$qcar_e.UUID_RejectCriteriaItem:=16*"00"
+			Else 
+				If ($record.category#"")
+					$remainingCategories.push($record.category)
+				End if 
+			End if 
+		End if 
+		
 		$qcar_e.issuedBy:=$record.issuedBy
 		$qcar_e.issuedTo:=$record.issuedTo
-		$qcar_e.issuedDate:=$record.issuedDate
+		$qcar_e.issuedStmp:=Date:C102($record.issuedDate)=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build(Date:C102($record.issuedDate))
 		
 		$qcar_e._initCorrectiveActionReport()
 		
 		
-		$customer_es:=ds:C1482.Customer.query("name = :1"; $record.customer)
+		$customer_es:=ds:C1482.Customer.query("name =:1"; Split string:C1554($record.customer; "\r"; sk trim spaces:K86:2).join("\r"))
 		
 		If ($customer_es.length>0)
 			$qcar_e.UUID_Customer:=$customer_es[0].UUID
@@ -1396,3 +1563,6 @@ If (True:C214)
 		End if 
 	End for each 
 End if 
+
+SET TEXT TO PASTEBOARD:C523($remainingCategories.distinct().join("\n"))
+

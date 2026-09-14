@@ -177,9 +177,11 @@ Function _notification_definition()
 	cs:C1710.sfw_notificationManager.me.createTypeIfNotExist("DueEquipmentOutOfPM"; "Due Equipment out of PM"; $definition)
 	
 	$definition:=cs:C1710.sfw_definitionNotificationType.new()
-	$definition.setDescription("Employee ##fullName## retraining due in the next 30 days.Action required")
+	// Purpose: Employee-facing — linked sfw_User only (retrain milestone or validity expiry within ##days## days).
+	// modified by 4D/PS [2026-june-12]
+	$definition.setDescription("Your certification ##certName## is due on ##expiringDate## (within ##days## days). Please schedule re-training.")
 	$definition.setActive()
-	cs:C1710.sfw_notificationManager.me.createTypeIfNotExist("EmployeeRetrainRequired"; "Employees requiring retraining in the next 30 days"; $definition)
+	cs:C1710.sfw_notificationManager.me.createTypeIfNotExist("EmployeeRetrainRequired"; "Certification re-training or expiry reminder"; $definition)
 	
 	$definition:=cs:C1710.sfw_definitionNotificationType.new()
 	$definition.setDescription("Critical supplier ##name## audits pending. Schedule immediately")
@@ -233,6 +235,15 @@ Function _visions_definition()
 	$vision.setIcon("image/vision/quality-assurance-24x24.png")
 	//$vision.setAllowedProfiles("qm")
 	$vision.setAllowedProfiles("admin")
+	This:C1470._push_vision($vision)
+	
+	// Purpose: Dedicated vision for Equipment and Repair Logs (moved out of Quality Assurance).
+	// modified by 4D/PS [2026-september-11]
+	$vision:=cs:C1710.sfw_definitionVision.new("facilities"; "Facilities")
+	$vision.setToolbarBackgroundColor("SlateBlue")
+	$vision.setFocusRingColor("darkred")
+	$vision.setIcon("image/vision/facility-management-24x24.png")
+	//$vision.setAllowedProfiles("qm")
 	This:C1470._push_vision($vision)
 	
 	$vision:=cs:C1710.sfw_definitionVision.new("salesAndQuotes"; "Sales & Quotes")
@@ -496,7 +507,7 @@ Function _entries_definition()
 Function _profiles_definition()
 	$eQM:=ds:C1482.sfw_UserProfile.getAndCreateIfNotExist("qm"; "Quality Manager"; "autoCreation")
 	$eDC:=ds:C1482.sfw_UserProfile.getAndCreateIfNotExist("dc"; "Document Controller"; "autoCreation")
-	//$eQI:=ds.sfw_UserProfile.getAndCreateIfNotExist("qi"; "Quality Inspector"; "autoCreation")
+	$eQI:=ds:C1482.sfw_UserProfile.getAndCreateIfNotExist("qi"; "Quality Inspector"; "autoCreation")  // modified by 4D/PS [2026-may-21]
 	$eQS:=ds:C1482.sfw_UserProfile.getAndCreateIfNotExist("qs"; "Quality Supervisor"; "autoCreation")
 	$ePM:=ds:C1482.sfw_UserProfile.getAndCreateIfNotExist("pm"; "Production Manager"; "autoCreation")
 	$ePS:=ds:C1482.sfw_UserProfile.getAndCreateIfNotExist("ps"; "Production Supervisor"; "autoCreation")

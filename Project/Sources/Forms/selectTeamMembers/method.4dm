@@ -5,7 +5,7 @@ Case of
 		Form:C1466.lb_items:=New collection:C1472()
 		$count:=ds:C1482.Team.all().length
 		
-		For each ($team_e; ds:C1482.Team.all().orderBy("id"))
+		For each ($team_e; ds:C1482.Team.all().orderBy("levelID"))
 			
 			$subList:=New list:C375
 			

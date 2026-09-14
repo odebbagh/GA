@@ -2,16 +2,31 @@ Case of
 		
 	: (Form event code:C388=On Clicked:K2:4)
 		
-		var $vhDoc : Text
-		var $blob : Blob
+		// Purpose: Pick a file, persist bytes via sfw_Document (DocumentData), and refresh UI — keeps blobs off Audit.document (legacy blob field cleared in _ga_audit_replaceAttachment).
+		// modified by 4D/PS [2026-may-26]
+		var $pickLabel : Text
+		var $file : 4D:C1709.File
+		var $attachResult : Object
+		
 		ARRAY TEXT:C222($Apaths; 0)
 		
-		$vhDoc:=Select document:C905(""; "*"; "select document"; $Apaths)
+		$pickLabel:=Select document:C905(""; "*"; "select document"; $Apaths)
 		If (OK=1)
-			DOCUMENT TO BLOB:C525(Document; $blob)
-			Form:C1466.current_item.document.blob:=$blob
 			
-			OBJECT SET TITLE:C194(*; "fileName"; $vhDoc)
+			$file:=File:C1566(Document; fk platform path:K87:2)
+			$attachResult:=_ga_audit_replaceAttachment(Form:C1466.current_item; $file.platformPath)
+			
+			If ($attachResult.success=True:C214)
+				
+				OBJECT SET TITLE:C194(*; "fileName"; ($file.extension#"") ? ($file.name+"."+$file.extension) : $file.name)
+				cs:C1710.panel_audit.me._activate_save_cancel_button()
+				
+			Else 
+				
+				cs:C1710.sfw_dialog.me.alert(String:C10($attachResult.error))
+				
+			End if 
+			
 		End if 
 		
 		

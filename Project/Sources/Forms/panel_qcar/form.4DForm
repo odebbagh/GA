@@ -42,7 +42,7 @@
 					"stroke": "#808080",
 					"text": "Customer"
 				},
-				"Field_customer": {
+				"Field_customer1": {
 					"type": "input",
 					"top": 62,
 					"left": 82,
@@ -58,7 +58,7 @@
 					],
 					"fill": "transparent",
 					"borderStyle": "none",
-					"method": "ObjectMethods/Field_customer.4dm"
+					"method": "ObjectMethods/Field_customer1.4dm"
 				},
 				"label_poNumber": {
 					"type": "text",
@@ -93,26 +93,7 @@
 					"width": 65,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Traveller #"
-				},
-				"Field_lotNumber": {
-					"type": "input",
-					"top": 12,
-					"left": 82,
-					"width": 110,
-					"height": 17,
-					"dataSource": "Form:C1466.current_item.lot.lotNumber",
-					"focusable": false,
-					"enterable": false,
-					"dragging": "none",
-					"dropping": "custom",
-					"events": [
-						"onClick",
-						"onMouseMove"
-					],
-					"fill": "transparent",
-					"borderStyle": "none",
-					"method": "ObjectMethods/Field_lotNumber.4dm"
+					"text": "Traveler #"
 				},
 				"label_device": {
 					"type": "text",
@@ -181,7 +162,7 @@
 					"left": 520,
 					"width": 110,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.field2",
+					"dataSource": "Form:C1466.current_item.revisionDate",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
@@ -258,7 +239,7 @@
 					"type": "input",
 					"top": 12,
 					"left": 753,
-					"width": 110,
+					"width": 202,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.initiator8D",
 					"focusable": false,
@@ -284,7 +265,7 @@
 					"type": "input",
 					"top": 37,
 					"left": 753,
-					"width": 110,
+					"width": 202,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.actualCloseDate",
 					"focusable": false,
@@ -323,7 +304,7 @@
 					"left": 611,
 					"width": 19,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.creationDate",
+					"dataSource": "Form:C1466.current_item.revisionDate",
 					"dataSourceTypeHint": "date",
 					"detailForm": "DateButton",
 					"deletableInList": false,
@@ -388,7 +369,7 @@
 					"type": "radio",
 					"text": "Internal",
 					"top": 87,
-					"left": 653,
+					"left": 758,
 					"width": 60,
 					"height": 17,
 					"events": [
@@ -402,7 +383,7 @@
 					"type": "radio",
 					"text": "External",
 					"top": 87,
-					"left": 803,
+					"left": 895,
 					"width": 60,
 					"height": 17,
 					"events": [
@@ -415,7 +396,7 @@
 				"label_device1": {
 					"type": "text",
 					"top": 87,
-					"left": 748,
+					"left": 843,
 					"width": 20,
 					"height": 17,
 					"stroke": "#808080",
@@ -427,36 +408,37 @@
 					"type": "text",
 					"top": 62,
 					"left": 653,
-					"width": 65,
+					"width": 95,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Category"
+					"text": "Category",
+					"textAlign": "right"
 				},
-				"entryField_category": {
-					"type": "input",
-					"top": 62,
-					"left": 723,
+				"pup_rejectCategory": {
+					"type": "button",
+					"top": 57,
+					"left": 753,
 					"width": 202,
-					"height": 17,
-					"dataSource": "Form:C1466.current_item.category",
+					"height": 22,
+					"fontFamily": "System Font",
+					"fontSize": 13,
 					"focusable": false,
-					"enterable": false,
-					"dragging": "none",
-					"dropping": "custom",
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_rejectCategory.4dm",
 					"events": [
-						"onDataChange"
+						"onClick"
 					],
-					"fill": "transparent",
-					"borderStyle": "none",
-					"right": 925,
-					"choiceList": {
-						"$ref": "/SOURCES/lists.json#/Reject_Criteria"
-					}
+					"textAlign": "left",
+					"right": 955
 				},
 				"dp_actualCloseDate": {
 					"type": "subform",
-					"top": 37,
-					"left": 844,
+					"top": 36,
+					"left": 936,
 					"width": 19,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.actualCloseDate",
@@ -475,8 +457,8 @@
 				},
 				"label_externalParty": {
 					"type": "text",
-					"top": 87,
-					"left": 874,
+					"top": 109,
+					"left": 524,
 					"width": 87,
 					"height": 17,
 					"stroke": "#808080",
@@ -484,9 +466,9 @@
 				},
 				"EntryField_externalParty": {
 					"type": "input",
-					"top": 87,
-					"left": 958,
-					"width": 310,
+					"top": 109,
+					"left": 612,
+					"width": 343,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.externalParty",
 					"focusable": false,
@@ -497,7 +479,69 @@
 						"onDataChange"
 					],
 					"fill": "transparent",
-					"borderStyle": "none"
+					"borderStyle": "none",
+					"right": 955
+				},
+				"pup_traveler": {
+					"type": "button",
+					"top": 9,
+					"left": 82,
+					"width": 110,
+					"height": 20,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_traveler.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"btnForward2": {
+					"type": "button",
+					"text": " ",
+					"top": 10,
+					"left": 191,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/forward-16x16.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnForward2.4dm",
+					"visibility": "visible",
+					"iconFrames": 4,
+					"focusable": false
+				},
+				"btnForward1": {
+					"type": "button",
+					"text": " ",
+					"top": 36,
+					"left": 191,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/forward-16x16.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnForward1.4dm",
+					"visibility": "visible",
+					"iconFrames": 4,
+					"focusable": false
 				}
 			}
 		},
@@ -521,7 +565,7 @@
 					"width": 250,
 					"height": 17,
 					"stroke": "#000000",
-					"text": "QCAR Information",
+					"text": "Corrective Action Report",
 					"fontSize": 12,
 					"fontWeight": "bold"
 				},
@@ -896,25 +940,21 @@
 					"horizontalLineStroke": "#c0c0c0",
 					"verticalLineStroke": "#C0C0C0",
 					"events": [
-						"onClick",
-						"onDataChange"
+						"onClick"
 					],
 					"fill": "automatic",
 					"alternateFill": "#F7F9FC",
-					"method": "ObjectMethods/lb_documents1.4dm",
 					"selectionMode": "single",
 					"singleClickEdit": false,
-					"rowFillSource": "highlightExpiredCertification",
 					"columns": [
 						{
-							"name": "header_certifName",
+							"name": "header_documentName",
 							"dataSource": "This:C1470.name",
 							"width": 330,
 							"minWidth": 200,
 							"maxWidth": 340,
 							"events": [
-								"onClick",
-								"onDataChange"
+								"onClick"
 							],
 							"header": {
 								"name": "Entête3",
@@ -968,7 +1008,7 @@
 		}
 	],
 	"inheritedForm": "sfw_bkgd_header_4lines",
-	"geometryStamp": 2790,
+	"geometryStamp": 2833,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",

@@ -3,11 +3,23 @@
 
 //Audit
 var $eAudit : cs:C1710.AuditEntity
+var $attachResult : Object
+var $existingAudit : cs:C1710.AuditEntity
+var $fwDoc : cs:C1710.sfw_DocumentEntity
 
 $audit_log:=Folder:C1567(fk data folder:K87:12).file("DataJson/log_book_export.json")
 
 If ($audit_log.exists)
 	$audits:=JSON Parse:C1218($audit_log.getText())
+	
+	// Purpose: Remove framework files + rows for existing audits before TRUNCATE — otherwise sfw_Document UUID_target orphans remain pointing at deleted Audit UUIDs.
+	// modified by 4D/PS [2026-may-26]
+	For each ($existingAudit; ds:C1482.Audit.all())
+		For each ($fwDoc; ds:C1482.sfw_Document.query("UUID_target = :1"; $existingAudit.UUID))
+			$fwDoc.deleteFile()
+			$fwDoc.drop()
+		End for each 
+	End for each 
 	
 	TRUNCATE TABLE:C1051([Audit:139])
 	
@@ -60,56 +72,53 @@ If ($audit_log.exists)
 					$doc.approvalDate:=!00-00-00!
 					$doc.approvedBy:=""
 					$doc.isApproved:=False:C215
+					// Purpose: Binary payload goes through sfw_Document + _ga_audit_replaceAttachment (same as UI upload), not document.blob.
+					// modified by 4D/PS [2026-may-26]
+					$doc.UUID_sfwDocument:=""
+					$doc.extension:=""
 					
 					$report:=Folder:C1567(fk data folder:K87:12).file("DataJson/LogBookDocs/"+String:C10($document.UniqueID+$document.PrimaryKeyValue))
-					If ($report.exists)
-						
-						var $blob : Blob
-						DOCUMENT TO BLOB:C525($report.platformPath; $blob)
-						
-						$doc.blob:=$blob
-						
-					End if 
 					
 					$eAudit.document:=$doc
+					
+					$res:=$eAudit.save()
+					If ($res.success=False:C215)
+						TRACE:C157
+					Else 
+						
+						If ($report.exists)
+							
+							$attachResult:=_ga_audit_replaceAttachment($eAudit; $report.platformPath)
+							
+							If ($attachResult.success=False:C215)
+								TRACE:C157
+							Else 
+								
+								$res:=$eAudit.save()
+								If ($res.success=False:C215)
+									TRACE:C157
+								End if 
+								
+							End if 
+							
+						End if 
+						
+					End if 
 					
 				Else 
 					TRACE:C157
 					
-/*
-For each ($document; $_documents)
-$doc:=New object
-				
-$doc.code:=$document.DocCode
-$doc.creationDateTimeStamp:=$document.CreationDateTimeStamp
-$doc.documentPath:=$document.DocumentPath
-$doc.sourcePath:=$document.SourcePath
-$doc.description:=$document.DocDescription
-$doc.approvalDate:=!00-00-00!
-$doc.approvedBy:=""
-$doc.isApproved:=False
-				
-				
-$report:=Folder(fk data folder).file("DataJson/LogBookDocs/"+String($document.UniqueID+$document.PrimaryKeyValue))
-If ($report.exists)
-				
-C_BLOB($blob)
-DOCUMENT TO BLOB($report.platformPath; $blob)
-				
-$doc.blob:=$blob
-				
-End if 
-				
-$eAudit.attachedDocuments.documents.push($doc)
-				
-End for each 
-*/
-					
 			End case 
 			
-			$res:=$eAudit.save()
-			If (Not:C34($res.success))
-				TRACE:C157
+			// Purpose: Single-document imports already saved inside the branch (record + attachment linkage).
+			// modified by 4D/PS [2026-may-26]
+			If ($_documents.length#1)
+				
+				$res:=$eAudit.save()
+				If ($res.success=False:C215)
+					TRACE:C157
+				End if 
+				
 			End if 
 			
 		End if 

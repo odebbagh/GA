@@ -36,16 +36,17 @@
 				"label_rmaNumber": {
 					"type": "text",
 					"top": 12,
-					"left": 12,
-					"width": 70,
+					"left": 8,
+					"width": 100,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "RMA #"
+					"text": "RMA #",
+					"textAlign": "right"
 				},
 				"Field_rmaNumber": {
 					"type": "input",
 					"top": 12,
-					"left": 92,
+					"left": 114,
 					"width": 110,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.rmaNumber",
@@ -62,47 +63,39 @@
 				"label_qcarNumber": {
 					"type": "text",
 					"top": 37,
-					"left": 12,
-					"width": 70,
+					"left": 8,
+					"width": 100,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "QCAR #"
-				},
-				"Field_qcarNumber": {
-					"type": "input",
-					"top": 37,
-					"left": 92,
-					"width": 110,
-					"height": 17,
-					"dataSource": "Form:C1466.current_item.qcar.qcarNumber",
-					"focusable": false,
-					"enterable": false,
-					"dragging": "none",
-					"dropping": "custom",
-					"events": [
-						"onClick",
-						"onMouseMove"
-					],
-					"fill": "transparent",
-					"borderStyle": "none",
-					"method": "ObjectMethods/Field_qcarNumber.4dm"
+					"text": "CAR #",
+					"textAlign": "right"
 				},
 				"label_lotNumber": {
 					"type": "text",
 					"top": 62,
-					"left": 12,
-					"width": 70,
+					"left": 8,
+					"width": 100,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Traveler #"
+					"text": "Original Traveler #",
+					"textAlign": "right"
 				},
-				"Field_lotNumber": {
+				"label_rmaTravelerNumber": {
+					"type": "text",
+					"top": 87,
+					"left": 250,
+					"width": 80,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "RMA Traveler #"
+				},
+				"entryField_rmaTravelerNumber": {
 					"type": "input",
-					"top": 62,
-					"left": 92,
+					"top": 87,
+					"left": 340,
 					"width": 110,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.qcar.lot.lotNumber",
+					"dataSource": "Form:C1466.current_item.rmaTravelerNumber",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
@@ -116,16 +109,17 @@
 				"label_customer": {
 					"type": "text",
 					"top": 12,
-					"left": 232,
-					"width": 90,
+					"left": 255,
+					"width": 75,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Customer"
+					"text": "Customer",
+					"textAlign": "right"
 				},
 				"Field_customer": {
 					"type": "input",
 					"top": 12,
-					"left": 332,
+					"left": 340,
 					"width": 110,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.qcar.customer.name",
@@ -142,43 +136,27 @@
 				"label_customerPo": {
 					"type": "text",
 					"top": 37,
-					"left": 232,
-					"width": 90,
+					"left": 255,
+					"width": 75,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Customer PO"
-				},
-				"Field_customerPo": {
-					"type": "input",
-					"top": 37,
-					"left": 332,
-					"width": 110,
-					"height": 17,
-					"dataSource": "Form:C1466.current_item.qcar.customerPo",
-					"focusable": false,
-					"enterable": false,
-					"dragging": "none",
-					"dropping": "custom",
-					"events": [
-						"onClick",
-						"onMouseMove"
-					],
-					"fill": "transparent",
-					"borderStyle": "none"
+					"text": "Customer PO",
+					"textAlign": "right"
 				},
 				"label_partNumber": {
 					"type": "text",
 					"top": 62,
-					"left": 232,
-					"width": 90,
+					"left": 255,
+					"width": 75,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Part No"
+					"text": "Part No",
+					"textAlign": "right"
 				},
 				"entryField_partNumber": {
 					"type": "input",
 					"top": 62,
-					"left": 332,
+					"left": 340,
 					"width": 110,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.partNumber",
@@ -195,16 +173,17 @@
 				"label_invoiceNumber": {
 					"type": "text",
 					"top": 12,
-					"left": 472,
+					"left": 480,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "GA Invoice No"
+					"text": "GA Invoice No",
+					"textAlign": "right"
 				},
 				"entryField_invoiceNumber": {
 					"type": "input",
 					"top": 12,
-					"left": 572,
+					"left": 580,
 					"width": 110,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.invoiceNumber",
@@ -221,16 +200,17 @@
 				"label_contact": {
 					"type": "text",
 					"top": 37,
-					"left": 472,
+					"left": 480,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Contact"
+					"text": "Contact",
+					"textAlign": "right"
 				},
 				"entryField_contact": {
 					"type": "input",
 					"top": 37,
-					"left": 572,
+					"left": 580,
 					"width": 110,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.contact",
@@ -247,16 +227,17 @@
 				"label_authorizedBy": {
 					"type": "text",
 					"top": 12,
-					"left": 712,
+					"left": 720,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Authorized By"
+					"text": "Authorized By",
+					"textAlign": "right"
 				},
 				"entryField_authorizedBy": {
 					"type": "input",
 					"top": 12,
-					"left": 812,
+					"left": 820,
 					"width": 110,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.authorizedBy",
@@ -273,16 +254,17 @@
 				"label_status": {
 					"type": "text",
 					"top": 37,
-					"left": 712,
+					"left": 720,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Status"
+					"text": "Status",
+					"textAlign": "right"
 				},
 				"entryField_status": {
 					"type": "input",
 					"top": 37,
-					"left": 812,
+					"left": 820,
 					"width": 110,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.status",
@@ -299,16 +281,17 @@
 				"label_receivedDate": {
 					"type": "text",
 					"top": 62,
-					"left": 712,
+					"left": 720,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Received Date"
+					"text": "Received Date",
+					"textAlign": "right"
 				},
 				"Field_receivedDate": {
 					"type": "input",
 					"top": 62,
-					"left": 812,
+					"left": 820,
 					"width": 110,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.dateReceived",
@@ -326,16 +309,17 @@
 				"label_phone": {
 					"type": "text",
 					"top": 62,
-					"left": 472,
+					"left": 480,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Phone Number"
+					"text": "Phone Number",
+					"textAlign": "right"
 				},
 				"entryField_phone": {
 					"type": "input",
 					"top": 62,
-					"left": 572,
+					"left": 580,
 					"width": 110,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.phone",
@@ -352,16 +336,17 @@
 				"label_dateClose": {
 					"type": "text",
 					"top": 87,
-					"left": 712,
+					"left": 720,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Date Close"
+					"text": "Date Close",
+					"textAlign": "right"
 				},
 				"Field_dateClose": {
 					"type": "input",
 					"top": 87,
-					"left": 812,
+					"left": 820,
 					"width": 110,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.dateClose",
@@ -380,7 +365,7 @@
 					"type": "button",
 					"text": " ",
 					"top": 62,
-					"left": 905,
+					"left": 913,
 					"width": 18,
 					"height": 18,
 					"events": [
@@ -401,7 +386,7 @@
 					"type": "button",
 					"text": " ",
 					"top": 86,
-					"left": 905,
+					"left": 913,
 					"width": 18,
 					"height": 18,
 					"events": [
@@ -417,6 +402,123 @@
 					"iconFrames": 4,
 					"focusable": false,
 					"dataSource": ""
+				},
+				"pup_car": {
+					"type": "button",
+					"top": 35,
+					"left": 114,
+					"width": 110,
+					"height": 20,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_car.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"btnForward1": {
+					"type": "button",
+					"text": " ",
+					"top": 35,
+					"left": 224,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/forward-16x16.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnForward1.4dm",
+					"visibility": "visible",
+					"iconFrames": 4,
+					"focusable": false
+				},
+				"pup_customerPO": {
+					"type": "button",
+					"top": 35,
+					"left": 340,
+					"width": 110,
+					"height": 20,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_customerPO.4dm",
+					"events": [
+						"onClick"
+					],
+					"visibility": "hidden"
+				},
+				"pup_traveler": {
+					"type": "button",
+					"top": 61,
+					"left": 114,
+					"width": 110,
+					"height": 20,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_traveler.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"btnForward2": {
+					"type": "button",
+					"text": " ",
+					"top": 61,
+					"left": 224,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/forward-16x16.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnForward2.4dm",
+					"visibility": "visible",
+					"iconFrames": 4,
+					"focusable": false
+				},
+				"Field_customerPO": {
+					"type": "input",
+					"top": 37,
+					"left": 340,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.customerPo",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
 				}
 			}
 		},
@@ -675,7 +777,7 @@
 		}
 	],
 	"inheritedForm": "sfw_bkgd_header_3lines",
-	"geometryStamp": 540,
+	"geometryStamp": 593,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",

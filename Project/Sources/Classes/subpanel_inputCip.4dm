@@ -8,6 +8,7 @@ Function formMethod()
 	If (Form:C1466#Null:C1517)
 		
 		var $rebuildForm : Boolean
+		var $procedureTitle : Text
 		
 		Case of 
 			: (FORM Event:C1606.code=On Load:K2:1)
@@ -41,7 +42,10 @@ Function formMethod()
 			If ($isInModification)
 				//OBJECT SET RGB COLORS(*; "entryField_@"; "black"; "white")
 				OBJECT SET ENTERABLE:C238(*; "entryField@"; True:C214)
-				If (OBJECT Get title:C1068(*; "pup_procedure")="QCAR#@")
+				// Purpose: Accept CAR#@ or legacy QCAR#@ procedure placeholder title (same as panel_continuousImprovement).
+				// modified by 4D/PS [2026-may-12]
+				$procedureTitle:=OBJECT Get title:C1068(*; "pup_procedure")
+				If (($procedureTitle="QCAR#@") | ($procedureTitle="CAR#@"))
 					OBJECT SET ENTERABLE:C238(*; "entryField_action"; False:C215)
 				Else 
 					OBJECT SET ENTERABLE:C238(*; "entryField_action"; True:C214)
@@ -146,7 +150,9 @@ Function pup_yesNoQuestion()
 	
 Function drawPup_procedureType()
 	If (Form:C1466.current_item#Null:C1517)
-		If (Form:C1466.current_item.action="QCAR#@")
+		// Purpose: Match legacy QCAR#@ or new CAR#@ placeholder on action field.
+		// modified by 4D/PS [2026-may-12]
+		If ((Form:C1466.current_item.action="QCAR#@") | (Form:C1466.current_item.action="CAR#@"))
 			OBJECT SET TITLE:C194(*; "pup_procedure"; Form:C1466.current_item.action)
 			
 		Else 

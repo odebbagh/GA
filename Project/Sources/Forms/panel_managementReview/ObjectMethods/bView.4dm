@@ -3,11 +3,9 @@
 Case of 
 		
 	: (Form event code:C388=On Clicked:K2:4)
-		var $file : Text:=""
-		$file:=Form:C1466.current_item.document.sourcePath#"" ? Form:C1466.current_item.document.sourcePath : "ManagementReview"+"_"+String:C10(Form:C1466.current_item.managementReviewNumber)
 		
-		$LocalFile:=Temporary folder:C486+Folder separator:K24:12+$file
-		BLOB TO DOCUMENT:C526($LocalFile; Form:C1466.current_item.document.blob)
-		OPEN URL:C673($LocalFile; *)
+		// Purpose: Delegate viewing to _ga_managementReview_openAttach — resolves UUID_sfwDocument → DocumentData blob, or legacy embedded blob when present.
+		// modified by 4D/PS [2026-may-08]
+		_ga_managementReview_openAttach(Form:C1466.current_item)
 		
 End case 
