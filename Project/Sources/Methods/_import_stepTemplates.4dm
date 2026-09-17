@@ -67,6 +67,7 @@ $layoutDataClass:=ds:C1482["StepTemplateLayout"]
 $certificationDataClass:=ds:C1482["Certification"]
 $stepTemplateCertificationDataCl:=ds:C1482["StepTemplateCertification"]
 $operationDataClass:=ds:C1482["Operation"]
+$operationTypeDataClass:=ds:C1482["OperationType"]
 $toolTypeDataClass:=ds:C1482["ToolType"]
 $stepTemplateToolTypeDataClass:=ds:C1482["StepTemplateToolType"]
 $stepTemplateRuleDataClass:=ds:C1482["StepTemplateRule"]
@@ -187,10 +188,17 @@ Else
 				End if 
 			End for each 
 			
+			//If ($operationName#"")
+			//$operationEntity:=$operationDataClass.query("name = :1"; $operationName).first()
+			//If ($operationEntity#Null)
+			//$stepTemplateEntity.UUID_Operation:=$operationEntity.UUID
+			//End if 
+			//End if 
+			
 			If ($operationName#"")
-				$operationEntity:=$operationDataClass.query("name = :1"; $operationName).first()
-				If ($operationEntity#Null:C1517)
-					$stepTemplateEntity.UUID_Operation:=$operationEntity.UUID
+				$operationTypeEntity:=$operationTypeDataClass.query("name = :1"; $operationName).first()
+				If ($operationTypeEntity#Null:C1517)
+					$stepTemplateEntity.UUID_OperationType:=$operationTypeEntity.UUID
 				End if 
 			End if 
 			

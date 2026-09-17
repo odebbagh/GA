@@ -1898,7 +1898,7 @@
 		</field>
 		<field name="UUID_StepTemplateProcess" uuid="3AAEB883F919402FBD6AD900DF847480" type="10" unique="true" autogenerate="true" store_as_UUID="true" never_null="true" id="22"/>
 		<field name="InOutParsDef" uuid="9C773C771B9C47C7A529F34201BC8DE1" type="21" blob_switch_size="2147483647" never_null="true" id="23"/>
-		<field name="UUID_OperationType" uuid="725458914941463BB2DFFC08AD089579" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="24"/>
+		<field name="UUID_OperationType" uuid="725458914941463BB2DFFC08AD089579" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="24"/>
 		<primary_key field_name="UUID" field_uuid="3E46CC22F2F34DC0B68C304E1BC47991"/>
 	</table>
 	<table name="ToolType" uuid="C0C5EF5A4CD04FF7BB3897793A9DE6ED" id="122">
@@ -5886,7 +5886,7 @@
 			<table_ref uuid="1E733AC1BDB87C40B151040C49BD164B" name="Lead"/>
 		</field_ref>
 	</index>
-	<index kind="regular" unique_keys="true" uuid="CD902FCFC7CC4B6DBAE7D08CD0F8A915" type="3">
+	<index kind="regular" uuid="CD902FCFC7CC4B6DBAE7D08CD0F8A915" type="3">
 		<field_ref uuid="725458914941463BB2DFFC08AD089579" name="UUID_OperationType">
 			<table_ref uuid="6330FD4D08D74130BF3869222CDECBA6" name="StepTemplate"/>
 		</field_ref>
