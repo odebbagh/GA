@@ -256,13 +256,13 @@ Function bActionTools()
 			For each ($tool; ds:C1482.StepTemplateToolType.query("UUIDStepTemplate = :1 AND order > :2"; Form:C1466.current_item.UUID; $deletedOrder))
 				$tool.order:=$tool.order-1
 				$tool.save()
-			End for each
+			End for each 
 			Form:C1466.currentTool:=Null:C1517
 			This:C1470.loadTools()
 			This:C1470._activate_save_cancel_button()
-	End case
-
-
+	End case 
+	
+	
 Function bActionDataTables()
 	//Manages actions: add, or remove, using dynamic menus and modification checks
 	
@@ -340,7 +340,7 @@ Function bActionDataTables()
 				This:C1470._activate_save_cancel_button()
 			End if 
 	End case 
-
+	
 Function bActionInOutParsDef()
 	$refMenu:=Create menu:C408
 	
@@ -400,7 +400,7 @@ Function bActionInOutParsDef()
 								"order"; $nextOrder; \
 								"type"; $typeChosen; \
 								"definition"; $definition\
-							))
+								))
 							This:C1470.loadInOutParsDef()
 							This:C1470._activate_save_cancel_button()
 						End if 
@@ -631,7 +631,7 @@ Function syncDataTableDraftFromSelection()
 			"UUID"; String:C10(Form:C1466.currentDataTable.UUID); \
 			"order"; Num:C11(Form:C1466.currentDataTable.order); \
 			"name"; String:C10(Form:C1466.currentDataTable.name)\
-		)
+			)
 	End if 
 	
 Function layoutDataTablePage5()
@@ -777,7 +777,7 @@ Function syncInOutParDraftFromSelection()
 			"order"; Num:C11(Form:C1466.currentInOutPar.order); \
 			"type"; Lowercase:C14(String:C10(Form:C1466.currentInOutPar.type)); \
 			"definition"; String:C10(Form:C1466.currentInOutPar.definition)\
-		)
+			)
 	End if 
 	
 Function drawInOutParInlineEditor()
@@ -1237,6 +1237,32 @@ Function drawPup_division()
 		Form:C1466.sfw.drawButtonPup("pup_division"; $divisionName; $pathIcon; ($division=Null:C1517))
 	End if 
 	
+Function selectOperationType()
+	
+	var $form : Object
+	var $winRef : Integer
+	
+	If (Not:C34(Form:C1466.sfw.checkIsInModification()))
+		return 
+	End if 
+	
+	OBJECT GET COORDINATES:C663(*; "field_operationType"; $l; $t; $r; $b)
+	CONVERT COORDINATES:C1365($l; $b; XY Current form:K27:5; XY Main window:K27:8)
+	
+	$form:=New object:C1471(\
+		"colName"; "name"; \
+		"allData"; ds:C1482.OperationType.all().orderBy("name"); \
+		"dataclass"; "OperationType"\
+		)
+	
+	$winRef:=Open form window:C675("selectNto1"; Pop up form window:K39:11; $l; $b-20)
+	DIALOG:C40("selectNto1"; $form)
+	CLOSE WINDOW:C154($winRef)
+	
+	If (OK=1)
+		Form:C1466.current_item.UUID_OperationType:=$form.item.UUID
+		This:C1470._activate_save_cancel_button()
+	End if 
 	
 	
 Function pup_operation()

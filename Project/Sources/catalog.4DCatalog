@@ -1612,10 +1612,10 @@
 		<field name="moreData" uuid="57B5217B0BBB4A6FA14F60ECB67BA45B" type="21" blob_switch_size="2147483647" never_null="true" id="4"/>
 		<primary_key field_name="UUID" field_uuid="FC01F7A7F7E64694AA402BACC41B263E"/>
 	</table>
-	<table name="OperationType" uuid="321D7BE849F748858E02DCD6603B9BE8" id="104">
-		<field name="ID" uuid="51411BACC6D24C2AB4DA646DD7ECE4A6" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
-		<field name="name" uuid="EDB36DAC00764A6EBD337A594A1438AF" type="10" limiting_length="255" never_null="true" id="2"/>
-		<primary_key field_name="ID" field_uuid="51411BACC6D24C2AB4DA646DD7ECE4A6"/>
+	<table name="OperationType" uuid="44171EE7F4AE430D93BED2AC5B4BE561" id="104">
+		<field name="UUID" uuid="5496DE6317F14964A68D05F40DD4AF65" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
+		<field name="name" uuid="EEE476DE9FAC40C58DCDBE8D52313A5D" type="10" limiting_length="255" never_null="true" id="2"/>
+		<primary_key field_name="UUID" field_uuid="5496DE6317F14964A68D05F40DD4AF65"/>
 	</table>
 	<table name="BOStatus" uuid="A89A73F18465481CAFC3A5485767D2E6" id="105">
 		<field name="UUID" uuid="69CEEE4094604A2CB7C3248C65E313A3" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
@@ -1898,6 +1898,7 @@
 		</field>
 		<field name="UUID_StepTemplateProcess" uuid="3AAEB883F919402FBD6AD900DF847480" type="10" unique="true" autogenerate="true" store_as_UUID="true" never_null="true" id="22"/>
 		<field name="InOutParsDef" uuid="9C773C771B9C47C7A529F34201BC8DE1" type="21" blob_switch_size="2147483647" never_null="true" id="23"/>
+		<field name="UUID_OperationType" uuid="725458914941463BB2DFFC08AD089579" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="24"/>
 		<primary_key field_name="UUID" field_uuid="3E46CC22F2F34DC0B68C304E1BC47991"/>
 	</table>
 	<table name="ToolType" uuid="C0C5EF5A4CD04FF7BB3897793A9DE6ED" id="122">
@@ -4458,6 +4459,18 @@
 			</field_ref>
 		</related_field>
 	</relation>
+	<relation uuid="AE12A20792D24A5C8BB07856862B46C5" name_Nto1="operationType" name_1toN="stepTemplates" state="1">
+		<related_field kind="source">
+			<field_ref uuid="725458914941463BB2DFFC08AD089579" name="UUID_OperationType">
+				<table_ref uuid="6330FD4D08D74130BF3869222CDECBA6" name="StepTemplate"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="5496DE6317F14964A68D05F40DD4AF65" name="UUID">
+				<table_ref uuid="44171EE7F4AE430D93BED2AC5B4BE561" name="OperationType"/>
+			</field_ref>
+		</related_field>
+	</relation>
 	<index kind="regular" uuid="005E48A922A4464DB92973931B467ACF" type="3">
 		<field_ref uuid="17F71D68FA714CE9A75ED79CA63E3BE2" name="UUID_Lead">
 			<table_ref uuid="4CA431297F2C42BE99FD232A56928CE7" name="Interaction"/>
@@ -4731,6 +4744,11 @@
 	<index kind="regular" unique_keys="true" uuid="2326405CF23D4F73AE58A1BE574B97D5" type="7">
 		<field_ref uuid="EB0656993E0B478582FC3B4868BE55FC" name="UUID">
 			<table_ref uuid="2CC1E163267E4DFE808464C271CC4C9F" name="PurchaseOrderLine"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="23CBD33383DB4887A1297B48C06DE080" type="7">
+		<field_ref uuid="5496DE6317F14964A68D05F40DD4AF65" name="UUID">
+			<table_ref uuid="44171EE7F4AE430D93BED2AC5B4BE561" name="OperationType"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="246F04C1DEBA3C45BF9A7C28F15E50DF" type="7">
@@ -5683,11 +5701,6 @@
 			<table_ref uuid="B323638126AF4BD7A4B7A486B0ACF9DA" name="BOM"/>
 		</field_ref>
 	</index>
-	<index kind="regular" unique_keys="true" uuid="ABDA654EE34445C78CAD227448000641" type="7">
-		<field_ref uuid="51411BACC6D24C2AB4DA646DD7ECE4A6" name="ID">
-			<table_ref uuid="321D7BE849F748858E02DCD6603B9BE8" name="OperationType"/>
-		</field_ref>
-	</index>
 	<index kind="regular" unique_keys="true" uuid="AC9AD076B2671047AAB787FC0FB1283F" type="1">
 		<field_ref uuid="DDD1D8B9DED6419FA5277AF0AF879E0A" name="UUID">
 			<table_ref uuid="BE46414800704294A200CFC78A849926" name="InteractionTrigger"/>
@@ -5871,6 +5884,11 @@
 	<index kind="regular" unique_keys="true" uuid="CD105C8CC43FA24DA5217A064F55E834" type="7">
 		<field_ref uuid="B8409317F330EA438FDD41BD2DFC32A3" name="UUID">
 			<table_ref uuid="1E733AC1BDB87C40B151040C49BD164B" name="Lead"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="CD902FCFC7CC4B6DBAE7D08CD0F8A915" type="3">
+		<field_ref uuid="725458914941463BB2DFFC08AD089579" name="UUID_OperationType">
+			<table_ref uuid="6330FD4D08D74130BF3869222CDECBA6" name="StepTemplate"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="CF02C199CE74CF4EA5346EF478379634" type="7">

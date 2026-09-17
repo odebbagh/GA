@@ -140,27 +140,6 @@
 					"bottom": 32,
 					"textAlign": "left"
 				},
-				"pup_operation": {
-					"type": "button",
-					"top": 34,
-					"left": 680,
-					"width": 175,
-					"height": 23,
-					"fontFamily": "System Font",
-					"fontSize": 13,
-					"focusable": false,
-					"text": "",
-					"icon": "",
-					"popupPlacement": "linked",
-					"textPlacement": "right",
-					"style": "bevel",
-					"method": "ObjectMethods/pup_operation.4dm",
-					"events": [
-						"onClick"
-					],
-					"bottom": 57,
-					"textAlign": "left"
-				},
 				"label_stepName1": {
 					"type": "text",
 					"top": 37,
@@ -189,6 +168,28 @@
 					"fontWeight": "bold",
 					"textAlign": "left",
 					"method": "ObjectMethods/entryField_number.4dm"
+				},
+				"Field_operationType": {
+					"type": "input",
+					"top": 37,
+					"left": 680,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.operationType.name",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onGettingFocus",
+						"onMouseMove"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"fontWeight": "normal",
+					"method": "ObjectMethods/Field_operationType.4dm"
 				}
 			}
 		},
@@ -1341,7 +1342,7 @@
 			}
 		}
 	],
-	"geometryStamp": 2059,
+	"geometryStamp": 2064,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
