@@ -44,10 +44,11 @@ Else
 		
 		For each ($record; $records)
 			$type:=String:C10($record.type)
-			If ($type#"")
+			
+			If ($type#"") & ($type="@GAC")
 				$toolTypeEntity:=$toolTypeDataClass.new()
-				$toolTypeEntity.type:=$type
-				$toolTypeEntity.name:=$type
+				$toolTypeEntity.type:=Replace string:C233($type; "GAC"; "")
+				$toolTypeEntity.name:=Replace string:C233($type; "GAC"; "")
 				$toolTypeEntity.date:=!00-00-00!
 				
 				$result:=$toolTypeEntity.save()
