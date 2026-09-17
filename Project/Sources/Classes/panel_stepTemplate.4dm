@@ -1264,6 +1264,32 @@ Function selectOperationType()
 		This:C1470._activate_save_cancel_button()
 	End if 
 	
+Function selectDivision()
+	
+	var $form : Object
+	var $winRef : Integer
+	
+	If (Not:C34(Form:C1466.sfw.checkIsInModification()))
+		return 
+	End if 
+	
+	OBJECT GET COORDINATES:C663(*; "field_operationType"; $l; $t; $r; $b)
+	CONVERT COORDINATES:C1365($l; $b; XY Current form:K27:5; XY Main window:K27:8)
+	
+	$form:=New object:C1471(\
+		"colName"; "name"; \
+		"allData"; ds:C1482.Division.all().orderBy("name"); \
+		"dataclass"; "Division"\
+		)
+	
+	$winRef:=Open form window:C675("selectNto1"; Pop up form window:K39:11; $l; $b-20)
+	DIALOG:C40("selectNto1"; $form)
+	CLOSE WINDOW:C154($winRef)
+	
+	If (OK=1)
+		Form:C1466.current_item.UUID_Division:=$form.item.UUID
+		This:C1470._activate_save_cancel_button()
+	End if 
 	
 Function pup_operation()
 	//Create pop up menu

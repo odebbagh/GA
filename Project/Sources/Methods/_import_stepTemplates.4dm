@@ -72,6 +72,8 @@ $toolTypeDataClass:=ds:C1482["ToolType"]
 $stepTemplateToolTypeDataClass:=ds:C1482["StepTemplateToolType"]
 $stepTemplateRuleDataClass:=ds:C1482["StepTemplateRule"]
 
+$divisionEntity:=ds:C1482.Division.all().first()
+
 If (($stepTemplateDataClass=Null:C1517) | ($layoutDataClass=Null:C1517) | ($certificationDataClass=Null:C1517) | ($stepTemplateCertificationDataCl=Null:C1517) | ($operationDataClass=Null:C1517) | ($toolTypeDataClass=Null:C1517) | ($stepTemplateToolTypeDataClass=Null:C1517) | ($stepTemplateRuleDataClass=Null:C1517))
 	ALERT:C41("Missing DataClass: StepTemplate, StepTemplateLayout, Certification, StepTemplateCertification, Operation, ToolType, StepTemplateToolType or StepTemplateRule.")
 Else 
@@ -200,6 +202,10 @@ Else
 				If ($operationTypeEntity#Null:C1517)
 					$stepTemplateEntity.UUID_OperationType:=$operationTypeEntity.UUID
 				End if 
+			End if 
+			
+			If ($divisionEntity#Null:C1517)
+				$stepTemplateEntity.UUID_Division:=$divisionEntity.UUID
 			End if 
 			
 			$tableHeaders:=New collection:C1472()
