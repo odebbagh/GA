@@ -1612,6 +1612,11 @@
 		<field name="moreData" uuid="57B5217B0BBB4A6FA14F60ECB67BA45B" type="21" blob_switch_size="2147483647" never_null="true" id="4"/>
 		<primary_key field_name="UUID" field_uuid="FC01F7A7F7E64694AA402BACC41B263E"/>
 	</table>
+	<table name="OperationType" uuid="321D7BE849F748858E02DCD6603B9BE8" id="104">
+		<field name="ID" uuid="51411BACC6D24C2AB4DA646DD7ECE4A6" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="name" uuid="EDB36DAC00764A6EBD337A594A1438AF" type="10" limiting_length="255" never_null="true" id="2"/>
+		<primary_key field_name="ID" field_uuid="51411BACC6D24C2AB4DA646DD7ECE4A6"/>
+	</table>
 	<table name="BOStatus" uuid="A89A73F18465481CAFC3A5485767D2E6" id="105">
 		<field name="UUID" uuid="69CEEE4094604A2CB7C3248C65E313A3" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
 		<field name="levelID" uuid="5ECFD9944FA84EBA96948F337C0E580B" type="4" never_null="true" id="2"/>
@@ -5676,6 +5681,11 @@
 	<index kind="regular" unique_keys="true" uuid="ABAEBB32A2ED443EA9B32FEEA5AD2653" type="7">
 		<field_ref uuid="F5B5AFDC41774988B9579BC25C16F6E5" name="UUID">
 			<table_ref uuid="B323638126AF4BD7A4B7A486B0ACF9DA" name="BOM"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="ABDA654EE34445C78CAD227448000641" type="7">
+		<field_ref uuid="51411BACC6D24C2AB4DA646DD7ECE4A6" name="ID">
+			<table_ref uuid="321D7BE849F748858E02DCD6603B9BE8" name="OperationType"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="AC9AD076B2671047AAB787FC0FB1283F" type="1">
