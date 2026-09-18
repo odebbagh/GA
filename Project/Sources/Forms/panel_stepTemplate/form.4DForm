@@ -40,8 +40,8 @@
 					"type": "input",
 					"top": 12,
 					"left": 132,
-					"width": 140,
-					"height": 17,
+					"width": 340,
+					"height": 16,
 					"dataSource": "Form:C1466.current_item.name",
 					"focusable": false,
 					"enterable": false,
@@ -57,7 +57,7 @@
 				"label_status": {
 					"type": "text",
 					"top": 12,
-					"left": 352,
+					"left": 492,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
@@ -66,7 +66,7 @@
 				"label_binning": {
 					"type": "text",
 					"top": 37,
-					"left": 352,
+					"left": 492,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
@@ -76,7 +76,7 @@
 					"type": "checkbox",
 					"text": "Active",
 					"top": 7,
-					"left": 436,
+					"left": 576,
 					"width": 72,
 					"height": 24,
 					"events": [
@@ -90,7 +90,7 @@
 					"type": "checkbox",
 					"text": "Binning",
 					"top": 32,
-					"left": 436,
+					"left": 576,
 					"width": 72,
 					"height": 24,
 					"events": [
@@ -103,7 +103,7 @@
 				"label_operation1": {
 					"type": "text",
 					"top": 37,
-					"left": 582,
+					"left": 722,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
@@ -112,7 +112,7 @@
 				"label_0_4": {
 					"type": "text",
 					"top": 12,
-					"left": 582,
+					"left": 722,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
@@ -132,8 +132,8 @@
 					"type": "input",
 					"top": 37,
 					"left": 132,
-					"width": 140,
-					"height": 17,
+					"width": 340,
+					"height": 16,
 					"dataSource": "Form:C1466.current_item.templateNumber",
 					"focusable": false,
 					"enterable": false,
@@ -151,7 +151,7 @@
 				"Field_operationType": {
 					"type": "input",
 					"top": 37,
-					"left": 680,
+					"left": 820,
 					"width": 140,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.operationType.name",
@@ -173,7 +173,7 @@
 				"Field_division": {
 					"type": "input",
 					"top": 12,
-					"left": 680,
+					"left": 820,
 					"width": 140,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.division.name",
@@ -1343,7 +1343,7 @@
 			}
 		}
 	],
-	"geometryStamp": 2068,
+	"geometryStamp": 2079,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
