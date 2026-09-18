@@ -9,6 +9,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	$entry.setSearchboxField("firstName")
 	$entry.setSearchboxField("lastName")
+	$entry.setSearchboxField("moreData.barcodeData"; "placeholder:barcode")
 	// Purpose: Allow searching staff by shift ("1" or "2") and by certification name.
 	// modified by 4D/PS [2026-may-21]
 	$entry.setSearchboxField("shift"; "placeholder:shift")

@@ -23,7 +23,7 @@ If (Form:C1466.current_item.moreData#Null:C1517)
 							If ($fieldType#Is object:K8:27) & ($fieldType#Is BLOB:K8:12) & ($fieldType#Is date:K8:7) & ($fieldType#Is picture:K8:10) & ($fieldType#Is boolean:K8:9)
 								$fieldName:=Field name:C257($i; $j)
 								
-								If ($fieldName#"UUID") & ($fieldName#"UUID_@") & ($fieldName#"stmp@") & ($fieldName#"@stmp")
+								If ($fieldName#"UUID") & ($fieldName#"UUID_@") & ($fieldName#"stmp@") & ($fieldName#"@stmp") & ($fieldName#"@stmp@")
 									$form.fieldsNames.push($fieldName)
 								End if 
 								

@@ -5,8 +5,8 @@ _ga_fillBarcodeDataField
 */
 
 
-//For ($tableNumber; 1; Last table number)
-For ($tableNumber; 118; 118)
+For ($tableNumber; 1; Last table number:C254)
+	//For ($tableNumber; 118; 118)
 	
 	If (Is table number valid:C999($tableNumber))
 		$tableName:=Table name:C256($tableNumber)

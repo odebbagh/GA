@@ -4,8 +4,27 @@ Case of
 		var $barcodeData : Text
 		var $bin : cs:C1710.BinEntity
 
-		$barcodeData:=cs:C1710.Util_ScannerManager.me.communicateWithScanner()
+		/*
+		$barcodeData:=cs.Util_ScannerManager.me.communicateWithScanner()
 
+		If ($barcodeData="")
+			return
+		End if
+		*/
+		
+		var $scanResult : Object
+		
+		$scanResult:=cs:C1710.Util_ScannerManager.me.communicateWithScanner()
+		
+		If ($scanResult.cancelled)
+			return
+		End if
+		
+		If ($scanResult.manualEntry)
+			return
+		End if
+		
+		$barcodeData:=$scanResult.barcodeData
 		If ($barcodeData="")
 			return
 		End if
