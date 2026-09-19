@@ -55,6 +55,9 @@ Function _global_parameters()
 	
 	This:C1470.notifications:=New object:C1471("activate"; True:C214)
 	This:C1470.todoList:=New object:C1471("activate"; True:C214)
+	//emailTemplates must stay declared: sfw_EmailTemplate.entryDefinition() returns Null
+	//when deactivated, and sfw_definitionBuilder pushes that Null into sfw_definition.entries.
+	This:C1470.emailTemplates:=New object:C1471("activate"; True:C214)
 	
 	If (Application type:C494#4D Remote mode:K5:5)
 		This:C1470.documentsStorageOnServer:=New object:C1471

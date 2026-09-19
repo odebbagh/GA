@@ -725,6 +725,7 @@
 		<field name="closed" uuid="FD9E207BFFAD478B8B07A04BCEAC2F09" type="1" never_null="true" id="33"/>
 		<field name="onHold" uuid="99E4B825C8E7491BA42CA5CF9571FA15" type="1" never_null="true" id="34"/>
 		<field name="UUID_Status" uuid="2062B80C3CAE4F22A8D36F676ADD0213" type="10" store_as_UUID="true" never_null="true" id="35"/>
+		<field name="UUID_CustomerCarrier" uuid="CFCD4A5870C440BCBA19E73CF5AA0E45" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="36"/>
 		<primary_key field_name="UUID" field_uuid="2C36FF767DF13E42905F5E16E2D31F5F"/>
 	</table>
 	<table name="Location" uuid="41A5B9E922A8A342822BE4F91D477117" id="47">
@@ -1624,6 +1625,19 @@
 		<field name="moreData" uuid="75F607A235BB459885AC5A9EC81ADE49" type="21" blob_switch_size="2147483647" never_null="true" id="4"/>
 		<field name="description" uuid="FC182199B2C94AE7A4A3F3703B368C76" type="10" limiting_length="255" never_null="true" id="5"/>
 		<primary_key field_name="UUID" field_uuid="69CEEE4094604A2CB7C3248C65E313A3"/>
+	</table>
+	<table name="BOTerm" uuid="F6401DF366094688A43C78E6A58B7778" id="106">
+		<field name="UUID" uuid="12B3F36733034C25A0CBE31FB0D54C7D" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
+		<field name="code" uuid="08656837553542C8BED2C9B29ACCBD92" type="10" limiting_length="255" never_null="true" id="2"/>
+		<field name="content" uuid="5669F6E8BBF2425198E67EC73A0E5642" type="21" blob_switch_size="2147483647" never_null="true" id="3"/>
+		<primary_key field_name="UUID" field_uuid="12B3F36733034C25A0CBE31FB0D54C7D"/>
+	</table>
+	<table name="BOTermsModel" uuid="FDCD71B5ED934F01957E46C325F637C6" id="107">
+		<field name="UUID" uuid="1088403CFEC44FED8D1F134C588A98DC" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
+		<field name="name" uuid="C6D19D0D93B7480E979EB101881FAE5D" type="10" limiting_length="255" never_null="true" id="2"/>
+		<field name="boTerms" uuid="4A2BA38B1AA44754A8F83EA7274E4674" type="21" blob_switch_size="2147483647" never_null="true" id="3"/>
+		<field name="model" uuid="29A12294D3D14027AB16F79ABF3B3E50" type="21" blob_switch_size="2147483647" never_null="true" id="4"/>
+		<primary_key field_name="UUID" field_uuid="1088403CFEC44FED8D1F134C588A98DC"/>
 	</table>
 	<table name="Customer" uuid="96D1CE81460A4F75B3F4275138C8F778" id="114">
 		<field name="UUID" uuid="37676CD94E8B423595ED98B5C0E9CF89" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
@@ -4471,6 +4485,18 @@
 			</field_ref>
 		</related_field>
 	</relation>
+	<relation uuid="BE0E907CAE1844D0848229C4518393E3" name_Nto1="customerCarrier" name_1toN="buyingOrders" state="1">
+		<related_field kind="source">
+			<field_ref uuid="CFCD4A5870C440BCBA19E73CF5AA0E45" name="UUID_CustomerCarrier">
+				<table_ref uuid="34498A1D7FE0BD4783FE5183EE6C5BA2" name="BuyingOrder"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="319814755AB5A945864EA37F29F3FDE1" name="UUID">
+				<table_ref uuid="4EB6C9D117A3DC4B91D031D6BC0C7DA9" name="CustomerCarrier"/>
+			</field_ref>
+		</related_field>
+	</relation>
 	<index kind="regular" uuid="005E48A922A4464DB92973931B467ACF" type="3">
 		<field_ref uuid="17F71D68FA714CE9A75ED79CA63E3BE2" name="UUID_Lead">
 			<table_ref uuid="4CA431297F2C42BE99FD232A56928CE7" name="Interaction"/>
@@ -5081,6 +5107,11 @@
 			<table_ref uuid="4EB6C9D117A3DC4B91D031D6BC0C7DA9" name="CustomerCarrier"/>
 		</field_ref>
 	</index>
+	<index kind="regular" uuid="56ED83865D364972A376F0EFC23F68D8" type="3">
+		<field_ref uuid="CFCD4A5870C440BCBA19E73CF5AA0E45" name="UUID_CustomerCarrier">
+			<table_ref uuid="34498A1D7FE0BD4783FE5183EE6C5BA2" name="BuyingOrder"/>
+		</field_ref>
+	</index>
 	<index kind="regular" unique_keys="true" uuid="572519A25A044E0E892BB859302B07C5" type="1">
 		<field_ref uuid="BD594B31B563416AA71375155B91844A" name="UUID">
 			<table_ref uuid="C14449ECEDEC481981D72DADC35FF29A" name="StepTemplateRule"/>
@@ -5274,6 +5305,11 @@
 	<index kind="regular" uuid="738877565A81A34BBA1CF23BD64109C9" type="3">
 		<field_ref uuid="59F59B14BA3D334E950CA0E04F61C6CD" name="UUID_ParentAccount">
 			<table_ref uuid="F580775371C0FC479B47D767C6CA2D9F" name="CAO"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="73FA92887B844F8CBE6FCA9D2DFC8A94" type="7">
+		<field_ref uuid="1088403CFEC44FED8D1F134C588A98DC" name="UUID">
+			<table_ref uuid="FDCD71B5ED934F01957E46C325F637C6" name="BOTermsModel"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="7496B27921E946DCAFCA2A418FEE578F" type="1">
@@ -6164,6 +6200,11 @@
 	<index kind="regular" unique_keys="true" uuid="F2C1B363EE9A4D4DBA58D427D32D9429" type="7">
 		<field_ref uuid="7DE1FE0E75E78443A6CCEA990AC54031" name="UUID">
 			<table_ref uuid="A58980BC7EB27B42960AE8925366922F" name="RMA"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="F2ECCF41901B45AD8A32D8C40A63F21D" type="7">
+		<field_ref uuid="12B3F36733034C25A0CBE31FB0D54C7D" name="UUID">
+			<table_ref uuid="F6401DF366094688A43C78E6A58B7778" name="BOTerm"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="F49E42458E4D8F45850E944E3C46B3BF" type="3">

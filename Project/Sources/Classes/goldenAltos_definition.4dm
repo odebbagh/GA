@@ -299,6 +299,11 @@ Function _entries_definition()
 	$entry.setLBItemsOrderBy("name")
 	$entry.enableTransaction()
 	
+	// Attachments: adds the framework Documents page (sfw_Document + DocumentData)
+	// as the last panel page. Files are staged on upload and written to the server
+	// when the record is saved (sfw_foundations._uploadDocumentsOnServer).
+	$entry.activateDocument("showCountInTab")
+	
 	This:C1470._push_entry($entry)
 	
 	
