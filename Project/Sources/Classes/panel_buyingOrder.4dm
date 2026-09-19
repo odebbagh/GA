@@ -174,7 +174,22 @@ Function redrawAndSetVisible()
 			
 			OBJECT GET COORDINATES:C663(*; "lb_boLines"; $g; $h; $d; $b)
 			OBJECT SET COORDINATES:C1248(*; "lb_boLines"; $g; $h; $widthSubform-$offset; $heightSubform-$offset)
-	End case 
+
+		: (FORM Get current page:C276(*)=3)
+			// terms page: the model list keeps its width with the action button pinned
+			// underneath it, the Write Pro zone takes all the remaining space
+			OBJECT GET COORDINATES:C663(*; "header_bkgd11"; $g; $h; $d; $b)
+			OBJECT SET COORDINATES:C1248(*; "header_bkgd11"; $g; $h; $widthSubform-$offset; $b)
+
+			OBJECT GET COORDINATES:C663(*; "bActionTerms"; $g; $h; $d; $b)
+			OBJECT SET COORDINATES:C1248(*; "bActionTerms"; $g; $heightSubform-$offset-27; $d; $heightSubform-$offset-6)
+
+			OBJECT GET COORDINATES:C663(*; "lb_terms"; $g; $h; $d; $b)
+			OBJECT SET COORDINATES:C1248(*; "lb_terms"; $g; $h; $d; $heightSubform-$offset-33)
+
+			OBJECT GET COORDINATES:C663(*; "entryField_terms"; $g; $h; $d; $b)
+			OBJECT SET COORDINATES:C1248(*; "entryField_terms"; $g; $h; $widthSubform-$offset; $heightSubform-$offset)
+	End case
 	
 	OBJECT SET ENTERABLE:C238(*; "Field_boNumber"; False:C215)
 	OBJECT SET RGB COLORS:C628(*; "Field_boNumber"; 0x00333333; Background color none:K23:10)

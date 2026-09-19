@@ -24,12 +24,36 @@ Function formMethod()
 Function redrawAndSetVisible()
 	//Adjusts the layout and visibility of form elements based on the current page and modification state
 	var $isInModification : Boolean
+	var $widthSubform; $heightSubform; $g; $h; $d; $b; $offset : Integer
 
 	$isInModification:=Form:C1466.sfw.checkIsInModification()
 
 	//reordering is only offered while the model is being edited
 	OBJECT SET ENABLED:C1123(*; "bTermUp"; $isInModification)
 	OBJECT SET ENABLED:C1123(*; "bTermDown"; $isInModification)
+
+	OBJECT GET SUBFORM CONTAINER SIZE:C1148($widthSubform; $heightSubform)
+	$offset:=12
+
+	Case of
+		: (FORM Get current page:C276(*)=1)
+			// the terms list keeps its width with its buttons pinned underneath,
+			// the Write Pro zone takes all the remaining space
+			OBJECT GET COORDINATES:C663(*; "bAction_boTerms"; $g; $h; $d; $b)
+			OBJECT SET COORDINATES:C1248(*; "bAction_boTerms"; $g; $heightSubform-$offset-27; $d; $heightSubform-$offset-6)
+
+			OBJECT GET COORDINATES:C663(*; "bTermUp"; $g; $h; $d; $b)
+			OBJECT SET COORDINATES:C1248(*; "bTermUp"; $g; $heightSubform-$offset-27; $d; $heightSubform-$offset-6)
+
+			OBJECT GET COORDINATES:C663(*; "bTermDown"; $g; $h; $d; $b)
+			OBJECT SET COORDINATES:C1248(*; "bTermDown"; $g; $heightSubform-$offset-27; $d; $heightSubform-$offset-6)
+
+			OBJECT GET COORDINATES:C663(*; "lb_boTerms"; $g; $h; $d; $b)
+			OBJECT SET COORDINATES:C1248(*; "lb_boTerms"; $g; $h; $d; $heightSubform-$offset-33)
+
+			OBJECT GET COORDINATES:C663(*; "WParea_model"; $g; $h; $d; $b)
+			OBJECT SET COORDINATES:C1248(*; "WParea_model"; $g; $h; $widthSubform-$offset; $heightSubform-$offset)
+	End case
 
 	//Mark:-Stored list of terms
 

@@ -1400,7 +1400,7 @@
 					"scrollbarVertical": "automatic",
 					"scrollbarHorizontal": "automatic",
 					"hideFocusRing": true,
-					"layoutMode": "embedded"
+					"layoutMode": "page"
 				}
 			}
 		}

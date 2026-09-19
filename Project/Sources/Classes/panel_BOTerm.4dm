@@ -22,8 +22,21 @@ Function formMethod()
 	
 Function redrawAndSetVisible()
 	//Adjusts the layout and visibility of form elements based on the current page and modification state
-	//The Write Pro zone and its toolbar follow the panel through sizingX/sizingY "grow"
-	
+	var $widthSubform; $heightSubform; $g; $h; $d; $b; $offset : Integer
+
+	OBJECT GET SUBFORM CONTAINER SIZE:C1148($widthSubform; $heightSubform)
+	$offset:=12
+
+	Case of
+		: (FORM Get current page:C276(*)=1)
+			// the toolbar spans the panel width, the zone fills everything below it
+			OBJECT GET COORDINATES:C663(*; "WPtoolbar"; $g; $h; $d; $b)
+			OBJECT SET COORDINATES:C1248(*; "WPtoolbar"; $g; $h; $widthSubform-$offset; $b)
+
+			OBJECT GET COORDINATES:C663(*; "entryField_wpContent"; $g; $h; $d; $b)
+			OBJECT SET COORDINATES:C1248(*; "entryField_wpContent"; $g; $h; $widthSubform-$offset; $heightSubform-$offset)
+	End case
+
 Function wpContent()
 	//Keeps the Write Pro widget toolbar in sync with the zone and flags the record as modified
 	WP UpdateWidget("WPtoolbar"; "entryField_wpContent")
