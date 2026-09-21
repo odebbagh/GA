@@ -1,6 +1,12 @@
 singleton Class constructor
 	
 	
+Function getBarcodeData($dataClass)->$barCodeData : Integer
+	// Next sfw_Counter value for moreData.barcodeData (the encoded payload).
+	// Image generation is separate: Util_BarcodeGenerator / Zint.
+	$barCodeData:=ds:C1482.sfw_Counter.getNextValue($dataClass)
+	
+	
 Function scanForInputField()
 	
 	
