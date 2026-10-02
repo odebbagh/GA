@@ -21,6 +21,8 @@ local Function loadAfterCreation()
 	If (Not:C34(OB Is defined:C1231(This:C1470.moreData; "externalParty")))
 		This:C1470.moreData.externalParty:=""
 	End if 
+	This:C1470.otherOriginChecked:=False:C215
+	This:C1470.UUID_QcarOrigin:=16*"00" 
 	
 	
 // Purpose: Computed attribute used by the listbox column / search-box on the CAR entry.

@@ -9,8 +9,8 @@
 	"windowMinHeight": 0,
 	"windowMaxWidth": 32767,
 	"windowMaxHeight": 32767,
-	"rightMargin": 0,
-	"bottomMargin": 0,
+	"rightMargin": 20,
+	"bottomMargin": 20,
 	"events": [
 		"onLoad",
 		"onValidate",
@@ -34,51 +34,22 @@
 	"pages": [
 		{
 			"objects": {
-				"label_category": {
+				"label_0_1": {
 					"type": "text",
 					"top": 12,
 					"left": 12,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Category"
-				},
-				"pup_category": {
-					"type": "button",
-					"top": 6,
-					"left": 132,
-					"width": 280,
-					"height": 27,
-					"fontFamily": "System Font",
-					"fontSize": 13,
-					"focusable": false,
-					"text": "      Category",
-					"icon": "/RESOURCES/sfw/image/skin/rainbow/icon/spacer-1x24.png",
-					"popupPlacement": "linked",
-					"textPlacement": "right",
-					"style": "bevel",
-					"method": "ObjectMethods/pup_category.4dm",
-					"events": [
-						"onClick"
-					],
-					"textAlign": "left"
-				},
-				"label_0_1": {
-					"type": "text",
-					"top": 42,
-					"left": 12,
-					"width": 90,
-					"height": 17,
-					"stroke": "#808080",
 					"text": "ID"
 				},
-				"Field_levelID": {
+				"entryField_levelID": {
 					"type": "input",
-					"top": 42,
+					"top": 12,
 					"left": 132,
 					"width": 140,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.levelID",
+					"dataSource": "Form.current_item.levelID",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
@@ -91,7 +62,7 @@
 				},
 				"label_0_3": {
 					"type": "text",
-					"top": 67,
+					"top": 37,
 					"left": 12,
 					"width": 90,
 					"height": 17,
@@ -100,11 +71,11 @@
 				},
 				"entryField_name": {
 					"type": "input",
-					"top": 67,
+					"top": 37,
 					"left": 132,
 					"width": 280,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.name",
+					"dataSource": "Form.current_item.name",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
@@ -115,34 +86,18 @@
 					"fill": "transparent",
 					"borderStyle": "none"
 				},
-				"label_1_1": {
-					"type": "text",
-					"top": 42,
-					"left": 390,
-					"width": 90,
-					"height": 17,
-					"stroke": "#808080",
-					"text": "Color"
-				},
-				"pup_color": {
-					"type": "button",
-					"top": 36,
-					"left": 476,
-					"width": 140,
-					"height": 27,
-					"fontFamily": "System Font",
-					"fontSize": 13,
-					"focusable": false,
-					"text": "      Colors",
-					"icon": "/RESOURCES/sfw/colors/colors.png",
-					"popupPlacement": "linked",
-					"textPlacement": "right",
-					"style": "bevel",
-					"method": "ObjectMethods/pup_color.4dm",
+				"entryField_usesTraveler": {
+					"type": "checkbox",
+					"text": "Uses traveler",
+					"top": 62,
+					"left": 132,
+					"width": 180,
+					"height": 18,
 					"events": [
 						"onClick"
 					],
-					"textAlign": "left"
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form.current_item.usesTraveler"
 				}
 			}
 		},
@@ -150,9 +105,9 @@
 			"objects": {}
 		}
 	],
-	"geometryStamp": 17,
-	"inheritedForm": "sfw_bkgd_header_3lines",
 	"method": "method.4dm",
+	"inheritedForm": "sfw_bkgd_header_3lines",
+	"geometryStamp": 1,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

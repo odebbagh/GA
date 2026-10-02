@@ -30,6 +30,8 @@ Function pup_color()
 	End if 
 	
 Function redrawAndSetVisible()
+	OBJECT SET ENTERABLE:C238(*; "Field_levelID"; False:C215)
+	OBJECT SET ENABLED:C1123(*; "Field_levelID"; False:C215)
 	If (Form:C1466.current_item#Null:C1517)
 		$color:=cs:C1710.sfw_htmlColor.me.getName(Form:C1466.current_item.color) || ""
 		If ($color#"")

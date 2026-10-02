@@ -48,13 +48,14 @@ Function redrawAndSetVisible()
 	OBJECT SET ENTERABLE:C238(*; "EntryField@"; $inModification)
 	OBJECT SET ENABLED:C1123(*; "EntryField@"; $inModification)
 	OBJECT SET ENABLED:C1123(*; "pup_@"; $inModification)
-	OBJECT SET ENABLED:C1123(*; "btnForward@"; $inModification)
 	
 	This:C1470.qcarManage()
 	This:C1470.hideDatePickers()
 	This:C1470.manageExternal()
 	This:C1470.drawPup_traveler()
 	This:C1470.drawPup_rejectCategory()
+	This:C1470.drawPup_origin()
+	This:C1470.manageOriginAndTraveler()
 	
 	OBJECT GET SUBFORM CONTAINER SIZE:C1148($widthSubform; $heightSubform)
 	
@@ -91,9 +92,11 @@ Function redrawAndSetVisible()
 Function btnTraveler()
 	If (Form:C1466.current_item#Null:C1517)
 		var $es : Object
-		$es:=ds:C1482.Lot.query("lotNumber = :1"; Form:C1466.current_item.lot.lotNumber)
+		If (Form:C1466.current_item.lot#Null:C1517)
+			$es:=ds:C1482.Lot.query("lotNumber = :1"; Form:C1466.current_item.lot.lotNumber)
+		End if 
 		
-		If ($es.length>0)
+		If ($es#Null:C1517) & ($es.length>0)
 			Form:C1466.sfw.openInANewWindow($es[0]; "customerService"; "lots")
 		End if 
 	End if 
@@ -101,9 +104,11 @@ Function btnTraveler()
 Function btnPO()
 	If (Form:C1466.current_item#Null:C1517)
 		var $es : Object
-		$es:=ds:C1482.PurchaseOrder.query("poNumber = :1"; Form:C1466.current_item.lot.poNumber)
+		If (Form:C1466.current_item.lot#Null:C1517)
+			$es:=ds:C1482.PurchaseOrder.query("poNumber = :1"; Form:C1466.current_item.lot.poNumber)
+		End if 
 		
-		If ($es.length>0)
+		If ($es#Null:C1517) & ($es.length>0)
 			Form:C1466.sfw.openInANewWindow($es[0]; "customerService"; "purchaseOrders")
 		End if 
 	End if 
@@ -152,7 +157,7 @@ Function drawPup_traveler()
 	End if 
 	
 Function selectTraveler()
-	If (Form:C1466.sfw.checkIsInModification())
+	If (Form:C1466.sfw.checkIsInModification()) && (This:C1470.originAllowsTraveler())
 		Case of 
 			: (FORM Event:C1606.code=On Getting Focus:K2:7) | (FORM Event:C1606.code=On Clicked:K2:4)
 				OBJECT GET COORDINATES:C663(*; "pup_traveler"; $l; $t; $r; $b)
@@ -186,8 +191,18 @@ Function selectTraveler()
 	This:C1470.drawPup_traveler()
 	
 Function subFormEvent()
-	Form:C1466.current_item.correctiveActionReport:=Form:C1466.subForm_qcar.correctiveActionReport
+	If (Form:C1466.current_item=Null:C1517) || (Form:C1466.subForm_qcar=Null:C1517)
+		return 
+	End if 
+	If (Form:C1466.subForm_qcar.correctiveActionReport#Null:C1517)
+		// Reassign a copy so ORDA persists in-place object edits (team, 8D text, dates).
+		Form:C1466.current_item.correctiveActionReport:=OB Copy:C1225(Form:C1466.subForm_qcar.correctiveActionReport)
+		Form:C1466.subForm_qcar.correctiveActionReport:=Form:C1466.current_item.correctiveActionReport
+	End if 
 	This:C1470._activate_save_cancel_button()
+	// CALL SUBFORM CONTAINER does not run the panel form method, so the toolbar must be refreshed here.
+	Form:C1466.sfw.redrawButtons()
+	
 	
 Function hideDatePickers()
 	OBJECT SET VISIBLE:C603(*; "dp_@"; Form:C1466.sfw.checkIsInModification())
@@ -391,6 +406,98 @@ Function pup_rejectCategory()
 		End case 
 		
 		This:C1470.drawPup_rejectCategory()
+		
+	End if 
+	
+	
+	// Purpose: Origin checkbox + dropdown (Karla C). Traveler stays enabled only when origin is unchecked
+	// or the selected origin has usesTraveler (Product by default; editable in Administration / CAR origins).
+	// created by 4D/PS [2026-oct-02]
+Function originAllowsTraveler()->$allow : Boolean
+	$allow:=True:C214
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	If (Bool:C1537(Form:C1466.current_item.otherOriginChecked))
+		$origin:=Form:C1466.current_item.qcarOrigin
+		If ($origin=Null:C1517) || (Not:C34(Bool:C1537($origin.usesTraveler)))
+			$allow:=False:C215
+		End if 
+	End if 
+	
+	
+Function manageOriginAndTraveler()
+	var $inModification; $originOn; $allowTraveler : Boolean
+	
+	$inModification:=Form:C1466.sfw.checkIsInModification()
+	$originOn:=(Form:C1466.current_item#Null:C1517) && (Bool:C1537(Form:C1466.current_item.otherOriginChecked))
+	$allowTraveler:=This:C1470.originAllowsTraveler()
+	
+	OBJECT SET ENABLED:C1123(*; "entryField_otherOriginChecked"; $inModification)
+	OBJECT SET VISIBLE:C603(*; "pup_origin"; $originOn)
+	OBJECT SET ENABLED:C1123(*; "pup_origin"; $inModification && $originOn)
+	OBJECT SET ENABLED:C1123(*; "pup_traveler"; $inModification && $allowTraveler)
+	
+	
+Function checkboxOrigin()
+	If (Form:C1466.sfw.checkIsInModification())
+		If (Not:C34(Bool:C1537(Form:C1466.current_item.otherOriginChecked)))
+			Form:C1466.current_item.UUID_QcarOrigin:=16*"00"
+		End if 
+		This:C1470._activate_save_cancel_button()
+		This:C1470.drawPup_origin()
+		This:C1470.manageOriginAndTraveler()
+	End if 
+	
+	
+Function drawPup_origin()
+	If (Form:C1466.current_item#Null:C1517)
+		OBJECT SET TITLE:C194(*; "pup_origin"; "")
+		$label:=""
+		If (Bool:C1537(Form:C1466.current_item.otherOriginChecked))
+			$origin:=Form:C1466.current_item.qcarOrigin
+			If ($origin#Null:C1517)
+				$label:=String:C10($origin.name)
+			End if 
+		End if 
+		Form:C1466.sfw.drawButtonPup("pup_origin"; $label; "sfw/image/skin/rainbow/icon/spacer-1x24.png"; ($label=""))
+	End if 
+	
+	
+Function pup_origin()
+	
+	If (Form:C1466.sfw.checkIsInModification()) && (Bool:C1537(Form:C1466.current_item.otherOriginChecked))
+		
+		If (Storage:C1525.cache=Null:C1517) || (Storage:C1525.cache.qcarOrigin=Null:C1517)
+			ds:C1482.QcarOrigin.cacheLoad()
+		End if 
+		
+		$menu:=Create menu:C408
+		$currentUUID:=Form:C1466.current_item.UUID_QcarOrigin
+		
+		If (Storage:C1525.cache#Null:C1517) && (Storage:C1525.cache.qcarOrigin#Null:C1517)
+			For each ($item; Storage:C1525.cache.qcarOrigin)
+				APPEND MENU ITEM:C411($menu; $item.name; *)
+				SET MENU ITEM PARAMETER:C1004($menu; -1; $item.UUID)
+				If ($item.UUID=$currentUUID)
+					SET MENU ITEM MARK:C208($menu; -1; Char:C90(18))
+					If (Is Windows:C1573)
+						SET MENU ITEM STYLE:C425($menu; -1; Bold:K14:2)
+					End if 
+				End if 
+			End for each 
+		End if 
+		
+		$choose:=Dynamic pop up menu:C1006($menu)
+		RELEASE MENU:C978($menu)
+		
+		If ($choose#"")
+			Form:C1466.current_item.UUID_QcarOrigin:=$choose
+			This:C1470._activate_save_cancel_button()
+		End if 
+		
+		This:C1470.drawPup_origin()
+		This:C1470.manageOriginAndTraveler()
 		
 	End if 
 	

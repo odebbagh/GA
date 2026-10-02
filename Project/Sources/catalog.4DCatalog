@@ -2140,6 +2140,8 @@
 		<field name="closedStmp" uuid="2395A06581078341A84621D83B30DE97" type="4" never_null="true" id="25"/>
 		<field name="verified" uuid="B5317F2936DAA84688754D5AD27F203A" type="1" never_null="true" id="26"/>
 		<field name="UUID_RejectCriteriaItem" uuid="F64A68E38C5643ECA0C256E94972CCEE" type="10" store_as_UUID="true" never_null="true" id="27"/>
+		<field name="otherOriginChecked" uuid="A6C2D3E4F5A64789B0C1D2E3F4A5B6F1" type="1" never_null="true" id="28"/>
+		<field name="UUID_QcarOrigin" uuid="A7C2D3E4F5A64789B0C1D2E3F4A5B6F2" type="10" store_as_UUID="true" never_null="true" id="29"/>
 		<primary_key field_name="UUID" field_uuid="129BD267EFE06D4EBCF1E64FCE762186"/>
 	</table>
 	<table name="Audit" uuid="25AD36FD239C0D479D63ECB2CFAEAA6D" id="139">
@@ -2277,6 +2279,14 @@
 		<field name="blob" uuid="9646945C85575C4DA041E95AF26291CB" type="18" never_null="true" id="5"/>
 		<field name="moreData" uuid="43B8F11806524A8993773CC5711E6CF5" type="21" blob_switch_size="2147483647" never_null="true" id="6"/>
 		<primary_key field_name="UUID" field_uuid="B021D3EFEEB3A949AC3B50689959E5B3"/>
+	</table>
+	<table name="QcarOrigin" uuid="A3C2D3E4F5A64789B0C1D2E3F4A5B6E7" id="150">
+		<field name="UUID" uuid="B3C2D3E4F5A64789B0C1D2E3F4A5B6E8" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
+		<field name="levelID" uuid="C3C2D3E4F5A64789B0C1D2E3F4A5B6E9" type="3" unique="true" never_null="true" id="2"/>
+		<field name="name" uuid="D3C2D3E4F5A64789B0C1D2E3F4A5B6EA" type="10" limiting_length="255" never_null="true" id="3"/>
+		<field name="usesTraveler" uuid="E3C2D3E4F5A64789B0C1D2E3F4A5B6EB" type="1" never_null="true" id="4"/>
+		<field name="moreData" uuid="F3C2D3E4F5A64789B0C1D2E3F4A5B6EC" type="21" blob_switch_size="2147483647" never_null="true" id="5"/>
+		<primary_key field_name="UUID" field_uuid="B3C2D3E4F5A64789B0C1D2E3F4A5B6E8"/>
 	</table>
 	<table name="InventoryUnits" uuid="3FB58DB7E23D4D1D8B659DA53E663E6C" id="200">
 		<field name="UUID" uuid="A13D8F9F3A1E4A56A9693B13A3E5B5DA" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
@@ -4447,6 +4457,18 @@
 			</field_ref>
 		</related_field>
 	</relation>
+	<relation uuid="A8C2D3E4F5A64789B0C1D2E3F4A5B6F3" name_Nto1="qcarOrigin" name_1toN="qcarsByOrigin" state="1">
+		<related_field kind="source">
+			<field_ref uuid="A7C2D3E4F5A64789B0C1D2E3F4A5B6F2" name="UUID_QcarOrigin">
+				<table_ref uuid="446AB1ED27F3664C9C9747DD14114EF2" name="Qcar"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="B3C2D3E4F5A64789B0C1D2E3F4A5B6E8" name="UUID">
+				<table_ref uuid="A3C2D3E4F5A64789B0C1D2E3F4A5B6E7" name="QcarOrigin"/>
+			</field_ref>
+		</related_field>
+	</relation>
 	<relation uuid="1C553AE5BC1A4D05B9F8BCF8EA297A10" name_Nto1="qcar" name_1toN="objectiveEvidences" state="1">
 		<related_field kind="source">
 			<field_ref uuid="CA98C8677E88FD46B46534AED3C8CA8D" name="UUID_Qcar">
@@ -5686,6 +5708,11 @@
 			<table_ref uuid="25AD36FD239C0D479D63ECB2CFAEAA6D" name="Audit"/>
 		</field_ref>
 	</index>
+	<index kind="regular" uuid="A9C2D3E4F5A64789B0C1D2E3F4A5B6F4" type="3">
+		<field_ref uuid="A7C2D3E4F5A64789B0C1D2E3F4A5B6F2" name="UUID_QcarOrigin">
+			<table_ref uuid="446AB1ED27F3664C9C9747DD14114EF2" name="Qcar"/>
+		</field_ref>
+	</index>
 	<index kind="regular" uuid="AA064FCFF3604B159A1E8BE07FD321D7" type="3">
 		<field_ref uuid="DB99D889130B4E138C02DC979C707EAE" name="UUID_StepTemplate">
 			<table_ref uuid="7A8F1179566C46A6AB8E4B04DD19B496" name="StepTemplateCertification"/>
@@ -5696,9 +5723,19 @@
 			<table_ref uuid="A26EDBD8B62D4DE087E21A5FA8D05B4D" name="SalesTransaction"/>
 		</field_ref>
 	</index>
+	<index kind="regular" unique_keys="true" uuid="AAC2D3E4F5A64789B0C1D2E3F4A5B6F5" type="1">
+		<field_ref uuid="C3C2D3E4F5A64789B0C1D2E3F4A5B6E9" name="levelID">
+			<table_ref uuid="A3C2D3E4F5A64789B0C1D2E3F4A5B6E7" name="QcarOrigin"/>
+		</field_ref>
+	</index>
 	<index kind="regular" unique_keys="true" uuid="ABAEBB32A2ED443EA9B32FEEA5AD2653" type="7">
 		<field_ref uuid="F5B5AFDC41774988B9579BC25C16F6E5" name="UUID">
 			<table_ref uuid="B323638126AF4BD7A4B7A486B0ACF9DA" name="BOM"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="ABC2D3E4F5A64789B0C1D2E3F4A5B6F6" type="1">
+		<field_ref uuid="B3C2D3E4F5A64789B0C1D2E3F4A5B6E8" name="UUID">
+			<table_ref uuid="A3C2D3E4F5A64789B0C1D2E3F4A5B6E7" name="QcarOrigin"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="AC9AD076B2671047AAB787FC0FB1283F" type="1">
