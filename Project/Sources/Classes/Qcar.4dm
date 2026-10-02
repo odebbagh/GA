@@ -18,6 +18,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	// modified by 4D/PS [2026-may-19]
 	$entry.setSearchboxField("rejectCriteriaCategory.name"; "placeholder:category")
 	$entry.setSearchboxField("rejectCriteriaItem.name"; "placeholder:item")
+	$entry.setSearchboxField("qcarOrigin.name"; "placeholder:origin")
 	$entry.setSearchboxField("lot.lotNumber"; "placeholder:lot")
 	$entry.setSearchboxField("lot.poNumber"; "placeholder:po")
 	

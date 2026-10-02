@@ -43,6 +43,7 @@
 					"width": 369,
 					"height": 216,
 					"events": [
+						"onClick",
 						"onDoubleClick",
 						"onDataChange",
 						"onSelectionChange",
@@ -118,7 +119,9 @@
 					"dataSource": "Form:C1466.words",
 					"hideFocusRing": true,
 					"method": "ObjectMethods/word.4dm",
+					"multiline": "no",
 					"events": [
+						"onBeforeKeystroke",
 						"onDataChange",
 						"onAfterKeystroke",
 						"onAfterEdit"

@@ -97,18 +97,18 @@
 				},
 				"label_device": {
 					"type": "text",
-					"top": 87,
-					"left": 214,
-					"width": 95,
+					"top": 9,
+					"left": 444,
+					"width": 75,
 					"height": 17,
 					"stroke": "#808080",
 					"text": "Device"
 				},
 				"Field_device": {
 					"type": "input",
-					"top": 87,
-					"left": 322,
-					"width": 310,
+					"top": 9,
+					"left": 520,
+					"width": 110,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.lot.device",
 					"focusable": false,
@@ -233,7 +233,8 @@
 					"width": 95,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Originator"
+					"text": "Originator",
+					"textAlign": "right"
 				},
 				"entryField_initiator8D": {
 					"type": "input",
@@ -259,7 +260,8 @@
 					"width": 95,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Actual Close Date"
+					"text": "Actual Close Date",
+					"textAlign": "right"
 				},
 				"Field_actualCloseDate": {
 					"type": "input",
@@ -338,38 +340,11 @@
 					],
 					"focusable": true
 				},
-				"label_car": {
-					"type": "text",
-					"top": 12,
-					"left": 444,
-					"width": 75,
-					"height": 17,
-					"stroke": "#808080",
-					"text": "CAR #"
-				},
-				"Field_qcarNumber": {
-					"type": "input",
-					"top": 12,
-					"left": 520,
-					"width": 110,
-					"height": 17,
-					"dataSource": "Form:C1466.current_item.qcarNumber",
-					"focusable": false,
-					"enterable": false,
-					"dragging": "none",
-					"dropping": "custom",
-					"events": [
-						"onDataChange"
-					],
-					"fill": "transparent",
-					"borderStyle": "none",
-					"dataSourceTypeHint": "number"
-				},
 				"entryField_rb_internal": {
 					"type": "radio",
 					"text": "Internal",
-					"top": 87,
-					"left": 758,
+					"top": 115,
+					"left": 408,
 					"width": 60,
 					"height": 17,
 					"events": [
@@ -382,8 +357,8 @@
 				"entryField_rb_notInternal": {
 					"type": "radio",
 					"text": "External",
-					"top": 87,
-					"left": 895,
+					"top": 115,
+					"left": 550,
 					"width": 60,
 					"height": 17,
 					"events": [
@@ -395,8 +370,8 @@
 				},
 				"label_device1": {
 					"type": "text",
-					"top": 87,
-					"left": 843,
+					"top": 115,
+					"left": 498,
 					"width": 20,
 					"height": 17,
 					"stroke": "#808080",
@@ -457,19 +432,20 @@
 				},
 				"label_externalParty": {
 					"type": "text",
-					"top": 109,
-					"left": 524,
-					"width": 87,
+					"top": 87,
+					"left": 653,
+					"width": 95,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "External Party"
+					"text": "External Party",
+					"textAlign": "right"
 				},
 				"EntryField_externalParty": {
 					"type": "input",
-					"top": 109,
-					"left": 612,
-					"width": 343,
-					"height": 17,
+					"top": 90,
+					"left": 753,
+					"width": 202,
+					"height": 48,
 					"dataSource": "Form:C1466.current_item.externalParty",
 					"focusable": false,
 					"enterable": false,
@@ -481,6 +457,40 @@
 					"fill": "transparent",
 					"borderStyle": "none",
 					"right": 955
+				},
+				"entryField_otherOriginChecked": {
+					"type": "checkbox",
+					"text": "Other origin",
+					"top": 86,
+					"left": 214,
+					"width": 95,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.current_item.otherOriginChecked",
+					"method": "ObjectMethods/entryField_otherOriginChecked.4dm"
+				},
+				"pup_origin": {
+					"type": "button",
+					"top": 87,
+					"left": 322,
+					"width": 288,
+					"height": 22,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_origin.4dm",
+					"events": [
+						"onClick"
+					],
+					"textAlign": "left"
 				},
 				"pup_traveler": {
 					"type": "button",
@@ -542,6 +552,33 @@
 					"visibility": "visible",
 					"iconFrames": 4,
 					"focusable": false
+				},
+				"label_car1": {
+					"type": "text",
+					"top": 87,
+					"left": 12,
+					"width": 65,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "CAR #"
+				},
+				"Field_qcarNumber1": {
+					"type": "input",
+					"top": 87,
+					"left": 82,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.qcarNumber",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "number"
 				}
 			}
 		},
@@ -896,8 +933,8 @@
 			"objects": {
 				"subform_qcar": {
 					"type": "subform",
-					"left": 0,
-					"top": 146,
+					"left": 2,
+					"top": 150,
 					"width": 895,
 					"height": 408,
 					"detailForm": "sub_panel_qcar",
@@ -1008,7 +1045,7 @@
 		}
 	],
 	"inheritedForm": "sfw_bkgd_header_4lines",
-	"geometryStamp": 2833,
+	"geometryStamp": 2874,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",

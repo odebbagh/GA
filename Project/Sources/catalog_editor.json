@@ -48,6 +48,22 @@
 			"displayable_fields_count": 6,
 			"fields_ordering": 1
 		},
+		"QcarOrigin": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 40,
+				"top": 3004,
+				"width": 120,
+				"height": 167.33203125
+			},
+			"displayable_fields_count": 6,
+			"fields_ordering": 1
+		},
 		"ObjectiveEvidence": {
 			"color": {
 				"red": 255,
@@ -292,7 +308,7 @@
 				"left": 643,
 				"top": 584,
 				"width": 228,
-				"height": 647.33203125
+				"height": 643.33203125
 			},
 			"displayable_fields_count": 28
 		},
@@ -1302,6 +1318,22 @@
 			"coordinates": {
 				"left": 1040,
 				"top": 2510,
+				"width": 120,
+				"height": 167.33203125
+			},
+			"displayable_fields_count": 6,
+			"fields_ordering": 1
+		},
+		"OperationType": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 640,
+				"top": 40,
 				"width": 120,
 				"height": 167.33203125
 			},
