@@ -536,85 +536,89 @@
 					"sizingX": "grow",
 					"dataSource": "Form:C1466.current_item.terminated"
 				},
-				"dp_creationDate": {
-					"type": "subform",
+				"btnDatePickerCreation": {
+					"type": "button",
+					"text": " ",
 					"top": 159,
-					"left": 189,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.creationDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_creationDate.4dm",
+					"left": 191,
+					"width": 17,
+					"height": 17,
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerCreation.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
-				"dp_hireDate": {
-					"type": "subform",
+				"btnDatePickerHire": {
+					"type": "button",
+					"text": " ",
 					"top": 184,
-					"left": 189,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.hireDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_hireDate.4dm",
+					"left": 191,
+					"width": 17,
+					"height": 17,
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerHire.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
-				"dp_retrainDate": {
-					"type": "subform",
-					"top": 184,
-					"left": 425,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.retrainDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_retrainDate.4dm",
-					"events": [
-						"onLoad"
-					],
-					"focusable": true
-				},
-				"dp_terminationDate": {
-					"type": "subform",
+				"btnDatePickerRetrain": {
+					"type": "button",
+					"text": " ",
 					"top": 183,
-					"left": 706,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.terminationDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_terminationDate.4dm",
+					"left": 427,
+					"width": 17,
+					"height": 17,
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerRetrain.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
+				},
+				"btnDatePickerTermination": {
+					"type": "button",
+					"text": " ",
+					"top": 183,
+					"left": 708,
+					"width": 17,
+					"height": 17,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerTermination.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				}
 			}
 		},
@@ -640,7 +644,7 @@
 					"height": 440,
 					"resizingMode": "legacy",
 					"listboxType": "collection",
-					"focusable": false,
+					"focusable": true,
 					"movableRows": false,
 					"dataSource": "Form:C1466.lb_assignments",
 					"currentItemSource": "Form:C1466.selectedCertification",
@@ -658,7 +662,7 @@
 					"alternateFill": "#F7F9FC",
 					"method": "ObjectMethods/lb_assignments.4dm",
 					"selectionMode": "single",
-					"singleClickEdit": false,
+					"singleClickEdit": true,
 					"rowFillSource": "highlightExpiredCertification",
 					"columns": [
 						{
@@ -718,7 +722,7 @@
 							"resizable": false,
 							"header": {
 								"name": "hd_expiredIn",
-								"text": "Expired In",
+								"text": "Expires On",
 								"fontWeight": "bold",
 								"textAlign": "center"
 							},
@@ -742,7 +746,8 @@
 							"textAlign": "center",
 							"method": "ObjectMethods/entryField_hasCertif.4dm",
 							"events": [
-								"onClick"
+								"onClick",
+								"onDataChange"
 							],
 							"resizable": false,
 							"controlType": "checkbox",
@@ -779,7 +784,7 @@
 				},
 				"Text1": {
 					"type": "text",
-					"text": "Expiring in 30 days.",
+					"text": "Expiring in less than 30 days",
 					"top": 515,
 					"left": 567,
 					"width": 350,
@@ -796,8 +801,25 @@
 				},
 				"Text3": {
 					"type": "text",
-					"text": "Expiring in 15 days.",
+					"text": "Expired, or expiring in less than 15 days",
 					"top": 538,
+					"left": 567,
+					"width": 350,
+					"height": 18
+				},
+				"Oval4": {
+					"type": "oval",
+					"top": 561,
+					"left": 535,
+					"width": 18,
+					"height": 18,
+					"fill": "#87CEEB",
+					"stroke": "#696969"
+				},
+				"Text4": {
+					"type": "text",
+					"text": "Expired, but still allowed where required",
+					"top": 561,
 					"left": 567,
 					"width": 350,
 					"height": 18
@@ -858,7 +880,7 @@
 						{
 							"header": {
 								"name": "Header4",
-								"text": "Expired in",
+								"text": "Expires On",
 								"fontWeight": "bold"
 							},
 							"name": "Column3",
@@ -946,7 +968,7 @@
 		}
 	],
 	"inheritedForm": "sfw_bkgd_header_3lines",
-	"geometryStamp": 1159,
+	"geometryStamp": 1168,
 	"editor": {
 		"groups": {
 			"Group": [
@@ -955,7 +977,9 @@
 				"Oval1",
 				"Text1",
 				"Oval3",
-				"Text3"
+				"Text3",
+				"Oval4",
+				"Text4"
 			],
 			"grp_wr30": [
 				"wr30_background",

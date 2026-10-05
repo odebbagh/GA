@@ -18,6 +18,7 @@ Function formMethod()
 	If (Form:C1466.sfw.redrawAndSetVisibleInPanelNeeded())  //It's time to resize the object or set visible
 		This:C1470.redrawAndSetVisible()
 	End if 
+	cs:C1710.Util.me.lockDateInputs() 
 	
 Function btnCar()
 	If (Form:C1466.current_item.qcar#Null:C1517)
@@ -51,6 +52,7 @@ Function redrawAndSetVisible()
 	OBJECT SET ENABLED:C1123(*; "Field@"; $inModification)
 	OBJECT SET ENABLED:C1123(*; "pup_@"; $inModification)
 	OBJECT SET ENABLED:C1123(*; "btnDatePicker@"; $inModification)
+	cs:C1710.Util.me.lockDateInputs()
 	
 	This:C1470.hideDatePickers()
 	This:C1470.drawPup_car()
@@ -71,7 +73,7 @@ Function redrawAndSetVisible()
 	
 	
 Function hideDatePickers()
-	OBJECT SET VISIBLE:C603(*; "dp_@"; Form:C1466.sfw.checkIsInModification())
+	OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; Form:C1466.sfw.checkIsInModification())
 	
 Function drawPup_car()
 	If (Form:C1466.current_item#Null:C1517)

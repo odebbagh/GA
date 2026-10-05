@@ -42,6 +42,7 @@ Function formMethod()
 	If (Form:C1466.sfw.redrawAndSetVisibleInPanelNeeded())  //It's time to resize the object or set visible
 		This:C1470.redrawAndSetVisible()
 	End if 
+	cs:C1710.Util.me.lockDateInputs() 
 	
 	
 Function redrawAndSetVisible()
@@ -54,6 +55,7 @@ Function redrawAndSetVisible()
 	
 	OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; Form:C1466.sfw.checkIsInModification())
 	OBJECT SET ENTERABLE:C238(*; "lb_contact"; False:C215)
+	cs:C1710.Util.me.lockDateInputs()
 	
 	Use (Form:C1466.sfw.entry.panel.pages)
 		Form:C1466.sfw.entry.panel.pages[2].label:="Documents ("+String:C10(Form:C1466.lb_documents.length)+")"
@@ -272,6 +274,7 @@ Function bActionDocument()
 				$buffer.stmp:=cs:C1710.sfw_stmp.me.now()
 				Form:C1466.bufferOfEvents.push($buffer)
 				
+				This:C1470._ensureAttachedDocuments()
 				Form:C1466.current_item.attachedDocuments.documents.push($form.details)
 				cs:C1710.panel_supplier.me._activate_save_cancel_button()
 			End if 
@@ -322,10 +325,23 @@ Function bActionDocument()
 	
 Function loadDocuments()
 	
+	Form:C1466.lb_documents:=New collection:C1472()
 	If (Form:C1466.current_item#Null:C1517)
-		
-		Form:C1466.lb_documents:=Form:C1466.current_item.attachedDocuments.documents.map(Formula:C1597(_ga_getDateTime))
-		
+		If (Form:C1466.current_item.attachedDocuments#Null:C1517) && (Form:C1466.current_item.attachedDocuments.documents#Null:C1517)
+			Form:C1466.lb_documents:=Form:C1466.current_item.attachedDocuments.documents.map(Formula:C1597(_ga_getDateTime))
+		End if 
+	End if 
+	
+	
+Function _ensureAttachedDocuments()
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	If (Form:C1466.current_item.attachedDocuments=Null:C1517)
+		Form:C1466.current_item.attachedDocuments:=New object:C1471
+	End if 
+	If (Form:C1466.current_item.attachedDocuments.documents=Null:C1517)
+		Form:C1466.current_item.attachedDocuments.documents:=New collection:C1472()
 	End if 
 	
 	

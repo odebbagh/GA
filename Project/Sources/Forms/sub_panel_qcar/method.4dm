@@ -17,6 +17,8 @@ If (Form:C1466#Null:C1517)
 		
 		OBJECT SET ENTERABLE:C238(*; "entryField_@"; $isInModification)
 		OBJECT SET ENTERABLE:C238(*; "entryField_othersText"; (Form:C1466.correctiveActionReport.others) & ($isInModification))
+		cs:C1710.Util.me.lockDateInputs()
+		OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; $isInModification)
 		OBJECT SET ENABLED:C1123(*; "bActionTeam"; $isInModification)
 		OBJECT SET ENABLED:C1123(*; "pup_teamLearders"; $isInModification)
 		OBJECT SET ENABLED:C1123(*; "pup_supervisor"; $isInModification)

@@ -6,9 +6,6 @@ Class extends Entity
 
 local Function itemLoad()
 	
-	// Purpose: Copy legacy moreData.retrainingFrequencies into scalar fields when opening a record.
-	// modified by 4D/PS [2026-june-08]
-	This:C1470.ensureLegacyRetrainMigrated()
 	
 	
 // Purpose: Build frequency idents from scalar boolean fields (used by retrain milestones and labels).
@@ -16,7 +13,6 @@ local Function itemLoad()
 // modified by 4D/PS [2026-june-08]
 Function getRetrainingFrequencies()->$frequencies : Collection
 	
-	This:C1470.ensureLegacyRetrainMigrated()
 	$frequencies:=New collection:C1472()
 	If (This:C1470.retrainQuarterly)
 		$frequencies.push("quarterly")
@@ -26,6 +22,12 @@ Function getRetrainingFrequencies()->$frequencies : Collection
 	End if 
 	If (This:C1470.retrainAnnually)
 		$frequencies.push("annually")
+	End if 
+	If ($frequencies.length>0)
+		return 
+	End if 
+	If (This:C1470.moreData#Null:C1517) && (This:C1470.moreData.retrainingFrequencies#Null:C1517)
+		$frequencies:=This:C1470.moreData.retrainingFrequencies.copy()
 	End if 
 	
 	

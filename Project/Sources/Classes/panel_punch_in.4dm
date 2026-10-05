@@ -117,6 +117,107 @@ Function canEditPanelFields()->$canEdit : Boolean
 	End if 
 	$canEdit:=True:C214
 	
+	
+// Purpose: Karla punch-in gate — block Start when a required certification is missing or expired.
+// Same rule as panel_punchIn.checkForCertifications (StaffEntity.hasCertification, including QA override).
+// Reads LotStep.requitedCertifications; falls back to the step template links when the snapshot is empty.
+// Returns: Boolean — True when punch-in may start
+// created by 4D/PS [2026-oct-05]
+Function checkForCertifications()->$valid : Boolean
+	
+	var $staff_es : cs:C1710.StaffSelection
+	var $staff_e : cs:C1710.StaffEntity
+	var $user_e : cs:C1710.sfw_UserEntity
+	var $certifications : Collection
+	var $certification : Object
+	var $certName : Text
+	var $uuidCert : Text
+	var $eCert : cs:C1710.CertificationEntity
+	var $stCert_e : cs:C1710.StepTemplateCertificationEntity
+	var $assignments : cs:C1710.CertificationAssignmentSelection
+	var $blockedLines : Collection
+	var $blockedMessage : Text
+	var $templateUUID : Text
+	
+	$valid:=True:C214
+	$blockedLines:=New collection:C1472
+	$certifications:=New collection:C1472
+	$staff_es:=Null:C1517
+	
+	If (Form:C1466.current_item=Null:C1517)
+		return $valid
+	End if 
+	
+	If (Form:C1466.current_item.requitedCertifications#Null:C1517) && (Form:C1466.current_item.requitedCertifications.items#Null:C1517)
+		$certifications:=Form:C1466.current_item.requitedCertifications.items
+	End if 
+	
+	If ($certifications.length=0)
+		$templateUUID:=""
+		If (Form:C1466.current_item.step#Null:C1517) && (Form:C1466.current_item.step.stepTemplate#Null:C1517)
+			$templateUUID:=Form:C1466.current_item.step.stepTemplate.UUID
+		End if 
+		If ($templateUUID#"")
+			For each ($stCert_e; ds:C1482.StepTemplateCertification.query("UUID_StepTemplate = :1"; $templateUUID))
+				If ($stCert_e.certification#Null:C1517)
+					$certifications.push(New object:C1471(\
+						"UUID_Certification"; $stCert_e.certification.UUID; \
+						"name"; $stCert_e.certification.name\
+						))
+				End if 
+			End for each 
+		End if 
+	End if 
+	
+	If ($certifications.length=0)
+		return $valid
+	End if 
+	
+	$user_e:=ds:C1482.sfw_User.query("login = :1"; Current user:C182).first()
+	If ($user_e#Null:C1517)
+		$staff_es:=$user_e.staffs
+	End if 
+	
+	If ($staff_es=Null:C1517) || ($staff_es.length=0)
+		$valid:=False:C215
+		cs:C1710.sfw_dialog.me.info("Punch-in blocked: no staff record linked to your user account")
+		return $valid
+	End if 
+	
+	$staff_e:=$staff_es[0]
+	
+	For each ($certification; $certifications)
+		$uuidCert:=String:C10($certification.UUID_Certification)
+		If ($uuidCert="")
+			$uuidCert:=String:C10($certification.UUID)
+		End if 
+		If ($uuidCert="")
+			continue
+		End if 
+		If (Not:C34($staff_e.hasCertification($uuidCert)))
+			$certName:=String:C10($certification.name)
+			If ($certName="")
+				$eCert:=ds:C1482.Certification.get($uuidCert)
+				If ($eCert#Null:C1517)
+					$certName:=$eCert.name
+				End if 
+			End if 
+			$assignments:=$staff_e.assignments.query("UUID_Certification = :1"; $uuidCert)
+			If ($assignments.length=0)
+				$blockedLines.push($certName+" — not assigned")
+			Else 
+				$blockedLines.push($certName+" — expired or invalid")
+			End if 
+		End if 
+	End for each 
+	
+	$valid:=($blockedLines.length=0)
+	If (Not:C34($valid))
+		$blockedMessage:="Punch-in blocked. Required certification(s):\r"+$blockedLines.join("\r")
+		cs:C1710.sfw_dialog.me.info($blockedMessage)
+	End if 
+	
+	
 Function applyCommentFieldFormats()
 	
 	var $format1 : Text
