@@ -42,6 +42,8 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	
 	
+	$entry.setItemAction("Print RMA report"; "QCARS_print_rma_report")
+	
 	$entry.setItemAction("Generate Barcode"; "_ga_openBarCodeForm")
 	
 	
@@ -107,18 +109,24 @@ local Function RmaByYear()->$rmas : cs:C1710.RMASelection
 	var $years : Collection
 	var $formula : Object
 	var $selectedYear : Integer
+	var $all : cs:C1710.RMASelection
 	
-	$years:=This:C1470.all().extract("dateReceived").map(Formula:C1597(_ga_yearOfFormula))
+	$years:=New collection:C1472()
+	$all:=This:C1470.all()
+	If ($all.length>0)
+		$years:=$all.extract("dateReceived").map(Formula:C1597(_ga_yearOfFormula))
+	End if 
 	cs:C1710.Util.me.setYearPicker("Select a Year"; $years)
 	
-	If (Storage:C1525.cache.selectedYear=0)
+	If (Storage:C1525.cache=Null:C1517) | (Num:C11(Storage:C1525.cache.selectedYear)=0)
 		$rmas:=This:C1470.newSelection()
 	Else 
 		// Purpose: Copy year into $selectedYear before Formula() — Storage is not read on the server during query();
 		// the local variable value is captured into the formula when it is built on the client.
 		// modified by 4D/PS [2026-june-08]
+		// modified by 4D/PS [2026-october-05]
 		$selectedYear:=Num:C11(Storage:C1525.cache.selectedYear)
-		$formula:=Formula:C1597(Num:C11(Year of:C25(This:C1470.dateReceived))=$selectedYear)
+		$formula:=Formula:C1597(Num:C11(Year of:C25(Date:C102(This:C1470.dateReceived)))=$selectedYear)
 		$rmas:=This:C1470.query($formula)
 	End if 
 	
