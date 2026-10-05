@@ -28,11 +28,11 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.setPanelPage(3; ""; "Objective Evidence")
 	
 	$entry.setLBItemsColumn("qcarNumber"; "#"; "width:40"; "center")
-	$entry.setLBItemsColumn("customer.name"; "Customer"; "width:200")
+	$entry.setLBItemsColumn("customer.name"; "Customer"; "width:180")
 	// Purpose: Display the live reject-criteria label via the computed attribute (with legacy fallback inside the getter).
 	// modified by 4D/PS [2026-may-19]
-	$entry.setLBItemsColumn("categoryLabel"; "Category"; "width:180")
-	$entry.setLBItemsColumn("issuedDate"; "Issued"; "width:70"; "center")
+	$entry.setLBItemsColumn("categoryLabel"; "Category"; "width:150")
+	$entry.setLBItemsColumn("issuedDate"; "Issued"; "width:60"; "center")
 	
 	$entry.setMainViewLabel("Current Year CARs")
 	$entry.setSubset("thisYearCars")

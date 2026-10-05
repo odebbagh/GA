@@ -3,10 +3,12 @@ singleton Class constructor
 	
 Function _activate_save_cancel_button()
 	Form:C1466.current_item.UUID:=Form:C1466.current_item.UUID
+	Form:C1466.sfw.redrawButtons()
 	
 Function formMethod()
 	//This function manages the main logic for updating and refreshing the form
-	Form:C1466.sfw.panelFormMethod()  //The main body of the form method and basic sfw functionalities 
+	Form:C1466.sfw.panelFormMethod()  //The main body of the form method and basic sfw functionalities
+	OBJECT SET ENTERABLE:C238(*; "Field_qcarNumber"; False:C215) 
 	If (Form:C1466.sfw.updateOfPanelNeeded())  //The current item is changed or reloaded, so it's necessary ti refresh 
 	End if 
 	If (Form:C1466.sfw.recalculationOfPanelPageNeeded())  //a page is displayed so it's time to load the sources of data to display
@@ -23,7 +25,7 @@ Function formMethod()
 	cs:C1710.Util.me.lockDateInputs() 
 	
 	
-Function drawPup_XXX()
+	/* Function drawPup_XXX()
 	//This function updates the dropdown by displaying the name
 	Form:C1466.sfw.drawButtonPup("pup_xxx"; $xxxName; "xxxx.png"; (Form:C1466.current_item.xxxx=Null:C1517))
 	
@@ -33,7 +35,7 @@ Function pup_XXX()
 	If (Form:C1466.sfw.checkIsInModification())
 	End if 
 	This:C1470.drawPup_XXX()
-	
+	*/
 	
 Function redrawAndSetVisible()
 	//Adjusts the layout and visibility of form elements based on the current page and modification state
@@ -49,6 +51,11 @@ Function redrawAndSetVisible()
 	OBJECT SET ENTERABLE:C238(*; "EntryField@"; $inModification)
 	OBJECT SET ENABLED:C1123(*; "EntryField@"; $inModification)
 	OBJECT SET ENABLED:C1123(*; "pup_@"; $inModification)
+	OBJECT SET ENTERABLE:C238(*; "Field_qcarNumber"; False:C215)
+	OBJECT SET ENABLED:C1123(*; "Field_qcarNumber"; False:C215)
+	OBJECT SET ENTERABLE:C238(*; "Field_customer"; False:C215)
+	OBJECT SET ENTERABLE:C238(*; "Field_device"; False:C215)
+	OBJECT SET ENTERABLE:C238(*; "Field_lot.poNumber"; False:C215)
 	cs:C1710.Util.me.lockDateInputs()
 	
 	This:C1470.qcarManage()
@@ -78,10 +85,13 @@ Function redrawAndSetVisible()
 		
 		$hasAuthorizedProfile:=cs:C1710.sfw_userManager.me.authorizedProfiles.find(Formula:C1597((Value type:C1509($1.value)=Is text:K8:3) && ($approverProfile.indexOf($1.value)#-1)))#Null:C1517
 		
+		OBJECT SET ENTERABLE:C238(*; "entryField_issuedTo"; $hasAuthorizedProfile)
 		OBJECT SET ENABLED:C1123(*; "entryField_issuedTo"; $hasAuthorizedProfile)
-		OBJECT SET ENABLED:C1123(*; "entryField_issuedBy"; $hasAuthorizedProfile)
+		OBJECT SET ENTERABLE:C238(*; "EntryField_issuedBy"; $hasAuthorizedProfile)
+		OBJECT SET ENABLED:C1123(*; "EntryField_issuedBy"; $hasAuthorizedProfile)
 		OBJECT SET ENABLED:C1123(*; "entryField_issuedDate"; $hasAuthorizedProfile)
 		OBJECT SET ENABLED:C1123(*; "entryField_verifiedDate"; $hasAuthorizedProfile)
+		OBJECT SET ENTERABLE:C238(*; "entryField_verifiedBy"; $hasAuthorizedProfile)
 		OBJECT SET ENABLED:C1123(*; "entryField_verifiedBy"; $hasAuthorizedProfile)
 		OBJECT SET ENABLED:C1123(*; "entryField_verified"; $hasAuthorizedProfile)
 		
@@ -130,7 +140,7 @@ Function selectCustomer()
 	If (Form:C1466.sfw.checkIsInModification())
 		Case of 
 			: (FORM Event:C1606.code=On Getting Focus:K2:7) | (FORM Event:C1606.code=On Clicked:K2:4)
-				OBJECT GET COORDINATES:C663(*; "entryField_customerName"; $l; $t; $r; $b)
+				OBJECT GET COORDINATES:C663(*; "Field_customer"; $l; $t; $r; $b)
 				CONVERT COORDINATES:C1365($l; $b; XY Current form:K27:5; XY Screen:K27:7)
 				
 				$form:=New object:C1471(\
@@ -182,6 +192,7 @@ Function selectTraveler()
 				If (ok=1)
 					
 					Form:C1466.current_item.UUID_Lot:=$form.item.UUID
+					Form:C1466.current_item.device:=String:C10($form.item.device)
 					$customer:=ds:C1482.Customer.query("name =:1"; Split string:C1554($form.item.customer; "\r"; sk trim spaces:K86:2).join("\r"))
 					If ($customer.length>0)
 						Form:C1466.current_item.UUID_Customer:=$customer[0].UUID
@@ -214,8 +225,34 @@ Function verifyQcar()
 		If (Form:C1466.current_item.verified)
 			Form:C1466.current_item.verifiedBy:=cs:C1710.sfw_userManager.me.info.name
 			Form:C1466.current_item.verifiedDate:=Current date:C33()
+		Else 
+			Form:C1466.current_item.verifiedBy:=""
+			Form:C1466.current_item.verifiedDate:=!00-00-00!
 		End if 
+		This:C1470._activate_save_cancel_button()
 	End if 
+	
+	
+	/* Purpose: Staff picker for Issued By / Verified By — unused; those fields are free text like GoldenAltos.
+	   created by 4D/PS [2026-october-05]
+	Function pickStaffAttribute($attribute : Text)
+	var $l; $t; $r; $b : Integer
+	var $name : Text
+	
+	If (Not:C34(Form:C1466.sfw.checkIsInModification())) || (Form:C1466.current_item=Null:C1517) || ($attribute="")
+		return 
+	End if 
+	If (FORM Event:C1606.code#On Clicked:K2:4) && (FORM Event:C1606.code#On Getting Focus:K2:7)
+		return 
+	End if 
+	
+	OBJECT GET COORDINATES:C663(*; FORM Event:C1606.objectName; $l; $t; $r; $b)
+	CONVERT COORDINATES:C1365($l; $b; XY Current form:K27:5; XY Main window:K27:8)
+	$name:=_ga_pickStaffName($l; $b; String:C10(Form:C1466.current_item[$attribute]))
+	If (OK=1)
+		Form:C1466.current_item[$attribute]:=$name
+		This:C1470._activate_save_cancel_button()
+	End if */
 	
 Function manageExternal()
 	OBJECT SET VISIBLE:C603(*; "label_externalParty"; Not:C34(Form:C1466.current_item.internal))
@@ -271,13 +308,7 @@ Function bActionManageDocuments()
 				
 			End if 
 		: ($choose="--view")
-			If (BLOB size:C605(Form:C1466.selectedDocument.blob)>0)
-				$path:=Temporary folder:C486+Form:C1466.selectedDocument.name+Form:C1466.selectedDocument.extension
-				
-				BLOB TO DOCUMENT:C526($path; Form:C1466.selectedDocument.blob)
-				
-				OPEN URL:C673($path)
-			End if 
+			This:C1470.viewSelectedObjectiveEvidence() 
 		: ($choose="--delete")
 			$ok:=cs:C1710.sfw_dialog.me.confirm("Are you sure ?")
 			If ($ok)
@@ -289,6 +320,23 @@ Function bActionManageDocuments()
 				End if 
 			End if 
 	End case 
+	
+	
+Function lb_documents()
+	If (FORM Event:C1606.code=On Double Clicked:K2:5)
+		This:C1470.viewSelectedObjectiveEvidence()
+	End if 
+	
+	
+Function viewSelectedObjectiveEvidence()
+	If (Form:C1466.selectedDocument=Null:C1517)
+		return 
+	End if 
+	If (BLOB size:C605(Form:C1466.selectedDocument.blob)>0)
+		$path:=Temporary folder:C486+Form:C1466.selectedDocument.name+Form:C1466.selectedDocument.extension
+		BLOB TO DOCUMENT:C526($path; Form:C1466.selectedDocument.blob)
+		OPEN URL:C673($path)
+	End if 
 	
 	
 	// Purpose: Draws the reject-criteria pop-up button. Label is the item name when a sub-level is selected,

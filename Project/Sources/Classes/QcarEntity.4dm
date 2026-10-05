@@ -5,19 +5,18 @@ Class extends Entity
 
 local Function loadAfterCreation()
 	// Purpose: Assign a unique barcode in moreData for scanner lookup on new records.
-	// modified by 4D/PS [2026-june-29]
-	This:C1470.moreData.barcodeData:=String:C10(cs:C1710.Util_ScannerManager.me.getBarcodeData(Form:C1466.sfw.entry.dataclass); "0000000000")
-	// This callback is called after creating the new item but before displaying the panel.
+	// modified by 4D/PS [2026-oct-05]
 	var $maxNumber : Integer
 	
+	If (This:C1470.moreData=Null:C1517)
+		This:C1470.moreData:=New object:C1471
+	End if 
+	This:C1470.moreData.barcodeData:=String:C10(cs:C1710.Util_ScannerManager.me.getBarcodeData(Form:C1466.sfw.entry.dataclass); "0000000000")
 	// Purpose: Safe first CAR number when the table is empty; initialize 8D report and externalParty storage.
 	// modified by 4D/PS [2026-june-08]
 	$maxNumber:=ds:C1482.Qcar.all().max("qcarNumber")
 	This:C1470.qcarNumber:=($maxNumber>0) ? ($maxNumber+1) : 1
 	This:C1470._initCorrectiveActionReport()
-	If (This:C1470.moreData=Null:C1517)
-		This:C1470.moreData:=New object:C1471
-	End if 
 	If (Not:C34(OB Is defined:C1231(This:C1470.moreData; "externalParty")))
 		This:C1470.moreData.externalParty:=""
 	End if 
@@ -63,9 +62,30 @@ Function set externalParty($value : Text)
 	This:C1470.moreData.externalParty:=$value
 	
 	
+	// Purpose: Show the linked customer; fall back to the traveler's customer text for older CARs.
+	// created by 4D/PS [2026-oct-05]
+Function get customerDisplay()->$name : Text
+	If (This:C1470.customer#Null:C1517)
+		$name:=String:C10(This:C1470.customer.name)
+	Else 
+		If (This:C1470.lot#Null:C1517)
+			$name:=String:C10(This:C1470.lot.customer)
+		End if 
+	End if 
+	
+	
+	// Purpose: Prefer the stored CAR device; fall back to the traveler device for older records.
+	// created by 4D/PS [2026-oct-05]
+Function get deviceDisplay()->$device : Text
+	$device:=String:C10(This:C1470.device)
+	If ($device="") && (This:C1470.lot#Null:C1517)
+		$device:=String:C10(This:C1470.lot.device)
+	End if
+	
+	
 local Function _initCorrectiveActionReport()
 	This:C1470.correctiveActionReport:=New object:C1471(\
-		"teamLearders"; ""; \
+		"teamLeaders"; ""; \
 		"supervisor"; ""; \
 		"teamMembers"; ""; \
 		"d2"; ""; \
@@ -90,10 +110,32 @@ local Function _initCorrectiveActionReport()
 		)
 	
 	
+	// Purpose: Prefer teamLeaders; keep reading the old teamLearders key on existing CARs.
+	// created by 4D/PS [2026-oct-05]
+Function teamLeaderName()->$name : Text
+	var $car : Object
+	$car:=This:C1470.correctiveActionReport
+	If ($car=Null:C1517)
+		return 
+	End if 
+	$name:=String:C10($car.teamLeaders)
+	If ($name="")
+		$name:=String:C10($car.teamLearders)
+	End if
+	
+	
 local Function get closedDate()->$date : Date
 	$date:=This:C1470.closedStmp=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.closedStmp; True:C214)
 	
 local Function set closedDate($date : Date)
+	This:C1470.closedStmp:=$date=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($date)
+	
+	// Purpose: Form and print still use actualCloseDate; persist it on closedStmp like closedDate.
+	// created by 4D/PS [2026-oct-05]
+local Function get actualCloseDate()->$date : Date
+	$date:=This:C1470.closedStmp=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.closedStmp; True:C214)
+	
+local Function set actualCloseDate($date : Date)
 	This:C1470.closedStmp:=$date=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($date)
 	
 local Function get verifiedDate()->$date : Date

@@ -1,8 +1,41 @@
-// Purpose: Staff dropdown (same people as _ga_staffsAsTeamMember). Single choice; returns fullName. OK=1 if a name was chosen.
+// Purpose: Staff picker (same people as _ga_staffsAsTeamMember). Single choice; returns fullName. OK=1 if a name was chosen.
 // created by 4D/PS [2026-oct-02]
+// Purpose: Use the short searchable selectNto1 listbox instead of a full-screen popup menu.
+// modified by 4D/PS [2026-october-05]
 #DECLARE($left : Integer; $bottom : Integer; $currentName : Text)->$fullName : Text
 
-var $menu : Text
+var $staffs : Collection
+var $staff : cs:C1710.StaffEntity
+var $form : Object
+var $winRef : Integer
+var $row : Object
+
+$staffs:=New collection:C1472
+For each ($staff; ds:C1482.Staff.all().orderBy("lastName, firstName"))
+	$row:=New object:C1471("fullName"; $staff.fullName; "role"; String:C10($staff.role))
+	$staffs.push($row)
+End for each 
+
+$form:=New object:C1471(\
+	"colName"; "fullName"; \
+	"lb_items"; $staffs; \
+	"allData"; $staffs; \
+	"dataclass"; "Staff"; \
+	"words"; ""\
+	)
+
+$winRef:=Open form window:C675("selectNto1"; Pop up form window:K39:11; $left; $bottom+1)
+DIALOG:C40("selectNto1"; $form)
+CLOSE WINDOW:C154($winRef)
+
+If (OK=1) && ($form.item#Null:C1517)
+	$fullName:=String:C10($form.item.fullName)
+Else 
+	$fullName:=$currentName
+	OK:=0
+End if 
+
+/* var $menu : Text
 var $staff : cs:C1710.StaffEntity
 var $label; $choose : Text
 
@@ -28,4 +61,4 @@ If ($choose="")
 Else 
 	$fullName:=$choose
 	OK:=1
-End if 
+End if */
