@@ -15,7 +15,10 @@ If (OK=1)
 	$header:="Ref #"+$separator_col+\
 		"Name"+$separator_col+\
 		"Duration"+$separator_col+\
-		"One Time"
+		"One Time"+$separator_col+\
+		"Quarterly"+$separator_col+\
+		"Half Year"+$separator_col+\
+		"Annually"
 	
 	$data.push($header)
 	
@@ -25,7 +28,10 @@ If (OK=1)
 		$line:=String:C10($certification_e.ref)+$separator_col+\
 			$certification_e.name+$separator_col+\
 			String:C10($certification_e.duration)+$separator_col+\
-			String:C10($certification_e.oneTime)
+			Choose:C955($certification_e.oneTime; "true"; "false")+$separator_col+\
+			Choose:C955($certification_e.retrainQuarterly; "true"; "false")+$separator_col+\
+			Choose:C955($certification_e.retrainHalfYear; "true"; "false")+$separator_col+\
+			Choose:C955($certification_e.retrainAnnually; "true"; "false")
 		
 		$data.push($line)
 	End for each 

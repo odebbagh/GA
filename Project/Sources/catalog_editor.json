@@ -354,10 +354,10 @@
 			"coordinates": {
 				"left": 2022.4692382812,
 				"top": 555.47967529297,
-				"width": 149.05078125,
-				"height": 448.33203125
+				"width": 152.05078125,
+				"height": 424.33209228516
 			},
-			"displayable_fields_count": 19,
+			"displayable_fields_count": 18,
 			"fields": {
 				"contactDetails": {
 					"position": 15
@@ -416,10 +416,10 @@
 			"coordinates": {
 				"left": 1771.3334960938,
 				"top": 597.66674804688,
-				"width": 194,
-				"height": 222.33203125
+				"width": 196,
+				"height": 189.33203125
 			},
-			"displayable_fields_count": 8
+			"displayable_fields_count": 7
 		},
 		"QuoteStatus": {
 			"color": {
