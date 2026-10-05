@@ -82,8 +82,7 @@ local Function loadAfterCreation()
 	This:C1470._initattachedDocuments()
 	
 local Function itemLoad()
-	// This callback is called when the item is selected in the itemList
-	This:C1470._initattachedDocuments()
+	
 	
 	
 local Function isDeletable()->$isDeletable : Boolean

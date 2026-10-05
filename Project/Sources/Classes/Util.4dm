@@ -73,6 +73,15 @@ Function btnDatePicker($object; $attribut)
 	End if 
 	
 	//End if 
+	
+	
+Function lockDateInputs()
+	OBJECT SET ENTERABLE:C238(*; "entryField_@Date@"; False:C215)
+	OBJECT SET ENTERABLE:C238(*; "EntryField_@Date@"; False:C215)
+	OBJECT SET ENTERABLE:C238(*; "Field_@Date@"; False:C215)
+	OBJECT SET ENTERABLE:C238(*; "entryField_@date@"; False:C215)
+	OBJECT SET ENTERABLE:C238(*; "Field_@date@"; False:C215)
+	
 Function firstLetterLowerCase($inText : Text)->$outText : Text
 	
 	If (Length:C16($inText)>0)

@@ -280,65 +280,68 @@
 					"fill": "transparent",
 					"borderStyle": "none"
 				},
-				"dp_openDate": {
-					"type": "subform",
+				"btnDatePickerOpen": {
+					"type": "button",
+					"text": " ",
 					"top": 12,
-					"left": 413,
-					"width": 19,
+					"left": 415,
+					"width": 17,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.openDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_openDate.4dm",
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerOpen.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
-				"dp_creationDate1": {
-					"type": "subform",
+				"btnDatePickerRevision": {
+					"type": "button",
+					"text": " ",
 					"top": 37,
-					"left": 611,
-					"width": 19,
+					"left": 613,
+					"width": 17,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.revisionDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_creationDate1.4dm",
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerRevision.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
-				"dp_targetCloseDate": {
-					"type": "subform",
+				"btnDatePickerTargetClose": {
+					"type": "button",
+					"text": " ",
 					"top": 37,
-					"left": 413,
-					"width": 19,
+					"left": 415,
+					"width": 17,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.targetCloseDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_targetCloseDate.4dm",
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerTargetClose.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
 				"entryField_rb_internal": {
 					"type": "radio",
@@ -410,25 +413,26 @@
 					"textAlign": "left",
 					"right": 955
 				},
-				"dp_actualCloseDate": {
-					"type": "subform",
-					"top": 36,
-					"left": 936,
-					"width": 19,
+				"btnDatePickerActualClose": {
+					"type": "button",
+					"text": " ",
+					"top": 37,
+					"left": 938,
+					"width": 17,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.actualCloseDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_actualCloseDate.4dm",
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerActualClose.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
 				"label_externalParty": {
 					"type": "text",
@@ -731,25 +735,26 @@
 					"dataSourceTypeHint": "date",
 					"dateFormat": "short"
 				},
-				"dp_issuedDate": {
-					"type": "subform",
+				"btnDatePickerIssued": {
+					"type": "button",
+					"text": " ",
 					"top": 241,
-					"left": 184,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.issuedDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_issuedDate.4dm",
+					"left": 186,
+					"width": 17,
+					"height": 17,
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerIssued.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
 				"label_hireDate1": {
 					"type": "text",
@@ -811,25 +816,26 @@
 					"dateFormat": "short blankIfNull",
 					"method": "ObjectMethods/entryField_verifiedDate.4dm"
 				},
-				"dp_verifiedDate": {
-					"type": "subform",
+				"btnDatePickerVerified": {
+					"type": "button",
+					"text": " ",
 					"top": 241,
-					"left": 461,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.verifiedDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_verifiedDate.4dm",
+					"left": 463,
+					"width": 17,
+					"height": 17,
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerVerified.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
 				"label_inactive1": {
 					"type": "text",
@@ -907,25 +913,26 @@
 					"dateFormat": "short blankIfNull",
 					"method": "ObjectMethods/entryField_submitDate.4dm"
 				},
-				"dp_submitDate": {
-					"type": "subform",
+				"btnDatePickerSubmit": {
+					"type": "button",
+					"text": " ",
 					"top": 241,
-					"left": 741,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.submitDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_submitDate.4dm",
+					"left": 743,
+					"width": 17,
+					"height": 17,
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerSubmit.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				}
 			}
 		},
@@ -1045,7 +1052,7 @@
 		}
 	],
 	"inheritedForm": "sfw_bkgd_header_4lines",
-	"geometryStamp": 2874,
+	"geometryStamp": 2881,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",

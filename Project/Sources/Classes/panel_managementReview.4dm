@@ -25,6 +25,7 @@ Function formMethod()
 	If (Form:C1466.sfw.redrawAndSetVisibleInPanelNeeded())  //It's time to resize the object or set visible
 		This:C1470.redrawAndSetVisible()
 	End if 
+	cs:C1710.Util.me.lockDateInputs() 
 	
 	
 Function drawPup_XXX()
@@ -77,6 +78,7 @@ Function redrawAndSetVisible()
 	
 	OBJECT SET VISIBLE:C603(*; "bUploadDocument"; Form:C1466.sfw.checkIsInModification())
 	OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; Form:C1466.sfw.checkIsInModification())
+	cs:C1710.Util.me.lockDateInputs()
 	
 	OBJECT GET SUBFORM CONTAINER SIZE:C1148($widthSubform; $heightSubform)
 	$offset:=4

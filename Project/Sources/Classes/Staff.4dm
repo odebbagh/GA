@@ -23,8 +23,8 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	
 	$entry.setLBItemsColumn("code"; "Code"; "width:50"; "center")
-	$entry.setLBItemsColumn("firstName"; "First Name"; "width:190")
-	$entry.setLBItemsColumn("lastName"; "Last Name"; "width:190")
+	$entry.setLBItemsColumn("firstName"; "First Name"; "width:150")
+	$entry.setLBItemsColumn("lastName"; "Last Name"; "width:150")
 	// Purpose: Expose Shift ("1"/"2") in the items list for quick scanning by floor managers.
 	// modified by 4D/PS [2026-may-21]
 	$entry.setLBItemsColumn("shift"; "Shift"; "width:50"; "center")

@@ -236,6 +236,7 @@ Function getRetrainMilestonesDueIn($days : Integer)->$due : Collection
 	var $today : Date
 	var $limit : Date
 	var $a : cs:C1710.CertificationAssignmentEntity
+	var $cert_e : cs:C1710.CertificationEntity
 	var $certDt : Date
 	var $offsets : Collection
 	var $offset : Integer
@@ -245,28 +246,42 @@ Function getRetrainMilestonesDueIn($days : Integer)->$due : Collection
 	$today:=Current date:C33()
 	$limit:=Add to date:C393($today; 0; 0; $days)
 	
+	If (This:C1470.assignments=Null:C1517)
+		return $due
+	End if 
+	
 	For each ($a; This:C1470.assignments)
-		If ($a.certification#Null:C1517) && ($a.certification.oneTime)
+		$cert_e:=$a.certification
+		If ($cert_e=Null:C1517) && ($a.UUID_Certification#"")
+			$cert_e:=ds:C1482.Certification.get($a.UUID_Certification)
+		End if 
+		If ($cert_e#Null:C1517) && ($cert_e.oneTime)
 			continue
 		End if 
 		If ($a.certificationStmp=0)
 			continue
 		End if 
 		$certDt:=$a.certificationDate
-		// Purpose: Run milestone math only when certification date is set (guard was inverted).
-		// modified by 4D/PS [2026-june-08]
-		If ($certDt#!00-00-00!)
-			$offsets:=$a.certification.retrainMilestoneDayOffsets()
-			For each ($offset; $offsets)
-				$milestoneDate:=Add to date:C393($certDt; 0; 0; $offset)
-				If ($milestoneDate>=$today) && ($milestoneDate<=$limit)
-					$due.push(New object:C1471(\
-						"assignment"; $a; \
-						"milestoneDays"; $offset; \
-						"milestoneDate"; $milestoneDate))
-				End if 
-			End for each 
+		If ($certDt=!00-00-00!)
+			continue
 		End if 
+		If ($cert_e#Null:C1517)
+			$offsets:=$cert_e.retrainMilestoneDayOffsets()
+		Else 
+			$offsets:=New collection:C1472(365)
+		End if 
+		If ($offsets=Null:C1517)
+			continue
+		End if 
+		For each ($offset; $offsets)
+			$milestoneDate:=Add to date:C393($certDt; 0; 0; $offset)
+			If ($milestoneDate>=$today) && ($milestoneDate<=$limit)
+				$due.push(New object:C1471(\
+					"assignment"; $a; \
+					"milestoneDays"; $offset; \
+					"milestoneDate"; $milestoneDate))
+			End if 
+		End for each 
 	End for each 
 	
 	
@@ -412,8 +427,30 @@ local Function set creationDate($date : Date)
 	
 	
 local Function itemLoad()
-	// This callback is called when the item is selected in the itemList
-	This:C1470._initCommunication()
+	
+	
+local Function itemReload()
+	// Purpose: After Accept/Cancel, drop Staff certification drafts and refresh the assignment list.
+	// created by 4D/PS [2026-oct-05]
+	If (Form:C1466.sfw#Null:C1517) && (String:C10(Form:C1466.sfw.entry.ident)="staff")
+		cs:C1710.panel_staff.me.discardPendingCertifications()
+		cs:C1710.panel_staff.me.loadAllTabs()
+	End if 
+	
+	
+local Function beforeSave()
+	// Purpose: Persist queued certification assignment changes only when the user accepts the Staff record.
+	// created by 4D/PS [2026-oct-05]
+	If (Form:C1466.sfw#Null:C1517) && (String:C10(Form:C1466.sfw.entry.ident)="staff")
+		cs:C1710.panel_staff.me.commitPendingCertifications()
+	End if 
+	
+	
+local Function beforeSaveCreation()
+	If (Form:C1466.sfw#Null:C1517) && (String:C10(Form:C1466.sfw.entry.ident)="staff")
+		cs:C1710.panel_staff.me.commitPendingCertifications()
+	End if 
+	
 	
 local Function afterCreation()
 	// This callback is called after saving the new item
@@ -426,5 +463,6 @@ local Function loadAfterCreation()
 	// This callback is called after creating the new item but before displaying the panel.
 	This:C1470.codeID:=ds:C1482.Staff.all().max("codeID")+1
 	This:C1470.code:=String:C10(This:C1470.codeID; "00000#")
+	This:C1470._initCommunication()
 	
 	

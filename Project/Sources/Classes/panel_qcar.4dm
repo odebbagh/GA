@@ -20,6 +20,7 @@ Function formMethod()
 	If (Form:C1466.sfw.redrawAndSetVisibleInPanelNeeded())  //It's time to resize the object or set visible
 		This:C1470.redrawAndSetVisible()
 	End if 
+	cs:C1710.Util.me.lockDateInputs() 
 	
 	
 Function drawPup_XXX()
@@ -48,6 +49,7 @@ Function redrawAndSetVisible()
 	OBJECT SET ENTERABLE:C238(*; "EntryField@"; $inModification)
 	OBJECT SET ENABLED:C1123(*; "EntryField@"; $inModification)
 	OBJECT SET ENABLED:C1123(*; "pup_@"; $inModification)
+	cs:C1710.Util.me.lockDateInputs()
 	
 	This:C1470.qcarManage()
 	This:C1470.hideDatePickers()
@@ -83,8 +85,8 @@ Function redrawAndSetVisible()
 		OBJECT SET ENABLED:C1123(*; "entryField_verifiedBy"; $hasAuthorizedProfile)
 		OBJECT SET ENABLED:C1123(*; "entryField_verified"; $hasAuthorizedProfile)
 		
-		OBJECT SET VISIBLE:C603(*; "dp_verifiedDate"; $hasAuthorizedProfile)
-		OBJECT SET VISIBLE:C603(*; "dp_issuedDate"; $hasAuthorizedProfile)
+		OBJECT SET VISIBLE:C603(*; "btnDatePickerVerified"; $hasAuthorizedProfile)
+		OBJECT SET VISIBLE:C603(*; "btnDatePickerIssued"; $hasAuthorizedProfile)
 		
 	End if 
 	
@@ -205,7 +207,7 @@ Function subFormEvent()
 	
 	
 Function hideDatePickers()
-	OBJECT SET VISIBLE:C603(*; "dp_@"; Form:C1466.sfw.checkIsInModification())
+	OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; Form:C1466.sfw.checkIsInModification())
 	
 Function verifyQcar()
 	If (Form:C1466.sfw.checkIsInModification())

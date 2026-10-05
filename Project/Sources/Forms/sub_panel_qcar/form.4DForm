@@ -850,125 +850,131 @@
 					"fontWeight": "normal",
 					"textAlign": "left"
 				},
-				"dp_d3TargetDate": {
-					"type": "subform",
+				"btnDatePickerD3Target": {
+					"type": "button",
+					"text": " ",
 					"top": 288,
 					"left": 785,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.correctiveActionReport.d3TargetDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_d3TargetDate.4dm",
+					"width": 17,
+					"height": 17,
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerD3Target.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
-				"dp_d3ActualDate": {
-					"type": "subform",
+				"btnDatePickerD3Actual": {
+					"type": "button",
+					"text": " ",
 					"top": 288,
 					"left": 869,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.correctiveActionReport.d3ActualDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_d3ActualDate.4dm",
+					"width": 17,
+					"height": 17,
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerD3Actual.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
-				"dp_d6TargetDate": {
-					"type": "subform",
+				"btnDatePickerD6Target": {
+					"type": "button",
+					"text": " ",
 					"top": 826,
 					"left": 785,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.correctiveActionReport.d6TargetDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_d6TargetDate.4dm",
+					"width": 17,
+					"height": 17,
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerD6Target.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
-				"dp_d6ActualDate": {
-					"type": "subform",
+				"btnDatePickerD6Actual": {
+					"type": "button",
+					"text": " ",
 					"top": 826,
 					"left": 869,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.correctiveActionReport.d6ActualDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_d6ActualDate.4dm",
+					"width": 17,
+					"height": 17,
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerD6Actual.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
-				"dp_d7TargetDate": {
-					"type": "subform",
+				"btnDatePickerD7Target": {
+					"type": "button",
+					"text": " ",
 					"top": 972,
 					"left": 785,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.correctiveActionReport.d7TargetDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_d7TargetDate.4dm",
+					"width": 17,
+					"height": 17,
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerD7Target.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
-				"dp_d7ActualDate": {
-					"type": "subform",
+				"btnDatePickerD7Actual": {
+					"type": "button",
+					"text": " ",
 					"top": 972,
 					"left": 869,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.correctiveActionReport.d7ActualDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_d7ActualDate.4dm",
+					"width": 17,
+					"height": 17,
 					"events": [
-						"onLoad"
+						"onClick",
+						"onDoubleClick"
 					],
-					"focusable": true
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerD7Actual.4dm",
+					"visibility": "visible",
+					"iconFrames": 1,
+					"focusable": false,
+					"dataSource": ""
 				},
 				"lb_teamMembers1": {
 					"type": "listbox",

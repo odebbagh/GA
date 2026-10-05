@@ -30,6 +30,7 @@ Function formMethod()
 	// Purpose: Require supplier company when audit type is External (no conditional rule in setValidationRule).
 	// modified by 4D/PS [2026-may-26]
 	This:C1470.applyConditionalValidationRules()
+	cs:C1710.Util.me.lockDateInputs()
 	
 	
 Function applyConditionalValidationRules()
@@ -110,6 +111,7 @@ Function redrawAndSetVisible()
 	OBJECT SET VISIBLE:C603(*; "bUploadDocument"; Form:C1466.sfw.checkIsInModification())
 	OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; Form:C1466.sfw.checkIsInModification())
 	OBJECT SET VISIBLE:C603(*; "btnTimePick@"; Form:C1466.sfw.checkIsInModification())
+	cs:C1710.Util.me.lockDateInputs()
 	OBJECT SET VISIBLE:C603(*; "@_company"; (Form:C1466.current_item.type="External"))
 	
 	OBJECT SET ENABLED:C1123(*; "entryField_rb_@"; Form:C1466.sfw.checkIsInModification())

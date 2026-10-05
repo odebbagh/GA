@@ -23,6 +23,7 @@ Function formMethod()
 	If (Form:C1466.sfw.redrawAndSetVisibleInPanelNeeded())  //It's time to resize the object or set visible
 		This:C1470.redrawAndSetVisible()
 	End if 
+	cs:C1710.Util.me.lockDateInputs() 
 	
 	
 Function redrawAndSetVisible()
@@ -55,6 +56,7 @@ Function redrawAndSetVisible()
 		OBJECT SET ENTERABLE:C238(*; "entryField_action"; Form:C1466.sfw.checkIsInModification())
 	End if 
 	OBJECT SET ENTERABLE:C238(*; "entryField_item"; False:C215)
+	cs:C1710.Util.me.lockDateInputs()
 	
 Function drawPup_priority()
 	If (Form:C1466.current_item#Null:C1517)

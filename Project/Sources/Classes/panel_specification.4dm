@@ -29,6 +29,7 @@ Function formMethod()
 	If (Form:C1466.sfw.redrawAndSetVisibleInPanelNeeded())  //It's time to resize the object or set visible
 		This:C1470.redrawAndSetVisible()
 	End if 
+	cs:C1710.Util.me.lockDateInputs() 
 	
 	
 Function drawPup_XXX()
@@ -58,6 +59,7 @@ Function redrawAndSetVisible()
 			
 	End case 
 	OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; Form:C1466.sfw.checkIsInModification())
+	cs:C1710.Util.me.lockDateInputs()
 	OBJECT SET VISIBLE:C603(*; "bSpecView"; Not:C34(Form:C1466.sfw.checkIsInModification()))
 	OBJECT SET VISIBLE:C603(*; "bSpecEdit"; Form:C1466.sfw.checkIsInModification())
 	
@@ -90,10 +92,23 @@ Function LoadAllTabs()
 	
 Function loadDocuments()
 	
+	Form:C1466.lb_documents:=New collection:C1472()
 	If (Form:C1466.current_item#Null:C1517)
-		
-		Form:C1466.lb_documents:=Form:C1466.current_item.documents.documentsCollection.map(Formula:C1597(_ga_getDateTime))
-		
+		If (Form:C1466.current_item.documents#Null:C1517) && (Form:C1466.current_item.documents.documentsCollection#Null:C1517)
+			Form:C1466.lb_documents:=Form:C1466.current_item.documents.documentsCollection.map(Formula:C1597(_ga_getDateTime))
+		End if 
+	End if 
+	
+	
+Function _ensureDocuments()
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	If (Form:C1466.current_item.documents=Null:C1517)
+		Form:C1466.current_item.documents:=New object:C1471
+	End if 
+	If (Form:C1466.current_item.documents.documentsCollection=Null:C1517)
+		Form:C1466.current_item.documents.documentsCollection:=New collection:C1472()
 	End if 
 	
 	
@@ -173,6 +188,7 @@ Function bActionDocument()
 				$buffer.stmp:=cs:C1710.sfw_stmp.me.now()
 				Form:C1466.bufferOfEvents.push($buffer)
 				
+				This:C1470._ensureDocuments()
 				Form:C1466.current_item.documents.documentsCollection.push($form.details)
 				cs:C1710.panel_specification.me._activate_save_cancel_button()
 			End if 
