@@ -40,15 +40,16 @@
 					"width": 65,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Customer"
+					"text": "Customer",
+					"textAlign": "right"
 				},
-				"Field_customer1": {
+				"Field_customer": {
 					"type": "input",
 					"top": 62,
 					"left": 82,
 					"width": 110,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.lot.customer",
+					"dataSource": "Form:C1466.current_item.customerDisplay",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
@@ -58,7 +59,7 @@
 					],
 					"fill": "transparent",
 					"borderStyle": "none",
-					"method": "ObjectMethods/Field_customer1.4dm"
+					"method": "ObjectMethods/Field_customer.4dm"
 				},
 				"label_poNumber": {
 					"type": "text",
@@ -67,7 +68,8 @@
 					"width": 65,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "PO #"
+					"text": "PO #",
+					"textAlign": "right"
 				},
 				"Field_lot.poNumber": {
 					"type": "input",
@@ -93,24 +95,26 @@
 					"width": 65,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Traveler #"
+					"text": "Traveler #",
+					"textAlign": "right"
 				},
 				"label_device": {
 					"type": "text",
-					"top": 9,
-					"left": 444,
+					"top": 10,
+					"left": 408,
 					"width": 75,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Device"
+					"text": "Device",
+					"textAlign": "right"
 				},
 				"Field_device": {
 					"type": "input",
-					"top": 9,
-					"left": 520,
-					"width": 110,
+					"top": 10,
+					"left": 484,
+					"width": 100,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.lot.device",
+					"dataSource": "Form:C1466.current_item.deviceDisplay",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
@@ -128,13 +132,14 @@
 					"width": 95,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Date Open"
+					"text": "Date Open",
+					"textAlign": "right"
 				},
 				"Field_openDate": {
 					"type": "input",
 					"top": 12,
 					"left": 322,
-					"width": 110,
+					"width": 80,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.openDate",
 					"focusable": false,
@@ -149,18 +154,19 @@
 				},
 				"label_0_6": {
 					"type": "text",
-					"top": 37,
-					"left": 444,
+					"top": 38,
+					"left": 408,
 					"width": 75,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Revision Date"
+					"text": "Revision Date",
+					"textAlign": "right"
 				},
 				"Field_0_6": {
 					"type": "input",
-					"top": 37,
-					"left": 520,
-					"width": 110,
+					"top": 38,
+					"left": 484,
+					"width": 80,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.revisionDate",
 					"focusable": false,
@@ -180,13 +186,14 @@
 					"width": 95,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Target Close Date"
+					"text": "Target Close Date",
+					"textAlign": "right"
 				},
 				"Field_targetCloseDate": {
 					"type": "input",
 					"top": 37,
 					"left": 322,
-					"width": 110,
+					"width": 80,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.targetCloseDate",
 					"focusable": false,
@@ -206,13 +213,14 @@
 					"width": 95,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Initial Response"
+					"text": "Initial Response",
+					"textAlign": "right"
 				},
 				"entryField_initialResponse": {
 					"type": "input",
 					"top": 62,
 					"left": 322,
-					"width": 310,
+					"width": 262,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.initialResponse",
 					"focusable": false,
@@ -224,12 +232,12 @@
 					],
 					"fill": "transparent",
 					"borderStyle": "none",
-					"right": 632
+					"right": 584
 				},
 				"label_originator": {
 					"type": "text",
 					"top": 12,
-					"left": 653,
+					"left": 591,
 					"width": 95,
 					"height": 17,
 					"stroke": "#808080",
@@ -239,7 +247,7 @@
 				"entryField_initiator8D": {
 					"type": "input",
 					"top": 12,
-					"left": 753,
+					"left": 691,
 					"width": 202,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.initiator8D",
@@ -256,7 +264,7 @@
 				"label_0_10": {
 					"type": "text",
 					"top": 37,
-					"left": 653,
+					"left": 591,
 					"width": 95,
 					"height": 17,
 					"stroke": "#808080",
@@ -266,8 +274,8 @@
 				"Field_actualCloseDate": {
 					"type": "input",
 					"top": 37,
-					"left": 753,
-					"width": 202,
+					"left": 691,
+					"width": 80,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.actualCloseDate",
 					"focusable": false,
@@ -284,7 +292,7 @@
 					"type": "button",
 					"text": " ",
 					"top": 12,
-					"left": 415,
+					"left": 385,
 					"width": 17,
 					"height": 17,
 					"events": [
@@ -304,8 +312,8 @@
 				"btnDatePickerRevision": {
 					"type": "button",
 					"text": " ",
-					"top": 37,
-					"left": 613,
+					"top": 38,
+					"left": 547,
 					"width": 17,
 					"height": 17,
 					"events": [
@@ -326,7 +334,7 @@
 					"type": "button",
 					"text": " ",
 					"top": 37,
-					"left": 415,
+					"left": 385,
 					"width": 17,
 					"height": 17,
 					"events": [
@@ -346,8 +354,8 @@
 				"entryField_rb_internal": {
 					"type": "radio",
 					"text": "Internal",
-					"top": 115,
-					"left": 408,
+					"top": 114,
+					"left": 322,
 					"width": 60,
 					"height": 17,
 					"events": [
@@ -360,8 +368,8 @@
 				"entryField_rb_notInternal": {
 					"type": "radio",
 					"text": "External",
-					"top": 115,
-					"left": 550,
+					"top": 114,
+					"left": 464,
 					"width": 60,
 					"height": 17,
 					"events": [
@@ -373,8 +381,8 @@
 				},
 				"label_device1": {
 					"type": "text",
-					"top": 115,
-					"left": 498,
+					"top": 114,
+					"left": 412,
 					"width": 20,
 					"height": 17,
 					"stroke": "#808080",
@@ -385,7 +393,7 @@
 				"label_device2": {
 					"type": "text",
 					"top": 62,
-					"left": 653,
+					"left": 591,
 					"width": 95,
 					"height": 17,
 					"stroke": "#808080",
@@ -395,7 +403,7 @@
 				"pup_rejectCategory": {
 					"type": "button",
 					"top": 57,
-					"left": 753,
+					"left": 691,
 					"width": 202,
 					"height": 22,
 					"fontFamily": "System Font",
@@ -411,13 +419,13 @@
 						"onClick"
 					],
 					"textAlign": "left",
-					"right": 955
+					"right": 893
 				},
 				"btnDatePickerActualClose": {
 					"type": "button",
 					"text": " ",
 					"top": 37,
-					"left": 938,
+					"left": 754,
 					"width": 17,
 					"height": 17,
 					"events": [
@@ -437,7 +445,7 @@
 				"label_externalParty": {
 					"type": "text",
 					"top": 87,
-					"left": 653,
+					"left": 591,
 					"width": 95,
 					"height": 17,
 					"stroke": "#808080",
@@ -447,7 +455,7 @@
 				"EntryField_externalParty": {
 					"type": "input",
 					"top": 90,
-					"left": 753,
+					"left": 691,
 					"width": 202,
 					"height": 48,
 					"dataSource": "Form:C1466.current_item.externalParty",
@@ -460,7 +468,7 @@
 					],
 					"fill": "transparent",
 					"borderStyle": "none",
-					"right": 955
+					"right": 893
 				},
 				"entryField_otherOriginChecked": {
 					"type": "checkbox",
@@ -480,7 +488,7 @@
 					"type": "button",
 					"top": 87,
 					"left": 322,
-					"width": 288,
+					"width": 262,
 					"height": 22,
 					"fontFamily": "System Font",
 					"fontSize": 13,
@@ -494,7 +502,8 @@
 					"events": [
 						"onClick"
 					],
-					"textAlign": "left"
+					"textAlign": "left",
+					"right": 584
 				},
 				"pup_traveler": {
 					"type": "button",
@@ -564,9 +573,10 @@
 					"width": 65,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "CAR #"
+					"text": "CAR #",
+					"textAlign": "right"
 				},
-				"Field_qcarNumber1": {
+				"Field_qcarNumber": {
 					"type": "input",
 					"top": 87,
 					"left": 82,
@@ -621,15 +631,6 @@
 					"stroke": "transparent",
 					"right": 905
 				},
-				"label_inactive": {
-					"type": "text",
-					"top": 191,
-					"left": 296,
-					"width": 50,
-					"height": 17,
-					"stroke": "#808080",
-					"text": "Verified"
-				},
 				"label_0_16": {
 					"type": "text",
 					"top": 191,
@@ -651,13 +652,11 @@
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
-						"onClick"
+						"onDataChange"
 					],
 					"fill": "transparent",
 					"borderStyle": "none",
 					"sizingX": "grow",
-					"dataSourceTypeHint": "date",
-					"dateFormat": "short blankIfNull",
 					"method": "ObjectMethods/EntryField_issuedBy.4dm"
 				},
 				"entryField_verified": {
@@ -696,13 +695,11 @@
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
-						"onClick"
+						"onDataChange"
 					],
 					"fill": "transparent",
 					"borderStyle": "none",
 					"sizingX": "grow",
-					"dataSourceTypeHint": "date",
-					"dateFormat": "short blankIfNull",
 					"method": "ObjectMethods/entryField_issuedTo.4dm"
 				},
 				"label_retrainDate": {
@@ -731,7 +728,6 @@
 					"fill": "transparent",
 					"borderStyle": "none",
 					"sizingX": "grow",
-					"method": "ObjectMethods/entryField_issuedDate.4dm",
 					"dataSourceTypeHint": "date",
 					"dateFormat": "short"
 				},
@@ -777,13 +773,11 @@
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
-						"onClick"
+						"onDataChange"
 					],
 					"fill": "transparent",
 					"borderStyle": "none",
 					"sizingX": "grow",
-					"dataSourceTypeHint": "date",
-					"dateFormat": "short blankIfNull",
 					"method": "ObjectMethods/entryField_verifiedBy.4dm"
 				},
 				"label_hireDate2": {
@@ -813,8 +807,7 @@
 					"borderStyle": "none",
 					"sizingX": "grow",
 					"dataSourceTypeHint": "date",
-					"dateFormat": "short blankIfNull",
-					"method": "ObjectMethods/entryField_verifiedDate.4dm"
+					"dateFormat": "short blankIfNull"
 				},
 				"btnDatePickerVerified": {
 					"type": "button",
@@ -910,8 +903,7 @@
 					"borderStyle": "none",
 					"sizingX": "grow",
 					"dataSourceTypeHint": "date",
-					"dateFormat": "short blankIfNull",
-					"method": "ObjectMethods/entryField_submitDate.4dm"
+					"dateFormat": "short blankIfNull"
 				},
 				"btnDatePickerSubmit": {
 					"type": "button",
@@ -966,7 +958,7 @@
 					"right": 100,
 					"bottom": 592
 				},
-				"lb_documents1": {
+				"lb_documents": {
 					"type": "listbox",
 					"top": 151,
 					"left": 102,
@@ -984,8 +976,10 @@
 					"horizontalLineStroke": "#c0c0c0",
 					"verticalLineStroke": "#C0C0C0",
 					"events": [
-						"onClick"
+						"onClick",
+						"onDoubleClick"
 					],
+					"method": "ObjectMethods/lb_documents.4dm",
 					"fill": "automatic",
 					"alternateFill": "#F7F9FC",
 					"selectionMode": "single",
@@ -1029,7 +1023,7 @@
 					"fontWeight": "bold",
 					"right": 96
 				},
-				"bActionManageDocuments1": {
+				"bActionManageDocuments": {
 					"type": "button",
 					"text": "Actions",
 					"top": 567,
@@ -1043,7 +1037,7 @@
 					"popupPlacement": "linked",
 					"icon": "/RESOURCES/sfw/image/picto/gear.png",
 					"textPlacement": "right",
-					"method": "ObjectMethods/bActionManageDocuments1.4dm",
+					"method": "ObjectMethods/bActionManageDocuments.4dm",
 					"visibility": "visible",
 					"sizingX": "fixed",
 					"sizingY": "fixed"
@@ -1052,7 +1046,7 @@
 		}
 	],
 	"inheritedForm": "sfw_bkgd_header_4lines",
-	"geometryStamp": 2881,
+	"geometryStamp": 2900,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",

@@ -112,6 +112,24 @@
 					"fontSize": 12,
 					"fontWeight": "bold"
 				},
+				"entryField_d2": {
+					"type": "input",
+					"top": 43,
+					"left": 490,
+					"width": 394,
+					"height": 194,
+					"dataSource": "Form:C1466.correctiveActionReport.d2",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"multiline": true
+				},
 				"label_0_17": {
 					"type": "text",
 					"top": 43,
@@ -119,9 +137,9 @@
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Team Learders"
+					"text": "Team Leader"
 				},
-				"pup_teamLearders": {
+				"pup_teamLeaders": {
 					"type": "button",
 					"top": 41,
 					"left": 96,
@@ -138,7 +156,7 @@
 					"events": [
 						"onClick"
 					],
-					"method": "ObjectMethods/pup_teamLearders.4dm",
+					"method": "ObjectMethods/pup_teamLeaders.4dm",
 					"right": 466
 				},
 				"label_0_21": {
@@ -369,7 +387,7 @@
 					"width": 870,
 					"height": 17,
 					"stroke": "#000000",
-					"text": "D5 Permenant Corrective Action(s) (PCA):",
+					"text": "D5 Permanent Corrective Action(s) (PCA):",
 					"fontSize": 12,
 					"fontWeight": "bold"
 				},
@@ -421,7 +439,7 @@
 					"width": 650,
 					"height": 15,
 					"stroke": "#000000",
-					"text": "D6 Implement and Validate Permentant Corrective Action(s) (PCA):",
+					"text": "D6 Implement and Validate Permanent Corrective Action(s) (PCA):",
 					"fontSize": 12,
 					"fontWeight": "bold"
 				},
@@ -553,7 +571,7 @@
 					"width": 710,
 					"height": 30,
 					"stroke": "#000000",
-					"text": "D7 System Prevention Actions to Prevent Reoccurence:\rMistake Proofing:",
+					"text": "D7 System Prevention Actions to Prevent Recurrence:\rMistake Proofing:",
 					"fontSize": 12,
 					"fontWeight": "bold"
 				},
@@ -976,7 +994,7 @@
 					"focusable": false,
 					"dataSource": ""
 				},
-				"lb_teamMembers1": {
+				"lb_teamMembers": {
 					"type": "listbox",
 					"left": 96,
 					"top": 91,

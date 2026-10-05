@@ -20,12 +20,18 @@ If (Form:C1466#Null:C1517)
 		cs:C1710.Util.me.lockDateInputs()
 		OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; $isInModification)
 		OBJECT SET ENABLED:C1123(*; "bActionTeam"; $isInModification)
-		OBJECT SET ENABLED:C1123(*; "pup_teamLearders"; $isInModification)
+		OBJECT SET ENABLED:C1123(*; "pup_teamLeaders"; $isInModification)
 		OBJECT SET ENABLED:C1123(*; "pup_supervisor"; $isInModification)
 		
-		$leader:=(Form:C1466.correctiveActionReport#Null:C1517) ? String:C10(Form:C1466.correctiveActionReport.teamLearders) : ""
+		$leader:=""
+		If (Form:C1466.correctiveActionReport#Null:C1517)
+			$leader:=String:C10(Form:C1466.correctiveActionReport.teamLeaders)
+			If ($leader="")
+				$leader:=String:C10(Form:C1466.correctiveActionReport.teamLearders)
+			End if 
+		End if 
 		$supervisor:=(Form:C1466.correctiveActionReport#Null:C1517) ? String:C10(Form:C1466.correctiveActionReport.supervisor) : ""
-		OBJECT SET TITLE:C194(*; "pup_teamLearders"; $leader)
+		OBJECT SET TITLE:C194(*; "pup_teamLeaders"; $leader)
 		OBJECT SET TITLE:C194(*; "pup_supervisor"; $supervisor)
 		
 		Form:C1466.lb_teamMembers:=New collection:C1472()
