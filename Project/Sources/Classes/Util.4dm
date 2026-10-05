@@ -30,6 +30,11 @@ Function cacheLoad()
 			Storage:C1525.cache.interval:="0"
 		End use 
 	End if 
+	If (Undefined:C82(Storage:C1525.cache.selectedYear)) | (Storage:C1525.cache.selectedYear=Null:C1517)
+		Use (Storage:C1525.cache)
+			Storage:C1525.cache.selectedYear:=0
+		End use 
+	End if 
 	
 	
 Function setDateInterval($pushUp; $title)
@@ -56,9 +61,66 @@ Function setDateInterval($pushUp; $title)
 	End use 
 	
 	
+	// Purpose: Show year list picker (_ga_customFilter) at mouse position; store result in Storage.cache.selectedYear.
+	// Same client-side dialog pattern as setDateInterval — safe when called from a local ORDA subset function.
+	// Parameters:
+	// $title : Text — dialog title
+	// $years : Collection — year values extracted from date fields (duplicates removed, newest first)
+	// Returns: nothing — read Storage.cache.selectedYear after call (0 if cancelled)
+	// created by 4D/PS [2026-june-08]
+	// modified by 4D/PS [2026-october-05]
+Function setYearPicker($title : Text; $years : Collection)
+	
+	var $form : Object
+	var $year : Variant
+	var $uniqueYears : Collection
+	
+	This:C1470.cacheLoad()
+	
+	$form:=New object:C1471
+	$form.lb_data:=New collection:C1472()
+	If ($years=Null:C1517)
+		$years:=New collection:C1472()
+	End if 
+	$uniqueYears:=$years.distinct().sort()
+	If ($uniqueYears.length>0)
+		$uniqueYears:=$uniqueYears.reverse()
+	End if 
+	For each ($year; $uniqueYears)
+		If (Num:C11($year)>0)
+			$form.lb_data.push(New object:C1471("value"; $year))
+		End if 
+	End for each 
+	If ($form.lb_data.length=0)
+		cs:C1710.sfw_dialog.me.alert("There are no years to choose from.")
+		Use (Storage:C1525.cache)
+			Storage:C1525.cache.selectedYear:=0
+		End use 
+		return 
+	End if 
+	$form.selectedPos:=0
+	$form.selected:=New object:C1471("value"; "")
+	$form.title:=$title
+	MOUSE POSITION:C468($mouseX; $mouseY; $mouseButtons)
+	CONVERT COORDINATES:C1365($mouseX; $mouseY; XY Current form:K27:5; XY Main window:K27:8)
+	$windRef:=Open window:C153($mouseX; $mouseY; $mouseX+270; $mouseY+165; Movable dialog box:K34:7; $title)
+	DIALOG:C40("_ga_customFilter"; $form)
+	CLOSE WINDOW:C154($windRef)
+	Use (Storage:C1525.cache)
+		If ($form.selected#Null:C1517) && (String:C10($form.selected.value)#"")
+			Storage:C1525.cache.selectedYear:=Num:C11($form.selected.value)
+		Else 
+			Storage:C1525.cache.selectedYear:=0
+		End if 
+	End use 
+	
+	
 Function btnDatePicker($object; $attribut)
 	//If (Form.sfw.checkIsInModification())
 	
+	If ($object=Null:C1517) | ($attribut="")
+		return 
+	End if 
 	
 	$form:=New object:C1471
 	$form.date:=$object[$attribut]
@@ -68,7 +130,7 @@ Function btnDatePicker($object; $attribut)
 	Open window:C153($left; $bottom; $left+285; $bottom+210; Movable dialog box:K34:7; "calendar")
 	DIALOG:C40("_ga_calendar"; $form)
 	
-	If (OK=1)
+	If (OK=1) && ($form.calendar#Null:C1517) && ($form.calendar.display#Null:C1517)
 		$object[$attribut]:=$form.calendar.display.date
 	End if 
 	
@@ -95,4 +157,45 @@ Function firstLetterUpperCase($inText : Text)->$outText : Text
 		$inText[[1]]:=Uppercase:C13($inText[[1]])
 	End if 
 	$outText:=$inText
+	
+	
+	// Purpose: Open selectNto1 only when there is data; never return a Null row from a blank click.
+	// Parameters:
+	// $objectName : Text — form object used to position the popup
+	// $colName : Text — property displayed in the list
+	// $data — Collection or entity selection (Null treated as empty)
+	// $dataclass : Text — dataclass name passed to the form
+	// $emptyMessage : Text — user message when there is nothing to pick
+	// Returns: Object — selected item, or Null if cancelled / empty
+	// created by 4D/PS [2026-october-05]
+Function openSelectNto1($objectName : Text; $colName : Text; $data; $dataclass : Text; $emptyMessage : Text)->$item : Object
+	
+	$item:=Null:C1517
+	If ($data=Null:C1517)
+		$data:=New collection:C1472()
+	End if 
+	If ($data.length=0)
+		If ($emptyMessage#"")
+			cs:C1710.sfw_dialog.me.alert($emptyMessage)
+		End if 
+		return 
+	End if 
+	
+	OBJECT GET COORDINATES:C663(*; $objectName; $l; $t; $r; $b)
+	CONVERT COORDINATES:C1365($l; $b; XY Current form:K27:5; XY Main window:K27:8)
+	
+	$form:=New object:C1471(\
+		"colName"; $colName; \
+		"lb_items"; $data; \
+		"allData"; $data; \
+		"dataclass"; $dataclass\
+		)
+	
+	$winRef:=Open form window:C675("selectNto1"; Pop up form window:K39:11; $l; $b+1)
+	DIALOG:C40("selectNto1"; $form)
+	CLOSE WINDOW:C154($winRef)
+	
+	If ((ok=1) & ($form.item#Null:C1517))
+		$item:=$form.item
+	End if
 	

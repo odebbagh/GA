@@ -361,7 +361,7 @@
 					"borderStyle": "none",
 					"dataSourceTypeHint": "date"
 				},
-				"btnDatePickerClose": {
+				"btnDatePickerReceived": {
 					"type": "button",
 					"text": " ",
 					"top": 62,
@@ -376,13 +376,13 @@
 					"popupPlacement": "none",
 					"icon": "/RESOURCES/image/element/calendar.png",
 					"textPlacement": "center",
-					"method": "ObjectMethods/btnDatePickerClose.4dm",
+					"method": "ObjectMethods/btnDatePickerReceived.4dm",
 					"visibility": "visible",
 					"iconFrames": 4,
 					"focusable": false,
 					"dataSource": ""
 				},
-				"btnDatePickerClose1": {
+				"btnDatePickerClose": {
 					"type": "button",
 					"text": " ",
 					"top": 86,
@@ -397,7 +397,7 @@
 					"popupPlacement": "none",
 					"icon": "/RESOURCES/image/element/calendar.png",
 					"textPlacement": "center",
-					"method": "ObjectMethods/btnDatePickerClose1.4dm",
+					"method": "ObjectMethods/btnDatePickerClose.4dm",
 					"visibility": "visible",
 					"iconFrames": 4,
 					"focusable": false,
@@ -503,7 +503,7 @@
 					"iconFrames": 4,
 					"focusable": false
 				},
-				"Field_customerPO": {
+				"entryField_customerPo": {
 					"type": "input",
 					"top": 37,
 					"left": 340,
@@ -777,7 +777,7 @@
 		}
 	],
 	"inheritedForm": "sfw_bkgd_header_3lines",
-	"geometryStamp": 593,
+	"geometryStamp": 594,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",
