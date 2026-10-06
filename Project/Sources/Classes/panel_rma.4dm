@@ -201,6 +201,8 @@ Function applyLotSelection($lot_e : cs:C1710.LotEntity)
 	
 	
 Function btnDatePicker($object; $attribut)
+	// Purpose: Do not mark the record dirty when the calendar is cancelled or the same day is accepted.
+	// modified by 4D/PS [2026-october-05]
 	If (Form:C1466.sfw.checkIsInModification())
 		If ($object=Null:C1517) | ($attribut="")
 			return 
@@ -214,8 +216,15 @@ Function btnDatePicker($object; $attribut)
 		DIALOG:C40("_ga_calendar"; $form)
 		
 		If (OK=1) && ($form.calendar#Null:C1517) && ($form.calendar.display#Null:C1517)
-			$object[$attribut]:=$form.calendar.display.date
-			This:C1470._activate_save_cancel_button()
+			$newDate:=$form.calendar.display.date
+			$currentDate:=$object[$attribut]
+			If (Value type:C1509($currentDate)#Is date:K8:7)
+				$currentDate:=!00-00-00!
+			End if 
+			If ($currentDate#$newDate)
+				$object[$attribut]:=$newDate
+				This:C1470._activate_save_cancel_button()
+			End if 
 		End if 
 	End if 
 	
