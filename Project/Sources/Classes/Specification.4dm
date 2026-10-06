@@ -42,10 +42,11 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$filter.setDynamicTitle("name"; "## document type")
 	$entry.addFilter($filter)
 	
-	// Apr 22, 2026 4DFix: duplicate filter ident "filterSpecDocumentType" was colliding with the first filter — renamed to "filterSpecDepartment"
+	// Purpose: Filter by ControllingDepartment via UUID (SpecControllingDept / departmentID do not exist in the catalog).
+	// modified by 4D/PS [2026-october-05]
 	$filter:=cs:C1710.sfw_definitionFilter.new("filterSpecDepartment")
 	$filter.setDefaultTitle("All departments")
-	$filter.setFilterByIDInTable("SpecControllingDept"; "departmentID"; "departmentID")
+	$filter.setFilterByLinkedEntity("ControllingDepartment"; "UUID_ControllingDepartment"; ""; "controllingDeppartment")
 	$filter.setDynamicTitle("name"; "## controlling department")
 	$entry.addFilter($filter)
 	
@@ -125,6 +126,7 @@ local Function cacheLoad()
 	End if 
 	
 	
+/* Unused — views call cs.Util.me.setDateInterval.
 local Function setDateInterval($pushUp; $title)
 	This:C1470.cacheLoad()
 	
@@ -147,14 +149,16 @@ local Function setDateInterval($pushUp; $title)
 		Storage:C1525.cache.startDate:=$form.startDate
 		Storage:C1525.cache.endDate:=$form.endDate
 		Storage:C1525.cache.interval:=$form.interval
-	End use 
+	End use
+*/ 
 	
 	
 Function docsLateInReviewing()->$specifications : cs:C1710.SpecificationSelection
-	//$specifications:=ds.Specification.query("suppress =:1 & reviewIntervalInDays >0 & eval(reviewDate+reviewIntervalInDays)<Current date(*)"; False)
+	// Purpose: Late-review views include specs and forms (view label is Control Docs).
+	// modified by 4D/PS [2026-october-05]
 	$startDate:=Current date:C33()
-	$formula_1:=Formula:C1597((This:C1470.reviewDate+This:C1470.reviewIntervalInDays)<$startDate)
-	$specifications:=This:C1470.myQuery(False:C215; 0; $formula_1)
+	$formula_1:=Formula:C1597((Date:C102(This:C1470.reviewDate)+This:C1470.reviewIntervalInDays)<$startDate)
+	$specifications:=ds:C1482.Specification.query("reviewIntervalInDays > :1 & :2"; 0; $formula_1)
 	
 local Function docsRequiringReviewSoon()->$specifications : cs:C1710.SpecificationSelection
 	$title:="Set date interval"
@@ -167,11 +171,15 @@ local Function docsRequiringReviewSoon()->$specifications : cs:C1710.Specificati
 		Storage:C1525.cache.startDate:=Current date:C33()
 	End use 
 	cs:C1710.Util.me.setDateInterval(False:C215; $title)
+	If (Storage:C1525.cache=Null:C1517)
+		$specifications:=This:C1470.newSelection()
+		return 
+	End if 
 	$startDate:=Storage:C1525.cache.startDate
 	$endDate:=Storage:C1525.cache.endDate
-	$formula_1:=Formula:C1597((This:C1470.reviewDate+This:C1470.reviewIntervalInDays)>=$startDate)
-	$formula_2:=Formula:C1597((This:C1470.reviewDate+This:C1470.reviewIntervalInDays)<$endDate)
-	$specifications:=This:C1470.myQuery(False:C215; 0; $formula_1; $formula_2)  //ds.Specification.query("suppress =:1 & reviewIntervalInDays >0 & :2 & :3"; False; $formula_1; $formula_2)
+	$formula_1:=Formula:C1597((Date:C102(This:C1470.reviewDate)+This:C1470.reviewIntervalInDays)>=$startDate)
+	$formula_2:=Formula:C1597((Date:C102(This:C1470.reviewDate)+This:C1470.reviewIntervalInDays)<$endDate)
+	$specifications:=ds:C1482.Specification.query("reviewIntervalInDays > :1 & :2 & :3"; 0; $formula_1; $formula_2)
 	
 	
 	
@@ -180,7 +188,7 @@ Function OnlySpecs()->$specifications : cs:C1710.SpecificationSelection
 	
 	
 Function OnlyForms()->$specifications : cs:C1710.SpecificationSelection
-	$specifications:=ds:C1482.Specification.query("isForm=:2"; True:C214)
+	$specifications:=ds:C1482.Specification.query("isForm=:1"; True:C214)
 	
 	
 Function myQuery($param1 : Boolean; $param2 : Integer;  ...  : Object)->$specifications : cs:C1710.SpecificationSelection
