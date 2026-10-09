@@ -21,7 +21,24 @@ local Function loadAfterCreation()
 		This:C1470.moreData.externalParty:=""
 	End if 
 	This:C1470.otherOriginChecked:=False:C215
-	This:C1470.UUID_QcarOrigin:=16*"00" 
+	This:C1470.UUID_QcarOrigin:=16*"00"
+	
+	
+	// Purpose: Karla C — traveler/PO belong only to product-related origins (or Other origin unchecked).
+	// created by 4D/PS [2026-october-09]
+Function originUsesTraveler()->$uses : Boolean
+	$uses:=True:C214
+	If (Bool:C1537(This:C1470.otherOriginChecked))
+		If (This:C1470.qcarOrigin=Null:C1517) || (Not:C34(Bool:C1537(This:C1470.qcarOrigin.usesTraveler)))
+			$uses:=False:C215
+		End if 
+	End if 
+	
+	
+local Function beforeSave()
+	If (Not:C34(This:C1470.originUsesTraveler()))
+		This:C1470.UUID_Lot:=16*"00"
+	End if 
 	
 	
 // Purpose: Computed attribute used by the listbox column / search-box on the CAR entry.

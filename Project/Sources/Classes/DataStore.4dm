@@ -35,8 +35,12 @@ Function sfw_getNbComments($uuid_target : Text)->$nbComments : Integer
 	
 	
 Function sfw_getNbEvents($uuid_target : Text; $entry : cs:C1710.sfw_definitionEntry)->$nbEvents : Integer
-	
-	$nbEvents:=ds:C1482[$entry.event.dataclass].query($entry.event.linkedAttribute+" = :1"; $uuid_target).length
+	// Purpose: Do not query when the event dataclass is missing from the running structure.
+	// modified by 4D/PS [2026-october-06]
+	$nbEvents:=0
+	If ($entry.event#Null:C1517) && ($entry.event.dataclass#Null:C1517) && (ds:C1482[$entry.event.dataclass]#Null:C1517)
+		$nbEvents:=ds:C1482[$entry.event.dataclass].query($entry.event.linkedAttribute+" = :1"; $uuid_target).length
+	End if
 	
 	
 	//Mark:-Execute formula on server from client

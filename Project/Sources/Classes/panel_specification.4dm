@@ -91,12 +91,60 @@ Function LoadAllTabs()
 	
 	
 Function loadDocuments()
+	var $doc; $row : Object
 	
+	// Purpose: Build a display collection; do not write creationDateTime back onto the entity documents.
+	// modified by 4D/PS [2026-october-09]
 	Form:C1466.lb_documents:=New collection:C1472()
-	If (Form:C1466.current_item#Null:C1517)
-		If (Form:C1466.current_item.documents#Null:C1517) && (Form:C1466.current_item.documents.documentsCollection#Null:C1517)
-			Form:C1466.lb_documents:=Form:C1466.current_item.documents.documentsCollection.map(Formula:C1597(_ga_getDateTime))
-		End if 
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	If (Form:C1466.current_item.documents=Null:C1517) || (Form:C1466.current_item.documents.documentsCollection=Null:C1517)
+		return 
+	End if 
+	For each ($doc; Form:C1466.current_item.documents.documentsCollection)
+		$row:=New object:C1471(\
+			"code"; String:C10($doc.code); \
+			"sourcePath"; String:C10($doc.sourcePath); \
+			"description"; String:C10($doc.description); \
+			"isApproved"; Bool:C1537($doc.isApproved); \
+			"creationDateTime"; This:C1470._documentFillingLabel($doc)\
+			)
+		Form:C1466.lb_documents.push($row)
+	End for each 
+	
+	
+	// Purpose: Format document filling stamp for the listbox without mutating the stored object.
+	// created by 4D/PS [2026-october-09]
+Function _documentFillingLabel($doc : Object)->$label : Text
+	var $days; $time : Integer
+	var $timeType : Time
+	
+	$label:=""
+	If ($doc=Null:C1517)
+		return 
+	End if 
+	$days:=Trunc:C95(Num:C11($doc.creationDateTimeStamp)/86400; 0)
+	$time:=Num:C11($doc.creationDateTimeStamp)%86400
+	$timeType:=?00:00:00?+$time
+	$label:=String:C10((Add to date:C393(!00-00-00!; 2000; 1; 1)+$days); System date short:K1:1)+"   "+String:C10($timeType; HH MM:K7:2)
+	
+	
+	// Purpose: Stored document row for View/Modify/Delete (list rows are display-only).
+	// created by 4D/PS [2026-october-09]
+Function _selectedStoredDocument()->$doc : Object
+	var $pos : Integer
+	
+	$doc:=Null:C1517
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	If (Form:C1466.current_item.documents=Null:C1517) || (Form:C1466.current_item.documents.documentsCollection=Null:C1517)
+		return 
+	End if 
+	$pos:=Num:C11(Form:C1466.selectedDocumentPos)
+	If ($pos>0) && ($pos<=Form:C1466.current_item.documents.documentsCollection.length)
+		$doc:=Form:C1466.current_item.documents.documentsCollection[$pos-1]
 	End if 
 	
 	
@@ -145,9 +193,12 @@ Function bActionDocument()
 	Case of 
 		: ($choice="--view")
 			
-			$LocalFile:=Temporary folder:C486+Folder separator:K24:12+Form:C1466.selectedDocument.sourcePath
-			BLOB TO DOCUMENT:C526($LocalFile; Form:C1466.selectedDocument.blob)
-			OPEN URL:C673($LocalFile; *)
+			$doc:=This:C1470._selectedStoredDocument()
+			If ($doc#Null:C1517)
+				$LocalFile:=Temporary folder:C486+Folder separator:K24:12+String:C10($doc.sourcePath)
+				BLOB TO DOCUMENT:C526($LocalFile; $doc.blob)
+				OPEN URL:C673($LocalFile; *)
+			End if
 			
 			
 		: ($choice="--add")

@@ -107,6 +107,11 @@ Function redrawAndSetVisible()
 	This:C1470.drawPup_status()
 	This:C1470.drawPup_auditType()
 	This:C1470.drawPup_process()
+	If (Form:C1466.current_item#Null:C1517)
+		OBJECT SET ENABLED:C1123(*; "btnForward_company"; (cs:C1710.sfw_string.me.isAnEmptyUUID(String:C10(Form:C1466.current_item.UUID_Company))=False:C215))
+	Else 
+		OBJECT SET ENABLED:C1123(*; "btnForward_company"; False:C215)
+	End if
 	
 	OBJECT SET VISIBLE:C603(*; "bUploadDocument"; Form:C1466.sfw.checkIsInModification())
 	OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; Form:C1466.sfw.checkIsInModification())
@@ -260,12 +265,17 @@ Function pup_company()
 	
 	
 Function btnOpenCompany()
+	var $es : cs:C1710.SupplierSelection
 	
-	$es:=ds:C1482.Supplier.query("UUID =:1"; Form:C1466.current_item.UUID_Company)
-	
-	If ($es.length>0)
-		Form:C1466.sfw.openInANewWindow($es[0]; "qualityAssurance"; "Supplier")
+	If (Form:C1466.current_item=Null:C1517)
+		return 
 	End if 
+	$es:=ds:C1482.Supplier.query("UUID = :1"; Form:C1466.current_item.UUID_Company)
+	If ($es.length=0)
+		cs:C1710.sfw_dialog.me.alert("No supplier is linked to this audit.")
+		return 
+	End if 
+	Form:C1466.sfw.openInANewWindow($es[0]; "qualityAssurance"; "Supplier") 
 	
 	
 Function drawPup_departement()

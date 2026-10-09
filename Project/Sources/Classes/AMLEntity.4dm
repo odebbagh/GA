@@ -5,7 +5,7 @@ local Function get approvalDate()->$approvalDate : Date
 	$approvalDate:=This:C1470.stmpApproval=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpApproval; True:C214)
 	
 local Function set approvalDate($approvalDate : Date)
-	This:C1470.stmpApproval:=$approvalDate=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($approvalDate)
+	This:C1470.stmpApproval:=cs:C1710.Util.me.stampIfDateChanged(This:C1470.stmpApproval; $approvalDate)
 	
 	
 	

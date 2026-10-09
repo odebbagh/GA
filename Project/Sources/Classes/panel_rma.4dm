@@ -28,30 +28,51 @@ Function formMethod()
 	cs:C1710.Util.me.lockDateInputs() 
 	
 Function btnCar()
-	If (Form:C1466.current_item=Null:C1517)
+	If (Form:C1466.current_item=Null:C1517) || (Form:C1466.current_item.qcar=Null:C1517)
+		cs:C1710.sfw_dialog.me.alert("No CAR is linked to this RMA.")
 		return 
 	End if 
-	If (Form:C1466.current_item.qcar#Null:C1517)
-		var $es : Object
-		$es:=ds:C1482.Qcar.query("qcarNumber = :1"; Form:C1466.current_item.qcar.qcarNumber)
-		
-		If ($es.length>0)
-			Form:C1466.sfw.openInANewWindow($es[0]; "qualityAssurance"; "qcar")
-		End if 
+	Form:C1466.sfw.openInANewWindow(Form:C1466.current_item.qcar; "qualityAssurance"; "qcar") 
+	
+Function _enableLinkedForwards()
+	var $hasCar; $hasTraveler; $hasCustomer : Boolean
+	
+	$hasCar:=False:C215
+	$hasTraveler:=False:C215
+	$hasCustomer:=False:C215
+	If (Form:C1466.current_item#Null:C1517)
+		$hasCar:=(Form:C1466.current_item.qcar#Null:C1517)
+		$hasTraveler:=(String:C10(Form:C1466.current_item.travelerNumber)#"")
+		$hasCustomer:=$hasCar && (Form:C1466.current_item.qcar.customer#Null:C1517)
 	End if 
+	OBJECT SET ENABLED:C1123(*; "btnForward1"; $hasCar)
+	OBJECT SET ENABLED:C1123(*; "btnForward2"; $hasTraveler)
+	OBJECT SET ENABLED:C1123(*; "btnForward3"; $hasCustomer)
+	
+	
+Function btnOpenCustomer()
+	// Purpose: RMA customer comes from the linked CAR; open the Customer entry.
+	// created by 4D/PS [2026-october-09]
+	If (Form:C1466.current_item=Null:C1517) || (Form:C1466.current_item.qcar=Null:C1517) || (Form:C1466.current_item.qcar.customer=Null:C1517)
+		cs:C1710.sfw_dialog.me.alert("No customer is linked to this RMA.")
+		return 
+	End if 
+	Form:C1466.sfw.openInANewWindow(Form:C1466.current_item.qcar.customer; "customerService"; "customer")
+	
 	
 Function btnTraveler()
-	If (Form:C1466.current_item=Null:C1517)
+	var $es : Object
+	
+	If (Form:C1466.current_item=Null:C1517) || (String:C10(Form:C1466.current_item.travelerNumber)="")
+		cs:C1710.sfw_dialog.me.alert("No traveler is linked to this RMA.")
 		return 
 	End if 
-	If (Form:C1466.current_item.travelerNumber#"")
-		var $es : Object
-		$es:=ds:C1482.Lot.query("lotNumber = :1"; Form:C1466.current_item.travelerNumber)
-		
-		If ($es.length>0)
-			Form:C1466.sfw.openInANewWindow($es[0]; "customerService"; "lots")
-		End if 
+	$es:=ds:C1482.Lot.query("lotNumber = :1"; Form:C1466.current_item.travelerNumber)
+	If ($es.length=0)
+		cs:C1710.sfw_dialog.me.alert("No traveler is linked to this RMA.")
+		return 
 	End if 
+	Form:C1466.sfw.openInANewWindow($es[0]; "customerService"; "planning") 
 	
 Function redrawAndSetVisible()
 	//Adjusts the layout and visibility of form elements based on the current page and modification state
@@ -74,6 +95,7 @@ Function redrawAndSetVisible()
 	This:C1470.drawPup_car()
 	This:C1470.drawPup_CustomerPO()
 	This:C1470.drawPup_traveler()
+	This:C1470._enableLinkedForwards()
 	
 	If ($inModification)
 		

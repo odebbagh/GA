@@ -5,19 +5,33 @@ local Function get revisionDate()->$revisionDate : Date
 	$revisionDate:=This:C1470.stmpRevisionDate=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpRevisionDate; True:C214)
 	
 local Function set revisionDate($revisionDate : Date)
-	This:C1470.stmpRevisionDate:=$revisionDate=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($revisionDate)
+	This:C1470.stmpRevisionDate:=This:C1470._stampIfDateChanged(This:C1470.stmpRevisionDate; $revisionDate)
 	
 local Function get reviewDate()->$reviewDate : Date
 	$reviewDate:=This:C1470.stmpReviewDate=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpReviewDate; True:C214)
 	
 local Function set reviewDate($reviewDate : Date)
-	This:C1470.stmpReviewDate:=$reviewDate=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($reviewDate)
+	This:C1470.stmpReviewDate:=This:C1470._stampIfDateChanged(This:C1470.stmpReviewDate; $reviewDate)
 	
 local Function get approvalDate()->$approvalDate : Date
 	$approvalDate:=This:C1470.stmpApproval=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpApproval; True:C214)
 	
 local Function set approvalDate($approvalDate : Date)
-	This:C1470.stmpApproval:=$approvalDate=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($approvalDate)
+	This:C1470.stmpApproval:=This:C1470._stampIfDateChanged(This:C1470.stmpApproval; $approvalDate)
+	
+	// Purpose: Rewrite a stamp only when the calendar day changes (form display must not dirty the record).
+	// created by 4D/PS [2026-october-09]
+local Function _stampIfDateChanged($currentStmp : Integer; $date : Date)->$stmp : Integer
+	var $currentDate : Date
+	
+	If ($date=!00-00-00!)
+		return 0
+	End if 
+	$currentDate:=$currentStmp=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate($currentStmp; True:C214)
+	If ($currentDate=$date)
+		return $currentStmp
+	End if 
+	return cs:C1710.sfw_stmp.me.build($date; ?00:00:00?)
 	
 local Function drowPup($dataClass; $queryField; $queryValue; $pupName)
 	
