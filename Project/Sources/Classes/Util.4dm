@@ -115,9 +115,10 @@ Function setYearPicker($title : Text; $years : Collection)
 	End use 
 	
 	
-Function btnDatePicker($object; $attribut)
-	//If (Form.sfw.checkIsInModification())
-	
+Function btnDatePicker($object; $attribut)->$applied : Boolean
+	// Purpose: Apply a calendar date only when the user accepts a different day. Cancel (or the same date) must not mark the record dirty.
+	// modified by 4D/PS [2026-october-05]
+	$applied:=False:C215
 	If ($object=Null:C1517) | ($attribut="")
 		return 
 	End if 
@@ -131,10 +132,17 @@ Function btnDatePicker($object; $attribut)
 	DIALOG:C40("_ga_calendar"; $form)
 	
 	If (OK=1) && ($form.calendar#Null:C1517) && ($form.calendar.display#Null:C1517)
-		$object[$attribut]:=$form.calendar.display.date
+		$newDate:=$form.calendar.display.date
+		$currentDate:=$object[$attribut]
+		If (Value type:C1509($currentDate)#Is date:K8:7)
+			$currentDate:=!00-00-00!
+		End if 
+		If ($currentDate#$newDate)
+			$object[$attribut]:=$newDate
+			$applied:=True:C214
+		End if 
 	End if 
-	
-	//End if 
+	 
 	
 	
 Function lockDateInputs()

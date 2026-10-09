@@ -356,7 +356,7 @@
 					"textAlign": "right",
 					"fontWeight": "normal"
 				},
-				"entryField_revisionDate1": {
+				"entryField_reviewInterval": {
 					"type": "input",
 					"top": 243,
 					"left": 160,
