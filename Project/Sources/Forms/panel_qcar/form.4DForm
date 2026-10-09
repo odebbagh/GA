@@ -59,7 +59,48 @@
 					],
 					"fill": "transparent",
 					"borderStyle": "none",
-					"method": "ObjectMethods/Field_customer.4dm"
+					"method": "ObjectMethods/Field_customer.4dm",
+					"visibility": "hidden"
+				},
+				"pup_customer": {
+					"type": "button",
+					"top": 61,
+					"left": 82,
+					"width": 110,
+					"height": 20,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": "",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_customer.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"btnForward3": {
+					"type": "button",
+					"text": " ",
+					"top": 61,
+					"left": 191,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/forward-16x16.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnForward3.4dm",
+					"visibility": "visible",
+					"iconFrames": 4,
+					"focusable": false
 				},
 				"label_poNumber": {
 					"type": "text",

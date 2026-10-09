@@ -62,6 +62,7 @@ Function redrawAndSetVisible()
 	This:C1470.hideDatePickers()
 	This:C1470.manageExternal()
 	This:C1470.drawPup_traveler()
+	This:C1470.drawPup_customer()
 	This:C1470.drawPup_rejectCategory()
 	This:C1470.drawPup_origin()
 	This:C1470.manageOriginAndTraveler()
@@ -102,27 +103,52 @@ Function redrawAndSetVisible()
 	
 	
 Function btnTraveler()
-	If (Form:C1466.current_item#Null:C1517)
-		var $es : Object
-		If (Form:C1466.current_item.lot#Null:C1517)
-			$es:=ds:C1482.Lot.query("lotNumber = :1"; Form:C1466.current_item.lot.lotNumber)
-		End if 
-		
-		If ($es#Null:C1517) & ($es.length>0)
-			Form:C1466.sfw.openInANewWindow($es[0]; "customerService"; "lots")
-		End if 
+	// Purpose: Lot entry ident is planning (the old lots entry is commented out).
+	// modified by 4D/PS [2026-october-09]
+	If (Form:C1466.current_item=Null:C1517) || (Form:C1466.current_item.lot=Null:C1517)
+		cs:C1710.sfw_dialog.me.alert("No traveler is linked to this CAR.")
+		return 
 	End if 
+	Form:C1466.sfw.openInANewWindow(Form:C1466.current_item.lot; "customerService"; "planning")
 	
 Function btnPO()
-	If (Form:C1466.current_item#Null:C1517)
-		var $es : Object
-		If (Form:C1466.current_item.lot#Null:C1517)
-			$es:=ds:C1482.PurchaseOrder.query("poNumber = :1"; Form:C1466.current_item.lot.poNumber)
-		End if 
-		
-		If ($es#Null:C1517) & ($es.length>0)
-			Form:C1466.sfw.openInANewWindow($es[0]; "customerService"; "purchaseOrders")
-		End if 
+	var $po : cs:C1710.PurchaseOrderEntity
+	var $poText : Text
+	
+	// Purpose: PurchaseOrder.poNumber is numeric; traveler PO# is text (oldPoNumber / poNum).
+	// modified by 4D/PS [2026-october-09]
+	If (Form:C1466.current_item=Null:C1517) || (Form:C1466.current_item.lot=Null:C1517)
+		cs:C1710.sfw_dialog.me.alert("No purchase order is linked to this CAR.")
+		return 
+	End if 
+	$poText:=String:C10(Form:C1466.current_item.lot.poNumber)
+	$po:=This:C1470._findPurchaseOrder($poText)
+	If ($po=Null:C1517)
+		cs:C1710.sfw_dialog.me.alert("No purchase order is linked to this traveler.")
+		return 
+	End if 
+	Form:C1466.sfw.openInANewWindow($po; "customerService"; "purchaseOrders")
+	
+	
+Function btnOpenCustomer()
+	// Purpose: Open the linked Customer entry from CAR (same bForward pattern as traveler / PO).
+	// created by 4D/PS [2026-october-09]
+	If (Form:C1466.current_item=Null:C1517) || (Form:C1466.current_item.customer=Null:C1517)
+		cs:C1710.sfw_dialog.me.alert("No customer is linked to this CAR.")
+		return 
+	End if 
+	Form:C1466.sfw.openInANewWindow(Form:C1466.current_item.customer; "customerService"; "customer")
+	
+	
+Function _findPurchaseOrder($poText : Text)->$po : cs:C1710.PurchaseOrderEntity
+	$poText:=String:C10($poText)
+	If ($poText="")
+		$po:=Null:C1517
+		return 
+	End if 
+	$po:=ds:C1482.PurchaseOrder.query("oldPoNumber = :1 OR poNum = :1"; $poText).first()
+	If ($po=Null:C1517) && (Num:C11($poText)#0)
+		$po:=ds:C1482.PurchaseOrder.query("poNumber = :1"; Num:C11($poText)).first()
 	End if 
 	
 	
@@ -137,10 +163,12 @@ Function qcarManage()
 	End if 
 	
 Function selectCustomer()
-	If (Form:C1466.sfw.checkIsInModification())
+	// Purpose: Independent customer pick when Origin is not product/lot related (Karla C — Origin Customer).
+	// modified by 4D/PS [2026-october-09]
+	If (Form:C1466.sfw.checkIsInModification()) && (This:C1470.originAllowsCustomerPick())
 		Case of 
 			: (FORM Event:C1606.code=On Getting Focus:K2:7) | (FORM Event:C1606.code=On Clicked:K2:4)
-				OBJECT GET COORDINATES:C663(*; "Field_customer"; $l; $t; $r; $b)
+				OBJECT GET COORDINATES:C663(*; "pup_customer"; $l; $t; $r; $b)
 				CONVERT COORDINATES:C1365($l; $b; XY Current form:K27:5; XY Screen:K27:7)
 				
 				$form:=New object:C1471(\
@@ -158,6 +186,7 @@ Function selectCustomer()
 				End if 
 		End case 
 	End if 
+	This:C1470.drawPup_customer() 
 	
 Function drawPup_traveler()
 	If (Form:C1466.current_item#Null:C1517)
@@ -202,6 +231,7 @@ Function selectTraveler()
 		End case 
 	End if 
 	This:C1470.drawPup_traveler()
+	This:C1470.drawPup_customer()
 	
 Function subFormEvent()
 	If (Form:C1466.current_item=Null:C1517) || (Form:C1466.subForm_qcar=Null:C1517)
@@ -476,17 +506,41 @@ Function originAllowsTraveler()->$allow : Boolean
 	End if 
 	
 	
+	// Purpose: When the CAR is not product/lot related, Customer is chosen on its own (Origin Customer).
+	// created by 4D/PS [2026-october-09]
+Function originAllowsCustomerPick()->$allow : Boolean
+	$allow:=Not:C34(This:C1470.originAllowsTraveler())
+	
+	
+Function drawPup_customer()
+	var $name : Text
+	
+	If (Form:C1466.current_item#Null:C1517)
+		OBJECT SET TITLE:C194(*; "pup_customer"; "")
+		$name:=String:C10(Form:C1466.current_item.customerDisplay)
+		Form:C1466.sfw.drawButtonPup("pup_customer"; $name; "sfw/image/skin/rainbow/icon/spacer-1x24.png"; ($name=""))
+	End if 
+	
+	
 Function manageOriginAndTraveler()
-	var $inModification; $originOn; $allowTraveler : Boolean
+	var $inModification; $originOn; $allowTraveler; $allowCustomer; $hasLot; $hasCustomer; $hasPo : Boolean
 	
 	$inModification:=Form:C1466.sfw.checkIsInModification()
 	$originOn:=(Form:C1466.current_item#Null:C1517) && (Bool:C1537(Form:C1466.current_item.otherOriginChecked))
 	$allowTraveler:=This:C1470.originAllowsTraveler()
+	$allowCustomer:=This:C1470.originAllowsCustomerPick()
+	$hasLot:=(Form:C1466.current_item#Null:C1517) && (Form:C1466.current_item.lot#Null:C1517)
+	$hasCustomer:=(Form:C1466.current_item#Null:C1517) && (Form:C1466.current_item.customer#Null:C1517)
+	$hasPo:=$hasLot && (This:C1470._findPurchaseOrder(String:C10(Form:C1466.current_item.lot.poNumber))#Null:C1517)
 	
 	OBJECT SET ENABLED:C1123(*; "entryField_otherOriginChecked"; $inModification)
 	OBJECT SET VISIBLE:C603(*; "pup_origin"; $originOn)
 	OBJECT SET ENABLED:C1123(*; "pup_origin"; $inModification && $originOn)
 	OBJECT SET ENABLED:C1123(*; "pup_traveler"; $inModification && $allowTraveler)
+	OBJECT SET ENABLED:C1123(*; "pup_customer"; $inModification && $allowCustomer)
+	OBJECT SET ENABLED:C1123(*; "btnForward2"; $hasLot)
+	OBJECT SET ENABLED:C1123(*; "btnForward1"; $hasPo)
+	OBJECT SET ENABLED:C1123(*; "btnForward3"; $hasCustomer)
 	
 	
 Function checkboxOrigin()
@@ -494,9 +548,35 @@ Function checkboxOrigin()
 		If (Not:C34(Bool:C1537(Form:C1466.current_item.otherOriginChecked)))
 			Form:C1466.current_item.UUID_QcarOrigin:=16*"00"
 		End if 
+		This:C1470._syncLotWithOrigin()
 		This:C1470._activate_save_cancel_button()
 		This:C1470.drawPup_origin()
+		This:C1470.drawPup_traveler()
+		This:C1470.drawPup_customer()
 		This:C1470.manageOriginAndTraveler()
+	End if
+	
+	
+	// Purpose: Karla C — Audit / Certification audit / Customer are not product-related: drop traveler so PO# and Traveler go empty.
+	// created by 4D/PS [2026-october-09]
+Function _syncLotWithOrigin()
+	var $origin : cs:C1710.QcarOriginEntity
+	
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	If (Not:C34(Bool:C1537(Form:C1466.current_item.otherOriginChecked)))
+		return 
+	End if 
+	$origin:=Form:C1466.current_item.qcarOrigin
+	If ($origin=Null:C1517)
+		return 
+	End if 
+	If (Bool:C1537($origin.usesTraveler))
+		return 
+	End if 
+	If (cs:C1710.sfw_string.me.isAnEmptyUUID(Form:C1466.current_item.UUID_Lot)=False:C215)
+		Form:C1466.current_item.UUID_Lot:=16*"00"
 	End if 
 	
 	
@@ -543,10 +623,13 @@ Function pup_origin()
 		
 		If ($choose#"")
 			Form:C1466.current_item.UUID_QcarOrigin:=$choose
+			This:C1470._syncLotWithOrigin()
 			This:C1470._activate_save_cancel_button()
 		End if 
 		
 		This:C1470.drawPup_origin()
+		This:C1470.drawPup_traveler()
+		This:C1470.drawPup_customer()
 		This:C1470.manageOriginAndTraveler()
 		
 	End if 

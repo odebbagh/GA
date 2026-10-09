@@ -72,7 +72,21 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.setItemAction("Print Badge"; "staff_print_badge")
 	$entry.setItemAction("Print Certification Training"; "staff_print_cert_training")
 	
-	
+	// Purpose: Log Staff field, stamp, object, and N-to-1 link changes in StaffEvent on Accept.
+	// created by 4D/PS [2026-october-06]
+	// Purpose: Activate only when StaffEvent exists in the running structure (after Structure sync).
+	// modified by 4D/PS [2026-october-06]
+	If (ds:C1482["StaffEvent"]#Null:C1517)
+		$entry.activateEvent("StaffEvent"; "UUID_Staff")
+		$entry.setAttributesToTrackInModificationEvent("code"; "firstName"; "lastName"; "shift"; "citizenShipStatus"; "inactive"; "terminated")
+		$entry.setAttributeStmpToTrackInModificationEvent("hireDate"; "stmpHire"; Is date:K8:7)
+		$entry.setAttributeStmpToTrackInModificationEvent("terminationDate"; "stmpTermination"; Is date:K8:7)
+		$entry.setAttributeStmpToTrackInModificationEvent("retrainDate"; "stmpRetrain"; Is date:K8:7)
+		$entry.setAttributeStmpToTrackInModificationEvent("creationDate"; "stmpCreation"; Is date:K8:7)
+		$entry.setLinkManyToOneToTrackInModificationEvent("Division"; "UUID_Division"; "division.name")
+		$entry.setLinkManyToOneToTrackInModificationEvent("User"; "UUID_User"; "user.login")
+		$entry.setEventOptions("dontCreateModifyEventIfNoTrackingAttribute")
+	End if 
 	
 	// MARK: -Filters
 	

@@ -51,6 +51,7 @@ Function redrawAndSetVisible()
 	This:C1470.contactDetails()
 	This:C1470.drawPup_enteredBy()
 	This:C1470.drawPup_division()
+	This:C1470._enableLinkedForwards()
 	
 	
 	OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; Form:C1466.sfw.checkIsInModification())
@@ -194,6 +195,40 @@ Function pup_enteredBy()
 	End if 
 	
 	This:C1470.drawPup_enteredBy()
+	
+	
+Function _staffByCode($code : Text)->$staff : cs:C1710.StaffEntity
+	$staff:=Null:C1517
+	If (String:C10($code)="")
+		return 
+	End if 
+	$staff:=ds:C1482.Staff.query("code = :1"; String:C10($code)).first()
+	
+	
+Function _enableLinkedForwards()
+	var $hasStaff : Boolean
+	
+	$hasStaff:=False:C215
+	If (Form:C1466.current_item#Null:C1517)
+		$hasStaff:=(This:C1470._staffByCode(String:C10(Form:C1466.current_item.enteredBy))#Null:C1517)
+	End if 
+	OBJECT SET ENABLED:C1123(*; "btnForward1"; $hasStaff)
+	
+	
+Function btnOpenEnteredBy()
+	var $staff : cs:C1710.StaffEntity
+	
+	// Purpose: Entered By on AVL is Staff; open that Staff entry.
+	// created by 4D/PS [2026-october-09]
+	$staff:=Null:C1517
+	If (Form:C1466.current_item#Null:C1517)
+		$staff:=This:C1470._staffByCode(String:C10(Form:C1466.current_item.enteredBy))
+	End if 
+	If ($staff=Null:C1517)
+		cs:C1710.sfw_dialog.me.alert("No employee is linked to this supplier.")
+		return 
+	End if 
+	Form:C1466.sfw.openInANewWindow($staff; "qualityAssurance"; "staff")
 	
 	
 Function drawPup_division()

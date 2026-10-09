@@ -205,5 +205,88 @@ Function openSelectNto1($objectName : Text; $colName : Text; $data; $dataclass :
 	
 	If ((ok=1) & ($form.item#Null:C1517))
 		$item:=$form.item
-	End if
+	End if 
+	
+	
+	// Purpose: Rewrite a stamp only when the calendar day changes (form display must not dirty the record).
+	// created by 4D/PS [2026-october-09]
+Function stampIfDateChanged($currentStmp : Integer; $date : Date)->$stmp : Integer
+	var $currentDate : Date
+	
+	If ($date=!00-00-00!)
+		return 0
+	End if 
+	$currentDate:=$currentStmp=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate($currentStmp; True:C214)
+	If ($currentDate=$date)
+		return $currentStmp
+	End if 
+	return cs:C1710.sfw_stmp.me.build($date; ?00:00:00?)
+	
+	
+	// Purpose: Administration entry for lookup lists (Division, DocumentCategory, Units…).
+	// created by 4D/PS [2026-october-09]
+	// modified by 4D/PS [2026-october-09]
+Function listEntry($ident : Text; $title : Text; $dataclass : Text; $displayOrder : Integer)->$entry : cs:C1710.sfw_definitionEntry
+	$entry:=cs:C1710.sfw_definitionEntry.new($ident; "administration"; $title)
+	$entry.setDataclass($dataclass)
+	$entry.setIcon("image/entry/task-list-50x50.png"; "image/entry/task-list-50x50.png")
+	$entry.setDisplayOrder($displayOrder)
+	$entry.setSearchboxField("levelID")
+	$entry.setSearchboxField("code")
+	$entry.setSearchboxField("name")
+	$entry.setPanel("panel_List")
+	$entry.setLBItemsColumn("colorPicto"; ""; "width:20"; "type:picture")
+	$entry.setLBItemsColumn("levelID"; "ID"; "width:30")
+	$entry.setLBItemsColumn("code"; "Code"; "width:80")
+	$entry.setLBItemsColumn("name"; "Name"; "width:280")
+	$entry.setLBItemsOrderBy("levelID")
+	$entry.setValidationRule("name"; "entryField_name"; "mandatory"; "trimSpace")
+	$entry.setItemListPreconfigAction("exportReferenceRecords")
+	$entry.setItemListPreconfigAction("importReferenceRecords")
+	$entry.setItemListPreconfigAction("copyItemsListToPasteboard")
+	$entry.setToolBarGroup("listParameters"; "Lists"; "image/entry/task-list-50x50.png")
+	
+	
+	// Purpose: Default levelID, color, and barcode on a new lookup-list row.
+	// created by 4D/PS [2026-october-09]
+	// modified by 4D/PS [2026-october-09]
+Function initListRow($entity : 4D:C1709.Entity; $dataclassName : Text)
+	var $max : Integer
+	
+	If ($entity=Null:C1517)
+		return 
+	End if 
+	If ($entity.moreData=Null:C1517)
+		$entity.moreData:=New object:C1471
+	End if 
+	If (Not:C34(OB Is defined:C1231($entity.moreData; "barcodeData"))) | (String:C10($entity.moreData.barcodeData)="")
+		$entity.moreData.barcodeData:=String:C10(cs:C1710.Util_ScannerManager.me.getBarcodeData($dataclassName); "0000000000")
+	End if 
+	If (Num:C11($entity.levelID)=0)
+		$max:=ds:C1482[$dataclassName].all().max("levelID")
+		$entity.levelID:=($max>0) ? ($max+1) : 1
+	End if 
+	If (String:C10($entity.color)="")
+		$entity.color:="#FFFFFF"
+	End if 
+	ds:C1482[$dataclassName].cacheLoad()
+	
+	
+	// Purpose: Drop a lookup-list cache so dropdowns reload after Administration edits.
+	// created by 4D/PS [2026-october-09]
+	// modified by 4D/PS [2026-october-09]
+Function listCacheClear($cacheKey : Text)
+	If (Storage:C1525.cache#Null:C1517)
+		Use (Storage:C1525.cache)
+			Storage:C1525.cache[$cacheKey]:=Null:C1517
+		End use 
+	End if 
+	
+	
+Function listTrigger($dataclassName : Text)
+	If (Application type:C494=4D Local mode:K5:1)
+		ds:C1482[$dataclassName].cacheClear()
+	Else 
+		EXECUTE ON CLIENT:C651("@"; "sfw_cacheManager"; "clear"; $dataclassName)
+	End if 
 	

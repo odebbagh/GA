@@ -72,6 +72,7 @@ Function redrawAndSetVisible()
 	This:C1470.drawPup_procurementUnit()
 	This:C1470.drawPup_division()
 	This:C1470.drawPup_supplier()
+	This:C1470._enableLinkedForwards()
 	
 	OBJECT SET VISIBLE:C603(*; "PopupDa@"; Form:C1466.sfw.checkIsInModification())
 	cs:C1710.Util.me.lockDateInputs()
@@ -263,13 +264,37 @@ Function pup_division()
 	This:C1470.drawPup_division()
 	
 	
-Function btnOpenSupplier()
-	
-	$es:=ds:C1482.Supplier.query("UUID =:1"; Form:C1466.current_item.UUID_Supplier)
-	
-	If ($es.length>0)
-		Form:C1466.sfw.openInANewWindow($es[0]; "qualityAssurance"; "Supplier")
+Function _staffByCode($code : Text)->$staff : cs:C1710.StaffEntity
+	$staff:=Null:C1517
+	If (String:C10($code)="")
+		return 
 	End if 
+	$staff:=ds:C1482.Staff.query("code = :1"; String:C10($code)).first()
+	
+	
+Function _enableLinkedForwards()
+	var $hasSupplier; $hasEmp; $hasApprover : Boolean
+	
+	$hasSupplier:=False:C215
+	$hasEmp:=False:C215
+	$hasApprover:=False:C215
+	If (Form:C1466.current_item#Null:C1517)
+		$hasSupplier:=(cs:C1710.sfw_string.me.isAnEmptyUUID(String:C10(Form:C1466.current_item.UUID_Supplier))=False:C215)
+		$hasEmp:=(This:C1470._staffByCode(String:C10(Form:C1466.current_item.enteredBy))#Null:C1517)
+		$hasApprover:=(This:C1470._staffByCode(String:C10(Form:C1466.current_item.approvedBy))#Null:C1517)
+	End if 
+	OBJECT SET ENABLED:C1123(*; "btnForward2"; $hasSupplier)
+	OBJECT SET ENABLED:C1123(*; "btnForward3"; $hasSupplier)
+	OBJECT SET ENABLED:C1123(*; "btnForward4"; $hasApprover)
+	OBJECT SET ENABLED:C1123(*; "btnForward5"; $hasEmp)
+	
+	
+Function btnOpenSupplier()
+	If (Form:C1466.current_item=Null:C1517) || (Form:C1466.current_item.supplier=Null:C1517)
+		cs:C1710.sfw_dialog.me.alert("No supplier is linked to this part.")
+		return 
+	End if 
+	Form:C1466.sfw.openInANewWindow(Form:C1466.current_item.supplier; "qualityAssurance"; "Supplier") 
 	
 	
 Function bActionDocument()
@@ -415,12 +440,24 @@ Function LoadAllTabs()
 	
 	
 Function btnOpenApprover()
+	This:C1470._openStaffByCode(String:C10(Form:C1466.current_item.approvedBy); "No approver is linked to this part.")
 	
-	$es:=ds:C1482.Staff.query("code =:1"; Form:C1466.current_item.approvedBy)
 	
-	If ($es.length>0)
-		Form:C1466.sfw.openInANewWindow($es[0]; "qualityAssurance"; "Staff")
+Function btnOpenEmpCode()
+	// Purpose: Employee code on AML is Staff; open that Staff entry.
+	// created by 4D/PS [2026-october-09]
+	This:C1470._openStaffByCode(String:C10(Form:C1466.current_item.enteredBy); "No employee is linked to this part.")
+	
+	
+Function _openStaffByCode($code : Text; $emptyMessage : Text)
+	var $staff : cs:C1710.StaffEntity
+	
+	$staff:=This:C1470._staffByCode($code)
+	If ($staff=Null:C1517)
+		cs:C1710.sfw_dialog.me.alert($emptyMessage)
+		return 
 	End if 
+	Form:C1466.sfw.openInANewWindow($staff; "qualityAssurance"; "staff") 
 	
 	
 	
