@@ -142,7 +142,7 @@ Function btnDatePicker($object; $attribut)->$applied : Boolean
 			$applied:=True:C214
 		End if 
 	End if 
-	 
+	
 	
 	
 Function lockDateInputs()
@@ -244,7 +244,7 @@ Function listEntry($ident : Text; $title : Text; $dataclass : Text; $displayOrde
 	$entry.setItemListPreconfigAction("exportReferenceRecords")
 	$entry.setItemListPreconfigAction("importReferenceRecords")
 	$entry.setItemListPreconfigAction("copyItemsListToPasteboard")
-	$entry.setToolBarGroup("listParameters"; "Lists"; "image/entry/task-list-50x50.png")
+	$entry.setToolBarGroup("listParameters"; "Lists"; "image/entry/task-list-50x50-white.png")
 	
 	
 	// Purpose: Default levelID, color, and barcode on a new lookup-list row.
