@@ -26,10 +26,11 @@ Function _global_parameters()
 	
 	This:C1470.toolbar:=New object:C1471("visionsLogo"; "/RESOURCES/image/logo/golden_atos_100x25.png"; "visionsLogoLocal"; "/RESOURCES/image/logo/golden_atos_100x25.png")
 	This:C1470.toolbar.entryIconsResize:=True:C214
-	This:C1470.toolbar.entryIconsResize:=True:C214
 	This:C1470.toolbar.entryIconsAutoWidth:=True:C214
-	This:C1470.toolbar.entryIconsMargin:=3
-	This:C1470.toolbar.entryIconsSameWidth:=True:C214
+	// Purpose: Per-entry toolbar width so short labels (Staff, CAR) are not stretched to "Document Control".
+	// modified by 4D/PS [2026-october-09]
+	This:C1470.toolbar.entryIconsMargin:=20
+	This:C1470.toolbar.entryIconsSameWidth:=False:C215
 	This:C1470.toolbar.changeLanguage:=False:C215
 	
 	This:C1470.mainInterface:=New object:C1471("window"; New object:C1471)
