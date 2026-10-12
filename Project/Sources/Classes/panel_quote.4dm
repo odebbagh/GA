@@ -1085,36 +1085,26 @@ Function drawPup_staff()
 	
 Function selectStaff()
 	
+	// the light list picker of the buy orders (selectNto1): the sfw selector was slow to open
+	var $form : Object
+	var $winRef; $l; $t; $r; $b : Integer
+
 	If (Form:C1466.sfw.checkIsInModification())
-		
-		$selector:=cs:C1710.sfw_definitionSelector.new("selectorOwners"; "staff")
-		$selector.setTitle("Choose a Owner")
-		$selector.setCurrentItem(Form:C1466.current_item.staff)
-		$selector.setOptions("noCutLink")
-		$selector.openSelector()
-		
-		Case of 
-			: ($selector.isSelected())
-				$itemSeleted:=$selector.getCurrentItem()
-				
-				Case of 
-					: ($itemSeleted=Null:C1517)
-					: (cs:C1710.sfw_string.me.isAnEmptyUUID($itemSeleted.UUID)=False:C215)
-						Form:C1466.current_item.UUID_Staff:=$itemSeleted.UUID
-						If (cs:C1710.sfw_string.me.isAnEmptyUUID(Form:C1466.current_item.UUID_Staff)=True:C214)
-							Form:C1466.current_item.UUID_Staff:=16*"00"
-						End if 
-				End case 
-				This:C1470.drawPup_staff()
-				
-			: ($selector.asCutTheLink())
-				Form:C1466.current_item.UUID_Staff:=16*"00"
-				
-				//: ($selector.needCreation())
-				//$selector.createANewEntity("cs.panel_lead.me.callbackAfterCreationOwner($1)")
-				
-		End case 
-	End if 
+		OBJECT GET COORDINATES:C663(*; "pup_staff"; $l; $t; $r; $b)
+		CONVERT COORDINATES:C1365($l; $b; XY Current form:K27:5; XY Main window:K27:8)
+		$form:=New object:C1471(\
+			"colName"; "fullName"; \
+			"allData"; ds:C1482.Staff.query("terminated = :1 and inactive = :2"; False:C215; False:C215).orderBy("lastName asc"); \
+			"dataclass"; "Staff")
+		$winRef:=Open form window:C675("selectNto1"; Pop up form window:K39:11; $l; $b+1)
+		DIALOG:C40("selectNto1"; $form)
+		CLOSE WINDOW:C154($winRef)
+		If (OK=1) && ($form.item#Null:C1517)
+			Form:C1466.current_item.UUID_Staff:=$form.item.UUID
+			This:C1470._activate_save_cancel_button()
+		End if
+		This:C1470.drawPup_staff()
+	End if
 	
 	
 	

@@ -186,7 +186,7 @@ Function get codeNumber()->$number : Integer
 	
 Function get amount()->$amountText : Text
 	$amount:=This:C1470.lines.sum("amount")
-	$amountText:="$"+String:C10($amount; "###,###,###,#00.00")
+	$amountText:=_ga_usdText($amount)  // "$1,234.56" whatever the Windows region
 	
 	
 Function get amountNumber()->$amount : Real

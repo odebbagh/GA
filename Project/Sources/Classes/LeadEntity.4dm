@@ -6,7 +6,7 @@ local Function get nameInWindowTitle()->$nameInWindowTitle : Text
 	
 Function get amountText()->$amount : Text
 	
-	$amount:="$"+String:C10(This:C1470.amount; "###,###,###,#00.00")
+	$amount:=_ga_usdText(This:C1470.amount)  // "$1,234.56" whatever the Windows region
 	
 	
 Function get dateCreation()->$createDate : Date
@@ -42,8 +42,25 @@ Function get stage()->$stage : Text
 	$stage:=$eLeadStage.name || "-"
 	
 	//Mark:-call back functions
-local Function beforeSaveCreation()
+	// code, date and owner of a new lead: here rather than in panel_lead, which wrote them into
+	// every lead it displayed. The code is taken at once so the panel shows it (like the quote
+	// code); a new lead that is cancelled leaves a gap in the series
+local Function loadAfterCreation()
 	This:C1470.leadCode:=This:C1470.calculateCode()
+	This:C1470.dateCreation:=Current date:C33()
+	If (cs:C1710.sfw_userManager.me.info.UUID_Staff#Null:C1517)  // the owner: the user's staff record
+		This:C1470.staff:=ds:C1482.Staff.query("UUID = :1"; cs:C1710.sfw_userManager.me.info.UUID_Staff).first()
+	End if
+
+	// a copy gets its own code and today's date, not the original's
+local Function duplicateRecord()
+	This:C1470.leadCode:=This:C1470.calculateCode()
+	This:C1470.dateCreation:=Current date:C33()
+
+local Function beforeSaveCreation()
+	If (This:C1470.leadCode="")
+		This:C1470.leadCode:=This:C1470.calculateCode()
+	End if
 	
 	
 	

@@ -5,24 +5,10 @@ singleton Class constructor
 Function formMethod()
 	Form:C1466.sfw.panelFormMethod()  //The main body of the form method and basic sfw functionalities 
 	If (Form:C1466.sfw.updateOfPanelNeeded())  //The current item is changed or reloaded, so it's necessary ti refresh 
-		// no code shown before the first save: LeadEntity gives it from the "leadCode" counter
+		// the code, date and owner of a new lead are set in LeadEntity.loadAfterCreation: set here,
+		// they were also written into every lead displayed without them, which sfw then took for a
+		// change nobody made
 
-		If (Form:C1466.current_item.dateCreation=!00-00-00!) || (Form:C1466.current_item.dateCreation=Null:C1517)
-			Form:C1466.current_item.dateCreation:=Current date:C33()
-		End if 
-		
-		If (Form:C1466.current_item.dateClose=Null:C1517)
-			Form:C1466.current_item.dateClose:=!00-00-00!
-		End if 
-		
-		If (Form:C1466.current_item.staff=Null:C1517)
-			If (cs:C1710.sfw_userManager.me.info.UUID_Staff#Null:C1517)
-				Form:C1466.current_item.staff:=ds:C1482.Staff.query("UUID = :1"; cs:C1710.sfw_userManager.me.info.UUID_Staff).first()
-			Else 
-				
-			End if 
-		End if 
-		
 		This:C1470.drawPup_serviceType()
 		This:C1470.drawPup_stage()
 		This:C1470.drawPup_priority()
@@ -429,38 +415,27 @@ Function selectStaff()
 	
 	
 	
+	// the light list picker of the buy orders (selectNto1): the sfw selector was slow to open.
+	// Changing the owner no longer clears the contacts, quote, PO and job (that is for the customer)
+	var $form : Object
+	var $winRef; $l; $t; $r; $b : Integer
+
 	If (Form:C1466.sfw.checkIsInModification())
-		
-		$selector:=cs:C1710.sfw_definitionSelector.new("selectorOwners"; "staff")
-		$selector.setTitle("Choose a Owner")
-		$selector.setCurrentItem(Form:C1466.current_item.staff)
-		$selector.setOptions("noCutLink")
-		$selector.openSelector()
-		
-		Case of 
-			: ($selector.isSelected())
-				$itemSeleted:=$selector.getCurrentItem()
-				
-				Case of 
-					: ($itemSeleted=Null:C1517)
-					: (cs:C1710.sfw_string.me.isAnEmptyUUID($itemSeleted.UUID)=False:C215)
-						Form:C1466.current_item.UUID_Staff:=$itemSeleted.UUID
-						If (cs:C1710.sfw_string.me.isAnEmptyUUID(Form:C1466.current_item.UUID_Staff)=True:C214)
-							Form:C1466.current_item.UUID_Staff:=16*"00"
-						End if 
-				End case 
-				This:C1470.drawPup_customer()
-				This:C1470._clearInfoAfterChangingCustomer()
-				This:C1470.loadContacts()
-			: ($selector.asCutTheLink())
-				Form:C1466.current_item.UUID_Staff:=16*"00"
-				
-			: ($selector.needCreation())
-				$selector.createANewEntity("cs.panel_lead.me.callbackAfterCreationOwner($1)")
-				This:C1470._clearInfoAfterChangingCustomer()
-				This:C1470.loadContacts()
-		End case 
-	End if 
+		OBJECT GET COORDINATES:C663(*; "pup_staff"; $l; $t; $r; $b)
+		CONVERT COORDINATES:C1365($l; $b; XY Current form:K27:5; XY Main window:K27:8)
+		$form:=New object:C1471(\
+			"colName"; "fullName"; \
+			"allData"; ds:C1482.Staff.query("terminated = :1 and inactive = :2"; False:C215; False:C215).orderBy("lastName asc"); \
+			"dataclass"; "Staff")
+		$winRef:=Open form window:C675("selectNto1"; Pop up form window:K39:11; $l; $b+1)
+		DIALOG:C40("selectNto1"; $form)
+		CLOSE WINDOW:C154($winRef)
+		If (OK=1) && ($form.item#Null:C1517)
+			Form:C1466.current_item.UUID_Staff:=$form.item.UUID
+			This:C1470._activate_save_cancel_button()
+		End if
+		This:C1470.drawPup_staff()
+	End if
 	
 	
 Function callbackAfterCreationOwner($key : Text)
