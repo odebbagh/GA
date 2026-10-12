@@ -75,7 +75,7 @@
 					"left": 112,
 					"width": 250,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.lot.number",
+					"dataSource": "Form:C1466.current_item.lot.displayNumber",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
@@ -182,15 +182,14 @@
 				},
 				"checkbox_sample_step": {
 					"type": "checkbox",
+					"enterable": false,
+					"focusable": false,
 					"text": "",
 					"top": 95,
 					"left": 906,
 					"width": 94,
 					"height": 17,
-					"events": [
-						"onClick"
-					],
-					"dataSource": "Form:C1466.current_item.sampleStep",
+					"dataSource": "Form:C1466.current_item.sample",
 					"dataSourceTypeHint": "boolean"
 				},
 				"label_step_properties": {
@@ -387,7 +386,7 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"method": "ObjectMethods/btnDatePicker_dateIn.4dm"
 				},
 				"label_time_in": {
@@ -752,6 +751,50 @@
 					"borderStyle": "none",
 					"textAlign": "left"
 				},
+				"label_inOperator": {
+					"type": "text",
+					"top": 722,
+					"left": 336,
+					"width": 85,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Operator In"
+				},
+				"field_inOperator": {
+					"type": "input",
+					"top": 722,
+					"left": 426,
+					"width": 150,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.inOperatorName",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"label_outOperator": {
+					"type": "text",
+					"top": 722,
+					"left": 586,
+					"width": 85,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Operator Out"
+				},
+				"field_outOperator": {
+					"type": "input",
+					"top": 722,
+					"left": 676,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.outOperatorName",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
 				"label_actualHours": {
 					"type": "text",
 					"top": 722,
@@ -1019,6 +1062,7 @@
 					"events": [
 						"onDataChange"
 					],
+					"method": "ObjectMethods/entryField_quantity_out.4dm",
 					"fill": "transparent",
 					"borderStyle": "none",
 					"textAlign": "left",
@@ -1063,7 +1107,7 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"method": "ObjectMethods/btnDatePicker_dateOut.4dm"
 				},
 				"label_time_out": {
@@ -1160,15 +1204,15 @@
 					"stroke": "#808080",
 					"text": "Min %"
 				},
-				"entryField_minYield": {
+				"field_minYield": {
 					"type": "input",
+					"enterable": false,
+					"focusable": false,
 					"top": 260,
 					"left": 112,
 					"width": 140,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.minYield",
-					"focusable": false,
-					"enterable": false,
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
@@ -1188,15 +1232,15 @@
 					"stroke": "#808080",
 					"text": "Actual %"
 				},
-				"entryField_yield": {
+				"field_yield": {
 					"type": "input",
+					"enterable": false,
+					"focusable": false,
 					"top": 423,
 					"left": 112,
 					"width": 140,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.yield",
-					"focusable": false,
-					"enterable": false,
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
@@ -1630,7 +1674,7 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"method": "ObjectMethods/df_btnDatePicker_startDate.4dm"
 				},
 				"df_btnDatePicker_endDate": {
@@ -1645,7 +1689,7 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"method": "ObjectMethods/df_btnDatePicker_endDate.4dm"
 				},
 				"banner_lotOnHold": {
@@ -1973,13 +2017,13 @@
 					"text": "SN",
 					"visibility": "hidden"
 				},
-				"sn_field_id_entryField": {
+				"sn_field_id": {
 					"type": "input",
 					"top": 188,
 					"left": 1015,
 					"width": 180,
 					"height": 16,
-					"dataSource": "Form:C1466.snItem.sn",
+					"dataSource": "Form:C1466.snItem.id",
 					"dataSourceTypeHint": "number",
 					"focusable": false,
 					"enterable": false,
@@ -2162,6 +2206,20 @@
 							"enterable": false,
 							"dataSource": "This:C1470.type",
 							"minWidth": 60
+						},
+						{
+							"header": {
+								"name": "H_Col_pullStep",
+								"text": "Step"
+							},
+							"name": "Col_pullStep",
+							"dataSource": "Choose:C955(This:C1470.stepOrder=0; \"\"; String:C10(This:C1470.stepOrder))",
+							"enterable": false,
+							"width": 50,
+							"minWidth": 40,
+							"footer": {
+								"name": "F_Col_pullStep"
+							}
 						},
 						{
 							"header": {
@@ -2439,23 +2497,6 @@
 						}
 					]
 				},
-				"bActionConsumedParts": {
-					"type": "button",
-					"text": "Actions",
-					"top": 567,
-					"left": 12,
-					"width": 80,
-					"height": 21,
-					"events": [
-						"onClick"
-					],
-					"style": "custom",
-					"popupPlacement": "linked",
-					"icon": "/RESOURCES/sfw/image/picto/gear.png",
-					"textPlacement": "right",
-					"method": "ObjectMethods/bActionConsumedParts.4dm",
-					"visibility": "visible"
-				},
 				"cp_df_bkgd": {
 					"type": "rectangle",
 					"top": 150,
@@ -2580,7 +2621,146 @@
 				}
 			}
 		},
-		null
+		{
+			"objects": {
+				"rec_bkgd8": {
+					"type": "rectangle",
+					"top": 150,
+					"left": 1,
+					"width": 100,
+					"height": 442,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent",
+					"right": 101,
+					"bottom": 592
+				},
+				"txt_stepDocs": {
+					"type": "text",
+					"text": "Forms & Specs",
+					"top": 160,
+					"left": 9,
+					"width": 92,
+					"height": 40,
+					"fontWeight": "bold"
+				},
+				"bActionStepDocs": {
+					"type": "button",
+					"text": "Actions",
+					"top": 567,
+					"left": 12,
+					"width": 80,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionStepDocs.4dm",
+					"visibility": "visible"
+				},
+				"lb_stepDocs": {
+					"type": "listbox",
+					"left": 102,
+					"top": 151,
+					"width": 560,
+					"height": 440,
+					"events": [
+						"onSelectionChange"
+					],
+					"headerHeight": "24px",
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.lb_stepDocs",
+					"alternateFill": "#F7F9FC",
+					"method": "ObjectMethods/lb_stepDocs.4dm",
+					"selectionMode": "single",
+					"currentItemSource": "Form:C1466.selectedStepDoc",
+					"columns": [
+						{
+							"header": {
+								"text": "Type",
+								"name": "Header_sdType"
+							},
+							"name": "col_sdType",
+							"footer": {
+								"name": "Footer_sdType"
+							},
+							"dataSource": "This:C1470.type",
+							"width": 45,
+							"minWidth": 45,
+							"enterable": false
+						},
+						{
+							"header": {
+								"text": "Code",
+								"name": "Header_sdSpec"
+							},
+							"name": "col_sdSpec",
+							"footer": {
+								"name": "Footer_sdSpec"
+							},
+							"dataSource": "This:C1470.spec",
+							"width": 95,
+							"minWidth": 95,
+							"enterable": false
+						},
+						{
+							"header": {
+								"text": "Rev",
+								"name": "Header_sdRev"
+							},
+							"name": "col_sdRev",
+							"footer": {
+								"name": "Footer_sdRev"
+							},
+							"dataSource": "This:C1470.revision",
+							"width": 35,
+							"minWidth": 35,
+							"enterable": false
+						},
+						{
+							"header": {
+								"text": "Title",
+								"name": "Header_sdTitle"
+							},
+							"name": "col_sdTitle",
+							"footer": {
+								"name": "Footer_sdTitle"
+							},
+							"dataSource": "This:C1470.title",
+							"width": 220,
+							"minWidth": 220,
+							"enterable": false
+						},
+						{
+							"header": {
+								"text": "Note",
+								"name": "Header_sdNote"
+							},
+							"name": "col_sdNote",
+							"footer": {
+								"name": "Footer_sdNote"
+							},
+							"dataSource": "This:C1470.note",
+							"width": 150,
+							"minWidth": 150,
+							"enterable": false
+						}
+					]
+				},
+				"wa_stepDoc": {
+					"type": "webArea",
+					"left": 664,
+					"top": 151,
+					"width": 540,
+					"height": 440,
+					"dataSource": "Form:C1466.stepDocUrl"
+				}
+			}
+		}
+
 	],
 	"inheritedForm": "sfw_bkgd_header_4lines",
 	"geometryStamp": 626,

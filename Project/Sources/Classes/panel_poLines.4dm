@@ -198,14 +198,14 @@ Function lineAmountChanged()
 	
 Function btnDatePicker_dateOrdered()
 	If (Form:C1466.sfw.checkIsInModification())
-		cs:C1710.Util.me.btnDatePicker(Form:C1466.current_item; "dateOrdered")
+		cs:C1710.ga_datePicker.me.pickInto(Form:C1466.current_item; "dateOrdered")
 		cs:C1710.panel_poLines.me._activate_save_cancel_button()
 	End if 
 	
 	
 Function btnDatePicker_customerRequestedDate()
 	If (Form:C1466.sfw.checkIsInModification())
-		cs:C1710.Util.me.btnDatePicker(Form:C1466.current_item; "customerRequestedDate")
+		cs:C1710.ga_datePicker.me.pickInto(Form:C1466.current_item; "customerRequestedDate")
 		cs:C1710.panel_poLines.me._activate_save_cancel_button()
 	End if 
 	

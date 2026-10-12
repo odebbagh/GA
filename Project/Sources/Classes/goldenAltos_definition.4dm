@@ -282,31 +282,103 @@ Function _entries_definition()
 	
 	//Customer Service - Vendor
 	
-	$entry:=cs:C1710.sfw_definitionEntry.new("vendor"; ["buying"]; "Vendors")
-	$entry.setDataclass("Customer")
+	// Suppliers, in the Buying vision - a second door onto the same [Supplier] records
+	// Quality Assurance maintains under AVL, surfaced here because that is where a buyer
+	// needs them. Same dataclass, same panel: both visions edit one record with one
+	// layout, so nothing can drift between them.
+	//
+	// It is deliberately NOT on [Customer]. That was the original shape and it was a dead
+	// end: a buy order points at BuyingOrder.UUID_Supplier, panel_buyingOrder's vendor
+	// picker reads ds.Supplier.all(), and _import_buyOrders matched the legacy vendor
+	// names onto [Supplier] - so a vendor created through the old entry could never be
+	// picked on an order. [Supplier] is also the only one carrying the QA apparatus:
+	// approvedByQA, disqualified, auditRequired and the audit dates.
+	//
+	// activateDocument is NOT used: panel_supplier already has its own Documents page and
+	// the framework would append a second one.
+	$entry:=cs:C1710.sfw_definitionEntry.new("supplierBuying"; ["buying"]; "Suppliers"; "Supplier")
+	$entry.setDataclass("Supplier")
 	$entry.setDisplayOrder(-390)
-	$entry.setIcon("image/entry/customers-white-50x50.png")
-	
-	$entry.setSubset("vendors")
-	
+	$entry.setIcon("image/entry/avl-white-50x50.png")
+
 	$entry.setSearchboxField("name")
-	
-	$entry.setPanel("panel_vendor")
+
+	$entry.setPanel("panel_supplier")
 	$entry.setPanelPage(1; ""; "Main")
-	
-	$entry.setLBItemsColumn("name"; "Lot #"; "width:80")
-	
+	$entry.setPanelPage(2; ""; "Contacts & Address")
+
+	// The framework's Documents page REPLACES panel_supplier's own, in this vision only.
+	// QA > AVL keeps the hand-built page 3 (lb_documents + bActionDocument).
+	//
+	// It lands on physical page 3 because activateDocument places its dynamic page at
+	// panel.pages.length+1, and only two pages are declared at this point - so it is
+	// called HERE, before Rating, rather than at the end of the entry.
+	//
+	// NOTE: this switches panel_supplier to dynamic-source rendering for this entry, in
+	// which every form object method is replaced by sfw_dynamicForm_script calling
+	// cs.panel_supplier.me[objectName](). The seven object methods without a class
+	// function of the same name are mirrored on panel_supplier - they fail silently
+	// otherwise.
+	$entry.activateDocument("showCountInTab")
+
+	$entry.setPanelPage(4; ""; "Rating")
+
+	$entry.setLBItemsColumn("name"; "Supplier Name"; "width:250")
+	$entry.setLBItemsColumn("approvedByQA?\"Approved\":\"Not Approved\""; "QA Approval"; "width:150"; "orderByFormula:this.approvedByQA")
 	$entry.setLBItemsOrderBy("name")
 	$entry.enableTransaction()
-	
-	// Attachments: adds the framework Documents page (sfw_Document + DocumentData)
-	// as the last panel page. Files are staged on upload and written to the server
-	// when the record is saved (sfw_foundations._uploadDocumentsOnServer).
-	$entry.activateDocument("showCountInTab")
-	
+
+	$entry.setItemAction("Generate Barcode"; "_ga_openBarCodeForm")
+	$entry.setItemListAction("Search by Scanning"; "_ga_searchByBarcodeScanning")
+	$entry.setItemListAction("Export selection to excel"; "_ga_exportSupplierList")
+	$entry.setItemListAction("Export all ratings to Excel"; "_ga_exportAllSupplierRatings")
+
+	// MARK: -Filters
+	$filter:=cs:C1710.sfw_definitionFilter.new("filterSupplierBuyingDivision")
+	$filter.setDefaultTitle("All divisions")
+	$filter.setFilterByLinkedEntity("Division"; "UUID_Division"; ""; "division")
+	$filter.setDynamicTitle("name"; "## supplier division")
+	$entry.addFilter($filter)
+
+	// MARK: - Views. The subsets are member functions of the Supplier dataclass, so both
+	// this entry and QA > AVL share one definition of what each view means.
+	$view:=cs:C1710.sfw_definitionView.new("buyingApprovedActiveQualifiedSuppliers"; "All approved, active and qualified suppliers")
+	$view.setLBItemsColumn("name"; "Supplier Name"; "width:250")
+	$view.setLBItemsColumn("approvedByQA?\"Approved\":\"Not Approved\""; "QA Approval"; "width:150"; "orderByFormula:this.approvedByQA")
+	$view.setLBItemsOrderBy("name")
+	$view.setSubset("approvedActiveQualifiedSuppliers")
+	$entry.setView($view)
+
+	$view:=cs:C1710.sfw_definitionView.new("buyingNonApprovedActiveSuppliers"; "All non-approved and active suppliers")
+	$view.setLBItemsColumn("name"; "Supplier Name"; "width:250")
+	$view.setLBItemsColumn("approvedByQA?\"Approved\":\"Not Approved\""; "QA Approval"; "width:150"; "orderByFormula:this.approvedByQA")
+	$view.setLBItemsOrderBy("name")
+	$view.setSubset("nonApprovedActiveSuppliers")
+	$entry.setView($view)
+
+	$view:=cs:C1710.sfw_definitionView.new("buyingCriticalSuppliers"; "All critical suppliers")
+	$view.setLBItemsColumn("name"; "Supplier Name"; "width:250")
+	$view.setLBItemsColumn("approvedByQA?\"Approved\":\"Not Approved\""; "QA Approval"; "width:150"; "orderByFormula:this.approvedByQA")
+	$view.setLBItemsOrderBy("name")
+	$view.setSubset("criticalSuppliers")
+	$entry.setView($view)
+
+	$view:=cs:C1710.sfw_definitionView.new("buyingDisqualifiedSuppliers"; "All Disqualified Suppliers")
+	$view.setLBItemsColumn("name"; "Supplier Name"; "width:250")
+	$view.setLBItemsColumn("approvedByQA?\"Approved\":\"Not Approved\""; "QA Approval"; "width:150"; "orderByFormula:this.approvedByQA")
+	$view.setLBItemsOrderBy("name")
+	$view.setSubset("disqualifiedSuppliers")
+	$entry.setView($view)
+
+	$view:=cs:C1710.sfw_definitionView.new("buyingInactivatedSuppliers"; "All In-activated Suppliers")
+	$view.setLBItemsColumn("name"; "Supplier Name"; "width:250")
+	$view.setLBItemsColumn("approvedByQA?\"Approved\":\"Not Approved\""; "QA Approval"; "width:150"; "orderByFormula:this.approvedByQA")
+	$view.setLBItemsOrderBy("name")
+	$view.setSubset("inactivatedSuppliers")
+	$entry.setView($view)
+
 	This:C1470._push_entry($entry)
-	
-	
+
 	//Receiving - Buy Orders
 	
 	$entry:=cs:C1710.sfw_definitionEntry.new("BuyOrders"; ["receiving"]; "Buy Orders")
@@ -315,13 +387,13 @@ Function _entries_definition()
 	$entry.setIcon("image/entry/punsh-in-50x50.png")
 
 	// vendor + BO number come from the parent BuyingOrder via the buyingOrder link
-	$entry.setLBItemsColumn("buyingOrder.customer.name"; "Vendor"; "width:250")
+	$entry.setLBItemsColumn("buyingOrder.supplier.name"; "Vendor"; "width:250")
 	$entry.setLBItemsColumn("buyingOrder.boNumber"; "BO #"; "width:100"; "center")
-	$entry.setLBItemsColumn("order"; "Item #"; "width:100"; "center")
+	$entry.setLBItemsColumn("displayNumber"; "Item #"; "width:100"; "center")
 
 	$entry.setLBItemsOrderBy("buyingOrder.boNumber desc")
 
-	$entry.setSearchboxField("buyingOrder.customer.name"; "placeholder:Vendor")
+	$entry.setSearchboxField("buyingOrder.supplier.name"; "placeholder:Vendor")
 	// NOTE: no BO# search - boNumber is an integer and the sfw searchbox only does
 	// @..@ text-contains, which errors on numeric fields. Supporting it would
 	// require changing sfw_ framework methods, which is off-limits.
@@ -343,9 +415,20 @@ Function _entries_definition()
 	//$filter.setFilterByBooleanExpression("canBeReceived = :1"; "Can be received"; "Already received")
 	//$entry.addFilter($filter)
 
+	// Legacy offered this from the Save button of NewRecvOrderedPart; here it is an
+	// item action so it is reachable from any tab, including non-inventory lines which
+	// have no action rail of their own.
+	$entry.setItemAction("Back-order remaining quantity"; "_ga_backorderBuyLine"; "activateIf:(Form.current_item#Null) && Form.current_item.canBackorder")
+	$entry.setItemAction("Print Receipt"; "BOReceiving_printReceipt")
+
+	// legacy BuyItemsSpreadSheet report, exported through 4D View Pro. On the list, not
+	// on a record: it reports on the whole displayed selection.
+	// 	// NO PARENTHESES IN THE LABEL. sfw_foundations._buildMenuAction calls APPEND MENU ITEM 	// without the * that turns metacharacters off, and "(" is 4D's metacharacter for 	// "disable this item" - a label like "... (Excel)" renders grayed out with a stray ")". 	// A leading "!", "/" or "<" misbehaves the same way.
+	$entry.setItemListAction("Export Inventory Buy-Items to Excel"; "_ga_exportBuyItemsInventory")
+
 	$entry.setPanel("panel_BOReceiving")
 
-	$entry.setPanelPage(1; ""; "Main")
+	$entry.setPanelPage(1; ""; "Receiving")
 	$entry.setPanelPage(2; ""; "Inventories"; "disabled:Form.current_item.inventory=false")
 	//$entry.setPanelPage(2; ""; "Step Interruption")
 	//$entry.setPanelPage(3; ""; "Hold Info")
@@ -357,10 +440,66 @@ Function _entries_definition()
 	$entry.enableTransaction()
 
 	$entry.activateComment()
-	
+
 	This:C1470._push_entry($entry)
-	
-	
+
+
+	//Buying - Buy Items
+
+	// Second entry on [BuyingOrderLine], alongside the receiving-oriented "BuyOrders"
+	// entry above. This one is the purchasing / accounts-payable view: it carries the
+	// whole legacy [Buy Items] record, the ~20 fields that have a real column plus the
+	// ~35 that _import_buyOrders parks in moreData.
+
+	$entry:=cs:C1710.sfw_definitionEntry.new("boItems"; ["buying"]; "Buy Items"; "Buy Item")
+	$entry.setDataclass("BuyingOrderLine")
+	$entry.setDisplayOrder(-200)
+	$entry.setIcon("image/entry/punsh-in-50x50.png")
+
+	$entry.setLBItemsColumn("buyingOrder.boNumber"; "BO #"; "width:80"; "center")
+	$entry.setLBItemsColumn("displayNumber"; "BO Item #"; "width:90"; "center")
+	$entry.setLBItemsColumn("buyingOrder.supplier.name"; "Vendor"; "width:220")
+	$entry.setLBItemsColumn("description"; "Description"; "width:300")
+	$entry.setLBItemsColumn("qty"; "Qty"; "width:60"; "center")
+	$entry.setLBItemsColumn("lineTotal"; "Line total"; "width:100"; "format:$##,###,###,##0.00")
+
+	$entry.setLBItemsOrderBy("buyingOrder.boNumber desc")
+
+	$entry.setSearchboxField("description"; "placeholder:Description")
+
+	// same report as on Receiving > Buy Orders - it covers lines whether received or
+	// not, so it belongs on both lists
+	$entry.setItemListAction("Export Inventory Buy-Items to Excel"; "_ga_exportBuyItemsInventory")
+	$entry.setSearchboxField("buyingOrder.supplier.name"; "placeholder:Vendor")
+
+	$entry.setPanel("panel_boItem")
+
+	$entry.setPanelPage(1; ""; "Main")
+	$entry.setPanelPage(2; ""; "Receiving")
+
+	// stored booleans, so the framework's boolean filter can query them directly
+	$filter:=cs:C1710.sfw_definitionFilter.new("filterBoItemInventory")
+	$filter.setDefaultTitle("Inventory: all")
+	$filter.setFilterByBooleanExpression("inventory = :1"; "Inventory items"; "Non-inventory items")
+	$entry.addFilter($filter)
+
+	$entry.enableTransaction()
+
+	$entry.activateComment()
+
+	// Attachments: adds the framework Documents page (sfw_Document + DocumentData) as
+	// the last panel page, with the file count shown in the tab. Files are staged on
+	// upload and written to the server when the record is saved.
+	//
+	// NOTE: this switches panel_boItem to dynamic-source rendering, in which every form
+	// object method is replaced by sfw_dynamicForm_script calling
+	// cs.panel_boItem.me[objectName](). The six object methods of that form are mirrored
+	// as functions on the class so the controls keep working - they fail silently otherwise.
+	$entry.activateDocument("showCountInTab")
+
+	This:C1470._push_entry($entry)
+
+
 	//Production - Punch In
 	
 	$entry:=cs:C1710.sfw_definitionEntry.new("punchIn"; ["production"]; "Punch In")
@@ -372,13 +511,14 @@ Function _entries_definition()
 	
 	$entry.setLBItemsColumn("lot.job.customer.name"; "Customer"; "width:125")
 	$entry.setLBItemsColumn("lot.job.jobNumber"; "Job Number"; "width:125")
-	$entry.setLBItemsColumn("lot.number"; "Lot Number"; "width:110")
+	$entry.setLBItemsColumn("lot.displayNumber"; "Lot Number"; "width:110")
 	$entry.setLBItemsColumn("lot.subSequence"; "Sub"; "width:50")
 	$entry.setLBItemsColumn("order"; "Order"; "width:50")
 	
 	$entry.setLBItemsOrderBy("lot.number desc")
 	
 	$entry.setPanel("panel_punch_in")
+	$entry.setValidationRule("inOperator"; "field_inOperator"; "mandatory"; "message:The operator is mandatory: click Start and scan the operator's code")
 	
 	$entry.setPanelPage(1; ""; "Main")
 	$entry.setPanelPage(2; ""; "Step Interruption")
@@ -387,6 +527,7 @@ Function _entries_definition()
 	$entry.setPanelPage(5; ""; "Inventory Pulls")
 	$entry.setPanelPage(6; ""; "Data Table"; "disabled:Form.current_item.step.stepTemplate.dataTables=Null")
 	$entry.setPanelPage(7; ""; "Binning"; "disabled:Form.current_item.step.stepTemplate.binning=False")
+	$entry.setPanelPage(8; ""; "Forms & Specs")
 	
 	$entry.enableTransaction()
 	
@@ -403,13 +544,14 @@ Function _entries_definition()
 	
 	$entry.setLBItemsColumn("lot.job.customer.name"; "Customer"; "width:125")
 	$entry.setLBItemsColumn("lot.job.jobNumber"; "Job Number"; "width:125")
-	$entry.setLBItemsColumn("lot.number"; "Lot Number"; "width:110")
+	$entry.setLBItemsColumn("lot.displayNumber"; "Lot Number"; "width:110")
 	$entry.setLBItemsColumn("lot.subSequence"; "Sub"; "width:50")
 	$entry.setLBItemsColumn("order"; "Order"; "width:50")
 	
 	$entry.setLBItemsOrderBy("lot.number desc")
 	
 	$entry.setPanel("panel_punch_out")
+	$entry.setValidationRule("outOperator"; "field_outOperator"; "mandatory"; "message:The operator is mandatory: click Start and scan the operator's code")
 	
 	$entry.setPanelPage(1; ""; "Main")
 	$entry.setPanelPage(2; ""; "Step Interruption")
@@ -418,6 +560,7 @@ Function _entries_definition()
 	$entry.setPanelPage(5; ""; "Inventory Pulls")
 	$entry.setPanelPage(6; ""; "Data Table"; "disabled:Form.current_item.step.stepTemplate.dataTables=Null")
 	$entry.setPanelPage(7; ""; "Binning"; "disabled:Form.current_item.step.stepTemplate.binning=False")
+	$entry.setPanelPage(8; ""; "Forms & Specs")
 	
 	$entry.enableTransaction()
 	
@@ -453,25 +596,35 @@ Function _entries_definition()
 	$entry.setDisplayOrder(-390)
 	$entry.setIcon("image/entry/planning-white-50x50.png")
 	
-	$entry.setSearchboxField("lotNumber")
+	$entry.setSearchboxField("displayNumber")  // the Lot # people read: 41 finds lot 41 and its sublots, 41-1 that sublot (LotEntity.query displayNumber)
 	
 	$entry.setPanel("panel_planning")
 	$entry.setPanelPage(1; ""; "Main")
 	$entry.setPanelPage(2; ""; "Step")
 	$entry.setPanelPage(3; ""; "Lot Holds")
 	$entry.setPanelPage(4; ""; "Serialization"; "disabled:Form.current_item.serialization=false")
+	$entry.setPanelPage(5; ""; "Ship To")  // the lot's own ship-to address (demo of 23 July 2026)
+	// Documents: the framework page (sfw_Document + DocumentData) as page 6, with the file count
+	// in the tab - the printed hold forms (GAF-1014 / GAF-1514, folder "Hold forms") and any file
+	// uploaded. It switches panel_planning to dynamic-source rendering: its object methods are
+	// mirrored as class functions of the same name (end of panel_planning) - keep them in step.
+	$entry.activateDocument("showCountInTab")
 	
-	$entry.setLBItemsColumn("number"; "Lot #"; "width:80")
-	$entry.setLBItemsColumn("subSequence"; "Sub #"; "width:40"; "format:##")
-	$entry.setLBItemsColumn("job.po"; "PO"; "width:80")
+	$entry.setLBItemsColumn("displayNumber"; "Lot #"; "width:80")  // sublots read mother-sub (41-1)
+	$entry.setLBItemsColumn("job.purchaseOrder.poNum"; "PO"; "width:80")
 	$entry.setLBItemsColumn("job.jobNumber"; "Job #"; "width:80")
 	$entry.setLBItemsColumn("job.customer.name"; "Customer"; "width:250")
 	
-	$entry.setLBItemsOrderBy("lotNumber")
+	$entry.setLBItemsOrderBy("number"; True:C214)  // Lot # descending, newest first
+	$entry.setLBItemsOrderBy("subSequence")
 	$entry.enableTransaction()
-	$entry.setItemListAction("Split Lot"; "planning_splitLot"; "scope:oneOrMoreListItemsSelected")
 
 	$entry.activateEvent("LotEvent"; "UUID_Lot")
+	// Field-level detail in the Events feed: on save, sfw compares only the fields listed here
+	// (sfw.bItemSave). One name per parameter - the setter ignores "a,b" or "a b" lists.
+	// Object fields (lotHold, NCMN, ISSNF, snTable, step, moreData) are left out on purpose.
+	$entry.setAttributesToTrackInModificationEvent("lotNumber"; "device"; "alternativeDevice"; "customerLotNumber"; "dateCode"; "packageType"; "ourCount"; "customerCount"; "dateIn"; "dateOut"; "commit"; "reCommit"; "priority"; "status"; "onHold"; "poNumber"; "process"; "prQualifier"; "location"; "carrier"; "trackingNumber"; "readyToShipDate"; "shippingMemo"; "releaseNumber"; "serialization"; "snRangeMin"; "snRangeMax"; "OQADone"; "OQADate"; "cOfCInspector"; "cOfCRemarks"; "comment"; "itar"; "latePareto")
+	$entry.setLinkManyToOneToTrackInModificationEvent("Job"; "UUID_Job"; "job.jobNumber")
 
 	$entry.activateComment()
 
@@ -484,7 +637,7 @@ Function _entries_definition()
 	$entry.setDisplayOrder(-400)
 	$entry.setIcon("image/entry/receiver-50x50.png")
 	
-	$entry.setSearchboxField("lotNumber")
+	$entry.setSearchboxField("displayNumber")  // the Lot # people read: 41 finds lot 41 and its sublots, 41-1 that sublot (LotEntity.query displayNumber)
 	
 	$entry.setPanel("panel_customerReceivedMaterial")
 	$entry.setPanelPage(1; ""; "Main")
@@ -492,7 +645,7 @@ Function _entries_definition()
 	
 	$entry.setLBItemsColumn("job.customer.name"; "Customer"; "width:200")
 	$entry.setLBItemsColumn("job.jobNumber"; "Job #"; "width:120")
-	$entry.setLBItemsColumn("number"; "Lot #"; "width:120")
+	$entry.setLBItemsColumn("displayNumber"; "Lot #"; "width:120")  // sublots read mother-sub (41-1)
 	//$entry.setLBItemsColumn("subSequence"; ""; "width:20"; "format:")
 	
 	$filter:=cs:C1710.sfw_definitionFilter.new("filterCustomer")
@@ -504,7 +657,8 @@ Function _entries_definition()
 	$filter.setAttributeLabelForItem("name")
 	$entry.addFilter($filter)
 	
-	$entry.setLBItemsOrderBy("lotNumber")
+	$entry.setLBItemsOrderBy("number"; True:C214)  // Lot # descending, newest first
+	$entry.setLBItemsOrderBy("subSequence")
 	$entry.enableTransaction()
 	
 	This:C1470._push_entry($entry)

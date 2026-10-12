@@ -428,3 +428,15 @@ local Function loadAfterCreation()
 	This:C1470.code:=String:C10(This:C1470.codeID; "00000#")
 	
 	
+
+	//mark:-Printable / document attributes
+
+Function get contactBlock()->$text : Text
+	// Tel / Fax / Email as lines. Legacy object method Field11 built exactly this and
+	// wrote it over [BUY_ORDERS]BuyersCode when printing a buy order.
+	$text:=_contactDetailsBlock(This.contactDetails)
+
+Function communication($type : Text)->$value : Text
+	// One communication - "phone", "fax" or "mail". get email above is the same idea,
+	// kept because it is local and already used by the panel.
+	$value:=_contactDetailsValue(This.contactDetails; $type)

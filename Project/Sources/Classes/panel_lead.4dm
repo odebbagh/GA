@@ -92,22 +92,10 @@ Function calculateCode()->$leadCode : Text
 	
 	
 Function btnDatePicker($object; $attribut)
-	
-	$form:=New object:C1471
-	$form.date:=$object[$attribut]
-	
-	OBJECT GET COORDINATES:C663(Self:C308->; $left; $top; $rigth; $bottom)
-	CONVERT COORDINATES:C1365($left; $bottom; XY Current form:K27:5; XY Main window:K27:8)
-	Open window:C153($left; $bottom; $left+285; $bottom+210; Movable dialog box:K34:7; "calendar")
-	DIALOG:C40("_ga_calendar"; $form)
-	
-	If (OK=1)
-		$object[$attribut]:=$form.calendar.display.date
+	// the app's calendar (ga_datePicker), under the clicked button
+	If (cs:C1710.ga_datePicker.me.pickInto($object; $attribut))
 		This:C1470._activate_save_cancel_button()
 	End if 
-	
-	
-	
 	
 Function loadInteractions()
 	//Form.current_interaction:=Null
@@ -732,7 +720,7 @@ Function btnDatePickerCreate($object; $attribut; $stmp; $minMax)
 		End case 
 		
 		
-		$test:=DatePicker Display Dialog($x1; $y1; Current date:C33())
+		$test:=cs:C1710.ga_datePicker.me.pick($object[$attribut]; OBJECT Get name:C1087(Object current:K67:2))  // the app's calendar
 		If ($test#!00-00-00!)
 			If (Bool:C1537($stmp))
 				$object[$attribut]:=cs:C1710.sfw_stmp.me.build($test)
@@ -744,8 +732,7 @@ Function btnDatePickerCreate($object; $attribut; $stmp; $minMax)
 	
 Function btnDatePickerClose()
 	If (Form:C1466.sfw.checkIsInModification())
-		OBJECT GET COORDINATES:C663(*; "btnDatePickerClose"; $x1; $y1; $x2; $y2)
-		$test:=DatePicker Display Dialog($x1+500; $y1+100)
+		$test:=cs:C1710.ga_datePicker.me.pick(Form:C1466.current_item.dateClose; "btnDatePickerClose")  // the app's calendar
 		If ($test#!00-00-00!)
 			Form:C1466.current_item.dateClose:=$test
 		End if 

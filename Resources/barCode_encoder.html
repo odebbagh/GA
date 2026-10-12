@@ -40,16 +40,16 @@
                 JsBarcode("#barcode-canvas", val, {
                     format: type,
                     lineColor: "#000000",
-                    width: 1,
-                    height: 80,
+                    width: parseInt(urlParams.get("w")) || 1,  // optional: pixels per bar (default 1)
+                    height: parseInt(urlParams.get("h")) || 80,  // optional: bar height in pixels (default 80)
                     fontSize:15,
                     text:text,
                     textAlign:"center",
                     textPosition:"bottom",
                     background:"#ffffff",
-                    displayValue: (text === "") ? false : true // Affiche le texte en dessous
+                    displayValue: (text === "") ? false : true, // Affiche le texte en dessous
                 
-                    // margin:0,
+                    margin: urlParams.has("m") ? parseInt(urlParams.get("m")) : 10  // optional: quiet zone in pixels (default 10)
                 });
 
               

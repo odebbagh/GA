@@ -18,7 +18,7 @@ If ($lot=Null:C1517)
 	return 
 End if 
 
-$lotNumber:=String:C10($lot.number)
+$lotNumber:=$lot.displayNumber  // the PDF is named after the Lot # people read
 
 $steps:=ds:C1482.LotStep.query("UUID_Lot = :1"; $lot.UUID).orderBy("order asc")
 If ($steps.length=0)

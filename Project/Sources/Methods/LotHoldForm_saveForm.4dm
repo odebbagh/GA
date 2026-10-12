@@ -7,6 +7,8 @@ var $items : Collection
 var $saved : Object
 var $idx : Integer
 var $i : Integer
+var $numbered : Integer
+var $it : Object
 
 $success:=False:C215
 
@@ -34,6 +36,8 @@ End case
 
 $saved:=LotHoldForm_cloneObject($form)
 $saved.hold_UUID:=$hold.UUID
+OB REMOVE:C1226($saved; "lot_UUID")  // the window's link to its lot (LotHoldForm_resolveForm)
+OB REMOVE:C1226($saved; "readOnly")
 
 If ($hold.date#Null:C1517)
 	$saved.hold_date:=$hold.date
@@ -51,6 +55,27 @@ If (String:C10($hold.UUID)#"")
 			$idx:=$i
 		End if 
 	End for 
+End if 
+
+// NCMN number: given once, the first time this hold's NCMN is saved, and kept afterwards.
+// ncmnIndex says which non-conformance of this lot it is (1st, 2nd...), as asked in July.
+If ($formFieldName="NCMN")
+	If ($idx#-1)
+		If (String:C10($items[$idx].ncmnNumber)#"")
+			$saved.ncmnNumber:=$items[$idx].ncmnNumber
+			$saved.ncmnIndex:=$items[$idx].ncmnIndex
+		End if 
+	End if 
+	If (String:C10($saved.ncmnNumber)="")
+		$numbered:=0
+		For each ($it; $items)
+			If (String:C10($it.ncmnNumber)#"")
+				$numbered+=1
+			End if 
+		End for each 
+		$saved.ncmnNumber:="NCMN-"+String:C10(ds:C1482.sfw_Counter.getNextValue("NCMN"); "00000")
+		$saved.ncmnIndex:=$numbered+1
+	End if 
 End if 
 
 If ($idx=-1)

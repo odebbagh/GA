@@ -9,10 +9,16 @@ var $description : Text
 var $operator : Text
 var $orderDisplay : Text
 var $rejects : Text
+var $serials : Object
 var $stepDef : cs:C1710.StepEntity
 var $tools : Object
 
-$orderDisplay:=String:C10($step.order; "##0.00")
+// 1, 2, 3... and 2.5 only for a step really inserted in between (was "1,00" on every step)
+If ($step.order=Int:C8($step.order))
+	$orderDisplay:=String:C10($step.order)
+Else
+	$orderDisplay:=String:C10($step.order; "##0.0#")
+End if
 $description:=String:C10($step.description)
 
 If ($description="") && (String:C10($step.UUID_Step)#"")
@@ -78,6 +84,12 @@ If ($binning.hasBinning)
 	$stepData.binningH:=$binning.binningH
 	$stepData.bins:=$binning.bins
 End if 
+
+$serials:=Planning_lotTravSerials($step)
+If ($serials.hasSn)
+	$stepData.snH:=$serials.snH
+	$stepData.sns:=$serials.sns
+End if
 
 $tools:=Planning_lotTravTools($step)
 If ($tools.hasTools)

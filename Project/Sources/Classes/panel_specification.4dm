@@ -130,9 +130,14 @@ Function bActionDocument()
 	Case of 
 		: ($choice="--view")
 			
-			$LocalFile:=Temporary folder:C486+Folder separator:K24:12+Form:C1466.selectedDocument.sourcePath
-			BLOB TO DOCUMENT:C526($LocalFile; Form:C1466.selectedDocument.blob)
-			OPEN URL:C673($LocalFile; *)
+			// a legacy entry imported without its file has no blob: say so instead of opening an empty file
+			If (Value type:C1509(Form:C1466.selectedDocument.blob)#Is object:K8:27) && (Value type:C1509(Form:C1466.selectedDocument.blob)#Is BLOB:K8:12)
+				cs:C1710.sfw_dialog.me.alert("This document has no file attached (it was not in the legacy export).")
+			Else 
+				$LocalFile:=Temporary folder:C486+Folder separator:K24:12+Form:C1466.selectedDocument.sourcePath
+				BLOB TO DOCUMENT:C526($LocalFile; Form:C1466.selectedDocument.blob)
+				OPEN URL:C673($LocalFile; *)
+			End if 
 			
 			
 		: ($choice="--add")

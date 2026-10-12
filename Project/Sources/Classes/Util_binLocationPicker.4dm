@@ -79,9 +79,9 @@ Function _buildOpts($currentPath : Text; $allowCreate : Boolean; $scopeLotUUID :
 	// Build occupied locations map from related inventories (live stock), not from Bin.isEmpty.
 	$occupiedMap:=New object:C1471
 	If (($scopeLotUUID#"") & ($scopeLotUUID#String:C10("00"*16)))
-		$occupiedInventories:=ds:C1482.Inventory.query("qtyInStock > :1 and UUID_Lot = :2"; 0; $scopeLotUUID)
+		$occupiedInventories:=ds:C1482.Inventory.query("availableQty > :1 and UUID_Lot = :2"; 0; $scopeLotUUID)
 	Else 
-		$occupiedInventories:=ds:C1482.Inventory.query("qtyInStock > :1"; 0)
+		$occupiedInventories:=ds:C1482.Inventory.query("availableQty > :1"; 0)
 	End if 
 	For each ($inventory; $occupiedInventories)
 		$locationUUID:=$inventory.UUID_Location
@@ -132,7 +132,7 @@ Function _buildOpts($currentPath : Text; $allowCreate : Boolean; $scopeLotUUID :
 	For each ($value; $options)
 		If ($terminalFlags[$idx])
 			If ($occupiedFlags[$idx])
-				$opts.push(New object:C1471("label"; "🟡 "+$value; "value"; "occupied|"+$value; "kind"; "yellow"))
+				$opts.push(New object:C1471("label"; "🟡 "+$value; "value"; "select|"+$value; "kind"; "yellow"))  // holds stock: still selectable (a bin holds many materials)
 			Else 
 				$opts.push(New object:C1471("label"; "🟢 "+$value; "value"; "select|"+$value; "kind"; "green"))
 			End if 
@@ -146,14 +146,15 @@ Function _buildOpts($currentPath : Text; $allowCreate : Boolean; $scopeLotUUID :
 	If (($currentPath#"") & $isCurrentPathExisting & ($options.length=0))
 		$opts.push(New object:C1471("label"; ""; "value"; ""; "kind"; "divider"))
 		$opts.push(New object:C1471("label"; "📍  "+$currentPath; "value"; ""; "kind"; "separator"))
+		// a bin holds many materials (legacy: up to 142 with stock in one bin): one that already holds
+		// stock says so, and can still be chosen
 		If ($currentBinIsOccupied)
-			$opts.push(New object:C1471("label"; "⚠️  This bin is not empty"; "value"; "occupied_alert"; "kind"; "yellow"))
-		Else 
-			$opts.push(New object:C1471("label"; "✔   Select this location"; "value"; "finish"; "kind"; "action"))
-			If ($allowCreate)
-				$opts.push(New object:C1471("label"; "➕  Add a sub-location"; "value"; "createText"; "kind"; "action"))
-			End if 
-		End if 
+			$opts.push(New object:C1471("label"; "🟡  Already holds stock"; "value"; ""; "kind"; "separator"))
+		End if
+		$opts.push(New object:C1471("label"; "✔   Select this location"; "value"; "finish"; "kind"; "action"))
+		If ($allowCreate)
+			$opts.push(New object:C1471("label"; "➕  Add a sub-location"; "value"; "createText"; "kind"; "action"))
+		End if
 	End if 
 	
 	If ($depth>0)
@@ -194,6 +195,7 @@ Function _handleChoice($choice : Text; $currentPath : Text; $allowCreate : Boole
 				Else 
 					$newBin:=ds:C1482.Bin.new()
 					$newBin.binLocationPath:=$newPath
+					$newBin.assignBarcode()  // a sub-location gets its scanner barcode too
 					$saveResult:=$newBin.save()
 					If ($saveResult.success)
 						Use (Storage:C1525.cache)

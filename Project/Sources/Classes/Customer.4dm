@@ -39,6 +39,11 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.allowMultiSelectionInLB("###,###,##0 ^1;;"; "unit1:customer selected"; "unitN:customers selected"; "nbMinimum:2")
 	
 	$entry.activateEvent("CustomerEvent"; "UUID_Customer")
+	// Field-level detail in the Events feed (see the planning entry in goldenAltos_definition).
+	// Addresses, contact details and FTP are object fields and are not compared.
+	$entry.setAttributesToTrackInModificationEvent("name"; "code"; "accountNumber"; "resaleLicenseNumber"; "enabled"; "vendor"; "approved")
+	$entry.setLinkManyToOneToTrackInModificationEvent("Carrier"; "UUID_CustomerCarrier"; "customerCarrier.name")
+	$entry.setLinkManyToOneToTrackInModificationEvent("Status"; "UUID_CustomerStatus"; "customerStatus.name")
 	
 	$entry.activateComment()
 	

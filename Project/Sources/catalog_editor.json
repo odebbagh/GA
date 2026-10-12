@@ -336,51 +336,57 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 2022.4692382812,
-				"top": 555.47967529297,
+				"left": 1859.8022460938,
+				"top": 2555.4797363281,
 				"width": 149.05078125,
 				"height": 448.33203125
 			},
 			"displayable_fields_count": 19,
 			"fields": {
+				"shift": {
+					"position": 17
+				},
 				"contactDetails": {
-					"position": 15
+					"position": 16
 				},
 				"citizenShipStatus": {
-					"position": 14
+					"position": 15
 				},
 				"UUID_Division": {
-					"position": 13
+					"position": 14
 				},
 				"stmpHire": {
-					"position": 12
+					"position": 13
 				},
 				"terminated": {
+					"position": 12
+				},
+				"moreData": {
 					"position": 11
 				},
 				"code": {
-					"position": 4
-				},
-				"stmpCreation": {
 					"position": 10
 				},
-				"stmpTermination": {
+				"stmpCreation": {
 					"position": 9
 				},
-				"codeID": {
-					"position": 3
-				},
-				"inactive": {
+				"stmpTermination": {
 					"position": 8
 				},
-				"lastName": {
+				"codeID": {
 					"position": 7
 				},
-				"firstName": {
+				"inactive": {
 					"position": 6
 				},
-				"stmpRetrain": {
+				"lastName": {
 					"position": 5
+				},
+				"firstName": {
+					"position": 4
+				},
+				"stmpRetrain": {
+					"position": 3
 				},
 				"UUID_User": {
 					"position": 2
@@ -585,8 +591,8 @@
 				"alpha": 255
 			},
 			"coordinates": {
-				"left": 601.33325195312,
-				"top": 1263.9998779297,
+				"left": 1933.3332519531,
+				"top": 3124,
 				"width": 219.052734375,
 				"height": 889.33215332031
 			},
@@ -780,42 +786,75 @@
 				"left": 3048.6667480469,
 				"top": 544.66668701172,
 				"width": 201.048828125,
-				"height": 497.33203125
+				"height": 635.33203125
 			},
-			"displayable_fields_count": 21,
+			"displayable_fields_count": 28,
 			"fields": {
-				"bins": {
+				"UUID_OperationType": {
+					"position": 24
+				},
+				"InOutParsDef": {
+					"position": 23
+				},
+				"UUID_StepTemplateProcess": {
+					"position": 22
+				},
+				"containerCodes": {
+					"position": 21
+				},
+				"rules": {
+					"position": 20
+				},
+				"UUID_Operation": {
+					"position": 19
+				},
+				"UUID_Division": {
+					"position": 18
+				},
+				"moreData": {
+					"position": 17
+				},
+				"areas": {
+					"position": 16
+				},
+				"settings": {
 					"position": 15
 				},
-				"parametricMeasurements": {
+				"templateNumber": {
 					"position": 14
 				},
-				"dataTables": {
+				"bins": {
 					"position": 13
 				},
-				"comment2": {
+				"parametricMeasurements": {
 					"position": 12
 				},
-				"comment1": {
+				"dataTables": {
 					"position": 11
 				},
-				"largeLayout_UUID": {
+				"comment2": {
 					"position": 10
 				},
-				"smallLayout_UUID": {
+				"comment1": {
 					"position": 9
 				},
-				"binning": {
+				"largeLayout_UUID": {
+					"position": 8
+				},
+				"smallLayout_UUID": {
 					"position": 7
 				},
-				"status": {
+				"binning": {
 					"position": 6
 				},
-				"division": {
+				"status": {
 					"position": 5
 				},
-				"operation": {
+				"division": {
 					"position": 4
+				},
+				"operation": {
+					"position": 3
 				},
 				"name": {
 					"position": 2
@@ -887,98 +926,140 @@
 			},
 			"displayable_fields_count": 51,
 			"fields": {
+				"ISSNF": {
+					"position": 63
+				},
+				"NCMN": {
+					"position": 62
+				},
+				"alternativeDevice": {
+					"position": 61
+				},
+				"yield": {
+					"position": 60
+				},
+				"pYield": {
+					"position": 59
+				},
+				"serialization": {
+					"position": 58
+				},
+				"snTable": {
+					"position": 57
+				},
+				"snRangeMax": {
+					"position": 56
+				},
+				"snRangeMin": {
+					"position": 55
+				},
+				"priority": {
+					"position": 54
+				},
+				"lotHold": {
+					"position": 53
+				},
+				"subSequence": {
+					"position": 52
+				},
+				"splitLevel": {
+					"position": 51
+				},
+				"step": {
+					"position": 50
+				},
 				"customerCount": {
-					"position": 48
+					"position": 49
 				},
 				"number": {
-					"position": 47
+					"position": 48
 				},
 				"moreData": {
-					"position": 46
+					"position": 47
 				},
 				"unitCost": {
-					"position": 45
+					"position": 46
 				},
 				"totalCharge": {
-					"position": 44
+					"position": 45
 				},
 				"shipRel": {
-					"position": 43
+					"position": 44
 				},
 				"carrier": {
-					"position": 42
+					"position": 43
 				},
 				"dateCode": {
-					"position": 41
+					"position": 42
 				},
 				"packageType": {
-					"position": 40
+					"position": 41
 				},
 				"altDevNumber": {
-					"position": 39
+					"position": 40
 				},
 				"cOfCInspector": {
-					"position": 38
+					"position": 39
 				},
 				"UUID_LotParent": {
-					"position": 37
+					"position": 38
 				},
 				"cOfCRemarks": {
-					"position": 36
+					"position": 37
 				},
 				"prQualifier": {
-					"position": 35
+					"position": 36
 				},
 				"comment": {
-					"position": 34
+					"position": 35
 				},
 				"status": {
-					"position": 33
+					"position": 34
 				},
 				"location": {
-					"position": 32
+					"position": 33
 				},
 				"shippingMemo": {
-					"position": 31
+					"position": 32
 				},
 				"readyToShipDate": {
-					"position": 30
+					"position": 31
 				},
 				"trackingNumber": {
-					"position": 29
+					"position": 30
 				},
 				"releaseNumber": {
-					"position": 28
+					"position": 29
 				},
 				"OQASimpleSize": {
-					"position": 27
+					"position": 28
 				},
 				"OQADate": {
-					"position": 26
+					"position": 27
 				},
 				"OQADone": {
-					"position": 25
+					"position": 26
 				},
 				"et": {
-					"position": 24
+					"position": 25
 				},
 				"az": {
-					"position": 23
+					"position": 24
 				},
 				"totalTested": {
-					"position": 22
+					"position": 23
 				},
 				"progressive": {
-					"position": 21
+					"position": 22
 				},
 				"original": {
-					"position": 20
+					"position": 21
 				},
 				"reCommit": {
-					"position": 19
+					"position": 20
 				},
 				"commit": {
-					"position": 18
+					"position": 19
 				},
 				"deviceTableLink": {
 					"position": 17
@@ -1049,139 +1130,139 @@
 			"displayable_fields_count": 53,
 			"fields": {
 				"moreData": {
-					"position": 54
-				},
-				"UUID_Customer": {
 					"position": 53
 				},
-				"directCost": {
+				"UUID_Customer": {
 					"position": 52
 				},
-				"inventoryCost": {
+				"directCost": {
 					"position": 51
 				},
-				"acNote": {
+				"inventoryCost": {
 					"position": 50
 				},
-				"testerType": {
+				"acNote": {
 					"position": 49
 				},
-				"UUID_SalesTax": {
+				"testerType": {
 					"position": 48
 				},
-				"UUID_PurchaseOrder": {
+				"UUID_SalesTax": {
 					"position": 47
 				},
-				"minimumJobCharge": {
+				"UUID_PurchaseOrder": {
 					"position": 46
 				},
-				"poRel": {
+				"minimumJobCharge": {
 					"position": 45
 				},
-				"boxStockShipment": {
+				"poRel": {
 					"position": 44
 				},
-				"freight": {
+				"boxStockShipment": {
 					"position": 43
 				},
-				"packageType": {
+				"freight": {
 					"position": 42
 				},
-				"taxable": {
+				"packageType": {
 					"position": 41
 				},
-				"glAcc": {
+				"taxable": {
 					"position": 40
 				},
-				"miscNote": {
+				"glAcc": {
 					"position": 39
 				},
-				"miscCharges": {
+				"miscNote": {
 					"position": 38
 				},
-				"initials": {
+				"miscCharges": {
 					"position": 37
 				},
-				"customerShipper": {
+				"initials": {
 					"position": 36
 				},
-				"altDeviceNumber": {
+				"customerShipper": {
 					"position": 35
 				},
-				"smtpRecommit": {
+				"altDeviceNumber": {
 					"position": 34
 				},
-				"currency": {
+				"smtpRecommit": {
 					"position": 33
 				},
-				"dropShipCustomer": {
+				"currency": {
 					"position": 32
 				},
-				"pr_qualifier": {
+				"dropShipCustomer": {
 					"position": 31
 				},
-				"stmpArchived": {
+				"pr_qualifier": {
 					"position": 30
 				},
-				"stmpLastShipped": {
+				"stmpArchived": {
 					"position": 29
 				},
-				"stmpInvoiced": {
+				"stmpLastShipped": {
 					"position": 28
 				},
-				"stmpExpected": {
+				"stmpInvoiced": {
 					"position": 27
 				},
-				"archived": {
+				"stmpExpected": {
 					"position": 26
 				},
-				"jobComment": {
+				"archived": {
 					"position": 25
 				},
-				"shipMemo": {
+				"jobComment": {
 					"position": 24
 				},
-				"qtyOnHand": {
+				"shipMemo": {
 					"position": 23
 				},
-				"qty": {
+				"qtyOnHand": {
 					"position": 22
 				},
-				"customerName": {
+				"qty": {
 					"position": 21
 				},
-				"shippers": {
+				"customerName": {
 					"position": 20
 				},
-				"alternateShipAddress": {
+				"shippers": {
 					"position": 19
 				},
-				"noLots": {
+				"alternateShipAddress": {
 					"position": 18
 				},
-				"lineItem": {
+				"noLots": {
 					"position": 17
 				},
-				"address": {
+				"lineItem": {
 					"position": 16
 				},
-				"parentJobNumber": {
+				"address": {
 					"position": 15
 				},
-				"postToPO": {
+				"parentJobNumber": {
 					"position": 14
 				},
-				"shipped": {
+				"postToPO": {
 					"position": 13
 				},
-				"totalCharge": {
+				"shipped": {
 					"position": 12
 				},
-				"totalTax": {
+				"totalCharge": {
 					"position": 11
 				},
-				"process": {
+				"totalTax": {
 					"position": 10
+				},
+				"process": {
+					"position": 9
 				},
 				"deviceNumber": {
 					"position": 8
@@ -1292,6 +1373,127 @@
 				}
 			}
 		},
+		"BOApprover": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 1555.3334960938,
+				"top": 2653.3332519531,
+				"width": 150.66674804688,
+				"height": 240.66552734375
+			},
+			"displayable_fields_count": 9
+		},
+		"GLAccount": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 2032.9997558594,
+				"top": 2634,
+				"width": 186,
+				"height": 454.33203125
+			},
+			"displayable_fields_count": 19,
+			"fields": {
+				"UUID_Division": {
+					"position": 17
+				},
+				"moreData": {
+					"position": 16
+				},
+				"buyItemType": {
+					"position": 15
+				},
+				"allowsConsumable": {
+					"position": 14
+				},
+				"defaultAsset": {
+					"position": 13
+				},
+				"allowsInventory": {
+					"position": 12
+				},
+				"purchasable": {
+					"position": 11
+				},
+				"removed": {
+					"position": 10
+				},
+				"subLevel": {
+					"position": 9
+				},
+				"subAccount": {
+					"position": 8
+				},
+				"parentAccountName": {
+					"position": 7
+				},
+				"fullAccountName": {
+					"position": 6
+				},
+				"accountTypeCode": {
+					"position": 5
+				},
+				"accountType": {
+					"position": 4
+				},
+				"description": {
+					"position": 3
+				},
+				"glac": {
+					"position": 2
+				},
+				"UUID": {
+					"position": 1
+				}
+			}
+		},
+		"BOTermsModel": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 3266,
+				"top": 2176,
+				"width": 181,
+				"height": 185.33203125
+			},
+			"displayable_fields_count": 6,
+			"fields": {
+				"name": {
+					"position": 2
+				},
+				"UUID": {
+					"position": 1
+				}
+			}
+		},
+		"BOTerm": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 3600,
+				"top": 2349,
+				"width": 120,
+				"height": 167.33203125
+			},
+			"displayable_fields_count": 6
+		},
 		"BOStatus": {
 			"color": {
 				"red": 255,
@@ -1307,6 +1509,21 @@
 			},
 			"displayable_fields_count": 6,
 			"fields_ordering": 1
+		},
+		"OperationType": {
+			"color": {
+				"red": 181,
+				"green": 145,
+				"blue": 209,
+				"alpha": 255
+			},
+			"coordinates": {
+				"left": 3270.3332519531,
+				"top": 1228.3332519531,
+				"width": 120,
+				"height": 167.33203125
+			},
+			"displayable_fields_count": 6
 		},
 		"StepSpecification": {
 			"color": {
@@ -1575,8 +1792,8 @@
 				"alpha": 255
 			},
 			"coordinates": {
-				"left": 3283,
-				"top": 542,
+				"left": 3288.3332519531,
+				"top": 520.66662597656,
 				"width": 120,
 				"height": 159.33203125
 			},
@@ -1977,22 +2194,22 @@
 					"position": 9
 				},
 				"total": {
-					"position": 8
-				},
-				"totalSalesTax": {
 					"position": 7
 				},
-				"travBasedCharges": {
+				"totalSalesTax": {
 					"position": 6
 				},
-				"poBasedCharges": {
+				"travBasedCharges": {
 					"position": 5
 				},
-				"status": {
+				"poBasedCharges": {
 					"position": 4
 				},
-				"invoiceStmp": {
+				"status": {
 					"position": 3
+				},
+				"invoiceStmp": {
+					"position": 2
 				},
 				"UUID": {
 					"position": 1
@@ -2039,20 +2256,168 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 2677,
-				"top": 2335.3764648438,
+				"left": 2632.6667480469,
+				"top": 2245.3764648438,
 				"width": 237.34765625,
-				"height": 845.33203125
+				"height": 1215.9987792969
 			},
-			"displayable_fields_count": 38,
+			"displayable_fields_count": 55,
 			"fields": {
+				"UUID_Inventory": {
+					"position": 50
+				},
+				"UUID_LineParent": {
+					"position": 49
+				},
+				"splitLevel": {
+					"position": 48
+				},
+				"UUID_GLAccount": {
+					"position": 47
+				},
+				"unitPriceWithTax": {
+					"position": 46
+				},
+				"asset": {
+					"position": 45
+				},
+				"consumable": {
+					"position": 44
+				},
+				"freight": {
+					"position": 43
+				},
+				"UUID_AML": {
+					"position": 42
+				},
+				"UUID_Division": {
+					"position": 41
+				},
+				"UUID_Staff": {
+					"position": 40
+				},
+				"UUID_Unit": {
+					"position": 39
+				},
+				"number": {
+					"position": 38
+				},
+				"confirmationDate": {
+					"position": 37
+				},
+				"inventory": {
+					"position": 36
+				},
+				"legacySeqNum": {
+					"position": 35
+				},
+				"UUID_Job": {
+					"position": 34
+				},
+				"tax": {
+					"position": 33
+				},
+				"units": {
+					"position": 32
+				},
+				"qtyOrdered": {
+					"position": 31
+				},
+				"order": {
+					"position": 30
+				},
+				"UUID_Supplier": {
+					"position": 29
+				},
+				"paidDate": {
+					"position": 28
+				},
+				"verificationRequired": {
+					"position": 27
+				},
+				"taxable": {
+					"position": 26
+				},
+				"dateIn": {
+					"position": 25
+				},
+				"requiredDate": {
+					"position": 24
+				},
+				"orderDate": {
+					"position": 23
+				},
+				"qtyFunctional": {
+					"position": 22
+				},
+				"expectedDeliveryStmp": {
+					"position": 21
+				},
+				"actualDeliveryStmp": {
+					"position": 20
+				},
+				"qtyReceived": {
+					"position": 19
+				},
+				"moreData": {
+					"position": 18
+				},
 				"supPsNumber": {
 					"color": {
 						"red": 255,
 						"green": 255,
 						"blue": 255,
 						"alpha": 0
-					}
+					},
+					"position": 17
+				},
+				"assetListNumber": {
+					"position": 16
+				},
+				"jobNumber": {
+					"position": 15
+				},
+				"amountPaid": {
+					"position": 14
+				},
+				"paidStmp": {
+					"position": 13
+				},
+				"checkNumber": {
+					"position": 12
+				},
+				"inStmp": {
+					"position": 11
+				},
+				"requiredStmp": {
+					"position": 10
+				},
+				"orderStmp": {
+					"position": 9
+				},
+				"glAccount": {
+					"position": 8
+				},
+				"lineTotal": {
+					"position": 7
+				},
+				"unitPrice": {
+					"position": 6
+				},
+				"qty": {
+					"position": 5
+				},
+				"description": {
+					"position": 4
+				},
+				"boNumber": {
+					"position": 3
+				},
+				"UUID_BuyingOrder": {
+					"position": 2
+				},
+				"UUID": {
+					"position": 1
 				}
 			}
 		},
@@ -2144,8 +2509,8 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 3862.7136230469,
-				"top": 698,
+				"left": 3780.7136230469,
+				"top": 690,
 				"width": 102.54817199707,
 				"height": 83.33203125
 			},
@@ -2175,20 +2540,78 @@
 				"alpha": 255
 			},
 			"coordinates": {
-				"left": 3846,
-				"top": 3,
+				"left": 3622,
+				"top": 2760.3332519531,
 				"width": 217,
 				"height": 457.33203125
 			},
 			"displayable_fields_count": 19,
 			"fields": {
+				"RatingData": {
+					"position": 20
+				},
+				"moreData": {
+					"position": 19
+				},
+				"critical": {
+					"position": 18
+				},
+				"attachedDocuments": {
+					"position": 17
+				},
+				"stmpNextAudit": {
+					"position": 16
+				},
+				"stmpLastAudit": {
+					"position": 15
+				},
+				"deactivated": {
+					"position": 14
+				},
+				"contactDetails": {
+					"position": 13
+				},
+				"auditRequired": {
+					"position": 12
+				},
+				"webService": {
+					"position": 11
+				},
+				"allowedLotProcessing": {
+					"position": 10
+				},
+				"approvedByCustomer": {
+					"position": 9
+				},
+				"approvedByQA": {
+					"position": 8
+				},
+				"qaComment": {
+					"position": 7
+				},
+				"enteredBy": {
+					"position": 6
+				},
+				"disqualified": {
+					"position": 5
+				},
+				"UUID_Division": {
+					"position": 4
+				},
+				"code": {
+					"position": 3
+				},
+				"name": {
+					"position": 2
+				},
 				"UUID": {
 					"color": {
 						"red": 255,
 						"green": 255,
 						"blue": 255,
 						"alpha": 0
-					}
+					},
+					"position": 1
 				}
 			}
 		},
@@ -2200,20 +2623,90 @@
 				"alpha": 255
 			},
 			"coordinates": {
-				"left": 3586,
-				"top": 0,
+				"left": 3239.3334960938,
+				"top": 2920.0002441406,
 				"width": 205,
 				"height": 544.33203125
 			},
 			"displayable_fields_count": 23,
 			"fields": {
+				"moreData": {
+					"position": 24
+				},
+				"attachedDocuments": {
+					"position": 23
+				},
+				"stmpApproval": {
+					"position": 22
+				},
+				"isApproved": {
+					"position": 21
+				},
+				"approvedBy": {
+					"position": 20
+				},
+				"description": {
+					"position": 19
+				},
+				"UUID_PartData": {
+					"position": 18
+				},
+				"minInventoryLevel": {
+					"position": 17
+				},
+				"transFactorDenominator": {
+					"position": 16
+				},
+				"transFactorNumerator": {
+					"position": 15
+				},
+				"procurementUnits": {
+					"position": 14
+				},
+				"inventoryUnits": {
+					"position": 13
+				},
+				"ourPartNum": {
+					"position": 12
+				},
+				"comment": {
+					"position": 11
+				},
+				"makeInactive": {
+					"position": 10
+				},
+				"capacity": {
+					"position": 9
+				},
+				"enteredBy": {
+					"position": 8
+				},
+				"UUID_Division": {
+					"position": 7
+				},
+				"serviceType": {
+					"position": 6
+				},
+				"service": {
+					"position": 5
+				},
+				"critical": {
+					"position": 4
+				},
+				"UUID_Supplier": {
+					"position": 3
+				},
+				"vendorPartnum": {
+					"position": 2
+				},
 				"UUID": {
 					"color": {
 						"red": 255,
 						"green": 255,
 						"blue": 255,
 						"alpha": 0
-					}
+					},
+					"position": 1
 				}
 			}
 		},
@@ -2372,12 +2865,23 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 4002.7133789062,
-				"top": 698,
-				"width": 87.017578125,
-				"height": 80.33203125
+				"left": 3429.7133789062,
+				"top": 2587,
+				"width": 108.017578125,
+				"height": 114.33203125
 			},
-			"displayable_fields_count": 1
+			"displayable_fields_count": 3,
+			"fields": {
+				"moreData": {
+					"position": 3
+				},
+				"name": {
+					"position": 2
+				},
+				"UUID": {
+					"position": 1
+				}
+			}
 		},
 		"Location": {
 			"color": {
@@ -2402,20 +2906,108 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 2415,
-				"top": 2215.3764648438,
-				"width": 172.34765625,
-				"height": 801.33203125
+				"left": 2295,
+				"top": 2339.3764648438,
+				"width": 192.34765625,
+				"height": 929.33203125
 			},
-			"displayable_fields_count": 36,
+			"displayable_fields_count": 42,
 			"fields": {
+				"UUID_GLAccount": {
+					"position": 39
+				},
+				"signed2": {
+					"position": 38
+				},
+				"signed1": {
+					"position": 37
+				},
+				"UUID_CustomerCarrier": {
+					"position": 36
+				},
+				"UUID_Status": {
+					"position": 35
+				},
+				"onHold": {
+					"position": 34
+				},
+				"closed": {
+					"position": 33
+				},
+				"requisitionOnly": {
+					"position": 32
+				},
+				"contactDetails": {
+					"position": 31
+				},
+				"UUID_AttentionTo": {
+					"position": 30
+				},
+				"UUID_Buyer": {
+					"position": 29
+				},
+				"UUID_Customer": {
+					"position": 28
+				},
+				"accountNumber": {
+					"position": 27
+				},
+				"buyer": {
+					"position": 26
+				},
+				"UUID_Supplier": {
+					"position": 25
+				},
+				"moreData": {
+					"position": 24
+				},
+				"termsCriticalService": {
+					"position": 23
+				},
 				"termsCriticalMaterials": {
 					"color": {
 						"red": 255,
 						"green": 255,
 						"blue": 255,
 						"alpha": 0
-					}
+					},
+					"position": 22
+				},
+				"terms": {
+					"position": 21
+				},
+				"signature2": {
+					"position": 20
+				},
+				"signature1": {
+					"position": 19
+				},
+				"UUID_Approver2": {
+					"position": 18
+				},
+				"UUID_Approver1": {
+					"position": 17
+				},
+				"lineItemsTotal": {
+					"position": 16
+				},
+				"salesTax": {
+					"position": 15
+				},
+				"UUID_Requestor": {
+					"position": 14
+				},
+				"division": {
+					"position": 13
+				},
+				"shipVia": {
+					"position": 12
+				},
+				"fob": {
+					"position": 11
+				},
+				"shippingAddress": {
+					"position": 10
 				},
 				"netDays": {
 					"color": {
@@ -2423,7 +3015,32 @@
 						"green": 255,
 						"blue": 255,
 						"alpha": 0
-					}
+					},
+					"position": 9
+				},
+				"discountDays": {
+					"position": 8
+				},
+				"discount": {
+					"position": 7
+				},
+				"currency": {
+					"position": 6
+				},
+				"salesTaxRate": {
+					"position": 5
+				},
+				"buyOrderLimit": {
+					"position": 4
+				},
+				"orderStmp": {
+					"position": 3
+				},
+				"boNumber": {
+					"position": 2
+				},
+				"UUID": {
+					"position": 1
 				}
 			}
 		},
@@ -2518,8 +3135,8 @@
 				"alpha": 255
 			},
 			"coordinates": {
-				"left": 3054.712890625,
-				"top": 1062,
+				"left": 3399.712890625,
+				"top": 1072,
 				"width": 167.689453125,
 				"height": 104.33203125
 			},
@@ -2639,7 +3256,27 @@
 				"width": 176.93957519531,
 				"height": 190.07992553711
 			},
-			"displayable_fields_count": 7
+			"displayable_fields_count": 7,
+			"fields": {
+				"moreData": {
+					"position": 6
+				},
+				"levelID": {
+					"position": 5
+				},
+				"color": {
+					"position": 4
+				},
+				"name": {
+					"position": 3
+				},
+				"code": {
+					"position": 2
+				},
+				"UUID": {
+					"position": 1
+				}
+			}
 		},
 		"Lead": {
 			"color": {
@@ -2666,55 +3303,55 @@
 					"position": 19
 				},
 				"UUID_Job": {
-					"position": 17
+					"position": 18
 				},
 				"UUID_PurchaseOrder": {
-					"position": 16
+					"position": 17
 				},
 				"UUID_Quote": {
-					"position": 15
+					"position": 16
 				},
 				"deal": {
-					"position": 14
+					"position": 15
 				},
 				"reasonWL": {
-					"position": 13
+					"position": 14
 				},
 				"moreData": {
-					"position": 12
+					"position": 13
 				},
 				"probabilityPC": {
-					"position": 11
+					"position": 12
 				},
 				"currentStageID": {
-					"position": 10
+					"position": 11
 				},
 				"priorityLevelID": {
-					"position": 9
+					"position": 10
 				},
 				"stmpClose": {
-					"position": 8
+					"position": 9
 				},
 				"stmpCreation": {
-					"position": 7
+					"position": 8
 				},
 				"amount": {
-					"position": 6
+					"position": 7
 				},
 				"leadCode": {
-					"position": 5
+					"position": 6
 				},
 				"UUID_ServiceType": {
-					"position": 4
+					"position": 5
 				},
 				"UUID_Staff": {
-					"position": 3
+					"position": 4
 				},
 				"UUID_Customer": {
-					"position": 2
+					"position": 3
 				},
 				"UUID": {
-					"position": 1
+					"position": 2
 				}
 			}
 		},
@@ -2976,12 +3613,32 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 2625,
-				"top": 194,
+				"left": 2990.3332519531,
+				"top": 2907.3332519531,
 				"width": 134,
-				"height": 160.33203125
+				"height": 226.33203125
 			},
-			"displayable_fields_count": 5
+			"displayable_fields_count": 8,
+			"fields": {
+				"moreData": {
+					"position": 7
+				},
+				"color": {
+					"position": 6
+				},
+				"code": {
+					"position": 5
+				},
+				"name": {
+					"position": 4
+				},
+				"levelID": {
+					"position": 3
+				},
+				"UUID": {
+					"position": 2
+				}
+			}
 		},
 		"EquipmentLocation": {
 			"color": {
@@ -3155,7 +3812,75 @@
 				"width": 258.697265625,
 				"height": 526.33203125
 			},
-			"displayable_fields_count": 23
+			"displayable_fields_count": 23,
+			"fields": {
+				"moreData": {
+					"position": 22
+				},
+				"stmpApproval": {
+					"position": 21
+				},
+				"approvedBy": {
+					"position": 20
+				},
+				"isApproved": {
+					"position": 19
+				},
+				"stmpReviewDate": {
+					"position": 18
+				},
+				"reviewIntervalInDays": {
+					"position": 17
+				},
+				"addendumToSpec": {
+					"position": 16
+				},
+				"UUID_ControllingDepartment": {
+					"position": 15
+				},
+				"suppress": {
+					"position": 14
+				},
+				"addendum": {
+					"position": 13
+				},
+				"extension": {
+					"position": 12
+				},
+				"remark": {
+					"position": 11
+				},
+				"UUID_DocumentCategory": {
+					"position": 10
+				},
+				"publishedDocumentBlob": {
+					"position": 9
+				},
+				"documents": {
+					"position": 8
+				},
+				"isForm": {
+					"position": 7
+				},
+				"UUID_Division": {
+					"position": 6
+				},
+				"revision": {
+					"position": 5
+				},
+				"stmpRevisionDate": {
+					"position": 4
+				},
+				"title": {
+					"position": 3
+				},
+				"spec": {
+					"position": 2
+				},
+				"UUID": {
+					"position": 1
+				}
+			}
 		},
 		"sfw_DocumentFolder": {
 			"color": {
@@ -3231,7 +3956,27 @@
 				"width": 175,
 				"height": 166.33203125
 			},
-			"displayable_fields_count": 5
+			"displayable_fields_count": 5,
+			"fields": {
+				"moreData": {
+					"position": 6
+				},
+				"color": {
+					"position": 5
+				},
+				"code": {
+					"position": 4
+				},
+				"name": {
+					"position": 3
+				},
+				"levelID": {
+					"position": 2
+				},
+				"UUID": {
+					"position": 1
+				}
+			}
 		},
 		"Tool": {
 			"color": {
@@ -3263,11 +4008,35 @@
 			},
 			"displayable_fields_count": 51,
 			"fields": {
+				"qaRejected": {
+					"position": 50
+				},
+				"qtyRejects": {
+					"position": 49
+				},
+				"dataTable": {
+					"position": 48
+				},
+				"specificationControl": {
+					"position": 47
+				},
+				"UUID_Step": {
+					"position": 46
+				},
+				"sample": {
+					"position": 45
+				},
+				"yield": {
+					"position": 44
+				},
 				"moreData": {
 					"position": 43
 				},
 				"properties": {
 					"position": 42
+				},
+				"snTable": {
+					"position": 41
 				},
 				"beSerialized": {
 					"position": 40
@@ -3283,6 +4052,9 @@
 				},
 				"approvedBy": {
 					"position": 36
+				},
+				"area": {
+					"position": 35
 				},
 				"minYield": {
 					"position": 34
@@ -3306,79 +4078,79 @@
 					"position": 28
 				},
 				"requitedCertifications": {
-					"position": 27
-				},
-				"skills": {
 					"position": 26
 				},
-				"commentFormat2": {
+				"skills": {
 					"position": 25
 				},
-				"commentFormat1": {
+				"commentFormat2": {
 					"position": 24
 				},
-				"comment2": {
+				"commentFormat1": {
 					"position": 23
 				},
-				"comment1": {
+				"comment2": {
 					"position": 22
 				},
-				"dataTables": {
+				"comment1": {
 					"position": 21
 				},
-				"stepInterruptions": {
+				"dataTables": {
 					"position": 20
 				},
-				"parametricMeasurements": {
+				"stepInterruptions": {
 					"position": 19
 				},
-				"tools": {
+				"parametricMeasurements": {
 					"position": 18
 				},
-				"good": {
+				"tools": {
 					"position": 17
 				},
-				"rejects": {
+				"good": {
 					"position": 16
 				},
-				"timeIn": {
+				"rejects": {
 					"position": 15
 				},
-				"timeOut": {
+				"timeIn": {
 					"position": 14
 				},
-				"specRevision": {
+				"timeOut": {
 					"position": 13
 				},
-				"lotSpecs": {
+				"specRevision": {
 					"position": 12
 				},
-				"bins": {
+				"lotSpecs": {
 					"position": 11
 				},
-				"dateOut": {
+				"bins": {
 					"position": 10
 				},
-				"dateIn": {
+				"dateOut": {
 					"position": 9
 				},
-				"qtyOut": {
+				"dateIn": {
 					"position": 8
 				},
-				"qtyIn": {
+				"qtyOut": {
 					"position": 7
 				},
-				"alert": {
+				"qtyIn": {
 					"position": 6
 				},
-				"description": {
+				"alert": {
 					"position": 5
 				},
-				"order": {
+				"description": {
 					"position": 4
 				},
-				"UUID_Lot": {
+				"order": {
 					"position": 3
+				},
+				"UUID_Lot": {
+					"position": 2
 				},
 				"UUID": {
 					"position": 1
@@ -3408,10 +4180,10 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 2934,
-				"top": 1298,
+				"left": 2941,
+				"top": 1281,
 				"width": 211.29681396484,
-				"height": 104.33203125
+				"height": 118.33203125
 			},
 			"displayable_fields_count": 3,
 			"fields_ordering": 1
@@ -3429,8 +4201,7 @@
 				"width": 211.01448059082,
 				"height": 166.33203125
 			},
-			"displayable_fields_count": 5,
-			"fields_ordering": 1
+			"displayable_fields_count": 5
 		},
 		"Contact": {
 			"color": {
@@ -3449,6 +4220,110 @@
 		}
 	},
 	"relations": {
+		"04F9904339C34671BA765D5F6E71C12A": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"CCA1CE64F39A44B4BC416B78329ACC7E": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"C1A356B1557B479B902244716389EAA1": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"B3AA369301C640CC82480B8420D39415": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"1757BF302B5F4A578F0E048CF2C52AB4": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"D7D8978A00604DC3AA882661D35DD47E": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"B981DA594BA04DDE9E7B892B439A69EA": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"036FD82FEF4F4B6AAFC5280DC5B350B8": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"20F3F99684FF43F5B96480E6AEB239DF": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"D1321BD6AE2542ACBD73B6240422C09A": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"449E87BA4DA048C89C00C4EDE557DDAA": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"BE0E907CAE1844D0848229C4518393E3": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"AE12A20792D24A5C8BB07856862B46C5": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
 		"1C553AE5BC1A4D05B9F8BCF8EA297A10": {
 			"color": {
 				"red": 240,
@@ -3470,6 +4345,22 @@
 				"red": 240,
 				"green": 240,
 				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"7F8E9D0C1B2A394857463748596A7B8C": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			}
+		},
+		"26DE33637B06452D9F8CE84890431838": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
 				"alpha": 0
 			}
 		},
@@ -3495,6 +4386,14 @@
 				"green": 178,
 				"blue": 170,
 				"alpha": 255
+			}
+		},
+		"4D8D4A0F11111D4D907CE33428DB49AA": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
 			}
 		},
 		"CF558440884CD84E9F39268E6E74624F": {

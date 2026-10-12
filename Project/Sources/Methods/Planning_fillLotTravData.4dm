@@ -86,7 +86,7 @@ For each ($step; $steps)
 End for each 
 
 $data:=New object:C1471(\
-"lotNumber"; Planning_travSanitizeText($lotNumber); \
+"lotNumber"; Planning_travSanitizeText($lot.displayNumber); \
 "lotBarcode"; $lotBarcode; \
 "customerName"; $customerName; \
 "PONumber"; $poNumber; \

@@ -333,7 +333,7 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"textPlacement": "center",
 					"method": "ObjectMethods/btnDatePicker.4dm",
 					"visibility": "visible",

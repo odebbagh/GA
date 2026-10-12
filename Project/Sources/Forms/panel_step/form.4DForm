@@ -318,7 +318,7 @@
 					"width": 280,
 					"height": 17,
 					"stroke": "#000000",
-					"text": "Step Specifications",
+					"text": "Specifications & Forms",
 					"fontSize": 12,
 					"fontWeight": "bold"
 				},
@@ -372,6 +372,21 @@
 					"columns": [
 						{
 							"header": {
+								"name": "Header_specType",
+								"text": "Type",
+								"fontWeight": "bold"
+							},
+							"name": "Column_specType",
+							"footer": {
+								"name": "Footer_specType"
+							},
+							"dataSource": "This:C1470.type",
+							"width": 45,
+							"minWidth": 45,
+							"enterable": false
+						},
+						{
+							"header": {
 								"name": "Header_specName",
 								"text": "Specification",
 								"fontWeight": "bold"
@@ -387,6 +402,21 @@
 						},
 						{
 							"header": {
+								"name": "Header_specRev",
+								"text": "Rev",
+								"fontWeight": "bold"
+							},
+							"name": "Column_specRev",
+							"footer": {
+								"name": "Footer_specRev"
+							},
+							"dataSource": "This:C1470.revision",
+							"width": 35,
+							"minWidth": 35,
+							"enterable": false
+						},
+						{
+							"header": {
 								"name": "Entête1",
 								"text": "Entête1"
 							},
@@ -394,8 +424,8 @@
 							"footer": {
 								"name": "Pied1"
 							},
-							"minWidth": 400,
-							"width": 400,
+							"minWidth": 100,
+							"width": 250,
 							"dataSource": "This:C1470.title"
 						}
 					]

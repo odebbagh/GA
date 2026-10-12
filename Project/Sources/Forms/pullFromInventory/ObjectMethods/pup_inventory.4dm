@@ -17,7 +17,7 @@ Case of
 			Form:C1466.selectedInventory:=$form.item
 			Form:C1466.availableQty:=$form.item.availableQty
 			Form:C1466.inventoryDisplay:=$form.item.code+" — Avail: "+String:C10($form.item.availableQty)
-			Form:C1466.qtyToPull:=0
+			Form:C1466.qtyToPull:=$form.item.availableQty  // most pulls take everything left: proposed, can be lowered
 			OBJECT SET ENABLED:C1123(*; "inp_qtyToPull"; True:C214)
 		End if 
 End case 

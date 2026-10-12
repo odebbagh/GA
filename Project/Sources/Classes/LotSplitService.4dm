@@ -4,6 +4,29 @@ singleton Class constructor
 	This:C1470.STEP_TYPE_CHILD_DOC:=512
 	This:C1470.MIN_CHILD_COUNT:=2
 	
+Function freeLotNumber($number : Integer; $uuid : Text)->$free : Integer
+	// $number when no other lot has it; otherwise the counter is moved past the highest number in
+	// use (_fix_sequences, on the server) and a fresh number is taken. Used just before a new lot
+	// or sublot is saved: the counter can fall back below numbers already given when a counter
+	// change made inside a cancelled transaction is undone.
+	$free:=$number
+	If ($free>0) && (ds:C1482.Lot.query("number = :1 AND UUID # :2"; $free; $uuid).length=0)
+		return
+	End if
+	// The next number after the highest one this process can see (its own unsaved lots included).
+	// Not by asking the counter again and again: when the counter sits far below the numbers in use
+	// (imported lots), that walked through them one query at a time and looked like a hang; inside the
+	// panel's transaction the counter can also stay behind.
+	var $tries : Integer
+	$free:=Num:C11(ds:C1482.Lot.all().max("number"))+1
+	$tries:=0
+	While (ds:C1482.Lot.query("number = :1 AND UUID # :2"; $free; $uuid).length>0) && ($tries<100)
+		$free:=$free+1
+		$tries:=$tries+1
+	End while
+	// and the counter past it, so the next new lot does not start from behind again
+	_fix_sequences
+
 Function canSplit($lot : Variant; $ctx : Object)->$result : Object
 	var $inModification : Boolean
 	var $lotSteps : cs:C1710.LotStepSelection
@@ -66,7 +89,7 @@ Function canSplit($lot : Variant; $ctx : Object)->$result : Object
 		return 
 	End if 
 	
-	$lotSteps:=$lot.steps
+	$lotSteps:=$lot.lotSteps
 	If ($lotSteps.length=0)
 		$result.reasonCode:="NO_STEPS"
 		$result.message:="This lot has no traveler steps. Create steps before splitting."
@@ -164,7 +187,7 @@ Function canSplitAtCurrentStep($lot : Variant; $ctx : Object)->$result : Object
 		return
 	End if
 
-	If ($lot.steps.length=0)
+	If ($lot.lotSteps.length=0)
 		$result.reasonCode:="NO_STEPS"
 		$result.message:="This lot has no traveler steps. Create steps before splitting."
 		return
@@ -294,6 +317,7 @@ Function executeSplit($lot : Variant; $params : Object)->$result : Object
 		$lot.snTable:=$lot.snTable  // make sure the entity registers the touched attribute
 	End if
 
+	$child.number:=This:C1470.freeLotNumber($child.number; $child.UUID)  // never a number already in use
 	$res:=$child.save()
 	If (Not:C34($res.success))
 		$result.message:="The sublot could not be saved."

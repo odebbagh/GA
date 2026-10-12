@@ -107,7 +107,7 @@ local Function pup($cacheCollection; $dataClass; $queryField; $queryValue)
 local Function loadAfterCreation()
 	// This callback is called after creating the new item but before displaying the panel.
 	If (This:C1470.jobNumber=0)
-		This:C1470.jobNumber:=ds:C1482.Job.all().max("jobNumber")+1
+		This:C1470.jobNumber:=Sequence number:C244([Job:117])  // the table's counter: never given twice, even to two users creating jobs at once ("highest + 1" was)
 		This:C1470.address:=New object:C1471("addresses"; New collection:C1472())
 		
 		This:C1470.address.addresses.push(New object:C1471(\

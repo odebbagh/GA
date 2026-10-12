@@ -132,7 +132,138 @@
 					]
 				}
 			}
+		},
+		{
+			"objects": {
+				"rec_bkgd_3": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 1,
+					"width": 100,
+					"height": 446,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent",
+					"right": 101,
+					"bottom": 560
+				},
+				"txt_docs": {
+					"type": "text",
+					"text": "Forms & Specs",
+					"top": 125,
+					"left": 9,
+					"width": 92,
+					"height": 56,
+					"fontWeight": "bold",
+					"right": 101
+				},
+				"bActionProcessDocs": {
+					"type": "button",
+					"text": " ",
+					"top": 186,
+					"left": 9,
+					"width": 26,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionProcessDocs.4dm"
+				},
+				"lb_processDocs": {
+					"type": "listbox",
+					"left": 102,
+					"top": 114,
+					"width": 1476,
+					"height": 446,
+					"events": [
+						"onClick",
+						"onSelectionChange"
+					],
+					"dataSource": "Form:C1466.lb_processDocs",
+					"listboxType": "collection",
+					"selectionMode": "single",
+					"currentItemSource": "Form:C1466.selectedProcessDoc",
+					"columns": [
+						{
+							"header": {
+								"text": "Type",
+								"name": "Header_pdType"
+							},
+							"name": "col_pdType",
+							"footer": {
+								"name": "Footer_pdType"
+							},
+							"dataSource": "This:C1470.type",
+							"width": 60,
+							"minWidth": 60,
+							"enterable": false
+						},
+						{
+							"header": {
+								"text": "Code",
+								"name": "Header_pdSpec"
+							},
+							"name": "col_pdSpec",
+							"footer": {
+								"name": "Footer_pdSpec"
+							},
+							"dataSource": "This:C1470.spec",
+							"width": 130,
+							"minWidth": 100,
+							"enterable": false
+						},
+						{
+							"header": {
+								"text": "Rev",
+								"name": "Header_pdRev"
+							},
+							"name": "col_pdRev",
+							"footer": {
+								"name": "Footer_pdRev"
+							},
+							"dataSource": "This:C1470.revision",
+							"width": 50,
+							"minWidth": 40,
+							"enterable": false
+						},
+						{
+							"header": {
+								"text": "Title",
+								"name": "Header_pdTitle"
+							},
+							"name": "col_pdTitle",
+							"footer": {
+								"name": "Footer_pdTitle"
+							},
+							"dataSource": "This:C1470.title",
+							"width": 900,
+							"minWidth": 200,
+							"enterable": false
+						},
+						{
+							"header": {
+								"text": "Steps",
+								"name": "Header_pdSteps"
+							},
+							"name": "col_pdSteps",
+							"footer": {
+								"name": "Footer_pdSteps"
+							},
+							"dataSource": "This:C1470.coverage",
+							"width": 80,
+							"minWidth": 60,
+							"enterable": false,
+							"textAlign": "center"
+						}
+					]
+				}
+			}
 		}
+
 	],
 	"geometryStamp": 1,
 	"inheritedForm": "sfw_bkgd_header_3lines",

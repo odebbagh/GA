@@ -117,7 +117,7 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"textPlacement": "center",
 					"method": "ObjectMethods/btnDatePickerCreate.4dm",
 					"visibility": "visible",

@@ -1,6 +1,6 @@
 //%attributes = {}
 // InventoryPullForm_putBackList
-// Returns inventory items that still have net pulled quantity for a lot: the
+// Returns inventory items this lot pulled from and has not fully put back yet: the
 // lot's own inventory plus any inventory received against a buying-order line
 // flagged inventory and assigned to the lot's job.
 
@@ -24,7 +24,7 @@ Else
 End if
 
 For each ($inv; $candidates)
-	If (InventoryPullForm_netPulled($inv.UUID)>0)
+	If (InventoryPullForm_netPulled($inv.UUID; $lotUUID)>0)  // what THIS lot pulled and has not put back
 		$items.push($inv)
 	End if
 End for each

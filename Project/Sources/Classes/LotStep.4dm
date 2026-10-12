@@ -102,11 +102,9 @@ local Function currentSteps()->$lotSteps : cs:C1710.LotStepSelection  //Calibrat
 		If ($currentLot#$item.lot.number)
 			$lotSteps.add($item)
 		End if 
-		If ($item.properties#Null:C1517) && ($item.properties.items#Null:C1517)
-			$OCR:=$item.properties.items.query("name = 'OCR'")
-			If ($OCR.length>0) && ($OCR[0].enabled)
-				$lotSteps.add($item)
-			End if 
+		// a step allowed out of sequence (NSP, legacy NonSequentialProcessingAllowed) is listed too
+		If (cs:C1710.ga_serialization.me.hasProperty($item; "NSP"))
+			$lotSteps.add($item)
 		End if 
 		$currentLot:=$item.lot.number
 	End for each 
@@ -124,11 +122,9 @@ local Function punchOutSteps()->$lotSteps : cs:C1710.LotStepSelection
 		If ($currentLot#$item.lot.number)
 			$lotSteps.add($item)
 		End if 
-		If ($item.properties#Null:C1517) && ($item.properties.items#Null:C1517)
-			$OCR:=$item.properties.items.query("name = 'OCR'")
-			If ($OCR.length>0) && ($OCR[0].enabled)
-				$lotSteps.add($item)
-			End if 
+		// a step allowed out of sequence (NSP, legacy NonSequentialProcessingAllowed) is listed too
+		If (cs:C1710.ga_serialization.me.hasProperty($item; "NSP"))
+			$lotSteps.add($item)
 		End if 
 		$currentLot:=$item.lot.number
 	End for each 

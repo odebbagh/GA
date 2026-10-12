@@ -40,6 +40,19 @@ End if
 
 If ($item#Null:C1517)
 	$form:=LotHoldForm_cloneObject($item)
-Else 
+Else
 	$form:=LotHoldForm_cloneObject($defaults)
-End if 
+	// a new form: what the paper form asks and the app already knows (GAF-1014 / GAF-1514)
+	Case of
+		: ($formFieldName="NCMN")
+			$form.statusOnHold:=True:C214
+			$form.statusWillHold:=False:C215
+			$form.statusInfo:=False:C215
+			$form.statusLocation:=LotHoldForm_holdLocation($lot)
+			// the automatic hold on a low yield (AE4) is a yield problem
+			$form.reasonYield:=((String:C10($hold.hold_code)="AE4") || (String:C10($hold.holdCode)="AE4"))
+		: ($formFieldName="ISSNF")
+			$form.location:=LotHoldForm_holdLocation($lot)
+	End case
+End if
+$form.lot_UUID:=$lot.UUID  // for the Print button (LotHoldForm_print); not saved

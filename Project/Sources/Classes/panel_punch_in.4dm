@@ -53,6 +53,25 @@ Function checkBinQuantities($showAlert : Boolean)
 		End if
 	End if
 
+Function checkSnCountAtPunchIn()
+	// all-units step (SNA): every unit entering is on the step's serial-number list, so Qty In
+	// should equal it. A warning, never a block: 4% of real lots differ (old database audit).
+	var $units : Integer
+	
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	If (Not:C34(cs:C1710.ga_serialization.me.hasProperty(Form:C1466.current_item; "SNA")))
+		return 
+	End if 
+	$units:=cs:C1710.ga_serialization.me.stepUnitCount(Form:C1466.current_item)
+	If ($units=0) || (Num:C11(Form:C1466.current_item.qtyIn)=$units)
+		return 
+	End if 
+	If (Not:C34(cs:C1710.sfw_dialog.me.confirm("Quantity In is "+String:C10(Num:C11(Form:C1466.current_item.qtyIn))+" but "+String:C10($units)+" serial numbers are on this step.\rKeep "+String:C10(Num:C11(Form:C1466.current_item.qtyIn))+"?"; "Keep "+String:C10(Num:C11(Form:C1466.current_item.qtyIn)); "Use "+String:C10($units))))
+		Form:C1466.current_item.qtyIn:=$units
+	End if 
+	
 Function formMethod()
 
 	Form:C1466.sfw.panelFormMethod()
@@ -92,14 +111,17 @@ Function formMethod()
 			This:C1470.loadInventoryPulls()
 			This:C1470.displayBannerLotOnHold()
 			This:C1470.refreshActualHours()
+			This:C1470.loadStepDocuments()
 	End case 
 	
 	If (Form:C1466.sfw.updateOfPanelNeeded())
+		This:C1470.loadToolsLb()
 		This:C1470.loadLotHolds()
 		This:C1470.loadInventoryPulls()
 		This:C1470.loadDataTable()
 		This:C1470.displayBannerLotOnHold()
 		This:C1470.refreshActualHours()
+		This:C1470.loadStepDocuments()
 	End if 
 	
 	If (Form:C1466.sfw.redrawAndSetVisibleInPanelNeeded())
@@ -308,8 +330,20 @@ Function redrawAndSetVisible()
 			$pullCount:=0
 		End if 
 		Form:C1466.sfw.entry.panel.pages[4].label:="Inventory Pulls ["+String:C10($pullCount)+"]"
+		var $docCount : Integer
+		$docCount:=0
+		If (Form:C1466.lb_stepDocs#Null:C1517)
+			$docCount:=Form:C1466.lb_stepDocs.length
+		End if 
+		If (Form:C1466.sfw.entry.panel.pages.length>7)
+			Form:C1466.sfw.entry.panel.pages[7].label:="Forms & Specs ["+String:C10($docCount)+"]"
+		End if 
 	End use 
 	Form:C1466.sfw.drawHTab()
+	
+	If (FORM Get current page:C276(*)=8)
+		This:C1470._sizeStepDocsPage()
+	End if 
 	
 	OBJECT GET SUBFORM CONTAINER SIZE:C1148($widthSubform; $heightSubform)
 	
@@ -338,7 +372,7 @@ Function redrawAndSetVisible()
 			OBJECT GET COORDINATES:C663(*; "rec_bkgd3"; $g_bkgd; $h_bkgd; $d_bkgd; $b_bkgd)
 			OBJECT SET COORDINATES:C1248(*; "rec_bkgd3"; $g_bkgd; $h_bkgd; $d_bkgd; $heightSubform)
 			OBJECT GET COORDINATES:C663(*; "lb_lotHolds"; $g_lb; $h_lb; $d_lb; $b_lb)
-			OBJECT SET COORDINATES:C1248(*; "lb_lotHolds"; $g_lb; $h_lb; $widthSubform; $heightSubform-($heightButton+$spaceButton))
+			OBJECT SET COORDINATES:C1248(*; "lb_lotHolds"; $g_lb; $h_lb; $widthSubform; $heightSubform)  // down to the bottom: the Actions button sits in the left column
 			OBJECT GET COORDINATES:C663(*; "bActionLotHolds"; $g_btn_act; $h_btn_act; $d_btn_act; $b_btn_act)
 			OBJECT SET COORDINATES:C1248(*; "bActionLotHolds"; $g_btn_act; $heightSubform-$heightButton-$spaceButton)
 			
@@ -358,7 +392,7 @@ Function redrawAndSetVisible()
 			OBJECT GET COORDINATES:C663(*; "rec_bkgd5"; $g_bkgd; $h_bkgd; $d_bkgd; $b_bkgd)
 			OBJECT SET COORDINATES:C1248(*; "rec_bkgd5"; $g_bkgd; $h_bkgd; $d_bkgd; $heightSubform)
 			OBJECT GET COORDINATES:C663(*; "lb_inventoryPulls"; $g_lb; $h_lb; $d_lb; $b_lb)
-			OBJECT SET COORDINATES:C1248(*; "lb_inventoryPulls"; $g_lb; $h_lb; $widthSubform; $heightSubform-($heightButton+$spaceButton))
+			OBJECT SET COORDINATES:C1248(*; "lb_inventoryPulls"; $g_lb; $h_lb; $widthSubform; $heightSubform)  // down to the bottom: the Actions button sits in the left column
 			OBJECT GET COORDINATES:C663(*; "bActionInventoryPulls"; $g_btn_act; $h_btn_act; $d_btn_act; $b_btn_act)
 			OBJECT SET COORDINATES:C1248(*; "bActionInventoryPulls"; $g_btn_act; $heightSubform-$heightButton-$spaceButton)
 			
@@ -410,12 +444,23 @@ Function bActionLotHolds()
 	APPEND MENU ITEM:C411($refMenu; "View ISSNF")
 	SET MENU ITEM PARAMETER:C1004($refMenu; 2; "--ISSNF")
 	
+	// the hold forms on their Golden Altos paper forms (LotHoldForm_print)
+	APPEND MENU ITEM:C411($refMenu; "(-")
+	APPEND MENU ITEM:C411($refMenu; "Print NCMN (GAF-1014)")
+	SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--printNCMN")
+	APPEND MENU ITEM:C411($refMenu; "Print ISSNF (GAF-1514)")
+	SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--printISSNF")
+	
 	$choose:=Dynamic pop up menu:C1006($refMenu)
 	Case of 
 		: ($choose="--NCMN")
 			LotHoldForm_viewHoldForm($lot; "NCMN"; $holdOn)
 		: ($choose="--ISSNF")
 			LotHoldForm_viewHoldForm($lot; "ISSNF"; $holdOn)
+		: ($choose="--printNCMN")
+			LotHoldForm_print("NCMN"; LotHoldForm_resolveFormForHold($lot; "NCMN"; $holdOn))
+		: ($choose="--printISSNF")
+			LotHoldForm_print("ISSNF"; LotHoldForm_resolveFormForHold($lot; "ISSNF"; $holdOn))
 	End case 
 	
 Function bActionSteps()
@@ -432,7 +477,15 @@ Function bActionSteps()
 	$choose:=Dynamic pop up menu:C1006($refMenu)
 	Case of 
 		: ($choose="--log_step_interruption")
-			$form:=New object:C1471()
+			// a new interruption starts now and ends an hour later (both can be changed)
+			var $end : Time
+			$end:=Time:C179(Current time:C178+3600)
+			$form:=New object:C1471("start_date"; Current date:C33; "start_time"; String:C10(Current time:C178; HH MM:K7:2); "end_date"; Current date:C33; "end_time"; "")
+			If ($end>=?24:00:00?)
+				$form.end_date:=Current date:C33+1
+				$end:=Time:C179($end-86400)
+			End if 
+			$form.end_time:=String:C10(Time:C179($end); HH MM:K7:2)
 			
 			$winRef:=Open form window:C675("logStepInterruption"; Controller form window:K39:17; Horizontally centered:K39:1; Vertically centered:K39:4)
 			DIALOG:C40("logStepInterruption"; $form)
@@ -590,8 +643,6 @@ Function displayConsumedPartsDF()
 	OBJECT GET COORDINATES:C663(*; "rec_bkgd2"; $g_bkgd; $h_bkgd; $d_bkgd; $b_bkgd)
 	OBJECT SET COORDINATES:C1248(*; "rec_bkgd2"; $g_bkgd; $h_bkgd; $d_bkgd; $heightSubform)
 	
-	OBJECT GET COORDINATES:C663(*; "bActionConsumedParts"; $g_btn_act; $h_btn_act; $d_btn_act; $b_btn_act)
-	OBJECT SET COORDINATES:C1248(*; "bActionConsumedParts"; $g_btn_act; $heightSubform-$heightButton-$spaceButton)
 	
 	OBJECT GET COORDINATES:C663(*; "lb_binning"; $g_lb; $h_lb; $d_lb; $b_lb)
 	OBJECT SET COORDINATES:C1248(*; "lb_binning"; $d_bkgd; $h_lb; $widthSubform-300; $heightSubform)
@@ -623,8 +674,6 @@ Function hideConsumedPartsDF()
 	OBJECT GET COORDINATES:C663(*; "rec_bkgd2"; $g_bkgd; $h_bkgd; $d_bkgd; $b_bkgd)
 	OBJECT SET COORDINATES:C1248(*; "rec_bkgd2"; $g_bkgd; $h_bkgd; $d_bkgd; $heightSubform)
 	
-	OBJECT GET COORDINATES:C663(*; "bActionConsumedParts"; $g_btn_act; $h_btn_act; $d_btn_act; $b_btn_act)
-	OBJECT SET COORDINATES:C1248(*; "bActionConsumedParts"; $g_btn_act; $heightSubform-$heightButton-$spaceButton)
 	
 	OBJECT GET COORDINATES:C663(*; "lb_binning"; $g_lb; $h_lb; $d_lb; $b_lb)
 	OBJECT SET COORDINATES:C1248(*; "lb_binning"; $g_lb; $h_lb; $widthSubform; $heightSubform)
@@ -684,27 +733,34 @@ Function hideSerializationDetailForm()
 	OBJECT SET VISIBLE:C603(*; "sn_@"; False:C215)
 	
 Function loadToolsLb()
+	// One row per tool type the step's template asks for; a tool type added to the template
+	// later gets its row the next time the step is shown. Called for every step shown.
+	var $item : Object
 	
 	Form:C1466.tools_lb:=New collection:C1472()
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
 	
 	If (Form:C1466.current_item.tools=Null:C1517)
 		Form:C1466.current_item.tools:=New object:C1471()
 	End if 
-	
-	//Empty tools object
 	If (Form:C1466.current_item.tools.items=Null:C1517)
 		Form:C1466.current_item.tools.items:=New collection:C1472()
 	End if 
 	
-	//In case a new tool is added in the template
-	If (Form:C1466.current_item.tools.items.length<Form:C1466.current_item.step.stepTemplate.stepTemplateToolTypes.length)
-		$stepTemplateToolTypes:=Form:C1466.current_item.step.stepTemplate.stepTemplateToolTypes
-		For each ($item; $stepTemplateToolTypes)
-			If (Form:C1466.current_item.tools.items.query("uuid_toolType = :1 & order"; $item.UUID_ToolType; $item.order).length=0)
-				Form:C1466.current_item.tools.items.push(New object:C1471("order"; $item.order; "uuid_toolType"; $item.toolType.UUID; "toolType"; $item.toolType.name; "toolName"; ""; "toolDate"; !00-00-00!))
-			End if 
-		End for each 
+	If (Form:C1466.current_item.step=Null:C1517)
+		return 
 	End if 
+	If (Form:C1466.current_item.step.stepTemplate=Null:C1517)
+		return 
+	End if 
+	For each ($item; Form:C1466.current_item.step.stepTemplate.stepTemplateToolTypes.orderBy("order asc"))
+		If (Form:C1466.current_item.tools.items.query("uuid_toolType = :1 AND order = :2"; $item.UUID_ToolType; $item.order).length=0)
+			Form:C1466.current_item.tools.items.push(New object:C1471("order"; $item.order; "uuid_toolType"; $item.UUID_ToolType; "toolType"; String:C10($item.toolType.name); "toolName"; ""; "toolDate"; !00-00-00!))
+		End if 
+	End for each 
+	Form:C1466.current_item.tools.items:=Form:C1466.current_item.tools.items.orderBy("order asc")
 	
 Function loadDataTable()
 	
@@ -1197,88 +1253,108 @@ Function bActionInventoryPulls()
 	End case 
 	
 Function pullFromInventory()
-	
-	var $lot : 4D:C1709.Entity
-	var $inventoryItems : cs:C1710.InventorySelection
-	var $form : Object
-	var $winRef : Integer
-	var $result : Object
-	
-	$lot:=Form:C1466.current_item.lot
-	If ($lot=Null:C1517)
-		return 
-	End if 
-	
-	$inventoryItems:=InventoryPullForm_pullList($lot.UUID; (($lot.job#Null:C1517) ? $lot.job.UUID : ""))
-	If ($inventoryItems.length=0)
-		cs:C1710.sfw_dialog.me.alert("No inventory with available quantity found for this lot.")
-		return 
-	End if 
-	
-	$form:=New object:C1471(\
-		"inventoryItems"; $inventoryItems; \
-		"selectedInventory"; Null:C1517; \
-		"inventoryDisplay"; ""; \
-		"availableQty"; 0; \
-		"qtyToPull"; 0; \
-		"performedBy"; ""\
-		)
-	
-	$winRef:=Open form window:C675("pullFromInventory"; Controller form window:K39:17; Horizontally centered:K39:1; Vertically centered:K39:4)
-	DIALOG:C40("pullFromInventory"; $form)
-	CLOSE WINDOW:C154($winRef)
-	
-	If (OK=1)
-		$result:=InventoryPullForm_savePull($lot; $form.selectedInventory; $form.qtyToPull; $form.performedBy)
-		If ($result.success)
-			This:C1470.loadInventoryPulls()
-			This:C1470.redrawAndSetVisible()
-			This:C1470._activate_save_cancel_button()
-		Else 
-			cs:C1710.sfw_dialog.me.alert($result.message)
-		End if 
+	// the pull itself: ga_inventoryPulls (step, cost, whole quantity proposed, checks)
+	If (cs:C1710.ga_inventoryPulls.me.pullForStep(Form:C1466.current_item))
+		This:C1470.loadInventoryPulls()
+		This:C1470.redrawAndSetVisible()
+		This:C1470._activate_save_cancel_button()
 	End if 
 	
 Function putBackToInventory()
-	
-	var $lot : 4D:C1709.Entity
-	var $inventoryItems : Collection
-	var $form : Object
-	var $winRef : Integer
-	var $result : Object
-	
-	$lot:=Form:C1466.current_item.lot
-	If ($lot=Null:C1517)
-		return 
+	// refused once the step is punched out: ga_inventoryPulls
+	If (cs:C1710.ga_inventoryPulls.me.putBackForStep(Form:C1466.current_item))
+		This:C1470.loadInventoryPulls()
+		This:C1470.redrawAndSetVisible()
+		This:C1470._activate_save_cancel_button()
 	End if 
 	
-	$inventoryItems:=InventoryPullForm_putBackList($lot.UUID; (($lot.job#Null:C1517) ? $lot.job.UUID : ""))
-	If ($inventoryItems.length=0)
-		cs:C1710.sfw_dialog.me.alert("No pulled inventory available to put back for this lot.")
-		return 
+// ----------------------------------------------
+// Forms & Specs page (page 8): the specs and GAF forms of this step, viewable in place.
+// The list and the files come from cs.ga_stepDocuments: a file is fetched from the server
+// only when it is shown, then kept in a local cache, so the same form crosses the network
+// once per revision. Read-only: links are maintained in Housekeeping (Step Templates,
+// Operation Processes).
+// ----------------------------------------------
+Function loadStepDocuments()
+	Form:C1466.lb_stepDocs:=cs:C1710.ga_stepDocuments.me.listFor(Form:C1466.current_item)
+	Form:C1466.selectedStepDoc:=Null:C1517
+	This:C1470._showStepDocUrl("about:blank")
+	
+	
+Function showStepDocument()
+	var $file : 4D:C1709.File
+	
+	If (Form:C1466.selectedStepDoc=Null:C1517)
+		return
+	End if 
+	If (Not:C34(Bool:C1537(Form:C1466.selectedStepDoc.hasFile)))
+		This:C1470._showStepDocUrl("about:blank")
+		return
 	End if 
 	
-	$form:=New object:C1471(\
-		"inventoryItems"; $inventoryItems; \
-		"selectedInventory"; Null:C1517; \
-		"inventoryDisplay"; ""; \
-		"maxQty"; 0; \
-		"qtyToPutBack"; 0; \
-		"performedBy"; ""\
-		)
+	$file:=cs:C1710.ga_stepDocuments.me.localFile(Form:C1466.selectedStepDoc.docUUID)
+	If ($file=Null:C1517)
+		cs:C1710.sfw_dialog.me.alert("The file of "+String:C10(Form:C1466.selectedStepDoc.spec)+" could not be retrieved from the server.")
+		return
+	End if 
+	This:C1470._showStepDocUrl(cs:C1710.ga_stepDocuments.me.urlFor($file))
 	
-	$winRef:=Open form window:C675("putBackToInventory"; Controller form window:K39:17; Horizontally centered:K39:1; Vertically centered:K39:4)
-	DIALOG:C40("putBackToInventory"; $form)
-	CLOSE WINDOW:C154($winRef)
 	
-	If (OK=1)
-		$result:=InventoryPullForm_savePutBack($lot; $form.selectedInventory; $form.qtyToPutBack; $form.performedBy)
-		If ($result.success)
-			This:C1470.loadInventoryPulls()
-			This:C1470.redrawAndSetVisible()
-			This:C1470._activate_save_cancel_button()
-		Else 
-			cs:C1710.sfw_dialog.me.alert($result.message)
-		End if 
+Function bActionStepDocs()
+	var $refMenu : Text
+	var $choose : Text
+	var $file : 4D:C1709.File
+	var $canShow : Boolean
+	
+	$canShow:=(Form:C1466.selectedStepDoc#Null:C1517)
+	If ($canShow)
+		$canShow:=Bool:C1537(Form:C1466.selectedStepDoc.hasFile)
 	End if 
 	
+	$refMenu:=Create menu:C408
+	APPEND MENU ITEM:C411($refMenu; "Show")
+	SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--show")
+	If (Not:C34($canShow))
+		DISABLE MENU ITEM:C150($refMenu; -1)
+	End if 
+	APPEND MENU ITEM:C411($refMenu; "Open in a separate window (to print)")
+	SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--open")
+	If (Not:C34($canShow))
+		DISABLE MENU ITEM:C150($refMenu; -1)
+	End if 
+	
+	$choose:=Dynamic pop up menu:C1006($refMenu)
+	RELEASE MENU:C978($refMenu)
+	
+	Case of 
+		: ($choose="--show")
+			This:C1470.showStepDocument()
+	
+		: ($choose="--open")
+			$file:=cs:C1710.ga_stepDocuments.me.localFile(Form:C1466.selectedStepDoc.docUUID)
+			If ($file=Null:C1517)
+				cs:C1710.sfw_dialog.me.alert("The file of "+String:C10(Form:C1466.selectedStepDoc.spec)+" could not be retrieved from the server.")
+			Else 
+				OPEN URL:C673($file.platformPath)
+			End if 
+	End case 
+	
+	
+Function _showStepDocUrl($url : Text)
+	Form:C1466.stepDocUrl:=$url
+	If (FORM Get current page:C276(*)=8)
+		WA OPEN URL:C1020(*; "wa_stepDoc"; $url)
+	End if 
+	
+	
+Function _sizeStepDocsPage()
+	OBJECT GET SUBFORM CONTAINER SIZE:C1148($widthSubform; $heightSubform)
+	
+	OBJECT GET COORDINATES:C663(*; "rec_bkgd8"; $l; $t; $r; $b)
+	OBJECT SET COORDINATES:C1248(*; "rec_bkgd8"; $l; $t; $r; $heightSubform)
+	OBJECT GET COORDINATES:C663(*; "bActionStepDocs"; $l; $t; $r; $b)
+	OBJECT SET COORDINATES:C1248(*; "bActionStepDocs"; $l; $heightSubform-21-5; $r; $heightSubform-5)
+	OBJECT GET COORDINATES:C663(*; "lb_stepDocs"; $l; $t; $r; $b)
+	OBJECT SET COORDINATES:C1248(*; "lb_stepDocs"; $l; $t; $r; $heightSubform-1)
+	OBJECT GET COORDINATES:C663(*; "wa_stepDoc"; $l; $t; $r; $b)
+	OBJECT SET COORDINATES:C1248(*; "wa_stepDoc"; $l; $t; $widthSubform-5; $heightSubform-1)

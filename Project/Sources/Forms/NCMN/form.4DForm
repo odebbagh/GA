@@ -41,7 +41,7 @@
 					"top": 0,
 					"left": 0,
 					"width": 470,
-					"height": 810,
+					"height": 854,
 					"fill": "#BFC8DC",
 					"stroke": "transparent",
 					"strokeWidth": 0
@@ -65,6 +65,20 @@
 					"fontWeight": "bold",
 					"fontSize": 12,
 					"stroke": "#000000"
+				},
+				"field_ncmnNumber": {
+					"type": "input",
+					"left": 26,
+					"top": 60,
+					"width": 420,
+					"height": 17,
+					"fontWeight": "bold",
+					"stroke": "#1F4E79",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"focusable": false,
+					"dataSource": "Choose:C955(String:C10(Form:C1466.ncmnNumber)=\"\"; \"NCMN # assigned when saved\"; \"NCMN # \"+String:C10(Form:C1466.ncmnNumber)+\"   -   #\"+String:C10(Form:C1466.ncmnIndex)+\" on this lot\")"
 				},
 				"customer_label_bkgd": {
 					"type": "rectangle",
@@ -456,7 +470,7 @@
 					"top": 371,
 					"left": 0,
 					"width": 470,
-					"height": 116,
+					"height": 80,
 					"fill": "#9CC3E6",
 					"stroke": "transparent"
 				},
@@ -465,7 +479,7 @@
 					"top": 371,
 					"left": 150,
 					"width": 290,
-					"height": 116,
+					"height": 80,
 					"fill": "#FFFFFF",
 					"stroke": "transparent"
 				},
@@ -482,7 +496,7 @@
 					"top": 375,
 					"left": 158,
 					"width": 270,
-					"height": 108,
+					"height": 72,
 					"multiline": "yes",
 					"dataSource": "Form:C1466.problemDetail",
 					"borderStyle": "none",
@@ -490,25 +504,25 @@
 				},
 				"disposition_label_bkgd": {
 					"type": "rectangle",
-					"top": 500,
+					"top": 556,
 					"left": 0,
 					"width": 470,
-					"height": 116,
+					"height": 80,
 					"fill": "#9CC3E6",
 					"stroke": "transparent"
 				},
 				"disposition_value_bkgd": {
 					"type": "rectangle",
-					"top": 500,
+					"top": 556,
 					"left": 150,
 					"width": 290,
-					"height": 116,
+					"height": 80,
 					"fill": "#FFFFFF",
 					"stroke": "transparent"
 				},
 				"lbl_disposition": {
 					"type": "text",
-					"top": 506,
+					"top": 562,
 					"left": 26,
 					"width": 120,
 					"height": 45,
@@ -516,10 +530,15 @@
 				},
 				"field_disposition": {
 					"type": "input",
-					"top": 504,
+					"events": [
+						"onAfterEdit",
+						"onDataChange"
+					],
+					"method": "ObjectMethods/field_disposition.4dm",
+					"top": 560,
 					"left": 158,
 					"width": 270,
-					"height": 108,
+					"height": 72,
 					"multiline": "yes",
 					"dataSource": "Form:C1466.disposition",
 					"borderStyle": "none",
@@ -527,17 +546,27 @@
 				},
 				"section_approvals": {
 					"type": "text",
-					"top": 630,
+					"top": 674,
 					"left": 11,
 					"width": 120,
 					"height": 16,
 					"text": "Approvals",
 					"fontWeight": "bold"
 				},
+				"approvals_hint": {
+					"type": "text",
+					"text": "Approvals open once the disposition (action plan) is entered.",
+					"top": 704,
+					"left": 26,
+					"width": 420,
+					"height": 32,
+					"stroke": "#7F7F7F",
+					"fontStyle": "italic"
+				},
 				"chk_customer_service": {
 					"type": "checkbox",
 					"text": "",
-					"top": 658,
+					"top": 702,
 					"left": 11,
 					"width": 17,
 					"height": 17,
@@ -549,7 +578,7 @@
 				},
 				"lbl_customer_service": {
 					"type": "text",
-					"top": 661,
+					"top": 705,
 					"left": 43,
 					"width": 100,
 					"height": 15,
@@ -557,7 +586,7 @@
 				},
 				"date_customer_service_label_bkgd": {
 					"type": "rectangle",
-					"top": 654,
+					"top": 698,
 					"left": 192,
 					"width": 277,
 					"height": 23,
@@ -566,7 +595,7 @@
 				},
 				"lbl_date_customer_service": {
 					"type": "text",
-					"top": 659,
+					"top": 703,
 					"left": 198,
 					"width": 30,
 					"height": 15,
@@ -575,7 +604,7 @@
 				"chk_engineering": {
 					"type": "checkbox",
 					"text": "",
-					"top": 682,
+					"top": 726,
 					"left": 11,
 					"width": 17,
 					"height": 17,
@@ -587,7 +616,7 @@
 				},
 				"lbl_engineering": {
 					"type": "text",
-					"top": 685,
+					"top": 729,
 					"left": 43,
 					"width": 100,
 					"height": 15,
@@ -595,7 +624,7 @@
 				},
 				"date_engineering_label_bkgd": {
 					"type": "rectangle",
-					"top": 679,
+					"top": 723,
 					"left": 192,
 					"width": 277,
 					"height": 23,
@@ -604,7 +633,7 @@
 				},
 				"lbl_date_engineering": {
 					"type": "text",
-					"top": 683,
+					"top": 727,
 					"left": 198,
 					"width": 30,
 					"height": 15,
@@ -613,7 +642,7 @@
 				"chk_qa_qc": {
 					"type": "checkbox",
 					"text": "",
-					"top": 706,
+					"top": 750,
 					"left": 11,
 					"width": 17,
 					"height": 17,
@@ -625,7 +654,7 @@
 				},
 				"lbl_qa_qc": {
 					"type": "text",
-					"top": 709,
+					"top": 753,
 					"left": 43,
 					"width": 100,
 					"height": 15,
@@ -633,7 +662,7 @@
 				},
 				"date_qa_qc_label_bkgd": {
 					"type": "rectangle",
-					"top": 704,
+					"top": 748,
 					"left": 192,
 					"width": 277,
 					"height": 23,
@@ -642,7 +671,7 @@
 				},
 				"lbl_date_qa_qc": {
 					"type": "text",
-					"top": 707,
+					"top": 751,
 					"left": 198,
 					"width": 30,
 					"height": 15,
@@ -651,7 +680,7 @@
 				"chk_production": {
 					"type": "checkbox",
 					"text": "",
-					"top": 730,
+					"top": 774,
 					"left": 11,
 					"width": 17,
 					"height": 17,
@@ -663,7 +692,7 @@
 				},
 				"lbl_production": {
 					"type": "text",
-					"top": 733,
+					"top": 777,
 					"left": 43,
 					"width": 100,
 					"height": 15,
@@ -671,7 +700,7 @@
 				},
 				"date_production_label_bkgd": {
 					"type": "rectangle",
-					"top": 729,
+					"top": 773,
 					"left": 193,
 					"width": 277,
 					"height": 23,
@@ -680,7 +709,7 @@
 				},
 				"lbl_date_production": {
 					"type": "text",
-					"top": 733,
+					"top": 777,
 					"left": 198,
 					"width": 30,
 					"height": 15,
@@ -689,7 +718,7 @@
 				"btn_cancel": {
 					"type": "button",
 					"text": "Cancel",
-					"top": 770,
+					"top": 814,
 					"left": 280,
 					"width": 70,
 					"height": 24,
@@ -698,7 +727,7 @@
 				"btn_save": {
 					"type": "button",
 					"text": "Save",
-					"top": 770,
+					"top": 814,
 					"left": 370,
 					"width": 70,
 					"height": 24,
@@ -706,7 +735,7 @@
 				},
 				"originator_value_bkgd1": {
 					"type": "rectangle",
-					"top": 654,
+					"top": 698,
 					"left": 231,
 					"width": 209,
 					"height": 23,
@@ -715,7 +744,7 @@
 				},
 				"originator_value_bkgd2": {
 					"type": "rectangle",
-					"top": 678,
+					"top": 722,
 					"left": 231,
 					"width": 209,
 					"height": 24,
@@ -724,7 +753,7 @@
 				},
 				"originator_value_bkgd3": {
 					"type": "rectangle",
-					"top": 704,
+					"top": 748,
 					"left": 231,
 					"width": 209,
 					"height": 23,
@@ -733,7 +762,7 @@
 				},
 				"originator_value_bkgd4": {
 					"type": "rectangle",
-					"top": 729,
+					"top": 773,
 					"left": 231,
 					"width": 209,
 					"height": 24,
@@ -742,7 +771,7 @@
 				},
 				"field_date_customer_service": {
 					"type": "input",
-					"top": 657,
+					"top": 701,
 					"left": 236,
 					"width": 190,
 					"height": 18,
@@ -754,7 +783,7 @@
 				},
 				"field_date_engineering": {
 					"type": "input",
-					"top": 682,
+					"top": 726,
 					"left": 236,
 					"width": 190,
 					"height": 18,
@@ -766,7 +795,7 @@
 				},
 				"field_date_qa_qc": {
 					"type": "input",
-					"top": 707,
+					"top": 751,
 					"left": 236,
 					"width": 190,
 					"height": 18,
@@ -778,7 +807,7 @@
 				},
 				"field_date_production": {
 					"type": "input",
-					"top": 732,
+					"top": 776,
 					"left": 237,
 					"width": 190,
 					"height": 18,
@@ -800,8 +829,253 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"method": "ObjectMethods/btnDatePicker_commitDate.4dm"
+				},
+				"reason_label_bkgd": {
+					"type": "rectangle",
+					"top": 451,
+					"left": 0,
+					"width": 470,
+					"height": 44,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"reason_value_bkgd": {
+					"type": "rectangle",
+					"top": 451,
+					"left": 150,
+					"width": 290,
+					"height": 44,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_reason": {
+					"type": "text",
+					"text": "Reason",
+					"top": 457,
+					"left": 26,
+					"width": 115,
+					"height": 15
+				},
+				"opt_reasonYield": {
+					"type": "checkbox",
+					"text": "Yield",
+					"top": 454,
+					"left": 158,
+					"width": 130,
+					"height": 17,
+					"dataSource": "Form:C1466.reasonYield",
+					"events": [
+						"onClick"
+					]
+				},
+				"opt_reasonCount": {
+					"type": "checkbox",
+					"text": "Count Discrepancy",
+					"top": 454,
+					"left": 290,
+					"width": 148,
+					"height": 17,
+					"dataSource": "Form:C1466.reasonCount",
+					"events": [
+						"onClick"
+					]
+				},
+				"opt_reasonMaterial": {
+					"type": "checkbox",
+					"text": "Material",
+					"top": 474,
+					"left": 158,
+					"width": 130,
+					"height": 17,
+					"dataSource": "Form:C1466.reasonMaterial",
+					"events": [
+						"onClick"
+					]
+				},
+				"opt_reasonOther": {
+					"type": "checkbox",
+					"text": "Other",
+					"top": 474,
+					"left": 290,
+					"width": 148,
+					"height": 17,
+					"dataSource": "Form:C1466.reasonOther",
+					"events": [
+						"onClick"
+					]
+				},
+				"status_label_bkgd": {
+					"type": "rectangle",
+					"top": 495,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"status_value_bkgd": {
+					"type": "rectangle",
+					"top": 495,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_status": {
+					"type": "text",
+					"text": "Status",
+					"top": 501,
+					"left": 26,
+					"width": 115,
+					"height": 15
+				},
+				"opt_statusOnHold": {
+					"type": "radio",
+					"text": "On hold at",
+					"top": 498,
+					"left": 158,
+					"width": 90,
+					"height": 17,
+					"dataSource": "Form:C1466.statusOnHold",
+					"radioGroup": "grpStatus",
+					"events": [
+						"onClick"
+					]
+				},
+				"opt_statusWillHold": {
+					"type": "radio",
+					"text": "Will be held at",
+					"top": 498,
+					"left": 250,
+					"width": 108,
+					"height": 17,
+					"dataSource": "Form:C1466.statusWillHold",
+					"radioGroup": "grpStatus",
+					"events": [
+						"onClick"
+					]
+				},
+				"opt_statusInfo": {
+					"type": "radio",
+					"text": "Info only",
+					"top": 498,
+					"left": 360,
+					"width": 80,
+					"height": 17,
+					"dataSource": "Form:C1466.statusInfo",
+					"radioGroup": "grpStatus",
+					"events": [
+						"onClick"
+					]
+				},
+				"status_location_label_bkgd": {
+					"type": "rectangle",
+					"top": 519,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"status_location_value_bkgd": {
+					"type": "rectangle",
+					"top": 519,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_status_location": {
+					"type": "text",
+					"text": "Held at (step)",
+					"top": 525,
+					"left": 26,
+					"width": 115,
+					"height": 15
+				},
+				"field_status_location": {
+					"type": "input",
+					"top": 522,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.statusLocation",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "right"
+				},
+				"car_label_bkgd": {
+					"type": "rectangle",
+					"top": 636,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"car_value_bkgd": {
+					"type": "rectangle",
+					"top": 636,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_car": {
+					"type": "text",
+					"text": "CAR",
+					"top": 642,
+					"left": 26,
+					"width": 115,
+					"height": 15
+				},
+				"opt_carIssued": {
+					"type": "checkbox",
+					"text": "CAR issued",
+					"top": 639,
+					"left": 158,
+					"width": 90,
+					"height": 17,
+					"dataSource": "Form:C1466.carIssued",
+					"events": [
+						"onClick"
+					]
+				},
+				"lbl_car_number": {
+					"type": "text",
+					"text": "CAR #",
+					"top": 642,
+					"left": 255,
+					"width": 40,
+					"height": 15
+				},
+				"field_car_number": {
+					"type": "input",
+					"top": 639,
+					"left": 298,
+					"width": 130,
+					"height": 18,
+					"dataSource": "Form:C1466.carNumber",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "right"
+				},
+				"btn_print": {
+					"type": "button",
+					"text": "Print GAF-1014",
+					"top": 814,
+					"left": 26,
+					"width": 120,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/btn_print.4dm"
 				}
 			}
 		}

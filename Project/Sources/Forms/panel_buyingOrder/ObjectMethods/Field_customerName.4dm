@@ -1,1 +1,1 @@
-cs:C1710.panel_buyingOrder.me.selectCustomer()
+cs:C1710.panel_buyingOrder.me.selectSupplier()

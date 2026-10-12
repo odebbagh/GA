@@ -437,24 +437,20 @@
 					"numberFormat": "$##,###,###,##0.00"
 				},
 				"PopupDate1": {
-					"type": "subform",
+					"type": "button",
+					"text": "",
 					"top": 142,
 					"left": 457,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.invoice.date",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/PopupDate1.4dm",
+					"width": 18,
+					"height": 18,
 					"events": [
-						"onLoad"
+						"onClick"
 					],
-					"focusable": true
+					"method": "ObjectMethods/PopupDate1.4dm",
+					"focusable": false,
+					"style": "custom",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"tooltip": "Choose the date"
 				},
 				"Button": {
 					"type": "button",

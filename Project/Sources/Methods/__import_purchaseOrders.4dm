@@ -943,7 +943,7 @@ If (True:C214)
 		$inventory_e.totalCost:=$record.totalCost
 		$inventory_e.availableQty:=$record.AvailableQty
 		$inventory_e.initialQty:=$record.originalQty
-		$inventory_e.inventoryID:=(ds:C1482.Inventory.all().length>0) ? ds:C1482.Inventory.all().max("inventoryID")+1 : 1
+		$inventory_e.inventoryID:=Sequence number:C244([Inventory:126])  // the table's counter: never given twice ("highest + 1" could be)
 		$inventory_e.code:="INV"+String:C10($inventory_e.inventoryID; "00000#")
 		
 		$staff_es:=ds:C1482.Staff.query("code = :1"; $inventory_e.receivedBy)

@@ -13,18 +13,21 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.setPanel("panel_inventory"; 1)
 	$entry.setPanelPage(1; ""; "Main")
 	$entry.setPanelPage(2; ""; "Pulls & History")
+	// Documents: the framework page (sfw_Document + DocumentData), page 3, with the file count in the
+	// tab - 412 legacy materials had documents. It switches panel_inventory to dynamic-source
+	// rendering: its object methods are mirrored as class functions of the same name (end of
+	// panel_inventory) - keep them in step.
+	$entry.activateDocument("showCountInTab")
 	
 	
 	$entry.setLBItemsColumn("code"; "ID"; "width:80"; "center")
-	$entry.setLBItemsColumn("vendor"; "Customer"; "width:200")
-	$entry.setLBItemsColumn("partNumber"; "Part #"; "width:160")
+	$entry.setLBItemsColumn("ownerName"; "Customer / Vendor"; "width:200"; "orderByFormula:This.ownerName")
+	$entry.setLBItemsColumn("partNumberDisplay"; "Part #"; "width:160")
 	
 	$entry.setLBItemsOrderBy("code")
 	
-	$entry.setValidationRule("initialQty"; "entryField_initialQty"; "mandatory")
-	$entry.setValidationRule("availableQty"; "entryField_availableQty"; "mandatory")
-	$entry.setValidationRule("unitCost"; "entryField_unitCost"; "mandatory")
-	$entry.setValidationRule("actualValue"; "entryField_actualValue"; "mandatory")
+	// no validation rules on the quantities: the stock is never typed (ga_stock), and the framework's
+	// "mandatory" does not check numbers
 	
 	$view:=cs:C1710.sfw_definitionView.new("qaPending"; "QA Pending"; "derivedFrom:main"; $entry)
 	$view.setSubset("qaPending")
@@ -39,14 +42,14 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$filter:=cs:C1710.sfw_definitionFilter.new("filterCustomer")
 	$filter.setDefaultTitle("All Customers")
 	$filter.setFilterByLinkedEntity("Customer"; "UUID_Customer"; ""; "customer")
-	$filter.setDynamicTitle("name"; "## classifications")
+	$filter.setDynamicTitle("name"; "## customers")
 	$filter.setOrderForItems("name")
 	$filter.setAttributeLabelForItem("name")
 	$entry.addFilter($filter)
 	
 	$filter:=cs:C1710.sfw_definitionFilter.new("filterReceivedBy")
 	$filter.setDefaultTitle("Received By: All")
-	$filter.setFilterByLinkedEntity("Staff"; "UUID_Staff"; ""; "staff")
+	$filter.setFilterByLinkedEntity("Staff"; "UUID_Staff"; ""; "receiver")
 	$filter.setDynamicTitle("fullName"; "## staffs")
 	$filter.setOrderForItems("fullName")
 	$filter.setAttributeLabelForItem("fullName")
@@ -55,7 +58,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$filter:=cs:C1710.sfw_definitionFilter.new("filterClassification")
 	$filter.setDefaultTitle("All Classifications")
 	$filter.setFilterByLinkedEntity("InventoryClassification"; "UUID_InventoryClassification"; ""; "inventoryClassification")
-	$filter.setDynamicTitle("name"; "## customers")
+	$filter.setDynamicTitle("name"; "## classifications")
 	$filter.setOrderForItems("name")
 	$filter.setAttributeLabelForItem("name")
 	$entry.addFilter($filter)

@@ -320,6 +320,39 @@ Function bActionDocument()
 	This:C1470.loadDocuments()
 	
 	
+	// ---- mirror functions for dynamic-source rendering -------------------------
+	// The Buying > Suppliers entry runs activateDocument, which switches this panel to
+	// dynamic-source rendering. In that mode sfw_foundations replaces EVERY form object
+	// method with sfw_dynamicForm_script, which calls cs.panel_supplier.me[objectName]().
+	// Without these, the date pickers and the four radio buttons would silently stop
+	// working when the panel is opened from that entry.
+	//
+	// The ObjectMethods files stay: they are what runs for QA > AVL, which is still in
+	// static mode. These functions are additive and harmless there.
+
+Function btnDatePicker1()
+	cs:C1710.Util.me.btnDatePicker(Form:C1466.current_item; "lastAuditDate")
+	This:C1470._activate_save_cancel_button()
+
+Function btnDatePicker2()
+	cs:C1710.Util.me.btnDatePicker(Form:C1466.current_item; "nextAuditDate")
+	This:C1470._activate_save_cancel_button()
+
+Function rbMainAddress()
+	Form:C1466.current_item.rebuildAddress()
+
+Function rbRemitAddress()
+	Form:C1466.current_item.rebuildAddress()
+
+Function rbPrimaryContact()
+	Form:C1466.current_item.rebuildContact()
+
+Function rbSecondaryContact()
+	Form:C1466.current_item.rebuildContact()
+
+Function lb_contact()
+	// The listbox has an empty object method; declared so the dynamic dispatcher finds
+	// something to call rather than failing on a missing member.
 Function loadDocuments()
 	
 	If (Form:C1466.current_item#Null:C1517)

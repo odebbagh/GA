@@ -41,7 +41,7 @@
 					"top": 0,
 					"left": 0,
 					"width": 470,
-					"height": 745,
+					"height": 793,
 					"fill": "#BFC8DC",
 					"stroke": "transparent",
 					"strokeWidth": 0
@@ -61,7 +61,7 @@
 					"left": 26,
 					"width": 380,
 					"height": 16,
-					"text": "NON-CONFORMING MATERIAL NOTICE (NMN)",
+					"text": "INTERNAL START-STOP NOTIFICATION FORM (ISSNF)",
 					"fontWeight": "bold",
 					"fontSize": 12,
 					"stroke": "#000000"
@@ -453,7 +453,7 @@
 				},
 				"detail_label_bkgd": {
 					"type": "rectangle",
-					"top": 371,
+					"top": 419,
 					"left": 0,
 					"width": 470,
 					"height": 116,
@@ -462,7 +462,7 @@
 				},
 				"detail_value_bkgd": {
 					"type": "rectangle",
-					"top": 371,
+					"top": 419,
 					"left": 150,
 					"width": 290,
 					"height": 116,
@@ -471,7 +471,7 @@
 				},
 				"lbl_problem_detail": {
 					"type": "text",
-					"top": 377,
+					"top": 425,
 					"left": 26,
 					"width": 115,
 					"height": 30,
@@ -479,7 +479,7 @@
 				},
 				"field_problem_detail": {
 					"type": "input",
-					"top": 375,
+					"top": 423,
 					"left": 158,
 					"width": 270,
 					"height": 108,
@@ -490,7 +490,7 @@
 				},
 				"disposition_label_bkgd": {
 					"type": "rectangle",
-					"top": 500,
+					"top": 548,
 					"left": 0,
 					"width": 470,
 					"height": 116,
@@ -499,7 +499,7 @@
 				},
 				"disposition_value_bkgd": {
 					"type": "rectangle",
-					"top": 500,
+					"top": 548,
 					"left": 150,
 					"width": 290,
 					"height": 116,
@@ -508,7 +508,7 @@
 				},
 				"lbl_disposition": {
 					"type": "text",
-					"top": 506,
+					"top": 554,
 					"left": 26,
 					"width": 120,
 					"height": 45,
@@ -516,7 +516,7 @@
 				},
 				"field_disposition": {
 					"type": "input",
-					"top": 504,
+					"top": 552,
 					"left": 158,
 					"width": 270,
 					"height": 108,
@@ -527,7 +527,7 @@
 				},
 				"section_approvals": {
 					"type": "text",
-					"top": 630,
+					"top": 678,
 					"left": 11,
 					"width": 120,
 					"height": 16,
@@ -537,7 +537,7 @@
 				"chk_customer_service": {
 					"type": "checkbox",
 					"text": "",
-					"top": 658,
+					"top": 706,
 					"left": 11,
 					"width": 17,
 					"height": 17,
@@ -549,7 +549,7 @@
 				},
 				"lbl_customer_service": {
 					"type": "text",
-					"top": 661,
+					"top": 709,
 					"left": 43,
 					"width": 100,
 					"height": 15,
@@ -557,7 +557,7 @@
 				},
 				"date_customer_service_label_bkgd": {
 					"type": "rectangle",
-					"top": 654,
+					"top": 702,
 					"left": 192,
 					"width": 277,
 					"height": 23,
@@ -566,7 +566,7 @@
 				},
 				"lbl_date_customer_service": {
 					"type": "text",
-					"top": 659,
+					"top": 707,
 					"left": 198,
 					"width": 30,
 					"height": 15,
@@ -575,7 +575,7 @@
 				"btn_cancel": {
 					"type": "button",
 					"text": "Cancel",
-					"top": 700,
+					"top": 748,
 					"left": 280,
 					"width": 70,
 					"height": 24,
@@ -584,7 +584,7 @@
 				"btn_save": {
 					"type": "button",
 					"text": "Save",
-					"top": 700,
+					"top": 748,
 					"left": 370,
 					"width": 70,
 					"height": 24,
@@ -592,7 +592,7 @@
 				},
 				"originator_value_bkgd1": {
 					"type": "rectangle",
-					"top": 654,
+					"top": 702,
 					"left": 231,
 					"width": 209,
 					"height": 23,
@@ -601,7 +601,7 @@
 				},
 				"field_date_customer_service": {
 					"type": "input",
-					"top": 657,
+					"top": 705,
 					"left": 236,
 					"width": 190,
 					"height": 18,
@@ -623,8 +623,94 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"method": "ObjectMethods/btnDatePicker_commitDate.4dm"
+				},
+				"location_label_bkgd": {
+					"type": "rectangle",
+					"top": 371,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"location_value_bkgd": {
+					"type": "rectangle",
+					"top": 371,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_location": {
+					"type": "text",
+					"text": "Location / Process",
+					"top": 377,
+					"left": 26,
+					"width": 115,
+					"height": 15
+				},
+				"field_location": {
+					"type": "input",
+					"top": 374,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.location",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "right"
+				},
+				"inform_to_label_bkgd": {
+					"type": "rectangle",
+					"top": 395,
+					"left": 0,
+					"width": 470,
+					"height": 24,
+					"fill": "#9CC3E6",
+					"stroke": "transparent"
+				},
+				"inform_to_value_bkgd": {
+					"type": "rectangle",
+					"top": 395,
+					"left": 150,
+					"width": 290,
+					"height": 24,
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"lbl_inform_to": {
+					"type": "text",
+					"text": "Inform To",
+					"top": 401,
+					"left": 26,
+					"width": 115,
+					"height": 15
+				},
+				"field_inform_to": {
+					"type": "input",
+					"top": 398,
+					"left": 158,
+					"width": 270,
+					"height": 18,
+					"dataSource": "Form:C1466.informTo",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"textAlign": "right"
+				},
+				"btn_print": {
+					"type": "button",
+					"text": "Print GAF-1514",
+					"top": 748,
+					"left": 26,
+					"width": 120,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/btn_print.4dm"
 				}
 			}
 		}

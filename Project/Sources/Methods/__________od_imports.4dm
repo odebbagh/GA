@@ -1,20 +1,23 @@
 //%attributes = {}
-// carriers first: _import_customers only links to the CustomerCarrier records
-_import_customerCarriers
-_import_customers
-_import_purchaseOrders
-_import_poItems
-_import_receiver
-_import_jobsFromReceiver
-_import_lotinfo
+//Housekeeping Data
 
-_import_warehouseBins
-_import_inventoryClassification
-_import_inventoryUnits
-_import_inventory
-//Housekeeping
-_import_operationProcesses
-_import_certifications
-_import_toolTypes
+//_import_stepAreas
+//_import_operationProcesses
+//_import_toolTypes
+//_import_division
+
+//_import_certifications
+
+//__import_operationTypes
+
+//_import_stepTemplateLayouts
+//_import_stepTemplates
+
+//Buying Orders Data
+
+//_import_vendors
+//_import_customerCarriers
+_import_buyOrders
+//_import_boTerms
 
 TRACE:C157

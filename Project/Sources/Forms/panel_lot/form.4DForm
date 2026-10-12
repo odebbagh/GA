@@ -1173,124 +1173,100 @@
 					"scrollbarVertical": "automatic"
 				},
 				"dp_dateIn": {
-					"type": "subform",
+					"type": "button",
+					"text": "",
 					"top": 159,
 					"left": 143,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.dateIn",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_dateIn.4dm",
+					"width": 18,
+					"height": 18,
 					"events": [
-						"onLoad"
+						"onClick"
 					],
-					"focusable": true
+					"method": "ObjectMethods/dp_dateIn.4dm",
+					"focusable": false,
+					"style": "custom",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"tooltip": "Choose the date"
 				},
 				"dp_expectedDate1": {
-					"type": "subform",
+					"type": "button",
+					"text": "",
 					"top": 183,
 					"left": 143,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.commit",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_expectedDate1.4dm",
+					"width": 18,
+					"height": 18,
 					"events": [
-						"onLoad"
+						"onClick"
 					],
-					"focusable": true
+					"method": "ObjectMethods/dp_expectedDate1.4dm",
+					"focusable": false,
+					"style": "custom",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"tooltip": "Choose the date"
 				},
 				"dp_reCommit": {
-					"type": "subform",
+					"type": "button",
+					"text": "",
 					"top": 183,
 					"left": 310,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.reCommit",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_reCommit.4dm",
+					"width": 18,
+					"height": 18,
 					"events": [
-						"onLoad"
+						"onClick"
 					],
-					"focusable": true
+					"method": "ObjectMethods/dp_reCommit.4dm",
+					"focusable": false,
+					"style": "custom",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"tooltip": "Choose the date"
 				},
 				"dp_dateOut": {
-					"type": "subform",
+					"type": "button",
+					"text": "",
 					"top": 159,
 					"left": 309,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.dateOut",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_dateOut.4dm",
+					"width": 18,
+					"height": 18,
 					"events": [
-						"onLoad"
+						"onClick"
 					],
-					"focusable": true
+					"method": "ObjectMethods/dp_dateOut.4dm",
+					"focusable": false,
+					"style": "custom",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"tooltip": "Choose the date"
 				},
 				"dp_holdDate": {
-					"type": "subform",
+					"type": "button",
+					"text": "",
 					"top": 280,
 					"left": 143,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.holdDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_holdDate.4dm",
+					"width": 18,
+					"height": 18,
 					"events": [
-						"onLoad"
+						"onClick"
 					],
-					"focusable": true
+					"method": "ObjectMethods/dp_holdDate.4dm",
+					"focusable": false,
+					"style": "custom",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"tooltip": "Choose the date"
 				},
 				"dp_OQADate": {
-					"type": "subform",
+					"type": "button",
+					"text": "",
 					"top": 377,
 					"left": 143,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.OQADate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_OQADate.4dm",
+					"width": 18,
+					"height": 18,
 					"events": [
-						"onLoad"
+						"onClick"
 					],
-					"focusable": true
+					"method": "ObjectMethods/dp_OQADate.4dm",
+					"focusable": false,
+					"style": "custom",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"tooltip": "Choose the date"
 				},
 				"header_bkgd12": {
 					"type": "rectangle",

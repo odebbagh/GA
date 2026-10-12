@@ -14,6 +14,8 @@ var $updated : Integer
 var $carrierName : Text
 var $carrierNotFound : Integer
 var $customerCarrier : cs:C1710.CustomerCarrierEntity
+var $eCarrierCandidate : cs:C1710.CustomerCarrierEntity
+var $carrierKey : Text
 var $note : Text
 var $eComment : cs:C1710.sfw_CommentEntity
 var $isVoid : Boolean
@@ -122,10 +124,25 @@ Else
 		$isVoid:=$record.void
 		$customer.enabled:=Not:C34($isVoid)
 		
-		// Link only: the carriers themselves come from _import_customerCarriers
+		// Link only: the carriers themselves come from _import_customerCarriers.
+		// Matched on the folded key rather than the exact name, because that import
+		// stores one canonical spelling per carrier ("FedEx Ground") while the legacy
+		// file still says "Fed-Ex Ground" or "fedex Ground".
 		$carrierName:=String:C10($record.Carrier)
 		If ($carrierName#"")
-			$customerCarrier:=ds:C1482.CustomerCarrier.query("name = :1"; $carrierName).first()
+			$carrierKey:=_carrierMatchKey($carrierName)
+			$customerCarrier:=Null:C1517
+			For each ($eCarrierCandidate; ds:C1482.CustomerCarrier.all()) Until ($customerCarrier#Null:C1517)
+				If (_carrierMatchKey($eCarrierCandidate.name)=$carrierKey)
+					$customerCarrier:=$eCarrierCandidate
+				Else
+					If ($eCarrierCandidate.moreData.aliasKeys#Null:C1517)
+						If ($eCarrierCandidate.moreData.aliasKeys.indexOf($carrierKey)#-1)
+							$customerCarrier:=$eCarrierCandidate
+						End if
+					End if
+				End if
+			End for each
 			If ($customerCarrier#Null:C1517)
 				$customer.UUID_CustomerCarrier:=$customerCarrier.UUID
 			Else

@@ -51,6 +51,7 @@ Else
 						If ($bin=Null:C1517)
 							$bin:=ds:C1482.Bin.new()
 							$bin.binLocationPath:=$accPath
+							$bin.assignBarcode()
 							$saveResult:=$bin.save()
 							
 							If ($saveResult.success)

@@ -321,43 +321,33 @@ Function loadStepProperties()
 	
 	
 Function loadStepSpecifications()
+	// Specs and GAF forms linked to the step. Both are Specification records linked through
+	// StepSpecification; isForm tells them apart. Specs are listed first, then forms.
 	var $link : 4D:C1709.Entity
-	var $disp : Text
 	
 	Form:C1466.selectedStepSpecification:=Null:C1517
-	If (Form:C1466.current_item=Null:C1517)
-		Form:C1466.lb_stepSpecifications:=New collection:C1472()
-	Else 
-		Form:C1466.lb_stepSpecifications:=New collection:C1472()
-		For each ($link; ds:C1482.StepSpecification.query("UUID_Step = :1"; Form:C1466.current_item.UUID).orderBy("specification.spec"))
-			If ($link.specification=Null:C1517)
-				$disp:=""
-			Else 
-				$disp:=String:C10($link.specification.title)
-				If ($disp="")
-					$disp:=String:C10($link.specification.spec)
-				End if 
+	Form:C1466.lb_stepSpecifications:=New collection:C1472()
+	If (Form:C1466.current_item#Null:C1517)
+		For each ($link; ds:C1482.StepSpecification.query("UUID_Step = :1"; Form:C1466.current_item.UUID).orderBy("specification.isForm asc, specification.spec asc"))
+			// a link can outlive its Specification (_import_specControl truncates the table)
+			If ($link.specification#Null:C1517)
+				Form:C1466.lb_stepSpecifications.push(New object:C1471(\
+					"UUID"; $link.UUID; \
+					"UUID_Specification"; $link.UUID_Specification; \
+					"type"; Choose:C955(Bool:C1537($link.specification.isForm); "Form"; "Spec"); \
+					"spec"; $link.specification.spec; \
+					"revision"; $link.specification.revision; \
+					"title"; $link.specification.title\
+					))
 			End if 
-			Form:C1466.lb_stepSpecifications.push(New object:C1471(\
-				"UUID"; $link.UUID; \
-				"UUID_Specification"; $link.UUID_Specification; \
-				"title"; $link.specification.title; \
-				"spec"; $link.specification.spec\
-				))
 		End for each 
 	End if 
 	
 	
 Function syncStepPrimarySpecificationFromLinks()
-	var $first : 4D:C1709.Entity
-	
+	// primary spec + the traveller list (moreData.specificationControl), see StepEntity
 	If (Form:C1466.current_item#Null:C1517)
-		$first:=ds:C1482.StepSpecification.query("UUID_Step = :1"; Form:C1466.current_item.UUID).orderBy("specification.spec").first()
-		If ($first#Null:C1517)
-			Form:C1466.current_item.UUID_Specification:=$first.UUID_Specification
-		Else 
-			Form:C1466.current_item.UUID_Specification:=16*"00"
-		End if 
+		Form:C1466.current_item.syncSpecifications()
 	End if 
 	
 	
@@ -375,14 +365,14 @@ Function bActionStepSpecifications()
 	
 	$refMenu:=Create menu:C408
 	
-	APPEND MENU ITEM:C411($refMenu; "Add specification")
+	APPEND MENU ITEM:C411($refMenu; "Add specification or form")
 	SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--add")
 	SET MENU ITEM ICON:C984($refMenu; -1; "Path:/RESOURCES/image/button/add.png")
 	If (Not:C34(Form:C1466.sfw.checkIsInModification()))
 		DISABLE MENU ITEM:C150($refMenu; -1)
 	End if 
 	
-	APPEND MENU ITEM:C411($refMenu; "Remove specification")
+	APPEND MENU ITEM:C411($refMenu; "Remove")
 	SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--delete")
 	SET MENU ITEM ICON:C984($refMenu; -1; "Path:/RESOURCES/image/button/delete.png")
 	If (Not:C34(Form:C1466.sfw.checkIsInModification()))
@@ -398,38 +388,41 @@ Function bActionStepSpecifications()
 	Case of 
 		: ($choose="--add")
 			If (Form:C1466.current_item#Null:C1517)
+				// suppressed records are superseded revisions or obsolete documents: never offered
 				If (Form:C1466.lb_stepSpecifications.length=0)
-					$available:=ds:C1482.Specification.all().orderBy("spec")
+					$available:=ds:C1482.Specification.query("suppress = :1"; False:C215).orderBy("isForm asc, spec asc")
 				Else 
 					$linkedUUIDs:=Form:C1466.lb_stepSpecifications.extract("UUID_Specification")
-					$available:=ds:C1482.Specification.query("NOT(UUID IN :1)"; $linkedUUIDs).orderBy("spec")
+					$available:=ds:C1482.Specification.query("suppress = :1 AND NOT(UUID IN :2)"; False:C215; $linkedUUIDs).orderBy("isForm asc, spec asc")
 				End if 
-				
+	
 				$lbVals:=New collection:C1472()
 				For each ($specRow; $available)
 					$lbVals.push(New object:C1471(\
 						"UUID"; $specRow.UUID; \
 						"name"; $specRow.spec; \
-						"description"; $specRow.spec+" "+$specRow.title\
+						"description"; Choose:C955(Bool:C1537($specRow.isForm); "[Form] "; "[Spec] ")+$specRow.spec+" rev "+String:C10($specRow.revision)+"  "+$specRow.title\
 						))
 				End for each 
-				
+	
 				$form:=New object:C1471(\
-					"windowTitle"; "Add specification"; \
-					"inputPlaceholder"; "Specification search ..."; \
+					"windowTitle"; "Add specification or form"; \
+					"inputPlaceholder"; "Search by code or title ..."; \
 					"lb_values"; $lbVals\
 					)
-				
+	
 				$winRef:=Open form window:C675("searchOnList_v2"; Controller form window:K39:17; Horizontally centered:K39:1; Vertically centered:K39:4)
 				DIALOG:C40("searchOnList_v2"; $form)
 				CLOSE WINDOW:C154($winRef)
-				
+	
 				If ((OK=1) & ($form.selectedItem#Null:C1517))
 					$specEntity:=ds:C1482.Specification.get($form.selectedItem.UUID)
 					If ($specEntity#Null:C1517)
 						$linkEntity:=ds:C1482.StepSpecification.new()
 						$linkEntity.UUID_Step:=Form:C1466.current_item.UUID
 						$linkEntity.UUID_Specification:=$specEntity.UUID
+						// "manual" links survive a re-run of the GAF link import
+						$linkEntity.moreData:=New object:C1471("source"; "manual")
 						$res:=$linkEntity.save()
 						If ($res.success)
 							This:C1470.loadStepSpecifications()
@@ -439,7 +432,7 @@ Function bActionStepSpecifications()
 					End if 
 				End if 
 			End if 
-			
+	
 		: ($choose="--delete")
 			If ((Form:C1466.selectedStepSpecification#Null:C1517) & (Form:C1466.current_item#Null:C1517))
 				$linkEntity:=ds:C1482.StepSpecification.get(Form:C1466.selectedStepSpecification.UUID)

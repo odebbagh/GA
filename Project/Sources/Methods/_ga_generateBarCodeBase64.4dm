@@ -8,6 +8,8 @@ Same input contract as _ga_generateBarCode (which returns the picture):
 $parameters -> object with:
     - barcodeData : data to encode (usually moreData.barcodeData of the record)
     - text        : optional text to display under the barcode
+    - moduleWidth, height, margin : optional sizes in pixels (bar width, bar height, quiet
+      zone); the encoder's defaults (1, 80, 10) when absent
 */
 
 var $base64Full; $base64Data : Text
@@ -25,7 +27,7 @@ If ($template.exists) & ($urlParams.barcodeData#"") & (Not:C34(Undefined:C82($ur
 
 	$templatePath:=Convert path system to POSIX:C1106($template.platformPath)
 
-	$offScreanParams.url:="file://"+$templatePath+"?type="+$type+"&value="+$urlParams.barcodeData+"&text="+String:C10($urlParams.text)
+	$offScreanParams.url:="file://"+$templatePath+"?type="+$type+"&value="+$urlParams.barcodeData+"&text="+String:C10($urlParams.text)+Choose:C955(Num:C11($urlParams.moduleWidth)>0; "&w="+String:C10($urlParams.moduleWidth); "")+Choose:C955(Num:C11($urlParams.height)>0; "&h="+String:C10($urlParams.height); "")+Choose:C955($urlParams.margin#Null:C1517; "&m="+String:C10($urlParams.margin); "")  // optional sizes (moduleWidth, height, margin)
 
 	$offScreanParams.onEvent:=Formula:C1597(_ga_qrBarCodeUtil("GenerateBarCode"))
 

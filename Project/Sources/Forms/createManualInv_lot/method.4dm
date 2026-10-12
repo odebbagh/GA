@@ -36,7 +36,15 @@ Case of
 			
 		End if 
 		
-		Form:C1466.inventory_e.dateIn:=Current date:C33(*)
+		// a new material is received today; an existing one keeps its Date In (opening it changed it before)
+		If (Form:C1466.inventory_e.dateIn=!00-00-00!)
+			Form:C1466.inventory_e.dateIn:=Current date:C33(*)
+		End if
+		// the quantity received is typed once: after that the stock moves through Inventories >
+		// Pulls & History (ga_stock), not here
+		If (Not:C34(Form:C1466.inventory_e.isNew()))
+			OBJECT SET ENTERABLE:C238(*; "Input6"; False:C215)
+		End if
 		
 		If (Form:C1466.inventory_e.UUID_Staff=("0"*32))
 			Form:C1466.receivedBy:=""

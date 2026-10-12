@@ -13,18 +13,9 @@
 	"bottomMargin": 20,
 	"events": [
 		"onLoad",
-		"onValidate",
 		"onClick",
-		"onOutsideCall",
-		"onActivate",
 		"onDoubleClick",
-		"onDrop",
-		"onMenuSelect",
-		"onPluginArea",
-		"onDragOver",
-		"onTimer",
-		"onAfterKeystroke",
-		"onBeginDragOver",
+		"onDataChange",
 		"onBoundVariableChange",
 		"onPageChange"
 	],
@@ -48,7 +39,7 @@
 					"left": 132,
 					"width": 120,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.number",
+					"dataSource": "Form:C1466.current_item.displayNumber",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
@@ -60,6 +51,46 @@
 					"borderStyle": "none",
 					"fontWeight": "normal",
 					"textAlign": "left"
+				},
+				"bNewJob": {
+					"type": "button",
+					"text": " ",
+					"top": 36,
+					"left": 336,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/bNewJob.4dm",
+					"tooltip": "Back to a job of this lot's own",
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/addition.png",
+					"iconFrames": 1,
+					"textPlacement": "center",
+					"visibility": "hidden",
+					"focusable": false
+				},
+				"pup_job": {
+					"type": "button",
+					"text": "",
+					"top": 34,
+					"left": 131,
+					"width": 200,
+					"height": 23,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/pup_job.4dm",
+					"focusable": false,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"icon": "",
+					"popupPlacement": "linked",
+					"style": "bevel",
+					"textAlign": "left",
+					"textPlacement": "right"
 				},
 				"label_jobNumber": {
 					"type": "text",
@@ -70,29 +101,10 @@
 					"stroke": "#808080",
 					"text": "Job Number"
 				},
-				"entryField_jobNumber": {
-					"type": "input",
-					"top": 37,
-					"left": 132,
-					"width": 96,
-					"height": 17,
-					"dataSource": "Form:C1466.current_item.job.jobNumber",
-					"focusable": false,
-					"enterable": false,
-					"dragging": "none",
-					"dropping": "custom",
-					"events": [
-						"onDataChange"
-					],
-					"fill": "transparent",
-					"borderStyle": "none",
-					"fontWeight": "normal",
-					"textAlign": "left"
-				},
 				"label_customer": {
 					"type": "text",
 					"top": 63,
-					"left": 11,
+					"left": 12,
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
@@ -128,23 +140,20 @@
 					"dataSourceTypeHint": "date"
 				},
 				"dp_dateIn": {
-					"type": "subform",
-					"top": 12,
+					"type": "button",
+					"text": "",
+					"top": 11,
 					"left": 616,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.dateIn",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
+					"width": 18,
+					"height": 18,
 					"events": [
-						"onLoad"
+						"onClick"
 					],
-					"focusable": true
+					"method": "ObjectMethods/dp_dateIn.4dm",
+					"style": "custom",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"focusable": false,
+					"tooltip": "Choose the date in"
 				},
 				"pup_customer": {
 					"type": "button",
@@ -166,25 +175,6 @@
 					],
 					"textAlign": "left"
 				},
-				"pup_job": {
-					"type": "button",
-					"text": " ",
-					"top": 36,
-					"left": 267,
-					"width": 18,
-					"height": 18,
-					"events": [
-						"onClick"
-					],
-					"style": "custom",
-					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/forward-16x16.png",
-					"textPlacement": "center",
-					"method": "ObjectMethods/pup_job.4dm",
-					"visibility": "visible",
-					"iconFrames": 4,
-					"focusable": false
-				},
 				"label_device": {
 					"type": "text",
 					"top": 37,
@@ -201,7 +191,6 @@
 					"width": 228,
 					"height": 16,
 					"dataSource": "Form:C1466.current_item.device",
-					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
 					"dropping": "custom",
@@ -229,7 +218,6 @@
 					"width": 228,
 					"height": 16,
 					"dataSource": "Form:C1466.current_item.alternativeDevice",
-					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
 					"dropping": "custom",
@@ -241,7 +229,11 @@
 					"fontWeight": "normal",
 					"textAlign": "left"
 				}
-			}
+			},
+			"entryOrder": [
+				"entryField_device",
+				"entryField_alternativeDevice"
+			]
 		},
 		{
 			"objects": {
@@ -436,7 +428,14 @@
 					"textAlign": "left",
 					"dataSourceTypeHint": "text"
 				}
-			}
+			},
+			"entryOrder": [
+				"entryField_packageType",
+				"entryField_customerLotNumber",
+				"entryField_dateCode",
+				"entryField_customerCount",
+				"entryField_ourCount"
+			]
 		},
 		{
 			"objects": {

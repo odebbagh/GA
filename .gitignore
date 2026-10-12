@@ -13,3 +13,14 @@
 .DS_Store
 ehthumbs.db
 Thumbs.db
+
+# Local data and generated files
+/Project/Data/
+/Project/DocumentData/
+/Project/imports/
+/bak/
+/.claude/settings.local.json
+/WebFolder/index.html
+/Project/Sources/catalog_editor.json
+/Resources/DynamicForm/sfw_bkgd_header_2linesform.4XForm
+/Resources/DynamicForm/panel_vendorform.4XForm

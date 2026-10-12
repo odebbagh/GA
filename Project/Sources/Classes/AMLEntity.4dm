@@ -126,3 +126,20 @@ local Function get nameInWindowTitle()->$nameInWindowTitle : Text
 	
 	
 	
+
+	// Label for the part picker on a buy line. Legacy listed our part number and the
+	// vendor's in two parallel scrollable areas; one list carrying both reads better and
+	// still lets people find a row by either number.
+Function get pickerLabel()->$label : Text
+	var $bits : Collection
+	$bits:=New collection:C1472()
+	If (String:C10(This:C1470.ourPartNum)#"")
+		$bits.push(String:C10(This:C1470.ourPartNum))
+	End if
+	If (String:C10(This:C1470.vendorPartnum)#"")
+		$bits.push("["+String:C10(This:C1470.vendorPartnum)+"]")
+	End if
+	If (String:C10(This:C1470.description)#"")
+		$bits.push(String:C10(This:C1470.description))
+	End if
+	$label:=$bits.join("  ")

@@ -1,89 +1,99 @@
 //%attributes = {}
-[BuyingOrder:46]
-$es:=ds:C1482.Contact.query("firstName = :1"; "FUAD BARAKAT")
-
+_import_stepProperties
+_import_steps
+_import_gafLinks
 TRACE:C157
+////%attributes = {}
+//// Generates Resources/4DWriteProPrintTemplates/buyOrderPrintTemplate.4wp.
+////
+//// This is a STARTING POINT, not the finished PO. It emits every field
+//// BuyingOrders_printBuyOrder puts in the data context, one per line, as
+//// "Label: <formula>", plus the Tabl@ marker paragraph where the line table goes.
+//// Open it in the Write Pro editor afterwards and move things into the legacy layout -
+//// the formulas travel with you, so nothing has to be retyped.
+////
+//// Re-running overwrites the file. Do NOT re-run once you have laid it out.
 
-//OBJECT GET BEST SIZE(*; "desc 1\n\r\n\romar debbagh"; $l; $h; $lm)
+//var $doc : Object
+//var $range : Object
+//var $field : Object
+//var $fields : Collection
+//var $folder : 4D.Folder
+//var $file : 4D.File
 
-$col:=Split string:C1554("desc 1\n\r\n\romar debbagh"; "\n")
+//$folder:=Folder(fk resources folder).folder("4DWriteProPrintTemplates")
+//If (Not($folder.exists))
+//$folder.create()
+//End if 
+//$file:=$folder.file("buyOrderPrintTemplate.4wp")
 
-TRACE:C157
+//If ($file.exists)
+//If (Not(cs.sfw_dialog.me.confirm("buyOrderPrintTemplate.4wp already exists. Overwrite it?"; "Overwrite"; "CANCEL")))
+//return 
+//End if 
+//End if 
 
-TRUNCATE TABLE:C1051([dfd_Line:24])
-TRUNCATE TABLE:C1051([dfd_Template:14])
-TRUNCATE TABLE:C1051([dfd_Picture:23])
-TRUNCATE TABLE:C1051([dfd_Document:22])
+//$doc:=WP New("")
 
-TRACE:C157
+////---title
+//$range:=WP Text range($doc; wk end text; wk end text)
+//WP Insert formula($range; Formula from string("This.potitle"); wk include in range)
+//WP SET ATTRIBUTES($range; wk font size; 18)
+//WP SET ATTRIBUTES($range; wk font bold; wk true)
+//$range:=WP Text range($doc; wk end text; wk end text)
+//WP SET TEXT($range; Char(Carriage return); wk append; wk include in range)
 
-_ga_fillBarcodeDataField("Lot")
+////---the requisition warning, red
+//$range:=WP Text range($doc; wk end text; wk end text)
+//WP Insert formula($range; Formula from string("This.title"); wk include in range)
+//WP SET ATTRIBUTES($range; wk text color; "#FF0000")
+//$range:=WP Text range($doc; wk end text; wk end text)
+//WP SET TEXT($range; Char(Carriage return)+Char(Carriage return); wk append; wk include in range)
 
-TRACE:C157
+////---every context key, in the order the legacy form laid them out
+//$fields:=New collection(\
+New object("label"; "PO number"; "key"; "poNumber"); \
+New object("label"; "Issue date"; "key"; "issueDate"); \
+New object("label"; "Issued to"; "key"; "vendorBlock"); \
+New object("label"; "Ship to"; "key"; "shipTo"); \
+New object("label"; "Bill to 1"; "key"; "billTo1"); \
+New object("label"; "Bill to 2"; "key"; "billTo2"); \
+New object("label"; "Attn"; "key"; "attentionTo"); \
+New object("label"; "Fax"; "key"; "attentionFax"); \
+New object("label"; "Tel"; "key"; "attentionTel"); \
+New object("label"; "Discount"; "key"; "discount"); \
+New object("label"; "Discount days"; "key"; "discountDays"); \
+New object("label"; "Net days"; "key"; "netDays"); \
+New object("label"; "Ship via"; "key"; "shipVia"); \
+New object("label"; "Delivery terms"; "key"; "fob"))
 
-$users:=ds:C1482.Staff.query("firstName = 'Rexie'")
+//For each ($field; $fields)
+//_wpAppendField($doc; $field.label; $field.key)
+//End for each 
 
-TRACE:C157
+////---the marker the print replaces with the line table
+//$range:=WP Text range($doc; wk end text; wk end text)
+//WP SET TEXT($range; Char(Carriage return)+"Tabl@"+Char(Carriage return); wk append; wk include in range)
 
-$lotSteps:=ds:C1482.Lot.query("number = 29003").lotSteps
+////---totals and footer
+//$fields:=New collection(\
+New object("label"; "Currency note"; "key"; "currencyNote"); \
+New object("label"; "Currency"; "key"; "currency"); \
+New object("label"; "Total"; "key"; "total"); \
+New object("label"; "Additional terms"; "key"; "addTerms"); \
+New object("label"; "Requestor"; "key"; "requestor"); \
+New object("label"; "Buyer"; "key"; "buyer"); \
+New object("label"; "Buyer contact"; "key"; "buyerContact"); \
+New object("label"; "Approver 1 caption"; "key"; "approverText"); \
+New object("label"; "Approver 1"; "key"; "approver1"); \
+New object("label"; "Approver 2 caption"; "key"; "approverText2"); \
+New object("label"; "Approver 2"; "key"; "approver2"); \
+New object("label"; "Page footer"; "key"; "pageFooter"))
 
-TRACE:C157
+//For each ($field; $fields)
+//_wpAppendField($doc; $field.label; $field.key)
+//End for each 
 
-$lotSteps:=ds:C1482.Lot.query("number = 29001").lotSteps
-$stepProperties:=ds:C1482.StepProperty.all().extract("name"; "name"; "description"; "description"; "UUID"; "uuid")
-For each ($prop; $stepProperties)
-	$prop["enabled"]:=False:C215
-End for each 
+//WP EXPORT DOCUMENT($doc; $file.platformPath; wk 4wp)
 
-For each ($step; $lotSteps)
-	If ($step.properties=Null:C1517)
-		$step.properties:=New object:C1471()
-		$step.properties["items"]:=$stepProperties
-		$step.save()
-	End if 
-End for each 
-
-
-
-TRACE:C157
-
-$stepfiles:=ds:C1482.StepFile.all()
-
-For each ($item; $stepfiles)
-	If ($item.stepsDefinition#Null:C1517)
-		For each ($step; $item.stepsDefinition.items)
-			If ($step.UUID_Step=("0"*32))
-				$step_:=ds:C1482.Step.query("description = :1"; $step.description)
-				If ($step_.length=1)
-					$step.UUID_Step:=$step_[0].UUID
-					$item.save()
-				Else 
-					$step_:=ds:C1482.Step.query("description = :1"; Substring:C12($step.description; 1; 10)+"@")
-					If ($step.length>0)
-						$step.UUID_Step:=$step_[0].UUID
-						$item.save()
-					End if 
-				End if 
-			End if 
-		End for each 
-	End if 
-End for each 
-
-//$step:=ds.Step.query("description = :1"; "INCOMING DIE INSPECTION@")
-
-$lotSteps:=ds:C1482.Lot.query("number = 29001").lotSteps
-
-For each ($step; $lotSteps)
-	//$step.step
-	//[LotStep]specificationControl
-End for each 
-
-$var:=$myStep.extract("qtyOut"; "Qty"; "dateOut"; "Date")
-
-$steps:=ds:C1482.LotStep.query("qtyOut = 0 and dateOut = :1"; !00-00-00!)
-
-
-//$myStep.tools:=New object()
-//$step:=ds.Step.query("description = 'GROSS LEAK Test@'").first()
-//$myStep.UUID_Step:=$step[0].UUID
-//$myStep.save()
+//cs.sfw_dialog.me.info("Template written to:"+Char(Carriage return)+$file.platformPath+Char(Carriage return)+Char(Carriage return)+"Open it in the Write Pro editor to lay it out. Do not run this again afterwards - it overwrites.")

@@ -8,6 +8,15 @@ Function get fullName()->$fullName : Text
 	End if 
 	
 	
+Function get pickerLabel()->$label : Text
+	// "Primary - Gregorio La Rosa". The 1toN picker binds This[Form.colName], so the
+	// column has to be ONE attribute - a dotted path renders empty. Putting the title in
+	// front is what lets the operator tell the Primary contact from the Secondary one
+	// while choosing.
+	var $type : Text
+
+	$type:=String:C10(This:C1470.title)
+	$label:=($type="") ? This:C1470.fullName : $type+" - "+This:C1470.fullName
 Function get companyType()->$companyType : Text
 	var $company : cs:C1710.CustomerEntity
 	$company:=ds:C1482.Customer.query("UUID = :1"; This:C1470.UUID_Company).first()
@@ -95,3 +104,20 @@ local Function _initAddress()
 	
 	
 	
+
+	//mark:-Printable / document attributes
+
+	// Exposed, not local: these are read by print methods and by Write Pro formulas
+	// through the document data context, not only by the panel.
+
+Function get contactBlock()->$text : Text
+	// Tel / Fax / Email as lines, for a document
+	$text:=_contactDetailsBlock(This.contactDetails)
+
+Function communication($type : Text)->$value : Text
+	// One communication - "phone", "fax" or "mail"
+	$value:=_contactDetailsValue(This.contactDetails; $type)
+
+Function addressText($type : Text)->$text : Text
+	// One structured address as printable lines - "billing", "shipping", "remit", "main"
+	$text:=_contactDetailsAddress(This.contactDetails; $type)

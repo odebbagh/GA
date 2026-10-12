@@ -32,8 +32,13 @@ Function _global_parameters()
 	This:C1470.toolbar.entryIconsSameWidth:=True:C214
 	This:C1470.toolbar.changeLanguage:=False:C215
 	
-	This:C1470.mainInterface:=New object:C1471("window"; New object:C1471)
-	This:C1470.mainInterface.window:=New object:C1471("width"; 1800; "height"; 850)
+	// No fixed window size: when mainInterface.window is set, sfw_main._resizeMainWindow() forces
+	// it on every entry window it opens, even when Windows opens that window maximized (it does
+	// so whenever the active window is maximized). The window then stays flagged maximized but
+	// with the forced size, and shows cropped. Put the size back once the framework skips
+	// maximized windows:
+	//This.mainInterface.window:=New object("width"; 1800; "height"; 850)
+	This:C1470.mainInterface:=New object:C1471
 	
 	This:C1470.panel:=New object:C1471("defaultLogo"; "/RESOURCES/image/logo/logoGATransparent.png"; "defaultLogoLocal"; "/RESOURCES/image/logo/logoGATransparent.png")
 	This:C1470.users:=New object:C1471("passwordLength"; 12)

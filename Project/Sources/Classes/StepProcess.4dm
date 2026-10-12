@@ -10,6 +10,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	$entry.setPanel("panel_stepProcess")
 	$entry.setPanelPage(1; ""; "Steps")
+	$entry.setPanelPage(2; ""; "Forms & Specs")
 	
 	$entry.setLBItemsColumn("name"; "Name"; "width:300")
 	$entry.setLBItemsOrderBy("name")

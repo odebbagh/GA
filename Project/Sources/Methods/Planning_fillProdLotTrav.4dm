@@ -85,7 +85,7 @@ For each ($step; $steps)
 End for each 
 
 $data:=New object:C1471(\
-"lotNumber"; Planning_travSanitizeText($lotNumber); \
+"lotNumber"; Planning_travSanitizeText($lot.displayNumber); \
 "lotBarcode"; $lotBarcode; \
 "customerName"; $customerName; \
 "customerNumber"; $customerNumber; \
@@ -104,6 +104,50 @@ $data:=New object:C1471(\
 "steps"; $stepsData\
 )
 
+// ITAR mark: printed only for a lot marked ITAR (Planning header); ship-to: the lot's own address
+$data.itarPic:=""
+If (Bool:C1537($lot.itar))
+	$data.itarPic:=Planning_travLoadResPic("image/modeles/itar.png")
+End if
+$data.shipTo:=""
+If ($lot.shipToAddress#Null:C1517)
+	If ($lot.shipToAddress.detail#Null:C1517)
+		var $shipLines : Collection
+		var $shipCity : Collection
+		$shipLines:=New collection:C1472
+		If (String:C10($lot.shipToAddress.detail.service)#"")
+			$shipLines.push(String:C10($lot.shipToAddress.detail.service))
+		End if 
+		If (String:C10($lot.shipToAddress.detail.street_1)#"")
+			$shipLines.push(String:C10($lot.shipToAddress.detail.street_1))
+		End if 
+		If (String:C10($lot.shipToAddress.detail.street_2)#"")
+			$shipLines.push(String:C10($lot.shipToAddress.detail.street_2))
+		End if 
+		$shipCity:=New collection:C1472
+		If (String:C10($lot.shipToAddress.detail.city)#"")
+			$shipCity.push(String:C10($lot.shipToAddress.detail.city))
+		End if 
+		If (String:C10($lot.shipToAddress.detail.state)#"")
+			$shipCity.push(String:C10($lot.shipToAddress.detail.state))
+		Else
+			If (String:C10($lot.shipToAddress.detail.region)#"")
+				$shipCity.push(String:C10($lot.shipToAddress.detail.region))
+			End if
+		End if
+		If (String:C10($lot.shipToAddress.detail.postcode)#"")
+			$shipCity.push(String:C10($lot.shipToAddress.detail.postcode))
+		End if 
+		If ($shipCity.length>0)
+			$shipLines.push($shipCity.join(" "))
+		End if 
+		If (String:C10($lot.shipToAddress.detail.country)#"")
+			$shipLines.push(String:C10($lot.shipToAddress.detail.country))
+		End if 
+		$data.shipTo:=$shipLines.join(Char:C90(Carriage return:K15:38))
+	End if 
+End if 
+	
 If ($data.customerLotNumber="")
 	$data.customerLotNumber:=Planning_travSanitizeText(String:C10($lot.altDevNumber))
 End if 

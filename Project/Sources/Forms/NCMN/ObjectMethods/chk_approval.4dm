@@ -40,6 +40,11 @@ Case of
 		
 		$intendedValue:=Bool:C1537(Form:C1466[$approvalField])
 		Form:C1466[$approvalField]:=Not:C34($intendedValue)  // revert to initial value
+		// approvals belong to the disposition stage (LotHoldForm_ncmnApprovals)
+		If ($intendedValue) && (cs:C1710.sfw_string.me.trimSpace(String:C10(Form:C1466.disposition))="")
+			cs:C1710.sfw_dialog.me.alert("Enter the disposition (action plan) before signing the approvals.")
+			return 
+		End if 
 		
 		$result:=cs:C1710.Util_ScannerManager.me.resolveStaffFromScanOrRequest()
 		
@@ -73,7 +78,9 @@ Case of
 		If ($intendedValue)
 			$timestamp:=String:C10(Current date:C33(*); Internal date short:K1:7)+" "+String:C10(Current time:C178(*); HH MM:K7:2)
 			Form:C1466[$dateField]:=$timestamp
+			Form:C1466[$approvalField+"By"]:=String:C10($result.staff.code)  // who signed, for the lot history
 		Else 
 			Form:C1466[$dateField]:=""
+			Form:C1466[$approvalField+"By"]:=""
 		End if 
 End case 

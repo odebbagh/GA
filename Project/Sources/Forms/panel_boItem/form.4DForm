@@ -1,0 +1,1523 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"label_hdr_bo": {
+					"type": "text",
+					"top": 12,
+					"left": 64,
+					"width": 60,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "BO #",
+					"textAlign": "right"
+				},
+				"Field_hdr_bo": {
+					"type": "input",
+					"top": 12,
+					"left": 132,
+					"width": 90,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.buyingOrder.boNumber",
+					"dataSourceTypeHint": "integer",
+					"enterable": false,
+					"focusable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onGettingFocus",
+						"onMouseMove"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal",
+					"method": "ObjectMethods/Field_hdr_bo.4dm"
+				},
+				"label_hdr_item": {
+					"type": "text",
+					"top": 61,
+					"left": 812,
+					"width": 60,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Item",
+					"textAlign": "right"
+				},
+				"Field_hdr_item": {
+					"type": "input",
+					"top": 61,
+					"left": 880,
+					"width": 90,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.moreData.item",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "bold"
+				},
+				"label_hdr_division": {
+					"type": "text",
+					"top": 59,
+					"left": 370,
+					"width": 60,
+					"height": 16,
+					"stroke": "#808080",
+					"text": "Division",
+					"textAlign": "right"
+				},
+				"Field_hdr_division": {
+					"type": "input",
+					"top": 59,
+					"left": 438,
+					"width": 90,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.buyingOrder.division",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal"
+				},
+				"label_hdr_vend": {
+					"type": "text",
+					"top": 59,
+					"left": 64,
+					"width": 60,
+					"height": 16,
+					"stroke": "#808080",
+					"text": "Vendor",
+					"textAlign": "right"
+				},
+				"Field_hdr_vend": {
+					"type": "input",
+					"top": 59,
+					"left": 132,
+					"width": 171,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.buyingOrder.supplier.name",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal"
+				},
+				"label_hdr_bo1": {
+					"type": "text",
+					"top": 12,
+					"left": 370,
+					"width": 60,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Order Date",
+					"textAlign": "right"
+				},
+				"Entryfield_orderDate": {
+					"type": "input",
+					"top": 12,
+					"left": 438,
+					"width": 90,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.orderDate",
+					"dataSourceTypeHint": "date",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal"
+				},
+				"label_hdr_bo2": {
+					"type": "text",
+					"top": 35,
+					"left": 370,
+					"width": 60,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Order In",
+					"textAlign": "right"
+				},
+				"Field_hdr_bo2": {
+					"type": "input",
+					"top": 35,
+					"left": 438,
+					"width": 90,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.dateIn",
+					"dataSourceTypeHint": "date",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal"
+				},
+				"label_item_number": {
+					"type": "text",
+					"top": 35,
+					"left": 64,
+					"width": 60,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Item #",
+					"textAlign": "right"
+				},
+				"Field_hdr_bo3": {
+					"type": "input",
+					"top": 35,
+					"left": 132,
+					"width": 90,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.number",
+					"dataSourceTypeHint": "integer",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "normal"
+				},
+				"btnDatePicker_commitDate3": {
+					"type": "button",
+					"text": "",
+					"top": 8,
+					"left": 553,
+					"width": 28,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"method": "ObjectMethods/btnDatePicker_commitDate3.4dm"
+				}
+			}
+		},
+		{
+			"objects": {
+				"label_Part_num": {
+					"type": "text",
+					"top": 328,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Part #",
+					"textAlign": "right"
+				},
+				"Field_Part_num": {
+					"type": "input",
+					"top": 328,
+					"left": 190,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.partNumberDisplay",
+					"dataSourceTypeHint": "text",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#333333",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onGettingFocus",
+						"onMouseMove"
+					],
+					"method": "ObjectMethods/Field_Part_num.4dm"
+				},
+				"label_Vendor_partnum": {
+					"type": "text",
+					"top": 358,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Vendor Part #",
+					"textAlign": "right"
+				},
+				"Field_Vendor_partnum": {
+					"type": "input",
+					"top": 358,
+					"left": 190,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.vendorPartNumberDisplay",
+					"dataSourceTypeHint": "text",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#333333",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onGettingFocus",
+						"onMouseMove"
+					],
+					"method": "ObjectMethods/Field_Vendor_partnum.4dm"
+				},
+				"label_quantity_ordered": {
+					"type": "text",
+					"top": 268,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Quantity Ordered",
+					"textAlign": "right"
+				},
+				"entryField_quantityOrdered": {
+					"type": "input",
+					"top": 268,
+					"left": 190,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.qtyOrdered",
+					"dataSourceTypeHint": "integer",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": true,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"method": "ObjectMethods/entryField_quantityOrdered.4dm"
+				},
+				"label_Unit_Price": {
+					"type": "text",
+					"top": 158,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Unit Price",
+					"textAlign": "right"
+				},
+				"entryField_Unit_Price": {
+					"type": "input",
+					"top": 158,
+					"left": 694,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.unitPrice",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": true,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"method": "ObjectMethods/entryField_Unit_Price.4dm"
+				},
+				"label_Line_total": {
+					"type": "text",
+					"top": 358,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Line Total",
+					"textAlign": "right"
+				},
+				"entryField_Line_total": {
+					"type": "input",
+					"top": 358,
+					"left": 694,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.lineTotal",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_TAX": {
+					"type": "text",
+					"top": 388,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Tax",
+					"textAlign": "right"
+				},
+				"entryField_TAX": {
+					"type": "input",
+					"top": 388,
+					"left": 694,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.tax",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_UnitPriceWithSalesTax": {
+					"type": "text",
+					"top": 188,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Unit Price With Sales Tax",
+					"textAlign": "right"
+				},
+				"entryField_UnitPriceWithSalesTax": {
+					"type": "input",
+					"top": 188,
+					"left": 694,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.unitPriceWithTax",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#333333",
+					"focusable": true,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"method": "ObjectMethods/entryField_UnitPriceWithSalesTax.4dm"
+				},
+				"label_Freight": {
+					"type": "text",
+					"top": 248,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Freight",
+					"textAlign": "right"
+				},
+				"entryField_Freight": {
+					"type": "input",
+					"top": 248,
+					"left": 694,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.freight",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#333333",
+					"focusable": true,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_Glac": {
+					"type": "text",
+					"top": 578,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "GL Account",
+					"textAlign": "right"
+				},
+				"entryField_Glac": {
+					"type": "input",
+					"top": 578,
+					"left": 190,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.buyingOrder.account.glac",
+					"dataSourceTypeHint": "text",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onGettingFocus",
+						"onMouseMove"
+					],
+					"method": "ObjectMethods/entryField_Glac.4dm"
+				},
+				"label_Taxable": {
+					"type": "text",
+					"top": 218,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Taxable",
+					"textAlign": "right"
+				},
+				"entryField_Taxable": {
+					"type": "checkbox",
+					"text": "",
+					"top": 218,
+					"left": 694,
+					"width": 15,
+					"height": 18,
+					"focusable": true,
+					"enterable": true,
+					"dataSource": "Form:C1466.current_item.taxable",
+					"dataSourceTypeHint": "boolean",
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/entryField_Taxable.4dm"
+				},
+				"label_Inventory": {
+					"type": "text",
+					"top": 608,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Inventory",
+					"textAlign": "right"
+				},
+				"Field_Inventory": {
+					"type": "checkbox",
+					"text": "",
+					"top": 608,
+					"left": 190,
+					"width": 15,
+					"height": 18,
+					"focusable": false,
+					"enterable": false,
+					"dataSource": "Form:C1466.current_item.inventory",
+					"dataSourceTypeHint": "boolean"
+				},
+				"label_Consumable": {
+					"type": "text",
+					"top": 638,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Consumable",
+					"textAlign": "right"
+				},
+				"Field_Consumable": {
+					"type": "checkbox",
+					"text": "",
+					"top": 638,
+					"left": 190,
+					"width": 15,
+					"height": 18,
+					"focusable": false,
+					"enterable": false,
+					"dataSource": "Form:C1466.current_item.consumable",
+					"dataSourceTypeHint": "boolean"
+				},
+				"label_Asset": {
+					"type": "text",
+					"top": 668,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Asset",
+					"textAlign": "right"
+				},
+				"Field_Asset": {
+					"type": "checkbox",
+					"text": "",
+					"top": 668,
+					"left": 190,
+					"width": 15,
+					"height": 18,
+					"focusable": false,
+					"enterable": false,
+					"dataSource": "Form:C1466.current_item.asset",
+					"dataSourceTypeHint": "boolean"
+				},
+				"bkgd_dates": {
+					"type": "rectangle",
+					"top": 424,
+					"left": 0,
+					"width": 494,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_dates": {
+					"type": "text",
+					"top": 431,
+					"left": 6,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Dates",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"bkgd_classification": {
+					"type": "rectangle",
+					"top": 534,
+					"left": 0,
+					"width": 494,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_classification": {
+					"type": "text",
+					"top": 541,
+					"left": 6,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "GL Classification",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"bkgd_totals": {
+					"type": "rectangle",
+					"top": 314,
+					"left": 504,
+					"width": 494,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_totals": {
+					"type": "text",
+					"top": 321,
+					"left": 510,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Totals",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"bkgd_reference": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 1008,
+					"width": 552,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_reference": {
+					"type": "text",
+					"top": 121,
+					"left": 1014,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Reference",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"bkgd_itemInfo": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 0,
+					"width": 494,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_itemInfo": {
+					"type": "text",
+					"top": 121,
+					"left": 6,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Item Info",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"label_units": {
+					"type": "text",
+					"top": 298,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Units",
+					"fontWeight": "normal",
+					"textAlign": "right"
+				},
+				"Field_unit": {
+					"type": "input",
+					"top": 298,
+					"left": 190,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.unit.name",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onGettingFocus",
+						"onMouseMove"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"fontWeight": "normal",
+					"method": "ObjectMethods/Field_unit.4dm"
+				},
+				"label_issueDate1": {
+					"type": "text",
+					"top": 468,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Confirmation Date",
+					"textAlign": "right"
+				},
+				"entryField_issueDate1": {
+					"type": "input",
+					"top": 468,
+					"left": 190,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.confirmationDate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "date",
+					"entryFilter": "!0&9##/##/##",
+					"dateFormat": "systemShort blankIfNull"
+				},
+				"btnDatePicker_commitDate1": {
+					"type": "button",
+					"text": "",
+					"top": 466,
+					"left": 375,
+					"width": 28,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"method": "ObjectMethods/btnDatePicker_commitDate1.4dm"
+				},
+				"label_issueDate2": {
+					"type": "text",
+					"top": 498,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Date Required",
+					"textAlign": "right"
+				},
+				"entryField_requiredDate": {
+					"type": "input",
+					"top": 498,
+					"left": 190,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.requiredDate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "date",
+					"entryFilter": "!0&9##/##/##",
+					"dateFormat": "systemShort blankIfNull"
+				},
+				"btnDatePicker_commitDate2": {
+					"type": "button",
+					"text": "",
+					"top": 496,
+					"left": 375,
+					"width": 28,
+					"height": 24,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"method": "ObjectMethods/btnDatePicker_commitDate2.4dm"
+				},
+				"label_supplier1": {
+					"type": "text",
+					"top": 388,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Job #",
+					"fontWeight": "normal",
+					"textAlign": "right"
+				},
+				"Field_jobNumber": {
+					"type": "input",
+					"top": 388,
+					"left": 190,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.job.jobNumber",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onGettingFocus",
+						"onMouseMove"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"fontWeight": "normal",
+					"method": "ObjectMethods/Field_jobNumber.4dm",
+					"dataSourceTypeHint": "integer"
+				},
+				"label_QTY1": {
+					"type": "text",
+					"top": 158,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Description",
+					"textAlign": "right"
+				},
+				"entryField_description1": {
+					"type": "input",
+					"top": 158,
+					"left": 190,
+					"width": 250,
+					"height": 100,
+					"dataSource": "Form:C1466.current_item.description",
+					"dataSourceTypeHint": "integer",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"bkgd_pricing": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 504,
+					"width": 494,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_pricing": {
+					"type": "text",
+					"top": 121,
+					"left": 510,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Pricing",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"bkgd_payment": {
+					"type": "rectangle",
+					"top": 425,
+					"left": 504,
+					"width": 494,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_payment": {
+					"type": "text",
+					"top": 432,
+					"left": 510,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Payment Data",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"label_requestor1": {
+					"type": "text",
+					"top": 278,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Requisition Only",
+					"textAlign": "right"
+				},
+				"Field_requisitionOnly": {
+					"type": "checkbox",
+					"text": "",
+					"top": 278,
+					"left": 694,
+					"width": 15,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.current_item.requisitionOnly",
+					"dataSourceTypeHint": "boolean"
+				},
+				"label_bill_date": {
+					"type": "text",
+					"top": 469,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Bill Date",
+					"textAlign": "right"
+				},
+				"field_bill_date": {
+					"type": "input",
+					"top": 469,
+					"left": 694,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.moreData.legacy.billRecognitionDate",
+					"dataSourceTypeHint": "date",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_invoice_date1": {
+					"type": "text",
+					"top": 499,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Invoice Date",
+					"textAlign": "right"
+				},
+				"field_invoice_date1": {
+					"type": "input",
+					"top": 499,
+					"left": 694,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.moreData.legacy.invoiceDate",
+					"dataSourceTypeHint": "date",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_invoice_number": {
+					"type": "text",
+					"top": 529,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Invoice Number",
+					"textAlign": "right"
+				},
+				"field_invoice_number": {
+					"type": "input",
+					"top": 529,
+					"left": 694,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.moreData.legacy.invoiceNumber",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_check_number": {
+					"type": "text",
+					"top": 559,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Check Number",
+					"textAlign": "right"
+				},
+				"field_check_number": {
+					"type": "input",
+					"top": 559,
+					"left": 694,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.checkNumber",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_date_paid": {
+					"type": "text",
+					"top": 589,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Date Paid",
+					"textAlign": "right"
+				},
+				"field_date_paid": {
+					"type": "input",
+					"top": 589,
+					"left": 694,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.paidDate",
+					"dataSourceTypeHint": "date",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_total_paid": {
+					"type": "text",
+					"top": 619,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Total Paid",
+					"textAlign": "right"
+				},
+				"field_invoice_date4": {
+					"type": "input",
+					"top": 619,
+					"left": 694,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.amountPaid",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_balance": {
+					"type": "text",
+					"top": 649,
+					"left": 514,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Balance",
+					"textAlign": "right"
+				},
+				"field_balance": {
+					"type": "input",
+					"top": 649,
+					"left": 694,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.moreData.legacy.amountOutstanding",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_virtual_inventory1": {
+					"type": "text",
+					"top": 698,
+					"left": 10,
+					"width": 150,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Virtual Inventory",
+					"textAlign": "right"
+				},
+				"Field_virtual_inventory1": {
+					"type": "checkbox",
+					"text": "",
+					"top": 698,
+					"left": 190,
+					"width": 15,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.current_item.virtualInventory",
+					"dataSourceTypeHint": "boolean"
+				},
+				"label_return_to_vendor1": {
+					"type": "text",
+					"top": 278,
+					"left": 1018,
+					"width": 170,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Return To Vendor",
+					"textAlign": "right"
+				},
+				"Field_return_to_vendor1": {
+					"type": "checkbox",
+					"text": "",
+					"top": 278,
+					"left": 1198,
+					"width": 15,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.current_item.moreData.pendingWorkflow.returnToVendor",
+					"dataSourceTypeHint": "boolean"
+				},
+				"label_assetListNumber": {
+					"type": "text",
+					"top": 158,
+					"left": 1018,
+					"width": 170,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Asset List Number",
+					"textAlign": "right"
+				},
+				"field_asset_list_number": {
+					"type": "input",
+					"top": 158,
+					"left": 1198,
+					"width": 240,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.assetListNumber",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_unique_id": {
+					"type": "text",
+					"top": 218,
+					"left": 1018,
+					"width": 170,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Unique ID",
+					"textAlign": "right"
+				},
+				"field_unique_id": {
+					"type": "input",
+					"top": 218,
+					"left": 1198,
+					"width": 240,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.moreData.legacy.uniqueID",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_supplier_ps_number": {
+					"type": "text",
+					"top": 188,
+					"left": 1018,
+					"width": 170,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Supplier PS Number",
+					"textAlign": "right"
+				},
+				"field_supplier_ps_number": {
+					"type": "input",
+					"top": 188,
+					"left": 1198,
+					"width": 240,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.supPsNumber",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_record_number": {
+					"type": "text",
+					"top": 248,
+					"left": 1018,
+					"width": 170,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Record Number",
+					"textAlign": "right"
+				},
+				"field_record_number": {
+					"type": "input",
+					"top": 248,
+					"left": 1198,
+					"width": 240,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.legacySeqNum",
+					"dataSourceTypeHint": "number",
+					"format": "###,##0.00",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"label_Date_in": {
+					"type": "text",
+					"top": 202,
+					"left": 12,
+					"width": 170,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Date In",
+					"textAlign": "right"
+				},
+				"bkgd_receiving": {
+					"type": "rectangle",
+					"top": 150,
+					"left": 0,
+					"width": 940,
+					"height": 30,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"lbl_receiving": {
+					"type": "text",
+					"top": 157,
+					"left": 6,
+					"width": 277,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Receiving",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				},
+				"entryField_Date_in": {
+					"type": "input",
+					"top": 202,
+					"left": 192,
+					"width": 240,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.dateIn",
+					"dataSourceTypeHint": "date",
+					"dateFormat": "systemShort blankIfNull",
+					"entryFilter": "!0&9##/##/##",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_Qtyin": {
+					"type": "text",
+					"top": 228,
+					"left": 12,
+					"width": 170,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Qty In",
+					"textAlign": "right"
+				},
+				"entryField_Qtyin": {
+					"type": "input",
+					"top": 228,
+					"left": 192,
+					"width": 240,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.qtyReceived",
+					"dataSourceTypeHint": "integer",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_Recd_by": {
+					"type": "text",
+					"top": 254,
+					"left": 12,
+					"width": 170,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Received By",
+					"textAlign": "right"
+				},
+				"Field_Recd_by": {
+					"type": "input",
+					"top": 254,
+					"left": 192,
+					"width": 240,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.receiver.fullName",
+					"dataSourceTypeHint": "text",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#333333",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_ConfirmationDate": {
+					"type": "text",
+					"top": 280,
+					"left": 12,
+					"width": 170,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Confirmation Date",
+					"textAlign": "right"
+				},
+				"Field_ConfirmationDate": {
+					"type": "input",
+					"top": 280,
+					"left": 192,
+					"width": 240,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.confirmationDate",
+					"dataSourceTypeHint": "text",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#333333",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_Assetlist_num": {
+					"type": "text",
+					"top": 202,
+					"left": 470,
+					"width": 170,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Asset List #",
+					"textAlign": "right"
+				},
+				"entryField_Assetlist_num": {
+					"type": "input",
+					"top": 202,
+					"left": 650,
+					"width": 240,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.assetListNumber",
+					"dataSourceTypeHint": "integer",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"label_Sup_ps_num": {
+					"type": "text",
+					"top": 228,
+					"left": 470,
+					"width": 170,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Supplier PS #",
+					"textAlign": "right"
+				},
+				"entryField_Sup_ps_num": {
+					"type": "input",
+					"top": 228,
+					"left": 650,
+					"width": 240,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.supPsNumber",
+					"dataSourceTypeHint": "integer",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				}
+			}
+		}
+	],
+	"inheritedForm": "sfw_bkgd_header_3lines",
+	"geometryStamp": 417,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

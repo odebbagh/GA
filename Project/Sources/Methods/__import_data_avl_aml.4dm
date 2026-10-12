@@ -21,7 +21,7 @@ End for each
 // Parameters: reads DataJson/partData_export.json from the data folder.
 // Returns: nothing (truncates and reloads PartData).
 // modified by 4D/PS [2026-june-08]
-$partDataFile:=Folder:C1567(fk data folder:K87:12).file("DataJson/partData_export.json")
+$partDataFile:=Folder:C1567(fk data folder:K87:12).file("imports/partData_export.json")
 
 If ($partDataFile.exists)
 	$partDatas:=JSON Parse:C1218($partDataFile.getText())
@@ -45,7 +45,7 @@ End if
 var $eSupplier : cs:C1710.SupplierEntity
 
 
-$supplier_log:=Folder:C1567(fk data folder:K87:12).file("DataJson/suppliers_export.json")
+$supplier_log:=Folder:C1567(fk data folder:K87:12).file("imports/suppliers_export.json")
 
 If ($supplier_log.exists)
 	$suppliers:=JSON Parse:C1218($supplier_log.getText())
@@ -53,7 +53,7 @@ If ($supplier_log.exists)
 	TRUNCATE TABLE:C1051([Supplier:57])
 	
 	
-	$docs:=Folder:C1567(fk data folder:K87:12).file("DataJson/docServerIndex_export.json")
+	$docs:=Folder:C1567(fk data folder:K87:12).file("imports/docServerIndex_export.json")
 	$count:=0
 	If ($docs.exists)
 		
@@ -156,7 +156,7 @@ If ($supplier_log.exists)
 			$doc.approvedBy:=""
 			$doc.isApproved:=False:C215
 			
-			$report:=Folder:C1567(fk data folder:K87:12).file("DataJson/SuppliersDocs/"+String:C10($document.UniqueID+$document.PrimaryKeyValue))
+			$report:=Folder:C1567(fk data folder:K87:12).file("imports/SuppliersDocs/"+String:C10($document.UniqueID+$document.PrimaryKeyValue))
 			If ($report.exists)
 				
 				var $blob : Blob
@@ -276,7 +276,7 @@ End if
 var $eAvml : cs:C1710.AMLEntity
 
 
-$avml_log:=Folder:C1567(fk data folder:K87:12).file("DataJson/aml_export.json")
+$avml_log:=Folder:C1567(fk data folder:K87:12).file("imports/aml_export.json")
 
 If ($avml_log.exists)
 	$avmls:=JSON Parse:C1218($avml_log.getText())

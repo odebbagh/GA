@@ -572,7 +572,7 @@
 				},
 				"Text8": {
 					"type": "text",
-					"text": "Qty in Stock",
+					"text": "Qty Received",
 					"top": 310,
 					"left": 7,
 					"width": 102,
@@ -617,7 +617,7 @@
 					"height": 18,
 					"borderStyle": "none",
 					"fill": "transparent",
-					"dataSource": "Form:C1466.inventory_e.qtyInStock"
+					"dataSource": "Form:C1466.inventory_e.initialQty"
 				},
 				"header_bkgd26": {
 					"type": "rectangle",
@@ -678,8 +678,7 @@
 					"fill": "transparent",
 					"dataSource": "(Form:C1466.inventory_e.expirationDate=0) ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(Form:C1466.inventory_e.expirationDate)",
 					"dataSourceTypeHint": "date",
-					"dateFormat": "short",
-					"method": "ObjectMethods/Input8.4dm",
+					"dateFormat": "short", 
 					"enterable": false
 				},
 				"header_bkgd29": {
@@ -852,7 +851,9 @@
 					"height": 18,
 					"borderStyle": "none",
 					"fill": "transparent",
-					"dataSource": "Form:C1466.receivedBy"
+					"dataSource": "Form:C1466.receivedBy",
+					"enterable": false,
+					"focusable": false
 				},
 				"btnDatePicker_dateIn": {
 					"type": "button",
@@ -866,7 +867,7 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"method": "ObjectMethods/btnDatePicker_dateIn.4dm"
 				},
 				"btnDatePicker_expirationDate": {
@@ -881,7 +882,7 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"method": "ObjectMethods/btnDatePicker_expirationDate.4dm"
 				},
 				"pup_binLocation": {
@@ -944,7 +945,13 @@
 					"shortcutAlt": false,
 					"shortcutKey": ""
 				}
-			}
+			},
+			"entryOrder": [
+				"Input",
+				"Input3",
+				"Input7",
+				"Input6"
+			]
 		}
 	],
 	"geometryStamp": 3654,

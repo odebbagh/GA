@@ -2,8 +2,31 @@ Class extends Entity
 
 
 local Function beforeSave()
+	// lot history (ga_events.logStepSave): the step as stored before this save
+	cs:C1710.ga_events.me.pending[String:C10(This:C1470.UUID)]:=cs:C1710.ga_events.me.storedState(This:C1470; cs:C1710.ga_events.me.stepAttributes())
 	If (This:C1470.lot#Null:C1517)
 		This:C1470.lot.save()
+	End if 
+	
+local Function afterSave()
+	var $before : Object
+	var $key : Text
+	
+	This:C1470._autoHoldOnLowYield()
+	
+	$key:=String:C10(This:C1470.UUID)
+	$before:=cs:C1710.ga_events.me.pending[$key]
+	If ($before#Null:C1517) && (Bool:C1537(Form:C1466.info.success))
+		If (Num:C11($before.qtyOut)=0) && (Num:C11(This:C1470.qtyOut)>0)
+			cs:C1710.ga_inventoryPulls.me.leftoverAtEnd(This)  // just punched out: the last step lists the lot's material left in stock
+		End if 
+	End if 
+	If ($before=Null:C1517)
+		return 
+	End if 
+	OB REMOVE:C1226(cs:C1710.ga_events.me.pending; $key)
+	If (Bool:C1537(Form:C1466.info.success))
+		cs:C1710.ga_events.me.logStepSave($before; This:C1470)
 	End if 
 	
 local Function get approvalDate()->$approvalDate : Date
@@ -17,6 +40,70 @@ local Function set approvalDate($approvalDate : Date)
 		This:C1470.stmpApproval:=0
 	Else 
 		This:C1470.stmpApproval:=cs:C1710.sfw_stmp.me.build($approvalDate)
+	End if 
+	
+local Function get inOperatorName()->$name : Text
+	$name:=cs:C1710.ga_operator.me.label(String:C10(This:C1470.inOperator))
+	
+local Function get outOperatorName()->$name : Text
+	$name:=cs:C1710.ga_operator.me.label(String:C10(This:C1470.outOperator))
+	
+	// Qty In proposed at punch in (legacy Progress_count): the lot's Our Count, then for each step
+	// done before this one, its qty out; a sample step only takes its fails away
+local Function defaultQtyIn()->$qty : Integer
+	var $step : 4D:C1709.Entity
+	
+	$qty:=0
+	If (This:C1470.lot=Null:C1517)
+		return 
+	End if 
+	$qty:=Num:C11(This:C1470.lot.ourCount)
+	For each ($step; This:C1470.lot.lotSteps.query("order < :1 AND dateOut # :2"; This:C1470.order; !00-00-00!).orderBy("order asc"))
+		If (Bool:C1537($step.sample))
+			$qty:=$qty-(Num:C11($step.qtyIn)-Num:C11($step.qtyOut))
+		Else 
+			$qty:=Num:C11($step.qtyOut)
+		End if 
+	End for each 
+	
+	// Legacy check_yld / AutoExceptionHold: a step saved with a yield below its Min % puts the lot
+	// on hold, code AE4, once per step. Releasing it then follows the NCMN rules of any hold.
+local Function _autoHoldOnLowYield()
+	var $lot : 4D:C1709.Entity
+	var $holds : Collection
+	var $reason : Text
+	
+	If (Not:C34(Bool:C1537(Form:C1466.info.success)))
+		return 
+	End if 
+	If (Num:C11(This:C1470.qtyOut)<=0) || (Num:C11(This:C1470.minYield)<=0)
+		return 
+	End if 
+	If (Num:C11(This:C1470.yield)>=Num:C11(This:C1470.minYield))
+		return 
+	End if 
+	$lot:=This:C1470.lot
+	If ($lot=Null:C1517)
+		return 
+	End if 
+	If (Bool:C1537($lot.onHold))
+		return 
+	End if 
+	$holds:=New collection:C1472
+	If ($lot.lotHold#Null:C1517)
+		If ($lot.lotHold.items#Null:C1517)
+			If ($lot.lotHold.items.query("autoStep = :1"; This:C1470.UUID).length>0)
+				return  // already held once for this step
+			End if 
+			$holds:=$lot.lotHold.items.copy()
+		End if 
+	End if 
+	$reason:="Auto Hold. Min yield exception: step "+String:C10(This:C1470.order)+" yield "+String:C10(Num:C11(This:C1470.yield))+"% is below its minimum "+String:C10(Num:C11(This:C1470.minYield))+"%"
+	$holds.push(New object:C1471("UUID"; Generate UUID:C1066; "action"; "on"; "date"; Current date:C33; "time"; Time:C179(Current time:C178); "hold_code"; "AE4"; "hold_reason"; $reason; "performedBy"; "System"; "autoStep"; This:C1470.UUID))
+	$lot.lotHold:=New object:C1471("items"; $holds)
+	$lot.onHold:=True:C214
+	If (LotHoldForm_trySaveLot($lot).success)
+		cs:C1710.sfw_dialog.me.alert($reason+".\rThe lot is now on hold: raise an NCMN to release it.")
 	End if 
 	
 local Function get nameInWindowTitle()->$nameInWindowTitle : Text

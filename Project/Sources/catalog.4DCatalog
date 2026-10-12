@@ -726,6 +726,9 @@
 		<field name="onHold" uuid="99E4B825C8E7491BA42CA5CF9571FA15" type="1" never_null="true" id="34"/>
 		<field name="UUID_Status" uuid="2062B80C3CAE4F22A8D36F676ADD0213" type="10" store_as_UUID="true" never_null="true" id="35"/>
 		<field name="UUID_CustomerCarrier" uuid="CFCD4A5870C440BCBA19E73CF5AA0E45" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="36"/>
+		<field name="signed1" uuid="370873E3581B4C6E96C58A54B434623B" type="1" never_null="true" id="37"/>
+		<field name="signed2" uuid="6D8760EED1ED428DB298EA7313DF9A68" type="1" never_null="true" id="38"/>
+		<field name="UUID_GLAccount" uuid="00D249334C734B6AAB10202B649D7760" type="10" store_as_UUID="true" never_null="true" id="39"/>
 		<primary_key field_name="UUID" field_uuid="2C36FF767DF13E42905F5E16E2D31F5F"/>
 	</table>
 	<table name="Location" uuid="41A5B9E922A8A342822BE4F91D477117" id="47">
@@ -1044,7 +1047,9 @@
 		<field name="taxable" uuid="6E55BA10ED374DDFAFFD41459F25CE25" type="1" never_null="true" id="26"/>
 		<field name="verificationRequired" uuid="694FF1F7D08940618DD56F3E919B0760" type="1" never_null="true" id="27"/>
 		<field name="paidDate" uuid="56EB021E3F82427EA92ED1EB7387D71B" type="8" never_null="true" id="28"/>
-		<field name="totalPaid" uuid="4D9CC27E075B4430A5FE9D5121F24E09" type="6" never_null="true" id="29"/>
+		<field name="UUID_Supplier" uuid="42D282F38A8A4A5995ABC524E70D3BDF" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="29">
+			<field_extra multi_line="false"/>
+		</field>
 		<field name="order" uuid="94F5E9F4A7CE4695BBDFD7210F67674E" type="3" never_null="true" id="30"/>
 		<field name="qtyOrdered" uuid="43644CF2DEA64354BEE5F587E4BCBCD5" type="4" never_null="true" id="31"/>
 		<field name="units" uuid="9A3D684F24134F9FA899BA7EBD8772CD" type="10" limiting_length="255" never_null="true" id="32"/>
@@ -1052,6 +1057,22 @@
 		<field name="UUID_Job" uuid="942197CCAE364DD89FF48DDABCFE3BE2" type="10" store_as_UUID="true" never_null="true" id="34"/>
 		<field name="legacySeqNum" uuid="B6CE72B7D01E4C83B7130A5D8145C145" type="4" never_null="true" id="35"/>
 		<field name="inventory" uuid="B1B77DED51434DF1B1BA20F6D48E1FE5" type="1" never_null="true" id="36"/>
+		<field name="confirmationDate" uuid="E9DB02B2F7AB4B2F9E96111B19FE41FB" type="8" never_null="true" id="37"/>
+		<field name="number" uuid="8046A80015294FF4BD02248D9A566D48" type="3" never_null="true" id="38"/>
+		<field name="UUID_Unit" uuid="A42283755B1F41839069C1C2C90CB190" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="39"/>
+		<field name="UUID_Staff" uuid="8F238EDBD9594AD8999A8AC383895E20" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="40"/>
+		<field name="UUID_Division" uuid="7FB16119B607455E9E36B9D9E19DE6AE" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="41"/>
+		<field name="UUID_AML" uuid="44E24B74282A4B4A9440727E9FA5EEEB" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="42">
+			<field_extra multi_line="false"/>
+		</field>
+		<field name="freight" uuid="BED227866B124873A7AF0A51C8BCF2E7" type="6" never_null="true" id="43"/>
+		<field name="consumable" uuid="3D0DD7D980C84346AEE700B38AA4AE5D" type="1" never_null="true" id="44"/>
+		<field name="asset" uuid="7BA8FCD6C1B24916965ED047C9C9787A" type="1" never_null="true" id="45"/>
+		<field name="unitPriceWithTax" uuid="4D2A9978656844BA88EFA2E252B7EF1C" type="6" never_null="true" id="46"/>
+		<field name="UUID_GLAccount" uuid="B7AD86EF2D67434AB716665AB4CF399C" type="10" store_as_UUID="true" never_null="true" id="47"/>
+		<field name="splitLevel" uuid="B3923758408C4CDFBD6B203A8B51D2CC" type="3" never_null="true" id="48"/>
+		<field name="UUID_LineParent" uuid="C2D67ADADC34486C94C2F1551B25033C" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="49"/>
+		<field name="UUID_Inventory" uuid="D1C92DB08F124633A5C735602D832BED" type="10" store_as_UUID="true" never_null="true" id="50"/>
 		<primary_key field_name="UUID" field_uuid="DD082E45822D34438F391901E3773042"/>
 	</table>
 	<table name="JobLineItem" uuid="C34CD032C4F6EB4C8F51682914D18AB0" id="65">
@@ -1639,6 +1660,35 @@
 		<field name="model" uuid="29A12294D3D14027AB16F79ABF3B3E50" type="21" blob_switch_size="2147483647" never_null="true" id="4"/>
 		<primary_key field_name="UUID" field_uuid="1088403CFEC44FED8D1F134C588A98DC"/>
 	</table>
+	<table name="GLAccount" uuid="C0641AC7B04D4C8BA6FE5879F43C8332" id="108">
+		<field name="UUID" uuid="C829E425EF2C4A30808793D4F7266256" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
+		<field name="glac" uuid="CAF1DF4DDFFD4DA29817A5EA7BE77B75" type="10" limiting_length="255" never_null="true" id="2"/>
+		<field name="description" uuid="396D3CBB39E842E58B1EEFCE2A9E10FC" type="10" limiting_length="255" never_null="true" id="3"/>
+		<field name="accountType" uuid="9CA85A50EF88467CB1D6DB83904FD31C" type="10" limiting_length="255" never_null="true" id="4"/>
+		<field name="accountTypeCode" uuid="BCF5A6CDBFA6482FA5C6A68823E11038" type="4" never_null="true" id="5"/>
+		<field name="fullAccountName" uuid="A45B5CDBCECC4428A925F9038F062789" type="10" limiting_length="255" never_null="true" id="6"/>
+		<field name="parentAccountName" uuid="6AEBDD97CBC5491AB4C5F91CCEE35F5B" type="10" limiting_length="255" never_null="true" id="7"/>
+		<field name="subAccount" uuid="3D9FA2339D9548738B494B5833EF14CC" type="1" never_null="true" id="8"/>
+		<field name="subLevel" uuid="A19793DE510741DF8689B6D7A512D797" type="3" never_null="true" id="9"/>
+		<field name="removed" uuid="5DC80836C8B2487BA2E39F89C62445D9" type="1" never_null="true" id="10"/>
+		<field name="purchasable" uuid="2851BAC261F34973B7BE4D72ED069256" type="1" never_null="true" id="11"/>
+		<field name="allowsInventory" uuid="F118D26796024ADC8A1A389F17B72F9B" type="1" never_null="true" id="12"/>
+		<field name="defaultAsset" uuid="56C7364750DD4E409BB43758D4D09281" type="1" never_null="true" id="13"/>
+		<field name="allowsConsumable" uuid="25DB9A4C71E44AA6814171722678FC5B" type="1" never_null="true" id="14"/>
+		<field name="buyItemType" uuid="3D6077C7B723430EA177827701614020" type="10" limiting_length="255" never_null="true" id="15"/>
+		<field name="moreData" uuid="E625D7C1B10849AE8EDCD2EC5CC47C59" type="21" blob_switch_size="2147483647" never_null="true" id="16"/>
+		<field name="UUID_Division" uuid="05D46F0988D74524BF767CD5835E2F2A" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="17"/>
+		<primary_key field_name="UUID" field_uuid="C829E425EF2C4A30808793D4F7266256"/>
+	</table>
+	<table name="BOApprover" uuid="826F02D864CB4159A510D84B16898639" id="109">
+		<field name="UUID" uuid="5995311A21BF4919B302F8C981FD39E5" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
+		<field name="UUID_Staff" uuid="559355F0372D4A50AC16FD399F7F98EF" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="2"/>
+		<field name="level" uuid="AFD0B9D524884BB0B36871A8DAFD95A8" type="3" never_null="true" id="3"/>
+		<field name="moneyLimit" uuid="C694E094F946495C8A95022614B9D1D6" type="6" never_null="true" id="4"/>
+		<field name="active" uuid="CA515CD5513D41E494C56CBE91B2F964" type="1" never_null="true" id="5"/>
+		<field name="moreData" uuid="50E9B6BEB7D647BF9AA2982712F96893" type="21" blob_switch_size="2147483647" never_null="true" id="6"/>
+		<primary_key field_name="UUID" field_uuid="5995311A21BF4919B302F8C981FD39E5"/>
+	</table>
 	<table name="Customer" uuid="96D1CE81460A4F75B3F4275138C8F778" id="114">
 		<field name="UUID" uuid="37676CD94E8B423595ED98B5C0E9CF89" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
 		<field name="name" uuid="6408BE6907C146339726DEB3047C211E" type="10" limiting_length="255" never_null="true" id="2">
@@ -1856,6 +1906,9 @@
 		<field name="alternativeDevice" uuid="26838A7B37D449DFAFBA9837D373CF93" type="10" limiting_length="255" never_null="true" id="60"/>
 		<field name="NCMN" uuid="0131F14EDAD641D7BF66FCF793D719F1" type="21" blob_switch_size="2147483647" never_null="true" id="61"/>
 		<field name="ISSNF" uuid="729F00EFFC7A42EEAF6AF748631DC8B0" type="21" blob_switch_size="2147483647" never_null="true" id="62"/>
+		<field name="itar" uuid="47D7400A8AF61417FFFD53F3ADAD68A8" type="1" never_null="true" id="63"/>
+		<field name="shipToAddress" uuid="D8C401058689C0F68AC248E641A0061F" type="21" blob_switch_size="2147483647" never_null="true" id="64"/>
+		<field name="latePareto" uuid="84E6313903FA1FAC2EA203A242D3979E" type="10" never_null="true" id="65"/>
 		<primary_key field_name="UUID" field_uuid="AEF78036FB7D429A96DF35BE53A0E0AF"/>
 	</table>
 	<table name="StepFile" uuid="A6301A2C994D4680A851FC2AE85118BE" id="119">
@@ -1963,7 +2016,7 @@
 		<field name="partLotNumber" uuid="D0FD4C93A611184AA47927C6E4B63986" type="10" limiting_length="255" never_null="true" id="8"/>
 		<field name="stockNum" uuid="CD91DBACEDD2874791509E649023D28B" type="10" limiting_length="255" never_null="true" id="9"/>
 		<field name="dateIn" uuid="A490A82A0D2F414A9F47033EA8F4A5A1" type="8" never_null="true" id="10"/>
-		<field name="UUID_Job" uuid="7FEE97DA30A98742B2582F6CEDCCAE66" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="11"/>
+		<field name="UUID_Job" uuid="7FEE97DA30A98742B2582F6CEDCCAE66" type="10" store_as_UUID="true" never_null="true" id="11"/>
 		<field name="expirationDate" uuid="777382FC3F897B438C401FD7B27E4C7E" type="4" never_null="true" id="12"/>
 		<field name="qtyInStock" uuid="951206A58EE6554691FBED3444EF8C74" type="4" never_null="true" id="13"/>
 		<field name="unitCost" uuid="B93F8D8EC815DE42ADA26FF622856DA5" type="6" never_null="true" id="14"/>
@@ -1977,8 +2030,8 @@
 		<field name="IQA_status" uuid="67A1DB3D86C6714EBF1243B07E87927A" type="10" limiting_length="255" never_null="true" id="22"/>
 		<field name="division" uuid="9D33540E0CEE2C4D8D81728CB030272E" type="10" limiting_length="255" never_null="true" id="23"/>
 		<field name="UUID_BuyingOrderLine" uuid="57D3EC486BB24A508BC12E6198C70958" type="10" store_as_UUID="true" never_null="true" id="24"/>
-		<field name="UUID_Customer" uuid="82126B12FB764545B4300548927CEEA1" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="25"/>
-		<field name="UUID_Staff" uuid="64F93EDE8E74644C836516DCE3E22031" type="10" autogenerate="true" store_as_UUID="true" never_null="true" id="26"/>
+		<field name="UUID_Customer" uuid="82126B12FB764545B4300548927CEEA1" type="10" store_as_UUID="true" never_null="true" id="25"/>
+		<field name="UUID_Staff" uuid="64F93EDE8E74644C836516DCE3E22031" type="10" store_as_UUID="true" never_null="true" id="26"/>
 		<field name="location" uuid="6C2B5A5C4BF65A4F8511D0408C2D6DFF" type="10" limiting_length="255" never_null="true" id="27"/>
 		<field name="units" uuid="4B1947BCB9C8BE438F57D568D688CD28" type="10" limiting_length="255" never_null="true" id="28"/>
 		<field name="comment" uuid="BA0A6F1EB17AA8419A0EAABDE0BB0E22" type="10" limiting_length="255" never_null="true" id="29"/>
@@ -2006,6 +2059,11 @@
 		<field name="performedBy" uuid="7D43065F5CF10E43B49EFD464C3DBAD5" type="10" limiting_length="255" never_null="true" id="10"/>
 		<field name="statusIQA" uuid="63B55B293028584B9AECB90EC9ACC7A9" type="10" limiting_length="255" never_null="true" id="11"/>
 		<field name="lotNumber" uuid="6FAF1168A73F1C41AA8EF9CDCCF2847D" type="10" limiting_length="255" never_null="true" id="16"/>
+		<field name="UUID_Lot" uuid="8927D798BAEFFA7A30898EC6995B0280" type="10" store_as_UUID="true" never_null="true" id="17"/>
+		<field name="UUID_LotStep" uuid="12EA428F90687F7122CAEFE564B1CD12" type="10" store_as_UUID="true" never_null="true" id="18"/>
+		<field name="stepOrder" uuid="913B6FD7F11C81AF4EBF0182DD6D4185" type="4" never_null="true" id="19"/>
+		<field name="cost" uuid="9E38892A769DCADBECEE4D6FF5C07BEB" type="6" never_null="true" id="20"/>
+		<field name="reason" uuid="D95E9A477366C9732A8119A8FB8AF0C1" type="10" limiting_length="255" never_null="true" id="21"/>
 		<primary_key field_name="UUID" field_uuid="627A32C87CCB4069BFFC9D5D94AE4473"/>
 	</table>
 	<table name="Quote" uuid="98A20403539048D2B775AEAED975966B" id="128">
@@ -2610,6 +2668,42 @@
 		<related_field kind="destination">
 			<field_ref uuid="F8D9EC71ECF843689AA0D416563422DC" name="UUID">
 				<table_ref uuid="CA853413921F4B2A9BC70E6DE5F88235" name="Inventory"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="5E1A0C3F7B2D4E8A9C6F1B3D5A7E9C21" name_Nto1="lot" name_1toN="inventories" state="1">
+		<related_field kind="source">
+			<field_ref uuid="AD1E00891CC4448E848AB7002C76C01C" name="UUID_Lot">
+				<table_ref uuid="CA853413921F4B2A9BC70E6DE5F88235" name="Inventory"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="AEF78036FB7D429A96DF35BE53A0E0AF" name="UUID">
+				<table_ref uuid="67220A81398C4000A84C1F180E368020" name="Lot"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="6F2B1D4E8C3A4F9BAD7E2C4E6B8FAD32" name_Nto1="lot" name_1toN="inventoryPulls" state="1">
+		<related_field kind="source">
+			<field_ref uuid="8927D798BAEFFA7A30898EC6995B0280" name="UUID_Lot">
+				<table_ref uuid="B0A466FC99334B96B5FE810BAE186DC4" name="InventoryPull"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="AEF78036FB7D429A96DF35BE53A0E0AF" name="UUID">
+				<table_ref uuid="67220A81398C4000A84C1F180E368020" name="Lot"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="7A3C2E5F9D4B4A0CBE8F3D5F7C9ABE43" name_Nto1="lotStep" name_1toN="inventoryPulls" state="1">
+		<related_field kind="source">
+			<field_ref uuid="12EA428F90687F7122CAEFE564B1CD12" name="UUID_LotStep">
+				<table_ref uuid="B0A466FC99334B96B5FE810BAE186DC4" name="InventoryPull"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="EE9C517A8C59724B8559A5DCB59FE560" name="UUID">
+				<table_ref uuid="21C997F4FF841640B547868BE38C05ED" name="LotStep"/>
 			</field_ref>
 		</related_field>
 	</relation>
@@ -4161,27 +4255,27 @@
 			</field_ref>
 		</related_field>
 	</relation>
-	<relation uuid="6EEA73558C8945FF8AD5C94A8F6E05DD" name_Nto1="inventory" name_1toN="inventoryClassifications" state="1">
+	<relation uuid="6EEA73558C8945FF8AD5C94A8F6E05DD" name_Nto1="inventoryClassification" name_1toN="inventories" state="1">
 		<related_field kind="source">
-			<field_ref uuid="D5AB64A3F5B2472F8E4B9E37B8AF0E11" name="UUID">
-				<table_ref uuid="6D24680FD87643AB8B7A1448D33498F3" name="InventoryClassification"/>
-			</field_ref>
-		</related_field>
-		<related_field kind="destination">
 			<field_ref uuid="501EB5D493DE4F9BBF17D205D9E5681E" name="UUID_InventoryClassification">
 				<table_ref uuid="CA853413921F4B2A9BC70E6DE5F88235" name="Inventory"/>
 			</field_ref>
 		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="D5AB64A3F5B2472F8E4B9E37B8AF0E11" name="UUID">
+				<table_ref uuid="6D24680FD87643AB8B7A1448D33498F3" name="InventoryClassification"/>
+			</field_ref>
+		</related_field>
 	</relation>
-	<relation uuid="7A9F8B963A9E4A3EBB2E7589AB26C8CC" name_Nto1="inventory" name_1toN="inventoryUnits" state="1">
+	<relation uuid="7A9F8B963A9E4A3EBB2E7589AB26C8CC" name_Nto1="inventoryUnit" name_1toN="inventories" state="1">
 		<related_field kind="source">
-			<field_ref uuid="A13D8F9F3A1E4A56A9693B13A3E5B5DA" name="UUID">
-				<table_ref uuid="3FB58DB7E23D4D1D8B659DA53E663E6C" name="InventoryUnits"/>
+			<field_ref uuid="A4FC4926A2184420BE0D47B8D148649E" name="UUID_InventoryUnits">
+				<table_ref uuid="CA853413921F4B2A9BC70E6DE5F88235" name="Inventory"/>
 			</field_ref>
 		</related_field>
 		<related_field kind="destination">
-			<field_ref uuid="A4FC4926A2184420BE0D47B8D148649E" name="UUID_InventoryUnits">
-				<table_ref uuid="CA853413921F4B2A9BC70E6DE5F88235" name="Inventory"/>
+			<field_ref uuid="A13D8F9F3A1E4A56A9693B13A3E5B5DA" name="UUID">
+				<table_ref uuid="3FB58DB7E23D4D1D8B659DA53E663E6C" name="InventoryUnits"/>
 			</field_ref>
 		</related_field>
 	</relation>
@@ -4329,7 +4423,7 @@
 			</field_ref>
 		</related_field>
 	</relation>
-	<relation uuid="26DE33637B06452D9F8CE84890431838" name_Nto1="buyer" name_1toN="buyingOrders" state="1">
+	<relation uuid="26DE33637B06452D9F8CE84890431838" name_Nto1="staff" name_1toN="buyingOrders" state="1">
 		<related_field kind="source">
 			<field_ref uuid="93F5218A04E148219E3936F15BFEFA9E" name="UUID_Buyer">
 				<table_ref uuid="34498A1D7FE0BD4783FE5183EE6C5BA2" name="BuyingOrder"/>
@@ -4497,6 +4591,138 @@
 			</field_ref>
 		</related_field>
 	</relation>
+	<relation uuid="449E87BA4DA048C89C00C4EDE557DDAA" name_Nto1="unit" name_1toN="buyingOrderItems" state="1">
+		<related_field kind="source">
+			<field_ref uuid="A42283755B1F41839069C1C2C90CB190" name="UUID_Unit">
+				<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="3FE414F572CC6D4D83E98816E5F8757A" name="UUID">
+				<table_ref uuid="4953D4E1A4DBC44C9A5A17FAE5272A9A" name="Unit"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="D1321BD6AE2542ACBD73B6240422C09A" name_Nto1="receiver" name_1toN="buyingOrderLines" state="1">
+		<related_field kind="source">
+			<field_ref uuid="8F238EDBD9594AD8999A8AC383895E20" name="UUID_Staff">
+				<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="6941AB4C41898A4A9FBF25D5AC27CA2B" name="UUID">
+				<table_ref uuid="FD10D10C9E0015458AFF59F988A373BB" name="Staff"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="20F3F99684FF43F5B96480E6AEB239DF" name_Nto1="division" name_1toN="buyingOrderLines" state="1">
+		<related_field kind="source">
+			<field_ref uuid="7FB16119B607455E9E36B9D9E19DE6AE" name="UUID_Division">
+				<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="3B46C986029743428A30E84AA5F8ADC4" name="UUID">
+				<table_ref uuid="F25CD20FCCFE2044A3D568BAFE905227" name="Division"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="036FD82FEF4F4B6AAFC5280DC5B350B8" name_Nto1="supplier" name_1toN="buyingOrderLines" state="1">
+		<related_field kind="source">
+			<field_ref uuid="42D282F38A8A4A5995ABC524E70D3BDF" name="UUID_Supplier">
+				<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="CFBA7599E861DC4A91A0C1B26781C297" name="UUID">
+				<table_ref uuid="A0C8CDC075BBB546914E03F7689B897E" name="Supplier"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="B981DA594BA04DDE9E7B892B439A69EA" name_Nto1="aml" name_1toN="buyingOrderLines" state="1">
+		<related_field kind="source">
+			<field_ref uuid="44E24B74282A4B4A9440727E9FA5EEEB" name="UUID_AML">
+				<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="87371A3102B02347880B2FF579DAE670" name="UUID">
+				<table_ref uuid="BBADA9B28C42FC4AA02504E477DEF5BB" name="AML"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="D7D8978A00604DC3AA882661D35DD47E" name_Nto1="account" name_1toN="buyingOrderLines" state="1">
+		<related_field kind="source">
+			<field_ref uuid="B7AD86EF2D67434AB716665AB4CF399C" name="UUID_GLAccount">
+				<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="C829E425EF2C4A30808793D4F7266256" name="UUID">
+				<table_ref uuid="C0641AC7B04D4C8BA6FE5879F43C8332" name="GLAccount"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="1757BF302B5F4A578F0E048CF2C52AB4" name_Nto1="division" name_1toN="glAccounts" state="1">
+		<related_field kind="source">
+			<field_ref uuid="05D46F0988D74524BF767CD5835E2F2A" name="UUID_Division">
+				<table_ref uuid="C0641AC7B04D4C8BA6FE5879F43C8332" name="GLAccount"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="3B46C986029743428A30E84AA5F8ADC4" name="UUID">
+				<table_ref uuid="F25CD20FCCFE2044A3D568BAFE905227" name="Division"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="B3AA369301C640CC82480B8420D39415" name_Nto1="lineParent" name_1toN="subLines" state="1">
+		<related_field kind="source">
+			<field_ref uuid="C2D67ADADC34486C94C2F1551B25033C" name="UUID_LineParent">
+				<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="DD082E45822D34438F391901E3773042" name="UUID">
+				<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="C1A356B1557B479B902244716389EAA1" name_Nto1="staff" name_1toN="boApprovers" state="1">
+		<related_field kind="source">
+			<field_ref uuid="559355F0372D4A50AC16FD399F7F98EF" name="UUID_Staff">
+				<table_ref uuid="826F02D864CB4159A510D84B16898639" name="BOApprover"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="6941AB4C41898A4A9FBF25D5AC27CA2B" name="UUID">
+				<table_ref uuid="FD10D10C9E0015458AFF59F988A373BB" name="Staff"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="CCA1CE64F39A44B4BC416B78329ACC7E" name_Nto1="account" name_1toN="buyingOrders" state="1">
+		<related_field kind="source">
+			<field_ref uuid="00D249334C734B6AAB10202B649D7760" name="UUID_GLAccount">
+				<table_ref uuid="34498A1D7FE0BD4783FE5183EE6C5BA2" name="BuyingOrder"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="C829E425EF2C4A30808793D4F7266256" name="UUID">
+				<table_ref uuid="C0641AC7B04D4C8BA6FE5879F43C8332" name="GLAccount"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="04F9904339C34671BA765D5F6E71C12A" name_Nto1="receiptInventory" name_1toN="buyingOrderLines" state="1">
+		<related_field kind="source">
+			<field_ref uuid="D1C92DB08F124633A5C735602D832BED" name="UUID_Inventory">
+				<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="F8D9EC71ECF843689AA0D416563422DC" name="UUID">
+				<table_ref uuid="CA853413921F4B2A9BC70E6DE5F88235" name="Inventory"/>
+			</field_ref>
+		</related_field>
+	</relation>
 	<index kind="regular" uuid="005E48A922A4464DB92973931B467ACF" type="3">
 		<field_ref uuid="17F71D68FA714CE9A75ED79CA63E3BE2" name="UUID_Lead">
 			<table_ref uuid="4CA431297F2C42BE99FD232A56928CE7" name="Interaction"/>
@@ -4627,6 +4853,11 @@
 			<table_ref uuid="FCE2D049B8944E4CA0AAB0152A549718" name="Equipment"/>
 		</field_ref>
 	</index>
+	<index kind="regular" uuid="0F1FAC5A05394411939778669898BE31" type="3">
+		<field_ref uuid="B7AD86EF2D67434AB716665AB4CF399C" name="UUID_GLAccount">
+			<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
+		</field_ref>
+	</index>
 	<index kind="regular" uuid="0FAF2298D9CD42CE8EE0FF759E159081" type="3">
 		<field_ref uuid="B9E2F7CAC3ACFD419C146AA48E43EC0B" name="UUID_Approver2">
 			<table_ref uuid="34498A1D7FE0BD4783FE5183EE6C5BA2" name="BuyingOrder"/>
@@ -4662,6 +4893,11 @@
 			<table_ref uuid="4CA431297F2C42BE99FD232A56928CE7" name="Interaction"/>
 		</field_ref>
 	</index>
+	<index kind="regular" uuid="14F0D321DE3A471980B9FC82068170A4" type="3">
+		<field_ref uuid="D1C92DB08F124633A5C735602D832BED" name="UUID_Inventory">
+			<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
+		</field_ref>
+	</index>
 	<index kind="regular" unique_keys="true" uuid="1523334CD1CC0D4C9803DCBF04346334" type="7">
 		<field_ref uuid="2C36FF767DF13E42905F5E16E2D31F5F" name="UUID">
 			<table_ref uuid="34498A1D7FE0BD4783FE5183EE6C5BA2" name="BuyingOrder"/>
@@ -4680,6 +4916,11 @@
 	<index kind="regular" unique_keys="true" uuid="15E1329A640CEA48A1DACE8F3364DB03" type="7">
 		<field_ref uuid="F4F183C203267641A55226527FCEE721" name="UUID">
 			<table_ref uuid="EF08E8961B35724A90161EC3FDC9D950" name="YesNoQuestion"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="16019676B0724ACD98D58308E55CC5BA" type="3">
+		<field_ref uuid="7FB16119B607455E9E36B9D9E19DE6AE" name="UUID_Division">
+			<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="16485A3E339A7045936ABC8D005D8A2E" type="3">
@@ -4705,6 +4946,11 @@
 	<index kind="regular" uuid="1B27770B5E5C4F6EB2F30747AFB10497" type="3">
 		<field_ref uuid="774FA4AF684B40DCA80BFDE304619A5A" name="UUID_UserProfile">
 			<table_ref uuid="AC225FD836FF49F7841FC1B78EC96243" name="sfw_UserInscription"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="1B5918F4FEFB4D35A12D153819D12409" type="3">
+		<field_ref uuid="44E24B74282A4B4A9440727E9FA5EEEB" name="UUID_AML">
+			<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="1B6891E044AA1B4C89C5A1962EF78F6F" type="7">
@@ -4902,6 +5148,11 @@
 			<table_ref uuid="2A5FFBEA0CA13546A52A683860C62D9A" name="Asset"/>
 		</field_ref>
 	</index>
+	<index kind="regular" unique_keys="true" uuid="3A939E1CE35B42B9919D9ED294823FFF" type="7">
+		<field_ref uuid="5995311A21BF4919B302F8C981FD39E5" name="UUID">
+			<table_ref uuid="826F02D864CB4159A510D84B16898639" name="BOApprover"/>
+		</field_ref>
+	</index>
 	<index kind="regular" uuid="3AA763F9E150A24191C0D1CCE2C7A774" type="7">
 		<field_ref uuid="B1F81EC2F5F12749BB2EF9BFABD9EAF7" name="total">
 			<table_ref uuid="FD34803EFD49454B9F38092174A0003C" name="JobInvoice"/>
@@ -4965,6 +5216,11 @@
 	<index kind="regular" uuid="4466D060A399E74F8AA1C4B7D2CC91EE" type="1">
 		<field_ref uuid="66AE759FD5E4834687653ACC2ECBF0BE" name="ref">
 			<table_ref uuid="71FD451F60934C9995C7A6D899CA2B51" name="Certification"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="454A5BB9C34740CA9D96C961FFE77C47" type="3">
+		<field_ref uuid="00D249334C734B6AAB10202B649D7760" name="UUID_GLAccount">
+			<table_ref uuid="34498A1D7FE0BD4783FE5183EE6C5BA2" name="BuyingOrder"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="458E39DA38094C40AEA5875F614F9F26" type="3">
@@ -5125,6 +5381,11 @@
 	<index kind="regular" uuid="5743909E87308F4791C546B6E49A8379" type="3">
 		<field_ref uuid="E7C8FFEBD904E74EB339A34146F11671" name="UUID_PartData">
 			<table_ref uuid="BBADA9B28C42FC4AA02504E477DEF5BB" name="AML"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="57E1FD41C84249E0B14339DBB54872ED" type="3">
+		<field_ref uuid="A42283755B1F41839069C1C2C90CB190" name="UUID_Unit">
+			<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="57E84D59E2E35A4EB4872BE5298B3E6D" type="3">
@@ -5402,6 +5663,11 @@
 			<table_ref uuid="CA853413921F4B2A9BC70E6DE5F88235" name="Inventory"/>
 		</field_ref>
 	</index>
+	<index kind="regular" uuid="8428609651C74BF893EA53D2180A8C09" type="3">
+		<field_ref uuid="559355F0372D4A50AC16FD399F7F98EF" name="UUID_Staff">
+			<table_ref uuid="826F02D864CB4159A510D84B16898639" name="BOApprover"/>
+		</field_ref>
+	</index>
 	<index kind="regular" unique_keys="true" uuid="8451AA14DB3042EBB07AE32163B78D2C" type="1">
 		<field_ref uuid="CA172B57886B485CAA341D4850024A18" name="UUID">
 			<table_ref uuid="8323DCD451AF4EA0963D9C516625AB8E" name="LotEvent"/>
@@ -5412,9 +5678,19 @@
 			<table_ref uuid="E209D11E14110249AE69799CB8F51C7C" name="RepairLog"/>
 		</field_ref>
 	</index>
+	<index kind="regular" unique_keys="true" uuid="851D5E9806B049E0A64E5A4903230EFF" type="7">
+		<field_ref uuid="C829E425EF2C4A30808793D4F7266256" name="UUID">
+			<table_ref uuid="C0641AC7B04D4C8BA6FE5879F43C8332" name="GLAccount"/>
+		</field_ref>
+	</index>
 	<index kind="regular" unique_keys="true" uuid="8557C24DB496914FB0F9837682DEAD2D" type="7">
 		<field_ref uuid="00CCFE9E143B72409BA8D975BF377810" name="UUID">
 			<table_ref uuid="3382E9847A639840BEB98DE07BAF4613" name="AuditEvent"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="86392212CB2E441C9AC15EE88B7E63F0" type="3">
+		<field_ref uuid="05D46F0988D74524BF767CD5835E2F2A" name="UUID_Division">
+			<table_ref uuid="C0641AC7B04D4C8BA6FE5879F43C8332" name="GLAccount"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="8644E5D44CFD854C966A9D2F6C30ED02" type="7">
@@ -5842,6 +6118,11 @@
 			<table_ref uuid="96D1CE81460A4F75B3F4275138C8F778" name="Customer"/>
 		</field_ref>
 	</index>
+	<index kind="regular" uuid="BB38EBBF407348A3B36BA0847D6F0EE7" type="3">
+		<field_ref uuid="C2D67ADADC34486C94C2F1551B25033C" name="UUID_LineParent">
+			<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
+		</field_ref>
+	</index>
 	<index kind="regular" unique_keys="true" uuid="BBF91AE719024421B605BF3E85D8B491" type="1">
 		<field_ref uuid="1220A37BE5DC40168EEC02C61B1D51FC" name="UUID">
 			<table_ref uuid="5E1C3E25225441628E3DBCF58BFAABF4" name="sfw_Document"/>
@@ -5860,6 +6141,11 @@
 	<index kind="regular" unique_keys="true" uuid="BD406CEAA864134F8499B4BD070AD254" type="7">
 		<field_ref uuid="A643D54CE62FF14A8A5DF7520FE96178" name="UUID">
 			<table_ref uuid="F31AF6CBA06D9D40BC44E9A83AA47D7E" name="Classification"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="BD46A38993B34150BD55CD3F44242B7C" type="3">
+		<field_ref uuid="8F238EDBD9594AD8999A8AC383895E20" name="UUID_Staff">
+			<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="BD47FA9405A1744D91F89C7277E5056E" type="1">
@@ -6215,6 +6501,11 @@
 	<index kind="regular" uuid="F58791D821949B48884640789E7A3A35" type="3">
 		<field_ref uuid="8BFA6D76FA74C54993829D8A61A47597" name="UUID_Division">
 			<table_ref uuid="742061D6375A2B43B9C36073A1C58ABA" name="CreditMemo"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="F7BFB38C50854AB395B5A64AE90F65D2" type="3">
+		<field_ref uuid="42D282F38A8A4A5995ABC524E70D3BDF" name="UUID_Supplier">
+			<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="F9A9B9B4265D9046B39F9BE92431F249" type="7">

@@ -144,7 +144,8 @@
 					"left": 7,
 					"width": 102,
 					"height": 15,
-					"fontWeight": "bold"
+					"fontWeight": "bold",
+					"visibility": "hidden"
 				},
 				"Text1": {
 					"type": "text",
@@ -154,7 +155,8 @@
 					"width": 22,
 					"height": 15,
 					"textAlign": "right",
-					"fontWeight": "bold"
+					"fontWeight": "bold",
+					"visibility": "hidden"
 				},
 				"header_bkgd3": {
 					"type": "rectangle",
@@ -195,7 +197,8 @@
 					"fill": "transparent",
 					"dataSource": "Form:C1466.invPull.job",
 					"enterable": false,
-					"contextMenu": "none"
+					"contextMenu": "none",
+					"visibility": "hidden"
 				},
 				"header_bkgd5": {
 					"type": "rectangle",
@@ -412,10 +415,44 @@
 					"fill": "#B1CFDE",
 					"stroke": "transparent"
 				},
+				"Text_reason": {
+					"type": "text",
+					"top": 244,
+					"left": 7,
+					"width": 102,
+					"height": 15,
+					"fontWeight": "bold",
+					"text": "Reason"
+				},
+				"Text_reasonColon": {
+					"type": "text",
+					"top": 244,
+					"left": 114,
+					"width": 10,
+					"height": 15,
+					"text": ":"
+				},
+				"pup_reason": {
+					"type": "button",
+					"text": "Choose...",
+					"top": 240,
+					"left": 151,
+					"width": 293,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/pup_reason.4dm",
+					"focusable": false,
+					"style": "bevel",
+					"popupPlacement": "linked",
+					"textAlign": "left",
+					"textPlacement": "right"
+				},
 				"Text10": {
 					"type": "text",
 					"text": "Note",
-					"top": 244,
+					"top": 276,
 					"left": 7,
 					"width": 102,
 					"height": 15,
@@ -424,7 +461,7 @@
 				"Text11": {
 					"type": "text",
 					"text": ":",
-					"top": 244,
+					"top": 276,
 					"left": 114,
 					"width": 22,
 					"height": 15,
@@ -471,9 +508,9 @@
 				"Input5": {
 					"type": "input",
 					"left": 151,
-					"top": 243,
+					"top": 276,
 					"width": 293,
-					"height": 98,
+					"height": 66,
 					"borderStyle": "none",
 					"fill": "transparent",
 					"dataSource": "Form:C1466.invPull.note"
@@ -544,7 +581,7 @@
 					"width": 250,
 					"height": 17,
 					"stroke": "#000000",
-					"text": "Add new Bin",
+					"text": "Pull from stock",
 					"fontSize": 12,
 					"fontWeight": "bold"
 				},
@@ -603,7 +640,8 @@
 					"left": 7,
 					"width": 102,
 					"height": 15,
-					"fontWeight": "bold"
+					"fontWeight": "bold",
+					"visibility": "hidden"
 				},
 				"Text15": {
 					"type": "text",
@@ -613,7 +651,8 @@
 					"width": 22,
 					"height": 15,
 					"textAlign": "right",
-					"fontWeight": "bold"
+					"fontWeight": "bold",
+					"visibility": "hidden"
 				},
 				"header_bkgd25": {
 					"type": "rectangle",
@@ -654,7 +693,8 @@
 					"fill": "transparent",
 					"dataSource": "Form:C1466.invPull.job",
 					"enterable": false,
-					"contextMenu": "none"
+					"contextMenu": "none",
+					"visibility": "hidden"
 				},
 				"header_bkgd26": {
 					"type": "rectangle",
@@ -748,7 +788,7 @@
 				},
 				"Text20": {
 					"type": "text",
-					"text": "Quantity to Pull Back",
+					"text": "Quantity to Put Back",
 					"top": 181,
 					"left": 7,
 					"width": 122,
@@ -773,7 +813,7 @@
 					"height": 18,
 					"borderStyle": "none",
 					"fill": "transparent",
-					"dataSource": "Form:C1466.invPull.qty",
+					"dataSource": "Form:C1466.invPull.currentQty",
 					"enterable": false,
 					"contextMenu": "none"
 				},
@@ -873,7 +913,7 @@
 				"Text24": {
 					"type": "text",
 					"text": "Note",
-					"top": 244,
+					"top": 276,
 					"left": 7,
 					"width": 102,
 					"height": 15,
@@ -882,7 +922,7 @@
 				"Text25": {
 					"type": "text",
 					"text": ":",
-					"top": 244,
+					"top": 276,
 					"left": 114,
 					"width": 22,
 					"height": 15,
@@ -924,9 +964,9 @@
 				"Input11": {
 					"type": "input",
 					"left": 151,
-					"top": 243,
+					"top": 276,
 					"width": 293,
-					"height": 98,
+					"height": 66,
 					"borderStyle": "none",
 					"fill": "transparent",
 					"dataSource": "Form:C1466.invPull.note"
@@ -997,7 +1037,7 @@
 					"width": 250,
 					"height": 17,
 					"stroke": "#000000",
-					"text": "Create a Pull Back",
+					"text": "Put back into stock",
 					"fontSize": 12,
 					"fontWeight": "bold"
 				},
@@ -1014,6 +1054,40 @@
 					],
 					"style": "custom",
 					"method": "ObjectMethods/Button6.4dm"
+				},
+				"pup_reason2": {
+					"type": "button",
+					"text": "Choose...",
+					"top": 240,
+					"left": 151,
+					"width": 293,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/pup_reason2.4dm",
+					"focusable": false,
+					"style": "bevel",
+					"popupPlacement": "linked",
+					"textAlign": "left",
+					"textPlacement": "right"
+				},
+				"Text_reason2": {
+					"type": "text",
+					"top": 244,
+					"left": 7,
+					"width": 102,
+					"height": 15,
+					"fontWeight": "bold",
+					"text": "Reason"
+				},
+				"Text_reasonColon2": {
+					"type": "text",
+					"top": 244,
+					"left": 114,
+					"width": 10,
+					"height": 15,
+					"text": ":"
 				}
 			}
 		}

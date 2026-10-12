@@ -1,0 +1,379 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad"
+	],
+	"windowTitle": "Merge Lot",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"bkgd": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 800,
+					"height": 540,
+					"fill": "#E6E6E6",
+					"stroke": "transparent",
+					"strokeWidth": 0
+				},
+				"header_bkgd": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 800,
+					"height": 35,
+					"sizingX": "fixed",
+					"fill": "#69A4C0",
+					"stroke": "transparent"
+				},
+				"lbl_title": {
+					"type": "text",
+					"top": 10,
+					"left": 12,
+					"width": 500,
+					"height": 17,
+					"stroke": "#000000",
+					"text": "Merge Lot",
+					"fontSize": 12,
+					"fontWeight": "bold"
+				}
+			}
+		},
+		{
+			"objects": {
+				"lbl_bkgd_motherLot": {
+					"type": "rectangle",
+					"top": 46,
+					"left": 0,
+					"width": 150,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#B1CFDE",
+					"stroke": "transparent"
+				},
+				"lbl_motherLot": {
+					"type": "text",
+					"text": "Merge into Lot :",
+					"top": 52,
+					"left": 7,
+					"width": 130,
+					"height": 15,
+					"fontWeight": "bold"
+				},
+				"inp_bkgd_motherLot": {
+					"type": "rectangle",
+					"top": 46,
+					"left": 154,
+					"width": 640,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"inp_motherLot": {
+					"type": "input",
+					"left": 161,
+					"top": 51,
+					"width": 620,
+					"height": 16,
+					"borderStyle": "none",
+					"fill": "transparent",
+					"dataSource": "Form:C1466.motherLotNumber",
+					"enterable": false,
+					"focusable": false
+				},
+				"lbl_bkgd_job": {
+					"type": "rectangle",
+					"top": 78,
+					"left": 0,
+					"width": 150,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#B1CFDE",
+					"stroke": "transparent"
+				},
+				"lbl_job": {
+					"type": "text",
+					"text": "Job # :",
+					"top": 84,
+					"left": 7,
+					"width": 130,
+					"height": 15,
+					"fontWeight": "bold"
+				},
+				"inp_bkgd_job": {
+					"type": "rectangle",
+					"top": 78,
+					"left": 154,
+					"width": 640,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"inp_job": {
+					"type": "input",
+					"left": 161,
+					"top": 83,
+					"width": 620,
+					"height": 16,
+					"borderStyle": "none",
+					"fill": "transparent",
+					"dataSource": "Form:C1466.jobDisplay",
+					"enterable": false,
+					"focusable": false
+				},
+				"lbl_bkgd_currentStep": {
+					"type": "rectangle",
+					"top": 110,
+					"left": 0,
+					"width": 150,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#B1CFDE",
+					"stroke": "transparent"
+				},
+				"lbl_currentStep": {
+					"type": "text",
+					"text": "Merge at Step :",
+					"top": 116,
+					"left": 7,
+					"width": 130,
+					"height": 15,
+					"fontWeight": "bold"
+				},
+				"inp_bkgd_currentStep": {
+					"type": "rectangle",
+					"top": 110,
+					"left": 154,
+					"width": 640,
+					"height": 28,
+					"sizingX": "fixed",
+					"fill": "#FFFFFF",
+					"stroke": "transparent"
+				},
+				"inp_currentStep": {
+					"type": "input",
+					"left": 161,
+					"top": 115,
+					"width": 620,
+					"height": 16,
+					"borderStyle": "none",
+					"fill": "transparent",
+					"dataSource": "Form:C1466.currentStepDisplay",
+					"enterable": false,
+					"focusable": false
+				},
+				"lbl_candidates": {
+					"type": "text",
+					"top": 150,
+					"left": 7,
+					"width": 780,
+					"height": 15,
+					"text": "Select the lot of the same job to merge (the whole lot is merged, it keeps nothing):",
+					"fontWeight": "bold"
+				},
+				"lb_candidates": {
+					"type": "listbox",
+					"top": 170,
+					"left": 7,
+					"width": 787,
+					"height": 230,
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.candidates",
+					"currentItemSource": "Form:C1466.selected",
+					"selectionMode": "single",
+					"scrollbarVertical": "visible",
+					"scrollbarHorizontal": "hidden",
+					"borderStyle": "system",
+					"fill": "#FFFFFF",
+					"alternateFill": "#F7F9FC",
+					"events": [
+						"onSelectionChange"
+					],
+					"method": "ObjectMethods/lb_candidates.4dm",
+					"columns": [
+						{
+							"header": {
+								"name": "Header_status",
+								"text": "Status"
+							},
+							"name": "col_status",
+							"footer": {
+								"name": "Footer_status"
+							},
+							"dataSource": "This:C1470.status",
+							"width": 70,
+							"minWidth": 60,
+							"enterable": false,
+							"fontWeight": "bold"
+						},
+						{
+							"header": {
+								"name": "Header_lotNumber",
+								"text": "Lot #"
+							},
+							"name": "col_lotNumber",
+							"footer": {
+								"name": "Footer_lotNumber"
+							},
+							"dataSource": "This:C1470.lotNumber",
+							"width": 130,
+							"minWidth": 80,
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header_sub",
+								"text": "Sub"
+							},
+							"name": "col_sub",
+							"footer": {
+								"name": "Footer_sub"
+							},
+							"dataSource": "This:C1470.subSequence",
+							"width": 40,
+							"minWidth": 30,
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header_device",
+								"text": "Device"
+							},
+							"name": "col_device",
+							"footer": {
+								"name": "Footer_device"
+							},
+							"dataSource": "This:C1470.device",
+							"width": 130,
+							"minWidth": 80,
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header_count",
+								"text": "Count"
+							},
+							"name": "col_count",
+							"footer": {
+								"name": "Footer_count"
+							},
+							"dataSource": "This:C1470.ourCount",
+							"dataSourceTypeHint": "number",
+							"width": 60,
+							"minWidth": 50,
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header_dateCode",
+								"text": "Date Code"
+							},
+							"name": "col_dateCode",
+							"footer": {
+								"name": "Footer_dateCode"
+							},
+							"dataSource": "This:C1470.dateCode",
+							"width": 90,
+							"minWidth": 60,
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header_currentStep",
+								"text": "Current Step"
+							},
+							"name": "col_currentStep",
+							"footer": {
+								"name": "Footer_currentStep"
+							},
+							"dataSource": "This:C1470.currentStep",
+							"width": 250,
+							"minWidth": 100,
+							"enterable": false
+						}
+					]
+				},
+				"lbl_message": {
+					"type": "text",
+					"top": 410,
+					"left": 7,
+					"width": 300,
+					"height": 15,
+					"text": "Checks for the selected lot:",
+					"fontWeight": "bold"
+				},
+				"inp_message": {
+					"type": "input",
+					"top": 430,
+					"left": 7,
+					"width": 787,
+					"height": 60,
+					"borderStyle": "system",
+					"fill": "#FFFFFF",
+					"stroke": "#C00000",
+					"dataSource": "Form:C1466.selectedMessage",
+					"enterable": false,
+					"focusable": false,
+					"scrollbarVertical": "automatic"
+				},
+				"bCancel": {
+					"type": "button",
+					"top": 505,
+					"left": 634,
+					"width": 70,
+					"height": 20,
+					"sizingX": "move",
+					"sizingY": "move",
+					"dataSource": "Button",
+					"action": "cancel",
+					"text": "Cancel",
+					"events": [
+						"onClick"
+					]
+				},
+				"bOK": {
+					"type": "button",
+					"top": 505,
+					"left": 714,
+					"width": 70,
+					"height": 20,
+					"sizingX": "move",
+					"sizingY": "move",
+					"dataSource": "Button",
+					"action": "",
+					"text": "Merge",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/bOK.4dm"
+				}
+			},
+			"entryOrder": [
+				"lb_candidates",
+				"bOK",
+				"bCancel"
+			]
+		}
+	],
+	"geometryStamp": 1,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}
