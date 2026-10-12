@@ -26,7 +26,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	//$entry.setPanelIfNoItemSelected("panel_quote_summary")
 	
-	$entry.setLBItemsColumn("code"; "Code"; "code"; "width:50")
+	$entry.setLBItemsColumn("code"; "Code"; "code"; "width:50"; "orderByFormula:Num(This.code)")  // Q251 before Q1000: the codes are not padded
 	$entry.setLBItemsColumn("subject"; "Subject"; "subject"; "width:320")
 	//$entry.setLBItemsColumn("dateCreation"; "date"; "width:50:fixed"; "center")
 	$entry.setLBItemsColumn("currentStatus"; "Status"; "width:50:fixed"; "columnName:columnStatus"; "center")

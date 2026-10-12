@@ -5,11 +5,9 @@ Function formMethod()
 	//This function manages the main logic for updating and refreshing the form
 	Form:C1466.sfw.panelFormMethod()  //The main body of the form method and basic sfw functionalities 
 	If (Form:C1466.sfw.updateOfPanelNeeded())  //The current item is changed or reloaded, so it's necessary ti refresh
-		
-		If (Form:C1466.current_item.code="")
-			Form:C1466.current_item.code:=This:C1470.calculateCode()
-		End if 
-		
+
+		// no code shown before the first save: QuoteEntity gives it from the "quoteCode" counter
+
 		If (Form:C1466.current_item.dateCreation=!00-00-00!) || (Form:C1466.current_item.dateCreation=Null:C1517)
 			Form:C1466.current_item.dateCreation:=Current date:C33()
 		End if 
@@ -77,21 +75,6 @@ Function btnDatePicker($object; $attribut)
 	If (cs:C1710.ga_datePicker.me.pickInto($object; $attribut))
 		This:C1470._activate_save_cancel_button()
 	End if 
-	
-Function calculateCode()->$leadCode : Text
-	var $eQuoteCounter : cs:C1710.sfw_CounterEntity
-	$leadCode:="Q"
-	
-	$eQuoteCounter:=ds:C1482.sfw_Counter.query("ident = :1"; "quoteCode").first()
-	If ($eQuoteCounter=Null:C1517)
-		$eQuoteCounter:=ds:C1482.sfw_Counter.new()
-		$eQuoteCounter.ident:="quoteCode"
-		$eQuoteCounter.currentValue:=1
-		$info:=$eQuoteCounter.save()
-	End if 
-	$test:=$eQuoteCounter.currentValue+1
-	
-	$leadCode+=String:C10($test; "00000")
 	
 Function btnOpenStaff()
 	$entity:=Form:C1466.current_item.staff
@@ -229,7 +212,7 @@ Function loadAllTabs()
 	
 Function loadQuoteLines()
 	If (Form:C1466.current_item#Null:C1517)
-		Form:C1466.lb_quoteLines:=Form:C1466.current_item.lines
+		Form:C1466.lb_quoteLines:=Form:C1466.current_item.lines.orderBy("num asc")
 		This:C1470.displayQuoteLine()
 	End if 
 	
@@ -258,12 +241,13 @@ Function bActionQuoteLines()
 			
 			$eQuoteLine:=ds:C1482.QuoteLine.new()
 			$eQuoteLine.UUID_Quote:=Form:C1466.current_item.UUID
+			$eQuoteLine.num:=Num:C11(Form:C1466.current_item.lines.max("num"))+1  // lines are shown in "num" order
 			$info:=$eQuoteLine.save()
 			Form:C1466.current_quoteLine:=$eQuoteLine
 			This:C1470.displayQuoteLine()
 			This:C1470._activate_save_cancel_button()
-			
-			Form:C1466.lb_quoteLines:=ds:C1482.QuoteLine.query("UUID_Quote == :1"; Form:C1466.current_item.UUID)
+
+			Form:C1466.lb_quoteLines:=ds:C1482.QuoteLine.query("UUID_Quote == :1"; Form:C1466.current_item.UUID).orderBy("num asc")
 			LISTBOX SELECT ROW:C912(*; "lb_quoteLines"; Form:C1466.lb_quoteLines.length; lk replace selection:K53:1)
 			GOTO OBJECT:C206(*; "entryField_quoteLineQuantity")
 			
@@ -515,7 +499,7 @@ Function preview()->$preview : Object
 	$preview.quoteSubject:=Form:C1466.current_item.subject
 	$preview.quoteReference:=Form:C1466.current_item.reference
 	
-	$preview.quoteLines:=Form:C1466.current_item.lines
+	$preview.quoteLines:=Form:C1466.current_item.lines.orderBy("num asc")
 	$preview.optionalPreliminaryTxt_wr:=Form:C1466.current_item.optionalPreliminaryTxt_wr
 	
 	$preview.assumptions:=ds:C1482.Assumption.query("UUID in :1"; Form:C1466.current_item.assumptions.UUIDs)
@@ -630,7 +614,7 @@ Function buildQuotePreview()
 	WP SET ATTRIBUTES:C1342($amountcols; wk width:K81:45; "2.5cm")
 	$index:=1
 	For each ($line; $preview.quoteLines)
-		$row:=WP Table append row:C1474($table; String:C10($index); $line.description; $line.quantity; $line.unitPrice; $line.quantity*$line.unitPrice)
+		$row:=WP Table append row:C1474($table; String:C10($index); $line.description; $line.quantity; $line.unitPrice; $line.amount)
 		$index+=1
 	End for each 
 	

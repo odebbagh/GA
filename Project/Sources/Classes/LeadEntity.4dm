@@ -155,7 +155,11 @@ local Function mainContact()->$mainContact : cs:C1710.ContactEntity
 	
 	
 local Function beforeSave()
-	
+	// an existing lead without a code gets the next one when it is saved
+	If (This:C1470.leadCode="")
+		This:C1470.leadCode:=This:C1470.calculateCode()
+	End if
+
 	
 	
 	$updatedInteractions:=Form:C1466.current_clone.interactions.minus(Form:C1466.current_item.interactions)

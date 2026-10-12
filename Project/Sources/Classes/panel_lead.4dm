@@ -5,10 +5,8 @@ singleton Class constructor
 Function formMethod()
 	Form:C1466.sfw.panelFormMethod()  //The main body of the form method and basic sfw functionalities 
 	If (Form:C1466.sfw.updateOfPanelNeeded())  //The current item is changed or reloaded, so it's necessary ti refresh 
-		If (Form:C1466.current_item.leadCode="")
-			Form:C1466.current_item.leadCode:=This:C1470.calculateCode()
-		End if 
-		
+		// no code shown before the first save: LeadEntity gives it from the "leadCode" counter
+
 		If (Form:C1466.current_item.dateCreation=!00-00-00!) || (Form:C1466.current_item.dateCreation=Null:C1517)
 			Form:C1466.current_item.dateCreation:=Current date:C33()
 		End if 
@@ -74,22 +72,6 @@ Function formMethod()
 			End if 
 			
 	End case 
-	
-Function calculateCode()->$leadCode : Text
-	var $eleadCounter : cs:C1710.sfw_CounterEntity
-	
-	$leadCode:="L"
-	$eleadCounter:=ds:C1482.sfw_Counter.query("ident = :1"; "leadCode").first()
-	If ($eleadCounter=Null:C1517)
-		$eleadCounter:=ds:C1482.sfw_Counter.new()
-		$eleadCounter.ident:="leadCode"
-		$eleadCounter.currentValue:=1
-		$info:=$eleadCounter.save()
-	End if 
-	$test:=$eleadCounter.currentValue+1
-	
-	$leadCode+=String:C10($test; "00000")
-	
 	
 Function btnDatePicker($object; $attribut)
 	// the app's calendar (ga_datePicker), under the clicked button

@@ -213,6 +213,12 @@ local Function itemLoad()
 	
 	
 	
+local Function beforeSave()
+	// an existing quote without a code (imported that way) gets the next one when it is saved
+	If (This:C1470.code="")
+		This:C1470.code:=This:C1470.calculateCode()
+	End if
+
 local Function beforeSaveCreation()
 	This:C1470.code:=This:C1470.calculateCode()
 	This:C1470.addAssumptions()
@@ -232,8 +238,10 @@ Function calculateCode()->$leadCode : Text
 	//$eQuoteCounter.currentValue:=1
 	//End if 
 	$test:=ds:C1482.sfw_Counter.getNextValue("quoteCode")
-	
-	$leadCode+=String:C10($test; "00000")
+
+	// no padding: the series goes on from the legacy codes (Q251...Q3040), which the PO import
+	// and the quote imports match as text; _fix_sequences keeps "quoteCode" past them
+	$leadCode+=String:C10($test)
 	
 	
 	

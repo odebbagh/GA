@@ -39,6 +39,7 @@
 					"width": 177,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.code",
+					"placeholder": "(new)",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
