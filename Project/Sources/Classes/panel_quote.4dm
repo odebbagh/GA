@@ -6,20 +6,10 @@ Function formMethod()
 	Form:C1466.sfw.panelFormMethod()  //The main body of the form method and basic sfw functionalities 
 	If (Form:C1466.sfw.updateOfPanelNeeded())  //The current item is changed or reloaded, so it's necessary ti refresh
 
-		// no code shown before the first save: QuoteEntity gives it from the "quoteCode" counter
+		// the code, date and owner of a new quote are set in QuoteEntity.loadAfterCreation: set here,
+		// they were also written into every existing quote without a date or owner on display, and
+		// after a save (sfw stays in Modify mode) that read as a change nobody made
 
-		If (Form:C1466.current_item.dateCreation=!00-00-00!) || (Form:C1466.current_item.dateCreation=Null:C1517)
-			Form:C1466.current_item.dateCreation:=Current date:C33()
-		End if 
-		
-		If (Form:C1466.current_item.staff=Null:C1517)
-			If (cs:C1710.sfw_userManager.me.info.UUID_Staff#Null:C1517)
-				Form:C1466.current_item.staff:=ds:C1482.Staff.query("UUID = :1"; cs:C1710.sfw_userManager.me.info.UUID_Staff).first()
-			Else 
-				
-			End if 
-		End if 
-		
 		
 		This:C1470.drawPup_staff()
 		This:C1470.loadAllTabs()

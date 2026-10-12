@@ -118,10 +118,70 @@ Function set dateCreation($createDate : Date)
 	
 Function get yearCreation()->$year : Integer
 	$year:=Year of:C25(Date:C102(This:C1470.dateCreation))
-	
+
+	// search "yearCreation:2025" (also >2024, <=2025, #2025): a stmpCreation range, indexed
+Function query yearCreation($event : Object)->$result : Object
+	var $year : Integer
+	var $start; $end : Integer
+
+	$year:=Num:C11($event.value)
+	// 1 January by date arithmetic: Date("2026-01-01") gave !00-00-00! and every search found nothing
+	$start:=cs:C1710.sfw_stmp.me.build(Add to date:C393(!2000-01-01!; $year-2000; 0; 0); ?00:00:00?)
+	$end:=cs:C1710.sfw_stmp.me.build(Add to date:C393(!2000-01-01!; $year+1-2000; 0; 0); ?00:00:00?)
+	Case of
+		: ($event.operator=">")
+			$result:=New object:C1471("query"; "stmpCreation >= :1"; "parameters"; New collection:C1472($end))
+		: ($event.operator=">=")
+			$result:=New object:C1471("query"; "stmpCreation >= :1"; "parameters"; New collection:C1472($start))
+		: ($event.operator="<")
+			$result:=New object:C1471("query"; "stmpCreation < :1 and stmpCreation > 0"; "parameters"; New collection:C1472($start))
+		: ($event.operator="<=")
+			$result:=New object:C1471("query"; "stmpCreation < :1 and stmpCreation > 0"; "parameters"; New collection:C1472($end))
+		: ($event.operator="#") || ($event.operator="!=") || ($event.operator="!==")
+			$result:=New object:C1471("query"; "stmpCreation < :1 or stmpCreation >= :2"; "parameters"; New collection:C1472($start; $end))
+		Else
+			$result:=New object:C1471("query"; "stmpCreation >= :1 and stmpCreation < :2"; "parameters"; New collection:C1472($start; $end))
+	End case
+
 Function get monthCreation()->$month : Integer
 	$month:=Month of:C24(Date:C102(This:C1470.dateCreation))
-	
+
+	// search "monthCreation:3": March of any year (add yearCreation:2025 for one year). A month
+	// is not one stamp range, so the matching quotes are listed once and searched by UUID
+Function query monthCreation($event : Object)->$result : Object
+	var $month; $quoteMonth : Integer
+	var $quote : Object
+	var $uuids : Collection
+	var $keep : Boolean
+
+	$month:=Num:C11($event.value)
+	$uuids:=New collection:C1472
+	For each ($quote; ds:C1482.Quote.query("stmpCreation > 0").toCollection("UUID, stmpCreation"))
+		$quoteMonth:=Month of:C24(cs:C1710.sfw_stmp.me.getDate($quote.stmpCreation))
+		Case of
+			: ($event.operator=">")
+				$keep:=($quoteMonth>$month)
+			: ($event.operator=">=")
+				$keep:=($quoteMonth>=$month)
+			: ($event.operator="<")
+				$keep:=($quoteMonth<$month)
+			: ($event.operator="<=")
+				$keep:=($quoteMonth<=$month)
+			: ($event.operator="#") || ($event.operator="!=") || ($event.operator="!==")
+				$keep:=($quoteMonth#$month)
+			Else
+				$keep:=($quoteMonth=$month)
+		End case
+		If ($keep)
+			$uuids.push($quote.UUID)
+		End if
+	End for each
+	$result:=New object:C1471("query"; "UUID in :1"; "parameters"; New collection:C1472($uuids))
+
+	// the code as a number, for the list order: the codes are not padded (Q999 < Q3041)
+Function get codeNumber()->$number : Integer
+	$number:=Num:C11(This:C1470.code)
+
 	
 	
 Function get amount()->$amountText : Text
@@ -219,8 +279,27 @@ local Function beforeSave()
 		This:C1470.code:=This:C1470.calculateCode()
 	End if
 
-local Function beforeSaveCreation()
+	// the code is taken as soon as the quote is created, so the panel shows it (like the job number);
+	// a new quote that is cancelled leaves a gap in the series
+local Function loadAfterCreation()
 	This:C1470.code:=This:C1470.calculateCode()
+	This:C1470.dateCreation:=Current date:C33()
+	If (cs:C1710.sfw_userManager.me.info.UUID_Staff#Null:C1517)  // the owner: the user's staff record
+		This:C1470.staff:=ds:C1482.Staff.query("UUID = :1"; cs:C1710.sfw_userManager.me.info.UUID_Staff).first()
+	End if
+	// a real Write Pro document from the start: saved empty, the "Optional preliminary text" area
+	// turned it into one on the next display, and sfw then asked to save a quote nobody changed
+	This:C1470.optionalPreliminaryTxt_wr:=WP New:C1317()
+
+	// a copy gets its own code and today's date, not the original's
+local Function duplicateRecord()
+	This:C1470.code:=This:C1470.calculateCode()
+	This:C1470.dateCreation:=Current date:C33()
+
+local Function beforeSaveCreation()
+	If (This:C1470.code="")
+		This:C1470.code:=This:C1470.calculateCode()
+	End if
 	This:C1470.addAssumptions()
 	This:C1470.addTermsAndConditions()
 	

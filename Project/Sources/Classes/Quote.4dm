@@ -13,8 +13,9 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.setSearchField("attribute:subject"; "tag:subject")
 	$entry.setSearchField("attribute:code"; "tag:code")
 	
-	$entry.setSearchField("attribute:yearCreation"; "tag:yearCreation"; "popupPart:creation"; "onlyWithTag")
-	$entry.setSearchField("attribute:monthCreation"; "tag:monthCreation"; "popupPart:creation"; "onlyWithTag")
+	// "integer": without it the value is searched as the text "@2025@", which never equals a year
+	$entry.setSearchField("attribute:yearCreation"; "tag:yearCreation"; "popupPart:creation"; "onlyWithTag"; "integer")
+	$entry.setSearchField("attribute:monthCreation"; "tag:monthCreation"; "popupPart:creation"; "onlyWithTag"; "integer")
 	
 	
 	$entry.setPanel("panel_quote")
@@ -33,7 +34,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.setLBItemsMetaExpression("this.metaColor()")
 	$entry.setMainViewLabel("All quotes")
 	
-	$entry.setLBItemsOrderBy("subject")
+	$entry.setLBItemsOrderBy("codeNumber"; True:C214)  // newest quote first (Q3041 before Q999)
 	
 	$entry.setValidationRule("UUID_Staff"; ""; "UUIDNotNull"; "message:The owner must be defined")
 	$entry.setValidationRule("UUID_Customer"; ""; "UUIDNotNull"; "message:The customer must be defined")
@@ -89,7 +90,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	
 	//Mark:-Views
-	
+
 	//$view:=cs.sfw_definitionView.new("closedQuotes"; "Closed Quotes"; "derivedFrom:main"; $entry)
 	//$view.setSubset("closedQuotes")
 	//$view.setPictoLabel("/RESOURCES/sfw/image/picto/view-white-subset.png")
@@ -112,3 +113,22 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	
 	
+
+// the creation date of a legacy quote, from the Qdate of quotes.json (__import_data_quote,
+// _fix_quoteDates). Built by date arithmetic: Date("2019-07-17") gave !00-00-00! here
+Function legacyDate($value : Variant)->$date : Date
+	var $text : Text
+	
+	Case of 
+		: (Value type:C1509($value)=Is date:K8:7)  // JSON Parse already made it a date, in local time
+			$date:=$value
+		: (Value type:C1509($value)=Is text:K8:3)
+			$text:=$value
+			If (Length:C16($text)>=10) && (Num:C11(Substring:C12($text; 1; 4))>0)
+				$date:=Add to date:C393(!2000-01-01!; Num:C11(Substring:C12($text; 1; 4))-2000; Num:C11(Substring:C12($text; 6; 2))-1; Num:C11(Substring:C12($text; 9; 2))-1)
+				// local midnight written in UTC: "2019-07-17T23:00:00Z" is 18 July (UTC+1)
+				If (Num:C11(Substring:C12($text; 12; 2))>=12)
+					$date:=$date+1
+				End if 
+			End if 
+	End case 

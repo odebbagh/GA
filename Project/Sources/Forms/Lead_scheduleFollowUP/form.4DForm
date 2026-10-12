@@ -121,7 +121,6 @@
 					"textPlacement": "center",
 					"method": "ObjectMethods/btnDatePickerCreate.4dm",
 					"visibility": "visible",
-					"iconFrames": 4,
 					"focusable": false,
 					"dataSource": "",
 					"sizingX": "move"

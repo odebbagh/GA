@@ -244,7 +244,6 @@
 					"textPlacement": "center",
 					"method": "ObjectMethods/btnDatePicker.4dm",
 					"visibility": "visible",
-					"iconFrames": 4,
 					"focusable": false,
 					"dataSource": ""
 				},
@@ -532,7 +531,6 @@
 					"textPlacement": "center",
 					"method": "ObjectMethods/btnDatePickerClose.4dm",
 					"visibility": "visible",
-					"iconFrames": 4,
 					"focusable": false,
 					"dataSource": ""
 				},
@@ -954,7 +952,6 @@
 					"textPlacement": "center",
 					"method": "ObjectMethods/btnDatePickerCreate1.4dm",
 					"visibility": "visible",
-					"iconFrames": 4,
 					"focusable": false,
 					"dataSource": ""
 				},
@@ -1089,7 +1086,6 @@
 					"textPlacement": "center",
 					"method": "ObjectMethods/btnDatePickerCreate2.4dm",
 					"visibility": "visible",
-					"iconFrames": 4,
 					"focusable": false,
 					"dataSource": ""
 				},

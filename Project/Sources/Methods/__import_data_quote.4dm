@@ -242,13 +242,10 @@ For each ($quote; $quotes)
 	$eQuote.assumptions:=New object:C1471("UUIDs"; New collection:C1472)
 	$eQuote.termsConditions:=New object:C1471("UUIDs"; New collection:C1472)
 
-	// Qdate is local midnight written in UTC: "2019-07-17T23:00:00Z" is 18 July (UTC+1)
-	$date:=Date:C102(Substring:C12(String:C10($quote.Qdate); 1; 10))
+	// Date("2019-07-17") gave !00-00-00! here, which left every imported quote without a date
+	$date:=ds:C1482.Quote.legacyDate($quote.Qdate)
 	If ($date#!00-00-00!)
-		If (Num:C11(Substring:C12(String:C10($quote.Qdate); 12; 2))>=12)
-			$date:=$date+1
-		End if
-		$eQuote.stmpCreation:=cs:C1710.sfw_stmp.me.build($date)
+		$eQuote.stmpCreation:=cs:C1710.sfw_stmp.me.build($date; ?00:00:00?)
 	End if
 
 	If (String:C10($quote.Status)#"")
