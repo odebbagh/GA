@@ -58,3 +58,8 @@ $specification:=ds:C1482.Specification.query($formula_1)
 _ga_notifier(->$specification; "dueReview"; "SpecReviewOverdue"; "Specification"; "spec")
 
 
+
+/*
+Lead follow-ups due today (or overdue) and not yet notified: "Interaction Scheduled" to their Sales person
+*/
+ds:C1482.Interaction.notifyDueFollowUps()

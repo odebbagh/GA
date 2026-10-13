@@ -9,6 +9,12 @@ Function formMethod()
 		// they were also written into every lead displayed without them, which sfw then took for a
 		// change nobody made
 
+		// another lead: its own contacts and no selected contact / interaction. The contacts were
+		// only reloaded with the page, so a new lead could show those of the previous one
+		Form:C1466.contact:=Null:C1517
+		Form:C1466.current_interaction:=Null:C1517
+		This:C1470.loadContacts()
+
 		This:C1470.drawPup_serviceType()
 		This:C1470.drawPup_stage()
 		This:C1470.drawPup_priority()
@@ -410,7 +416,9 @@ Function _clearInfoAfterChangingCustomer()
 	Form:C1466.current_item.UUID_Quote:=Null:C1517
 	Form:C1466.current_item.UUID_PurchaseOrder:=Null:C1517
 	Form:C1466.current_item.UUID_Job:=Null:C1517
-	
+	Form:C1466.contact:=Null:C1517
+	This:C1470.loadContacts()  // the contacts were cleared, but the list still showed them
+
 	//mark:Staff
 Function drawPup_staff()
 	If (Form:C1466.current_item#Null:C1517)
@@ -585,6 +593,7 @@ Function selectJob()
 	
 	//Mark:-redraw
 Function redrawAndSetVisible()
+	var $notesRight; $notesBottom : Integer
 	OBJECT GET SUBFORM CONTAINER SIZE:C1148($widthSubform; $heightSubform)
 	$verticalMargin:=3
 	
@@ -619,7 +628,20 @@ Function redrawAndSetVisible()
 			
 			OBJECT GET COORDINATES:C663(*; "lb_interactions"; $g; $t; $r; $b)
 			OBJECT SET COORDINATES:C1248(*; "lb_interactions"; $g; $t; $r; $heightSubform)
-			
+
+			// the notes take the rest of the detail area, never less than in the form (left 704,
+			// top 435, right 1109, 200 high). Constant left / top: the untyped variables of
+			// OBJECT GET COORDINATES came back undefined here (error 15 on $t+200)
+			$notesRight:=Num:C11($widthSubform)-20
+			If ($notesRight<1109)
+				$notesRight:=1109
+			End if
+			$notesBottom:=Num:C11($heightSubform)-20
+			If ($notesBottom<(435+200))
+				$notesBottom:=435+200
+			End if
+			OBJECT SET COORDINATES:C1248(*; "entryField_Inter_input_notes1"; 704; 435; $notesRight; $notesBottom)
+
 		: (FORM Get current page:C276(*)=3)
 			
 			OBJECT GET COORDINATES:C663(*; "Rect"; $g; $t; $r; $b)
@@ -802,14 +824,17 @@ Function btnActionContacts()
 			
 		: ($choice="--deleteContact")
 			
-			If (Form:C1466.contact.type="Main")
-				Form:C1466.current_item.moreData.mainContact:=Null:C1517
-			Else 
-				$index:=Form:C1466.current_item.moreData.secondaryContacts.indexOf(Form:C1466.contact.UUID)
-				If ($indexOf#-1)
-					Form:C1466.current_item.moreData.secondaryContacts.remove($index)
-				End if 
-			End if 
+			Case of
+				: (Form:C1466.current_item.moreData=Null:C1517)
+				: (Form:C1466.contact.type="Main")
+					Form:C1466.current_item.moreData.mainContact:=Null:C1517
+				: (Form:C1466.current_item.moreData.secondaryContacts#Null:C1517)
+					$index:=Form:C1466.current_item.moreData.secondaryContacts.indexOf(Form:C1466.contact.UUID)
+					If ($index#-1)  // tested $indexOf, a variable never set
+						Form:C1466.current_item.moreData.secondaryContacts.remove($index)
+					End if
+			End case
+			Form:C1466.contact:=Null:C1517
 			This:C1470.loadContacts()
 			cs:C1710.panel_lead.me._activate_save_cancel_button()
 	End case 
@@ -884,7 +909,7 @@ Function bActionInteractions()
 			$form:=New object:C1471
 			$form.creationDate:=Current date:C33()
 			$form.current_item:=Form:C1466.current_item
-			$form.number:=ds:C1482.Interaction.sequence()
+			$form.number:=ds:C1482.Interaction.sequence(Form:C1466.current_item.UUID)
 			$form.followUPDate:=Add to date:C393(Current date:C33; 0; 0; 1)
 			
 			$ref:=Open form window:C675("Lead_scheduleFollowUP"; Sheet form window:K39:12)
@@ -907,10 +932,10 @@ Function bActionInteractions()
 					$interaction.UUID_Type:=$status.UUID
 				End if 
 				$result:=$interaction.save()
-				
-				
+				$interaction.notifyIfDue()  // today: now; a later date: on that day (Interaction.notifyDueFollowUps)
+
 				$selection:=$selection.add(Form:C1466.lb_interactions)
-				
+
 				$selection:=$selection.add($interaction)
 				
 				Form:C1466.lb_interactions:=$selection.orderBy("stmpCreation desc")
@@ -921,7 +946,7 @@ Function bActionInteractions()
 			$form:=New object:C1471
 			$form.creationDate:=Current date:C33()
 			$form.current_item:=Form:C1466.current_item
-			$form.number:=ds:C1482.Interaction.sequence()
+			$form.number:=ds:C1482.Interaction.sequence(Form:C1466.current_item.UUID)
 			$form.nextFollowUp:=False:C215
 			$form.followUPDate:=Add to date:C393(Current date:C33; 0; 0; 1)
 			
@@ -955,7 +980,7 @@ Function bActionInteractions()
 				If ($form.nextFollowUp)
 					$scheduledInteraction:=ds:C1482.Interaction.new()
 					$scheduledInteraction.fromObject($form)
-					$scheduledInteraction.number:=ds:C1482.Interaction.sequence()
+					$scheduledInteraction.number:=ds:C1482.Interaction.sequence(Form:C1466.current_item.UUID)
 					$scheduledInteraction.UUID_Lead:=Form:C1466.current_item.UUID
 					$scheduledInteraction.notes:=""
 					$scheduledInteraction.UUID_Lead:=Form:C1466.current_item.UUID
@@ -966,23 +991,12 @@ Function bActionInteractions()
 					$scheduledInteraction.UUID_Interaction:=$interaction.UUID
 					
 					$result:=$scheduledInteraction.save()
-					
-					
-					$context:=New object:C1471
-					$context.target:=Form:C1466.current_item.UUID
-					$context.targetDataclass:="Lead"
-					$context.Followupdate:=$followUPDate
-					$context.Contact:=$scheduledInteraction.contact.fullName || ""
-					$context.Trigger:=$scheduledInteraction.trigger.name || ""
-					
-					$staff:=ds:C1482.Staff.query("UUID_User = :1"; cs:C1710.sfw_userManager.me.info.UUID).first()
-					$users:=New collection:C1472($staff.user.UUID)
-					cs:C1710.sfw_notificationManager.me._notify("InteractionScheduled"; $users; $context)
-					
-					//Form.lb_interactions:=Form.lb_interactions.add($scheduledInteraction).orderBy("number desc")
-					
+					$scheduledInteraction.notifyIfDue()  // today: now; a later date: on that day
+
+					// the follow-up joins the list now (the logged interaction was added a second
+					// time instead, so the follow-up only showed once the lead was reloaded)
 					$selection:=$selection.add(Form:C1466.lb_interactions)
-					$selection:=$selection.add($interaction)
+					$selection:=$selection.add($scheduledInteraction)
 					Form:C1466.lb_interactions:=$selection.orderBy("stmpCreation desc")
 					
 					
@@ -1235,6 +1249,10 @@ Function entryField_probabilityPC()
 Function lb_interactions()
 	Case of 
 		: (FORM Event:C1606.code=On Selection Change:K2:29)
+			// reassigned so the detail inputs bound to Form.current_interaction (number, creation and
+			// follow-up dates, notes) are redrawn: they stayed empty while the pop-ups, drawn by code,
+			// showed the selected interaction
+			Form:C1466.current_interaction:=Form:C1466.current_interaction
 			This:C1470.drawPup_Interaction(["method"; "outcome"; "trigger"; "sales"; "contact"; "type"])
 			This:C1470.display_interactionDetails()
 	End case 

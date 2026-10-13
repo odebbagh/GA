@@ -15,6 +15,10 @@ _ga_setAllowedMethods()
 
 sfw_on_startup_database("goldenAltos_definition")
 
+// lead follow-ups due today: notified at login too, so they are waiting in the morning and also
+// in single-user mode, where the daily job (_ga_notificationWorker, onServerStartup) never runs
+ds:C1482.Interaction.notifyDueFollowUps()
+
 If (ds:C1482.sfw_Notification.query("UUID_User = :1 and stmpOver = :2 order by stmp desc"; cs:C1710.sfw_userManager.me.info.UUID; 0).length>0)
 	cs:C1710.sfw_notificationManager.me.openWizardNotifications()
 End if 

@@ -1189,16 +1189,17 @@
 					"left": 704,
 					"top": 435,
 					"width": 405,
-					"height": 92,
+					"height": 200,
 					"dataSourceTypeHint": "text",
 					"dataSource": "Form:C1466.current_interaction.notes",
 					"borderStyle": "none",
 					"enterable": false,
+					"scrollbarVertical": "automatic",
 					"method": "ObjectMethods/entryField_Inter_input_notes1.4dm",
 					"events": [
 						"onDataChange"
 					],
-					"bottom": 527,
+					"bottom": 635,
 					"right": 1109
 				}
 			}

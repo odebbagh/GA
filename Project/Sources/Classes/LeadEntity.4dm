@@ -104,35 +104,28 @@ local Function afterCreation()
 		$nbrDaysAfter:=Num:C11($items[0].moreData.daysAfterLeadCreation)
 		
 		$interaction:=ds:C1482.Interaction.new()
-		$interaction.number:=ds:C1482.Interaction.sequence()
+		$interaction.number:=ds:C1482.Interaction.sequence(This:C1470.UUID)
 		$interaction.stmpCreation:=cs:C1710.sfw_stmp.me.build()
 		$interaction.stmpFollowUp:=cs:C1710.sfw_stmp.me.build(Add to date:C393(Current date:C33; 0; 0; $nbrDaysAfter))
-		$interaction.UUID_Staff:=cs:C1710.sfw_userManager.me.info.UUID
+		$interaction.UUID_Staff:=This:C1470.UUID_Staff  // the lead's owner (it was the user's UUID, which is no Staff)
 		$interaction.UUID_Lead:=This:C1470.UUID
 		$interaction.UUID_Type:=$uuidType
 		$interaction.UUID_Trigger:=$uuidTrigger
 		$interaction.UUID_Contact:=$uuidMainContact
 		$interaction.save()
-		
-		$context:=New object:C1471
-		$context.target:=Form:C1466.current_item.UUID
-		$context.targetDataclass:="Lead"
-		$context.Followupdate:=$interaction.followUPDate
-		$context.Contact:=$interaction.contact.fullName
-		$context.Trigger:=$interaction.trigger.name
-		
-		$staff:=ds:C1482.Staff.query("UUID_User = :1"; cs:C1710.sfw_userManager.me.info.UUID).first()
-		If ($staff#Null:C1517)
-			$users:=New collection:C1472($staff.user.UUID)
-			cs:C1710.sfw_notificationManager.me._notify("InteractionScheduled"; $users; $context)
-		End if 
-		
+		$interaction.notifyIfDue()  // only a follow-up due today; later ones on their day (Interaction.notifyDueFollowUps)
+
 		
 	Else 
 		ALERT:C41("")
-	End if 
+	End if
 	This:C1470._initContacts()
-	
+	CALL FORM:C1391(Current form window:C827; "_ga_refreshItemsCounter")  // "2 leads", once sfw has added the lead to the list
+
+	// "1 lead" again after a deletion (sfw removes the lead from the list after this callback)
+local Function beforeDelete()
+	CALL FORM:C1391(Current form window:C827; "_ga_refreshItemsCounter")
+
 local Function _initContacts()
 	If (This:C1470.moreData.secondaryContacts=Null:C1517)
 		This:C1470.moreData.secondaryContacts:=New collection:C1472
@@ -179,22 +172,20 @@ local Function beforeSave()
 
 	
 	
-	$updatedInteractions:=Form:C1466.current_clone.interactions.minus(Form:C1466.current_item.interactions)
-	If ($updatedInteractions.length>0)
-		For each ($interaction; $updatedInteractions)
-			$context:=New object:C1471
-			$context.target:=Form:C1466.current_item.UUID
-			$context.targetDataclass:="Lead"
-			$context.Followupdate:=$followUPDate
-			$context.Contact:=$interaction.contact.fullName || ""
-			$context.Trigger:=$interaction.trigger.name || ""
-			
-			$staff:=ds:C1482.Staff.query("UUID_User = :1"; cs:C1710.sfw_userManager.me.info.UUID).first()
-			$users:=New collection:C1472($staff.user.UUID)
-			cs:C1710.sfw_notificationManager.me.notify("InteractionScheduled"; $users; $context)
-			
-		End for each 
-	End if 
+	// the "Interaction Scheduled" notification is sent on the follow-up date, once
+	// (InteractionEntity.notifyIfDue, see afterSave). Sending it here for every interaction added
+	// during the edit doubled it, with an undefined follow-up date ("##Followupdate##")
+
+	// a follow-up moved to today (or earlier) in the detail fields notifies with this save, not
+	// only at the next daily run; the others wait for their day. Still inside the transaction
+local Function afterSave()
+	var $interaction : cs:C1710.InteractionEntity
+
+	If (Bool:C1537(Form:C1466.info.success))
+		For each ($interaction; This:C1470.interactions)
+			$interaction.notifyIfDue()
+		End for each
+	End if
 	
 	
 	

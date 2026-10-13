@@ -23,7 +23,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.setLBItemsColumn("leadCode"; "ID"; "width:50")
 	$entry.setLBItemsColumn("customerName"; "Customer"; "subject"; "width:300")
 	$entry.setLBItemsColumn("amountText"; "Amount"; "width:80"; "left"; "headerCenter")
-	$entry.setLBItemsOrderBy("leadCode")
+	$entry.setLBItemsOrderBy("leadCode"; True:C214)  // newest lead first (codes are zero-padded: L00005)
 	$entry.setLBItemsCounter("###,###,##0 ^1;;"; "unit1:lead"; "unitN:leads")
 	$entry.setValidationRule("UUID_Customer"; ""; "UUIDNotNull"; "message:The customer must be defined")
 	
