@@ -24,6 +24,11 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.setPanelPage(3; "staff-32x32.png"; "Assumptions and Terms")
 	$entry.setPanelPage(4; "staff-32x32.png"; "Optional premilinary text")
 	$entry.setPanelPage(5; "staff-32x32.png"; "Preview")
+	// Documents: the framework page (sfw_Document + DocumentData) as page 6, with the file count
+	// in the tab. Folders: _ga_createSalesDocFolders. It switches panel_quote to dynamic-source
+	// rendering: its object methods are mirrored as class functions of the same name (end of
+	// panel_quote) - keep them in step.
+	$entry.activateDocument("showCountInTab")
 	
 	//$entry.setPanelIfNoItemSelected("panel_quote_summary")
 	

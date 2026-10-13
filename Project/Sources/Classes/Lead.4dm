@@ -14,6 +14,11 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.setPanelPage(1; ""; "Main")
 	$entry.setPanelPage(2; ""; "Interactions")
 	$entry.setPanelPage(3; ""; "Jobs & Deliveries"; "disabled")
+	// Documents: the framework page (sfw_Document + DocumentData) as page 4, with the file count
+	// in the tab. Folders: _ga_createSalesDocFolders. It switches panel_lead to dynamic-source
+	// rendering: its object methods are mirrored as class functions of the same name (end of
+	// panel_lead) - keep them in step.
+	$entry.activateDocument("showCountInTab")
 	
 	$entry.setLBItemsColumn("leadCode"; "ID"; "width:50")
 	$entry.setLBItemsColumn("customerName"; "Customer"; "subject"; "width:300")

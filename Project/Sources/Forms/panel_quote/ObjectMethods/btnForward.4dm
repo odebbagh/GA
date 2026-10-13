@@ -1,1 +1,1 @@
-cs:C1710.panel_quote.me.btnOpenCustomer()
+cs:C1710.panel_quote.me.btnForward()

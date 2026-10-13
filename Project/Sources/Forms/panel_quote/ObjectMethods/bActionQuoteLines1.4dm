@@ -1,2 +1,1 @@
-cs:C1710.panel_quote.me.btnActionContacts()
-
+cs:C1710.panel_quote.me.bActionQuoteLines1()

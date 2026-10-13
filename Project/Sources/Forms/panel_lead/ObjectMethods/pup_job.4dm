@@ -1,3 +1,1 @@
-cs:C1710.panel_lead.me.selectJob()
-
-
+cs:C1710.panel_lead.me.pup_job()

@@ -61,6 +61,14 @@ Function formMethod()
 	
 Function btnDatePicker($object; $attribut)
 	// the app's calendar (ga_datePicker), under the clicked button
+	// Without parameters: the btnDatePicker button itself, called by sfw_dynamicForm_script
+	// (the Documents page switches this panel to dynamic rendering)
+	If (Count parameters:C259=0)
+		If (FORM Event:C1606.code=On Clicked:K2:4) && (Form:C1466.sfw.checkIsInModification())
+			This:C1470.btnDatePicker(Form:C1466.current_item; "dateCreation")
+		End if
+		return
+	End if
 	If (cs:C1710.ga_datePicker.me.pickInto($object; $attribut))
 		This:C1470._activate_save_cancel_button()
 	End if 
@@ -688,12 +696,10 @@ Function btnDatePickerCreate($object; $attribut; $stmp; $minMax)
 	End if 
 	
 Function btnDatePickerClose()
+	// the btnDatePickerClose button (its object method calls this too)
 	If (Form:C1466.sfw.checkIsInModification())
-		$test:=cs:C1710.ga_datePicker.me.pick(Form:C1466.current_item.dateClose; "btnDatePickerClose")  // the app's calendar
-		If ($test#!00-00-00!)
-			Form:C1466.current_item.dateClose:=$test
-		End if 
-	End if 
+		This:C1470.btnDatePicker(Form:C1466.current_item; "dateClose")
+	End if
 	
 	
 Function btnActionContacts()
@@ -1176,4 +1182,167 @@ Function callbackAfterCreationCustomer($key : Text)
 		Form:C1466.current_item.UUID_Customer:=16*"00"
 	End if 
 	EXECUTE METHOD IN SUBFORM:C1085("detail_panel"; Formula:C1597(cs:C1710.panel_lead.me.drawPup_customer()); *)
+	
+
+//Mark:- Dynamic-rendering mirrors of the form object methods
+// activateDocument() on the Leads entry adds the framework Documents page, which switches the
+// panel to dynamic-source rendering: every object method of the form is replaced by
+// sfw_dynamicForm_script, which calls cs.panel_lead.me[objectName]() - and does nothing, without
+// an error, when there is no function of that name. Each function below is named after a form
+// object; the object method calls it too, so both modes run the same code. Objects whose
+// function already exists above: bActionInteractions, btnDatePicker (no parameter),
+// btnDatePickerClose, pup_nextStep, pup_priority, pup_serviceType, pup_stage.
+
+Function bActionQuoteLines()
+	This:C1470.btnActionContacts()
+	
+Function btnDatePickerCreate1()
+	If (Form:C1466.sfw.checkIsInModification())
+		This:C1470.btnDatePicker(Form:C1466.current_interaction; "creationDate")
+		This:C1470._activate_save_cancel_button()
+	End if 
+	
+Function btnDatePickerCreate2()
+	This:C1470._activate_save_cancel_button()
+	If (Form:C1466.sfw.checkIsInModification())
+		This:C1470.btnDatePicker(Form:C1466.current_interaction; "followUPDate")
+		This:C1470._activate_save_cancel_button()
+	End if 
+	
+Function btnForward()
+	This:C1470.btnOpenCustomer()
+	
+Function btnForward2()
+	This:C1470.btnOpenStaff()
+	
+Function entryField_Inter_input_notes1()
+	var $result : Object
+	Case of 
+		: (FORM Event:C1606.code=On Data Change:K2:15)
+			$result:=Form:C1466.current_interaction.save()
+			If ($result.success)
+				This:C1470._activate_save_cancel_button()
+			Else 
+				cs:C1710.sfw_dialog.me.alert("The interaction could not be saved.")
+			End if 
+	End case 
+	
+Function entryField_probabilityPC()
+	If (Form:C1466.current_item.probabilityPC>100)
+		Form:C1466.current_item.probabilityPC:=100
+	End if 
+	
+Function lb_interactions()
+	Case of 
+		: (FORM Event:C1606.code=On Selection Change:K2:29)
+			This:C1470.drawPup_Interaction(["method"; "outcome"; "trigger"; "sales"; "contact"; "type"])
+			This:C1470.display_interactionDetails()
+	End case 
+	
+Function pup_contact()
+	var $contact : Object
+	var $menu; $choice : Text
+	var $items : Collection
+	If (Form:C1466.sfw.checkIsInModification())
+		$menu:=Create menu:C408
+		For each ($contact; Form:C1466.current_item.contacts())
+			APPEND MENU ITEM:C411($menu; $contact.fullName+" - "+$contact.type; *)
+			SET MENU ITEM PARAMETER:C1004($menu; -1; $contact.UUID+"_"+$contact.fullName+" - "+$contact.type)
+			If (Form:C1466.current_interaction#Null:C1517) && ($contact.UUID=Form:C1466.current_interaction.UUID_Contact)
+				SET MENU ITEM MARK:C208($menu; -1; Char:C90(18))
+				If (Is Windows:C1573)
+					SET MENU ITEM STYLE:C425($menu; -1; Bold:K14:2)
+				End if 
+			End if 
+		End for each 
+		$choice:=Dynamic pop up menu:C1006($menu)
+		RELEASE MENU:C978($menu)
+		
+		If ($choice#"")
+			$items:=Split string:C1554($choice; "_")
+			Form:C1466.current_interaction.UUID_Contact:=$items[0]
+			Form:C1466.current_interaction.save()
+			This:C1470._activate_save_cancel_button()
+			OBJECT SET TITLE:C194(*; "pup_contact"; $items[1])
+		End if 
+	End if 
+	
+Function pup_customer()
+	This:C1470.selectCustomer()
+	
+Function pup_job()
+	This:C1470.selectJob()
+	
+Function pup_method()
+	This:C1470._pickInteractionValue("method"; "UUID_Method")
+	
+Function pup_nextStep2()
+	This:C1470.pup_nextStep()
+	
+Function pup_nextStep3()
+	This:C1470.pup_nextStep()
+	
+Function pup_outcome()
+	This:C1470._pickInteractionValue("outcome"; "UUID_Outcome")
+	
+Function pup_po()
+	This:C1470.selectPO()
+	
+Function pup_quote()
+	This:C1470.selectQuote()
+	
+Function pup_sales()
+	var $staff : Object
+	var $menu; $choice : Text
+	var $items : Collection
+	If (Form:C1466.sfw.checkIsInModification())
+		$menu:=Create menu:C408
+		For each ($staff; ds:C1482.Staff.query("department.name == :1"; "Sales"))
+			APPEND MENU ITEM:C411($menu; $staff.fullName; *)
+			SET MENU ITEM PARAMETER:C1004($menu; -1; $staff.UUID+"-"+$staff.fullName)
+			If (Form:C1466.current_interaction#Null:C1517) && ($staff.UUID=Form:C1466.current_interaction.UUID_Staff)
+				SET MENU ITEM MARK:C208($menu; -1; Char:C90(18))
+				If (Is Windows:C1573)
+					SET MENU ITEM STYLE:C425($menu; -1; Bold:K14:2)
+				End if 
+			End if 
+		End for each 
+		$choice:=Dynamic pop up menu:C1006($menu)
+		RELEASE MENU:C978($menu)
+		
+		If ($choice#"")
+			$items:=Split string:C1554($choice; "-")
+			Form:C1466.current_interaction.UUID_Staff:=$items[0]
+			OBJECT SET TITLE:C194(*; "pup_sales"; $items[1])
+			Form:C1466.current_interaction.save()
+			This:C1470._activate_save_cancel_button()
+		End if 
+	End if 
+	
+Function pup_staff()
+	This:C1470.selectStaff()
+	
+Function pup_trigger()
+	This:C1470._pickInteractionValue("trigger"; "UUID_Trigger")
+	
+Function pup_type()
+	This:C1470._pickInteractionValue("type"; "UUID_Type")
+	
+Function pupFilter_status()
+	This:C1470.pup_filter("status")
+	This:C1470.loadInteractions()
+	
+Function pupFilter_trigger()
+	This:C1470.pup_filter("trigger")
+	This:C1470.loadInteractions()
+	
+// pup_method / pup_outcome / pup_trigger / pup_type: pick a value for the current interaction
+Function _pickInteractionValue($type : Text; $attribute : Text)
+	var $uuid : Text
+	$uuid:=This:C1470.pup_interaction($type; Form:C1466.current_interaction[$attribute])
+	If ($uuid#"")
+		Form:C1466.current_interaction[$attribute]:=$uuid
+		Form:C1466.current_interaction.save()
+		This:C1470._activate_save_cancel_button()
+	End if 
 	

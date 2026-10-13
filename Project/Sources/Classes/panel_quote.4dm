@@ -62,6 +62,14 @@ Function formMethod()
 	
 Function btnDatePicker($object; $attribut)
 	// the app's calendar (ga_datePicker), under the clicked button
+	// Without parameters: the btnDatePicker button itself, called by sfw_dynamicForm_script
+	// (the Documents page switches this panel to dynamic rendering)
+	If (Count parameters:C259=0)
+		If (FORM Event:C1606.code=On Clicked:K2:4) && (Form:C1466.sfw.checkIsInModification())
+			This:C1470.btnDatePicker(Form:C1466.current_item; "dateCreation")
+		End if
+		return
+	End if
 	If (cs:C1710.ga_datePicker.me.pickInto($object; $attribut))
 		This:C1470._activate_save_cancel_button()
 	End if 
@@ -1108,9 +1116,64 @@ Function selectStaff()
 	
 	
 	
-Function WParea_opt()
+// WPArea_opt is spelt like the form object (capital A): sfw_dynamicForm_script looks the
+// function up by the object's name, and that lookup is case-sensitive
+Function WPArea_opt()
 	WP UpdateWidget("WPtoolbar_opt"; "WParea_opt")
-	
-	
+	Form:C1466.current_item.UUID:=Form:C1466.current_item.UUID
+
+
 Function WParea_preview()
 	WP UpdateWidget("WPtoolbar_opt"; "WParea_opt")
+	Form:C1466.current_item.UUID:=Form:C1466.current_item.UUID
+
+
+//Mark:- Dynamic-rendering mirrors of the form object methods
+// activateDocument() on the Quotes entry adds the framework Documents page, which switches the
+// panel to dynamic-source rendering: every object method of the form is replaced by
+// sfw_dynamicForm_script, which calls cs.panel_quote.me[objectName]() - and does nothing, without
+// an error, when there is no function of that name. Each function below is named after a form
+// object; the object method calls it too, so both modes run the same code. Objects whose
+// function already exists above: bActionAssumptions, bActionQuoteLines, bActionTerms,
+// btnDatePicker (no parameter), pup_serviceType, WPArea_opt, WParea_preview.
+
+Function bActionQuoteLines1()
+	This:C1470.btnActionContacts()
+
+Function btnForward()
+	This:C1470.btnOpenCustomer()
+
+Function btnForward2()
+	This:C1470.btnOpenStaff()
+
+Function entryField_quoteLineAmount()
+	This:C1470._saveQuoteLine()
+
+Function entryField_quoteLineDescription()
+	This:C1470._saveQuoteLine()
+
+Function entryField_quoteLineQuantity()
+	This:C1470._saveQuoteLine()
+
+Function entryField_quoteLineUnitPrice()
+	This:C1470._saveQuoteLine()
+
+Function _saveQuoteLine()
+	var $info : Object
+	$info:=Form:C1466.current_quoteLine.save()
+	This:C1470._activate_save_cancel_button()
+
+Function lb_quoteLines()
+	This:C1470.displayQuoteLine()
+
+Function pup_customer()
+	This:C1470.selectCustomer()
+
+Function pup_QuoteRevision()
+	This:C1470.pup_revision()
+
+Function pup_QuoteStatus()
+	This:C1470.pup_status()
+
+Function pup_staff()
+	This:C1470.selectStaff()

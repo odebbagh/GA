@@ -682,4 +682,9 @@ Function _documentFolders_definition()
 	$eContract:=ds:C1482.sfw_DocumentFolder.getAndCreateIfNotExist("invoice"; "Invoice"; "subFolderOf:sales")
 	$eLegal:=ds:C1482.sfw_DocumentFolder.getAndCreateIfNotExist("legal"; "Legal")
 	$eNda:=ds:C1482.sfw_DocumentFolder.getAndCreateIfNotExist("nda"; "NDA"; "subFolderOf:legal")
+
+	// folders of the Documents tab of Quotes and Leads (shown on those entries only)
+	If (Application type:C494#4D Remote mode:K5:5)
+		_ga_createSalesDocFolders
+	End if
 	
