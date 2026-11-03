@@ -1,5 +1,12 @@
 # 4D
 /Data
+/Data/
+/Project/Data/
+*.4DD
+*.4DIndx
+*.4DIdx
+*.Match
+Logs
 /Logs
 /userPreferences.*
 /*.4BK

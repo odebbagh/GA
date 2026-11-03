@@ -132,7 +132,7 @@ If ($equipment_Log.exists)
 	
 End if 
 
-
+//Import RepairLog
 $repair_Log_file:=Folder:C1567(fk data folder:K87:12).file("DataJson/repair_log_export.json")
 var $text : Text:=""
 If ($repair_Log_file.exists)
