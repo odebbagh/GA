@@ -43,16 +43,22 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	$entry.activateEvent("EquipmentEvent"; "UUID_Equipment")
 	
+	// Purpose: Same as Staff — log field, stamp, object, and N-to-1 changes with old/new on Accept.
+	// created by 4D/PS [2026-november-03]
+	$entry.setAttributesToTrackInModificationEvent("assignedID"; "model"; "serialNumber"; "status"; "statusHistory"; "calTech"; "pmTech"; "description"; "manufacturer")
+	$entry.setAttributesToTrackInModificationEvent("calInterval"; "pmInterval"; "calDocument"; "pmDocument"; "down"; "engg"; "calibrationNotRequired"; "notAtSite"; "pmNotRequired"; "outOfCalibration"; "decommissioned"; "calInProgress"; "reports"; "moreData")
+	$entry.setAttributeStmpToTrackInModificationEvent("lastCalDate"; "stmpLastCal"; Is date:K8:7)
+	$entry.setAttributeStmpToTrackInModificationEvent("nextCalDate"; "stmpNextCal"; Is date:K8:7)
+	$entry.setAttributeStmpToTrackInModificationEvent("lastPMDate"; "stmpLastPM"; Is date:K8:7)
+	$entry.setAttributeStmpToTrackInModificationEvent("nextPMDate"; "stmpNextPM"; Is date:K8:7)
 	$entry.setLinkManyToOneToTrackInModificationEvent("EquipmentLocation"; "UUID_EquipmentLocation"; "location.name")
 	$entry.setLinkManyToOneToTrackInModificationEvent("ToolType"; "UUID_ToolType"; "type.name")
 	$entry.setLinkManyToOneToTrackInModificationEvent("Division"; "UUID_Division"; "division.name")
+	$entry.setEventOptions("dontCreateModifyEventIfNoTrackingAttribute")
 	
-	//$entry.setAttributesToTrackInModificationEvent("Equipment"; "reports"; "reports.documents")
-	//$entry.setAttributesToTrackInModificationEvent("currentNextStep")
-	
-	//$entry.setEventOptions("dontCreateModifyEventIfNoTrackingAttribute")
-	
-	//$entry.setAttributesToTrackInModificationEvent("customerUID"; "name"; "completeName")
+	/* $entry.setAttributesToTrackInModificationEvent("Equipment"; "reports"; "reports.documents")
+	$entry.setAttributesToTrackInModificationEvent("currentNextStep")
+	$entry.setAttributesToTrackInModificationEvent("customerUID"; "name"; "completeName") */
 	
 	$entry.enableTransaction()
 	
