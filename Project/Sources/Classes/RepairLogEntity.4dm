@@ -50,6 +50,13 @@ local Function get reporter()->$operatorCode : Text
 	
 local Function loadAfterCreation()
 	
+	// Purpose: Prefill equipment when Repair Log is opened in add from the Equipment panel.
+	// created by 4D/PS [2026-november-03]
+	$uuidEquipment:=String:C10(Form:C1466.UUID_Equipment)
+	If ($uuidEquipment#"")
+		This:C1470.UUID_Equipment:=$uuidEquipment
+	End if 
+	
 	// This callback is called after creating the new item but before displaying the panel.
 	//This._initOperators()
 	

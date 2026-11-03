@@ -40,7 +40,7 @@
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "System ID :",
+					"text": "Equipment :",
 					"textAlign": "right"
 				},
 				"label_timeDown": {
@@ -60,7 +60,7 @@
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Reported ID :",
+					"text": "Repair Log ID :",
 					"bottom": 54,
 					"textAlign": "right"
 				},

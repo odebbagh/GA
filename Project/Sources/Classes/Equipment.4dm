@@ -196,7 +196,9 @@ local Function calibrationNotRequiredEquipments()->$equipments : cs:C1710.Equipm
 	$equipments:=ds:C1482.Equipment.query("calibrationNotRequired=:1"; True:C214)
 	
 local Function PMRequiredEquipments()->$equipments : cs:C1710.EquipmentSelection  //PM Required Equipments
-	$equipments:=ds:C1482.Equipment.query("nextPMDate<=:1 & nextPMDate#:2 & notAtSite=:3"; Current date:C33(*); !00-00-00!; False:C215)  // Storage.cache.endDate
+	// Purpose: Same as v18 Get_PM_Overdue — exclude PM not required.
+	// modified by 4D/PS [2026-november-03]
+	$equipments:=ds:C1482.Equipment.query("nextPMDate<=:1 & nextPMDate#:2 & notAtSite=:3 & pmNotRequired=:4"; Current date:C33(*); !00-00-00!; False:C215; False:C215)
 	
 local Function pmEquipments()->$equipments : cs:C1710.EquipmentSelection  //Prevent Maintenance equipments within X days
 	cs:C1710.Util.me.setDateInterval(False:C215)

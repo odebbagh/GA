@@ -49,6 +49,17 @@ local Function beforeDelete()
 	
 local Function beforeSave()
 	
+	// Purpose: v18 appended AssignedID renames to Status history on save.
+	// created by 4D/PS [2026-november-03]
+	If (Form:C1466.current_clone#Null:C1517)
+		If (Form:C1466.current_item.assignedID#Form:C1466.current_clone.assignedID)
+			This:C1470.statusHistory:=String:C10(This:C1470.statusHistory)+Char:C90(Carriage return:K15:38)+"Changed old Name: "+String:C10(Form:C1466.current_clone.assignedID)+" to "+String:C10(Form:C1466.current_item.assignedID)
+		End if 
+		If (Form:C1466.current_item.status#Form:C1466.current_clone.status)
+			This:C1470.statusHistory:=String:C10(This:C1470.statusHistory)+Char:C90(Carriage return:K15:38)+String:C10(Form:C1466.current_item.status)
+		End if 
+	End if  
+	
 	If (Form:C1466.current_item.down=True:C214) & (Form:C1466.current_item.down#Form:C1466.current_clone.down)
 		
 		$context:=New object:C1471
