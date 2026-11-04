@@ -25,13 +25,17 @@ Function run()
 	This:C1470._karlaLogin:=""
 	This:C1470._qaSupplierNames:=New collection:C1472
 	
+	// Purpose: After __import_data_facilities, Staff/Team/certs already exist — do not wipe or reimport them.
+	// created by 4D/PS [2026-november-04]
+	$keepFacilitiesPeople:=(ds:C1482.Staff.all().length>0)
+	
 	// Purpose: Do not call __import_data_lists — Omar's CustomerStatus no longer has levelID.
 	// modified by 4D/PS [2026-october-09]
 	This:C1470._seedQaLists()
 	__import_data_rejectCriteria
 	__import_data_qcarOrigin
 	
-	This:C1470._clearQaTables()
+	This:C1470._clearQaTables($keepFacilitiesPeople)
 	
 	$summary:=New object:C1471(\
 		"certifications"; 0; \
@@ -47,12 +51,19 @@ Function run()
 		"reviews"; 0; \
 		"rmas"; 0)
 	
-	$summary.certifications:=This:C1470._importCertifications($folder)
+	If ($keepFacilitiesPeople)
+		$summary.certifications:=ds:C1482.Certification.all().length
+		$summary.staff:=ds:C1482.Staff.all().length
+		$summary.assignments:=ds:C1482.CertificationAssignment.all().length
+		This:C1470._ensureKarlaQaAccess()
+	Else 
+		$summary.certifications:=This:C1470._importCertifications($folder)
+		$summary.staff:=This:C1470._importStaffSample($folder)
+		$summary.assignments:=This:C1470._importStaffTrainings($folder)
+	End if 
 	// Purpose: Customers / Staff / Team live in their real tables so CAR bForward and Department work. CAR itself stays a small JSON slice (Omar import gap).
 	// modified by 4D/PS [2026-october-09]
 	$summary.customers:=This:C1470._importCustomers($folder)
-	$summary.staff:=This:C1470._importStaffSample($folder)
-	$summary.assignments:=This:C1470._importStaffTrainings($folder)
 	$summary.lots:=This:C1470._ensureLots()
 	$summary.qcars:=This:C1470._importQcars($folder)
 	$summary.specifications:=This:C1470._importSpecifications($folder)
@@ -129,7 +140,9 @@ Function _ensureNamedRow($dataclass : 4D:C1709.DataClass; $name : Text; $level :
 	
 	// Purpose: Replace QA operational rows only. Does not wipe sfw_User, jobs, or purchase orders.
 	// created by 4D/PS [2026-october-09]
-Function _clearQaTables()
+	// Purpose: $keepFacilitiesPeople True after __import_data_facilities — leave Staff, Team, certs, assignments.
+	// modified by 4D/PS [2026-november-04]
+Function _clearQaTables($keepFacilitiesPeople : Boolean)
 	var $audit : cs:C1710.AuditEntity
 	var $review : cs:C1710.ManagementReviewEntity
 	var $fwDoc : cs:C1710.sfw_DocumentEntity
@@ -146,12 +159,14 @@ Function _clearQaTables()
 			$fwDoc.drop()
 		End for each 
 	End for each 
-	TRUNCATE TABLE:C1051([CertificationAssignment:134])
-	TRUNCATE TABLE:C1051([Membership:137])
-	TRUNCATE TABLE:C1051([Team:136])
-	TRUNCATE TABLE:C1051([StaffRole:63])
-	TRUNCATE TABLE:C1051([Staff:135])
-	TRUNCATE TABLE:C1051([Certification:124])
+	If (Not:C34($keepFacilitiesPeople))
+		TRUNCATE TABLE:C1051([CertificationAssignment:134])
+		TRUNCATE TABLE:C1051([Membership:137])
+		TRUNCATE TABLE:C1051([Team:136])
+		TRUNCATE TABLE:C1051([StaffRole:63])
+		TRUNCATE TABLE:C1051([Staff:135])
+		TRUNCATE TABLE:C1051([Certification:124])
+	End if 
 	TRUNCATE TABLE:C1051([ObjectiveEvidence:149])
 	TRUNCATE TABLE:C1051([Qcar:138])
 	TRUNCATE TABLE:C1051([RMA:44])
@@ -618,6 +633,25 @@ Function _ensureStaffUser($firstName : Text; $lastName : Text; $inactive : Boole
 		This:C1470._karlaLogin:=$login
 		This:C1470._grantProfiles($user; New collection:C1472("admin"; "qm"; "qs"; "qi"; "dc"))
 	End if 
+	
+	// Purpose: Grant Karla QA profiles on the user created by __import_data_facilities, without rebuilding Staff.
+	// created by 4D/PS [2026-november-04]
+Function _ensureKarlaQaAccess()
+	var $user : cs:C1710.sfw_UserEntity
+	var $staff : cs:C1710.StaffEntity
+	
+	$staff:=ds:C1482.Staff.query("code = :1"; "001695").first()
+	If ($staff#Null:C1517) && ($staff.user#Null:C1517)
+		$user:=$staff.user
+	Else 
+		$user:=ds:C1482.sfw_User.query("login = :1"; "karlady").first()
+	End if 
+	If ($user=Null:C1517)
+		$user:=This:C1470._ensureStaffUser("Karla"; "Dy"; False:C215; True:C214)
+		return 
+	End if 
+	This:C1470._karlaLogin:=$user.login
+	This:C1470._grantProfiles($user; New collection:C1472("admin"; "qm"; "qs"; "qi"; "dc")) 
 	
 	
 Function _staffCodeFromRow($row : Object)->$code : Text
