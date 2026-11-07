@@ -33,6 +33,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	$entry.setItemListPreconfigAction("exportReferenceRecords")
 	$entry.setItemListPreconfigAction("importReferenceRecords")
+	$entry.setAllowedProfilesForDeletion("admin")  // records may be in use by quotes and leads: admin only
 	
 	$entry.setToolBarGroup("leadParameters")
 	
@@ -87,3 +88,18 @@ Function _loadAsCollection()->$projectStatusColl : Collection
 	var $file : 4D:C1709.File
 	var $img : Picture
 	$projectStatusColl:=This:C1470.all().toCollection("UUID, stageID, code, name, color").orderBy("stageID")
+
+	//Mark:- Won / lost
+	// "won", "lost" or "" for a stage: its moreData.outcome, set on the Won and Lost stages by
+	// _fix_leadStageOutcome. As long as no stage has one, stages 6 and 7 of the reference file count
+	// as won and lost (the IDs panel_lead used to test).
+Function outcomeOf($stageID : Integer)->$outcome : Text
+	var $stage : cs:C1710.LeadStageEntity
+	
+	$stage:=This:C1470.query("stageID = :1"; $stageID).first()
+	If ($stage#Null:C1517) && ($stage.moreData#Null:C1517)
+		$outcome:=String:C10($stage.moreData.outcome)
+	End if 
+	If ($outcome="") && (This:C1470.query("moreData.outcome in :1"; New collection:C1472("won"; "lost")).length=0)
+		$outcome:=Choose:C955($stageID=6; "won"; Choose:C955($stageID=7; "lost"; ""))
+	End if 

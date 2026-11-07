@@ -59,6 +59,84 @@
 					"fill": "transparent",
 					"borderStyle": "none",
 					"textAlign": "left"
+				},
+				"label_standardHours": {
+					"type": "text",
+					"top": 36,
+					"left": 12,
+					"width": 115,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Standard hours"
+				},
+				"entryField_standardHours": {
+					"type": "input",
+					"top": 36,
+					"left": 132,
+					"width": 80,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.standardHours",
+					"method": "ObjectMethods/entryField_standardHours.4dm",
+					"numberFormat": "###,##0.00",
+					"focusable": true,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "right"
+				},
+				"label_standardHoursHint": {
+					"type": "text",
+					"top": 36,
+					"left": 222,
+					"width": 400,
+					"height": 17,
+					"stroke": "#808080",
+					"fontStyle": "italic",
+					"text": "fixed time per lot"
+				},
+				"label_secondsPerUnit": {
+					"type": "text",
+					"top": 60,
+					"left": 12,
+					"width": 115,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Seconds per unit"
+				},
+				"entryField_secondsPerUnit": {
+					"type": "input",
+					"top": 60,
+					"left": 132,
+					"width": 80,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.secondsPerUnit",
+					"method": "ObjectMethods/entryField_secondsPerUnit.4dm",
+					"numberFormat": "###,##0.00",
+					"focusable": true,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "right"
+				},
+				"label_secondsPerUnitHint": {
+					"type": "text",
+					"top": 60,
+					"left": 222,
+					"width": 600,
+					"height": 17,
+					"stroke": "#808080",
+					"fontStyle": "italic",
+					"text": "added for each unit of the lot: planned hours = standard hours + quantity x seconds / 3600"
 				}
 			}
 		},
@@ -115,6 +193,36 @@
 							"dataSource": "This:C1470.description",
 							"width": 500,
 							"minWidth": 500
+						},
+						{
+							"header": {
+								"text": "Own std hours",
+								"name": "Header3"
+							},
+							"name": "stepStandardHours",
+							"footer": {
+								"name": "Footer3"
+							},
+							"dataSource": "This:C1470.standardHours",
+							"numberFormat": "###,##0.00;;",
+							"textAlign": "right",
+							"width": 95,
+							"minWidth": 60
+						},
+						{
+							"header": {
+								"text": "Own s / unit",
+								"name": "Header4"
+							},
+							"name": "stepSecondsPerUnit",
+							"footer": {
+								"name": "Footer4"
+							},
+							"dataSource": "This:C1470.secondsPerUnit",
+							"numberFormat": "###,##0.00;;",
+							"textAlign": "right",
+							"width": 90,
+							"minWidth": 60
 						},
 						{
 							"header": {

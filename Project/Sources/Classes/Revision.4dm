@@ -21,6 +21,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	$entry.setItemListPreconfigAction("exportReferenceRecords")
 	$entry.setItemListPreconfigAction("importReferenceRecords")
+	$entry.setAllowedProfilesForDeletion("admin")  // records may be in use by quotes and leads: admin only
 	$entry.setItemListPreconfigAction("copyItemsListToPasteboard")
 	
 	$entry.setItemAction("Generate Barcode"; "_ga_openBarCodeForm")
@@ -46,3 +47,15 @@ local Function cacheLoad()
 	
 Function _loadAsCollection()->$quotelevelIDColl : Collection
 	$quotelevelIDColl:=This:C1470.all().toCollection("UUID, levelID, code, name, color").orderBy("levelID")
+
+	// the revision levels in order (levelID): a new quote starts at the first one, "New revision..."
+	// moves a quote to the next one (QuoteEntity.newRevision)
+Function firstLevel()->$revision : cs.RevisionEntity
+	$revision:=This.all().orderBy("levelID asc").first()
+
+Function levelAfter($revision : cs.RevisionEntity)->$next : cs.RevisionEntity
+	If ($revision=Null)
+		$next:=This.firstLevel()
+	Else
+		$next:=This.query("levelID > :1"; $revision.levelID).orderBy("levelID asc").first()
+	End if

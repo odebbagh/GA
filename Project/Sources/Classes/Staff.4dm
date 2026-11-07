@@ -106,6 +106,21 @@ Function currentStaff()->$staffs : cs:C1710.StaffSelection
 		End if 
 	End if 
 	
+	// the sales people offered for a lead interaction: active staff whose user has the Sales
+	// profile ("sa", _import_userProfiles), tested like the other modules' profiles with
+	// Util_Authorizer.isInAnyProfile (case-insensitive). The pop-ups looked for a team named
+	// "Sales", which does not exist (the imported one is "SalesTeam"), so they listed nobody.
+	// Built with add, not re-queried: "UUID in" does not match Staff.UUID (see panel_buyingOrder)
+Function salesPeople()->$staffs : cs:C1710.StaffSelection
+	var $staff : cs:C1710.StaffEntity
+	
+	$staffs:=ds:C1482.Staff.newSelection(dk keep ordered)
+	For each ($staff; ds:C1482.Staff.query("terminated = :1 and inactive = :1"; False:C215).orderBy("lastName asc, firstName asc"))
+		If (cs:C1710.Util_Authorizer.me.isInAnyProfile($staff.user; New collection:C1472("sa")))
+			$staffs:=$staffs.add($staff)
+		End if 
+	End for each 
+	
 Function terminatedStaff()->$staffs : cs:C1710.StaffSelection
 	$staffs:=ds:C1482.Staff.query("terminated = :1"; True:C214)
 	

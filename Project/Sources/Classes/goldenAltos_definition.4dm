@@ -619,6 +619,10 @@ Function _entries_definition()
 	$entry.setLBItemsOrderBy("subSequence")
 	$entry.enableTransaction()
 
+	// WIP tracking report: every active lot under way, by lot / process / area, with its projected
+	// completion (ga_wipReport, ga_wipExcel), whatever the list shows
+	$entry.setItemListAction("WIP report to Excel"; "_ga_exportWipReport")  // no "(" in a label: sfw adds it as a menu item, where "(" disables it
+
 	$entry.activateEvent("LotEvent"; "UUID_Lot")
 	// Field-level detail in the Events feed: on save, sfw compares only the fields listed here
 	// (sfw.bItemSave). One name per parameter - the setter ignores "a,b" or "a b" lists.

@@ -1,0 +1,183 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"label_code": {
+					"type": "text",
+					"top": 12,
+					"left": 12,
+					"width": 110,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Code"
+				},
+				"entryField_code": {
+					"type": "input",
+					"top": 12,
+					"left": 132,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.code",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_name": {
+					"type": "text",
+					"top": 37,
+					"left": 12,
+					"width": 110,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Name"
+				},
+				"entryField_name": {
+					"type": "input",
+					"top": 37,
+					"left": 132,
+					"width": 240,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.name",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_levelID": {
+					"type": "text",
+					"top": 62,
+					"left": 12,
+					"width": 110,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Order"
+				},
+				"entryField_levelID": {
+					"type": "input",
+					"top": 62,
+					"left": 132,
+					"width": 60,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.levelID",
+					"dataSourceTypeHint": "integer",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"entryField_isDefault": {
+					"type": "checkbox",
+					"text": "Default flow (used when a quote has none)",
+					"top": 60,
+					"left": 410,
+					"width": 300,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.current_item.isDefault",
+					"method": "ObjectMethods/entryField_isDefault.4dm"
+				},
+				"label_aliases": {
+					"type": "text",
+					"top": 92,
+					"left": 12,
+					"width": 110,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Also written"
+				},
+				"entryField_aliasesText": {
+					"type": "input",
+					"top": 92,
+					"left": 132,
+					"width": 400,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.aliasesText",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"method": "ObjectMethods/entryField_aliasesText.4dm"
+				},
+				"label_aliasesHint": {
+					"type": "text",
+					"top": 114,
+					"left": 132,
+					"width": 500,
+					"height": 17,
+					"stroke": "#A0A0A0",
+					"fontStyle": "italic",
+					"text": "Other names of the flow, comma separated (process qualifiers, e.g. MIL-STD-883, Class B_Q)"
+				}
+			}
+		},
+		{
+			"objects": {}
+		}
+	],
+	"inheritedForm": "sfw_bkgd_header_2lines",
+	"geometryStamp": 1,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

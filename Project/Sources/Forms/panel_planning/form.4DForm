@@ -435,6 +435,68 @@
 					"textAlign": "left",
 					"dataSourceTypeHint": "date"
 				},
+				"label_estCompletion": {
+					"type": "text",
+					"top": 200,
+					"left": 320,
+					"width": 100,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Est. Completion"
+				},
+				"field_estCompletion": {
+					"type": "input",
+					"top": 200,
+					"left": 425,
+					"width": 175,
+					"height": 17,
+					"dataSource": "Form:C1466.estCompletion",
+					"dataSourceTypeHint": "text",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "bold",
+					"textAlign": "left"
+				},
+				"field_estHoursLeft": {
+					"type": "input",
+					"top": 225,
+					"left": 320,
+					"width": 280,
+					"height": 17,
+					"dataSource": "Form:C1466.estHoursLeft",
+					"dataSourceTypeHint": "text",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#808080",
+					"fontStyle": "italic",
+					"textAlign": "left"
+				},
+				"field_estLate": {
+					"type": "input",
+					"top": 250,
+					"left": 320,
+					"width": 280,
+					"height": 17,
+					"dataSource": "Form:C1466.estLate",
+					"dataSourceTypeHint": "text",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#D00000",
+					"fontWeight": "bold",
+					"textAlign": "left"
+				},
 				"label_dateOut": {
 					"type": "text",
 					"top": 225,
@@ -966,6 +1028,7 @@
 				},
 				"lb_steps": {
 					"type": "listbox",
+					"showFooters": true,
 					"left": 103,
 					"top": 151,
 					"width": 802,
@@ -1015,7 +1078,8 @@
 							},
 							"name": "Column_stepsDescription",
 							"footer": {
-								"name": "Footer_stepsDescription"
+								"name": "Footer_stepsDescription",
+								"dataSourceTypeHint": "text"
 							},
 							"width": 300,
 							"enterable": false,
@@ -1183,7 +1247,9 @@
 							},
 							"name": "Column_stepsPlannedHours",
 							"footer": {
-								"name": "Footer_stepsPlannedHours"
+								"name": "Footer_stepsPlannedHours",
+								"dataSourceTypeHint": "number",
+								"numberFormat": "########.00hrs;;"
 							},
 							"dataSource": "This:C1470.plannedHours",
 							"width": 50,

@@ -81,7 +81,7 @@
 				},
 				"Text": {
 					"type": "text",
-					"text": "Log an integration",
+					"text": "Log an interaction",
 					"top": 15,
 					"left": 8,
 					"width": 195,

@@ -49,6 +49,24 @@ Function redrawAndSetVisible()
 			OBJECT SET COORDINATES:C1248(*; "lb_processDocs"; $left_lb; $top_lb; $widthSubform-$offset_r; $heightSubform-$offset)
 	End case 
 	
+// ----------------------------------------------
+// Standard processing time (ga_processTime): fixed hours per lot + seconds per unit.
+// Neither can be negative: a negative entry is put back to 0.
+// ----------------------------------------------
+Function entryField_standardHours()
+	This:C1470._notNegative("standardHours")
+
+Function entryField_secondsPerUnit()
+	This:C1470._notNegative("secondsPerUnit")
+
+Function _notNegative($attribute : Text)
+	If (Form event code:C388=On Data Change:K2:15) && (Form:C1466.current_item#Null:C1517)
+		If (Form:C1466.current_item[$attribute]<0)
+			Form:C1466.current_item[$attribute]:=0
+			cs:C1710.sfw_dialog.me.alert("The standard time cannot be negative: 0 means no standard time.")
+		End if
+	End if
+
 Function loadSteps()
 	If (Form:C1466.current_item#Null:C1517)
 		Form:C1466.lb_items:=ds:C1482.Step.query("UUID_StepProcess = :1"; Form:C1466.current_item.UUID).orderBy("description")

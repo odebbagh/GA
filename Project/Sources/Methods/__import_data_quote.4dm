@@ -377,7 +377,7 @@ For each ($code; $quoteUUIDByCode)
 	End if
 End for each
 
-// 4. Lines: the legacy amount is kept when it is not quantity x unit price (minimum lot charge...)
+// 4. Lines: a legacy amount above quantity x unit price becomes the minimum lot charge, one below it is kept
 $quoteLines:=JSON Parse:C1218($folder.file("quote_lines.json").getText())
 For each ($quoteLine; $quoteLines)
 	If ($quoteUUIDByCode[$quoteLine.QuoteNum]=Null:C1517)
@@ -391,9 +391,12 @@ For each ($quoteLine; $quoteLines)
 		$eQuoteLine.description:=String:C10($quoteLine.Description)
 		$amount:=Num:C11($quoteLine.Amount)
 		$eQuoteLine.moreData:=New object:C1471
-		If (Abs:C99($amount-($eQuoteLine.quantity*$eQuoteLine.unitPrice))>0.005)
-			$eQuoteLine.moreData.amount:=$amount
-		End if
+		Case of
+			: ($amount>(($eQuoteLine.quantity*$eQuoteLine.unitPrice)+0.005))
+				$eQuoteLine.minLotCharge:=$amount  // above quantity x unit price: a minimum lot charge
+			: (Abs:C99($amount-($eQuoteLine.quantity*$eQuoteLine.unitPrice))>0.005)
+				$eQuoteLine.moreData.amount:=$amount  // below it (a discount): kept as it was typed
+		End case
 		$info:=$eQuoteLine.save()
 		If ($info.success)
 			$nbLines+=1

@@ -149,8 +149,48 @@ Function drawPup_process()
 			End if 
 		End if 
 		Form:C1466.sfw.drawButtonPup("pup_process"; $processName; ""; ($processName=""))
-	End if 
-	
+		This:C1470.drawStandardInfo()
+	End if
+
+Function drawStandardInfo()
+	// The step's own standard time overrides its Operation Process's (ga_processTime): shows
+	// which one planning will use, with the inherited value read-only.
+	var $process : 4D:C1709.Entity
+	var $processStd : Object
+
+	Form:C1466.stepStandardInfo:=""
+	If (Form:C1466.current_item=Null:C1517)
+		return
+	End if
+	$processStd:=Null:C1517
+	$process:=cs:C1710.ga_processTime.me.processFor(Form:C1466.current_item)
+	If ($process#Null:C1517)
+		$processStd:=New object:C1471("hours"; $process.standardHours; "secondsPerUnit"; $process.secondsPerUnit)
+	End if
+	Case of
+		: (cs:C1710.ga_processTime.me.standardFor(Form:C1466.current_item).source="step")
+			Form:C1466.stepStandardInfo:="This step's own time is used. Operation Process time: "+cs:C1710.ga_processTime.me.describe($processStd)
+		: ($processStd=Null:C1517)
+			Form:C1466.stepStandardInfo:="0 = use the Operation Process time (no process chosen)"
+		Else
+			Form:C1466.stepStandardInfo:="0 = use the Operation Process time: "+cs:C1710.ga_processTime.me.describe($processStd)
+	End case
+
+Function entryField_standardHours()
+	This:C1470._notNegative("standardHours")
+
+Function entryField_secondsPerUnit()
+	This:C1470._notNegative("secondsPerUnit")
+
+Function _notNegative($attribute : Text)
+	If (Form:C1466.current_item#Null:C1517)
+		If (Form:C1466.current_item[$attribute]<0)
+			Form:C1466.current_item[$attribute]:=0
+			cs:C1710.sfw_dialog.me.alert("The standard time cannot be negative: 0 means the Operation Process time is used.")
+		End if
+	End if
+	This:C1470.drawStandardInfo()
+
 Function drawPup_stepArea()
 	var $areaName : Text
 	var $areaEnt : 4D:C1709.Entity

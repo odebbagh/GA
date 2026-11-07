@@ -2,11 +2,16 @@ Class extends DataClass
 
 	// the next interaction number of a lead: interactions are numbered per lead (1, 2, ...), as
 	// shown in the lead's Interactions list. It was the highest number of all leads + 1, so the
-	// first interaction of a new lead could be #4
-Function sequence($uuidLead : Text)->$sequence : Integer
+	// first interaction of a new lead could be #4. A quote without a lead numbers its own
+	// follow-ups ($uuidQuote, ga_followUps)
+Function sequence($uuidLead : Text; $uuidQuote : Text)->$sequence : Integer
 	var $es : cs:C1710.InteractionSelection
-	
-	$es:=This:C1470.query("UUID_Lead = :1"; $uuidLead).orderBy("number desc")
+
+	If (cs:C1710.sfw_string.me.isAnEmptyUUID($uuidLead)) && (Count parameters:C259>=2) && (Not:C34(cs:C1710.sfw_string.me.isAnEmptyUUID($uuidQuote)))
+		$es:=This:C1470.query("UUID_Quote = :1"; $uuidQuote).orderBy("number desc")
+	Else
+		$es:=This:C1470.query("UUID_Lead = :1"; $uuidLead).orderBy("number desc")
+	End if
 	If ($es.length#0)
 		$sequence:=$es[0].number+1
 	Else 

@@ -749,7 +749,7 @@
 					"type": "listbox",
 					"top": 114,
 					"left": 131,
-					"width": 448,
+					"width": 680,
 					"height": 539,
 					"resizingMode": "legacy",
 					"listboxType": "collection",
@@ -776,7 +776,7 @@
 						{
 							"name": "Colonne2",
 							"dataSource": "This:C1470.number",
-							"width": 40,
+							"width": 30,
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"events": [
@@ -801,7 +801,7 @@
 						{
 							"name": "Colonne9",
 							"dataSource": "This:C1470.creationDate",
-							"width": 102,
+							"width": 80,
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"events": [
@@ -810,7 +810,7 @@
 							],
 							"header": {
 								"name": "Entête11",
-								"text": "Creation date",
+								"text": "Created",
 								"fontTheme": "normal",
 								"textAlign": "center",
 								"verticalAlign": "automatic"
@@ -825,9 +825,36 @@
 							"dataSourceTypeHint": "text"
 						},
 						{
+							"name": "colFollowUpDate",
+							"dataSource": "This:C1470.followUPDate",
+							"width": 80,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "headerFollowUpDate",
+								"text": "Follow-up",
+								"fontTheme": "normal",
+								"textAlign": "center",
+								"verticalAlign": "automatic"
+							},
+							"footer": {
+								"name": "footerFollowUpDate",
+								"timeFormat": "hh_mm_ss",
+								"fontFamily": "System Font Regular",
+								"fontSize": 10
+							},
+							"fontTheme": "normal",
+							"dataSourceTypeHint": "text",
+							"enterable": false
+						},
+						{
 							"name": "Colonne4",
 							"dataSource": "This:C1470.contact.fullName",
-							"width": 165,
+							"width": 130,
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"events": [
@@ -859,7 +886,49 @@
 							"footer": {
 								"name": "Footer20"
 							},
-							"dataSource": "This:C1470.type.name"
+							"dataSource": "This:C1470.type.name",
+							"width": 80,
+							"enterable": false
+						},
+						{
+							"name": "colTrigger",
+							"dataSource": "This:C1470.trigger.name",
+							"width": 120,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "headerTrigger",
+								"text": "Trigger",
+								"fontTheme": "normal",
+								"textAlign": "center",
+								"verticalAlign": "automatic"
+							},
+							"footer": {
+								"name": "footerTrigger"
+							},
+							"fontTheme": "normal",
+							"dataSourceTypeHint": "text",
+							"enterable": false
+						},
+						{
+							"name": "colSalesPerson",
+							"dataSource": "This:C1470.staff.fullName",
+							"width": 130,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "headerSalesPerson",
+								"text": "Sales person",
+								"fontTheme": "normal",
+								"textAlign": "center",
+								"verticalAlign": "automatic"
+							},
+							"footer": {
+								"name": "footerSalesPerson"
+							},
+							"fontTheme": "normal",
+							"dataSourceTypeHint": "text",
+							"enterable": false
 						}
 					]
 				},
@@ -867,14 +936,14 @@
 					"type": "text",
 					"text": "Number",
 					"top": 124,
-					"left": 598,
+					"left": 830,
 					"width": 91,
 					"height": 16,
 					"stroke": "#808080"
 				},
 				"Inter_input_number": {
 					"type": "input",
-					"left": 704,
+					"left": 936,
 					"top": 124,
 					"width": 261,
 					"height": 17,
@@ -891,14 +960,14 @@
 					"type": "text",
 					"text": "Creation date",
 					"top": 158,
-					"left": 598,
+					"left": 830,
 					"width": 91,
 					"height": 16,
 					"stroke": "#808080"
 				},
 				"entryField_Inter_input_creationDate": {
 					"type": "input",
-					"left": 704,
+					"left": 936,
 					"top": 158,
 					"width": 261,
 					"height": 17,
@@ -906,12 +975,16 @@
 					"dataSource": "Form:C1466.current_interaction.creationDate",
 					"borderStyle": "none",
 					"enterable": false,
-					"entryFilter": "!0&9##/##/####"
+					"entryFilter": "!0&9##/##/####",
+					"events": [
+						"onDataChange"
+					],
+					"method": "ObjectMethods/entryField_Inter_input_creationDate.4dm"
 				},
 				"pup_method": {
 					"type": "button",
 					"top": 254,
-					"left": 704,
+					"left": 936,
 					"width": 289,
 					"height": 28,
 					"fontFamily": "System Font",
@@ -931,7 +1004,7 @@
 					"type": "text",
 					"text": "Method",
 					"top": 260,
-					"left": 599,
+					"left": 831,
 					"width": 113,
 					"height": 16,
 					"stroke": "#808080"
@@ -940,7 +1013,7 @@
 					"type": "button",
 					"text": " ",
 					"top": 157,
-					"left": 975,
+					"left": 1207,
 					"width": 18,
 					"height": 18,
 					"events": [
@@ -959,7 +1032,7 @@
 				"pup_outcome": {
 					"type": "button",
 					"top": 289,
-					"left": 704,
+					"left": 936,
 					"width": 289,
 					"height": 28,
 					"fontFamily": "System Font",
@@ -979,7 +1052,7 @@
 					"type": "text",
 					"text": "Outcome",
 					"top": 295,
-					"left": 599,
+					"left": 831,
 					"width": 113,
 					"height": 16,
 					"stroke": "#808080"
@@ -987,7 +1060,7 @@
 				"pup_contact": {
 					"type": "button",
 					"top": 360,
-					"left": 704,
+					"left": 936,
 					"width": 289,
 					"height": 27,
 					"fontFamily": "System Font",
@@ -1007,7 +1080,7 @@
 					"type": "text",
 					"text": "Contact",
 					"top": 365,
-					"left": 598,
+					"left": 830,
 					"width": 113,
 					"height": 16,
 					"stroke": "#808080"
@@ -1015,7 +1088,7 @@
 				"pup_trigger": {
 					"type": "button",
 					"top": 395,
-					"left": 704,
+					"left": 936,
 					"width": 289,
 					"height": 27,
 					"fontFamily": "System Font",
@@ -1035,7 +1108,7 @@
 					"type": "text",
 					"text": "Trigger",
 					"top": 400,
-					"left": 599,
+					"left": 831,
 					"width": 113,
 					"height": 16,
 					"stroke": "#808080"
@@ -1044,7 +1117,7 @@
 					"type": "text",
 					"text": "Notes",
 					"top": 435,
-					"left": 599,
+					"left": 831,
 					"width": 85,
 					"height": 16,
 					"stroke": "#808080"
@@ -1053,14 +1126,14 @@
 					"type": "text",
 					"text": "Follow-up date",
 					"top": 192,
-					"left": 597,
+					"left": 829,
 					"width": 91,
 					"height": 16,
 					"stroke": "#808080"
 				},
 				"entryField_Inter_input_followUPDate": {
 					"type": "input",
-					"left": 704,
+					"left": 936,
 					"top": 192,
 					"width": 261,
 					"height": 17,
@@ -1068,13 +1141,17 @@
 					"dataSource": "Form:C1466.current_interaction.followUPDate",
 					"borderStyle": "none",
 					"enterable": false,
-					"entryFilter": "!0&9##/##/####"
+					"entryFilter": "!0&9##/##/####",
+					"events": [
+						"onDataChange"
+					],
+					"method": "ObjectMethods/entryField_Inter_input_followUPDate.4dm"
 				},
 				"btnDatePickerCreate2": {
 					"type": "button",
 					"text": " ",
 					"top": 191,
-					"left": 975,
+					"left": 1207,
 					"width": 18,
 					"height": 18,
 					"events": [
@@ -1093,7 +1170,7 @@
 				"pup_sales": {
 					"type": "button",
 					"top": 325,
-					"left": 704,
+					"left": 936,
 					"width": 289,
 					"height": 27,
 					"fontFamily": "System Font",
@@ -1113,7 +1190,7 @@
 					"type": "text",
 					"text": "Sales person",
 					"top": 330,
-					"left": 598,
+					"left": 830,
 					"width": 113,
 					"height": 16,
 					"stroke": "#808080"
@@ -1121,7 +1198,7 @@
 				"pup_type": {
 					"type": "button",
 					"top": 220,
-					"left": 704,
+					"left": 936,
 					"width": 289,
 					"height": 28,
 					"fontFamily": "System Font",
@@ -1141,7 +1218,7 @@
 					"type": "text",
 					"text": "Status",
 					"top": 226,
-					"left": 599,
+					"left": 831,
 					"width": 113,
 					"height": 16,
 					"stroke": "#808080"
@@ -1186,7 +1263,7 @@
 				},
 				"entryField_Inter_input_notes1": {
 					"type": "input",
-					"left": 704,
+					"left": 936,
 					"top": 435,
 					"width": 405,
 					"height": 200,
@@ -1200,7 +1277,7 @@
 						"onDataChange"
 					],
 					"bottom": 635,
-					"right": 1109
+					"right": 1341
 				}
 			}
 		},
@@ -1220,7 +1297,7 @@
 					"left": 125,
 					"top": 114,
 					"width": 1009,
-					"height": 472,
+					"height": 448,
 					"events": [
 						"onClick",
 						"onHeaderClick",
@@ -1231,6 +1308,7 @@
 					"currentItemSource": "Form:C1466.job",
 					"currentItemPositionSource": "Form:C1466.job_position",
 					"dataSource": "Form:C1466.lb_jobs",
+					"metaSource": "This:C1470.meta",
 					"alternateFill": "#F7FBFF",
 					"scrollbarHorizontal": "hidden",
 					"horizontalLineStroke": "transparent",
@@ -1244,9 +1322,9 @@
 							"footer": {
 								"name": "Footer12"
 							},
-							"width": 45,
+							"width": 50,
 							"dataSource": "This:C1470.jobNumber",
-							"maxWidth": 45,
+							"maxWidth": 32000,
 							"minWidth": 45,
 							"textAlign": "left"
 						},
@@ -1259,63 +1337,65 @@
 							"footer": {
 								"name": "Footer7"
 							},
-							"width": 45,
-							"maxWidth": 45,
+							"width": 65,
+							"maxWidth": 32000,
 							"minWidth": 45,
-							"dataSource": "This:C1470.leads[0].quote.code"
+							"dataSource": "This:C1470.quote"
 						},
 						{
 							"header": {
-								"text": "Deal",
+								"text": "Timing",
 								"name": "Header4"
 							},
 							"name": "Column4",
 							"footer": {
 								"name": "Footer4"
 							},
-							"width": 45,
-							"maxWidth": 45,
+							"width": 150,
+							"maxWidth": 32000,
 							"minWidth": 45,
-							"dataSource": "This:C1470.leads[0].leadCode"
+							"dataSource": "This:C1470.timing"
 						},
 						{
 							"header": {
 								"name": "Header6",
-								"text": "PO Number"
+								"text": "PO"
 							},
 							"name": "Column6",
 							"footer": {
 								"name": "Footer6"
 							},
-							"width": 45,
-							"dataSource": "This:C1470.poNumber",
-							"maxWidth": 45,
+							"width": 90,
+							"dataSource": "This:C1470.po",
+							"maxWidth": 32000,
 							"minWidth": 45
 						},
 						{
 							"header": {
 								"name": "Header11",
-								"text": "Due Date"
+								"text": "Due"
 							},
 							"name": "Column11",
 							"footer": {
 								"name": "Footer11"
 							},
-							"width": 60,
+							"width": 75,
+							"dataSource": "This:C1470.dueText",
 							"minWidth": 60,
-							"maxWidth": 60
+							"maxWidth": 32000
 						},
 						{
 							"header": {
 								"name": "Header10",
-								"text": "Actual Delivery"
+								"text": "Delivered"
 							},
 							"name": "Column10",
 							"footer": {
 								"name": "Footer10"
 							},
-							"width": 80,
-							"maxWidth": 80,
+							"width": 75,
+							"dataSource": "This:C1470.deliveredText",
+							"maxWidth": 32000,
 							"minWidth": 80
 						},
 						{
@@ -1327,8 +1407,9 @@
 							"footer": {
 								"name": "Footer14"
 							},
-							"width": 70,
-							"maxWidth": 70,
+							"width": 190,
+							"dataSource": "This:C1470.location",
+							"maxWidth": 32000,
 							"minWidth": 70
 						},
 						{
@@ -1340,8 +1421,9 @@
 							"footer": {
 								"name": "Footer9"
 							},
-							"width": 65,
-							"maxWidth": 65,
+							"width": 80,
+							"dataSource": "This:C1470.status",
+							"maxWidth": 32000,
 							"minWidth": 65
 						},
 						{
@@ -1353,10 +1435,10 @@
 							"footer": {
 								"name": "Footer13"
 							},
-							"width": 90,
-							"dataSource": "This:C1470.jobComment",
+							"width": 150,
+							"dataSource": "This:C1470.reasons",
 							"minWidth": 90,
-							"maxWidth": 90
+							"maxWidth": 32000
 						},
 						{
 							"header": {
@@ -1367,8 +1449,10 @@
 							"footer": {
 								"name": "Footer16"
 							},
+							"dataSource": "This:C1470.subconText",
+							"textAlign": "right",
 							"width": 90,
-							"maxWidth": 90,
+							"maxWidth": 32000,
 							"minWidth": 90
 						},
 						{
@@ -1380,8 +1464,10 @@
 							"footer": {
 								"name": "Footer17"
 							},
+							"dataSource": "This:C1470.markupText",
+							"textAlign": "right",
 							"width": 90,
-							"maxWidth": 90,
+							"maxWidth": 32000,
 							"minWidth": 90
 						},
 						{
@@ -1393,9 +1479,11 @@
 							"footer": {
 								"name": "Footer8"
 							},
-							"width": 50,
+							"dataSource": "This:C1470.markupPCText",
+							"textAlign": "right",
+							"width": 60,
 							"minWidth": 50,
-							"maxWidth": 50
+							"maxWidth": 32000
 						},
 						{
 							"header": {
@@ -1409,7 +1497,7 @@
 							"dataSource": "This:C1470.process",
 							"width": 100,
 							"minWidth": 100,
-							"maxWidth": 100
+							"maxWidth": 32000
 						},
 						{
 							"header": {
@@ -1423,27 +1511,43 @@
 							"dataSource": "",
 							"width": 100,
 							"minWidth": 100,
-							"maxWidth": 100
+							"maxWidth": 32000
 						},
 						{
 							"header": {
 								"name": "Header5",
-								"text": "Actual"
+								"text": "Actual Cost"
 							},
 							"name": "Column5",
 							"footer": {
 								"name": "Footer5"
 							},
-							"dataSource": "",
+							"dataSource": "This:C1470.actualText",
+							"textAlign": "right",
 							"width": 90,
-							"maxWidth": 3000000,
+							"maxWidth": 32000,
 							"minWidth": 90
 						}
 					]
 				},
-				"pup_nextStep2": {
+				"jobs_rollup": {
+					"type": "input",
+					"left": 130,
+					"top": 567,
+					"width": 999,
+					"height": 16,
+					"dataSource": "ds:C1482.Job.rollupText(Form:C1466.lb_jobs)",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#555555",
+					"fontSize": 11,
+					"events": []
+				},
+				"pupJobs_timing": {
 					"type": "button",
-					"text": "All statuses",
+					"text": "All jobs",
 					"top": 124,
 					"left": 12,
 					"width": 104,
@@ -1458,9 +1562,9 @@
 					"textPlacement": "right",
 					"visibility": "visible",
 					"focusable": false,
-					"method": "ObjectMethods/pup_nextStep2.4dm"
+					"method": "ObjectMethods/pupJobs_timing.4dm"
 				},
-				"pup_nextStep3": {
+				"pupJobs_period": {
 					"type": "button",
 					"text": "All times",
 					"top": 150,
@@ -1477,7 +1581,7 @@
 					"textPlacement": "right",
 					"visibility": "visible",
 					"focusable": false,
-					"method": "ObjectMethods/pup_nextStep3.4dm"
+					"method": "ObjectMethods/pupJobs_period.4dm"
 				}
 			}
 		}

@@ -191,6 +191,84 @@
 					],
 					"fontWeight": "normal",
 					"textAlign": "left"
+				},
+				"label_standardHours": {
+					"type": "text",
+					"top": 65,
+					"left": 416,
+					"width": 100,
+					"height": 15,
+					"stroke": "#808080",
+					"text": "Standard hours",
+					"textAlign": "automatic",
+					"fontWeight": "normal"
+				},
+				"entryField_standardHours": {
+					"type": "input",
+					"top": 65,
+					"left": 520,
+					"width": 70,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.standardHours",
+					"method": "ObjectMethods/entryField_standardHours.4dm",
+					"numberFormat": "###,##0.00",
+					"focusable": true,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "right"
+				},
+				"label_secondsPerUnit": {
+					"type": "text",
+					"top": 65,
+					"left": 606,
+					"width": 105,
+					"height": 15,
+					"stroke": "#808080",
+					"text": "Seconds per unit",
+					"textAlign": "automatic",
+					"fontWeight": "normal"
+				},
+				"entryField_secondsPerUnit": {
+					"type": "input",
+					"top": 65,
+					"left": 715,
+					"width": 70,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.secondsPerUnit",
+					"method": "ObjectMethods/entryField_secondsPerUnit.4dm",
+					"numberFormat": "###,##0.00",
+					"focusable": true,
+					"enterable": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "right"
+				},
+				"txt_standardInfo": {
+					"type": "input",
+					"top": 65,
+					"left": 795,
+					"width": 525,
+					"height": 17,
+					"dataSource": "Form:C1466.stepStandardInfo",
+					"dataSourceTypeHint": "text",
+					"focusable": false,
+					"enterable": false,
+					"stroke": "#808080",
+					"fontStyle": "italic",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
 				}
 			}
 		},

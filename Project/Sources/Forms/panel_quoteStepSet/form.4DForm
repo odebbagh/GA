@@ -1,0 +1,277 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"label_code": {
+					"type": "text",
+					"top": 12,
+					"left": 12,
+					"width": 110,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Code"
+				},
+				"entryField_code": {
+					"type": "input",
+					"top": 12,
+					"left": 132,
+					"width": 140,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.code",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_name": {
+					"type": "text",
+					"top": 37,
+					"left": 12,
+					"width": 110,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Name"
+				},
+				"entryField_name": {
+					"type": "input",
+					"top": 37,
+					"left": 132,
+					"width": 240,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.name",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_num": {
+					"type": "text",
+					"top": 62,
+					"left": 12,
+					"width": 110,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Order"
+				},
+				"entryField_num": {
+					"type": "input",
+					"top": 62,
+					"left": 132,
+					"width": 60,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.num",
+					"dataSourceTypeHint": "integer",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"entryField_active": {
+					"type": "checkbox",
+					"text": "Active (offered on the quote lines)",
+					"top": 60,
+					"left": 410,
+					"width": 300,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.current_item.active",
+					"method": "ObjectMethods/entryField_active.4dm"
+				},
+				"label_priceFlow": {
+					"type": "text",
+					"top": 92,
+					"left": 12,
+					"width": 110,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Usual price flow"
+				},
+				"pup_priceFlow": {
+					"type": "button",
+					"top": 90,
+					"left": 128,
+					"width": 244,
+					"height": 20,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": " ",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_priceFlow.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"label_priceFlowHint": {
+					"type": "text",
+					"top": 92,
+					"left": 410,
+					"width": 420,
+					"height": 17,
+					"stroke": "#A0A0A0",
+					"fontStyle": "italic",
+					"text": "Offered on the quote when the set is applied and the quote has another flow"
+				},
+				"label_steps": {
+					"type": "text",
+					"top": 124,
+					"left": 12,
+					"width": 500,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Steps, in the order of the quote line description"
+				},
+				"lb_setSteps": {
+					"type": "listbox",
+					"top": 146,
+					"left": 12,
+					"width": 818,
+					"height": 380,
+					"listboxType": "collection",
+					"focusable": false,
+					"movableRows": false,
+					"dataSource": "Form:C1466.lb_setSteps",
+					"currentItemSource": "Form:C1466.current_setStep",
+					"metaSource": "This:C1470.meta",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "#C0C0C0",
+					"selectionMode": "single",
+					"fill": "#FFFFFF",
+					"alternateFill": "#F7F9FC",
+					"borderStyle": "system",
+					"columns": [
+						{
+							"header": {
+								"name": "Header_setStepNum",
+								"text": "#",
+								"textAlign": "right"
+							},
+							"name": "Column_setStepNum",
+							"width": 40,
+							"dataSource": "This:C1470.num",
+							"dataSourceTypeHint": "integer",
+							"textAlign": "right",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_setStepNum"
+							}
+						},
+						{
+							"header": {
+								"name": "Header_setStepProcess",
+								"text": "Process"
+							},
+							"name": "Column_setStepProcess",
+							"width": 180,
+							"dataSource": "This:C1470.process",
+							"dataSourceTypeHint": "text",
+							"enterable": false,
+							"truncateMode": "withEllipsis",
+							"footer": {
+								"name": "Footer_setStepProcess"
+							}
+						},
+						{
+							"header": {
+								"name": "Header_setStepDescription",
+								"text": "Step"
+							},
+							"name": "Column_setStepDescription",
+							"width": 580,
+							"dataSource": "This:C1470.description",
+							"dataSourceTypeHint": "text",
+							"enterable": false,
+							"truncateMode": "withEllipsis",
+							"footer": {
+								"name": "Footer_setStepDescription"
+							}
+						}
+					]
+				},
+				"bActionSteps": {
+					"type": "button",
+					"text": "Actions",
+					"top": 536,
+					"left": 12,
+					"width": 80,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionSteps.4dm"
+				}
+			}
+		},
+		{
+			"objects": {}
+		}
+	],
+	"inheritedForm": "sfw_bkgd_header_2lines",
+	"geometryStamp": 1,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

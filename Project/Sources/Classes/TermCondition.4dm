@@ -20,6 +20,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	$entry.setItemListPreconfigAction("exportReferenceRecords")
 	$entry.setItemListPreconfigAction("importReferenceRecords")
+	$entry.setAllowedProfilesForDeletion("admin")  // records may be in use by quotes and leads: admin only
 	$entry.setItemListPreconfigAction("copyItemsListToPasteboard")
 	
 	$entry.setItemAction("Generate Barcode"; "_ga_openBarCodeForm")

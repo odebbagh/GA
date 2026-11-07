@@ -26,12 +26,13 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	$entry.setLBItemsCounter("###0###0##0^1;;"; "unit1:step"; "unitN:steps")
 	
-	$entry.setValidationRule("nextStepID"; "entryField_stageID"; "mandatory"; "trimSpace"; "capitalize")
-	$entry.setValidationRule("code"; "entryField_code"; "mandatory"; "trimSpace"; "uppercase")
-	$entry.setValidationRule("name"; "entryField_name"; "mandatory"; "trimSpace"; "capitalize")
+	$entry.setValidationRule("nextStepID"; "entryField_0_1"; "mandatory"; "trimSpace"; "capitalize")
+	$entry.setValidationRule("code"; "entryField_0_2"; "mandatory"; "trimSpace"; "uppercase")
+	$entry.setValidationRule("name"; "entryField_0_3"; "mandatory"; "trimSpace"; "capitalize")
 	
 	$entry.setItemListPreconfigAction("exportReferenceRecords")
 	$entry.setItemListPreconfigAction("importReferenceRecords")
+	$entry.setAllowedProfilesForDeletion("admin")  // records may be in use by quotes and leads: admin only
 	
 	$entry.setToolBarGroup("leadParameters")
 	//Mark:- Function to manage the cache

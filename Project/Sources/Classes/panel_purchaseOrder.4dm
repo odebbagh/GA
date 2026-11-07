@@ -292,7 +292,7 @@ Function poLineDialogData($poLine : 4D:C1709.Entity)->$form : Object
 	$quoteLines:=New collection:C1472()
 	If (Form:C1466.current_item.quote#Null:C1517)
 		If (Form:C1466.current_item.quote.lines#Null:C1517)
-			$quoteLines:=Form:C1466.current_item.quote.lines
+			$quoteLines:=Form:C1466.current_item.quote.lines.orderBy("num asc")  // in the quote's order
 		End if
 	End if
 

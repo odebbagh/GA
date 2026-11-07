@@ -80,6 +80,10 @@ local Function get displayNumber()->$text : Text
 		End if 
 	End if 
 	
+	// Row of the lot picker on a buy item (panel_boItem.fillFromLot): lot #, device, customer lot
+local Function get pickerLabel()->$label : Text
+	$label:=This:C1470.displayNumber+"  |  "+String:C10(This:C1470.device)+"  |  "+String:C10(This:C1470.customerLotNumber)
+
 	// a Lot # column (displayNumber) is sorted by the record number
 Function orderBy displayNumber($event : Object)->$result : Text
 	$result:="number"+Choose:C955(Bool:C1537($event.descending); " desc"; " asc")
@@ -204,3 +208,21 @@ local Function afterSave()
 	If (Bool:C1537(Form:C1466.info.success)) && (Form:C1466.sfw.entry.event#Null:C1517)
 		cs:C1710.ga_events.me.mergeIntoSaveEvent(Form:C1466.sfw.entry; $key; cs:C1710.ga_events.me.lotChanges($before; This:C1470).extract("text"))
 	End if 
+
+
+Function get locationLabel()->$location : Text
+	// where the lot is, as panel_planning.loadLocation and the legacy app show it: the current step
+	// "3 of 6 : DESCRIPTION", "completed" once every step is out, "merged"; a lot without steps
+	// (imported) keeps its legacy location text
+	var $steps : cs:C1710.LotStepSelection
+	var $current : cs:C1710.LotStepEntity
+	$steps:=This:C1470.lotSteps
+	Case of 
+		: (String:C10(This:C1470.location)="merged")
+			$location:="merged"
+		: ($steps.length=0)
+			$location:=String:C10(This:C1470.location)
+		Else 
+			$current:=$steps.query("qtyOut = 0 AND dateOut = :1"; !00-00-00!).orderBy("order asc").first()
+			$location:=($current#Null:C1517) ? String:C10($current.order)+" of "+String:C10($steps.length)+" : "+$current.description : "completed"
+	End case 

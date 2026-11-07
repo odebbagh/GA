@@ -19,6 +19,7 @@
 		<field name="code" uuid="7712EA2DE9BD4B75A3AECC0C5EBA64E5" type="10" limiting_length="255" never_null="true" id="2"/>
 		<field name="value" uuid="B8D9648C48A94FC19B2A146E4591876F" type="10" never_null="true" id="3"/>
 		<field name="moreData" uuid="3D7A0338C0809941A04FD183C6A61B1F" type="21" blob_switch_size="2147483647" never_null="true" id="4"/>
+		<field name="isDefault" uuid="3D0CCC7C91514E0A8521B91B8525F896" type="1" never_null="true" id="5"/>
 		<primary_key field_name="UUID" field_uuid="EA4BF9CC573745C5BF902F88DA00BD6E"/>
 	</table>
 	<table name="TermCondition" uuid="C426BFF1DD3F4326A89BD125EFA71348" id="3">
@@ -804,6 +805,7 @@
 		<field name="UUID_Outcome" uuid="7F025E2A765243A2BC9E00979FB9D560" type="10" store_as_UUID="true" never_null="true" id="12"/>
 		<field name="UUID_Interaction" uuid="3B1FDCAA377A43DB99C8AFA0198EFCF5" type="10" store_as_UUID="true" never_null="true" id="13"/>
 		<field name="moreData" uuid="F308BE72E72B674491D81DD41819D3FB" type="21" blob_switch_size="2147483647" never_null="true" id="14"/>
+		<field name="UUID_Quote" uuid="257C7BB37381419690FAEFA70DF49D83" type="10" store_as_UUID="true" never_null="true" id="15"/>
 		<primary_key field_name="UUID" field_uuid="26E185DCFBC74FF3AF6AD248B2DFF24C"/>
 	</table>
 	<table name="sfw_EventType" uuid="C482A0FBAE724304A8E05A0570FD55D6" id="52">
@@ -1605,6 +1607,8 @@
 		<field name="UUID" uuid="72A605BD394544EBBDAECE84A5FD0947" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
 		<field name="name" uuid="08EA6F5EC1CA4B089F5B4A3041A5E7BB" type="10" limiting_length="255" never_null="true" id="2"/>
 		<field name="moreData" uuid="20518BC632A144409850E6DAF1C065B9" type="21" blob_switch_size="2147483647" never_null="true" id="3"/>
+		<field name="standardHours" uuid="28EFBA4B8B244EE58F0DAA42FBD3B12B" type="6" never_null="true" id="4"/>
+		<field name="secondsPerUnit" uuid="9FE0886383CC4F758BD583EE6635448D" type="6" never_null="true" id="5"/>
 		<primary_key field_name="UUID" field_uuid="72A605BD394544EBBDAECE84A5FD0947"/>
 	</table>
 	<table name="StepTemplateToolType" uuid="9F5BA83712DB4F1E8AD9E52EFEA36330" id="100">
@@ -1937,6 +1941,8 @@
 		<field name="UUID_StepProcess" uuid="C913DCA6B38145A980093ADBA028142C" type="10" store_as_UUID="true" never_null="true" id="11"/>
 		<field name="UUID_Specification" uuid="80F32240FB2B4D21B6C3781C582AAEBE" type="10" store_as_UUID="true" never_null="true" id="12"/>
 		<field name="stepSpecifications" uuid="1D19360D7174439BB3E6DCD3F26CC197" type="21" blob_switch_size="2147483647" never_null="true" id="13"/>
+		<field name="standardHours" uuid="FA3B07A420D64962A1EEE9F296FC957D" type="6" never_null="true" id="14"/>
+		<field name="secondsPerUnit" uuid="28E8A9930F8A4E349314C320DB352FD3" type="6" never_null="true" id="15"/>
 		<primary_key field_name="UUID" field_uuid="3C357DD66006453994A5995B3E57D007"/>
 	</table>
 	<table name="StepTemplate" uuid="6330FD4D08D74130BF3869222CDECBA6" id="121">
@@ -2087,6 +2093,12 @@
 		<field name="moreData" uuid="35CECEFAAF16499BA3F6A14DA5B373D4" type="21" blob_switch_size="2147483647" never_null="true" id="16">
 			<field_extra multi_line="false"/>
 		</field>
+		<field name="stmpValidUntil" uuid="A694640B33BD49C29C16F2E79C93CBE0" type="4" never_null="true" id="17"/>
+		<field name="stmpSent" uuid="D75A9E96553E4131A69C6E794D7CCB2D" type="4" never_null="true" id="18"/>
+		<field name="stmpClosed" uuid="12D15670A1C845F0B8F0BE76F0E1BFA6" type="4" never_null="true" id="19"/>
+		<field name="reasonWL" uuid="2CEB47EDE5114D9C99859F5110C28614" type="10" never_null="true" id="20"/>
+		<field name="stmpVoided" uuid="F458D1B07A18481B94FC5E129475F0BD" type="4" never_null="true" id="21"/>
+		<field name="UUID_PriceFlow" uuid="AEB8D3EA4BF643C484BD5F1AA167F9C2" type="10" store_as_UUID="true" never_null="true" id="22"/>
 		<primary_key field_name="UUID" field_uuid="DDEAA2AF9B9A44BD99857817933C03AA"/>
 	</table>
 	<table name="QuoteLine" uuid="348628FCA4DC451085D7519B226BD509" id="129">
@@ -2099,6 +2111,7 @@
 		<field name="description" uuid="14E872702E7249AFBA7A6BF1CF53D2A2" type="10" never_null="true" id="5"/>
 		<field name="num" uuid="F3B0D504DDC3476E858B2D6367A94F0C" type="4" never_null="true" id="6"/>
 		<field name="moreData" uuid="C280C8901429314C8600A589EB6A5F41" type="21" blob_switch_size="2147483647" never_null="true" id="7"/>
+		<field name="minLotCharge" uuid="BFC41A30FD124F1CA593733F1029472E" type="6" never_null="true" id="8"/>
 		<primary_key field_name="UUID" field_uuid="5520537F6684489F9BB29D56C4A9F2C6"/>
 	</table>
 	<table name="CustomerStatus" uuid="CF8DC4373C97487884111398B4383812" id="130">
@@ -2395,6 +2408,167 @@
 		</field>
 		<primary_key field_name="UUID" field_uuid="CA172B57886B485CAA341D4850024A18"/>
 	</table>
+	<table name="QuoteRevision" uuid="DB6DBD21183E41E6B8E53764F0117095" id="203">
+		<field name="UUID" uuid="A465ED568CE74E728C7133D6F9419E3A" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1">
+			<field_extra multi_line="false"/>
+		</field>
+		<field name="UUID_Quote" uuid="C451E663F67446AAB4773737BA0FB7D2" type="10" store_as_UUID="true" never_null="true" id="2">
+			<field_extra multi_line="false"/>
+		</field>
+		<field name="UUID_Revision" uuid="709CAD7B641C40B5B94F07227DD0CE44" type="10" store_as_UUID="true" never_null="true" id="3">
+			<field_extra multi_line="false"/>
+		</field>
+		<field name="num" uuid="ADF7974315644012AAB2038C701892CF" type="4" never_null="true" id="4">
+			<field_extra multi_line="false"/>
+		</field>
+		<field name="note" uuid="01AE3FDAB6AA4D4C92FD0D9C8C24B4E2" type="10" never_null="true" id="5">
+			<field_extra multi_line="true"/>
+		</field>
+		<field name="stmp" uuid="85F574045A744F2AAF688C3C9FCF244F" type="4" never_null="true" id="6">
+			<field_extra multi_line="false"/>
+		</field>
+		<field name="UUID_User" uuid="74DB0F5EFAFA4014896D67CA8B850AB0" type="10" store_as_UUID="true" never_null="true" id="7">
+			<field_extra multi_line="false"/>
+		</field>
+		<field name="snapshot" uuid="5858A5B695C347A49F25C2959E8A958B" type="21" blob_switch_size="2147483647" never_null="true" id="8">
+			<field_extra multi_line="false"/>
+		</field>
+		<field name="moreData" uuid="5BBE2F7AC1B24A1CABD32019E764A7A3" type="21" blob_switch_size="2147483647" never_null="true" id="9">
+			<field_extra multi_line="false"/>
+		</field>
+		<primary_key field_name="UUID" field_uuid="A465ED568CE74E728C7133D6F9419E3A"/>
+	</table>
+	<table name="PriceFlow" uuid="AE03E9EA17B7426C9591FEA1D081213C" id="204">
+		<field name="UUID" uuid="E9BE88DE74B34DAE8DACBDEE0DFB2AFF" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
+		<field name="code" uuid="939C129A31004CDD91BE6477A82F588A" type="10" limiting_length="255" never_null="true" id="2"/>
+		<field name="name" uuid="2FD64F7355A24962B4FC5389516CDC53" type="10" limiting_length="255" never_null="true" id="3"/>
+		<field name="levelID" uuid="BFB9AA172C5747D5BCC9E67B29A0F6CC" type="3" never_null="true" id="4"/>
+		<field name="isDefault" uuid="2A84FB27AE6C482DAEA329BACEA5F4C7" type="1" never_null="true" id="5"/>
+		<field name="moreData" uuid="EDA55A39F87A4F0DA9858D49A9110F7D" type="21" blob_switch_size="2147483647" never_null="true" id="6"/>
+		<primary_key field_name="UUID" field_uuid="E9BE88DE74B34DAE8DACBDEE0DFB2AFF"/>
+	</table>
+	<table name="PriceListItem" uuid="736BAAEF087F460F815EF94018CABA5C" id="205">
+		<field name="UUID" uuid="FB80D536430C4BEA9F526637BDB3D643" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
+		<field name="code" uuid="0E8AEC18CC38457FB61516648A003073" type="10" limiting_length="255" never_null="true" id="2"/>
+		<field name="description" uuid="CB322FCD85D4463896CB5EE7BF8C9B05" type="10" never_null="true" id="3"/>
+		<field name="UUID_StepProcess" uuid="3CDD3576C6FF4B63B8753A133B2723E3" type="10" store_as_UUID="true" never_null="true" id="4"/>
+		<field name="UUID_Customer" uuid="E124A30D9E004FB3AEFC92D573BA2E01" type="10" store_as_UUID="true" never_null="true" id="5"/>
+		<field name="unit" uuid="D4D79BA18FF04DFDB700E9445E584E54" type="10" limiting_length="255" never_null="true" id="6"/>
+		<field name="unitPrice" uuid="952334006A824C45AD6B9DF00BCFEAB8" type="6" never_null="true" id="7"/>
+		<field name="unitCost" uuid="CB714B7533FF4C37BCD1959558AB2827" type="6" never_null="true" id="8"/>
+		<field name="minLotCharge" uuid="547259DD253144CEAB81BC84FF548ED2" type="6" never_null="true" id="9"/>
+		<field name="flowPrices" uuid="D5BA04DBB4F34D8C86FBA741129AB571" type="21" blob_switch_size="2147483647" never_null="true" id="10"/>
+		<field name="currency" uuid="1909CCF5034E4046B29F6DB3587127C6" type="10" limiting_length="255" never_null="true" id="11"/>
+		<field name="stmpEffectiveFrom" uuid="893370A8D14149938865D20D86E0BEA6" type="4" never_null="true" id="12"/>
+		<field name="stmpEffectiveTo" uuid="7571ACD38A7944A2B82600DA6094BD87" type="4" never_null="true" id="13"/>
+		<field name="active" uuid="7E66FE06523249C4BF7FBDE464BC7572" type="1" never_null="true" id="14"/>
+		<field name="moreData" uuid="B75B15488CD74F798FA65FD0B40A371A" type="21" blob_switch_size="2147483647" never_null="true" id="15"/>
+		<primary_key field_name="UUID" field_uuid="FB80D536430C4BEA9F526637BDB3D643"/>
+	</table>
+	<table name="PriceListItemEvent" uuid="8AA89B5F727645B1AEFE9DA3B8119E29" id="206">
+		<field name="UUID" uuid="466061CA870F4CF9B365AA4AC5334C02" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
+		<field name="UUID_PriceListItem" uuid="EEF0EBE4E4184A47A081B8D5BCAB7D24" type="10" store_as_UUID="true" never_null="true" id="2"/>
+		<field name="UUID_EventType" uuid="CB10C8BB13E444B198BAD4653927EA93" type="10" store_as_UUID="true" never_null="true" id="3"/>
+		<field name="UUID_User" uuid="81D38FDD989D403782173173F3A33733" type="10" store_as_UUID="true" never_null="true" id="4"/>
+		<field name="stmp" uuid="A3DA3398C48143F2A7E3831C301904B3" type="4" never_null="true" id="5"/>
+		<field name="moreData" uuid="000CCF0C6DC443BB9BE9D9183CE33F7E" type="21" blob_switch_size="2147483647" never_null="true" id="6"/>
+		<primary_key field_name="UUID" field_uuid="466061CA870F4CF9B365AA4AC5334C02"/>
+	</table>
+	<table name="QuoteStepSet" uuid="268D7B44B7E04126B5FD94ABC80A55E1" id="207">
+		<field name="UUID" uuid="7D92DF95A5CA46BEB10155C2D4ACD187" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
+		<field name="code" uuid="DB0493F0202146A4BCA386A6CC010FB4" type="10" limiting_length="255" never_null="true" id="2"/>
+		<field name="name" uuid="84F62E77A9D240B39A5DCA9966D80140" type="10" limiting_length="255" never_null="true" id="3"/>
+		<field name="num" uuid="39274A55D83247609478A969B8339762" type="4" never_null="true" id="4"/>
+		<field name="active" uuid="723DC534DC0E4471B8EF4B1414114333" type="1" never_null="true" id="5"/>
+		<field name="steps" uuid="EE8B3AEDA9324B54BDBB043104431366" type="21" blob_switch_size="2147483647" never_null="true" id="6"/>
+		<field name="UUID_PriceFlow" uuid="F36364C4706242DCB632488A94876DCE" type="10" store_as_UUID="true" never_null="true" id="7"/>
+		<field name="moreData" uuid="4E696E2CEC334C4499CC4B1627DEA732" type="21" blob_switch_size="2147483647" never_null="true" id="8"/>
+		<primary_key field_name="UUID" field_uuid="7D92DF95A5CA46BEB10155C2D4ACD187"/>
+	</table>
+	<relation uuid="A9C3959D3F61438F9AF40346E0578D34" name_Nto1="priceFlow" name_1toN="quoteStepSets" state="1">
+		<related_field kind="source">
+			<field_ref uuid="F36364C4706242DCB632488A94876DCE" name="UUID_PriceFlow">
+				<table_ref uuid="268D7B44B7E04126B5FD94ABC80A55E1" name="QuoteStepSet"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="E9BE88DE74B34DAE8DACBDEE0DFB2AFF" name="UUID">
+				<table_ref uuid="AE03E9EA17B7426C9591FEA1D081213C" name="PriceFlow"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="7EB6C043A27A40C78779C23D48F2C8F1" name_Nto1="stepProcess" name_1toN="priceListItems" state="1">
+		<related_field kind="source">
+			<field_ref uuid="3CDD3576C6FF4B63B8753A133B2723E3" name="UUID_StepProcess">
+				<table_ref uuid="736BAAEF087F460F815EF94018CABA5C" name="PriceListItem"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="72A605BD394544EBBDAECE84A5FD0947" name="UUID">
+				<table_ref uuid="8EC932017A97431A97A6666F567B1954" name="StepProcess"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="9687C9B933B3447E98E4DFEA7E4B4AEC" name_Nto1="customer" name_1toN="priceListItems" state="1">
+		<related_field kind="source">
+			<field_ref uuid="E124A30D9E004FB3AEFC92D573BA2E01" name="UUID_Customer">
+				<table_ref uuid="736BAAEF087F460F815EF94018CABA5C" name="PriceListItem"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="37676CD94E8B423595ED98B5C0E9CF89" name="UUID">
+				<table_ref uuid="96D1CE81460A4F75B3F4275138C8F778" name="Customer"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="26855508EDDA42808169D83B56A77236" name_Nto1="priceListItem" name_1toN="priceListItemEvents" state="1">
+		<related_field kind="source">
+			<field_ref uuid="EEF0EBE4E4184A47A081B8D5BCAB7D24" name="UUID_PriceListItem">
+				<table_ref uuid="8AA89B5F727645B1AEFE9DA3B8119E29" name="PriceListItemEvent"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="FB80D536430C4BEA9F526637BDB3D643" name="UUID">
+				<table_ref uuid="736BAAEF087F460F815EF94018CABA5C" name="PriceListItem"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="693219C9049844F78A48540C97915293" name_Nto1="user" name_1toN="priceListItemEvents" state="1">
+		<related_field kind="source">
+			<field_ref uuid="81D38FDD989D403782173173F3A33733" name="UUID_User">
+				<table_ref uuid="8AA89B5F727645B1AEFE9DA3B8119E29" name="PriceListItemEvent"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="34E9F9D48BE14DCD95127852F83BF1FB" name="UUID">
+				<table_ref uuid="2C75E07E18FC4733A8C98A0B31D40656" name="sfw_User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="CF601AB8002F4F8CAEC41EFA3B2B081D" name_Nto1="eventType" name_1toN="priceListItemEvents" state="1">
+		<related_field kind="source">
+			<field_ref uuid="CB10C8BB13E444B198BAD4653927EA93" name="UUID_EventType">
+				<table_ref uuid="8AA89B5F727645B1AEFE9DA3B8119E29" name="PriceListItemEvent"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="AEE9BE0296924CA7899B7E5DB37ACE13" name="UUID">
+				<table_ref uuid="C482A0FBAE724304A8E05A0570FD55D6" name="sfw_EventType"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="26B604B959BA4162A337755F20C6D312" name_Nto1="priceFlow" name_1toN="quotes" state="1">
+		<related_field kind="source">
+			<field_ref uuid="AEB8D3EA4BF643C484BD5F1AA167F9C2" name="UUID_PriceFlow">
+				<table_ref uuid="98A20403539048D2B775AEAED975966B" name="Quote"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="E9BE88DE74B34DAE8DACBDEE0DFB2AFF" name="UUID">
+				<table_ref uuid="AE03E9EA17B7426C9591FEA1D081213C" name="PriceFlow"/>
+			</field_ref>
+		</related_field>
+	</relation>
 	<relation uuid="C7D48852530842BA9BC07499FAF8A048" name_Nto1="user" name_1toN="EquipmentEvents" state="1">
 		<related_field kind="source">
 			<field_ref uuid="32ED16A2B45746E6B8EFE6EA6FE606A3" name="UUID_User">
@@ -3199,6 +3373,18 @@
 			</field_ref>
 		</related_field>
 	</relation>
+	<relation uuid="2E5445D237714E79B7B821F4EF694239" name_Nto1="quote" name_1toN="interactions" state="1">
+		<related_field kind="source">
+			<field_ref uuid="257C7BB37381419690FAEFA70DF49D83" name="UUID_Quote">
+				<table_ref uuid="4CA431297F2C42BE99FD232A56928CE7" name="Interaction"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="DDEAA2AF9B9A44BD99857817933C03AA" name="UUID">
+				<table_ref uuid="98A20403539048D2B775AEAED975966B" name="Quote"/>
+			</field_ref>
+		</related_field>
+	</relation>
 	<relation uuid="DBA2364367CE440FBDE4F5879B7D3579" name_Nto1="staff" name_1toN="interactions" state="1">
 		<related_field kind="source">
 			<field_ref uuid="0C8B8BC2547F424CBBC35386810732B1" name="UUID_Staff">
@@ -3311,6 +3497,42 @@
 		<related_field kind="source">
 			<field_ref uuid="3418CA848D644E838C17B86DB079529A" name="UUID_User">
 				<table_ref uuid="9829CFB4F3294A3989861E788C0AF7D4" name="QuoteEvent"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="34E9F9D48BE14DCD95127852F83BF1FB" name="UUID">
+				<table_ref uuid="2C75E07E18FC4733A8C98A0B31D40656" name="sfw_User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="500F012537924B39AFD64A93F2050A86" name_Nto1="quote" name_1toN="revisions" state="1">
+		<related_field kind="source">
+			<field_ref uuid="C451E663F67446AAB4773737BA0FB7D2" name="UUID_Quote">
+				<table_ref uuid="DB6DBD21183E41E6B8E53764F0117095" name="QuoteRevision"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="DDEAA2AF9B9A44BD99857817933C03AA" name="UUID">
+				<table_ref uuid="98A20403539048D2B775AEAED975966B" name="Quote"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="F8EC61466A9F4CDBA237D20EED922CB6" name_Nto1="revision" name_1toN="quoteRevisions" state="1">
+		<related_field kind="source">
+			<field_ref uuid="709CAD7B641C40B5B94F07227DD0CE44" name="UUID_Revision">
+				<table_ref uuid="DB6DBD21183E41E6B8E53764F0117095" name="QuoteRevision"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="5F21577CC2BE493CA3F18E8E33520528" name="UUID">
+				<table_ref uuid="29604671FA2A4476BBFC5BF467B80F05" name="Revision"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="369CE2A1AECC4695B7223A25951C0A7C" name_Nto1="user" name_1toN="quoteRevisions" state="1">
+		<related_field kind="source">
+			<field_ref uuid="74DB0F5EFAFA4014896D67CA8B850AB0" name="UUID_User">
+				<table_ref uuid="DB6DBD21183E41E6B8E53764F0117095" name="QuoteRevision"/>
 			</field_ref>
 		</related_field>
 		<related_field kind="destination">
@@ -4878,6 +5100,11 @@
 			<table_ref uuid="CF8DC4373C97487884111398B4383812" name="CustomerStatus"/>
 		</field_ref>
 	</index>
+	<index kind="regular" uuid="12518923F1B0420EB14BAB465BCCF47E" type="3">
+		<field_ref uuid="EEF0EBE4E4184A47A081B8D5BCAB7D24" name="UUID_PriceListItem">
+			<table_ref uuid="8AA89B5F727645B1AEFE9DA3B8119E29" name="PriceListItemEvent"/>
+		</field_ref>
+	</index>
 	<index kind="regular" unique_keys="true" uuid="1334D12D2CCCBC468D942BC83491DF5B" type="7">
 		<field_ref uuid="23E2B2C1C1B0BC40B998AE5899B77F0F" name="UUID">
 			<table_ref uuid="742061D6375A2B43B9C36073A1C58ABA" name="CreditMemo"/>
@@ -4931,6 +5158,11 @@
 	<index kind="regular" unique_keys="true" uuid="1699CE46267643CCB7BB1873A6874B8D" type="1">
 		<field_ref uuid="9611B9D925D54FF6A5F4F5B6D3F11A0E" name="UUID">
 			<table_ref uuid="861CADEA132044EFA648C5D2E5E0FB06" name="Bin"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="178CB7B5972C4D4187FAD1FE9EBE37E6" type="3">
+		<field_ref uuid="F36364C4706242DCB632488A94876DCE" name="UUID_PriceFlow">
+			<table_ref uuid="268D7B44B7E04126B5FD94ABC80A55E1" name="QuoteStepSet"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="17AEAFB62770A046B6DA4E9BFA85B12F" type="7">
@@ -5003,6 +5235,16 @@
 			<table_ref uuid="37B76DEC3444474BA87B456E6A1D1708" name="sfw_DocumentModel"/>
 		</field_ref>
 	</index>
+	<index kind="regular" unique_keys="true" uuid="21E4B8D0EDFA42A7BF39E3B98C015B1A" type="1">
+		<field_ref uuid="466061CA870F4CF9B365AA4AC5334C02" name="UUID">
+			<table_ref uuid="8AA89B5F727645B1AEFE9DA3B8119E29" name="PriceListItemEvent"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="223D9B590E724D75B8204A0275F6C583" type="3">
+		<field_ref uuid="C451E663F67446AAB4773737BA0FB7D2" name="UUID_Quote">
+			<table_ref uuid="DB6DBD21183E41E6B8E53764F0117095" name="QuoteRevision"/>
+		</field_ref>
+	</index>
 	<index kind="regular" unique_keys="true" uuid="226AA737B4CB0549A9303EA8D8453975" type="7">
 		<field_ref uuid="AF2E663EC28F5E4399FC4407F055FCC2" name="UUID">
 			<table_ref uuid="74CB192F1AF3134C9082ABA4683C0838" name="StepSpec"/>
@@ -5053,6 +5295,11 @@
 			<table_ref uuid="694C4B7F93874E5BA8093878C35952BF" name="Contact"/>
 		</field_ref>
 	</index>
+	<index kind="regular" uuid="2A45492BD2EA4B4E97FAB96ED9FA5F5B" type="3">
+		<field_ref uuid="E124A30D9E004FB3AEFC92D573BA2E01" name="UUID_Customer">
+			<table_ref uuid="736BAAEF087F460F815EF94018CABA5C" name="PriceListItem"/>
+		</field_ref>
+	</index>
 	<index kind="regular" uuid="2A8FF9A5455141689A96101C4A7D5338" type="3">
 		<field_ref uuid="2E2FF42359124C978D041A838CB8866E" name="UUID_User">
 			<table_ref uuid="0A7AAD6A6AAB448E9F91A0CF0CC592C6" name="sfw_SchedulerLog"/>
@@ -5086,6 +5333,11 @@
 	<index kind="regular" unique_keys="true" uuid="2D7B6B637A7640BD8CBD5B426D89C3B6" type="1">
 		<field_ref uuid="43FE3F8B2CD2432687BEB36E163BA5ED" name="UUID">
 			<table_ref uuid="326A86D8803A4EEB81BEB51B489A0B54" name="StepFileEvent"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="2E69EE01991049F083DA717865B82FFB" type="1">
+		<field_ref uuid="A465ED568CE74E728C7133D6F9419E3A" name="UUID">
+			<table_ref uuid="DB6DBD21183E41E6B8E53764F0117095" name="QuoteRevision"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="2EACFC53EE47064E9205180ED5400EB3" type="3">
@@ -5548,6 +5800,11 @@
 			<table_ref uuid="1E733AC1BDB87C40B151040C49BD164B" name="Lead"/>
 		</field_ref>
 	</index>
+	<index kind="regular" unique_keys="true" uuid="70B3D9A131D6481AB312AE1FCFBDD1BC" type="1">
+		<field_ref uuid="E9BE88DE74B34DAE8DACBDEE0DFB2AFF" name="UUID">
+			<table_ref uuid="AE03E9EA17B7426C9591FEA1D081213C" name="PriceFlow"/>
+		</field_ref>
+	</index>
 	<index kind="regular" unique_keys="true" uuid="718EB6C9BE61234BBFF4A4695D2DE4E6" type="7">
 		<field_ref uuid="99E1A49B9010EC458423F8D8D2A94E3A" name="UUID">
 			<table_ref uuid="D96F66F181815C4C8B54C0F2DB6B1B1A" name="LeadNextStep"/>
@@ -5738,6 +5995,11 @@
 			<table_ref uuid="34498A1D7FE0BD4783FE5183EE6C5BA2" name="BuyingOrder"/>
 		</field_ref>
 	</index>
+	<index kind="regular" uuid="8B78A8211E5749B490AE8C221457C908" type="3">
+		<field_ref uuid="AEB8D3EA4BF643C484BD5F1AA167F9C2" name="UUID_PriceFlow">
+			<table_ref uuid="98A20403539048D2B775AEAED975966B" name="Quote"/>
+		</field_ref>
+	</index>
 	<index kind="regular" unique_keys="true" uuid="8CE3EC1228F73545848CCADD26CD999E" type="1">
 		<field_ref uuid="03E75EA1C2D7384BB331516DE41D1D6D" name="UUID">
 			<table_ref uuid="572B912B43B47A4399AC534EE9F136C8" name="ManagementReview"/>
@@ -5821,6 +6083,11 @@
 	<index kind="regular" unique_keys="true" uuid="9143AF26E90A4CEF938F168D7BCE9078" type="1">
 		<field_ref uuid="26E185DCFBC74FF3AF6AD248B2DFF24C" name="UUID">
 			<table_ref uuid="4CA431297F2C42BE99FD232A56928CE7" name="Interaction"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="9145A1B1652943A78656E29D2CE6E3BD" type="3">
+		<field_ref uuid="81D38FDD989D403782173173F3A33733" name="UUID_User">
+			<table_ref uuid="8AA89B5F727645B1AEFE9DA3B8119E29" name="PriceListItemEvent"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="915D9714823E49FD8D8293AFA8E80869" type="3">
@@ -5978,6 +6245,11 @@
 			<table_ref uuid="F580775371C0FC479B47D767C6CA2D9F" name="CAO"/>
 		</field_ref>
 	</index>
+	<index kind="regular" unique_keys="true" uuid="A6DC8703EBB74379882B87485990B5F3" type="1">
+		<field_ref uuid="7D92DF95A5CA46BEB10155C2D4ACD187" name="UUID">
+			<table_ref uuid="268D7B44B7E04126B5FD94ABC80A55E1" name="QuoteStepSet"/>
+		</field_ref>
+	</index>
 	<index kind="regular" uuid="A763967F47AE43C1A41A368356A98D54" type="3">
 		<field_ref uuid="01F27F9F3CFC417E837112079B4D290B" name="UUID_Customer">
 			<table_ref uuid="CCC415D8C3C546D09E90E672FE1988CF" name="PurchaseOrder"/>
@@ -6066,6 +6338,11 @@
 	<index kind="regular" uuid="B283C8671BCD4663A619BCD090B34528" type="3">
 		<field_ref uuid="20E46B0594026A498992051587B7E7C8" name="UUID_Staff">
 			<table_ref uuid="CCC415D8C3C546D09E90E672FE1988CF" name="PurchaseOrder"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="B31D9E9CC7F641F39BED67313E9AE534" type="3">
+		<field_ref uuid="0E8AEC18CC38457FB61516648A003073" name="code">
+			<table_ref uuid="736BAAEF087F460F815EF94018CABA5C" name="PriceListItem"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="B34288797E2B4A2193E665AA479F5F43" type="3">
@@ -6196,6 +6473,11 @@
 	<index kind="regular" uuid="C704CEE8B90B40B8B59767FBB3B02F1F" type="3">
 		<field_ref uuid="074A82ACFBB14DBB87A9EB0A205C2324" name="UUID_Certification">
 			<table_ref uuid="7A8F1179566C46A6AB8E4B04DD19B496" name="StepTemplateCertification"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="C87C18B8B6A644929EE6A500A37C8B84" type="3">
+		<field_ref uuid="3CDD3576C6FF4B63B8753A133B2723E3" name="UUID_StepProcess">
+			<table_ref uuid="736BAAEF087F460F815EF94018CABA5C" name="PriceListItem"/>
 		</field_ref>
 	</index>
 	<index kind="regular" uuid="CB0ACD854FAC41D28B8D5CAFA97ACD43" type="3">
@@ -6503,6 +6785,11 @@
 			<table_ref uuid="742061D6375A2B43B9C36073A1C58ABA" name="CreditMemo"/>
 		</field_ref>
 	</index>
+	<index kind="regular" uuid="F633E0D191FB4336BFE5B6CC9E340808" type="3">
+		<field_ref uuid="CB10C8BB13E444B198BAD4653927EA93" name="UUID_EventType">
+			<table_ref uuid="8AA89B5F727645B1AEFE9DA3B8119E29" name="PriceListItemEvent"/>
+		</field_ref>
+	</index>
 	<index kind="regular" uuid="F7BFB38C50854AB395B5A64AE90F65D2" type="3">
 		<field_ref uuid="42D282F38A8A4A5995ABC524E70D3BDF" name="UUID_Supplier">
 			<table_ref uuid="E53D02B236D68C44A666FF404D6BE05B" name="BuyingOrderLine"/>
@@ -6516,6 +6803,11 @@
 	<index kind="regular" unique_keys="true" uuid="FBBAD51FDFD2D8439D24316E1C3E823B" type="1">
 		<field_ref uuid="E26B906EA27E6F4C82FC5EC71A3F908E" name="boNumber">
 			<table_ref uuid="34498A1D7FE0BD4783FE5183EE6C5BA2" name="BuyingOrder"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="FC81EB854F83429588133C9C3158C0F0" type="1">
+		<field_ref uuid="FB80D536430C4BEA9F526637BDB3D643" name="UUID">
+			<table_ref uuid="736BAAEF087F460F815EF94018CABA5C" name="PriceListItem"/>
 		</field_ref>
 	</index>
 	<base_extra data_file_path=":HWMHp.4DD">

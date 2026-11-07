@@ -218,6 +218,44 @@ Function loadLocation()
 	If (Form:C1466.current_item.dateOut#!00-00-00!)
 		Form:C1466.locCycleTime:=String:C10(Form:C1466.current_item.dateOut-Form:C1466.current_item.dateIn)+" day(s)"
 	End if 
+	This:C1470.loadEstimate()
+	
+Function loadEstimate()
+	// The estimated completion of the lot (ga_processTime.projectedCompletion, 24/7): on the Main
+	// page next to the commit dates, and in the footer of the Step page's steps list.
+	var $p : Object
+	var $footer : Pointer
+	
+	$p:=cs:C1710.ga_processTime.me.projectedCompletion(Form:C1466.current_item)
+	Form:C1466.estCompletion:=""
+	Form:C1466.estHoursLeft:=""
+	Form:C1466.estLate:=""
+	Case of 
+		: ($p.completed)
+			Form:C1466.estCompletion:=Form:C1466.location  // "completed", "merged", or "" for a lot without steps (loadLocation)
+		: ($p.hoursLeft=0) && ($p.withoutTime=$p.stepsLeft)
+			Form:C1466.estCompletion:="no processing times"
+			Form:C1466.estHoursLeft:=String:C10($p.stepsLeft)+" step(s) left, none with a time"
+		Else 
+			Form:C1466.estCompletion:=String:C10(Date:C102($p.date); Internal date short:K1:7)+"  "+String:C10(Time:C179($p.time); HH MM:K7:2)
+			Form:C1466.estHoursLeft:=String:C10($p.hoursLeft; "###,##0.00")+" h left of "+String:C10($p.hoursTotal; "###,##0.00")+" h"
+			If ($p.withoutTime>0)
+				Form:C1466.estHoursLeft:=Form:C1466.estHoursLeft+" ("+String:C10($p.withoutTime)+" step(s) with no time)"
+			End if 
+			If ($p.late)
+				Form:C1466.estLate:="Late: "+String:C10($p.daysLate)+" day(s) after "+String:C10(Date:C102($p.due); Internal date short:K1:7)
+			End if 
+	End case 
+	
+	$footer:=OBJECT Get pointer:C1124(Object named:K67:5; "Footer_stepsDescription")
+	If (Not:C34(Is nil pointer:C315($footer)))
+		// the total is in the P column footer: here the date and what is left
+		$footer->:="Est. completion "+Form:C1466.estCompletion+Choose:C955($p.completed || ($p.hoursLeft=0); ""; " ("+String:C10($p.hoursLeft; "###,##0.00")+" h left)")
+	End if 
+	$footer:=OBJECT Get pointer:C1124(Object named:K67:5; "Footer_stepsPlannedHours")
+	If (Not:C34(Is nil pointer:C315($footer)))
+		$footer->:=$p.hoursTotal
+	End if 
 	
 Function latePareto()->$codes : Collection
 	// the reasons a lot is late (legacy list LatePareto), for the late-shipment and long-cycle reports
@@ -827,6 +865,11 @@ Function createLotStepFromStepEntity($step_e : Object; $order : Integer; $fileRo
 		If (Num:C11($fileRow.planned_hours)>0)
 			$step_new.plannedHours:=Num:C11($fileRow.planned_hours)
 		End if 
+	End if 
+	// no planned hours from the step file: the standard time of the step / its Operation Process
+	// for the lot quantity (ga_processTime); stays 0 when none is set
+	If ($step_new.plannedHours=0) && (OB Instance of:C1731($step_e; 4D:C1709.Entity))
+		$step_new.plannedHours:=cs:C1710.ga_processTime.me.plannedHoursFor($step_e; cs:C1710.ga_processTime.me.lotQty(Form:C1466.current_item))
 	End if 
 	$step_new.properties:=cs:C1710.ga_serialization.me.normalizedProperties($step_e.stepProperties)  // "enabled" = the definition's "enable"
 	cs:C1710.ga_serialization.me.syncStep(Form:C1466.current_item; $step_new)  // an SN step (SNA / SNF) gets the lot's active units
