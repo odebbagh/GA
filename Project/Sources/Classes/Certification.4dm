@@ -21,6 +21,8 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	$entry.setLBItemsOrderBy("ref")
 	
+	$entry.setValidationRule("name"; "entryField_name"; "mandatory"; "trimSpace"; "message:The name is mandatory")
+	
 	$entry.enableTransaction()
 	
 	// Purpose: Only qs, qm, dc may create or edit certification types (aligned with staff cert management).

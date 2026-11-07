@@ -48,6 +48,22 @@
 			"displayable_fields_count": 6,
 			"fields_ordering": 1
 		},
+		"QcarOrigin": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 40,
+				"top": 3004,
+				"width": 120,
+				"height": 167.33203125
+			},
+			"displayable_fields_count": 6,
+			"fields_ordering": 1
+		},
 		"ObjectiveEvidence": {
 			"color": {
 				"red": 255,
@@ -292,7 +308,7 @@
 				"left": 643,
 				"top": 584,
 				"width": 228,
-				"height": 647.33203125
+				"height": 643.33203125
 			},
 			"displayable_fields_count": 28
 		},
@@ -336,12 +352,12 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 1859.8022460938,
-				"top": 2555.4797363281,
-				"width": 149.05078125,
-				"height": 448.33203125
+				"left": 2022.4692382812,
+				"top": 555.47967529297,
+				"width": 152.05078125,
+				"height": 424.33209228516
 			},
-			"displayable_fields_count": 19,
+			"displayable_fields_count": 18,
 			"fields": {
 				"shift": {
 					"position": 17
@@ -406,10 +422,10 @@
 			"coordinates": {
 				"left": 1771.3334960938,
 				"top": 597.66674804688,
-				"width": 194,
-				"height": 222.33203125
+				"width": 196,
+				"height": 189.33203125
 			},
-			"displayable_fields_count": 8
+			"displayable_fields_count": 7
 		},
 		"QuoteStatus": {
 			"color": {
@@ -591,8 +607,8 @@
 				"alpha": 255
 			},
 			"coordinates": {
-				"left": 1933.3332519531,
-				"top": 3124,
+				"left": 633.33325195312,
+				"top": 1251.9998779297,
 				"width": 219.052734375,
 				"height": 889.33215332031
 			},
@@ -1512,18 +1528,19 @@
 		},
 		"OperationType": {
 			"color": {
-				"red": 181,
-				"green": 145,
-				"blue": 209,
-				"alpha": 255
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
 			},
 			"coordinates": {
-				"left": 3270.3332519531,
-				"top": 1228.3332519531,
+				"left": 640,
+				"top": 40,
 				"width": 120,
 				"height": 167.33203125
 			},
-			"displayable_fields_count": 6
+			"displayable_fields_count": 6,
+			"fields_ordering": 1
 		},
 		"StepSpecification": {
 			"color": {

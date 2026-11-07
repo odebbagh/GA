@@ -5,12 +5,25 @@ Case of
 		var $barcodeType : Text
 		var $parameters : Object:=New object:C1471()
 		
+		var $staffUUID; $barcodeData : Text
+		var $staff_e : cs:C1710.StaffEntity
+		
+		$staffUUID:=String:C10([Staff:135]UUID:1)
+		$staff_e:=ds:C1482.Staff.get($staffUUID)
+		$barcodeData:=""
+		If ($staff_e#Null:C1517) && ($staff_e.moreData#Null:C1517)
+			$barcodeData:=String:C10($staff_e.moreData.barcodeData)
+		End if 
+		If ($barcodeData="")
+			$barcodeData:=[Staff:135]code:10
+		End if 
+		
 		//MARK: employee information
 		Form:C1466.employee:=New object:C1471(\
 			"firstName"; [Staff:135]firstName:4; \
 			"lastName"; [Staff:135]lastName:5; \
 			"code"; [Staff:135]code:10; \
-			"barcodeData"; [Staff:135]moreData:11.barcodeData\
+			"barcodeData"; $barcodeData\
 			)
 		
 		
@@ -22,15 +35,20 @@ Case of
 		
 		$textSpacing:=10
 		
-		$assignments:=ds:C1482.CertificationAssignment.query("UUID_Staff = :1"; [Staff:135]UUID:1)
+		If ($staff_e=Null:C1517)
+			$assignments:=ds:C1482.CertificationAssignment.newSelection()
+		Else 
+			$assignments:=$staff_e.assignments
+		End if 
 		
 		$BlankLines:=20-$assignments.length
 		
 		For each ($assignment; $assignments)
-			SVG_New_textArea($svg; $assignment.certification.name; $h_pos; $v_pos; 130; 12; "Arial"; 9; Bold:K14:2; Align left:K42:2)
-			SVG_New_textArea($svg; String:C10(cs:C1710.sfw_stmp.me.getDate($assignment.certificationDate); Internal date short:K1:7); $h_pos+130; $v_pos; 45; 12; "Arial"; 9; Bold:K14:2; Align right:K42:4)
-			
-			$v_pos:=$v_pos+$textSpacing
+			If ($assignment.certification#Null:C1517)
+				SVG_New_textArea($svg; $assignment.certification.name; $h_pos; $v_pos; 130; 12; "Arial"; 9; Bold:K14:2; Align left:K42:2)
+				SVG_New_textArea($svg; String:C10($assignment.certificationDate; Internal date short:K1:7); $h_pos+130; $v_pos; 45; 12; "Arial"; 9; Bold:K14:2; Align right:K42:4)
+				$v_pos:=$v_pos+$textSpacing
+			End if 
 		End for each 
 		
 		Case of 

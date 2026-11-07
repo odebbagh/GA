@@ -2,9 +2,9 @@
 
 // Purpose: Import Reject_Criteria hierarchical list from Sources/lists.json into RejectCriteriaCategory and RejectCriteriaItem tables.
 // Parameters: none
-// Returns: nothing (populates tables; traces on save failure)
+// Returns: nothing (populates tables; alerts on save failure)
 // created by 4D/PS [2026-may-19]
-TRACE:C157
+// modified by 4D/PS [2026-oct-02] resolve lists.json path; init moreData; reload caches
 var $listsFile : 4D:C1709.File
 var $listDef; $rejectList : Object
 var $rootItem; $childItem : Object
@@ -17,7 +17,16 @@ var $colorIndex : Integer
 
 $colors:=New collection:C1472("#3CB371"; "#FFFF00"; "#FF7F50"; "#1E90FF"; "#FF0000"; "#32CD32"; "#808080")
 
-$listsFile:=Folder:C1567(fk database folder:K87:14).folder("Project/Sources").file("lists.json")
+$listsFile:=File:C1566("/SOURCES/lists.json")
+If ($listsFile=Null:C1517) || (Not:C34($listsFile.exists))
+	$listsFile:=Folder:C1567(fk database folder:K87:14).folder("Sources").file("lists.json")
+End if 
+If (Not:C34($listsFile.exists))
+	$listsFile:=Folder:C1567(fk database folder:K87:14).folder("Project/Sources").file("lists.json")
+End if 
+If (Not:C34($listsFile.exists))
+	$listsFile:=Folder:C1567(fk resources folder:K87:11).parent.folder("Project/Sources").file("lists.json")
+End if 
 If (Not:C34($listsFile.exists))
 	ALERT:C41("lists.json not found: "+$listsFile.path)
 	return 
@@ -37,23 +46,8 @@ If ($rootItems=Null:C1517)
 End if 
 
 // Items first (FK), then categories
-var $allItems : cs:C1710.RejectCriteriaItemSelection:=ds:C1482.RejectCriteriaItem.all()
-If ($allItems.length>0)
-	TRUNCATE TABLE:C1051([RejectCriteriaItem:147])
-	//$info:=$allItems.drop()
-	//If (Not($info.success))
-	//TRACE
-	//End if 
-End if 
-
-var $allCategories : cs:C1710.RejectCriteriaCategorySelection:=ds:C1482.RejectCriteriaCategory.all()
-If ($allCategories.length>0)
-	TRUNCATE TABLE:C1051([RejectCriteriaCategory:146])
-	//$info:=$allCategories.drop()
-	//If (Not($info.success))
-	//TRACE
-	//End if 
-End if 
+TRUNCATE TABLE:C1051([RejectCriteriaItem:147])
+TRUNCATE TABLE:C1051([RejectCriteriaCategory:146])
 
 $categoryLevelID:=1
 $itemLevelID:=1
@@ -71,42 +65,48 @@ For each ($rootItem; $rootItems)
 		$eCategory.levelID:=$categoryLevelID
 		$eCategory.name:=$rootItem.text
 		$eCategory.color:=$colors[$colorIndex%$colors.length]
+		$eCategory.moreData:=New object:C1471("barcodeData"; "")
 		$colorIndex:=$colorIndex+1
 		
 		$info:=$eCategory.save()
 		If (Not:C34($info.success))
-			TRACE:C157
-		Else 
-			$categoryLevelID:=$categoryLevelID+1
-			$categoryCount:=$categoryCount+1
-			
-			If ($rootItem.subTree#Null:C1517)
-				$childItems:=$rootItem.subTree.items
-				If ($childItems#Null:C1517)
-					For each ($childItem; $childItems)
-						If (Value type:C1509($childItem.text)=Is text:K8:3) && ($childItem.text#"")
-							$eItem:=ds:C1482.RejectCriteriaItem.new()
-							$eItem.UUID_RejectCriteriaCategory:=$eCategory.UUID
-							$eItem.levelID:=$itemLevelID
-							$eItem.name:=$childItem.text
-							$eItem.color:=$colors[$colorIndex%$colors.length]
-							$colorIndex:=$colorIndex+1
-							$info:=$eItem.save()
-							If (Not:C34($info.success))
-								TRACE:C157
-							Else 
-								$itemLevelID:=$itemLevelID+1
-								$itemCount:=$itemCount+1
-							End if 
+			ALERT:C41("RejectCriteriaCategory save failed for \""+$rootItem.text+"\": "+JSON Stringify:C1217($info))
+			return 
+		End if 
+		
+		$categoryLevelID:=$categoryLevelID+1
+		$categoryCount:=$categoryCount+1
+		
+		If ($rootItem.subTree#Null:C1517)
+			$childItems:=$rootItem.subTree.items
+			If ($childItems#Null:C1517)
+				For each ($childItem; $childItems)
+					If (Value type:C1509($childItem.text)=Is text:K8:3) && ($childItem.text#"")
+						$eItem:=ds:C1482.RejectCriteriaItem.new()
+						$eItem.UUID_RejectCriteriaCategory:=$eCategory.UUID
+						$eItem.levelID:=$itemLevelID
+						$eItem.name:=$childItem.text
+						$eItem.color:=$colors[$colorIndex%$colors.length]
+						$eItem.moreData:=New object:C1471("barcodeData"; "")
+						$colorIndex:=$colorIndex+1
+						$info:=$eItem.save()
+						If (Not:C34($info.success))
+							ALERT:C41("RejectCriteriaItem save failed for \""+$childItem.text+"\": "+JSON Stringify:C1217($info))
+							return 
 						End if 
-					End for each 
-				End if 
+						$itemLevelID:=$itemLevelID+1
+						$itemCount:=$itemCount+1
+					End if 
+				End for each 
 			End if 
-			
 		End if 
 		
 	End if 
 	
 End for each 
-TRACE:C157
-//ALERT("Reject criteria import done: "+String($categoryCount)+" categories, "+String($itemCount)+" items.")
+
+ds:C1482.RejectCriteriaCategory.cacheClear()
+ds:C1482.RejectCriteriaItem.cacheLoad()
+ds:C1482.RejectCriteriaCategory.cacheLoad()
+
+ALERT:C41("Reject criteria import done: "+String:C10($categoryCount)+" categories, "+String:C10($itemCount)+" items.")

@@ -189,6 +189,27 @@
 					"height": 16,
 					"fontWeight": "bold"
 				},
+				"btnForward1": {
+					"type": "button",
+					"text": " ",
+					"top": 234,
+					"left": 312,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/forward-16x16.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnForward1.4dm",
+					"visibility": "visible",
+					"iconFrames": 4,
+					"focusable": false
+				},
 				"pup_enteredBy": {
 					"type": "button",
 					"top": 232,

@@ -96,6 +96,7 @@ Case of
 			: ($choose="--delete")
 				Form:C1466.communications.remove(Form:C1466.communicationMeanPosition-1)
 				$rebuildDisplayedLB:=True:C214
+				CALL SUBFORM CONTAINER:C1086(-2000)
 				CALL FORM:C1391(Current form window:C827; "sfw_main_draw_button")
 			: ($choose="--add")
 				
@@ -107,6 +108,7 @@ Case of
 				
 				If (OK=1)
 					Form:C1466.communications.push($form.com)
+					CALL SUBFORM CONTAINER:C1086(-2000)
 				End if 
 				
 				$rebuildDisplayedLB:=True:C214
@@ -124,6 +126,7 @@ Case of
 					
 					If (OK=1)
 						Form:C1466.communications[Form:C1466.communicationMeanPosition-1]:=$form.com
+						CALL SUBFORM CONTAINER:C1086(-2000)
 					End if 
 					
 					$rebuildDisplayedLB:=True:C214

@@ -23,7 +23,6 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	$entry.setLBItemsOrderBy("levelID")
 	
-	$entry.setValidationRule("levelID"; "entryField_levelID"; "mandatory"; "trimSpace")
 	$entry.setValidationRule("name"; "entryField_name"; "mandatory"; "trimSpace")
 	$entry.setValidationRule("UUID_RejectCriteriaCategory"; "pup_category"; "mandatory")
 	
@@ -47,12 +46,10 @@ local Function cacheLoad()
 			Storage:C1525.cache:=New shared object:C1526
 		End use 
 	End if 
-	If (Storage:C1525.cache.rejectCriteriaItem=Null:C1517)
-		$coll:=This:C1470._loadAsCollection()
-		Use (Storage:C1525.cache)
-			Storage:C1525.cache.rejectCriteriaItem:=$coll.copy(ck shared:K85:29; Storage:C1525.cache)
-		End use 
-	End if 
+	$coll:=This:C1470._loadAsCollection()
+	Use (Storage:C1525.cache)
+		Storage:C1525.cache.rejectCriteriaItem:=$coll.copy(ck shared:K85:29; Storage:C1525.cache)
+	End use 
 	
 	
 	// Purpose: Align collection projection with levelID, name, color (reference-table pattern).

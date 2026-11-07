@@ -1641,6 +1641,7 @@
 	<table name="OperationType" uuid="44171EE7F4AE430D93BED2AC5B4BE561" id="104">
 		<field name="UUID" uuid="5496DE6317F14964A68D05F40DD4AF65" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
 		<field name="name" uuid="EEE476DE9FAC40C58DCDBE8D52313A5D" type="10" limiting_length="255" never_null="true" id="2"/>
+		  <field id="3" blob_switch_size="2147483647" name="moreData" never_null="true" type="21" uuid="6600A417DF3740ECBBB05243AD046431"/>
 		<primary_key field_name="UUID" field_uuid="5496DE6317F14964A68D05F40DD4AF65"/>
 	</table>
 	<table name="BOStatus" uuid="A89A73F18465481CAFC3A5485767D2E6" id="105">
@@ -2225,6 +2226,8 @@
 		<field name="closedStmp" uuid="2395A06581078341A84621D83B30DE97" type="4" never_null="true" id="25"/>
 		<field name="verified" uuid="B5317F2936DAA84688754D5AD27F203A" type="1" never_null="true" id="26"/>
 		<field name="UUID_RejectCriteriaItem" uuid="F64A68E38C5643ECA0C256E94972CCEE" type="10" store_as_UUID="true" never_null="true" id="27"/>
+		  <field id="28" name="otherOriginChecked" never_null="true" type="1" uuid="A6C2D3E4F5A64789B0C1D2E3F4A5B6F1"/>
+		  <field id="29" name="UUID_QcarOrigin" never_null="true" store_as_UUID="true" type="10" uuid="A7C2D3E4F5A64789B0C1D2E3F4A5B6F2"/>
 		<primary_key field_name="UUID" field_uuid="129BD267EFE06D4EBCF1E64FCE762186"/>
 	</table>
 	<table name="Audit" uuid="25AD36FD239C0D479D63ECB2CFAEAA6D" id="139">
@@ -2408,7 +2411,7 @@
 		</field>
 		<primary_key field_name="UUID" field_uuid="CA172B57886B485CAA341D4850024A18"/>
 	</table>
-	<table name="QuoteRevision" uuid="DB6DBD21183E41E6B8E53764F0117095" id="203">
+	<table name="QuoteRevision" uuid="DB6DBD21183E41E6B8E53764F0117095" id="208">
 		<field name="UUID" uuid="A465ED568CE74E728C7133D6F9419E3A" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1">
 			<field_extra multi_line="false"/>
 		</field>
@@ -2484,6 +2487,35 @@
 		<field name="UUID_PriceFlow" uuid="F36364C4706242DCB632488A94876DCE" type="10" store_as_UUID="true" never_null="true" id="7"/>
 		<field name="moreData" uuid="4E696E2CEC334C4499CC4B1627DEA732" type="21" blob_switch_size="2147483647" never_null="true" id="8"/>
 		<primary_key field_name="UUID" field_uuid="7D92DF95A5CA46BEB10155C2D4ACD187"/>
+	</table>
+	<table id="150" name="QcarOrigin" uuid="A3C2D3E4F5A64789B0C1D2E3F4A5B6E7">
+		  <field autogenerate="true" id="1" name="UUID" not_null="true" store_as_UUID="true" type="10" unique="true" uuid="B3C2D3E4F5A64789B0C1D2E3F4A5B6E8"/>
+		  <field id="2" name="levelID" never_null="true" type="3" unique="true" uuid="C3C2D3E4F5A64789B0C1D2E3F4A5B6E9"/>
+		  <field id="3" limiting_length="255" name="name" never_null="true" type="10" uuid="D3C2D3E4F5A64789B0C1D2E3F4A5B6EA"/>
+		  <field id="4" name="usesTraveler" never_null="true" type="1" uuid="E3C2D3E4F5A64789B0C1D2E3F4A5B6EB"/>
+		  <field blob_switch_size="2147483647" id="5" name="moreData" never_null="true" type="21" uuid="F3C2D3E4F5A64789B0C1D2E3F4A5B6EC"/>
+		  <primary_key field_name="UUID" field_uuid="B3C2D3E4F5A64789B0C1D2E3F4A5B6E8"/>
+	</table>
+	<table id="203" name="StaffEvent" uuid="9FB9EC8EBD2C4F25AAE0350599F64F37">
+		  <field autogenerate="true" id="1" name="UUID" not_null="true" store_as_UUID="true" type="10" unique="true" uuid="52E291E7D0204E1DB0A4C57EAB2A85CD">
+			  <field_extra multi_line="false"/>
+		</field>
+		  <field id="2" name="UUID_Staff" never_null="true" store_as_UUID="true" type="10" uuid="6222CF3F53FF461A93F82116163042CE">
+			  <field_extra multi_line="false"/>
+		</field>
+		  <field id="3" name="UUID_EventType" never_null="true" store_as_UUID="true" type="10" uuid="FA63D41A53FE41F39FEAF724E7190D51">
+			  <field_extra multi_line="false"/>
+		</field>
+		  <field id="4" name="UUID_User" never_null="true" store_as_UUID="true" type="10" uuid="345119FDE35D4D3E848478E30A387730">
+			  <field_extra multi_line="false"/>
+		</field>
+		  <field id="5" name="stmp" never_null="true" type="4" uuid="222F19578E1943FAABC196497EFB4A08">
+			  <field_extra multi_line="false"/>
+		</field>
+		  <field blob_switch_size="2147483647" id="6" name="moreData" never_null="true" type="21" uuid="2D0EA82742BE4F7D9BE5D601FE61F2E2">
+			  <field_extra multi_line="false"/>
+		</field>
+		  <primary_key field_name="UUID" field_uuid="52E291E7D0204E1DB0A4C57EAB2A85CD"/>
 	</table>
 	<relation uuid="A9C3959D3F61438F9AF40346E0578D34" name_Nto1="priceFlow" name_1toN="quoteStepSets" state="1">
 		<related_field kind="source">
@@ -4945,6 +4977,54 @@
 			</field_ref>
 		</related_field>
 	</relation>
+	<relation name_1toN="staffEvents" name_Nto1="user" state="1" uuid="097E97DA2BC94D3DB994C3917F54ADB5">
+		  <related_field kind="source">
+			  <field_ref name="UUID_User" uuid="345119FDE35D4D3E848478E30A387730">
+				    <table_ref name="StaffEvent" uuid="9FB9EC8EBD2C4F25AAE0350599F64F37"/>
+			</field_ref>
+		</related_field>
+		  <related_field kind="destination">
+			  <field_ref name="UUID" uuid="34E9F9D48BE14DCD95127852F83BF1FB">
+				    <table_ref name="sfw_User" uuid="2C75E07E18FC4733A8C98A0B31D40656"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation name_1toN="staffEvents" name_Nto1="eventType" state="1" uuid="5062FD0F48D24480B34ADE6EEEC65988">
+		  <related_field kind="source">
+			  <field_ref name="UUID_EventType" uuid="FA63D41A53FE41F39FEAF724E7190D51">
+				    <table_ref name="StaffEvent" uuid="9FB9EC8EBD2C4F25AAE0350599F64F37"/>
+			</field_ref>
+		</related_field>
+		  <related_field kind="destination">
+			  <field_ref name="UUID" uuid="AEE9BE0296924CA7899B7E5DB37ACE13">
+				    <table_ref name="sfw_EventType" uuid="C482A0FBAE724304A8E05A0570FD55D6"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation name_1toN="staffEvents" name_Nto1="staff" state="1" uuid="9A8AD4E584424B358466E77BFC411448">
+		  <related_field kind="source">
+			  <field_ref name="UUID_Staff" uuid="6222CF3F53FF461A93F82116163042CE">
+				    <table_ref name="StaffEvent" uuid="9FB9EC8EBD2C4F25AAE0350599F64F37"/>
+			</field_ref>
+		</related_field>
+		  <related_field kind="destination">
+			  <field_ref name="UUID" uuid="6941AB4C41898A4A9FBF25D5AC27CA2B">
+				    <table_ref name="Staff" uuid="FD10D10C9E0015458AFF59F988A373BB"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation name_1toN="qcarsByOrigin" name_Nto1="qcarOrigin" state="1" uuid="A8C2D3E4F5A64789B0C1D2E3F4A5B6F3">
+		  <related_field kind="source">
+			  <field_ref name="UUID_QcarOrigin" uuid="A7C2D3E4F5A64789B0C1D2E3F4A5B6F2">
+				    <table_ref name="Qcar" uuid="446AB1ED27F3664C9C9747DD14114EF2"/>
+			</field_ref>
+		</related_field>
+		  <related_field kind="destination">
+			  <field_ref name="UUID" uuid="B3C2D3E4F5A64789B0C1D2E3F4A5B6E8">
+				    <table_ref name="QcarOrigin" uuid="A3C2D3E4F5A64789B0C1D2E3F4A5B6E7"/>
+			</field_ref>
+		</related_field>
+	</relation>
 	<index kind="regular" uuid="005E48A922A4464DB92973931B467ACF" type="3">
 		<field_ref uuid="17F71D68FA714CE9A75ED79CA63E3BE2" name="UUID_Lead">
 			<table_ref uuid="4CA431297F2C42BE99FD232A56928CE7" name="Interaction"/>
@@ -6808,6 +6888,41 @@
 	<index kind="regular" unique_keys="true" uuid="FC81EB854F83429588133C9C3158C0F0" type="1">
 		<field_ref uuid="FB80D536430C4BEA9F526637BDB3D643" name="UUID">
 			<table_ref uuid="736BAAEF087F460F815EF94018CABA5C" name="PriceListItem"/>
+		</field_ref>
+	</index>
+	<index kind="regular" type="3" uuid="4CDF03620CC6495EAD78947503E3CF43">
+		  <field_ref name="UUID_Staff" uuid="6222CF3F53FF461A93F82116163042CE">
+			  <table_ref name="StaffEvent" uuid="9FB9EC8EBD2C4F25AAE0350599F64F37"/>
+		</field_ref>
+	</index>
+	<index kind="regular" type="1" unique_keys="true" uuid="51CBE37D511A4B20910557DC3CD830ED">
+		  <field_ref name="UUID" uuid="52E291E7D0204E1DB0A4C57EAB2A85CD">
+			  <table_ref name="StaffEvent" uuid="9FB9EC8EBD2C4F25AAE0350599F64F37"/>
+		</field_ref>
+	</index>
+	<index kind="regular" type="3" uuid="7C201C5E46D54BB493B2F396D5652C46">
+		  <field_ref name="UUID_EventType" uuid="FA63D41A53FE41F39FEAF724E7190D51">
+			  <table_ref name="StaffEvent" uuid="9FB9EC8EBD2C4F25AAE0350599F64F37"/>
+		</field_ref>
+	</index>
+	<index kind="regular" type="3" uuid="A791FC55012B4FB7A5F72A294CF24E6B">
+		  <field_ref name="UUID_User" uuid="345119FDE35D4D3E848478E30A387730">
+			  <table_ref name="StaffEvent" uuid="9FB9EC8EBD2C4F25AAE0350599F64F37"/>
+		</field_ref>
+	</index>
+	<index kind="regular" type="3" uuid="A9C2D3E4F5A64789B0C1D2E3F4A5B6F4">
+		  <field_ref name="UUID_QcarOrigin" uuid="A7C2D3E4F5A64789B0C1D2E3F4A5B6F2">
+			  <table_ref name="Qcar" uuid="446AB1ED27F3664C9C9747DD14114EF2"/>
+		</field_ref>
+	</index>
+	<index kind="regular" type="1" unique_keys="true" uuid="AAC2D3E4F5A64789B0C1D2E3F4A5B6F5">
+		  <field_ref name="levelID" uuid="C3C2D3E4F5A64789B0C1D2E3F4A5B6E9">
+			  <table_ref name="QcarOrigin" uuid="A3C2D3E4F5A64789B0C1D2E3F4A5B6E7"/>
+		</field_ref>
+	</index>
+	<index kind="regular" type="1" unique_keys="true" uuid="ABC2D3E4F5A64789B0C1D2E3F4A5B6F6">
+		  <field_ref name="UUID" uuid="B3C2D3E4F5A64789B0C1D2E3F4A5B6E8">
+			  <table_ref name="QcarOrigin" uuid="A3C2D3E4F5A64789B0C1D2E3F4A5B6E7"/>
 		</field_ref>
 	</index>
 	<base_extra data_file_path=":HWMHp.4DD">

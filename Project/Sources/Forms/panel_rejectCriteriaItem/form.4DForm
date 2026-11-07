@@ -70,7 +70,7 @@
 					"width": 90,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Level"
+					"text": "ID"
 				},
 				"Field_levelID": {
 					"type": "input",

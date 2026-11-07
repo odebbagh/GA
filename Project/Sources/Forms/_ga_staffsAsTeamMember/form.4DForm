@@ -140,12 +140,12 @@
 					"events": [
 						"onClick"
 					],
-					"action": "",
+					"action": "accept",
 					"shortcutAccel": false,
 					"shortcutControl": false,
 					"shortcutShift": false,
 					"shortcutAlt": false,
-					"shortcutKey": "[Return]",
+					"shortcutKey": "",
 					"sizingX": "move",
 					"method": "ObjectMethods/bOk.4dm"
 				},
@@ -188,7 +188,12 @@
 					"dataSource": "Form:C1466.words",
 					"hideFocusRing": true,
 					"method": "ObjectMethods/word.4dm",
+					"multiline": "no",
+					"sizingY": "fixed",
+					"dragging": "none",
 					"events": [
+						"onLoad",
+						"onBeforeKeystroke",
 						"onDataChange",
 						"onAfterKeystroke",
 						"onAfterEdit"
@@ -199,7 +204,7 @@
 			}
 		}
 	],
-	"geometryStamp": 19,
+	"geometryStamp": 20,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

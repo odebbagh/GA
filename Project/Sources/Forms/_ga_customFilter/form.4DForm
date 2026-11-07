@@ -1,0 +1,120 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 325,
+					"height": 507,
+					"stroke": "#FFFFFF",
+					"fill": "#FFFFFF"
+				}
+			}
+		},
+		{
+			"objects": {
+				"List Box": {
+					"type": "listbox",
+					"left": 0,
+					"top": 0,
+					"width": 325,
+					"height": 463,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"borderStyle": "none",
+					"verticalLineStroke": "transparent",
+					"horizontalLineStroke": "#DFDFDF",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "automatic",
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.lb_data",
+					"currentItemSource": "Form:C1466.selected",
+					"currentItemPositionSource": "Form:C1466.selectedPos",
+					"selectionMode": "single",
+					"method": "ObjectMethods/List Box.4dm",
+					"showHeaders": false,
+					"columns": [
+						{
+							"header": {
+								"text": "",
+								"name": "Header1",
+								"dataSource": "Form:C1466.title"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer1"
+							},
+							"width": 304,
+							"dataSource": "This:C1470.value"
+						}
+					]
+				},
+				"bCancel": {
+					"type": "button",
+					"top": 469,
+					"left": 293,
+					"width": 32,
+					"height": 32,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "",
+					"icon": "/RESOURCES/sfw/image/skin/rainbow/btn4states/delete-24x24.png",
+					"iconFrames": 4,
+					"textPlacement": "center",
+					"style": "custom",
+					"events": [
+						"onClick"
+					],
+					"action": "cancel",
+					"method": "ObjectMethods/bCancel.4dm"
+				}
+			}
+		}
+	],
+	"geometryStamp": 26,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

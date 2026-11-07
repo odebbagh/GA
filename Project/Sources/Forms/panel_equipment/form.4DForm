@@ -83,7 +83,7 @@
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
-						"onLosingFocus",
+						"onAfterEdit",
 						"onDataChange"
 					],
 					"fill": "transparent",
@@ -516,7 +516,7 @@
 					"borderStyle": "none",
 					"fontWeight": "normal",
 					"textAlign": "left",
-					"dataSourceTypeHint": "text",
+					"dataSourceTypeHint": "integer",
 					"method": "ObjectMethods/entryField_calInterval.4dm"
 				},
 				"entryField_calTech": {
@@ -578,7 +578,7 @@
 					"borderStyle": "none",
 					"fontWeight": "normal",
 					"textAlign": "left",
-					"dataSourceTypeHint": "date",
+					"dataSourceTypeHint": "integer",
 					"method": "ObjectMethods/entryField_pmInterval.4dm"
 				},
 				"entryField_pmTech": {
@@ -779,7 +779,8 @@
 					],
 					"dataSource": "Form:C1466.current_item.pmNotRequired",
 					"fontWeight": "normal",
-					"dataSourceTypeHint": "boolean"
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/entryField_pmNotRequired.4dm"
 				},
 				"entryField_statusHistory": {
 					"type": "input",

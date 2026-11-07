@@ -13,6 +13,11 @@ Function formMethod()
 		// modified by 4D/PS [2026-may-21]
 		Form:C1466.shift1:=(Form:C1466.current_item.shift="1")
 		This:C1470.loadAllTabs()
+		// Purpose: Events panel String() crashes on object old/new; rewrite those StaffEvent rows first.
+		// modified by 4D/PS [2026-october-06]
+		If (Form:C1466.current_item#Null:C1517)
+			Form:C1466.current_item._staffSanitizeEventModifiedFields()
+		End if
 	End if 
 	If (Form:C1466.sfw.recalculationOfPanelPageNeeded())  //a page is displayed so it's time to load the sources of data to display
 		ds:C1482.Staff.checkRetraining(30)
@@ -29,15 +34,19 @@ Function formMethod()
 	If (Form:C1466.sfw.redrawAndSetVisibleInPanelNeeded())  //It's time to resize the object or set visible
 		This:C1470.redrawAndSetVisible()
 	End if 
+	cs:C1710.Util.me.lockDateInputs() 
 	
 	
 Function redrawAndSetVisible()
 	//Adjusts the layout and visibility of form elements based on the current page and modification state
+	var $inModification : Boolean
 	
-	OBJECT SET VISIBLE:C603(*; "dp_terminationDate"; Form:C1466.sfw.checkIsInModification())
-	OBJECT SET VISIBLE:C603(*; "dp_retrainDate"; Form:C1466.sfw.checkIsInModification())
-	OBJECT SET VISIBLE:C603(*; "dp_hireDate"; Form:C1466.sfw.checkIsInModification())
-	OBJECT SET VISIBLE:C603(*; "dp_creationDate"; Form:C1466.sfw.checkIsInModification())
+	$inModification:=Form:C1466.sfw.checkIsInModification()
+	OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; $inModification)
+	// Purpose: Radio buttons stay clickable unless disabled; Shift must follow modification mode.
+	// modified by 4D/PS [2026-october-09]
+	OBJECT SET ENABLED:C1123(*; "entryField_shift@"; $inModification)
+	cs:C1710.Util.me.lockDateInputs()
 	
 	//This.hideDatePickers()
 	This:C1470.drawPup_citizenshipStatus()
@@ -64,6 +73,9 @@ Function redrawAndSetVisible()
 			OBJECT SET COORDINATES:C1248(*; "lb_assignments"; $left_lb; $top_lb; $right_lb; $heightSubform-$offset-1)
 			OBJECT SET COORDINATES:C1248(*; "bActionCertifications"; $left_bAc; $heightSubform-$offset_bAc-$height_bAc; $right_bAc; $heightSubform-$offset_bAc)
 			This:C1470._configureCertAssignmentColumns()
+			
+		: (FORM Get current page:C276(*)=3)
+			This:C1470.userSetting()
 	End case 
 	
 	//Form.sfw.drawHTab()
@@ -71,22 +83,307 @@ Function redrawAndSetVisible()
 	
 Function loadAllTabs()
 	// Apr 22, 2026 4DFix: loadCommunications() was missing — communications could be stale when switching records while staying on tab 1
+	If (Form:C1466.current_item=Null:C1517)
+		This:C1470.clearPendingCertifications()
+	Else 
+		If (String:C10(Form:C1466.pendingCertStaffUUID)#Form:C1466.current_item.UUID)
+			This:C1470.clearPendingCertifications()
+			Form:C1466.pendingCertStaffUUID:=Form:C1466.current_item.UUID
+		End if 
+	End if 
 	This:C1470.loadCommunications()
 	This:C1470.loadCertifications()
 	
+	
+Function clearPendingCertifications()
+	This:C1470._replacePendingCertActions(New collection:C1472) 
+	
+	
+Function discardPendingCertifications()
+	This:C1470.clearPendingCertifications()
+	If (Form:C1466.current_item#Null:C1517)
+		Form:C1466.pendingCertStaffUUID:=Form:C1466.current_item.UUID
+	End if 
+	If (Form:C1466.subForm#Null:C1517)
+		Form:C1466.subForm.pendingCertStaffUUID:=Form:C1466.pendingCertStaffUUID
+	End if 
+	
+	
+	// Purpose: Same pending collection from the panel subform and from StaffEntity (parent Form).
+	// created by 4D/PS [2026-october-06]
+	// modified by 4D/PS [2026-october-09]
+Function _pendingCertActions()->$actions : Collection
+	var $candidates; $candidate : Collection
+	
+	$candidates:=New collection:C1472
+	If (Form:C1466.sfw#Null:C1517) && (Form:C1466.sfw.staffPendingCertActions#Null:C1517)
+		$candidates.push(Form:C1466.sfw.staffPendingCertActions)
+	End if 
+	If (Form:C1466.pendingCertActions#Null:C1517)
+		$candidates.push(Form:C1466.pendingCertActions)
+	End if 
+	If (Form:C1466.subForm#Null:C1517)
+		If (Form:C1466.subForm.pendingCertActions#Null:C1517)
+			$candidates.push(Form:C1466.subForm.pendingCertActions)
+		End if 
+		If (Form:C1466.subForm.sfw#Null:C1517) && (Form:C1466.subForm.sfw.staffPendingCertActions#Null:C1517)
+			$candidates.push(Form:C1466.subForm.sfw.staffPendingCertActions)
+		End if 
+	End if 
+	$actions:=Null:C1517
+	For each ($candidate; $candidates)
+		If ($candidate.length>0)
+			$actions:=$candidate
+			break
+		End if 
+	End for each 
+	If ($actions=Null:C1517)
+		If ($candidates.length>0)
+			$actions:=$candidates[0]
+		Else 
+			$actions:=New collection:C1472
+		End if 
+	End if 
+	This:C1470._bindPendingCertActions($actions)
+	
+	
+Function _removePendingToggleActions($uuid : Text)
+	var $kept : Collection
+	var $op : Object
+	
+	$kept:=New collection:C1472
+	For each ($op; This:C1470._pendingCertActions())
+		Case of 
+			: (String:C10($op.uuid)#$uuid)
+				$kept.push($op)
+			: (String:C10($op.action)="create") && (Bool:C1537($op.renew))
+				$kept.push($op)
+			: (String:C10($op.action)#"create") && (String:C10($op.action)#"delete")
+				$kept.push($op)
+		End case 
+	End for each 
+	This:C1470._replacePendingCertActions($kept)
+	
+	
+	// Purpose: Keep the cert queue on panel Form, parent Form.subForm, and Form.sfw as one collection.
+	// created by 4D/PS [2026-october-06]
+	// modified by 4D/PS [2026-october-09]
+Function _replacePendingCertActions($actions : Collection)
+	This:C1470._bindPendingCertActions($actions)
+	
+	
+	// Purpose: Parent sfw and panel sfw are different instances; bind the same collection on every copy.
+	// created by 4D/PS [2026-october-09]
+Function _bindPendingCertActions($actions : Collection)
+	If ($actions=Null:C1517)
+		$actions:=New collection:C1472
+	End if 
+	Form:C1466.pendingCertActions:=$actions
+	If (Form:C1466.sfw#Null:C1517)
+		Form:C1466.sfw.staffPendingCertActions:=$actions
+	End if 
+	If (Form:C1466.subForm#Null:C1517)
+		Form:C1466.subForm.pendingCertActions:=$actions
+		If (Form:C1466.subForm.sfw#Null:C1517)
+			Form:C1466.subForm.sfw.staffPendingCertActions:=$actions
+		End if 
+	End if 
+	
+	
+	// Purpose: Date-in-object is dropped when Form.sfw is copied parent↔subform; stamp (number) survives.
+	// created by 4D/PS [2026-october-06]
+Function _pendingOpDate($op : Object)->$date : Date
+	$date:=!00-00-00!
+	If ($op=Null:C1517)
+		return 
+	End if 
+	If (Num:C11($op.dateStmp)#0)
+		$date:=cs:C1710.sfw_stmp.me.getDate(Num:C11($op.dateStmp); True:C214)
+		return 
+	End if 
+	Case of 
+		: (Value type:C1509($op.date)=Is date:K8:7)
+			$date:=$op.date
+		: (Value type:C1509($op.date)=Is text:K8:3) && ($op.date#"")
+			$date:=Date:C102($op.date)
+	End case 
+	
+	
+Function _queuePendingCertAction($action : Text; $uuid : Text; $date : Date; $override : Boolean; $renew : Boolean)
+	var $dateStmp : Integer
+	
+	$dateStmp:=($date=!00-00-00!) ? 0 : cs:C1710.sfw_stmp.me.build($date; ?00:00:00?)
+	This:C1470._pendingCertActions().push(New object:C1471(\
+		"action"; $action; \
+		"uuid"; $uuid; \
+		"dateStmp"; $dateStmp; \
+		"override"; $override; \
+		"renew"; $renew\
+		))
+	
+	
+Function _effectiveHasCertification($uuid : Text)->$has : Boolean
+	var $op : Object
+	
+	$has:=False:C215
+	If (Form:C1466.current_item#Null:C1517)
+		$has:=Form:C1466.current_item.hasCertification($uuid)
+	End if 
+	For each ($op; This:C1470._pendingCertActions())
+		If (String:C10($op.uuid)#$uuid)
+			continue
+		End if 
+		Case of 
+			: (String:C10($op.action)="create")
+				$has:=True:C214
+			: (String:C10($op.action)="delete")
+				$has:=False:C215
+			: (String:C10($op.action)="override")
+				If (Bool:C1537($op.override))
+					$has:=True:C214
+				Else 
+					$has:=This:C1470._hasValidAssignmentOnly($uuid)
+				End if 
+		End case 
+	End for each 
+	
+	
+Function _hasValidAssignmentOnly($uuid : Text)->$has : Boolean
+	var $assignment_e : cs:C1710.CertificationAssignmentEntity
+	
+	$has:=False:C215
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	For each ($assignment_e; ds:C1482.CertificationAssignment\
+		.query("UUID_Staff = :1 AND UUID_Certification = :2"; Form:C1466.current_item.UUID; $uuid)\
+		.orderBy("certificationStmp desc"))
+		If ($assignment_e.validityActive)
+			$has:=True:C214
+			break
+		End if 
+	End for each 
+	
+	
+Function _effectiveOverride($uuid : Text)->$active : Boolean
+	var $op : Object
+	
+	$active:=This:C1470._assignmentOverrideActive($uuid)
+	For each ($op; This:C1470._pendingCertActions())
+		If (String:C10($op.uuid)#$uuid)
+			continue
+		End if 
+		Case of 
+			: (String:C10($op.action)="create")
+				$active:=False:C215
+			: (String:C10($op.action)="delete")
+				$active:=False:C215
+			: (String:C10($op.action)="override")
+				$active:=Bool:C1537($op.override)
+		End case 
+	End for each 
+	
+	
+Function _pendingCertificationDate($uuid : Text)->$date : Date
+	var $op : Object
+	
+	$date:=!00-00-00!
+	For each ($op; This:C1470._pendingCertActions())
+		If (String:C10($op.uuid)#$uuid)
+			continue
+		End if 
+		Case of 
+			: (String:C10($op.action)="create") || (String:C10($op.action)="updateDate")
+				$date:=This:C1470._pendingOpDate($op)
+				If ($date=!00-00-00!)
+					$date:=Current date:C33(*)
+				End if 
+			: (String:C10($op.action)="delete")
+				$date:=!00-00-00!
+		End case 
+	End for each 
+	
+	
+Function _applyPendingOverlayToRow($row : Object; $certification : cs:C1710.CertificationEntity)
+	var $pendingDate : Date
+	var $expDt : Date
+	
+	If ($row=Null:C1517)
+		return 
+	End if 
+	$row.certified:=This:C1470._effectiveHasCertification($row.UUID)
+	$row.overrideExpired:=This:C1470._effectiveOverride($row.UUID)
+	$pendingDate:=This:C1470._pendingCertificationDate($row.UUID)
+	If ($pendingDate#!00-00-00!)
+		$row.hasAssignment:=True:C214
+		$row.certifiedAt:=This:C1470._formatStaffCertDate($pendingDate)
+		$expDt:=This:C1470._staffCertExpiringDate($pendingDate; $certification; Null:C1517)
+		$row.expiringDate:=$expDt
+		$row.expiredIn:=This:C1470._formatStaffCertDate($expDt)
+		$row.daysUntilExpiry:=99999
+		If ($certification#Null:C1517) && (Not:C34($certification.oneTime)) && ($expDt#!00-00-00!)
+			$row.daysUntilExpiry:=$expDt-Current date:C33()
+		End if 
+	Else 
+		If (Not:C34($row.certified)) && (This:C1470._pendingCertActions().query("uuid = :1 AND action = :2"; $row.UUID; "delete").length>0)
+			$row.hasAssignment:=False:C215
+			$row.certifiedAt:=""
+			$row.expiredIn:=""
+			$row.daysUntilExpiry:=99999
+			$row.overrideExpired:=False:C215
+		End if 
+	End if 
+	
+	
+Function commitPendingCertifications()
+	var $op : Object
+	var $date : Date
+	
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	For each ($op; This:C1470._pendingCertActions())
+		$date:=This:C1470._pendingOpDate($op)
+		Case of 
+			: (String:C10($op.action)="create")
+				Form:C1466.current_item.createCertification(String:C10($op.uuid); 0; $date)
+			: (String:C10($op.action)="delete")
+				Form:C1466.current_item.deleteCertification(String:C10($op.uuid))
+			: (String:C10($op.action)="updateDate")
+				Form:C1466.current_item.updateCertificationDate(String:C10($op.uuid); $date)
+			: (String:C10($op.action)="override")
+				Form:C1466.current_item.setCertificationOverride(String:C10($op.uuid); Bool:C1537($op.override))
+		End case 
+	End for each 
+	This:C1470.clearPendingCertifications()
+	Form:C1466.pendingCertStaffUUID:=Form:C1466.current_item.UUID
+	
 Function loadCommunications()
+	var $comms : Collection
+	
+	$comms:=New collection:C1472
+	If (Form:C1466.current_item#Null:C1517)
+		If (Form:C1466.current_item.contactDetails#Null:C1517) && (Form:C1466.current_item.contactDetails.communications#Null:C1517)
+			$comms:=Form:C1466.current_item.contactDetails.communications
+		End if 
+	End if 
+	Form:C1466.subFormCommunication:=New object:C1471(\
+		"communications"; $comms; \
+		"situation"; Form:C1466.situation\
+		)
+	Form:C1466.subFormCommunication:=Form:C1466.subFormCommunication
+	
+	
+Function subFormCommunicationEvent()
+	If (Form:C1466.current_item=Null:C1517) || (Form:C1466.subFormCommunication=Null:C1517)
+		return 
+	End if 
 	If (Form:C1466.current_item.contactDetails=Null:C1517)
 		Form:C1466.current_item.contactDetails:=New object:C1471
 	End if 
-	If (Form:C1466.current_item.contactDetails.communications=Null:C1517)
-		Form:C1466.current_item.contactDetails.communications:=New collection:C1472
-	End if 
-	Form:C1466.subFormCommunication:=New object:C1471(\
-		"communications"; Form:C1466.current_item.contactDetails.communications; \
-		"situation"; Form:C1466.situation\
-		)
-	
-	Form:C1466.subFormCommunication:=Form:C1466.subFormCommunication
+	Form:C1466.current_item.contactDetails.communications:=Form:C1466.subFormCommunication.communications
+	This:C1470._activate_save_cancel_button()
+	Form:C1466.sfw.redrawButtons()
 	
 	// Purpose: True when the current user may manage staff certifications (qs, qm, dc per Karla 2.d).
 	// Returns: Boolean
@@ -116,7 +413,7 @@ Function _assignmentOverrideActive($uuid_certification : Text)->$active : Boolea
 	End if 
 	
 	
-Function loadCertifications()
+Function loadCertifications($keepOrder : Boolean)
 	
 	var $assignmentByCert : Object
 	var $assignment_e : cs:C1710.CertificationAssignmentEntity
@@ -126,11 +423,18 @@ Function loadCertifications()
 	var $daysUntilExpiry : Integer
 	var $selectedUuid : Text
 	var $row : Object
+	var $previousUuids; $ordered : Collection
 	
 	GOTO OBJECT:C206(*; "lb_assignments")
 	$selectedUuid:=""
 	If (Form:C1466.selectedCertification#Null:C1517)
 		$selectedUuid:=Form:C1466.selectedCertification.UUID
+	End if 
+	$previousUuids:=New collection:C1472
+	If (Bool:C1537($keepOrder)) && (Form:C1466.lb_assignments#Null:C1517)
+		For each ($row; Form:C1466.lb_assignments)
+			$previousUuids.push($row.UUID)
+		End for each 
 	End if 
 	Form:C1466.lb_assignments:=New collection:C1472()
 	
@@ -175,10 +479,29 @@ Function loadCertifications()
 			"certified"; Form:C1466.current_item.hasCertification($certification.UUID); \
 			"overrideExpired"; This:C1470._assignmentOverrideActive($certification.UUID)\
 			))
+		This:C1470._applyPendingOverlayToRow(Form:C1466.lb_assignments[Form:C1466.lb_assignments.length-1]; $certification)
 		
 	End for each 
 	
-	Form:C1466.lb_assignments:=Form:C1466.lb_assignments.orderBy("certified desc")
+	// Purpose: Keep row position on checkbox / Actions edits; certified-first only on a full reload.
+	// modified by 4D/PS [2026-october-09]
+	If ($previousUuids.length>0)
+		$ordered:=New collection:C1472
+		For each ($uuidCert; $previousUuids)
+			$row:=Form:C1466.lb_assignments.query("UUID = :1"; $uuidCert).first()
+			If ($row#Null:C1517)
+				$ordered.push($row)
+			End if 
+		End for each 
+		For each ($row; Form:C1466.lb_assignments)
+			If ($previousUuids.indexOf($row.UUID)=-1)
+				$ordered.push($row)
+			End if 
+		End for each 
+		Form:C1466.lb_assignments:=$ordered
+	Else 
+		Form:C1466.lb_assignments:=Form:C1466.lb_assignments.orderBy("certified desc")
+	End if
 	
 	// Purpose: Re-bind selectedCertification to the new collection so history list and columns stay in sync after reload/save.
 	// modified by 4D/PS [2026-june-09]
@@ -295,6 +618,7 @@ Function renewCertification()
 	// Purpose: Re-New — append a CertificationAssignment with a chosen date (keeps history).
 	// Requires qs/qm/dc profile, modification mode, and a selected certification row.
 	// modified by 4D/PS [2026-july-27]
+	// modified by 4D/PS [2026-october-09]
 	
 	var $certDate : Date
 	
@@ -319,24 +643,20 @@ Function renewCertification()
 		return 
 	End if 
 	
-	If (Not:C34(Form:C1466.current_item.createCertification(Form:C1466.selectedCertification.UUID; 0; $certDate)))
-		cs:C1710.sfw_dialog.me.alert("Could not renew this certification")
-		return 
-	End if 
-	
-	This:C1470._activate_save_cancel_button()
-	This:C1470.loadCertifications()
+	This:C1470._queuePendingCertAction("create"; Form:C1466.selectedCertification.UUID; $certDate; False:C215; True:C214)
+	This:C1470.loadCertifications(True:C214)
 	This:C1470.loadCertificationHistory()
+	This:C1470._refreshStaffSaveCancelButtons()
 	
 	
 // Purpose: Assign or update certification date via Actions menu (backdate / correction — Karla UAT).
 // modified by 4D/PS [2026-july-27]
+// modified by 4D/PS [2026-october-09]
 Function setCertificationDateFromPicker()
 	
 	var $uuidCert : Text
 	var $defaultDate : Date
 	var $certDate : Date
-	var $saved : Boolean
 	
 	If (Form:C1466.selectedCertification=Null:C1517) || (Form:C1466.current_item=Null:C1517)
 		return 
@@ -351,8 +671,11 @@ Function setCertificationDateFromPicker()
 	End if 
 	
 	$uuidCert:=Form:C1466.selectedCertification.UUID
-	If (Form:C1466.current_item.hasCertification($uuidCert))
-		$defaultDate:=Form:C1466.current_item.getCertificationDate($uuidCert)
+	If (This:C1470._effectiveHasCertification($uuidCert))
+		$defaultDate:=This:C1470._pendingCertificationDate($uuidCert)
+		If ($defaultDate=!00-00-00!)
+			$defaultDate:=Form:C1466.current_item.getCertificationDate($uuidCert)
+		End if 
 	Else 
 		$defaultDate:=Current date:C33(*)
 	End if 
@@ -366,20 +689,15 @@ Function setCertificationDateFromPicker()
 		return 
 	End if 
 	
-	If (Form:C1466.current_item.hasCertification($uuidCert))
-		$saved:=Form:C1466.current_item.updateCertificationDate($uuidCert; $certDate)
+	If (This:C1470._effectiveHasCertification($uuidCert))
+		This:C1470._queuePendingCertAction("updateDate"; $uuidCert; $certDate; False:C215; False:C215)
 	Else 
-		$saved:=Form:C1466.current_item.createCertification($uuidCert; 0; $certDate)
+		This:C1470._queuePendingCertAction("create"; $uuidCert; $certDate; False:C215; False:C215)
 	End if 
 	
-	If (Not:C34($saved))
-		cs:C1710.sfw_dialog.me.alert("Could not save the certification date")
-		return 
-	End if 
-	
-	This:C1470._activate_save_cancel_button()
-	This:C1470.loadCertifications()
+	This:C1470.loadCertifications(True:C214)
 	This:C1470.loadCertificationHistory()
+	This:C1470._refreshStaffSaveCancelButtons()
 	
 	
 Function loadCertificationHistory()
@@ -389,6 +707,8 @@ Function loadCertificationHistory()
 	
 	var $assignment_e : cs:C1710.CertificationAssignmentEntity
 	var $cert_e : cs:C1710.CertificationEntity
+	var $pendingDate : Date
+	var $pendingHistory : Object
 	
 	Form:C1466.certifications:=New collection:C1472()
 	
@@ -407,6 +727,23 @@ Function loadCertificationHistory()
 			))
 	End for each 
 	
+	$pendingDate:=This:C1470._pendingCertificationDate(Form:C1466.selectedCertification.UUID)
+	If ($pendingDate#!00-00-00!)
+		$pendingHistory:=New object:C1471(\
+			"certifiedAt"; This:C1470._formatStaffCertDate($pendingDate); \
+			"expiredIn"; This:C1470._formatStaffCertDate(This:C1470._staffCertExpiringDate($pendingDate; $cert_e; Null:C1517))\
+			)
+		If (This:C1470._pendingCertActions().query("uuid = :1 AND action = :2"; Form:C1466.selectedCertification.UUID; "create").length>0)
+			Form:C1466.certifications.insert(0; $pendingHistory)
+		Else 
+			If (Form:C1466.certifications.length>0)
+				Form:C1466.certifications[0]:=$pendingHistory
+			Else 
+				Form:C1466.certifications.push($pendingHistory)
+			End if 
+		End if 
+	End if 
+	
 	Form:C1466.certifications:=Form:C1466.certifications
 	
 	OBJECT SET HORIZONTAL ALIGNMENT:C706(*; "Column2"; Align center:K42:3)
@@ -414,34 +751,85 @@ Function loadCertificationHistory()
 	This:C1470._configureCertAssignmentColumns()
 	
 	
+Function _certificationRowFromEvent()->$row : Object
+	var $rowNum : Integer
+	
+	$row:=Form:C1466.selectedCertification
+	$rowNum:=Num:C11(FORM Event:C1606.row)
+	If ($rowNum>0) && (Form:C1466.lb_assignments#Null:C1517) && (Form:C1466.lb_assignments.length>=$rowNum)
+		$row:=Form:C1466.lb_assignments[$rowNum-1]
+	End if 
+	
+	
+Function _refreshStaffSaveCancelButtons()
+	This:C1470._activate_save_cancel_button()
+	Form:C1466.sfw.redrawButtons()
+	
+	
+// Purpose: Assign or remove the clicked certification and light Accept/Cancel.
+// Checkbox columns often send On Clicked without On Data Change; both are handled here.
+// modified by 4D/PS [2026-oct-02]
+Function toggleCertificationAssignment()
+	var $row : Object
+	var $has : Boolean
+	var $want : Boolean
+	
+	If (Num:C11(This:C1470._certToggleMs)>0) && ((Milliseconds:C459-This:C1470._certToggleMs)<250)
+		return 
+	End if 
+	
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	
+	If (Not:C34(Form:C1466.sfw.checkIsInModification())) || (Not:C34(This:C1470._hasQaProfile()))
+		If (Not:C34(This:C1470._hasQaProfile())) && (Form:C1466.sfw.checkIsInModification())
+			cs:C1710.sfw_dialog.me.info("Only Quality Manager, Quality Supervisor, or Document Control can modify certifications")
+		End if 
+		This:C1470.loadCertifications(True:C214)
+		return 
+	End if 
+	
+	$row:=This:C1470._certificationRowFromEvent()
+	If ($row=Null:C1517)
+		return 
+	End if 
+	Form:C1466.selectedCertification:=$row
+	
+	$has:=This:C1470._effectiveHasCertification($row.UUID)
+	$want:=Bool:C1537($row.certified)
+	If ($want=$has) && (FORM Event:C1606.code=On Clicked:K2:4)
+		$want:=Not:C34($has)
+	End if 
+	If ($want=$has)
+		This:C1470.loadCertificationHistory()
+		return 
+	End if 
+	
+	This:C1470._certToggleMs:=Milliseconds:C459
+	This:C1470._removePendingToggleActions($row.UUID)
+	$has:=This:C1470._effectiveHasCertification($row.UUID)
+	If ($want#$has)
+		If ($want)
+			This:C1470._queuePendingCertAction("create"; $row.UUID; Current date:C33(*); False:C215; False:C215)
+		Else 
+			This:C1470._queuePendingCertAction("delete"; $row.UUID; !00-00-00!; False:C215; False:C215)
+		End if 
+	End if 
+	
+	This:C1470.loadCertifications(True:C214)
+	This:C1470._refreshStaffSaveCancelButtons()
+	
+	
 Function manageCertification()
 	Case of 
 		: (FORM Event:C1606.code=On Data Change:K2:15)
-			
-			// Purpose: Only qs, qm, dc may assign or remove certifications on staff.
-			// modified by 4D/PS [2026-june-02]
-			If (Not:C34(This:C1470._hasQaProfile()))
-				cs:C1710.sfw_dialog.me.info("Only Quality Manager, Quality Supervisor, or Document Control can modify certifications")
-				This:C1470.loadCertifications()
-				
-			Else 
-				
-				If (Form:C1466.selectedCertification.certified)
-					// Purpose: expiredIn from certification type frequencies / one time (_ga_certificationExpiredInDays).
-					// modified by 4D/PS [2026-june-02]
-					Form:C1466.current_item.createCertification(Form:C1466.selectedCertification.UUID; 0)
-					This:C1470.loadCertifications()
-				Else 
-					Form:C1466.current_item.deleteCertification(Form:C1466.selectedCertification.UUID)
-					This:C1470.loadCertifications()
-				End if 
-				
-				This:C1470.loadCertificationHistory()
-				This:C1470._activate_save_cancel_button()
-				
-			End if 
+			This:C1470.toggleCertificationAssignment()
 			
 		: ((FORM Event:C1606.code=On Clicked:K2:4) || (FORM Event:C1606.code=On Selection Change:K2:29))
+			If (FORM Event:C1606.code=On Clicked:K2:4) && ((String:C10(FORM Event:C1606.columnName)="entryField_hasCertif") || (String:C10(FORM Event:C1606.objectName)="entryField_hasCertif"))
+				This:C1470.toggleCertificationAssignment()
+			End if 
 			This:C1470.loadCertificationHistory()
 			
 	End case 
@@ -490,7 +878,7 @@ Function manageCertification()
 	//End if 
 	
 Function hideDatePickers()
-	OBJECT SET VISIBLE:C603(*; "dp_@"; False:C215)
+	OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; False:C215)
 	
 	//mark:- setting page
 	
@@ -498,9 +886,21 @@ Function userSetting()
 	
 	If (Form:C1466.current_item#Null:C1517) && (Form:C1466.current_item.user#Null:C1517)
 		OBJECT SET TITLE:C194(*; "pup_user"; Form:C1466.current_item.user.login)
+		OBJECT SET ENABLED:C1123(*; "btnForwardUser"; True:C214)
 	Else 
 		OBJECT SET TITLE:C194(*; "pup_user"; "Select a Golden Altos account")
+		OBJECT SET ENABLED:C1123(*; "btnForwardUser"; False:C215)
 	End if 
+	
+	
+Function btnOpenUser()
+	// Purpose: Staff user account points to sfw_User; open the Users entry.
+	// created by 4D/PS [2026-october-09]
+	If (Form:C1466.current_item=Null:C1517) || (Form:C1466.current_item.user=Null:C1517)
+		cs:C1710.sfw_dialog.me.alert("No user account is linked to this employee.")
+		return 
+	End if 
+	Form:C1466.sfw.openInANewWindow(Form:C1466.current_item.user; "userManagement"; "user") 
 	
 Function pup_user()
 	var $isInModification : Boolean
@@ -570,6 +970,20 @@ Function pup_user()
 	End if 
 	
 	
+Function openSelectedCertification()
+	var $cert_e : cs:C1710.CertificationEntity
+	
+	If (Form:C1466.selectedCertification=Null:C1517)
+		return 
+	End if 
+	$cert_e:=ds:C1482.Certification.get(Form:C1466.selectedCertification.UUID)
+	If ($cert_e=Null:C1517)
+		cs:C1710.sfw_dialog.me.info("This certification could not be found.")
+		return 
+	End if 
+	Form:C1466.sfw.openInANewWindow($cert_e; "qualityAssurance"; "certifications")
+	
+	
 Function bActionCertifications()
 	
 	//var $refMenu : Integer
@@ -586,6 +1000,8 @@ Function bActionCertifications()
 	
 	If (Form:C1466.selectedCertification#Null:C1517)
 		APPEND MENU ITEM:C411($refMenu; "-")
+		APPEND MENU ITEM:C411($refMenu; "Open certification")
+		SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--openCertification")
 		APPEND MENU ITEM:C411($refMenu; "Print Certificate of Completion")
 		SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--print")
 		If (Not:C34(Form:C1466.current_item.hasCertification(Form:C1466.selectedCertification.UUID)))
@@ -602,13 +1018,14 @@ Function bActionCertifications()
 		
 		// Purpose: QA punch-in override for expired certification (Karla 2.d — qs, qm, dc).
 		// modified by 4D/PS [2026-june-02]
+		// modified by 4D/PS [2026-october-09]
 		If (This:C1470._hasQaProfile()) && (Form:C1466.sfw.checkIsInModification())
 			$assignment_e:=ds:C1482.CertificationAssignment\
 				.query("UUID_Staff = :1 AND UUID_Certification = :2"; Form:C1466.current_item.UUID; Form:C1466.selectedCertification.UUID)\
 				.orderBy("certificationStmp desc").first()
 			If ($assignment_e#Null:C1517) && (Not:C34($assignment_e.validityActive))
 				APPEND MENU ITEM:C411($refMenu; "-")
-				If (Bool:C1537($assignment_e.moreData.overrideCertExpired))
+				If (($assignment_e.moreData#Null:C1517) && (Bool:C1537($assignment_e.moreData.overrideCertExpired)))
 					APPEND MENU ITEM:C411($refMenu; "Revoke punch-in override (expired cert)")
 					SET MENU ITEM PARAMETER:C1004($refMenu; -1; "--revokeOverride")
 				Else 
@@ -624,17 +1041,21 @@ Function bActionCertifications()
 	Case of 
 		: ($choose="--printCertTraining")
 			staff_print_cert_training
+		: ($choose="--openCertification")
+			This:C1470.openSelectedCertification()
 		: ($choose="--setCertDate")
 			This:C1470.setCertificationDateFromPicker()
 		: ($choose="--grantOverride")
 			If (Form:C1466.selectedCertification#Null:C1517)
-				Form:C1466.current_item.setCertificationOverride(Form:C1466.selectedCertification.UUID; True:C214)
-				This:C1470.loadCertifications()
+				This:C1470._queuePendingCertAction("override"; Form:C1466.selectedCertification.UUID; !00-00-00!; True:C214; False:C215)
+				This:C1470.loadCertifications(True:C214)
+				This:C1470._refreshStaffSaveCancelButtons()
 			End if 
 		: ($choose="--revokeOverride")
 			If (Form:C1466.selectedCertification#Null:C1517)
-				Form:C1466.current_item.setCertificationOverride(Form:C1466.selectedCertification.UUID; False:C215)
-				This:C1470.loadCertifications()
+				This:C1470._queuePendingCertAction("override"; Form:C1466.selectedCertification.UUID; !00-00-00!; False:C215; False:C215)
+				This:C1470.loadCertifications(True:C214)
+				This:C1470._refreshStaffSaveCancelButtons()
 			End if 
 		: ($choose="--print")
 			PRINT SETTINGS:C106()

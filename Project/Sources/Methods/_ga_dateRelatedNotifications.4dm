@@ -1,7 +1,7 @@
 //%attributes = {"executedOnServer":true}
 /*
 _ga_dateRelatedNotifications
-
+modified by 4D/PS [2026-november-03]
 */
 
 var $equipments : cs:C1710.EquipmentSelection
@@ -22,14 +22,14 @@ _ga_notifier(->$equipments; "dueCal"; "DueEquipmentOutOfCalibration"; "Equipment
 /*
 Equipment out of PM in 30 days
 */
-$equipments:=ds:C1482.Equipment.query("nextPMDate<=:1 & nextPMDate#:2 & notAtSite=:3"; Current date:C33(*)+30; !00-00-00!; False:C215)
+$equipments:=ds:C1482.Equipment.query("nextPMDate<=:1 & nextPMDate#:2 & notAtSite=:3 & pmNotRequired=:4"; Current date:C33(*)+30; !00-00-00!; False:C215; False:C215)
 _ga_notifier(->$equipments; "soonDuePM"; "EquipmentSoonDuePM"; "Equipment"; "assignedID")
 
 
 /*
 Due Equipment out of PM Notification
 */
-$equipments:=ds:C1482.Equipment.query("nextPMDate<=:1 & nextPMDate#:2 & notAtSite=:3"; Current date:C33(*); !00-00-00!; False:C215)
+$equipments:=ds:C1482.Equipment.query("nextPMDate<=:1 & nextPMDate#:2 & notAtSite=:3 & pmNotRequired=:4"; Current date:C33(*); !00-00-00!; False:C215; False:C215)
 _ga_notifier(->$equipments; "duePM"; "DueEquipmentOutOfPM"; "Equipment"; "assignedID")
 
 

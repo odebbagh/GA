@@ -12,11 +12,7 @@ Function formMethod()
 	If (Form:C1466.sfw.recalculationOfPanelPageNeeded())
 		Case of 
 			: (FORM Get current page:C276(*)=1)
-				If (Form:C1466.current_item#Null:C1517)
-					If (Form:C1466.current_item.moreData=Null:C1517)
-						Form:C1466.current_item.moreData:=New object:C1471
-					End if 
-				End if 
+				
 		End case 
 	End if 
 	If (Form:C1466.sfw.redrawAndSetVisibleInPanelNeeded())
@@ -30,6 +26,8 @@ Function pup_color()
 	End if 
 	
 Function redrawAndSetVisible()
+	OBJECT SET ENTERABLE:C238(*; "Field_levelID"; False:C215)
+	OBJECT SET ENABLED:C1123(*; "Field_levelID"; False:C215)
 	If (Form:C1466.current_item#Null:C1517)
 		$color:=cs:C1710.sfw_htmlColor.me.getName(Form:C1466.current_item.color) || ""
 		If ($color#"")

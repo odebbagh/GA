@@ -1,6 +1,16 @@
 Class extends DataClass
 
 
+local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
+	// Purpose: Administration entry so Facilities Equipment location dropdowns can be edited.
+	// created by 4D/PS [2026-november-03]
+	$entry:=cs:C1710.Util.me.listEntry("equipmentLocation"; "Equipment locations"; "EquipmentLocation"; -19964)
+	
+	
+local Function cacheClear()
+	cs:C1710.Util.me.listCacheClear("equipmentLocations")
+	
+	
 local Function cacheLoad()
 	
 	If (Storage:C1525.cache=Null:C1517)
@@ -16,9 +26,10 @@ local Function cacheLoad()
 	End if 
 	
 	
+Function trigger()
+	cs:C1710.Util.me.listTrigger("EquipmentLocation")
+	
+	
 Function _loadAsCollection()->$locations : Collection
-	$locations:=This:C1470.all().toCollection("UUID,levelID,name").orderBy("name")
-	
-	
-	
+	$locations:=This:C1470.all().toCollection("UUID,levelID,name,code,color").orderBy("name")
 	

@@ -42,6 +42,7 @@ Function formMethod()
 	If (Form:C1466.sfw.redrawAndSetVisibleInPanelNeeded())  //It's time to resize the object or set visible
 		This:C1470.redrawAndSetVisible()
 	End if 
+	cs:C1710.Util.me.lockDateInputs() 
 	
 	
 Function redrawAndSetVisible()
@@ -50,10 +51,12 @@ Function redrawAndSetVisible()
 	This:C1470.contactDetails()
 	This:C1470.drawPup_enteredBy()
 	This:C1470.drawPup_division()
+	This:C1470._enableLinkedForwards()
 	
 	
 	OBJECT SET VISIBLE:C603(*; "btnDatePicker@"; Form:C1466.sfw.checkIsInModification())
 	OBJECT SET ENTERABLE:C238(*; "lb_contact"; False:C215)
+	cs:C1710.Util.me.lockDateInputs()
 	
 	Use (Form:C1466.sfw.entry.panel.pages)
 		Form:C1466.sfw.entry.panel.pages[2].label:="Documents ("+String:C10(Form:C1466.lb_documents.length)+")"
@@ -194,6 +197,40 @@ Function pup_enteredBy()
 	This:C1470.drawPup_enteredBy()
 	
 	
+Function _staffByCode($code : Text)->$staff : cs:C1710.StaffEntity
+	$staff:=Null:C1517
+	If (String:C10($code)="")
+		return 
+	End if 
+	$staff:=ds:C1482.Staff.query("code = :1"; String:C10($code)).first()
+	
+	
+Function _enableLinkedForwards()
+	var $hasStaff : Boolean
+	
+	$hasStaff:=False:C215
+	If (Form:C1466.current_item#Null:C1517)
+		$hasStaff:=(This:C1470._staffByCode(String:C10(Form:C1466.current_item.enteredBy))#Null:C1517)
+	End if 
+	OBJECT SET ENABLED:C1123(*; "btnForward1"; $hasStaff)
+	
+	
+Function btnOpenEnteredBy()
+	var $staff : cs:C1710.StaffEntity
+	
+	// Purpose: Entered By on AVL is Staff; open that Staff entry.
+	// created by 4D/PS [2026-october-09]
+	$staff:=Null:C1517
+	If (Form:C1466.current_item#Null:C1517)
+		$staff:=This:C1470._staffByCode(String:C10(Form:C1466.current_item.enteredBy))
+	End if 
+	If ($staff=Null:C1517)
+		cs:C1710.sfw_dialog.me.alert("No employee is linked to this supplier.")
+		return 
+	End if 
+	Form:C1466.sfw.openInANewWindow($staff; "qualityAssurance"; "staff")
+	
+	
 Function drawPup_division()
 	If (Form:C1466.current_item#Null:C1517)
 		Form:C1466.current_item.drowPup("Division"; "UUID"; "UUID_Division"; "pup_division")
@@ -272,6 +309,7 @@ Function bActionDocument()
 				$buffer.stmp:=cs:C1710.sfw_stmp.me.now()
 				Form:C1466.bufferOfEvents.push($buffer)
 				
+				This:C1470._ensureAttachedDocuments()
 				Form:C1466.current_item.attachedDocuments.documents.push($form.details)
 				cs:C1710.panel_supplier.me._activate_save_cancel_button()
 			End if 
@@ -355,10 +393,23 @@ Function lb_contact()
 	// something to call rather than failing on a missing member.
 Function loadDocuments()
 	
+	Form:C1466.lb_documents:=New collection:C1472()
 	If (Form:C1466.current_item#Null:C1517)
-		
-		Form:C1466.lb_documents:=Form:C1466.current_item.attachedDocuments.documents.map(Formula:C1597(_ga_getDateTime))
-		
+		If (Form:C1466.current_item.attachedDocuments#Null:C1517) && (Form:C1466.current_item.attachedDocuments.documents#Null:C1517)
+			Form:C1466.lb_documents:=Form:C1466.current_item.attachedDocuments.documents.map(Formula:C1597(_ga_getDateTime))
+		End if 
+	End if 
+	
+	
+Function _ensureAttachedDocuments()
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	If (Form:C1466.current_item.attachedDocuments=Null:C1517)
+		Form:C1466.current_item.attachedDocuments:=New object:C1471
+	End if 
+	If (Form:C1466.current_item.attachedDocuments.documents=Null:C1517)
+		Form:C1466.current_item.attachedDocuments.documents:=New collection:C1472()
 	End if 
 	
 	

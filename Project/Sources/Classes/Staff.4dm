@@ -9,6 +9,7 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	$entry.setSearchboxField("firstName")
 	$entry.setSearchboxField("lastName")
+	$entry.setSearchboxField("moreData.barcodeData"; "placeholder:barcode")
 	// Purpose: Allow searching staff by shift ("1" or "2") and by certification name.
 	// modified by 4D/PS [2026-may-21]
 	$entry.setSearchboxField("shift"; "placeholder:shift")
@@ -22,8 +23,8 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	
 	$entry.setLBItemsColumn("code"; "Code"; "width:50"; "center")
-	$entry.setLBItemsColumn("firstName"; "First Name"; "width:190")
-	$entry.setLBItemsColumn("lastName"; "Last Name"; "width:190")
+	$entry.setLBItemsColumn("firstName"; "First Name"; "width:150")
+	$entry.setLBItemsColumn("lastName"; "Last Name"; "width:150")
 	// Purpose: Expose Shift ("1"/"2") in the items list for quick scanning by floor managers.
 	// modified by 4D/PS [2026-may-21]
 	$entry.setLBItemsColumn("shift"; "Shift"; "width:50"; "center")
@@ -71,7 +72,21 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.setItemAction("Print Badge"; "staff_print_badge")
 	$entry.setItemAction("Print Certification Training"; "staff_print_cert_training")
 	
-	
+	// Purpose: Log Staff field, stamp, object, and N-to-1 link changes in StaffEvent on Accept.
+	// created by 4D/PS [2026-october-06]
+	// Purpose: Activate only when StaffEvent exists in the running structure (after Structure sync).
+	// modified by 4D/PS [2026-october-06]
+	If (ds:C1482["StaffEvent"]#Null:C1517)
+		$entry.activateEvent("StaffEvent"; "UUID_Staff")
+		$entry.setAttributesToTrackInModificationEvent("code"; "firstName"; "lastName"; "shift"; "citizenShipStatus"; "inactive"; "terminated")
+		$entry.setAttributeStmpToTrackInModificationEvent("hireDate"; "stmpHire"; Is date:K8:7)
+		$entry.setAttributeStmpToTrackInModificationEvent("terminationDate"; "stmpTermination"; Is date:K8:7)
+		$entry.setAttributeStmpToTrackInModificationEvent("retrainDate"; "stmpRetrain"; Is date:K8:7)
+		$entry.setAttributeStmpToTrackInModificationEvent("creationDate"; "stmpCreation"; Is date:K8:7)
+		$entry.setLinkManyToOneToTrackInModificationEvent("Division"; "UUID_Division"; "division.name")
+		$entry.setLinkManyToOneToTrackInModificationEvent("User"; "UUID_User"; "user.login")
+		$entry.setEventOptions("dontCreateModifyEventIfNoTrackingAttribute")
+	End if 
 	
 	// MARK: -Filters
 	

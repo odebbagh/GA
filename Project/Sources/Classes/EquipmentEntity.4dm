@@ -4,25 +4,25 @@ local Function get nextCalDate()->$nextCalDate : Date
 	$nextCalDate:=This:C1470.stmpNextCal=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpNextCal; True:C214)
 	
 local Function set nextCalDate($nextCalDate : Date)
-	This:C1470.stmpNextCal:=$nextCalDate=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($nextCalDate)
+	This:C1470.stmpNextCal:=cs:C1710.Util.me.stampIfDateChanged(This:C1470.stmpNextCal; $nextCalDate)
 	
 local Function get lastCalDate()->$lastCalDate : Date
 	$lastCalDate:=This:C1470.stmpLastCal=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpLastCal; True:C214)
 	
 local Function set lastCalDate($lastCalDate : Date)
-	This:C1470.stmpLastCal:=$lastCalDate=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($lastCalDate)
+	This:C1470.stmpLastCal:=cs:C1710.Util.me.stampIfDateChanged(This:C1470.stmpLastCal; $lastCalDate)
 	
 local Function get lastPMDate()->$lastPMDate : Date
 	$lastPMDate:=This:C1470.stmpLastPM=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpLastPM; True:C214)
 	
 local Function set lastPMDate($lastPMDate : Date)
-	This:C1470.stmpLastPM:=$lastPMDate=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($lastPMDate)
+	This:C1470.stmpLastPM:=cs:C1710.Util.me.stampIfDateChanged(This:C1470.stmpLastPM; $lastPMDate)
 	
 local Function get nextPMDate()->$nextPMDate : Date
 	$nextPMDate:=This:C1470.stmpNextPM=0 ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpNextPM; True:C214)
 	
 local Function set nextPMDate($nextPMDate : Date)
-	This:C1470.stmpNextPM:=$nextPMDate=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build($nextPMDate)
+	This:C1470.stmpNextPM:=cs:C1710.Util.me.stampIfDateChanged(This:C1470.stmpNextPM; $nextPMDate)
 	
 local Function loadAfterCreation()
 	
@@ -48,6 +48,17 @@ local Function beforeDelete()
 	KILL WORKER:C1390(Current process:C322)
 	
 local Function beforeSave()
+	
+	// Purpose: v18 appended AssignedID renames to Status history on save.
+	// created by 4D/PS [2026-november-03]
+	If (Form:C1466.current_clone#Null:C1517)
+		If (Form:C1466.current_item.assignedID#Form:C1466.current_clone.assignedID)
+			This:C1470.statusHistory:=String:C10(This:C1470.statusHistory)+Char:C90(Carriage return:K15:38)+"Changed old Name: "+String:C10(Form:C1466.current_clone.assignedID)+" to "+String:C10(Form:C1466.current_item.assignedID)
+		End if 
+		If (Form:C1466.current_item.status#Form:C1466.current_clone.status)
+			This:C1470.statusHistory:=String:C10(This:C1470.statusHistory)+Char:C90(Carriage return:K15:38)+String:C10(Form:C1466.current_item.status)
+		End if 
+	End if  
 	
 	If (Form:C1466.current_item.down=True:C214) & (Form:C1466.current_item.down#Form:C1466.current_clone.down)
 		

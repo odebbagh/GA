@@ -28,7 +28,6 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	
 	$entry.setLBItemsOrderBy("levelID")
 	
-	$entry.setValidationRule("levelID"; "entryField_levelID"; "mandatory"; "trimSpace")
 	$entry.setValidationRule("name"; "entryField_name"; "mandatory"; "trimSpace"; "capitalize")
 	
 	$entry.setItemListPreconfigAction("exportReferenceRecords")
@@ -40,6 +39,13 @@ local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
 	$entry.setToolBarGroup("CARParameters"; "CAR P."; "image/entry/carParam-50x50.png")
 	
 	
+local Function cacheClear()
+	If (Storage:C1525.cache#Null:C1517)
+		Use (Storage:C1525.cache)
+			Storage:C1525.cache.rejectCriteriaCategory:=Null:C1517
+		End use 
+	End if
+	
 local Function cacheLoad()
 	
 	If (Storage:C1525.cache=Null:C1517)
@@ -47,12 +53,12 @@ local Function cacheLoad()
 			Storage:C1525.cache:=New shared object:C1526
 		End use 
 	End if 
-	//If (Storage.cache.rejectCriteriaCategory=Null)
-	$coll:=This:C1470._loadAsCollection()
-	Use (Storage:C1525.cache)
-		Storage:C1525.cache.rejectCriteriaCategory:=$coll.copy(ck shared:K85:29; Storage:C1525.cache)
-	End use 
-	//End if 
+	If (Storage:C1525.cache.rejectCriteriaCategory=Null:C1517)
+		$coll:=This:C1470._loadAsCollection()
+		Use (Storage:C1525.cache)
+			Storage:C1525.cache.rejectCriteriaCategory:=$coll.copy(ck shared:K85:29; Storage:C1525.cache)
+		End use 
+	End if 
 	
 	
 	// Purpose: Align collection projection with levelID, name, color (reference-table pattern).

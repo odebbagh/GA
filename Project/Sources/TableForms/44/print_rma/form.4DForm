@@ -181,7 +181,7 @@
 					"top": 123,
 					"width": 104,
 					"height": 16,
-					"dataSource": "Form:C1466.lotNumber",
+					"dataSource": "Form:C1466.travelerNumber",
 					"fill": "transparent",
 					"borderStyle": "none"
 				},
@@ -199,7 +199,7 @@
 					"top": 143,
 					"width": 104,
 					"height": 16,
-					"dataSource": "Form:C1466.gaInvoiceNumber",
+					"dataSource": "Form:C1466.invoiceNumber",
 					"fill": "transparent",
 					"borderStyle": "none"
 				},

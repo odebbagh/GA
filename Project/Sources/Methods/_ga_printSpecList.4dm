@@ -1,40 +1,44 @@
 //%attributes = {}
+// Purpose: Print Specs / Forms index for the active Document Control view.
+// modified by 4D/PS [2026-october-05]
 
 
+If (Form:C1466.sfw=Null:C1517) | (Form:C1466.sfw.lb_items=Null:C1517) | (Form:C1466.sfw.lb_items.length=0)
+	cs:C1710.sfw_dialog.me.info(ds:C1482.sfw_readXliff("Info"; "No items in the list to print"))
+	return 
+End if 
 
-/*
-Method Name : _ga_printSpecList
-Author : Medard /4D PS
-Date : 03-July-2025
-Purpose : Print Specs  View List
-*/
+var $identEntry : Text
+If (Form:C1466.sfw.view#Null:C1517)
+	$identEntry:=Form:C1466.sfw.view.ident
+Else 
+	$identEntry:=""
+End if
+var $context : Object
 
-If (Form:C1466.sfw.lb_items.length>0)
+$context:=New object:C1471()
+
+var ListTypes : Collection:=New collection:C1472(True:C214; False:C215)
+
+For each ($onlyForms; ListTypes)
+	$printType:=$onlyForms ? "Form" : "Spec"
 	
-	var $identEntry : Text:=Form:C1466.sfw.view.ident
-	var $context : Object
+	$context.length:=Form:C1466.sfw.lb_items.query("isForm =:1 & suppress =:2"; $onlyForms; False:C215).length
 	
-	$context:=New object:C1471()
-	
-	var ListTypes : Collection:=New collection:C1472(True:C214; False:C215)
-	
-	For each ($onlyForms; ListTypes)
-		$printType:=$onlyForms ? "Form" : "Spec"
+	If ($context.length>0)
+		$OK:=cs:C1710.sfw_dialog.me.confirm("Print "+$printType+" Index?"; "yes"; "no")
 		
-		$context.length:=Form:C1466.sfw.lb_items.query("isForm =:1 & suppress =:2"; $onlyForms; False:C215).length
-		
-		If ($context.length>0)
-			$OK:=cs:C1710.sfw_dialog.me.confirm("Print "+$printType+" Index?"; "yes"; "no")
+		If ($OK)
 			
-			$continue:=(Form:C1466.sfw.lb_items.query("isForm =:1 & suppress =:2"; $onlyForms; False:C215).length>0)
+			If ($onlyForms=False:C215)
+				$file:=Folder:C1567(fk resources folder:K87:11).file("4DWriteProPrintTemplates/specsListPrint.4wp")
+			Else 
+				$file:=Folder:C1567(fk resources folder:K87:11).file("4DWriteProPrintTemplates/specsFormListPrint.4wp")
+			End if 
 			
-			If ($continue) & ($OK)
-				
-				If ($onlyForms=False:C215)
-					$file:=Folder:C1567(fk resources folder:K87:11).file("4DWriteProPrintTemplates/specsListPrint.4wp")
-				Else 
-					$file:=Folder:C1567(fk resources folder:K87:11).file("4DWriteProPrintTemplates/specsFormListPrint.4wp")
-				End if 
+			If (Not:C34($file.exists))
+				cs:C1710.sfw_dialog.me.alert("The "+$printType+" index print template is missing.")
+			Else 
 				
 				$template:=WP Import document:C1318($file.platformPath)
 				
@@ -58,23 +62,26 @@ If (Form:C1466.sfw.lb_items.length>0)
 							$context.subject:="Forms"
 						End if 
 						
-					: ($identEntry="docsRequiringReviewSoon")
-						
+					: ($identEntry="docsLateInReviewing")
 						If ($onlyForms=False:C215)
-							$context.subject:="Specifications late in reviewing "
+							$context.subject:="Specifications late in reviewing"
 						Else 
 							$context.subject:="Forms late in reviewing"
 						End if 
 						
-					: ($identEntry="OnlySpecs")
+					: ($identEntry="docsRequiringReviewSoon")
+						If ($onlyForms=False:C215)
+							$context.subject:="Specifications requiring review soon"
+						Else 
+							$context.subject:="Forms requiring review soon"
+						End if 
 						
+					: ($identEntry="OnlySpecs")
 						$context.subject:="Specs"
 						
 					: ($identEntry="OnlyForms")
-						
 						$context.subject:="Forms"
 					Else 
-						
 						$context.subject:="Specifications"
 						
 				End case 
@@ -83,16 +90,15 @@ If (Form:C1466.sfw.lb_items.length>0)
 				WP SET DATA CONTEXT:C1786($template; $context)
 				
 				PRINT SETTINGS:C106(2)
-				WP PRINT:C1343($template)
+				If (OK=1)
+					WP PRINT:C1343($template)
+				End if 
 				
 			End if 
 			
-			
 		End if 
 		
-	End for each 
+		
+	End if 
 	
-Else 
-	cs:C1710.sfw_dialog.me.info(ds:C1482.sfw_readXliff("Info"; "No items in the list to print"))
-	
-End if 
+End for each 

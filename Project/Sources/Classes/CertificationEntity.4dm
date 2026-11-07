@@ -6,9 +6,6 @@ Class extends Entity
 
 local Function itemLoad()
 	
-	// Purpose: Copy legacy moreData.retrainingFrequencies into scalar fields when opening a record.
-	// modified by 4D/PS [2026-june-08]
-	This:C1470.ensureLegacyRetrainMigrated()
 	
 	
 // Purpose: Build frequency idents from scalar boolean fields (used by retrain milestones and labels).
@@ -16,7 +13,6 @@ local Function itemLoad()
 // modified by 4D/PS [2026-june-08]
 Function getRetrainingFrequencies()->$frequencies : Collection
 	
-	This:C1470.ensureLegacyRetrainMigrated()
 	$frequencies:=New collection:C1472()
 	If (This:C1470.retrainQuarterly)
 		$frequencies.push("quarterly")
@@ -26,6 +22,12 @@ Function getRetrainingFrequencies()->$frequencies : Collection
 	End if 
 	If (This:C1470.retrainAnnually)
 		$frequencies.push("annually")
+	End if 
+	If ($frequencies.length>0)
+		return 
+	End if 
+	If (This:C1470.moreData#Null:C1517) && (This:C1470.moreData.retrainingFrequencies#Null:C1517)
+		$frequencies:=This:C1470.moreData.retrainingFrequencies.copy()
 	End if 
 	
 	
@@ -74,6 +76,11 @@ Function validateSave($event : Object)->$result : Object
 		This:C1470.retrainQuarterly:=False:C215
 		This:C1470.retrainHalfYear:=False:C215
 		This:C1470.retrainAnnually:=False:C215
+		This:C1470.duration:=0
+	Else 
+		If (This:C1470.duration<=0)
+			This:C1470.duration:=365
+		End if 
 	End if 
 	This:C1470.clearLegacyRetrainFromMoreData()
 	$result:=New object:C1471("success"; True:C214)
@@ -109,6 +116,10 @@ Function applyOneTimeRule($oneTime : Boolean)
 		This:C1470.retrainHalfYear:=False:C215
 		This:C1470.retrainAnnually:=False:C215
 		This:C1470.duration:=0
+	Else 
+		If (This:C1470.duration<=0)
+			This:C1470.duration:=365
+		End if 
 	End if 
 	
 	
@@ -230,4 +241,25 @@ Function assignmentValidityDays()->$days : Integer
 local Function loadAfterCreation()
 	// Purpose: Assign a unique barcode in moreData for scanner lookup on new records.
 	// modified by 4D/PS [2026-june-29]
+	If (This:C1470.moreData=Null:C1517)
+		This:C1470.moreData:=New object:C1471
+	End if 
 	This:C1470.moreData.barcodeData:=String:C10(cs:C1710.Util_ScannerManager.me.getBarcodeData(Form:C1466.sfw.entry.dataclass); "0000000000")
+	If (ds:C1482.Certification.all().length=0)
+		This:C1470.ref:=1
+	Else 
+		This:C1470.ref:=Num:C11(ds:C1482.Certification.all().max("ref"))+1
+	End if 
+	
+	
+local Function isDeletable()->$isDeletable : Boolean
+	// Purpose: Do not delete a catalog row that is still assigned to staff or a step template.
+	// created by 4D/PS [2026-oct-05]
+	$isDeletable:=True:C214
+	If (This:C1470.assignments#Null:C1517) && (This:C1470.assignments.length>0)
+		$isDeletable:=False:C215
+		return 
+	End if 
+	If (This:C1470.stepTemplateCertification#Null:C1517) && (This:C1470.stepTemplateCertification.length>0)
+		$isDeletable:=False:C215
+	End if

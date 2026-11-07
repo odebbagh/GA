@@ -111,8 +111,7 @@ local Function afterCreation()
 	This:C1470._setItemNumber()
 	
 local Function itemLoad()
-	// This callback is called when the item is selected in the itemList
-	This:C1470._setItemNumber()
+	
 	
 	
 local Function _setItemNumber()

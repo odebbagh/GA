@@ -73,7 +73,7 @@ If ($equipment_Log.exists)
 		End if 
 		$eEquipment.down:=$equipment.Down
 		$eEquipment.calInProgress:=$equipment.Cal_inprocess
-		$eEquipment.calInterval:=$equipment.CalInterval
+		$eEquipment.calInterval:=$equipment.CaInterval
 		$eEquipment.pmInterval:=$equipment.PMInterval
 		$eEquipment.calDocument:=$equipment.CalDocument
 		$eEquipment.pmDocument:=$equipment.PMDocument
@@ -132,24 +132,23 @@ If ($equipment_Log.exists)
 	
 End if 
 
-
+//Import RepairLog
+// Purpose: Skip rows whose Sys_ID does not match an Equipment assignedID (legacy free-typed IDs).
+// modified by 4D/PS [2026-november-03]
 $repair_Log_file:=Folder:C1567(fk data folder:K87:12).file("DataJson/repair_log_export.json")
-var $text : Text:=""
 If ($repair_Log_file.exists)
 	$repair_log:=JSON Parse:C1218($repair_Log_file.getText())
 	TRUNCATE TABLE:C1051([RepairLog:21])
 	
 	For each ($repair; $repair_log)
 		
-		$eRepair:=ds:C1482.RepairLog.new()
-		
 		$equipment:=ds:C1482.Equipment.query("assignedID =:1"; Split string:C1554($repair.Sys_ID; "\r"; sk trim spaces:K86:2).join("\r"))
-		If ($equipment.length>0)
-			$eRepair.UUID_Equipment:=$equipment[0].UUID
-		Else 
-			$eRepair.UUID_Equipment:=""
-			$text:=$text+"\n"+$repair.Sys_ID
+		If ($equipment.length=0)
+			continue
 		End if 
+		
+		$eRepair:=ds:C1482.RepairLog.new()
+		$eRepair.UUID_Equipment:=$equipment[0].UUID
 		
 		$eRepair.operators:=New object:C1471()
 		
@@ -179,7 +178,9 @@ If ($repair_Log_file.exists)
 		$eRepair.downAtStmp:=Time:C179($repair.Down_at)=0 ? 0 : cs:C1710.sfw_stmp.me.build(!00-00-00!; Time:C179($repair.Down_at))
 		$eRepair.upAtStmp:=Time:C179($repair.Up_at)=0 ? 0 : cs:C1710.sfw_stmp.me.build(!00-00-00!; Time:C179($repair.Up_at))
 		$eRepair.stmpUp:=Date:C102($repair.Date_fixed)=!00-00-00! ? 0 : cs:C1710.sfw_stmp.me.build(Date:C102($repair.Date_fixed))
-		
+		$eRepair.isApproved:=$repair.QA_accept
+		$eRepair.approvedBy:=$repair.QA
+		$eRepair.approvalDate:=Date:C102($repair.Buyoff_date)
 		
 		$res:=$eRepair.save()
 		If (Not:C34($res.success))
@@ -190,11 +191,4 @@ If ($repair_Log_file.exists)
 	End for each 
 	
 End if 
-//TRACE
-//SET TEXT TO PASTEBOARD($text)
-
-
-
-
-
 

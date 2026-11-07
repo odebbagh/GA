@@ -5,6 +5,7 @@ Method Name : _ga_exportEquipmentList
 Author : Medard /4D PS
 Date : 03-June-2025
 Purpose : This method export the items on Equipment View List to an .xls document
+modified by 4D/PS [2026-november-03]
 */
 
 /*
@@ -230,7 +231,7 @@ If (Form:C1466.sfw.lb_items.length>0)
 				New object:C1471("header"; "PM Document"; "field"; "pmDocument"; "footerOperation"; ""); \
 				New object:C1471("header"; "Decomissioned"; "field"; "decommissioned"; "footerOperation"; ""); \
 				New object:C1471("header"; "Last Cal Date"; "field"; "lastCalDate"; "footerOperation"; ""); \
-				New object:C1471("header"; "Last PM Date"; "field"; "lastCalDate"; "footerOperation"; ""); \
+				New object:C1471("header"; "Last PM Date"; "field"; "lastPMDate"; "footerOperation"; ""); \
 				New object:C1471("header"; "Out of calibration"; "field"; "outOfCalibration"; "footerOperation"; "")\
 				)
 		End if 

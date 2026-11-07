@@ -1,5 +1,6 @@
-// Start: the operator punching in (mandatory), the date and time in, and the Qty In proposed from
-// the lot's progress count when it is still empty (it stays editable)
+// Start: the punching-in user's certifications for this step (checkForCertifications), then the
+// operator punching in (mandatory), the date and time in, and the Qty In proposed from the lot's
+// progress count when it is still empty (it stays editable)
 var $staff : 4D:C1709.Entity
 	
 Case of 
@@ -8,6 +9,9 @@ Case of
 			return 
 		End if 
 		If (Not:C34(cs:C1710.panel_punch_in.me.canEditPanelFields()))
+			return 
+		End if 
+		If (Not:C34(cs:C1710.panel_punch_in.me.checkForCertifications()))
 			return 
 		End if 
 		$staff:=cs:C1710.ga_operator.me.ask()

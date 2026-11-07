@@ -1,2 +1,3 @@
-cs:C1710.Util.me.btnDatePicker(Form:C1466.current_item; "dateInitiated")
-cs:C1710.panel_continuousImprovement.me._activate_save_cancel_button()
+If (cs:C1710.Util.me.btnDatePicker(Form:C1466.current_item; "dateInitiated"))
+	cs:C1710.panel_continuousImprovement.me._activate_save_cancel_button()
+End if
