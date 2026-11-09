@@ -152,7 +152,8 @@ End if
 
 //---Staff.codeID is a numeric sequence (StaffEntity.loadAfterCreation uses max+1):
 //   continue it from whatever survived.
-$nextCodeID:=ds:C1482.Staff.all().max("codeID")+1
+//   Num(): max() on an empty table (a new data file) is undefined, and undefined+1 fails.
+$nextCodeID:=Num:C11(ds:C1482.Staff.all().max("codeID"))+1
 
 //===================================================================================
 // 1. one account + one Staff row per employee

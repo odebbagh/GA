@@ -136,7 +136,7 @@ Else
 				If (_carrierMatchKey($eCarrierCandidate.name)=$carrierKey)
 					$customerCarrier:=$eCarrierCandidate
 				Else
-					If ($eCarrierCandidate.moreData.aliasKeys#Null:C1517)
+					If ($eCarrierCandidate.moreData#Null:C1517) && ($eCarrierCandidate.moreData.aliasKeys#Null:C1517)
 						If ($eCarrierCandidate.moreData.aliasKeys.indexOf($carrierKey)#-1)
 							$customerCarrier:=$eCarrierCandidate
 						End if

@@ -216,7 +216,7 @@ Else
 			$existingUnits[$unitKey]:=$eUnit.name
 			$existingUnitUUID[$unitKey]:=$eUnit.UUID
 		End if
-		If ($eUnit.moreData.aliasKeys#Null:C1517)
+		If ($eUnit.moreData#Null:C1517) && ($eUnit.moreData.aliasKeys#Null:C1517)
 			For each ($unitKey; $eUnit.moreData.aliasKeys)
 				If ($unitKey#"") && ($existingUnits[$unitKey]=Null:C1517)
 					$existingUnits[$unitKey]:=$eUnit.name
@@ -236,7 +236,7 @@ Else
 		If ($carrierKey#"")
 			$existingCarriers[$carrierKey]:=$eCarrier.UUID
 		End if
-		If ($eCarrier.moreData.aliasKeys#Null:C1517)
+		If ($eCarrier.moreData#Null:C1517) && ($eCarrier.moreData.aliasKeys#Null:C1517)
 			For each ($carrierKey; $eCarrier.moreData.aliasKeys)
 				If ($carrierKey#"") && ($existingCarriers[$carrierKey]=Null:C1517)
 					$existingCarriers[$carrierKey]:=$eCarrier.UUID
