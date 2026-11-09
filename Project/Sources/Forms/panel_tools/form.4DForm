@@ -17,13 +17,8 @@
 		"onValidate",
 		"onClick",
 		"onDoubleClick",
-		"onOutsideCall",
-		"onBeginDragOver",
-		"onDragOver",
 		"onDrop",
 		"onAfterKeystroke",
-		"onMenuSelect",
-		"onPluginArea",
 		"onAfterEdit",
 		"onTimer",
 		"onBoundVariableChange"
