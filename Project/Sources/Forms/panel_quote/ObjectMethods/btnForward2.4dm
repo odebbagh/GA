@@ -1,1 +1,1 @@
-cs:C1710.panel_quote.me.btnOpenStaff()
+cs:C1710.panel_quote.me.btnForward2()

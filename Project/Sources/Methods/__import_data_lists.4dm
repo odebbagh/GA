@@ -44,7 +44,9 @@ TRUNCATE TABLE:C1051([CustomerStatus:130])
 For ($i; 0; $status.length-1)
 	
 	$divisionInfo_eStatus:=ds:C1482.CustomerStatus.new()
-	$divisionInfo_eStatus.levelID:=$i+1
+	// CustomerStatus has no levelID in the structure (the error 1500 seen on a new data
+	// file): the position goes into code, the legacy idt_status value (1 Active .. 4 Void)
+	$divisionInfo_eStatus.code:=String:C10($i+1)
 	$divisionInfo_eStatus.name:=$status[$i]
 	$divisionInfo_eStatus.color:=$recordStatuscolors[$i]
 	$divisionInfo_eStatus.save()
@@ -270,6 +272,18 @@ If (True:C214)
 		
 		$divisionInfo_e.contactDetails:=New object:C1471()
 		$divisionInfo_e.contactDetails.addresses:=New collection:C1472()
+
+		//---Telmesg is the third line legacy printed under the site address on a buy
+		//   order's Ship to. It is a phone number, not a street, so it belongs in
+		//   communications rather than in the address detail.
+		$divisionInfo_e.contactDetails.communications:=New collection:C1472()
+		If (String:C10($record.Telmesg)#"")
+			$comm:=New object:C1471()
+			$comm.type:="phone"
+			$comm.comment:="site"
+			$comm.contact:=String:C10($record.Telmesg)
+			$divisionInfo_e.contactDetails.communications.push($comm)
+		End if
 		
 		$address:=New object:C1471()
 		$address.type:="billing"

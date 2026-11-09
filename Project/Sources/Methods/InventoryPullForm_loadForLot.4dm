@@ -17,6 +17,8 @@ End if
 
 // pulls of the inventory that belongs to the lot (original behaviour)
 $lotPulls:=ds:C1482.Inventory.query("UUID_Lot = :1"; $lot.UUID).pulls.query("(type = :1) | (type = :2)"; "Pull"; "Put Back")
+// and every pull recorded with this lot (its step, its cost), whatever the material
+$lotPulls:=$lotPulls.or(ds:C1482.InventoryPull.query("UUID_Lot = :1"; $lot.UUID))
 
 $jobUUID:=($lot.job#Null:C1517) ? $lot.job.UUID : ""
 

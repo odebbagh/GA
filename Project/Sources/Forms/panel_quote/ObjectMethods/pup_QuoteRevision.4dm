@@ -1,3 +1,1 @@
-cs:C1710.panel_quote.me.pup_revision()
-
-
+cs:C1710.panel_quote.me.pup_QuoteRevision()

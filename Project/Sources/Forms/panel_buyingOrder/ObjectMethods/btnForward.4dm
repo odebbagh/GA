@@ -1,6 +1,6 @@
 Case of 
 	: (FORM Event:C1606.code=On Clicked:K2:4)
-		cs:C1710.panel_purchaseOrder.me.btnOpenCustomer()
+		cs:C1710.panel_buyingOrder.me.btnOpenSupplier()
 		
 	: (FORM Event:C1606.code=On Mouse Enter:K2:33)
 		SET CURSOR:C469(Choose:C955(OBJECT Get enabled:C1079(Self:C308->); 9000; 9019))

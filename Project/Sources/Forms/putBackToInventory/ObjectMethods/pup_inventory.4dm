@@ -15,7 +15,7 @@ Case of
 		
 		If (ok=1)
 			Form:C1466.selectedInventory:=$form.item
-			Form:C1466.maxQty:=InventoryPullForm_netPulled($form.item.UUID)
+			Form:C1466.maxQty:=InventoryPullForm_netPulled($form.item.UUID; String:C10(Form:C1466.lotUUID))  // what this lot pulled and has not put back
 			Form:C1466.inventoryDisplay:=$form.item.code+" — Out: "+String:C10(Form:C1466.maxQty)
 			Form:C1466.qtyToPutBack:=0
 			OBJECT SET ENABLED:C1123(*; "inp_qtyToPutBack"; True:C214)

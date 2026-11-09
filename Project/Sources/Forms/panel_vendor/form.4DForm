@@ -33,6 +33,15 @@
 	"pages": [
 		{
 			"objects": {
+				"header_bkgd": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 2000,
+					"height": 90,
+					"fill": "transparent",
+					"stroke": "transparent"
+				},
 				"label_0_1": {
 					"type": "text",
 					"top": 10,

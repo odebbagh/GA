@@ -59,6 +59,18 @@ If ($res.success)
 	$okCount:=$okCount+1
 End if 
 
+$binningLine:=Planning_travLTSnHdr()
+$res:=$binningLine.save()
+If ($res.success)
+	$okCount:=$okCount+1
+End if
+
+$binningLine:=Planning_travLTSnLine()
+$res:=$binningLine.save()
+If ($res.success)
+	$okCount:=$okCount+1
+End if
+
 For ($colCount; 1; 6)
 	$dtRowLine:=Planning_travLTDTColLine($colCount; False:C215)
 	$res:=$dtRowLine.save()
@@ -157,6 +169,8 @@ End for
 $orderedSpecs:=New collection:C1472()
 $orderedSpecs.push(New object:C1471("kind"; "binningH"; "line"; ds:C1482.dfd_Line.query("name = :1"; "LT - Binning Header").first()))
 $orderedSpecs.push(New object:C1471("kind"; "bins"; "line"; ds:C1482.dfd_Line.query("name = :1"; "LT - Binning").first()))
+$orderedSpecs.push(New object:C1471("kind"; "snH"; "line"; ds:C1482.dfd_Line.query("name = :1"; "LT - Serial Header").first()))
+$orderedSpecs.push(New object:C1471("kind"; "sns"; "line"; ds:C1482.dfd_Line.query("name = :1"; "LT - Serial").first()))
 For ($colCount; 1; 6)
 	$headerKey:="dt"+String:C10($colCount)+"colH"
 	$rowsKey:="dt"+String:C10($colCount)+"col"
@@ -236,7 +250,7 @@ End if
 Planning_seedLTStepLayout
 
 $message:=String:C10($okCount)+" Lot Traveller template fix(es) applied."
-$message:=$message+"\rStep block order: Step CR -> binning -> data table -> bottom border."
+$message:=$message+"\rStep block order: Step CR -> binning -> serial numbers -> data table -> bottom border."
 $message:=$message+"\rFooter is horizontal-only; vertical lines no longer split sublines."
 $message:=$message+"\rSection titles: Binning / Data Table. Footer verticals meet bottom border."
 ALERT:C41($message)

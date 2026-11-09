@@ -211,7 +211,7 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"method": "ObjectMethods/btnDatePicker_toolDate.4dm"
 				},
 				"btn_cancel": {

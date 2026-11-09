@@ -20,6 +20,7 @@ Case of
 			End if
 			$lot.snTable:=$lot.snTable  // touch the object attribute so save() persists the nested change
 			$lot.save()
+			cs:C1710.ga_events.me.logSnResult(Form:C1466.current_item; Form:C1466.snItem)  // lot history
 
 			// a failed SN no longer appears on the following steps
 			For each ($step; $nextSteps)
@@ -44,9 +45,10 @@ Case of
 			End if
 			$lot.snTable:=$lot.snTable
 			$lot.save()
+			cs:C1710.ga_events.me.logSnResult(Form:C1466.current_item; Form:C1466.snItem)  // lot history
 
 			For each ($step; $nextSteps)
-				If (($step.snTable#Null:C1517) && ($step.snTable.items#Null:C1517))
+				If (cs:C1710.ga_serialization.me.isSnStep($step)) && ($step.snTable#Null:C1517) && ($step.snTable.items#Null:C1517)  // later SN steps only (SNA / SNF)
 					If ($step.snTable.items.query("id = :1"; Form:C1466.snItem.id).length=0)
 						$restored:=OB Copy:C1225(Form:C1466.snItem)
 						$restored.pass:=True:C214

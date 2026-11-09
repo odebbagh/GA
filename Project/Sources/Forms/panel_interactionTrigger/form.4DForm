@@ -152,7 +152,7 @@
 					"width": 201,
 					"height": 16,
 					"stroke": "#808080",
-					"text": "Days after the creation of a lead"
+					"text": "Days until the follow-up"
 				},
 				"entryField_daysAfterLeadCreation": {
 					"type": "input",

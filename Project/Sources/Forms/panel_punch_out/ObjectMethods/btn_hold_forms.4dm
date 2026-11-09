@@ -4,6 +4,7 @@ Case of
 			
 			var $defaults : Object
 			var $form : Object
+			var $lot : 4D:C1709.Entity
 			
 			$refMenu:=Create menu:C408
 			
@@ -28,7 +29,13 @@ Case of
 					CLOSE WINDOW:C154($winRef)
 					
 					If (OK=1)
-						LotHoldForm_saveForm(Form:C1466.current_item.lot; "NCMN"; $form)
+						$lot:=Form:C1466.current_item.lot
+						LotHoldForm_saveForm($lot; "NCMN"; $form)
+						// the lot is a related record: saving the step does not save it, so it is saved now
+						// (before this, the form only reached the database with the next hold / unhold)
+						If (Not:C34(LotHoldForm_trySaveLot($lot).success))
+							cs:C1710.sfw_dialog.me.alert("The lot record is locked: the NCMN could not be saved. Please free the lot record and try again.")
+						End if 
 						Form:C1466.current_item.UUID:=Form:C1466.current_item.UUID
 					End if 
 					
@@ -40,7 +47,13 @@ Case of
 					CLOSE WINDOW:C154($winRef)
 					
 					If (OK=1)
-						LotHoldForm_saveForm(Form:C1466.current_item.lot; "ISSNF"; $form)
+						$lot:=Form:C1466.current_item.lot
+						LotHoldForm_saveForm($lot; "ISSNF"; $form)
+						// the lot is a related record: saving the step does not save it, so it is saved now
+						// (before this, the form only reached the database with the next hold / unhold)
+						If (Not:C34(LotHoldForm_trySaveLot($lot).success))
+							cs:C1710.sfw_dialog.me.alert("The lot record is locked: the ISSNF could not be saved. Please free the lot record and try again.")
+						End if 
 						Form:C1466.current_item.UUID:=Form:C1466.current_item.UUID
 					End if 
 			End case 

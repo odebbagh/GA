@@ -4,7 +4,8 @@ Case of
 			OBJECT GET COORDINATES:C663(*; "toolNameCol"; $l; $t; $r; $b)
 			CONVERT COORDINATES:C1365($l; $b; XY Current form:K27:5; XY Main window:K27:8)
 			
-			$form:=New object:C1471("uuid_toolType"; Form:C1466.selectedTool.uuid_toolType; "lb_items"; ds:C1482.Tool.query("UUID_ToolType = :1"; Form:C1466.selectedTool.uuid_toolType))
+			// a tool past its calibration date is not offered (no date = not calibrated, always offered)
+			$form:=New object:C1471("uuid_toolType"; Form:C1466.selectedTool.uuid_toolType; "lb_items"; ds:C1482.Tool.query("UUID_ToolType = :1 AND (date >= :2 OR date = :3)"; Form:C1466.selectedTool.uuid_toolType; Current date:C33; !00-00-00!).orderBy("name asc"))
 			
 			$winRef:=Open form window:C675("selectTool"; Pop up form window:K39:11; $l; $b-80+(Form:C1466.selectedTool.order*20))
 			DIALOG:C40("selectTool"; $form)

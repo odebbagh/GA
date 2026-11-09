@@ -26,8 +26,10 @@ $order:=1
 $lineItem:=New object:C1471("name"; "picture_ga"; "order"; $order; "properties"; New object:C1471("type"; "picture"; "_origineType"; "picture"; "top"; 10; "left"; 10; "width"; 120; "height"; 60; "pictureFormat"; "scaled"; "picture"; "/RESOURCES/image/modeles/GA_logo.png"))
 $objects.push($lineItem)
 $order:=$order+1
-$lineItem:=New object:C1471("name"; "picture_itar"; "order"; $order; "properties"; New object:C1471("type"; "picture"; "_origineType"; "picture"; "top"; 10; "left"; 300; "width"; 120; "height"; 60; "pictureFormat"; "scaled"; "picture"; "/RESOURCES/image/modeles/itar.png"))
+// ITAR mark: a picture from the data (itarPic), empty unless the lot is marked ITAR
+$lineItem:=New object:C1471("name"; "picture_itar"; "order"; $order; "properties"; New object:C1471("type"; "input"; "_origineType"; "dynPict"; "top"; 10; "left"; 300; "width"; 120; "height"; 60; "dataSource"; "##itarPic##"; "dataSourceTypeHint"; "picture"; "pictureFormat"; "scaled"; "borderStyle"; "none"; "fill"; "transparent"; "enterable"; False:C215; "focusable"; False:C215))
 $objects.push($lineItem)
+$line.variableItems.tags.push(New object:C1471("tag"; "itarPic"; "objects"; New collection:C1472("picture_itar")))
 $order:=$order+1
 $lineItem:=New object:C1471("name"; "picture_esd"; "order"; $order; "properties"; New object:C1471("type"; "picture"; "_origineType"; "picture"; "top"; 15; "left"; 520; "width"; 45; "height"; 50; "pictureFormat"; "scaled"; "picture"; "/RESOURCES/image/modeles/esd.png"))
 $objects.push($lineItem)

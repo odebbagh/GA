@@ -1,0 +1,298 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onClick",
+		"onDataChange",
+		"onAfterKeystroke"
+	],
+	"windowTitle": "Price from the price list",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"txt_header": {
+					"type": "input",
+					"top": 14,
+					"left": 20,
+					"width": 820,
+					"height": 32,
+					"dataSource": "Form:C1466.headerText",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_search": {
+					"type": "text",
+					"top": 56,
+					"left": 20,
+					"width": 60,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Search"
+				},
+				"input_search": {
+					"type": "input",
+					"top": 54,
+					"left": 84,
+					"width": 300,
+					"height": 20,
+					"dataSource": "Form:C1466.search",
+					"dataSourceTypeHint": "text",
+					"events": [
+						"onAfterKeystroke",
+						"onDataChange"
+					],
+					"method": "ObjectMethods/input_search.4dm"
+				},
+				"label_stepSet": {
+					"type": "text",
+					"top": 56,
+					"left": 404,
+					"width": 60,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Step set"
+				},
+				"pup_stepSet": {
+					"type": "button",
+					"top": 54,
+					"left": 468,
+					"width": 250,
+					"height": 20,
+					"focusable": false,
+					"text": "Custom",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_stepSet.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"chk_tickedOnly": {
+					"type": "checkbox",
+					"top": 54,
+					"left": 736,
+					"width": 104,
+					"height": 20,
+					"sizingX": "move",
+					"text": "Ticked only",
+					"dataSource": "Form:C1466.tickedOnly",
+					"dataSourceTypeHint": "boolean",
+					"focusable": false,
+					"method": "ObjectMethods/chk_tickedOnly.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"lb_steps": {
+					"type": "listbox",
+					"top": 84,
+					"left": 20,
+					"width": 820,
+					"height": 380,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"listboxType": "collection",
+					"focusable": false,
+					"movableRows": false,
+					"dataSource": "Form:C1466.view",
+					"currentItemSource": "Form:C1466.current_step",
+					"metaSource": "This:C1470.meta",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "#C0C0C0",
+					"selectionMode": "single",
+					"events": [
+						"onClick",
+						"onDataChange"
+					],
+					"fill": "#FFFFFF",
+					"alternateFill": "#F7F9FC",
+					"borderStyle": "system",
+					"method": "ObjectMethods/lb_steps.4dm",
+					"columns": [
+						{
+							"header": {
+								"name": "Header_selected",
+								"text": ""
+							},
+							"name": "Column_selected",
+							"width": 30,
+							"dataSource": "This:C1470.selected",
+							"dataSourceTypeHint": "boolean",
+							"footer": {
+								"name": "Footer_selected"
+							}
+						},
+						{
+							"header": {
+								"name": "Header_step",
+								"text": "Step"
+							},
+							"name": "Column_step",
+							"width": 300,
+							"dataSource": "This:C1470.description",
+							"dataSourceTypeHint": "text",
+							"enterable": false,
+							"truncateMode": "withEllipsis",
+							"footer": {
+								"name": "Footer_step"
+							}
+						},
+						{
+							"header": {
+								"name": "Header_process",
+								"text": "Process"
+							},
+							"name": "Column_process",
+							"width": 170,
+							"dataSource": "This:C1470.process",
+							"dataSourceTypeHint": "text",
+							"enterable": false,
+							"truncateMode": "withEllipsis",
+							"footer": {
+								"name": "Footer_process"
+							}
+						},
+						{
+							"header": {
+								"name": "Header_code",
+								"text": "Price code"
+							},
+							"name": "Column_code",
+							"width": 100,
+							"dataSource": "This:C1470.code",
+							"dataSourceTypeHint": "text",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_code"
+							}
+						},
+						{
+							"header": {
+								"name": "Header_price",
+								"text": "Unit price",
+								"textAlign": "right"
+							},
+							"name": "Column_price",
+							"width": 100,
+							"dataSource": "This:C1470.price",
+							"dataSourceTypeHint": "number",
+							"numberFormat": "###,###,##0.00##;;",
+							"textAlign": "right",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_price"
+							}
+						},
+						{
+							"header": {
+								"name": "Header_min",
+								"text": "Min. lot",
+								"textAlign": "right"
+							},
+							"name": "Column_min",
+							"width": 100,
+							"dataSource": "This:C1470.minLotCharge",
+							"dataSourceTypeHint": "number",
+							"numberFormat": "###,###,##0.00;;",
+							"textAlign": "right",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_min"
+							}
+						}
+					]
+				},
+				"txt_total": {
+					"type": "input",
+					"top": 472,
+					"left": 20,
+					"width": 640,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.totalText",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fontWeight": "bold",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"txt_stepSetNote": {
+					"type": "input",
+					"top": 498,
+					"left": 20,
+					"width": 820,
+					"height": 17,
+					"sizingX": "grow",
+					"sizingY": "move",
+					"dataSource": "Form:C1466.stepSetNote",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"stroke": "#C00000",
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"bCancel": {
+					"type": "button",
+					"top": 470,
+					"left": 680,
+					"width": 75,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "cancel",
+					"shortcutKey": "[Esc]",
+					"text": "Cancel",
+					"events": [
+						"onClick"
+					]
+				},
+				"bOK": {
+					"type": "button",
+					"top": 470,
+					"left": 765,
+					"width": 75,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "accept",
+					"text": "Apply",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		}
+	],
+	"geometryStamp": 1,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

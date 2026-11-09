@@ -1,3 +1,1 @@
-cs:C1710.panel_quote.me.pup_status()
-
-
+cs:C1710.panel_quote.me.pup_QuoteStatus()

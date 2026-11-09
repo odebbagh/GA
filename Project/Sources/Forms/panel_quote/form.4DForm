@@ -13,21 +13,8 @@
 	"bottomMargin": 0,
 	"events": [
 		"onLoad",
-		"onValidate",
 		"onClick",
-		"onOutsideCall",
-		"onDoubleClick",
-		"onDrop",
-		"onMenuSelect",
-		"onPluginArea",
 		"onDataChange",
-		"onDragOver",
-		"onTimer",
-		"onAfterKeystroke",
-		"onMouseEnter",
-		"onMouseLeave",
-		"onAfterEdit",
-		"onBeginDragOver",
 		"onBoundVariableChange",
 		"onPageChange"
 	],
@@ -52,6 +39,7 @@
 					"width": 177,
 					"height": 17,
 					"dataSource": "Form:C1466.current_item.code",
+					"placeholder": "(new)",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
@@ -333,13 +321,123 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"textPlacement": "center",
 					"method": "ObjectMethods/btnDatePicker.4dm",
 					"visibility": "visible",
-					"iconFrames": 4,
 					"focusable": false,
 					"dataSource": ""
+				},
+				"label_lead": {
+					"type": "text",
+					"top": 13,
+					"left": 1065,
+					"width": 50,
+					"height": 15,
+					"stroke": "#808080",
+					"text": "Lead"
+				},
+				"pup_lead": {
+					"type": "button",
+					"top": 9,
+					"left": 1140,
+					"width": 166,
+					"height": 20,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": " ",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_lead.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"btnOpenLead": {
+					"type": "button",
+					"text": " ",
+					"top": 11,
+					"left": 1312,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/arrowForward.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnOpenLead.4dm",
+					"visibility": "visible",
+					"iconFrames": 4,
+					"focusable": false
+				},
+				"label_validUntil": {
+					"type": "text",
+					"top": 38,
+					"left": 1065,
+					"width": 70,
+					"height": 15,
+					"stroke": "#808080",
+					"text": "Valid until"
+				},
+				"entryField_validUntil": {
+					"type": "input",
+					"top": 37,
+					"left": 1140,
+					"width": 140,
+					"height": 16,
+					"dataSource": "Form:C1466.current_item.validUntil",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "date",
+					"entryFilter": "!0&9##/##/####",
+					"method": "ObjectMethods/entryField_validUntil.4dm"
+				},
+				"btnDatePickerValidUntil": {
+					"type": "button",
+					"text": " ",
+					"top": 36,
+					"left": 1288,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerValidUntil.4dm",
+					"visibility": "visible",
+					"focusable": false,
+					"dataSource": ""
+				},
+				"lifecycleText": {
+					"type": "input",
+					"top": 62,
+					"left": 1065,
+					"width": 265,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.lifecycleText",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#808080",
+					"textAlign": "left"
 				}
 			}
 		},
@@ -504,35 +602,185 @@
 					"icon": "/RESOURCES/sfw/image/picto/gearW.png",
 					"textPlacement": "right",
 					"method": "ObjectMethods/bActionQuoteLines1.4dm"
+				},
+				"rect_order": {
+					"type": "rectangle",
+					"top": 113,
+					"left": 929,
+					"width": 400,
+					"height": 32,
+					"fill": "#00A4A4",
+					"stroke": "transparent"
+				},
+				"text_order": {
+					"type": "text",
+					"text": "Order",
+					"top": 122,
+					"left": 953,
+					"width": 150,
+					"height": 15,
+					"fontWeight": "bold"
+				},
+				"label_quotePO": {
+					"type": "text",
+					"top": 161,
+					"left": 953,
+					"width": 60,
+					"height": 15,
+					"stroke": "#808080",
+					"text": "PO"
+				},
+				"quotePOText": {
+					"type": "input",
+					"top": 160,
+					"left": 1020,
+					"width": 270,
+					"height": 17,
+					"dataSource": "Form:C1466.quoteOrder.poText",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"btnOpenQuotePO": {
+					"type": "button",
+					"text": " ",
+					"top": 159,
+					"left": 1296,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/arrowForward.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnOpenQuotePO.4dm",
+					"visibility": "visible",
+					"focusable": false
+				},
+				"label_quoteJob": {
+					"type": "text",
+					"top": 188,
+					"left": 953,
+					"width": 60,
+					"height": 15,
+					"stroke": "#808080",
+					"text": "Job"
+				},
+				"quoteJobText": {
+					"type": "input",
+					"top": 187,
+					"left": 1020,
+					"width": 270,
+					"height": 17,
+					"dataSource": "Form:C1466.quoteOrder.jobText",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left"
+				},
+				"btnOpenQuoteJob": {
+					"type": "button",
+					"text": " ",
+					"top": 186,
+					"left": 1296,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/arrowForward.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnOpenQuoteJob.4dm",
+					"visibility": "visible",
+					"focusable": false
+				},
+				"label_quoteReasonWL": {
+					"type": "text",
+					"top": 215,
+					"left": 953,
+					"width": 65,
+					"height": 15,
+					"stroke": "#808080",
+					"text": "W/L reason"
+				},
+				"entryField_quoteReasonWL": {
+					"type": "input",
+					"top": 214,
+					"left": 1020,
+					"width": 294,
+					"height": 60,
+					"dataSource": "Form:C1466.current_item.reasonWL",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"method": "ObjectMethods/entryField_quoteReasonWL.4dm"
 				}
 			}
 		},
 		{
 			"objects": {
-				"bkgd_lb_consumptions1": {
-					"type": "rectangle",
-					"top": 352,
-					"left": 0,
-					"width": 940,
-					"height": 170,
-					"stroke": "#c0c0c0",
-					"fill": "#F7F9FC"
-				},
-				"bkgd_lb_consumptions": {
+				"rect_linesRuban": {
 					"type": "rectangle",
 					"top": 114,
 					"left": 0,
-					"width": 529,
-					"height": 238,
-					"stroke": "#c0c0c0",
-					"fill": "#F7F9FC"
+					"width": 131,
+					"height": 566,
+					"fill": "#00A4A4",
+					"stroke": "transparent"
+				},
+				"label_priceFlow": {
+					"type": "text",
+					"top": 124,
+					"left": 8,
+					"width": 118,
+					"height": 17,
+					"stroke": "#FFFFFF",
+					"fontWeight": "bold",
+					"text": "Price flow"
+				},
+				"pup_priceFlow": {
+					"type": "button",
+					"top": 144,
+					"left": 6,
+					"width": 120,
+					"height": 20,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": " ",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_priceFlow.4dm",
+					"events": [
+						"onClick"
+					]
 				},
 				"lb_quoteLines": {
 					"type": "listbox",
-					"top": 147,
-					"left": 0,
-					"width": 528,
-					"height": 164,
+					"top": 114,
+					"left": 131,
+					"width": 680,
+					"height": 539,
 					"resizingMode": "legacy",
 					"listboxType": "collection",
 					"focusable": false,
@@ -543,7 +791,7 @@
 					"metaSource": "This:C1470.meta",
 					"scrollbarHorizontal": "hidden",
 					"horizontalLineStroke": "transparent",
-					"verticalLineStroke": "#C0C0C0",
+					"verticalLineStroke": "transparent",
 					"events": [
 						"onClick",
 						"onDataChange",
@@ -551,14 +799,32 @@
 						"onHeaderClick"
 					],
 					"fill": "#FFFFFF",
-					"alternateFill": "#F7F9FC",
+					"alternateFill": "#F7FBFF",
 					"borderStyle": "system",
 					"method": "ObjectMethods/lb_quoteLines.4dm",
 					"columns": [
 						{
+							"header": {
+								"name": "Header_num",
+								"text": "#",
+								"textAlign": "center"
+							},
+							"name": "Column_num",
+							"dataSource": "This:C1470.num",
+							"enterable": false,
+							"width": 35,
+							"footer": {
+								"name": "Footer_num"
+							},
+							"minWidth": 20,
+							"maxWidth": 32000,
+							"textAlign": "center",
+							"dataSourceTypeHint": "number"
+						},
+						{
 							"name": "Colonne2",
 							"dataSource": "This:C1470.description",
-							"width": 271,
+							"width": 292,
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"events": [
@@ -583,6 +849,7 @@
 						{
 							"name": "Colonne9",
 							"dataSource": "This:C1470.quantity",
+							"enterable": false,
 							"width": 79,
 							"minWidth": 10,
 							"maxWidth": 32000,
@@ -609,6 +876,7 @@
 						{
 							"name": "Colonne4",
 							"dataSource": "This:C1470.unitPrice",
+							"enterable": false,
 							"width": 79,
 							"minWidth": 10,
 							"maxWidth": 32000,
@@ -634,36 +902,44 @@
 						},
 						{
 							"header": {
+								"name": "Header_minLotCharge",
+								"text": "Min. lot charge"
+							},
+							"name": "Column_minLotCharge",
+							"dataSource": "This:C1470.minLotCharge",
+							"enterable": false,
+							"width": 90,
+							"footer": {
+								"name": "Footer_minLotCharge"
+							},
+							"minWidth": 20,
+							"maxWidth": 32000,
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"header": {
 								"name": "Header2",
 								"text": "Amount"
 							},
 							"name": "Column1",
 							"class": "",
 							"dataSource": "This:C1470.amount",
-							"width": 20,
+							"enterable": false,
+							"width": 90,
 							"footer": {
 								"name": "Footer2"
 							},
 							"minWidth": 20,
-							"maxWidth": 20,
+							"maxWidth": 32000,
 							"dataSourceTypeHint": "number"
 						}
 					]
 				},
-				"bkgd_lb_consumptions_detail": {
-					"type": "rectangle",
-					"top": 114,
-					"left": 528,
-					"width": 412,
-					"height": 238,
-					"stroke": "#c0c0c0",
-					"fill": "#F7F9FC"
-				},
 				"bActionQuoteLines": {
 					"type": "button",
 					"text": "Actions",
-					"top": 315,
-					"left": 6,
+					"top": 622,
+					"left": 12,
 					"width": 80,
 					"height": 21,
 					"events": [
@@ -677,18 +953,18 @@
 				},
 				"label_quoteLine_quantity": {
 					"type": "text",
-					"top": 147,
-					"left": 538,
-					"width": 68,
+					"top": 124,
+					"left": 830,
+					"width": 91,
 					"height": 17,
 					"stroke": "#808080",
 					"text": "Quantity"
 				},
 				"entryField_quoteLineQuantity": {
 					"type": "input",
-					"top": 147,
-					"left": 636,
-					"width": 153,
+					"top": 124,
+					"left": 936,
+					"width": 261,
 					"height": 17,
 					"dataSource": "Form:C1466.current_quoteLine.quantity",
 					"focusable": false,
@@ -706,18 +982,18 @@
 				},
 				"label_quoteLine_unitPrice": {
 					"type": "text",
-					"top": 171,
-					"left": 538,
-					"width": 68,
+					"top": 158,
+					"left": 830,
+					"width": 91,
 					"height": 17,
 					"stroke": "#808080",
 					"text": "Unit price"
 				},
 				"entryField_quoteLineUnitPrice": {
 					"type": "input",
-					"top": 171,
-					"left": 636,
-					"width": 153,
+					"top": 158,
+					"left": 936,
+					"width": 261,
 					"height": 17,
 					"dataSource": "Form:C1466.current_quoteLine.unitPrice",
 					"focusable": false,
@@ -733,22 +1009,22 @@
 					"dataSourceTypeHint": "number",
 					"textAlign": "left"
 				},
-				"label_quoteLine_amount": {
+				"label_quoteLine_minLotCharge": {
 					"type": "text",
-					"top": 195,
-					"left": 538,
-					"width": 68,
+					"top": 192,
+					"left": 830,
+					"width": 91,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "Amount"
+					"text": "Min. lot charge"
 				},
-				"entryField_quoteLineAmount": {
+				"entryField_quoteLineMinLotCharge": {
 					"type": "input",
-					"top": 195,
-					"left": 636,
-					"width": 153,
+					"top": 192,
+					"left": 936,
+					"width": 120,
 					"height": 17,
-					"dataSource": "Form:C1466.current_quoteLine.amount",
+					"dataSource": "Form:C1466.current_quoteLine.minLotCharge",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
@@ -758,25 +1034,68 @@
 					],
 					"fill": "transparent",
 					"borderStyle": "none",
-					"method": "ObjectMethods/entryField_quoteLineAmount.4dm",
+					"method": "ObjectMethods/entryField_quoteLineMinLotCharge.4dm",
+					"dataSourceTypeHint": "number",
+					"textAlign": "left"
+				},
+				"input_quoteLineMinLotChargeSource": {
+					"type": "input",
+					"top": 192,
+					"left": 1062,
+					"width": 135,
+					"height": 17,
+					"dataSource": "Form:C1466.current_quoteLine.minLotChargeSourceText",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#808080",
+					"fontStyle": "italic",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_quoteLine_amount": {
+					"type": "text",
+					"top": 226,
+					"left": 830,
+					"width": 91,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Amount"
+				},
+				"input_quoteLineAmount": {
+					"type": "input",
+					"top": 226,
+					"left": 936,
+					"width": 261,
+					"height": 17,
+					"dataSource": "Form:C1466.current_quoteLine.amount",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"fill": "transparent",
+					"borderStyle": "none",
 					"dataSourceTypeHint": "number",
 					"textAlign": "left"
 				},
 				"label_quoteLine_description": {
 					"type": "text",
-					"top": 217,
-					"left": 538,
-					"width": 79,
+					"top": 260,
+					"left": 830,
+					"width": 91,
 					"height": 16,
 					"stroke": "#808080",
 					"text": "Description"
 				},
 				"entryField_quoteLineDescription": {
 					"type": "input",
-					"top": 217,
-					"left": 636,
-					"width": 277,
-					"height": 97,
+					"top": 260,
+					"left": 936,
+					"width": 405,
+					"height": 200,
 					"dataSource": "Form:C1466.current_quoteLine.description",
 					"focusable": false,
 					"enterable": false,
@@ -792,6 +1111,21 @@
 					"textAlign": "left",
 					"scrollbarHorizontal": "hidden",
 					"scrollbarVertical": "automatic"
+				},
+				"input_quoteLineBuiltFrom": {
+					"type": "input",
+					"top": 466,
+					"left": 936,
+					"width": 405,
+					"height": 17,
+					"dataSource": "Form:C1466.current_quoteLine.builtFromText",
+					"dataSourceTypeHint": "text",
+					"focusable": false,
+					"enterable": false,
+					"stroke": "#808080",
+					"fontStyle": "italic",
+					"fill": "transparent",
+					"borderStyle": "none"
 				}
 			}
 		},
@@ -1060,11 +1394,20 @@
 		},
 		{
 			"objects": {
+				"rect_previewRuban": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 0,
+					"width": 131,
+					"height": 680,
+					"fill": "#00A4A4",
+					"stroke": "transparent"
+				},
 				"WParea_preview": {
 					"type": "write",
 					"top": 204,
-					"left": 0,
-					"width": 880,
+					"left": 131,
+					"width": 749,
 					"height": 590,
 					"sizingX": "grow",
 					"sizingY": "grow",
@@ -1086,8 +1429,8 @@
 				"WPtoolbar_preview": {
 					"type": "subform",
 					"top": 114,
-					"left": 0,
-					"width": 880,
+					"left": 131,
+					"width": 749,
 					"height": 90,
 					"sizingX": "grow",
 					"detailForm": "WP_Toolbar",
@@ -1098,6 +1441,420 @@
 					"selectionMode": "multiple",
 					"printFrame": "variable",
 					"method": ""
+				},
+				"bActionPreview": {
+					"type": "button",
+					"text": "Actions",
+					"top": 770,
+					"left": 12,
+					"width": 80,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionPreview.4dm"
+				}
+			}
+		},
+		{
+			"objects": {
+				"rect_revisionsRuban": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 0,
+					"width": 131,
+					"height": 566,
+					"fill": "#00A4A4",
+					"stroke": "transparent"
+				},
+				"lb_revisions": {
+					"type": "listbox",
+					"top": 114,
+					"left": 131,
+					"width": 680,
+					"height": 539,
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"focusable": false,
+					"movableRows": false,
+					"dataSource": "Form:C1466.lb_revisions",
+					"currentItemSource": "Form:C1466.current_revision",
+					"currentItemPositionSource": "",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onSelectionChange"
+					],
+					"fill": "#FFFFFF",
+					"alternateFill": "#F7FBFF",
+					"borderStyle": "system",
+					"method": "ObjectMethods/lb_revisions.4dm",
+					"columns": [
+						{
+							"name": "colRevNum",
+							"dataSource": "This:C1470.num",
+							"enterable": false,
+							"width": 35,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrRevNum",
+								"text": "#",
+								"textAlign": "center"
+							},
+							"footer": {
+								"name": "ftrRevNum"
+							},
+							"textAlign": "center",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"name": "colRevLabel",
+							"dataSource": "This:C1470.label",
+							"enterable": false,
+							"width": 90,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrRevLabel",
+								"text": "Revision"
+							},
+							"footer": {
+								"name": "ftrRevLabel"
+							},
+							"dataSourceTypeHint": "text"
+						},
+						{
+							"name": "colRevDate",
+							"dataSource": "This:C1470.dateText",
+							"enterable": false,
+							"width": 120,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrRevDate",
+								"text": "Date"
+							},
+							"footer": {
+								"name": "ftrRevDate"
+							},
+							"dataSourceTypeHint": "text"
+						},
+						{
+							"name": "colRevUser",
+							"dataSource": "This:C1470.userName",
+							"enterable": false,
+							"width": 120,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrRevUser",
+								"text": "By"
+							},
+							"footer": {
+								"name": "ftrRevUser"
+							},
+							"dataSourceTypeHint": "text"
+						},
+						{
+							"name": "colRevNote",
+							"dataSource": "This:C1470.noteFirstLine",
+							"enterable": false,
+							"width": 215,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrRevNote",
+								"text": "Note"
+							},
+							"footer": {
+								"name": "ftrRevNote"
+							},
+							"dataSourceTypeHint": "text"
+						},
+						{
+							"name": "colRevTotal",
+							"dataSource": "This:C1470.totalText",
+							"enterable": false,
+							"width": 100,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrRevTotal",
+								"text": "Total",
+								"textAlign": "right"
+							},
+							"footer": {
+								"name": "ftrRevTotal"
+							},
+							"textAlign": "right",
+							"dataSourceTypeHint": "text"
+						}
+					]
+				},
+				"bActionRevisions": {
+					"type": "button",
+					"text": "Actions",
+					"top": 622,
+					"left": 12,
+					"width": 80,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionRevisions.4dm"
+				},
+				"label_revisionNote": {
+					"type": "text",
+					"text": "Note",
+					"top": 120,
+					"left": 836,
+					"width": 200,
+					"height": 16,
+					"fontWeight": "bold"
+				},
+				"revisionNote": {
+					"type": "input",
+					"top": 142,
+					"left": 836,
+					"width": 405,
+					"height": 200,
+					"dataSource": "Form:C1466.revisionNote",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "none",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "automatic"
+				}
+			}
+		},
+		{
+			"objects": {
+				"rect_followUpsRuban": {
+					"type": "rectangle",
+					"top": 114,
+					"left": 0,
+					"width": 131,
+					"height": 566,
+					"fill": "#00A4A4",
+					"stroke": "transparent"
+				},
+				"lb_followUps": {
+					"type": "listbox",
+					"top": 114,
+					"left": 131,
+					"width": 790,
+					"height": 539,
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"focusable": false,
+					"movableRows": false,
+					"dataSource": "Form:C1466.lb_followUps",
+					"currentItemSource": "Form:C1466.current_followUp",
+					"currentItemPositionSource": "",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onSelectionChange"
+					],
+					"fill": "#FFFFFF",
+					"alternateFill": "#F7FBFF",
+					"borderStyle": "system",
+					"method": "ObjectMethods/lb_followUps.4dm",
+					"columns": [
+						{
+							"name": "colFuNum",
+							"dataSource": "This:C1470.number",
+							"enterable": false,
+							"width": 35,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrFuNum",
+								"text": "#",
+								"textAlign": "center"
+							},
+							"footer": {
+								"name": "ftrFuNum"
+							},
+							"textAlign": "center",
+							"dataSourceTypeHint": "number"
+						},
+						{
+							"name": "colFuDate",
+							"dataSource": "This:C1470.creationDateText",
+							"enterable": false,
+							"width": 85,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrFuDate",
+								"text": "Date"
+							},
+							"footer": {
+								"name": "ftrFuDate"
+							},
+							"dataSourceTypeHint": "text"
+						},
+						{
+							"name": "colFuType",
+							"dataSource": "This:C1470.typeName",
+							"enterable": false,
+							"width": 80,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrFuType",
+								"text": "Status"
+							},
+							"footer": {
+								"name": "ftrFuType"
+							},
+							"dataSourceTypeHint": "text"
+						},
+						{
+							"name": "colFuFollowUp",
+							"dataSource": "This:C1470.followUpText",
+							"enterable": false,
+							"width": 85,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrFuFollowUp",
+								"text": "Follow-up"
+							},
+							"footer": {
+								"name": "ftrFuFollowUp"
+							},
+							"dataSourceTypeHint": "text"
+						},
+						{
+							"name": "colFuTrigger",
+							"dataSource": "This:C1470.triggerName",
+							"enterable": false,
+							"width": 110,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrFuTrigger",
+								"text": "Trigger"
+							},
+							"footer": {
+								"name": "ftrFuTrigger"
+							},
+							"dataSourceTypeHint": "text"
+						},
+						{
+							"name": "colFuContact",
+							"dataSource": "This:C1470.contactName",
+							"enterable": false,
+							"width": 120,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrFuContact",
+								"text": "Contact"
+							},
+							"footer": {
+								"name": "ftrFuContact"
+							},
+							"dataSourceTypeHint": "text"
+						},
+						{
+							"name": "colFuSales",
+							"dataSource": "This:C1470.staffName",
+							"enterable": false,
+							"width": 110,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrFuSales",
+								"text": "Sales person"
+							},
+							"footer": {
+								"name": "ftrFuSales"
+							},
+							"dataSourceTypeHint": "text"
+						},
+						{
+							"name": "colFuFrom",
+							"dataSource": "This:C1470.fromText",
+							"enterable": false,
+							"width": 160,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"header": {
+								"name": "hdrFuFrom",
+								"text": "Lead / quote"
+							},
+							"footer": {
+								"name": "ftrFuFrom"
+							},
+							"dataSourceTypeHint": "text"
+						}
+					]
+				},
+				"bActionFollowUps": {
+					"type": "button",
+					"text": "Actions",
+					"top": 622,
+					"left": 12,
+					"width": 80,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionFollowUps.4dm"
+				},
+				"label_followUpNotes": {
+					"type": "text",
+					"text": "Notes",
+					"top": 120,
+					"left": 936,
+					"width": 200,
+					"height": 16,
+					"fontWeight": "bold"
+				},
+				"followUpNotes": {
+					"type": "input",
+					"top": 142,
+					"left": 936,
+					"width": 405,
+					"height": 200,
+					"dataSource": "Form:C1466.current_followUp.notes",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "none",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "automatic"
 				}
 			}
 		}

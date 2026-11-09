@@ -315,7 +315,7 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"method": "ObjectMethods/df_btnDatePicker_startDate.4dm"
 				},
 				"header_bkgd3": {
@@ -367,6 +367,25 @@
 					"textAlign": "right",
 					"fontWeight": "bold"
 				},
+				"bScan_engineer": {
+					"type": "button",
+					"text": "",
+					"top": 177,
+					"left": 446,
+					"width": 23,
+					"height": 23,
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					],
+					"method": "ObjectMethods/bScan_engineer.4dm",
+					"focusable": false,
+					"style": "regular",
+					"icon": "/RESOURCES/image/button/barcode-scan.png",
+					"iconFrames": 1,
+					"tooltip": "Scan or type the engineer's code"
+				},
 				"field_engineer": {
 					"type": "input",
 					"left": 151,
@@ -377,12 +396,7 @@
 					"fill": "transparent",
 					"dataSource": "Form:C1466.engineer",
 					"enterable": false,
-					"method": "ObjectMethods/field_engineer.4dm",
-					"events": [
-						"onClick",
-						"onMouseEnter",
-						"onMouseLeave"
-					],
+					"focusable": false,
 					"dataSourceTypeHint": "text"
 				},
 				"header_bkgd8": {
@@ -533,7 +547,7 @@
 					],
 					"style": "custom",
 					"popupPlacement": "none",
-					"icon": "/RESOURCES/image/element/calendar-16x16.png",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
 					"method": "ObjectMethods/df_btnDatePicker_startDate1.4dm"
 				},
 				"field_description": {

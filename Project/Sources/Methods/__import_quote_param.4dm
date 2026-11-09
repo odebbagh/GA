@@ -1,41 +1,11 @@
 //%attributes = {"executedOnServer":true}
-var $eQuoteStatus : cs:C1710.QuoteStatusEntity
-var $eRevision : cs:C1710.RevisionEntity
+// __import_quote_param -> report lines
+// Replaces the quote statuses and revisions with QuoteStatus_export.json and Revision_export.json
+// from the data folder's DataJson. A table whose file is missing is left as it is.
+// Report: Project/imports/quote_param_import.txt. Run it before __import_data_quote.
+#DECLARE()->$lines : Collection
 
-TRUNCATE TABLE:C1051([QuoteStatus:133])
-If (True:C214)
-	$file:=Folder:C1567(fk data folder:K87:12).file("DataJson/QuoteStatus_export.json")
-	$records:=JSON Parse:C1218($file.getText())
-	
-	For each ($q; $records)
-		$eQuoteStatus:=ds:C1482.QuoteStatus.new()
-		$eQuoteStatus.code:=$q.code
-		$eQuoteStatus.name:=$q.name
-		$eQuoteStatus.statusID:=$q.statusID
-		$eQuoteStatus.color:=$q.color
-		
-		$info:=$eQuoteStatus.save()
-		If (Not:C34($info.success))
-			TRACE:C157
-		End if 
-	End for each 
-End if 
-
-TRUNCATE TABLE:C1051([Revision:60])
-If (True:C214)
-	$file:=Folder:C1567(fk data folder:K87:12).file("DataJson/Revision_export.json")
-	$records:=JSON Parse:C1218($file.getText())
-	
-	For each ($r; $records)
-		$eRevision:=ds:C1482.Revision.new()
-		$eRevision.code:=$r.code
-		$eRevision.name:=$r.name
-		$eRevision.levelID:=$r.levelID
-		$eRevision.color:=$r.color
-		
-		$info:=$eRevision.save()
-		If (Not:C34($info.success))
-			TRACE:C157
-		End if 
-	End for each 
-End if 
+$lines:=_import_paramTables(New collection:C1472(\
+New object:C1471("table"; ->[QuoteStatus:133]; "dataclass"; "QuoteStatus"; "file"; "QuoteStatus_export.json"; "idField"; "statusID"); \
+New object:C1471("table"; ->[Revision:60]; "dataclass"; "Revision"; "file"; "Revision_export.json"; "idField"; "levelID")\
+); "quote_param_import.txt")

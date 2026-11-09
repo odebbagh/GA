@@ -38,4 +38,5 @@ End if
 
 If ($item#Null:C1517)
 	$form:=LotHoldForm_cloneObject($item)
-End if 
+	$form.lot_UUID:=$lot.UUID  // for printing it (LotHoldForm_print)
+End if

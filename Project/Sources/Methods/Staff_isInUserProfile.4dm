@@ -5,6 +5,8 @@
 var $eStaff : cs:C1710.StaffEntity
 var $eUser : cs:C1710.sfw_UserEntity
 var $profileIdents : Collection
+var $accepted : Collection
+var $ident : Variant
 
 $result:=New object:C1471(\
 	"success"; False:C215; \
@@ -41,9 +43,25 @@ $result.success:=True:C214
 $profileIdents:=$eUser.userInscriptions.userProfile.ident
 $result.profileIdents:=$profileIdents.copy()
 
-If ($profileIdents.indexOf($profileIdent)#-1)
-	$result.isInProfile:=True:C214
-Else 
+// The checks in the app ask for "Rec", "Q", "Eng", "p" and "cs"/"CS": the idents of the
+// profiles first set up by hand. The profiles the application now creates
+// (_import_userProfiles, goldenAltos_definition) use other idents, so each requested ident
+// is also satisfied by its equivalents below. The comparison ignores case.
+$accepted:=New collection:C1472(Lowercase:C14($profileIdent))
+Case of 
+	: ($accepted[0]="rec")
+		$accepted.push("rc"; "sr")  // Receiving, Shipper & receiver
+	: ($accepted[0]="q")
+		$accepted.push("qa"; "qi"; "qm"; "qs")  // Quality Assurance, Inspector, Manager, Supervisor
+	: ($accepted[0]="eng")
+		$accepted.push("en")  // Engineering
+	: ($accepted[0]="p")
+		$accepted.push("pr"; "pc"; "pm"; "ps")  // Production, Production Control, Manager, Supervisor
+End case 
+For each ($ident; $profileIdents) Until ($result.isInProfile)
+	$result.isInProfile:=($accepted.indexOf(Lowercase:C14(String:C10($ident)))#-1)
+End for each 
+If (Not:C34($result.isInProfile))
 	If (Bool:C1537($eUser.accesses.asDesigner)) && ($profileIdent="admin")
 		$result.isInProfile:=True:C214
 	End if 

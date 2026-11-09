@@ -1,3 +1,1 @@
-cs:C1710.panel_lead.me.selectQuote()
-
-
+cs:C1710.panel_lead.me.pup_quote()

@@ -382,7 +382,7 @@
 					"stroke": "#808080",
 					"text": "Available Quantity"
 				},
-				"EntryField_availableQty": {
+				"fld_availableQty": {
 					"type": "input",
 					"top": 208,
 					"left": 133,
@@ -547,7 +547,7 @@
 					"stroke": "#808080",
 					"text": "Actual Value"
 				},
-				"entryField_actualValue": {
+				"fld_actualValue": {
 					"type": "input",
 					"top": 349,
 					"left": 133,
@@ -643,7 +643,7 @@
 					"left": 133,
 					"width": 110,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.expirationDate",
+					"dataSource": "Form:C1466.current_item.expirationDate_d",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
@@ -659,44 +659,36 @@
 					"dateFormat": "short"
 				},
 				"dp_dateIn_d": {
-					"type": "subform",
+					"type": "button",
+					"text": "",
 					"top": 411,
 					"left": 224,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.dateIn",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_dateIn_d.4dm",
+					"width": 18,
+					"height": 18,
 					"events": [
-						"onDataChange"
+						"onClick"
 					],
-					"focusable": true
+					"method": "ObjectMethods/dp_dateIn_d.4dm",
+					"focusable": false,
+					"style": "custom",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"tooltip": "Choose the date"
 				},
 				"dp_archivedDate1": {
-					"type": "subform",
+					"type": "button",
+					"text": "",
 					"top": 437,
 					"left": 224,
-					"width": 19,
-					"height": 16,
-					"dataSource": "Form:C1466.current_item.expirationDate",
-					"dataSourceTypeHint": "date",
-					"detailForm": "DateButton",
-					"deletableInList": false,
-					"doubleClickInRowAction": "editSubrecord",
-					"doubleClickInEmptyAreaAction": "addSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"method": "ObjectMethods/dp_archivedDate1.4dm",
+					"width": 18,
+					"height": 18,
 					"events": [
-						"onLoad"
+						"onClick"
 					],
-					"focusable": true
+					"method": "ObjectMethods/dp_archivedDate1.4dm",
+					"focusable": false,
+					"style": "custom",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"tooltip": "Choose the date"
 				},
 				"header_bkgd7": {
 					"type": "rectangle",
@@ -885,6 +877,20 @@
 						},
 						{
 							"header": {
+								"name": "H_Column_reason",
+								"text": "Reason"
+							},
+							"name": "Column_reason",
+							"dataSource": "This:C1470.reason",
+							"enterable": false,
+							"width": 130,
+							"minWidth": 40,
+							"footer": {
+								"name": "F_Column_reason"
+							}
+						},
+						{
+							"header": {
 								"name": "Header2",
 								"text": "Quantity",
 								"fontWeight": "bold"
@@ -919,6 +925,20 @@
 						},
 						{
 							"header": {
+								"name": "H_Column_cost",
+								"text": "Cost"
+							},
+							"name": "Column_cost",
+							"dataSource": "This:C1470.cost",
+							"enterable": false,
+							"width": 80,
+							"minWidth": 40,
+							"footer": {
+								"name": "F_Column_cost"
+							}
+						},
+						{
+							"header": {
 								"name": "Header4",
 								"text": "Lot #",
 								"fontWeight": "bold"
@@ -934,6 +954,20 @@
 							"dateFormat": "short",
 							"resizable": false,
 							"enterable": false
+						},
+						{
+							"header": {
+								"name": "H_Column_step",
+								"text": "Step"
+							},
+							"name": "Column_step",
+							"dataSource": "Choose:C955(This:C1470.stepOrder=0; \"\"; String:C10(This:C1470.stepOrder))",
+							"enterable": false,
+							"width": 50,
+							"minWidth": 40,
+							"footer": {
+								"name": "F_Column_step"
+							}
 						},
 						{
 							"header": {

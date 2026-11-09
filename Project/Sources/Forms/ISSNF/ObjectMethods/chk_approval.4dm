@@ -53,7 +53,9 @@ Case of
 		If ($intendedValue)
 			$timestamp:=String:C10(Current date:C33(*); Internal date short:K1:7)+" "+String:C10(Current time:C178(*); HH MM:K7:2)
 			Form:C1466[$dateField]:=$timestamp
+			Form:C1466[$approvalField+"By"]:=String:C10($result.staff.code)  // who signed, for the lot history
 		Else 
 			Form:C1466[$dateField]:=""
+			Form:C1466[$approvalField+"By"]:=""
 		End if 
 End case 

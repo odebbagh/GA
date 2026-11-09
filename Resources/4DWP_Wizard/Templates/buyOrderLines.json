@@ -1,0 +1,45 @@
+{
+    "tableDataSource": "This.lines",
+    "columns": [{
+            "check": true,
+            "header": "Item#",
+            "source": "This.item.itemNumber"
+        }, {
+            "check": true,
+            "header": "Description",
+            "source": "This.item.description"
+        }, {
+            "check": true,
+            "header": "Part-Number",
+            "source": "This.item.partNumber"
+        }, {
+            "check": true,
+            "header": "Units",
+            "source": "This.item.units"
+        }, {
+            "check": true,
+            "header": "Qty",
+            "source": "This.item.qty"
+        }, {
+            "check": true,
+            "header": "Unit price",
+            "source": "This.item.unitPrice"
+        }, {
+            "check": true,
+            "header": "Tax",
+            "source": "This.item.tax"
+        }, {
+            "check": true,
+            "header": "Line total",
+            "source": "This.item.lineTotal"
+        }, {
+            "check": false,
+            "header": "Order date",
+            "source": "This.item.orderDate"
+        }, {
+            "check": true,
+            "header": "Date reqd",
+            "source": "This.item.requiredDate"
+        }
+    ]
+}

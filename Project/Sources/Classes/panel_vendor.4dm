@@ -377,3 +377,18 @@ Function loadDpAddress()
 Function _activate_save_cancel_button()
 	Form:C1466.current_item.UUID:=Form:C1466.current_item.UUID
 	
+	
+// Address radio buttons.
+// activateDocument() switches this panel to dynamic-source rendering, and in that mode
+// sfw_foundations rewrites every object method to sfw_dynamicForm_script, which calls
+// cs[panelName].me[objectName](). Without these the three radios would silently stop
+// rebuilding the address. The ObjectMethods files are kept: they run in static mode.
+Function rbBilling1()
+	Form:C1466.current_item.rebuildAddress()
+	
+Function rbShipping1()
+	Form:C1466.current_item.rebuildAddress()
+	
+Function rbRemit1()
+	Form:C1466.current_item.rebuildAddress()
+	

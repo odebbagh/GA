@@ -1,0 +1,96 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"inheritedForm": "sfw_bkgd_header_3lines",
+	"geometryStamp": 2,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm",
+	"pages": [
+		{
+			"objects": {
+				"label_hdr_approver": { "type": "text", "top": 12, "left": 12, "width": 90, "height": 17, "stroke": "#808080", "text": "Approver" },
+				"Field_hdr_approver": { "type": "input", "top": 12, "left": 132, "width": 240, "height": 17, "dataSource": "Form:C1466.current_item.staff.fullName", "dataSourceTypeHint": "text", "fill": "transparent", "borderStyle": "none", "stroke": "#333333", "focusable": false, "enterable": false, "events": ["onDataChange"] },
+
+				"label_hdr_code": { "type": "text", "top": 37, "left": 12, "width": 90, "height": 17, "stroke": "#808080", "text": "Staff code" },
+				"Field_hdr_code": { "type": "input", "top": 37, "left": 132, "width": 240, "height": 17, "dataSource": "Form:C1466.current_item.staff.code", "dataSourceTypeHint": "text", "fill": "transparent", "borderStyle": "none", "stroke": "#333333", "focusable": false, "enterable": false, "events": ["onDataChange"] },
+
+				"label_hdr_account": { "type": "text", "top": 62, "left": 12, "width": 90, "height": 17, "stroke": "#808080", "text": "Account" },
+				"Field_hdr_account": { "type": "input", "top": 62, "left": 132, "width": 240, "height": 17, "dataSource": "Form:C1466.current_item.staff.user.login", "dataSourceTypeHint": "text", "fill": "transparent", "borderStyle": "none", "stroke": "#333333", "focusable": false, "enterable": false, "events": ["onDataChange"] },
+
+				"label_hdr_level": { "type": "text", "top": 12, "left": 430, "width": 90, "height": 17, "stroke": "#808080", "text": "Level" },
+				"Field_hdr_level": { "type": "input", "top": 12, "left": 530, "width": 90, "height": 17, "dataSource": "Form:C1466.current_item.level", "dataSourceTypeHint": "integer", "fill": "transparent", "borderStyle": "none", "stroke": "#333333", "focusable": false, "enterable": false, "events": ["onDataChange"] },
+
+				"label_hdr_limit": { "type": "text", "top": 37, "left": 430, "width": 90, "height": 17, "stroke": "#808080", "text": "Limit" },
+				"Field_hdr_limit": { "type": "input", "top": 37, "left": 530, "width": 140, "height": 17, "dataSource": "Form:C1466.current_item.moneyLimit", "dataSourceTypeHint": "number", "numberFormat": "$###,###,##0.00", "fill": "transparent", "borderStyle": "none", "stroke": "#333333", "focusable": false, "enterable": false, "events": ["onDataChange"] },
+
+				"label_hdr_status": { "type": "text", "top": 62, "left": 430, "width": 90, "height": 17, "stroke": "#808080", "text": "Active" },
+				"Field_hdr_status": { "type": "checkbox", "top": 62, "left": 530, "width": 20, "height": 17, "dataSource": "Form:C1466.current_item.active", "dataSourceTypeHint": "boolean", "focusable": false, "enterable": false }
+			}
+		},
+		{
+			"objects": {
+				"bkgd_authority": { "type": "rectangle", "top": 114, "left": 0, "width": 700, "height": 30, "fill": "#A2C6D8", "stroke": "transparent" },
+				"lbl_authority": { "type": "text", "top": 121, "left": 6, "width": 400, "height": 17, "text": "Approval authority", "fontWeight": "bold" },
+
+				"label_staff": { "type": "text", "top": 160, "left": 10, "width": 150, "height": 17, "stroke": "#808080", "textAlign": "right", "text": "Approver" },
+				"Field_staff": { "type": "input", "top": 160, "left": 190, "width": 240, "height": 17, "dataSource": "Form:C1466.current_item.staff.fullName", "dataSourceTypeHint": "text", "fill": "transparent", "borderStyle": "none", "stroke": "#333333", "focusable": false, "enterable": false, "dragging": "none", "dropping": "custom", "events": ["onClick", "onGettingFocus", "onMouseMove"], "method": "ObjectMethods/Field_staff.4dm" },
+
+				"label_level": { "type": "text", "top": 186, "left": 10, "width": 150, "height": 17, "stroke": "#808080", "textAlign": "right", "text": "Level" },
+				"entryField_level": { "type": "input", "top": 186, "left": 190, "width": 60, "height": 17, "dataSource": "Form:C1466.current_item.level", "dataSourceTypeHint": "integer", "fill": "transparent", "borderStyle": "none", "focusable": true, "enterable": true, "events": ["onDataChange"] },
+				"lbl_levelHint": { "type": "text", "top": 186, "left": 258, "width": 260, "height": 17, "stroke": "#808080", "text": "1 = first signature, 2 = second" },
+
+				"label_limit": { "type": "text", "top": 212, "left": 10, "width": 150, "height": 17, "stroke": "#808080", "textAlign": "right", "text": "Money limit" },
+				"entryField_moneyLimit": { "type": "input", "top": 212, "left": 190, "width": 140, "height": 17, "dataSource": "Form:C1466.current_item.moneyLimit", "dataSourceTypeHint": "number", "numberFormat": "$###,###,##0.00", "fill": "transparent", "borderStyle": "none", "focusable": true, "enterable": true, "events": ["onDataChange"] },
+				"lbl_limitHint": { "type": "text", "top": 212, "left": 338, "width": 260, "height": 17, "stroke": "#808080", "text": "0 = no limit" },
+
+				"label_active": { "type": "text", "top": 238, "left": 10, "width": 150, "height": 17, "stroke": "#808080", "textAlign": "right", "text": "Active" },
+				"entryField_active": { "type": "checkbox", "top": 238, "left": 190, "width": 20, "height": 17, "dataSource": "Form:C1466.current_item.active", "dataSourceTypeHint": "boolean", "focusable": true, "enterable": true, "events": ["onDataChange"] },
+
+				"bkgd_password": { "type": "rectangle", "top": 290, "left": 0, "width": 700, "height": 30, "fill": "#A2C6D8", "stroke": "transparent" },
+				"lbl_password": { "type": "text", "top": 297, "left": 6, "width": 400, "height": 17, "text": "Signing password", "fontWeight": "bold" },
+
+				"lbl_passwordHint": { "type": "text", "top": 336, "left": 10, "width": 620, "height": 34, "stroke": "#808080", "text": "The approver signs with their application account password. This sets it - there is no separate approval password." },
+
+				"btnChangePassword": { "type": "button", "top": 380, "left": 190, "width": 240, "height": 24, "text": "Change signing password", "style": "custom", "events": ["onClick"], "method": "ObjectMethods/btnChangePassword.4dm" },
+
+				"lbl_warning": { "type": "text", "top": 424, "left": 10, "width": 660, "height": 34, "dataSource": "Form:C1466.warning", "dataSourceTypeHint": "text", "stroke": "#B00020", "fontWeight": "bold" }
+			}
+		}
+	]
+}

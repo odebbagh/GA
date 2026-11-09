@@ -61,6 +61,10 @@ var $certUUIDsFromJson : Collection
 var $certNames : Collection
 var $certName : Text
 var $uuidItem : Text
+// declared so a type that is not found (.first() = Null) is simply left unset
+var $operationTypeDataClass : 4D:C1709.DataClass
+var $operationTypeEntity : 4D:C1709.Entity
+var $divisionEntity : 4D:C1709.Entity
 
 $stepTemplateDataClass:=ds:C1482["StepTemplate"]
 $layoutDataClass:=ds:C1482["StepTemplateLayout"]

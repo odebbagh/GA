@@ -191,3 +191,28 @@ local Function _initAddress()
 	
 	
 	
+	
+	
+// ----------------------------------------------
+// beforeSave / afterSave - called by sfw.bItemSave around a Save-button save
+// (callbackOnCurrentItem). The framework logs the tracked fields itself but cannot see
+// changes inside object fields (addresses, contact details, FTP): the stored state is read
+// before the save, compared after it, and the result is added to the event the framework
+// has just written (ga_events). The FTP password itself is never written to the history.
+// ----------------------------------------------
+local Function beforeSave()
+	cs:C1710.ga_events.me.pending[String:C10(This:C1470.UUID)]:=cs:C1710.ga_events.me.storedState(This:C1470; New collection:C1472("contactDetails"; "ftp"))
+	
+local Function afterSave()
+	var $before : Object
+	var $key : Text
+	
+	$key:=String:C10(This:C1470.UUID)
+	$before:=cs:C1710.ga_events.me.pending[$key]
+	If ($before=Null:C1517)
+		return 
+	End if 
+	OB REMOVE:C1226(cs:C1710.ga_events.me.pending; $key)
+	If (Bool:C1537(Form:C1466.info.success)) && (Form:C1466.sfw.entry.event#Null:C1517)
+		cs:C1710.ga_events.me.mergeIntoSaveEvent(Form:C1466.sfw.entry; $key; cs:C1710.ga_events.me.customerChanges($before; This:C1470))
+	End if 

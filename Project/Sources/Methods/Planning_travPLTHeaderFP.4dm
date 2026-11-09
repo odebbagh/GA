@@ -28,8 +28,10 @@ $order:=1
 $lineItem:=New object:C1471("name"; "picture_ga"; "order"; $order; "properties"; New object:C1471("type"; "picture"; "_origineType"; "picture"; "top"; 10; "left"; 10; "width"; 120; "height"; 60; "pictureFormat"; "scaled"; "picture"; "/RESOURCES/image/modeles/GA_logo.png"))
 $objects.push($lineItem)
 $order:=$order+1
-$lineItem:=New object:C1471("name"; "picture_itar"; "order"; $order; "properties"; New object:C1471("type"; "picture"; "_origineType"; "picture"; "top"; 10; "left"; 300; "width"; 120; "height"; 60; "pictureFormat"; "scaled"; "picture"; "/RESOURCES/image/modeles/itar.png"))
+// ITAR mark: a picture from the data (itarPic), empty unless the lot is marked ITAR
+$lineItem:=New object:C1471("name"; "picture_itar"; "order"; $order; "properties"; New object:C1471("type"; "input"; "_origineType"; "dynPict"; "top"; 10; "left"; 300; "width"; 120; "height"; 60; "dataSource"; "##itarPic##"; "dataSourceTypeHint"; "picture"; "pictureFormat"; "scaled"; "borderStyle"; "none"; "fill"; "transparent"; "enterable"; False:C215; "focusable"; False:C215))
 $objects.push($lineItem)
+$tags.push(New object:C1471("tag"; "itarPic"; "objects"; New collection:C1472("picture_itar")))
 $order:=$order+1
 $lineItem:=New object:C1471("name"; "picture_esd"; "order"; $order; "properties"; New object:C1471("type"; "picture"; "_origineType"; "picture"; "top"; 15; "left"; 520; "width"; 45; "height"; 50; "pictureFormat"; "scaled"; "picture"; "/RESOURCES/image/modeles/esd.png"))
 $objects.push($lineItem)
@@ -126,7 +128,7 @@ $tags.push(New object:C1471("tag"; "originalCount"; "objects"; New collection:C1
 $order:=$order+1
 
 // Barcodes stacked vertically below lot info.
-$lineItem:=New object:C1471("name"; "bc_lot"; "order"; $order; "properties"; New object:C1471("type"; "input"; "_origineType"; "dynPict"; "top"; 150; "left"; 0; "width"; 130; "height"; 24; "dataSource"; "##lotBarcode##"; "dataSourceTypeHint"; "picture"; "pictureFormat"; "scaled"; "borderStyle"; "none"; "fill"; "transparent"; "enterable"; False:C215; "focusable"; False:C215))
+$lineItem:=New object:C1471("name"; "bc_lot"; "order"; $order; "properties"; New object:C1471("type"; "input"; "_origineType"; "dynPict"; "top"; 150; "left"; 0; "width"; 130; "height"; 24; "dataSource"; "##lotBarcode##"; "dataSourceTypeHint"; "picture"; "pictureFormat"; "proportionalTopLeft"; "borderStyle"; "none"; "fill"; "transparent"; "enterable"; False:C215; "focusable"; False:C215))
 $objects.push($lineItem)
 $tags.push(New object:C1471("tag"; "lotBarcode"; "objects"; New collection:C1472("bc_lot")))
 $order:=$order+1
@@ -138,7 +140,7 @@ $objects.push($lineItem)
 $tags.push(New object:C1471("tag"; "lotNumber"; "objects"; New collection:C1472("val_bc_lot"; "val_lotNum")))
 $order:=$order+1
 
-$lineItem:=New object:C1471("name"; "bc_custLot"; "order"; $order; "properties"; New object:C1471("type"; "input"; "_origineType"; "dynPict"; "top"; 200; "left"; 0; "width"; 130; "height"; 24; "dataSource"; "##customerLotBarcode##"; "dataSourceTypeHint"; "picture"; "pictureFormat"; "scaled"; "borderStyle"; "none"; "fill"; "transparent"; "enterable"; False:C215; "focusable"; False:C215))
+$lineItem:=New object:C1471("name"; "bc_custLot"; "order"; $order; "properties"; New object:C1471("type"; "input"; "_origineType"; "dynPict"; "top"; 200; "left"; 0; "width"; 130; "height"; 24; "dataSource"; "##customerLotBarcode##"; "dataSourceTypeHint"; "picture"; "pictureFormat"; "proportionalTopLeft"; "borderStyle"; "none"; "fill"; "transparent"; "enterable"; False:C215; "focusable"; False:C215))
 $objects.push($lineItem)
 $tags.push(New object:C1471("tag"; "customerLotBarcode"; "objects"; New collection:C1472("bc_custLot")))
 $order:=$order+1
@@ -150,7 +152,7 @@ $objects.push($lineItem)
 $tags.push(New object:C1471("tag"; "customerLotNumber"; "objects"; New collection:C1472("val_bc_custLot"; "val_custLot")))
 $order:=$order+1
 
-$lineItem:=New object:C1471("name"; "bc_device"; "order"; $order; "properties"; New object:C1471("type"; "input"; "_origineType"; "dynPict"; "top"; 250; "left"; 0; "width"; 130; "height"; 24; "dataSource"; "##deviceBarcode##"; "dataSourceTypeHint"; "picture"; "pictureFormat"; "scaled"; "borderStyle"; "none"; "fill"; "transparent"; "enterable"; False:C215; "focusable"; False:C215))
+$lineItem:=New object:C1471("name"; "bc_device"; "order"; $order; "properties"; New object:C1471("type"; "input"; "_origineType"; "dynPict"; "top"; 250; "left"; 0; "width"; 130; "height"; 24; "dataSource"; "##deviceBarcode##"; "dataSourceTypeHint"; "picture"; "pictureFormat"; "proportionalTopLeft"; "borderStyle"; "none"; "fill"; "transparent"; "enterable"; False:C215; "focusable"; False:C215))
 $objects.push($lineItem)
 $tags.push(New object:C1471("tag"; "deviceBarcode"; "objects"; New collection:C1472("bc_device")))
 $order:=$order+1
@@ -160,6 +162,15 @@ $order:=$order+1
 $lineItem:=New object:C1471("name"; "val_bc_device"; "order"; $order; "properties"; New object:C1471("type"; "text"; "_origineType"; "text"; "top"; 286; "left"; 0; "width"; 130; "height"; 10; "text"; "##devide##"; "fontFamily"; "Helvetica"; "fontSize"; 8; "textAlign"; "center"; "fontWeight"; "bold"))
 $objects.push($lineItem)
 $tags.push(New object:C1471("tag"; "devide"; "objects"; New collection:C1472("val_bc_device"; "val_device")))
+$order:=$order+1
+
+// Ship to: the lot's own ship-to address (Planning > Ship To), right of the barcodes
+$lineItem:=New object:C1471("name"; "lbl_shipTo"; "order"; $order; "properties"; New object:C1471("type"; "text"; "_origineType"; "text"; "top"; 150; "left"; 300; "width"; 274; "height"; 10; "text"; "Ship To:"; "fontFamily"; "Helvetica"; "fontSize"; 9; "fontWeight"; "bold"))
+$objects.push($lineItem)
+$order:=$order+1
+$lineItem:=New object:C1471("name"; "val_shipTo"; "order"; $order; "properties"; New object:C1471("type"; "text"; "_origineType"; "text"; "top"; 162; "left"; 300; "width"; 274; "height"; 60; "text"; "##shipTo##"; "fontFamily"; "Helvetica"; "fontSize"; 8))
+$objects.push($lineItem)
+$tags.push(New object:C1471("tag"; "shipTo"; "objects"; New collection:C1472("val_shipTo")))
 $order:=$order+1
 
 // Column header band below barcodes.

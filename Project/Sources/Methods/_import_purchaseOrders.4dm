@@ -7,6 +7,7 @@ var $records : Collection
 var $record : Object
 var $po : cs:C1710.PurchaseOrderEntity
 var $customer : cs:C1710.CustomerEntity
+var $staff : cs:C1710.StaffEntity
 var $result : Object
 var $poNumber : Integer
 var $created : Integer
@@ -50,11 +51,17 @@ Else
 		$po.poNum:=$record.PO_Number
 		$po.poAmount:=$record.PO_Amount
 		$po.amountBilled:=$record.AMT_Billed
-		$po.log_date:=$record.Log_date
+		$po.logDate:=Date:C102(String:C10($record.Log_date))
 		$po.openPO:=$record.Open_PO
 		$po.releaseNumber:=$record.Release_Number
 		$po.forTimeBilling:=$record.For_time_billing
-		$po.initials:=$record.Initials
+		// Initials is the legacy employee code; Staff.code keeps it (see _newStaffFor)
+		If (String:C10($record.Initials)#"")
+			$staff:=ds:C1482.Staff.query("code = :1"; String:C10($record.Initials)).first()
+			If ($staff#Null:C1517)
+				$po.UUID_Staff:=$staff.UUID
+			End if
+		End if
 		$po.division:=$record.Division
 		$po.identifier:=$record.Identifier
 		$po.ourQuote:=$record.Our_Quote

@@ -1,1 +1,1 @@
-cs:C1710.panel_lead.me.btnOpenStaff()
+cs:C1710.panel_lead.me.btnForward2()

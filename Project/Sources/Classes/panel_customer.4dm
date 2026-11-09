@@ -346,11 +346,11 @@ Function loadCFMReceiving()
 		For each ($inv; Form:C1466.current_item.inventories)
 			$row:=New object:C1471()
 			$row.UUID:=$inv.UUID
-			$row.partNum:=$inv.partNum
+			$row.partNum:=$inv.partNumberDisplay
 			$row.stockNum:=$inv.stockNum
-			$row.originalQty:=$inv.originalQty
+			$row.originalQty:=$inv.initialQty  // the quantity received
 			$row.availableQty:=$inv.availableQty
-			$row.binLocation:=$inv.binLocation
+			$row.binLocation:=($inv.bin#Null:C1517) ? String:C10($inv.bin.binLocationPath) : String:C10($inv.location)
 			$row.description:=$inv.description
 			Form:C1466.lb_CFM_Receiving.push($row)
 		End for each 

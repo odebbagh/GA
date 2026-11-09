@@ -4,4 +4,5 @@ Case of
 			Form:C1466.readOnly:=False:C215
 		End if 
 		LotHoldForm_applyReadOnlyMode
+		LotHoldForm_ncmnApprovals  // approvals only at the disposition stage
 End case 

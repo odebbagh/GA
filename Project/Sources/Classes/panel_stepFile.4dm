@@ -497,7 +497,8 @@ Function buildStepSpecificationsObjectForRow($row : Object; $stepEntity : 4D:C17
 	End if 
 	
 	$items:=New collection:C1472()
-	For each ($specEnt; ds:C1482.Specification.all().orderBy("spec"))
+	// specs only: GAF forms are Specification records too, managed per step in Step Templates
+	For each ($specEnt; ds:C1482.Specification.query("isForm = :1"; False:C215).orderBy("spec"))
 		$prior:=$oldItems.query("UUID_Specification = :1"; $specEnt.UUID).first()
 		If ($prior#Null:C1517)
 			$en:=False:C215
@@ -531,7 +532,7 @@ Function ensureStepSpecificationsForStep($step : Object)
 		return 
 	End if 
 	
-	$catCount:=ds:C1482.Specification.all().length
+	$catCount:=ds:C1482.Specification.query("isForm = :1"; False:C215).length  // same set as buildStepSpecificationsObjectForRow
 	$need:=True:C214
 	If (($step.stepSpecifications#Null:C1517) & ($step.stepSpecifications.items#Null:C1517) & ($step.stepSpecifications.items.length=$catCount))
 		$need:=False:C215
