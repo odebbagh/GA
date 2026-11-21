@@ -114,7 +114,7 @@ Function openLeads()->$leads : cs:C1710.LeadSelection
 	$leads:=ds:C1482.Lead.query("not(currentStageID in :1)"; ds:C1482.Lead.closedStageIDs())
 
 	// the open leads whose owner is the user's staff record (none for a user without one)
-Function myLeads()->$leads : cs:C1710.LeadSelection
+local Function myLeads()->$leads : cs:C1710.LeadSelection
 	var $staffUUID : Text
 	$staffUUID:=String:C10(cs:C1710.sfw_userManager.me.info.UUID_Staff)
 	If ($staffUUID="")

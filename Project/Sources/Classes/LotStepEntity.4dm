@@ -199,7 +199,7 @@ local Function getSpecificationControl()->$spectificationControl : Text
 	
 local Function isCurrentStep()->$isCurrentStep : Boolean
 	
-	$isCurrentStep:=(This:C1470.order=This:C1470.lot.lotSteps.query("qtyOut = 0 AND dateOut = :1"; !00-00-00!).orderBy("order asc").first().order)
+	$isCurrentStep:=(This:C1470.order=This:C1470._currentStepOrder())
 	
 local Function getPossibleActions()->$possibleActions : Collection
 	
@@ -217,10 +217,23 @@ Function get specDisplay()->$text : Text
 	$text:=This:C1470.getSpecificationControl()
 	
 Function get rowMeta()->$meta : Object
-	If (This:C1470.qtyOut=0) && (This:C1470.dateOut=!00-00-00!) && (This:C1470.order=This:C1470.lot.lotSteps.query("qtyOut = 0 AND dateOut = :1"; !00-00-00!).orderBy("order asc").first().order)
+	If (This:C1470.qtyOut=0) && (This:C1470.dateOut=!00-00-00!) && (This:C1470.order=This:C1470._currentStepOrder())
 		$meta:=New object:C1471("fill"; "#90EE90")
 	Else 
 		$meta:=New object:C1471()
+	End if 
+	
+	// the order of the lot's first step not punched out; -1 when the step has no lot (deleted,
+	// or rolled back by a cancelled transaction while a list still shows it) or none is open
+local Function _currentStepOrder()->$order : Integer
+	var $open : cs:C1710.LotStepEntity
+	$order:=-1
+	If (This:C1470.lot=Null:C1517)
+		return 
+	End if 
+	$open:=This:C1470.lot.lotSteps.query("qtyOut = 0 AND dateOut = :1"; !00-00-00!).orderBy("order asc").first()
+	If ($open#Null:C1517)
+		$order:=$open.order
 	End if 
 
 Function ensureDataTable()->$dataTable : Object

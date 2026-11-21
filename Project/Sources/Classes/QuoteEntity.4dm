@@ -8,7 +8,7 @@ local Function get nameInWindowTitle()->$nameInWindowTitle : Text
 	// assumptions and terms are copied, not linked. The Preview tab builds it from the quote being
 	// edited; snapshot() freezes it into a QuoteRevision. The preliminary text is the Write Pro
 	// document itself here (snapshot() turns it into text)
-Function preview()->$preview : Object
+local Function preview()->$preview : Object
 	var $contact; $copy : cs:C1710.ContactEntity
 	var $customer : cs:C1710.CustomerEntity
 	var $line : cs:C1710.QuoteLineEntity
@@ -122,7 +122,7 @@ Function preview()->$preview : Object
 	End if
 
 	// the first "contact" of a contactDetails.communications entry whose type is one of $types
-Function _commValue($communications : Collection; $types : Collection)->$value : Text
+local Function _commValue($communications : Collection; $types : Collection)->$value : Text
 	var $found : Collection
 	If ($communications#Null:C1517)
 		$found:=$communications.query("type in :1"; $types)
@@ -133,7 +133,7 @@ Function _commValue($communications : Collection; $types : Collection)->$value :
 
 	// preview() frozen for a QuoteRevision: the preliminary Write Pro text becomes 4D Write Pro HTML
 	// (WP New turns it back into a document), so the object holds nothing but values
-Function snapshot()->$snapshot : Object
+local Function snapshot()->$snapshot : Object
 	var $prelim : Object
 	var $html : Text
 
@@ -151,7 +151,7 @@ Function snapshot()->$snapshot : Object
 	// transaction, so there is never a copy without the new label or the reverse. Called outside
 	// Modify (sfw owns the transaction there), on a quote read from the database.
 	// Returns {success; message; revision}
-Function newRevision($frozenRevisionUUID : Text; $nextRevisionUUID : Text; $note : Text)->$result : Object
+local Function newRevision($frozenRevisionUUID : Text; $nextRevisionUUID : Text; $note : Text)->$result : Object
 	var $revision : cs:C1710.QuoteRevisionEntity
 	var $res : Object
 
@@ -196,39 +196,39 @@ Function newRevision($frozenRevisionUUID : Text; $nextRevisionUUID : Text; $note
 	// the quote with its lead (ga_sales.applyQuoteToLeads) and follow-ups (ga_followUps) in one
 	// transaction, then add a history line. Statuses: A Active, UCR sent (Under Customer Review),
 	// RO won (Received Order), LO lost (Lost Order); CS and C also count as closed
-Function defaultValidityDays()->$days : Integer
+local Function defaultValidityDays()->$days : Integer
 	$days:=30  // the client, October 2026
 
-Function get validUntil()->$date : Date
+local Function get validUntil()->$date : Date
 	$date:=cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpValidUntil; True:C214)
 
-Function set validUntil($date : Date)
+local Function set validUntil($date : Date)
 	This:C1470.stmpValidUntil:=($date=!00-00-00!) ? 0 : cs:C1710.sfw_stmp.me.build($date; ?00:00:00?)
 
 	// the list column: empty when there is no validity date
-Function get validUntilText()->$text : Text
+local Function get validUntilText()->$text : Text
 	$text:=(This:C1470.stmpValidUntil=0) ? "" : String:C10(This:C1470.validUntil)
 
-Function get sentDate()->$date : Date
+local Function get sentDate()->$date : Date
 	$date:=cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpSent; True:C214)
 
-Function get closedDate()->$date : Date
+local Function get closedDate()->$date : Date
 	$date:=cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpClosed; True:C214)
 
-Function get voidedDate()->$date : Date
+local Function get voidedDate()->$date : Date
 	$date:=cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpVoided; True:C214)
 
-Function get isClosed()->$closed : Boolean
+local Function get isClosed()->$closed : Boolean
 	$closed:=(This:C1470.stmpClosed>0) || (New collection:C1472("RO"; "LO"; "CS"; "C").indexOf(String:C10(This:C1470.status.code))#-1)
 
-Function get isOpen()->$open : Boolean
+local Function get isOpen()->$open : Boolean
 	$open:=(Not:C34(This:C1470.voided)) && (Not:C34(This:C1470.isClosed))
 
-Function get isExpired()->$expired : Boolean
+local Function get isExpired()->$expired : Boolean
 	$expired:=(This:C1470.isOpen) && (This:C1470.stmpValidUntil>0) && (This:C1470.validUntil<Current date:C33)
 
 	// "won", "lost" or ""
-Function get outcome()->$outcome : Text
+local Function get outcome()->$outcome : Text
 	Case of
 		: (String:C10(This:C1470.status.code)="RO")
 			$outcome:="won"
@@ -237,7 +237,7 @@ Function get outcome()->$outcome : Text
 	End case
 
 	// the Main page line under the status: "Sent 10/10/2026 - Won 13/10/2026", "Voided ..."
-Function get lifecycleText()->$text : Text
+local Function get lifecycleText()->$text : Text
 	var $parts : Collection
 	$parts:=New collection:C1472
 	If (This:C1470.stmpSent>0)
@@ -254,7 +254,7 @@ Function get lifecycleText()->$text : Text
 	End if
 	$text:=$parts.join(" - ")
 
-Function _setStatus($code : Text)
+local Function _setStatus($code : Text)
 	var $status : cs:C1710.QuoteStatusEntity
 	$status:=ds:C1482.QuoteStatus.query("code == :1"; $code).first()
 	If ($status#Null:C1517)
@@ -264,7 +264,7 @@ Function _setStatus($code : Text)
 	// "Mark as sent": status UCR and the sent date; the lead goes to "Quote Sent"; the PROPOSAL_SENT
 	// follow-up rule schedules the next call. $origin: a line added to the history when an
 	// automatic rule does it (ga_quoteStatus)
-Function markAsSent($origin : Text)->$result : Object
+local Function markAsSent($origin : Text)->$result : Object
 	$result:=New object:C1471("success"; False:C215; "message"; "")
 	Case of
 		: (This:C1470.voided)
@@ -294,7 +294,7 @@ Function markAsSent($origin : Text)->$result : Object
 	// same way (stage WN / LS, its W/L reason and close date) and the pending follow-ups cancelled.
 	// $origin: a line added to the history when an automatic rule does it (ga_quoteStatus: a
 	// customer PO entered on the quote)
-Function close($won : Boolean; $reason : Text; $origin : Text)->$result : Object
+local Function close($won : Boolean; $reason : Text; $origin : Text)->$result : Object
 	var $nb : Integer
 	$result:=New object:C1471("success"; False:C215; "message"; "")
 	Case of
@@ -324,7 +324,7 @@ Function close($won : Boolean; $reason : Text; $origin : Text)->$result : Object
 
 	// "Reopen": a quote closed by mistake is open again (sent: UCR, else A). The lead is left as it
 	// is: its stage is changed by hand
-Function reopen()->$result : Object
+local Function reopen()->$result : Object
 	$result:=New object:C1471("success"; False:C215; "message"; "")
 	If (Not:C34(This:C1470.isClosed))
 		$result.message:="Quote "+This:C1470.code+" is not closed."
@@ -342,7 +342,7 @@ Function reopen()->$result : Object
 
 	// "Void" / "Restore": a voided quote stays in the list, greyed (metaColor), and cannot be
 	// changed (panel_quote). Voiding cancels the quote's pending follow-ups
-Function setVoided($voided : Boolean; $note : Text)->$result : Object
+local Function setVoided($voided : Boolean; $note : Text)->$result : Object
 	var $nb : Integer
 	$result:=New object:C1471("success"; False:C215; "message"; "")
 	If (This:C1470.voided=$voided)
@@ -366,7 +366,7 @@ Function setVoided($voided : Boolean; $note : Text)->$result : Object
 
 	// saves the quote inside the transaction of a lifecycle action; on failure cancels it and
 	// fills $result.message
-Function _saveIn($result : Object)->$ok : Boolean
+local Function _saveIn($result : Object)->$ok : Boolean
 	var $res : Object
 	$res:=This:C1470.save()
 	$ok:=Bool:C1537($res.success)
@@ -376,10 +376,10 @@ Function _saveIn($result : Object)->$ok : Boolean
 		$result.message:="Quote "+This:C1470.code+" could not be saved ("+String:C10($res.statusText)+"): it may be open in Modify elsewhere."
 	End if
 
-Function get dateCreation()->$createDate : Date
+local Function get dateCreation()->$createDate : Date
 	$createDate:=cs:C1710.sfw_stmp.me.getDate(This:C1470.stmpCreation; True:C214)
 	
-Function set dateCreation($createDate : Date)
+local Function set dateCreation($createDate : Date)
 	This:C1470.stmpCreation:=cs:C1710.sfw_stmp.me.build($createDate)
 	
 	
@@ -456,11 +456,16 @@ Function get amount()->$amountText : Text
 	$amountText:=_ga_usdText($amount)  // "$1,234.56" whatever the Windows region
 	
 	
-Function get amountNumber()->$amount : Real
-	$amount:=This:C1470.lines.sum("amount")
+	// local, and line by line: in 4D Remote a sum() on the computed "amount" runs on the server,
+	// with the server's ga_quoteMinCharge mode, and the getter of a loaded quote is not computed again
+local Function get amountNumber()->$amount : Real
+	var $line : cs:C1710.QuoteLineEntity
+	For each ($line; This:C1470.lines)
+		$amount+=$line.amount
+	End for each
 
 
-Function renumberLines()->$lines : cs:C1710.QuoteLineSelection
+local Function renumberLines()->$lines : cs:C1710.QuoteLineSelection
 	// the lines numbered 1..n in their current order (gaps after a delete, legacy numbers);
 	// only the lines whose number changes are saved. Returns them in that order
 	var $line : cs:C1710.QuoteLineEntity
@@ -475,7 +480,7 @@ Function renumberLines()->$lines : cs:C1710.QuoteLineSelection
 		End if
 	End for each
 
-Function moveLine($UUID : Text; $delta : Integer)->$moved : Boolean
+local Function moveLine($UUID : Text; $delta : Integer)->$moved : Boolean
 	// the line one place up ($delta -1) or down (1): it swaps its number with its neighbour.
 	// The caller takes the line again from the data: a reference loaded before is out of date
 	var $lines : cs:C1710.QuoteLineSelection
@@ -601,7 +606,7 @@ local Function loadAfterCreation()
 
 	// the code is taken as soon as the quote is created, so the panel shows it (like the job number);
 	// a new quote that is cancelled leaves a gap in the series
-Function initDefaults()
+local Function initDefaults()
 	This:C1470.code:=This:C1470.calculateCode()
 	This:C1470.dateCreation:=Current date:C33()
 	If (cs:C1710.sfw_userManager.me.info.UUID_Staff#Null:C1517)  // the owner: the user's staff record
@@ -628,7 +633,7 @@ local Function duplicateRecord()
 	This:C1470._startLifecycle()
 
 	// status Active, valid for This.defaultValidityDays from today, nothing sent / closed / voided
-Function _startLifecycle()
+local Function _startLifecycle()
 	This:C1470._setStatus("A")
 	This:C1470.validUntil:=Add to date:C393(Current date:C33; 0; 0; This:C1470.defaultValidityDays())
 	This:C1470.stmpSent:=0
@@ -644,7 +649,7 @@ local Function beforeDelete()
 		$info:=This:C1470.revisions.drop()
 	End if
 
-Function _setFirstRevision()
+local Function _setFirstRevision()
 	var $first : cs:C1710.RevisionEntity
 	$first:=ds:C1482.Revision.firstLevel()
 	This:C1470.UUID_Revision:=($first=Null:C1517) ? "0"*32 : $first.UUID
@@ -677,7 +682,7 @@ Function calculateCode()->$leadCode : Text
 	
 	// the assumptions marked Default (Administration > Assumptions); the others are added by hand
 	// (panel_quote.bActionAssumptions)
-Function addAssumptions()
+local Function addAssumptions()
 
 	$assumptions:=ds:C1482.Assumption.query("isDefault = :1"; True:C214).distinct("UUID")
 	If (This:C1470.assumptions=Null:C1517)
@@ -689,7 +694,7 @@ Function addAssumptions()
 	This:C1470.assumptions.UUIDs:=$assumptions
 	
 	
-Function addTermsAndConditions()
+local Function addTermsAndConditions()
 	
 	$terms:=ds:C1482.TermCondition.all().distinct("UUID")
 	If (This:C1470.termsConditions=Null:C1517)

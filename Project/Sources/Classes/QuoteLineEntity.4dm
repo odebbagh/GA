@@ -1,7 +1,7 @@
 Class extends Entity
 
 
-Function get amount()->$amount : Real
+local Function get amount()->$amount : Real
 	// quantity x unit price, raised to the line's minimum lot charge when it is below it.
 	// A few legacy lines keep a lower amount typed in the old app (a discount) in moreData.amount:
 	// see _fix_quoteLineMinCharge; it is cleared as soon as the quantity, price or charge changes.
@@ -15,7 +15,7 @@ Function get amount()->$amount : Real
 		End if
 	End if
 
-Function clearAmountOverride()
+local Function clearAmountOverride()
 	// quantity, unit price or minimum lot charge changed: the legacy typed amount no longer applies
 	var $moreData : Object
 	If (This:C1470.moreData#Null:C1517) && (This:C1470.moreData.amount#Null:C1517)
@@ -24,7 +24,7 @@ Function clearAmountOverride()
 		This:C1470.moreData:=$moreData
 	End if
 
-Function clearPriceFloorNote()
+local Function clearPriceFloorNote()
 	// the price is back above its floor: the note of a price kept below it no longer applies
 	var $moreData : Object
 	If (This:C1470.moreData#Null:C1517) && (This:C1470.moreData.priceFloor#Null:C1517)
@@ -33,7 +33,7 @@ Function clearPriceFloorNote()
 		This:C1470.moreData:=$moreData
 	End if
 
-Function get meta()->$meta : Object
+local Function get meta()->$meta : Object
 	// lb_quoteLines (panel_quote) metaSource: a unit price below its floor in red, in orange when it
 	// was kept on purpose (see ga_quotePriceFloor). Information only: old prices are never blocked
 	// Also red in the "block" mode of ga_quoteMinCharge when the line is under its minimum lot charge
@@ -50,11 +50,11 @@ Function get meta()->$meta : Object
 			$meta:=New object:C1471("stroke"; "#C0392B")
 	End case
 
-Function get minLotChargeSourceText()->$text : Text
+local Function get minLotChargeSourceText()->$text : Text
 	// panel_quote, next to the Min. lot charge field: where the minimum comes from (ga_quoteMinCharge)
 	$text:=cs:C1710.ga_quoteMinCharge.me.sourceText(This:C1470)
 
-Function get builtFromText()->$text : Text
+local Function get builtFromText()->$text : Text
 	// panel_quote, under the description: what a line priced from steps was built from
 	// (ga_quoteLinePricing), e.g. "Built from: Class S (modified) - 16 steps, flow CLASSS"; "" for a typed line
 	var $build : Object
