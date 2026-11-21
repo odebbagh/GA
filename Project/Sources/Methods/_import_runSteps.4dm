@@ -6,6 +6,8 @@
 //            project: = Project/imports (read here, on this machine)
 //            data:    = the data folder, checked on the server (_import_allSrv): a 4D
 //                       Remote client has none
+//            args (optional): an object passed to the method as its only parameter, e.g.
+//            {unattended: True} for the steps that otherwise ask (accounting imports)
 //   $from    "" = from the top, or a method name to resume from that step
 //   $logName the log written to Project/imports on the server after every step
 //   $keepExisting  True = a step that empties tables ({wipes: ["Dataclass"; ...]}) is
@@ -146,7 +148,11 @@ For each ($step; $steps)
 	$logPath:=_import_allSrv("log"; {name: $logName; text: $log.join("\r\n")}).path
 
 	$t0:=Milliseconds:C459
-	EXECUTE METHOD:C1007($step.method)
+	If ($step.args#Null:C1517)  // {unattended: True}: the step runs without asking (see _import_accounting)
+		EXECUTE METHOD:C1007($step.method; *; $step.args)
+	Else
+		EXECUTE METHOD:C1007($step.method)
+	End if
 
 	$log[$log.length-1]:=$log[$log.length-1]+" done ("+String:C10(Round:C94((Milliseconds:C459-$t0)/1000; 1))+" s)"
 	$ran+=1

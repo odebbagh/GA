@@ -2,7 +2,9 @@
 Class extends DataClass
 
 
-local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
+	// Hidden from the Accounting menu (2026-11-11): old screen, to be replaced by assets and depreciation in the ledger (Phase 3).
+	// The table, its data and its panel are kept. To show it again, rename back to entryDefinition.
+local Function _entryDefinitionHidden()->$entry : cs:C1710.sfw_definitionEntry
 	//Mark: entry : Asset
 	$entry:=cs:C1710.sfw_definitionEntry.new("Asset"; ["accounting"]; "Assets"; "Asset")
 	$entry.setDataclass("Asset")

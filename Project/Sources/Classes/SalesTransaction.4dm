@@ -2,7 +2,9 @@
 Class extends DataClass
 
 
-local Function entryDefinition()->$entry : cs:C1710.sfw_definitionEntry
+	// Hidden from the Accounting menu (2026-11-11): old screen, to be replaced by customer payments in the ledger (Phase 1).
+	// The table, its data and its panel are kept. To show it again, rename back to entryDefinition.
+local Function _entryDefinitionHidden()->$entry : cs:C1710.sfw_definitionEntry
 	//Mark: entry : Credit sMemo
 	$entry:=cs:C1710.sfw_definitionEntry.new("SalesTransaction"; ["accounting"]; "Sales Transaction"; "SalesTransaction")
 	$entry.setDataclass("SalesTransaction")

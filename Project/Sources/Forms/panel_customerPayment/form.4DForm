@@ -1,0 +1,688 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"label_customer": {
+					"type": "text",
+					"top": 10,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Customer",
+					"textAlign": "right"
+				},
+				"pup_customer": {
+					"type": "button",
+					"top": 7,
+					"left": 112,
+					"width": 300,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": " ",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_customer.4dm",
+					"events": [
+						"onClick"
+					],
+					"textAlign": "left"
+				},
+				"label_method": {
+					"type": "text",
+					"top": 10,
+					"left": 420,
+					"width": 70,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Method",
+					"textAlign": "right"
+				},
+				"pup_method": {
+					"type": "button",
+					"top": 7,
+					"left": 500,
+					"width": 170,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": " ",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_method.4dm",
+					"events": [
+						"onClick"
+					],
+					"textAlign": "left"
+				},
+				"label_depositAccount": {
+					"type": "text",
+					"top": 10,
+					"left": 680,
+					"width": 80,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Deposit to",
+					"textAlign": "right"
+				},
+				"pup_depositAccount": {
+					"type": "button",
+					"top": 7,
+					"left": 770,
+					"width": 270,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": " ",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_depositAccount.4dm",
+					"events": [
+						"onClick"
+					],
+					"textAlign": "left"
+				},
+				"label_date": {
+					"type": "text",
+					"top": 37,
+					"left": 12,
+					"width": 90,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Date",
+					"textAlign": "right"
+				},
+				"entryField_date": {
+					"type": "input",
+					"top": 37,
+					"left": 112,
+					"width": 110,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.paymentDate",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "date",
+					"textAlign": "left",
+					"method": "ObjectMethods/entryField_date.4dm"
+				},
+				"btnDatePickerDate": {
+					"type": "button",
+					"text": " ",
+					"top": 36,
+					"left": 226,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerDate.4dm",
+					"visibility": "visible",
+					"focusable": false,
+					"dataSource": ""
+				},
+				"label_amount": {
+					"type": "text",
+					"top": 37,
+					"left": 250,
+					"width": 70,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Amount",
+					"textAlign": "right"
+				},
+				"entryField_amount": {
+					"type": "input",
+					"top": 37,
+					"left": 330,
+					"width": 120,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.amount",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "real",
+					"textAlign": "right",
+					"numberFormat": "###,###,##0.00;-###,###,##0.00;0.00",
+					"method": "ObjectMethods/entryField_amount.4dm",
+					"fontWeight": "bold"
+				},
+				"label_reference": {
+					"type": "text",
+					"top": 37,
+					"left": 460,
+					"width": 70,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Reference",
+					"textAlign": "right"
+				},
+				"entryField_reference": {
+					"type": "input",
+					"top": 37,
+					"left": 540,
+					"width": 130,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.reference",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				},
+				"label_memo": {
+					"type": "text",
+					"top": 37,
+					"left": 680,
+					"width": 80,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Memo",
+					"textAlign": "right"
+				},
+				"entryField_memo": {
+					"type": "input",
+					"top": 37,
+					"left": 770,
+					"width": 270,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.memo",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text",
+					"textAlign": "left"
+				}
+			}
+		},
+		{
+			"objects": {
+				"rec_bkgd": {
+					"type": "rectangle",
+					"top": 91,
+					"left": 1,
+					"width": 190,
+					"height": 500,
+					"sizingX": "fixed",
+					"fill": "#A2C6D8",
+					"stroke": "transparent"
+				},
+				"Text_invoices": {
+					"type": "text",
+					"text": "Invoices",
+					"top": 98,
+					"left": 8,
+					"width": 174,
+					"height": 16,
+					"stroke": "#000000",
+					"fontWeight": "bold"
+				},
+				"cp_number": {
+					"type": "input",
+					"top": 118,
+					"left": 8,
+					"width": 174,
+					"height": 17,
+					"dataSource": "Form:C1466.cpTitle",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#404040"
+				},
+				"label_cpOwed": {
+					"type": "text",
+					"text": "Customer owes (all invoices)",
+					"top": 144,
+					"left": 8,
+					"width": 174,
+					"height": 16,
+					"stroke": "#404040"
+				},
+				"cp_cpOwed": {
+					"type": "input",
+					"top": 160,
+					"left": 8,
+					"width": 174,
+					"height": 17,
+					"dataSource": "Form:C1466.cpOwed",
+					"dataSourceTypeHint": "real",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"numberFormat": "###,###,##0.00;-###,###,##0.00;0.00",
+					"textAlign": "right"
+				},
+				"label_cpCredit": {
+					"type": "text",
+					"text": "Customer credit available",
+					"top": 182,
+					"left": 8,
+					"width": 174,
+					"height": 16,
+					"stroke": "#404040"
+				},
+				"cp_cpCredit": {
+					"type": "input",
+					"top": 198,
+					"left": 8,
+					"width": 174,
+					"height": 17,
+					"dataSource": "Form:C1466.cpCredit",
+					"dataSourceTypeHint": "real",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"numberFormat": "###,###,##0.00;-###,###,##0.00;0.00",
+					"textAlign": "right"
+				},
+				"label_cpAmount": {
+					"type": "text",
+					"text": "Amount received",
+					"top": 220,
+					"left": 8,
+					"width": 174,
+					"height": 16,
+					"stroke": "#404040"
+				},
+				"cp_cpAmount": {
+					"type": "input",
+					"top": 236,
+					"left": 8,
+					"width": 174,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.amount",
+					"dataSourceTypeHint": "real",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"numberFormat": "###,###,##0.00;-###,###,##0.00;0.00",
+					"textAlign": "right"
+				},
+				"label_cpApplied": {
+					"type": "text",
+					"text": "Applied to invoices",
+					"top": 258,
+					"left": 8,
+					"width": 174,
+					"height": 16,
+					"stroke": "#404040"
+				},
+				"cp_cpApplied": {
+					"type": "input",
+					"top": 274,
+					"left": 8,
+					"width": 174,
+					"height": 17,
+					"dataSource": "Form:C1466.cpApplied",
+					"dataSourceTypeHint": "real",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"numberFormat": "###,###,##0.00;-###,###,##0.00;0.00",
+					"textAlign": "right"
+				},
+				"label_cpDiscounts": {
+					"type": "text",
+					"text": "Discounts taken",
+					"top": 296,
+					"left": 8,
+					"width": 174,
+					"height": 16,
+					"stroke": "#404040"
+				},
+				"cp_cpDiscounts": {
+					"type": "input",
+					"top": 312,
+					"left": 8,
+					"width": 174,
+					"height": 17,
+					"dataSource": "Form:C1466.cpDiscounts",
+					"dataSourceTypeHint": "real",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"numberFormat": "###,###,##0.00;-###,###,##0.00;0.00",
+					"textAlign": "right"
+				},
+				"label_unapplied": {
+					"type": "input",
+					"top": 334,
+					"left": 8,
+					"width": 174,
+					"height": 16,
+					"dataSource": "Form:C1466.cpUnappliedLabel",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "bold",
+					"stroke": "#000000"
+				},
+				"cp_unapplied": {
+					"type": "input",
+					"top": 350,
+					"left": 8,
+					"width": 174,
+					"height": 17,
+					"dataSource": "Form:C1466.cpUnapplied",
+					"dataSourceTypeHint": "real",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"numberFormat": "###,###,##0.00;-###,###,##0.00;0.00",
+					"textAlign": "right",
+					"fontWeight": "bold"
+				},
+				"cp_problems": {
+					"type": "input",
+					"top": 376,
+					"left": 8,
+					"width": 174,
+					"height": 110,
+					"dataSource": "Form:C1466.cpProblems",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#C00000",
+					"fontSize": 11,
+					"scrollbarVertical": "automatic"
+				},
+				"cp_help": {
+					"type": "input",
+					"top": 492,
+					"left": 8,
+					"width": 174,
+					"height": 60,
+					"dataSource": "Form:C1466.cpHelp",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#404040",
+					"fontSize": 11,
+					"scrollbarVertical": "automatic",
+					"fontStyle": "italic"
+				},
+				"bActionRows": {
+					"type": "button",
+					"text": "Actions",
+					"top": 566,
+					"left": 8,
+					"width": 80,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "linked",
+					"icon": "/RESOURCES/sfw/image/picto/gear.png",
+					"textPlacement": "right",
+					"method": "ObjectMethods/bActionRows.4dm"
+				},
+				"lb_cpRows": {
+					"type": "listbox",
+					"top": 91,
+					"left": 193,
+					"width": 900,
+					"height": 500,
+					"listboxType": "collection",
+					"focusable": true,
+					"movableRows": false,
+					"dataSource": "Form:C1466.cpRows",
+					"currentItemSource": "Form:C1466.current_cpRow",
+					"metaSource": "This:C1470.meta",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "#C0C0C0",
+					"selectionMode": "single",
+					"fill": "#FFFFFF",
+					"alternateFill": "#F7F9FC",
+					"borderStyle": "system",
+					"columns": [
+						{
+							"header": {
+								"name": "Header_cpInvoice",
+								"text": "Invoice #"
+							},
+							"name": "Column_cpInvoice",
+							"width": 90,
+							"dataSource": "This:C1470.invoiceNumber",
+							"dataSourceTypeHint": "text",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_cpInvoice"
+							},
+							"truncateMode": "withEllipsis"
+						},
+						{
+							"header": {
+								"name": "Header_cpJob",
+								"text": "Job"
+							},
+							"name": "Column_cpJob",
+							"width": 70,
+							"dataSource": "This:C1470.jobNumber",
+							"dataSourceTypeHint": "text",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_cpJob"
+							},
+							"truncateMode": "withEllipsis"
+						},
+						{
+							"header": {
+								"name": "Header_cpDate",
+								"text": "Date"
+							},
+							"name": "Column_cpDate",
+							"width": 90,
+							"dataSource": "This:C1470.invoiceDate",
+							"dataSourceTypeHint": "date",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_cpDate"
+							}
+						},
+						{
+							"header": {
+								"name": "Header_cpDue",
+								"text": "Due"
+							},
+							"name": "Column_cpDue",
+							"width": 90,
+							"dataSource": "This:C1470.dueDate",
+							"dataSourceTypeHint": "date",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_cpDue"
+							}
+						},
+						{
+							"header": {
+								"name": "Header_cpBilled",
+								"text": "Billed",
+								"textAlign": "right"
+							},
+							"name": "Column_cpBilled",
+							"width": 110,
+							"dataSource": "This:C1470.billed",
+							"dataSourceTypeHint": "real",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_cpBilled"
+							},
+							"textAlign": "right",
+							"numberFormat": "###,###,##0.00;-###,###,##0.00;"
+						},
+						{
+							"header": {
+								"name": "Header_cpOpen",
+								"text": "Open",
+								"textAlign": "right"
+							},
+							"name": "Column_cpOpen",
+							"width": 110,
+							"dataSource": "This:C1470.open",
+							"dataSourceTypeHint": "real",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_cpOpen"
+							},
+							"textAlign": "right",
+							"numberFormat": "###,###,##0.00;-###,###,##0.00;"
+						},
+						{
+							"header": {
+								"name": "Header_cpAllowed",
+								"text": "Discount allowed",
+								"textAlign": "right"
+							},
+							"name": "Column_cpAllowed",
+							"width": 110,
+							"dataSource": "This:C1470.suggestedDiscount",
+							"dataSourceTypeHint": "real",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_cpAllowed"
+							},
+							"textAlign": "right",
+							"numberFormat": "###,###,##0.00;-###,###,##0.00;"
+						},
+						{
+							"header": {
+								"name": "Header_cpDiscount",
+								"text": "Discount",
+								"textAlign": "right"
+							},
+							"name": "Column_cpDiscount",
+							"width": 100,
+							"dataSource": "This:C1470.discount",
+							"dataSourceTypeHint": "real",
+							"enterable": true,
+							"footer": {
+								"name": "Footer_cpDiscount"
+							},
+							"textAlign": "right",
+							"numberFormat": "###,###,##0.00;-###,###,##0.00;"
+						},
+						{
+							"header": {
+								"name": "Header_cpApply",
+								"text": "Apply",
+								"textAlign": "right"
+							},
+							"name": "Column_cpApply",
+							"width": 120,
+							"dataSource": "This:C1470.apply",
+							"dataSourceTypeHint": "real",
+							"enterable": true,
+							"footer": {
+								"name": "Footer_cpApply"
+							},
+							"textAlign": "right",
+							"numberFormat": "###,###,##0.00;-###,###,##0.00;",
+							"fontWeight": "bold"
+						}
+					],
+					"method": "ObjectMethods/lb_cpRows.4dm",
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onDataChange"
+					]
+				}
+			}
+		}
+	],
+	"inheritedForm": "sfw_bkgd_header_2lines",
+	"geometryStamp": 1,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

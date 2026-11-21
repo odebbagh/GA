@@ -440,6 +440,185 @@
 					"visibility": "visible",
 					"iconFrames": 4,
 					"focusable": false
+				},
+				"ar_bkgd": {
+					"type": "rectangle",
+					"top": 385,
+					"left": 0,
+					"width": 435,
+					"height": 30,
+					"sizingX": "grow",
+					"fill": "#A2C6D8",
+					"stroke": "transparent",
+					"right": 435
+				},
+				"ar_label": {
+					"type": "text",
+					"text": "Accounts receivable",
+					"top": 391,
+					"left": 12,
+					"width": 200,
+					"height": 16,
+					"fontWeight": "bold"
+				},
+				"ar_balance": {
+					"type": "input",
+					"top": 391,
+					"left": 170,
+					"width": 255,
+					"height": 16,
+					"dataSource": "Form:C1466.arBalanceText",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "right",
+					"fontWeight": "bold"
+				},
+				"label_paymentTerm": {
+					"type": "text",
+					"top": 426,
+					"left": 12,
+					"width": 85,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Terms",
+					"textAlign": "left"
+				},
+				"pup_paymentTerm": {
+					"type": "button",
+					"top": 422,
+					"left": 96,
+					"width": 220,
+					"height": 23,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": " ",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_paymentTerm.4dm",
+					"events": [
+						"onClick"
+					],
+					"textAlign": "left"
+				},
+				"label_creditLimit": {
+					"type": "text",
+					"top": 453,
+					"left": 12,
+					"width": 85,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Credit limit",
+					"textAlign": "left"
+				},
+				"entryField_creditLimit": {
+					"type": "input",
+					"top": 453,
+					"left": 100,
+					"width": 120,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.creditLimit",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "real",
+					"numberFormat": "###,###,##0.00;;"
+				},
+				"entryField_creditHold": {
+					"type": "checkbox",
+					"text": "Credit hold",
+					"top": 478,
+					"left": 96,
+					"width": 200,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.current_item.creditHold"
+				},
+				"label_creditHoldReason": {
+					"type": "text",
+					"top": 504,
+					"left": 12,
+					"width": 85,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Hold reason",
+					"textAlign": "left"
+				},
+				"entryField_creditHoldReason": {
+					"type": "input",
+					"top": 504,
+					"left": 100,
+					"width": 320,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.creditHoldReason",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text"
+				},
+				"label_statementEmail": {
+					"type": "text",
+					"top": 529,
+					"left": 12,
+					"width": 85,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Statements to",
+					"textAlign": "left"
+				},
+				"entryField_statementEmail": {
+					"type": "input",
+					"top": 529,
+					"left": 100,
+					"width": 320,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.statementEmail",
+					"focusable": false,
+					"enterable": false,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSourceTypeHint": "text"
+				},
+				"ar_help": {
+					"type": "input",
+					"top": 554,
+					"left": 12,
+					"width": 410,
+					"height": 48,
+					"dataSource": "Form:C1466.arHelp",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#606060",
+					"fontStyle": "italic",
+					"fontSize": 11
 				}
 			},
 			"entryOrder": [

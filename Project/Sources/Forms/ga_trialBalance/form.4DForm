@@ -1,0 +1,308 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onClick",
+		"onDataChange"
+	],
+	"windowTitle": "Trial balance",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"txt_header": {
+					"type": "input",
+					"top": 14,
+					"left": 20,
+					"width": 860,
+					"height": 34,
+					"dataSource": "Form:C1466.headerText",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"scrollbarVertical": "automatic"
+				},
+				"label_asOf": {
+					"type": "text",
+					"top": 58,
+					"left": 20,
+					"width": 50,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "As of"
+				},
+				"tb_asOf": {
+					"type": "input",
+					"top": 56,
+					"left": 70,
+					"width": 100,
+					"height": 20,
+					"dataSource": "Form:C1466.asOf",
+					"dataSourceTypeHint": "date",
+					"enterable": true,
+					"focusable": true,
+					"fill": "#FFFFFF",
+					"borderStyle": "system",
+					"events": [
+						"onDataChange"
+					],
+					"method": "ObjectMethods/tb_asOf.4dm"
+				},
+				"btnDatePickerAsOf": {
+					"type": "button",
+					"text": " ",
+					"top": 57,
+					"left": 174,
+					"width": 18,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"popupPlacement": "none",
+					"icon": "/RESOURCES/image/element/calendar_black.png",
+					"textPlacement": "center",
+					"method": "ObjectMethods/btnDatePickerAsOf.4dm",
+					"visibility": "visible",
+					"focusable": false,
+					"dataSource": ""
+				},
+				"label_division": {
+					"type": "text",
+					"top": 58,
+					"left": 214,
+					"width": 60,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Division"
+				},
+				"pup_division": {
+					"type": "button",
+					"top": 55,
+					"left": 276,
+					"width": 220,
+					"height": 22,
+					"fontFamily": "System Font",
+					"fontSize": 13,
+					"focusable": false,
+					"text": " ",
+					"icon": "",
+					"popupPlacement": "linked",
+					"textPlacement": "right",
+					"style": "bevel",
+					"method": "ObjectMethods/pup_division.4dm",
+					"events": [
+						"onClick"
+					],
+					"textAlign": "left"
+				},
+				"lb_trialBalance": {
+					"type": "listbox",
+					"top": 88,
+					"left": 20,
+					"width": 860,
+					"height": 400,
+					"listboxType": "collection",
+					"focusable": true,
+					"movableRows": false,
+					"dataSource": "Form:C1466.rows",
+					"currentItemSource": "Form:C1466.current_row",
+					"metaSource": "This:C1470.meta",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "#C0C0C0",
+					"selectionMode": "single",
+					"fill": "#FFFFFF",
+					"alternateFill": "#F7F9FC",
+					"borderStyle": "system",
+					"columns": [
+						{
+							"header": {
+								"name": "Header_tbFamily",
+								"text": "Family"
+							},
+							"name": "Column_tbFamily",
+							"width": 80,
+							"dataSource": "This:C1470.family",
+							"dataSourceTypeHint": "text",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_tbFamily"
+							},
+							"truncateMode": "withEllipsis"
+						},
+						{
+							"header": {
+								"name": "Header_tbType",
+								"text": "Type"
+							},
+							"name": "Column_tbType",
+							"width": 150,
+							"dataSource": "This:C1470.accountType",
+							"dataSourceTypeHint": "text",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_tbType"
+							},
+							"truncateMode": "withEllipsis"
+						},
+						{
+							"header": {
+								"name": "Header_tbGlac",
+								"text": "Number"
+							},
+							"name": "Column_tbGlac",
+							"width": 90,
+							"dataSource": "This:C1470.glac",
+							"dataSourceTypeHint": "text",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_tbGlac"
+							},
+							"truncateMode": "withEllipsis"
+						},
+						{
+							"header": {
+								"name": "Header_tbDescription",
+								"text": "Account"
+							},
+							"name": "Column_tbDescription",
+							"width": 260,
+							"dataSource": "This:C1470.description",
+							"dataSourceTypeHint": "text",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_tbDescription"
+							},
+							"truncateMode": "withEllipsis"
+						},
+						{
+							"header": {
+								"name": "Header_tbDebit",
+								"text": "Debit",
+								"textAlign": "right"
+							},
+							"name": "Column_tbDebit",
+							"width": 120,
+							"dataSource": "This:C1470.debit",
+							"dataSourceTypeHint": "real",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_tbDebit"
+							},
+							"textAlign": "right",
+							"numberFormat": "###,###,##0.00;-###,###,##0.00;"
+						},
+						{
+							"header": {
+								"name": "Header_tbCredit",
+								"text": "Credit",
+								"textAlign": "right"
+							},
+							"name": "Column_tbCredit",
+							"width": 120,
+							"dataSource": "This:C1470.credit",
+							"dataSourceTypeHint": "real",
+							"enterable": false,
+							"footer": {
+								"name": "Footer_tbCredit"
+							},
+							"textAlign": "right",
+							"numberFormat": "###,###,##0.00;-###,###,##0.00;"
+						}
+					],
+					"sizingX": "grow",
+					"sizingY": "grow"
+				},
+				"txt_total": {
+					"type": "input",
+					"top": 496,
+					"left": 20,
+					"width": 860,
+					"height": 17,
+					"dataSource": "Form:C1466.totalText",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "bold",
+					"sizingX": "grow",
+					"sizingY": "move"
+				},
+				"txt_note": {
+					"type": "input",
+					"top": 518,
+					"left": 20,
+					"width": 860,
+					"height": 34,
+					"dataSource": "Form:C1466.noteText",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#606060",
+					"fontStyle": "italic",
+					"scrollbarVertical": "automatic",
+					"sizingX": "grow",
+					"sizingY": "move"
+				},
+				"bExport": {
+					"type": "button",
+					"top": 560,
+					"left": 700,
+					"width": 90,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"text": "Excel...",
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/bExport.4dm"
+				},
+				"bOK": {
+					"type": "button",
+					"top": 560,
+					"left": 800,
+					"width": 80,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "accept",
+					"text": "Close",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		}
+	],
+	"geometryStamp": 1,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

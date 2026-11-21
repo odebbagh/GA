@@ -366,7 +366,7 @@
 					"left": 590,
 					"width": 140,
 					"height": 17,
-					"dataSource": "Form:C1466.current_item.job.invoiceDate",
+					"dataSource": "Form:C1466.current_item.invoiceDate",
 					"focusable": false,
 					"enterable": false,
 					"dragging": "none",
@@ -376,7 +376,7 @@
 					],
 					"fill": "transparent",
 					"borderStyle": "none",
-					"dataSourceTypeHint": "text",
+					"dataSourceTypeHint": "date",
 					"textAlign": "left"
 				},
 				"btnDatePickerInvoiceDate": {
@@ -518,7 +518,7 @@
 					"width": 70,
 					"height": 17,
 					"stroke": "#808080",
-					"text": "status",
+					"text": "Status",
 					"textAlign": "right"
 				},
 				"pup_status": {
@@ -754,6 +754,57 @@
 					"dataSourceTypeHint": "text",
 					"textAlign": "left"
 				},
+				"label_amountPaid": {
+					"type": "text",
+					"top": 429,
+					"left": 260,
+					"width": 135,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Amount paid",
+					"textAlign": "right"
+				},
+				"amountPaid_value": {
+					"type": "input",
+					"top": 429,
+					"left": 405,
+					"width": 200,
+					"height": 17,
+					"dataSource": "Form:C1466.invoiceAmountPaid",
+					"dataSourceTypeHint": "real",
+					"numberFormat": "###,###,##0.00;-###,###,##0.00;0.00",
+					"textAlign": "left",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_balanceDue": {
+					"type": "text",
+					"top": 454,
+					"left": 260,
+					"width": 135,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Balance due",
+					"textAlign": "right"
+				},
+				"balanceDue_value": {
+					"type": "input",
+					"top": 454,
+					"left": 405,
+					"width": 200,
+					"height": 17,
+					"dataSource": "Form:C1466.invoiceBalanceDue",
+					"dataSourceTypeHint": "real",
+					"numberFormat": "###,###,##0.00;-###,###,##0.00;0.00",
+					"textAlign": "left",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontWeight": "bold"
+				},
 				"label_orderItemsCharge": {
 					"type": "text",
 					"top": 181,
@@ -811,6 +862,91 @@
 					"borderStyle": "none",
 					"dataSourceTypeHint": "text",
 					"textAlign": "left"
+				},
+				"label_dueDate": {
+					"type": "text",
+					"top": 238,
+					"left": 12,
+					"width": 70,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Due",
+					"textAlign": "right"
+				},
+				"dueDate_value": {
+					"type": "input",
+					"top": 238,
+					"left": 92,
+					"width": 150,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.dueDate",
+					"dataSourceTypeHint": "date",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_terms": {
+					"type": "text",
+					"top": 262,
+					"left": 12,
+					"width": 70,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Terms",
+					"textAlign": "right"
+				},
+				"terms_value": {
+					"type": "input",
+					"top": 262,
+					"left": 92,
+					"width": 150,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.termText",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"label_posted": {
+					"type": "text",
+					"top": 286,
+					"left": 12,
+					"width": 70,
+					"height": 17,
+					"stroke": "#808080",
+					"text": "Posted",
+					"textAlign": "right"
+				},
+				"posted_value": {
+					"type": "input",
+					"top": 286,
+					"left": 92,
+					"width": 150,
+					"height": 17,
+					"dataSource": "Form:C1466.current_item.postedText",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"state_help": {
+					"type": "input",
+					"top": 312,
+					"left": 12,
+					"width": 230,
+					"height": 80,
+					"dataSource": "Form:C1466.invoiceStateHelp",
+					"dataSourceTypeHint": "text",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#606060",
+					"fontStyle": "italic",
+					"fontSize": 11
 				}
 			}
 		},

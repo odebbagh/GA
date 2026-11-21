@@ -6,6 +6,10 @@ Date : 01-December-2025
 Purpose : Print Invoice
 */
 
+If (Form:C1466.current_item#Null:C1517) && (Form:C1466.current_item.job=Null:C1517)
+	cs:C1710.sfw_dialog.me.alert("Invoice "+String:C10(Form:C1466.current_item.invoiceNumber)+" was imported from legacy without its job (archived there): reprint it from legacy.")
+	return 
+End if 
 If (Form:C1466.current_item#Null:C1517)
 	
 	var $context : Object

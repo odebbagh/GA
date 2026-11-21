@@ -86,7 +86,11 @@ Function get monthInService()->$monthInService : Integer
 	
 Function get totalAccDepreciation()->$totalAccDepreciation : Real
 	
-	Case of 
+	Case of
+		: (This:C1470.isScrapped=True:C214) && (This:C1470.divestDate#!00-00-00!) && (This:C1470.divestDate<=Current date:C33(*))
+			// scrapped / sold: the whole cost is written off (was set from get bookValue, which a getter cannot do)
+			$totalAccDepreciation:=This:C1470.originalCost
+
 		: (This:C1470.monthInService>=This:C1470.life)
 			$totalAccDepreciation:=This:C1470.monthlyDepreciation*This:C1470.life
 			
@@ -114,8 +118,7 @@ local Function get bookValue()->$bookValue : Real
 		: (This:C1470.monthInService>=This:C1470.life)
 			$bookValue:=0
 		: (This:C1470.isScrapped=True:C214) & (This:C1470.divestDate<=Current date:C33(*))
-			$bookValue:=0
-			This:C1470.totalAccDepreciation:=This:C1470.originalCost
+			$bookValue:=0  // scrapped / sold: nothing left on the books (a getter cannot set totalAccDepreciation, itself computed)
 			
 		Else 
 			$bookValue:=Round:C94(This:C1470.originalCost-This:C1470.totalAccDepreciation; 2)

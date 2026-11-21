@@ -58,9 +58,10 @@ Function redrawAndSetVisible()
 	Case of 
 			
 		: (FORM Get current page:C276(*)=1)
-			
+
 			OBJECT GET COORDINATES:C663(*; "subFormAddress"; $g; $h; $d; $b)
 			OBJECT SET COORDINATES:C1248(*; "subFormAddress"; $g; $h; $widthSubform-5; $b)
+			This:C1470.drawPup_paymentTerm()
 			
 		: (FORM Get current page:C276(*)=2)
 			
@@ -438,3 +439,56 @@ Function loadDpAddress()
 	
 Function _activate_save_cancel_button()
 	Form:C1466.current_item.UUID:=Form:C1466.current_item.UUID
+
+
+	//Mark:- Accounts receivable (main page): payment terms, credit limit / hold, statements
+
+	// the term of the customer; "Default (...)" when it has none (PaymentTerm.defaultTerm)
+Function drawPup_paymentTerm()
+	var $term; $default : cs:C1710.PaymentTermEntity
+	var $title : Text
+	var $owed; $credit : Real
+	If (Form:C1466.current_item=Null:C1517)
+		return
+	End if
+	Form:C1466.arHelp:="Terms give the due date of this customer's posted invoices. With a credit hold, or above the credit limit, posting an invoice warns first."
+	// what the customer owes on its invoices and the money it paid not used yet (ga_receivables)
+	Form:C1466.arBalanceText:=""
+	If (Not:C34(cs:C1710.sfw_string.me.isAnEmptyUUID(String:C10(Form:C1466.current_item.UUID))))
+		$owed:=cs:C1710.ga_receivables.me.customerOwed(Form:C1466.current_item.UUID)
+		$credit:=cs:C1710.ga_receivables.me.customerCredit(Form:C1466.current_item.UUID; "")
+		Form:C1466.arBalanceText:="Owes "+String:C10($owed; "###,###,##0.00")+(($credit#0) ? "  -  credit "+String:C10($credit; "###,###,##0.00") : "")
+	End if
+	$term:=Form:C1466.current_item.paymentTerm
+	If ($term=Null:C1517)
+		$default:=ds:C1482.PaymentTerm.defaultTerm()
+		$title:="Default ("+(($default=Null:C1517) ? "none" : $default.label)+")"
+	Else
+		$title:=$term.label
+	End if
+	Form:C1466.sfw.drawButtonPup("pup_paymentTerm"; $title; "sfw/image/skin/rainbow/icon/spacer-1x24.png"; False:C215)
+
+Function pup_paymentTerm()
+	var $menu; $choice : Text
+	var $term : cs:C1710.PaymentTermEntity
+	If (Not:C34(Form:C1466.sfw.checkIsInModification()))
+		return
+	End if
+	$menu:=Create menu:C408
+	APPEND MENU ITEM:C411($menu; "Default term"; *)
+	SET MENU ITEM PARAMETER:C1004($menu; -1; "0"*32)
+	APPEND MENU ITEM:C411($menu; "-")
+	For each ($term; ds:C1482.PaymentTerm.activeTerms())
+		APPEND MENU ITEM:C411($menu; $term.label; *)
+		SET MENU ITEM PARAMETER:C1004($menu; -1; $term.UUID)
+		If ($term.UUID=Form:C1466.current_item.UUID_PaymentTerm)
+			SET MENU ITEM MARK:C208($menu; -1; Char:C90(18))
+		End if
+	End for each
+	$choice:=Dynamic pop up menu:C1006($menu)
+	RELEASE MENU:C978($menu)
+	If ($choice#"") && ($choice#Form:C1466.current_item.UUID_PaymentTerm)
+		Form:C1466.current_item.UUID_PaymentTerm:=$choice
+		This:C1470._activate_save_cancel_button()
+		This:C1470.drawPup_paymentTerm()
+	End if

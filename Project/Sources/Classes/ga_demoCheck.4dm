@@ -41,7 +41,11 @@ Function run()->$report : Collection
 		New object:C1471("name"; "checkSalesViews"; "label"; "Lead columns (pipeline, next follow-up, open) and the lead / quote views"); \
 		New object:C1471("name"; "checkJobCosts"; "label"; "Job costs (subcon, actual, markup), roll-up and the To Ship view"); \
 		New object:C1471("name"; "checkProcessTime"; "label"; "Standard processing time: process value, step override, time per unit"); \
-		New object:C1471("name"; "checkProjectedCompletion"; "label"; "Estimated completion: remaining hours from now or from the punch-in, late flag"))
+		New object:C1471("name"; "checkProjectedCompletion"; "label"; "Estimated completion: remaining hours from now or from the punch-in, late flag"); \
+		New object:C1471("name"; "checkLedgerData"; "label"; "Ledger data: every journal entry balanced, accounts exist, accounts with the main roles"); \
+		New object:C1471("name"; "checkLedger"; "label"; "Ledger: post, balances, unbalanced entry refused, trial balance, closing date, void"); \
+		New object:C1471("name"; "checkInvoicePosting"; "label"; "Invoice posting: post, edit, unpost, void, not shipped / PO over refused"); \
+		New object:C1471("name"; "checkReceivePayment"; "label"; "Receive payment: discount, partial / full, credit kept and applied, void, refusals"))
 	
 	For each ($check; $checks)
 		This:C1470.step:=""  // a check may name where it is, for the error line
@@ -646,6 +650,7 @@ Function checkQuoteLines()->$r : Object
 	End if
 	$order:=""
 	For each ($line; $quote.lines.orderBy("num asc"))
+		$line.reload()  // 4D Remote: the client may still hold a line as it was first loaded
 		$order+=$line.description+"="+String:C10($line.num)+" "
 	End for each
 	If ($order#"L1=1 L3=2 L2=3 ")
@@ -1042,6 +1047,8 @@ Function checkSalesViews()->$r : Object
 	$res:=$followUp.save()
 
 	This:C1470.step:="lead columns"
+	// computed on the server when the lead is loaded: read again now that it has follow-ups
+	$lead.reload()
 	If ($lead.pipelineValue#4000)
 		$problems.push("pipeline "+String:C10($lead.pipelineValue)+" instead of 4000")
 	End if
@@ -1325,6 +1332,490 @@ Function checkProjectedCompletion()->$r : Object
 	ds:C1482.cancelTransaction()
 	This:C1470.inTransaction:=False:C215
 	$r:=This:C1470._r($problems.length=0; Choose:C955($problems.length=0; "7 h left from 08:00 gives 15:00, 1 day after the commit; punched in at 06:00 gives 13:00"; $problems.join("; ")); "Send this line to Claude.")
+
+
+	// The journal as it is: each entry's debits = its credits, no line on a missing account or
+	// on a void entry, and the main roles (A/R, A/P, sales, retained earnings) given to an
+	// account. Read only.
+Function checkLedgerData()->$r : Object
+	var $entry : cs:C1710.JournalEntryEntity
+	var $problems; $missingRoles : Collection
+	var $key : Text
+	var $unbalanced; $orphans; $onVoid : Integer
+
+	$problems:=New collection:C1472
+	This:C1470.step:="entries balanced"
+	For each ($entry; ds:C1482.JournalEntry.query("isVoid = :1"; False:C215))
+		If (Round:C94($entry.lines.sum("debit")-$entry.lines.sum("credit"); 2)#0)
+			$unbalanced:=$unbalanced+1
+		End if
+	End for each
+	If ($unbalanced>0)
+		$problems.push(String:C10($unbalanced)+" entr(y/ies) with debits # credits")
+	End if
+
+	This:C1470.step:="lines"
+	$orphans:=ds:C1482.JournalLine.query("account = null").length
+	If ($orphans>0)
+		$problems.push(String:C10($orphans)+" line(s) on an account that does not exist")
+	End if
+	$onVoid:=ds:C1482.JournalLine.query("journalEntry.isVoid = :1"; True:C214).length
+	If ($onVoid>0)
+		$problems.push(String:C10($onVoid)+" line(s) left on void entries")
+	End if
+
+	This:C1470.step:="roles"
+	$missingRoles:=New collection:C1472
+	For each ($key; New collection:C1472("DefaultA/R"; "DefaultA/P"; "DefaultSales"; "DefaultSalesTaxPayable"; "DefaultRetainedEarnings"; "DefaultEquity"))
+		If (cs:C1710.ga_ledger.me.defaultAccount($key; "")=Null:C1517)
+			$missingRoles.push(cs:C1710.ga_ledger.me.defaultKeyLabel($key))
+		End if
+	End for each
+	If ($missingRoles.length>0)
+		$problems.push("no account has the role: "+$missingRoles.join(", "))
+	End if
+
+	$r:=This:C1470._r($problems.length=0; Choose:C955($problems.length=0; String:C10(ds:C1482.JournalEntry.all().length)+" entries, "+String:C10(ds:C1482.JournalLine.all().length)+" lines, all balanced; main roles set"; $problems.join("; ")); \
+		"Roles: re-run _import_glAccounts (it reads the legacy DefaultKey) or set them in Chart of Accounts. Unbalanced or orphan lines: send this line to Claude.")
+
+
+	// ga_ledger on two throwaway accounts (a bank and an income account), inside a cancelled
+	// transaction: post 100 (Dr bank / Cr income) -> both balances 100 on their normal side; an
+	// unbalanced entry is refused; the trial balance balances; a closing date on today locks the
+	// entry; void -> both balances back to 0.
+Function checkLedger()->$r : Object
+	var $bank; $income : cs:C1710.GLAccountEntity
+	var $spec; $res; $tb : Object
+	var $entry : cs:C1710.JournalEntryEntity
+	var $problems : Collection
+	var $source : Text
+
+	ds:C1482.startTransaction()
+	This:C1470.inTransaction:=True:C214
+	$problems:=New collection:C1472
+
+	This:C1470.step:="test accounts"
+	$bank:=ds:C1482.GLAccount.new()
+	$bank.glac:="ZZTEST-BANK"
+	$bank.description:="Demo check bank"
+	$bank.accountType:="Bank"
+	$bank.accountTypeCode:=1
+	$bank.UUID_Division:="0"*32
+	$res:=$bank.save()
+	$income:=ds:C1482.GLAccount.new()
+	$income.glac:="ZZTEST-INC"
+	$income.description:="Demo check income"
+	$income.accountType:="Income"
+	$income.accountTypeCode:=8
+	$income.UUID_Division:="0"*32
+	$res:=$income.save()
+
+	This:C1470.step:="post"
+	cs:C1710.ga_ledger.me.setClosingDate(!00-00-00!)
+	$source:=Generate UUID:C1066
+	$spec:=New object:C1471("type"; "Test"; "sourceDataclass"; "ga_demoCheck"; "sourceUUID"; $source; "date"; Current date:C33; "memo"; "demo check"; \
+		"lines"; New collection:C1472(\
+		New object:C1471("UUID_GLAccount"; $bank.UUID; "debit"; 100; "credit"; 0); \
+		New object:C1471("UUID_GLAccount"; $income.UUID; "debit"; 0; "credit"; 100)))
+	$res:=cs:C1710.ga_ledger.me.post($spec)
+	If (Not:C34($res.success))
+		$problems.push("post refused: "+$res.errors.join(" "))
+	End if
+	If (cs:C1710.ga_ledger.me.accountBalance($bank; Current date:C33; "")#100)
+		$problems.push("bank balance "+String:C10(cs:C1710.ga_ledger.me.accountBalance($bank; Current date:C33; ""))+" instead of 100")
+	End if
+	If (cs:C1710.ga_ledger.me.accountBalance($income; Current date:C33; "")#100)
+		$problems.push("income balance "+String:C10(cs:C1710.ga_ledger.me.accountBalance($income; Current date:C33; ""))+" instead of 100 (credit account)")
+	End if
+
+	This:C1470.step:="re-post replaces"
+	$spec.lines[0].debit:=120
+	$spec.lines[1].credit:=120
+	$res:=cs:C1710.ga_ledger.me.post($spec)
+	If (cs:C1710.ga_ledger.me.entriesOf("ga_demoCheck"; $source).length#1) || (cs:C1710.ga_ledger.me.accountBalance($bank; Current date:C33; "")#120)
+		$problems.push("posting the same document again did not replace its entry")
+	End if
+
+	This:C1470.step:="unbalanced"
+	$spec.lines[1].credit:=90
+	$res:=cs:C1710.ga_ledger.me.post($spec)
+	If ($res.success)
+		$problems.push("an entry with debits 120 / credits 90 was accepted")
+	End if
+	If (cs:C1710.ga_ledger.me.accountBalance($bank; Current date:C33; "")#120)
+		$problems.push("a refused entry changed the balance")
+	End if
+
+	This:C1470.step:="trial balance"
+	$tb:=cs:C1710.ga_ledger.me.trialBalance(Current date:C33; "")
+	If (Not:C34($tb.balanced))
+		$problems.push("trial balance not balanced: "+String:C10($tb.totalDebit)+" / "+String:C10($tb.totalCredit))
+	End if
+	If ($tb.rows.query("UUID_GLAccount = :1 AND debit = :2"; $bank.UUID; 120).length#1)
+		$problems.push("the bank is not on the debit side of the trial balance")
+	End if
+
+	This:C1470.step:="closing date"
+	cs:C1710.ga_ledger.me.setClosingDate(Current date:C33)
+	$entry:=cs:C1710.ga_ledger.me.entriesOf("ga_demoCheck"; $source).first()
+	$res:=cs:C1710.ga_ledger.me.voidEntry($entry)
+	If ($res.success)
+		$problems.push("an entry dated on the closing date was voided")
+	End if
+	cs:C1710.ga_ledger.me.setClosingDate(!00-00-00!)
+
+	This:C1470.step:="void"
+	$res:=cs:C1710.ga_ledger.me.unpost("ga_demoCheck"; $source)
+	If (Not:C34($res.success)) || (cs:C1710.ga_ledger.me.accountBalance($bank; Current date:C33; "")#0) || (cs:C1710.ga_ledger.me.accountBalance($income; Current date:C33; "")#0)
+		$problems.push("after the void the balances are not 0")
+	End if
+	$entry.reload()
+	If (Not:C34($entry.isVoid)) || ($entry.number=0)
+		$problems.push("the void entry is not kept with its number")
+	End if
+
+	ds:C1482.cancelTransaction()
+	This:C1470.inTransaction:=False:C215
+	$r:=This:C1470._r($problems.length=0; Choose:C955($problems.length=0; "Dr bank / Cr income 100: both balances 100; re-post replaces; 120/90 refused; trial balance balanced; closed date locks; void back to 0"; $problems.join("; ")); "Send this line to Claude.")
+
+
+	// ga_invoicePosting on a throwaway customer / PO (2,000) / shipped job / invoice (1,100 =
+	// 1,000 work + 20 freight + 80 tax), inside a cancelled transaction: post -> the customer owes
+	// 1,100, PO billed 1,100, job invoiced; edit to 1,210 -> entry and PO follow; unpost -> back
+	// to 0; post + void -> 0 and Void; a job not shipped and a PO without money are refused.
+Function checkInvoicePosting()->$r : Object
+	var $customer : cs:C1710.CustomerEntity
+	var $po : cs:C1710.PurchaseOrderEntity
+	var $job : cs:C1710.JobEntity
+	var $invoice : cs:C1710.JobInvoiceEntity
+	var $res; $tb : Object
+	var $problems : Collection
+	var $p : cs:C1710.ga_invoicePosting
+
+	ds:C1482.startTransaction()
+	This:C1470.inTransaction:=True:C214
+	$problems:=New collection:C1472
+	$p:=cs:C1710.ga_invoicePosting.me
+
+	This:C1470.step:="test records"
+	cs:C1710.ga_ledger.me.setClosingDate(!00-00-00!)
+	$customer:=ds:C1482.Customer.new()
+	$customer.name:="ZZ demo check customer"
+	$customer.code:="ZZTEST"
+	$res:=$customer.save()
+	$po:=ds:C1482.PurchaseOrder.new()
+	$po.poNumber:=Num:C11(ds:C1482.PurchaseOrder.all().max("poNumber"))+1000
+	$po.poAmount:=2000
+	$po.amountBilled:=0
+	$po.UUID_Customer:=$customer.UUID
+	$res:=$po.save()
+	$job:=ds:C1482.Job.new()
+	$job.jobNumber:=Num:C11(ds:C1482.Job.all().max("jobNumber"))+1000
+	$job.UUID_PurchaseOrder:=$po.UUID
+	$job.UUID_Customer:=$customer.UUID
+	$job.UUID_Division:="0"*32
+	$job.shipped:=True:C214
+	$job.totalTax:=80
+	$job.freight:=20
+	$job.process:=""
+	$job.glAcc:=""
+	$res:=$job.save()
+	$invoice:=ds:C1482.JobInvoice.new()
+	$invoice.UUID_Job:=$job.UUID
+	$invoice.invoiceNumber:="ZZTEST1"
+	$invoice.total:=1100
+	$invoice.invoiceDate:=Current date:C33
+	$res:=$invoice.save()
+
+	This:C1470.step:="post"
+	$res:=$p.post($invoice; Current date:C33)
+	If (Not:C34($res.success))
+		$problems.push("post refused: "+$res.errors.join(" "))
+	End if
+	$po.reload()
+	$job.reload()
+	$invoice.reload()
+	If ($p.customerBalance($customer.UUID)#1100)
+		$problems.push("the customer owes "+String:C10($p.customerBalance($customer.UUID))+" instead of 1100")
+	End if
+	If ($po.amountBilled#1100)
+		$problems.push("PO billed "+String:C10($po.amountBilled)+" instead of 1100")
+	End if
+	If (Not:C34($job.postToPO)) || ($invoice.stateText#"Posted") || ($invoice.dueDate=!00-00-00!)
+		$problems.push("after posting: job invoiced "+String:C10($job.postToPO)+", status "+$invoice.stateText+", due "+String:C10($invoice.dueDate))
+	End if
+	$tb:=cs:C1710.ga_ledger.me.trialBalance(Current date:C33; "")
+	If (Not:C34($tb.balanced))
+		$problems.push("trial balance not balanced after posting")
+	End if
+
+	This:C1470.step:="edit a posted invoice"
+	$invoice.total:=1210
+	$job.totalTax:=90
+	$res:=$job.save()
+	$res:=$invoice.save()
+	$res:=$p.repost($invoice)
+	$po.reload()
+	If (Not:C34($res.success)) || ($p.customerBalance($customer.UUID)#1210) || ($po.amountBilled#1210)
+		$problems.push("after editing to 1210: owes "+String:C10($p.customerBalance($customer.UUID))+", PO billed "+String:C10($po.amountBilled))
+	End if
+
+	This:C1470.step:="unpost"
+	$res:=$p.unpost($invoice; "Draft")
+	$po.reload()
+	$job.reload()
+	If (Not:C34($res.success)) || ($p.customerBalance($customer.UUID)#0) || ($po.amountBilled#0) || ($job.postToPO) || ($invoice.stateText#"Draft")
+		$problems.push("after unpost: owes "+String:C10($p.customerBalance($customer.UUID))+", PO billed "+String:C10($po.amountBilled)+", status "+$invoice.stateText)
+	End if
+
+	This:C1470.step:="void"
+	$res:=$p.post($invoice; Current date:C33)
+	$res:=$p.unpost($invoice; "Void")
+	$po.reload()
+	If (Not:C34($res.success)) || ($p.customerBalance($customer.UUID)#0) || ($po.amountBilled#0) || ($invoice.stateText#"Void")
+		$problems.push("after void: owes "+String:C10($p.customerBalance($customer.UUID))+", PO billed "+String:C10($po.amountBilled)+", status "+$invoice.stateText)
+	End if
+	If (cs:C1710.ga_ledger.me.entriesOf("JobInvoice"; $invoice.UUID).query("isVoid = :1"; False:C215).length#0)
+		$problems.push("a void invoice still has an entry in the books")
+	End if
+
+	This:C1470.step:="refusals"
+	$job.reload()
+	$invoice.reload()
+	$invoice.status:="Draft"
+	$job.shipped:=False:C215
+	$res:=$job.save()
+	$res:=$invoice.save()
+	If ($p.checkPost($invoice; Current date:C33).errors.length=0)
+		$problems.push("a job not shipped can be posted")
+	End if
+	$job.shipped:=True:C214
+	$res:=$job.save()
+	$invoice.total:=5000
+	$res:=$invoice.save()
+	If ($p.checkPost($invoice; Current date:C33).errors.length=0)
+		$problems.push("an invoice of 5000 on a PO of 2000 can be posted")
+	End if
+
+	ds:C1482.cancelTransaction()
+	This:C1470.inTransaction:=False:C215
+	$r:=This:C1470._r($problems.length=0; Choose:C955($problems.length=0; "1100 posted (customer owes it, PO billed, job invoiced, due date), edited to 1210, unposted to 0, voided; not shipped and PO over refused"; $problems.join("; ")); "Send this line to Claude.")
+
+
+Function checkReceivePayment()->$r : Object
+	var $customer : cs:C1710.CustomerEntity
+	var $po : cs:C1710.PurchaseOrderEntity
+	var $invA; $invB : cs:C1710.JobInvoiceEntity
+	var $term : cs:C1710.PaymentTermEntity
+	var $p1; $p2; $p4; $p5 : cs:C1710.CustomerPaymentEntity
+	var $res; $tb : Object
+	var $rows; $problems : Collection
+	var $rc : cs:C1710.ga_receivables
+	var $key : Text
+	var $account; $adv : cs:C1710.GLAccountEntity
+	var $lines : cs:C1710.JournalLineSelection
+	var $rowA : Object
+
+	ds:C1482.startTransaction()
+	This:C1470.inTransaction:=True:C214
+	$problems:=New collection:C1472
+	$rc:=cs:C1710.ga_receivables.me
+
+	This:C1470.step:="test records"
+	cs:C1710.ga_ledger.me.setClosingDate(!00-00-00!)
+	// the roles a payment needs, created here (and rolled back) when the chart has none yet
+	For each ($key; New collection:C1472("DefaultA/R"; "UndepositedFunds"; "DefaultCustomerAdvance"; "DefaultSalesDiscounts"; "DefaultSales"))
+		If (cs:C1710.ga_ledger.me.defaultAccount($key; "")=Null:C1517)
+			$account:=ds:C1482.GLAccount.new()
+			$account.glac:="ZZ"+$key
+			$account.fullAccountName:=$account.glac
+			$account.description:="ZZ demo check "+$key
+			Case of
+				: ($key="DefaultCustomerAdvance")
+					$account.accountType:="Other Current Liability"
+				: ($key="DefaultSalesDiscounts") || ($key="DefaultSales")
+					$account.accountType:="Income"
+				Else
+					$account.accountType:="Other Current Asset"
+			End case
+			$account.accountTypeCode:=cs:C1710.ga_ledger.me.typeCode($account.accountType)
+			$account.defaultKey:=$key
+			$account.UUID_Division:="0"*32
+			$res:=$account.save()
+		End if
+	End for each
+	$adv:=cs:C1710.ga_ledger.me.defaultAccount("DefaultCustomerAdvance"; "")
+	$term:=ds:C1482.PaymentTerm.new()
+	$term.code:="ZZ2/10"
+	$term.name:="ZZ 2% 10 Net 30"
+	$term.netDays:=30
+	$term.discountPercent:=2
+	$term.discountDays:=10
+	$term.active:=True:C214
+	$res:=$term.save()
+	$customer:=ds:C1482.Customer.new()
+	$customer.name:="ZZ demo check payer"
+	$customer.code:="ZZPAY"
+	$customer.UUID_PaymentTerm:=$term.UUID
+	$res:=$customer.save()
+	$po:=ds:C1482.PurchaseOrder.new()
+	$po.poNumber:=Num:C11(ds:C1482.PurchaseOrder.all().max("poNumber"))+1001
+	$po.poAmount:=2000
+	$po.amountBilled:=0
+	$po.UUID_Customer:=$customer.UUID
+	$res:=$po.save()
+	$invA:=This:C1470._paymentTestInvoice($po; $customer; "ZZPAYA"; 1100; 1001)
+	$invB:=This:C1470._paymentTestInvoice($po; $customer; "ZZPAYB"; 500; 1002)
+	$res:=cs:C1710.ga_invoicePosting.me.post($invA; Current date:C33)
+	If (Not:C34($res.success))
+		$problems.push("invoice A not posted: "+$res.errors.join(" "))
+	End if
+	$res:=cs:C1710.ga_invoicePosting.me.post($invB; Current date:C33)
+	If (Not:C34($res.success))
+		$problems.push("invoice B not posted: "+$res.errors.join(" "))
+	End if
+	If ($rc.customerBalance($customer.UUID)#1600)
+		$problems.push("before payments the customer owes "+String:C10($rc.customerBalance($customer.UUID))+" instead of 1600")
+	End if
+
+	This:C1470.step:="payment 1: discount + auto-apply"
+	$p1:=This:C1470._paymentTestNew($customer; 1300)
+	$rows:=$rc.rowsForPayment($p1; True:C214)
+	If ($rows.length#2)
+		$problems.push(String:C10($rows.length)+" open invoices offered instead of 2")
+	Else
+		$rowA:=$rows.query("UUID_JobInvoice = :1"; $invA.UUID).first()
+		$rowA.discount:=$rowA.suggestedDiscount  // 2% of 1100 = 22
+		$rc.autoApply($p1; $rows)
+		$res:=This:C1470._paymentTestWrite($p1; $rows; $problems)
+		$invA.reload()
+		$invB.reload()
+		If ($invA.balanceDue#0) || ($invA.stateText#"Paid") || ($invB.balanceDue#278) || ($invB.stateText#"Partially paid")
+			$problems.push("after 1300 + 22 discount: A owes "+String:C10($invA.balanceDue)+" ("+$invA.stateText+"), B owes "+String:C10($invB.balanceDue)+" ("+$invB.stateText+") instead of 0 Paid / 278 Partially paid")
+		End if
+		If ($rc.customerBalance($customer.UUID)#278)
+			$problems.push("after payment 1 the customer owes "+String:C10($rc.customerBalance($customer.UUID))+" instead of 278")
+		End if
+	End if
+
+	This:C1470.step:="refusals"
+	If (cs:C1710.ga_invoicePosting.me.unpost($invB; "Draft").success)
+		$problems.push("an invoice with a payment could be unposted")
+	End if
+	$p2:=This:C1470._paymentTestNew($customer; 100)
+	$rows:=$rc.rowsForPayment($p2; True:C214)
+	If ($rows.length#1)
+		$problems.push(String:C10($rows.length)+" open invoices offered after payment 1 instead of 1")
+	Else
+		$rows[0].apply:=Round:C94($rows[0].open+1; 2)
+		If ($rc.checkPayment($p2; $rows).success)
+			$problems.push("more than the open balance could be applied")
+		End if
+		$rows[0].apply:=200
+		If ($rc.checkPayment($p2; $rows).success)
+			$problems.push("200 applied with 100 received and no credit was accepted")
+		End if
+
+		This:C1470.step:="payment 2: overpayment kept as a credit"
+		$p2.amount:=400
+		$rows[0].apply:=278
+		$res:=This:C1470._paymentTestWrite($p2; $rows; $problems)
+		$invB.reload()
+		$lines:=cs:C1710.ga_ledger.me.entriesOf("CustomerPayment"; $p2.UUID).first().lines.query("UUID_GLAccount = :1"; $adv.UUID)
+		If ($invB.stateText#"Paid") || ($rc.customerCredit($customer.UUID; "")#122) || ($rc.customerBalance($customer.UUID)#-122) || ($lines.sum("credit")#122)
+			$problems.push("after 400 on 278: B "+$invB.stateText+", credit "+String:C10($rc.customerCredit($customer.UUID; ""))+", balance "+String:C10($rc.customerBalance($customer.UUID))+", customer advances credited "+String:C10($lines.sum("credit")))
+		End if
+
+		This:C1470.step:="void payment 2"
+		$res:=$rc.voidPayment($p2)
+		$invB.reload()
+		If (Not:C34($res.success)) || ($invB.balanceDue#278) || ($rc.customerCredit($customer.UUID; "")#0)
+			$problems.push("after voiding payment 2: "+$res.errors.join(" ")+" B owes "+String:C10($invB.balanceDue)+", credit "+String:C10($rc.customerCredit($customer.UUID; "")))
+		End if
+		If (cs:C1710.ga_ledger.me.entriesOf("CustomerPayment"; $p2.UUID).query("isVoid = :1"; False:C215).length#0)
+			$problems.push("a void payment still has an entry")
+		End if
+	End if
+
+	This:C1470.step:="payment 4 (prepayment) and 5 (apply credit)"
+	$p4:=This:C1470._paymentTestNew($customer; 400)
+	$res:=This:C1470._paymentTestWrite($p4; New collection:C1472; $problems)
+	$p5:=This:C1470._paymentTestNew($customer; 0)
+	$p5.method:="Credit"
+	$rows:=$rc.rowsForPayment($p5; True:C214)
+	$rc.autoApply($p5; $rows)
+	$res:=This:C1470._paymentTestWrite($p5; $rows; $problems)
+	$invB.reload()
+	$lines:=cs:C1710.ga_ledger.me.entriesOf("CustomerPayment"; $p5.UUID).first().lines.query("UUID_GLAccount = :1"; $adv.UUID)
+	If ($invB.balanceDue#0) || ($rc.customerCredit($customer.UUID; "")#122) || ($lines.sum("debit")#278)
+		$problems.push("after applying the credit: B owes "+String:C10($invB.balanceDue)+", credit "+String:C10($rc.customerCredit($customer.UUID; ""))+" instead of 122, customer advances debited "+String:C10($lines.sum("debit"))+" instead of 278")
+	End if
+	If ($rc.checkVoid($p4).length=0)
+		$problems.push("a prepayment whose credit was used could be voided")
+	End if
+
+	This:C1470.step:="closed period"
+	cs:C1710.ga_ledger.me.setClosingDate(Current date:C33)
+	$p2:=This:C1470._paymentTestNew($customer; 10)
+	If ($rc.checkPayment($p2; New collection:C1472).success)
+		$problems.push("a payment dated on the closing date was accepted")
+	End if
+	If ($rc.checkVoid($p1).length=0)
+		$problems.push("a payment in a closed period could be voided")
+	End if
+	cs:C1710.ga_ledger.me.setClosingDate(!00-00-00!)
+
+	$tb:=cs:C1710.ga_ledger.me.trialBalance(Current date:C33; "")
+	If (Not:C34($tb.balanced))
+		$problems.push("trial balance not balanced after the payments")
+	End if
+
+	ds:C1482.cancelTransaction()
+	This:C1470.inTransaction:=False:C215
+	$r:=This:C1470._r($problems.length=0; Choose:C955($problems.length=0; "1100 + 500 invoiced; 1300 received with a 22 discount (A paid, B 278 left); 400 on 278 kept 122 as credit, then voided; prepayment 400 applied to B with an Apply credit payment; over-apply, unpost a paid invoice, void a used credit and the closed month refused; trial balance balanced"; $problems.join("; ")); "Send this line to Claude.")
+
+	// a shipped job on $po with a draft invoice of $total, for checkReceivePayment
+Function _paymentTestInvoice($po : cs:C1710.PurchaseOrderEntity; $customer : cs:C1710.CustomerEntity; $number : Text; $total : Real; $offset : Integer)->$invoice : cs:C1710.JobInvoiceEntity
+	var $job : cs:C1710.JobEntity
+	var $res : Object
+	$job:=ds:C1482.Job.new()
+	$job.jobNumber:=Num:C11(ds:C1482.Job.all().max("jobNumber"))+$offset
+	$job.UUID_PurchaseOrder:=$po.UUID
+	$job.UUID_Customer:=$customer.UUID
+	$job.UUID_Division:="0"*32
+	$job.shipped:=True:C214
+	$job.totalTax:=0
+	$job.freight:=0
+	$job.process:=""
+	$job.glAcc:=""
+	$res:=$job.save()
+	$invoice:=ds:C1482.JobInvoice.new()
+	$invoice.UUID_Job:=$job.UUID
+	$invoice.invoiceNumber:=$number
+	$invoice.total:=$total
+	$invoice.invoiceDate:=Current date:C33
+	$res:=$invoice.save()
+
+	// a new payment of $amount from $customer, today, into Undeposited funds (not saved)
+Function _paymentTestNew($customer : cs:C1710.CustomerEntity; $amount : Real)->$payment : cs:C1710.CustomerPaymentEntity
+	$payment:=ds:C1482.CustomerPayment.new()
+	$payment.loadAfterCreation()
+	$payment.UUID_Customer:=$customer.UUID
+	$payment.amount:=$amount
+
+	// checks then writes the payment, as the panel does; a problem is added to $problems
+Function _paymentTestWrite($payment : cs:C1710.CustomerPaymentEntity; $rows : Collection; $problems : Collection)->$res : Object
+	var $check : Object
+	$check:=cs:C1710.ga_receivables.me.checkPayment($payment; $rows)
+	If (Not:C34($check.success))
+		$problems.push("payment of "+String:C10($payment.amount)+" refused: "+$check.errors.join(" "))
+		$res:=$check
+		return
+	End if
+	$res:=cs:C1710.ga_receivables.me.writePayment($payment; $rows)
+	If (Not:C34($res.success))
+		$problems.push("payment of "+String:C10($payment.amount)+" not written: "+$res.errors.join(" "))
+	End if
 
 
 	// ---------------------------------------------------------------------------------

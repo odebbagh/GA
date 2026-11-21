@@ -40,6 +40,8 @@
 // - purchase orders -> jobs (receiver) -> PO lines -> lots -> lot steps.
 // - buy orders after Staff, Division, carriers, units, suppliers / AML and jobs.
 //   GL accounts after buy orders (they back-link the lines).
+// - accounting after customers, jobs, suppliers and the chart of accounts: the open
+//   invoices find their customer and job, the assets their supplier (_import_accounting).
 // - _fix_sequences last: the imports write numbers without moving the counters.
 //
 // DELIBERATELY NOT RUN
@@ -111,7 +113,7 @@ $steps.push({method: "_import_lotSteps"; needs: ["project:lotsteps_export.json"]
 
 //---6. buying
 $steps.push({method: "_import_buyOrders"; needs: ["project:buyOrders_export.json"]})
-$steps.push({method: "_import_glAccounts"; needs: ["project:glAccounts_export.json"]})
+$steps.push({method: "_import_glAccounts"; needs: ["project:glAccounts_export.json"]; args: {unattended: True}})
 $steps.push({method: "_import_boApprovers"; needs: ["project:boApprovers_export.json"]})
 
 //---7. inventory
@@ -133,7 +135,19 @@ $steps.push({method: "_import_lotTraveller"; needs: ["project:dfd_lotTraveller.j
 $steps.push({method: "_ga_installHoldFormModels"; needs: []})
 $steps.push({method: "_ga_installBuyOrderModel"; needs: []})
 
-//---10. counters past the imported numbers
+//---10. accounting (the steps of _import_accounting after the chart of accounts, unattended:
+//        their messages go to Project/imports/import_messages.txt). The files come from legacy
+//        _export_accounting; the last step compares the result with its control totals.
+$steps.push({method: "_import_paymentTerms"; needs: []; args: {unattended: True}})
+$steps.push({method: "_import_customerAR"; needs: ["project:customerAR_export.json"]; args: {unattended: True}})
+$steps.push({method: "_import_bankAccounts"; needs: ["project:bankAccounts_export.json"]; args: {unattended: True}})
+$steps.push({method: "_import_openingBalances"; needs: ["project:openingBalances_export.json"]; args: {unattended: True}})
+$steps.push({method: "_import_openReceivables"; needs: ["project:openingBalances_export.json"]; args: {unattended: True}})
+$steps.push({method: "_import_customerCredits"; needs: ["project:customerCredits_export.json"]; args: {unattended: True}})
+$steps.push({method: "_import_assets"; needs: ["project:assets_export.json"]; args: {unattended: True}})
+$steps.push({method: "_import_accountingCheck"; needs: ["project:accounting_export_manifest.json"]; args: {unattended: True}})
+
+//---11. counters past the imported numbers
 $steps.push({method: "_fix_sequences"; needs: []})
 
 _import_runSteps("_import_all"; $steps; $from; "import_all.txt")

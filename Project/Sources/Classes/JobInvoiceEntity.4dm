@@ -70,7 +70,14 @@ local Function get nameInWindowTitle()->$nameInWindowTitle : Text
 	$nameInWindowTitle:=String:C10(This:C1470.invoiceNumber)
 	
 Function get type()->$type : Text
-	$type:=This:C1470.job.lineItem=True:C214 ? "Not Related Job Order" : "Job Lot Related"
+	Case of
+		: (This:C1470.job=Null:C1517)
+			$type:="Legacy invoice (job archived in legacy)"
+		: (This:C1470.job.lineItem=True:C214)
+			$type:="Not Related Job Order"
+		Else
+			$type:="Job Lot Related"
+	End case
 	
 local Function afterCreation()
 	This:C1470._initDataOnCreation()
@@ -86,7 +93,70 @@ local Function itemLoad()
 	
 local Function isDeletable()->$isDeletable : Boolean
 	// This callback must return false to inactivate the deletion mode for the current item.
-	$isDeletable:=True:C214
+	// Only a draft can be deleted: a posted invoice is voided (ga_invoicePosting), its number stays.
+	$isDeletable:=(This:C1470.stateText="Draft")
+
+
+	//mark:-Accounting (ga_invoicePosting)
+
+	// Draft, Posted, Posted in legacy, Void
+local Function get stateText()->$text : Text
+	$text:=cs:C1710.ga_invoicePosting.me.stateText(This:C1470)
+
+local Function get termText()->$text : Text
+	$text:=(This:C1470.paymentTerm=Null:C1517) ? "" : This:C1470.paymentTerm.label
+
+	// "11/15/2026 by Omar" once posted here; "in legacy" for the older ones
+local Function get postedText()->$text : Text
+	Case of
+		: (This:C1470.postedStmp#0)
+			$text:=String:C10(cs:C1710.sfw_stmp.me.getDate(This:C1470.postedStmp))+((This:C1470.postedBy=Null:C1517) ? "" : " by "+This:C1470.postedBy.fullName)
+		: (cs:C1710.ga_invoicePosting.me.isLegacyPosted(This:C1470))
+			$text:="in legacy"
+	End case
+
+local Function get dueDate()->$date : Date
+	$date:=(This:C1470.dueStmp=0) ? !00-00-00! : cs:C1710.sfw_stmp.me.getDate(This:C1470.dueStmp)
+
+	// what the panel can still change: a draft, or a posted invoice whose month is open. Legacy
+	// posted invoices (their amount is in the opening balance) and void ones are read-only.
+local Function get isEditable()->$editable : Boolean
+	Case of
+		: (This:C1470.status="Void")
+		: (cs:C1710.ga_invoicePosting.me.isLegacyPosted(This:C1470))
+		: (cs:C1710.ga_invoicePosting.me.isPosted(This:C1470))
+			$editable:=cs:C1710.ga_ledger.me.isOpen(cs:C1710.ga_invoicePosting.me.accountingDate(This:C1470))
+		Else
+			$editable:=True:C214
+	End case
+
+local Function get canPost()->$can : Boolean
+	$can:=(This:C1470.stateText="Draft")
+
+local Function get canUnpost()->$can : Boolean
+	$can:=cs:C1710.ga_invoicePosting.me.isPosted(This:C1470) && This:C1470.isEditable
+
+	// what is still to be paid (ga_receivables): 0 for a draft or a void invoice
+local Function get balanceDue()->$amount : Real
+	$amount:=cs:C1710.ga_receivables.me.openBalance(This:C1470; "")
+
+	// a payment can be applied: in the books (here or open from legacy) with a balance due
+local Function get canReceivePayment()->$can : Boolean
+	$can:=(This:C1470.status="Posted") && Not:C34(cs:C1710.sfw_string.me.isAnEmptyUUID(This:C1470.UUID_Customer)) && (This:C1470.balanceDue>0)
+
+local Function get canVoid()->$can : Boolean
+	$can:=(This:C1470.stateText="Draft") || This:C1470.canUnpost
+
+	// a posted invoice edited in the panel: its entry and the PO follow (inside the panel's
+	// transaction, so Cancel puts everything back)
+local Function afterSave()
+	var $result : Object
+	If (Bool:C1537(Form:C1466.info.success)) && cs:C1710.ga_invoicePosting.me.isPosted(This:C1470)
+		$result:=cs:C1710.ga_invoicePosting.me.repost(This:C1470)
+		If (Not:C34($result.success))
+			cs:C1710.sfw_dialog.me.alert("The invoice is saved but its accounting entry was not updated:\r"+$result.errors.join("\r")+"\r\rCancel your changes, or fix the problem and save again.")
+		End if
+	End if
 	
 	
 	//mark:-Sub functions

@@ -6,19 +6,17 @@ Function _activate_save_cancel_button()
 	
 Function formMethod()
 	//This function manages the main logic for updating and refreshing the form
-	Form:C1466.sfw.panelFormMethod()  //The main body of the form method and basic sfw functionalities 
+	// Read-only when it can no longer change (ga_invoicePosting): void, posted in legacy, or
+	// posted in a closed month. Set before panelFormMethod so sfw sees it.
+	Form:C1466.notEditable:=(Form:C1466.current_item#Null:C1517) && (String:C10(Form:C1466.situation.mode)#"add") && (String:C10(Form:C1466.situation.mode)#"duplicate") && Not:C34(Form:C1466.current_item.isEditable)
+	Form:C1466.sfw.panelFormMethod()  //The main body of the form method and basic sfw functionalities
 	If (Form:C1466.sfw.updateOfPanelNeeded())
 		
 		If (Form:C1466.situation.mode#"add")
 			This:C1470.loadAllTabs()
 		End if 
 		
-		If (Form:C1466.current_item.job.lineItem=False:C215)
-			This:C1470.salesTaxUpdate()
-			This:C1470.chargesCalculation()
-		Else 
-			This:C1470.pgmTotal()
-		End if 
+		This:C1470._recalculate()
 		
 	End if 
 	
@@ -26,12 +24,7 @@ Function formMethod()
 		Case of 
 			: (FORM Get current page:C276(*)=1)
 				
-				If (Form:C1466.current_item.job.lineItem=False:C215)
-					This:C1470.salesTaxUpdate()
-					This:C1470.chargesCalculation()
-				Else 
-					This:C1470.pgmTotal()
-				End if 
+				This:C1470._recalculate()
 				
 				
 			: (FORM Get current page:C276(*)=2)
@@ -41,12 +34,30 @@ Function formMethod()
 				
 			: (FORM Get current page:C276(*)=4)
 				This:C1470.loadJobLineItems()
-				This:C1470.pgmTotal()
+				This:C1470._recalculate()
 				
 		End case 
 	End if 
 	If (Form:C1466.sfw.redrawAndSetVisibleInPanelNeeded())  //It's time to resize the object or set visible
 		This:C1470.redrawAndSetVisible()
+	End if 
+	
+	
+	// The total from the job's charges (legacy Subr_Total / upd_itemstax), only for an invoice that
+	// can still change and has a job: a legacy invoice (posted in legacy, or imported without its
+	// archived job) keeps the total legacy billed, and a void one keeps its last total.
+Function _recalculate()
+	If (Form:C1466.current_item=Null:C1517) || (Form:C1466.current_item.job=Null:C1517)
+		return 
+	End if 
+	If (Not:C34(Form:C1466.current_item.isEditable))
+		return 
+	End if 
+	If (Form:C1466.current_item.job.lineItem=False:C215)
+		This:C1470.salesTaxUpdate()
+		This:C1470.chargesCalculation()
+	Else 
+		This:C1470.pgmTotal()
 	End if 
 	
 	
@@ -69,8 +80,8 @@ Function redrawAndSetVisible()
 	OBJECT SET VISIBLE:C603(*; "label_travBasedCharges"; False:C215)  // Form.current_item.job.lineItem=False)
 	OBJECT SET VISIBLE:C603(*; "entryField_orderItemsCharges"; False:C215)  //Form.current_item.job.lineItem=True)
 	OBJECT SET VISIBLE:C603(*; "label_orderItemsCharge"; False:C215)  //Form.current_item.job.lineItem=True)
-	OBJECT SET VISIBLE:C603(*; "entryField_jobTotalPoBasedCharges"; Form:C1466.current_item.job.lineItem=False:C215)
-	OBJECT SET VISIBLE:C603(*; "label_poBasedCharges"; Form:C1466.current_item.job.lineItem=False:C215)
+	OBJECT SET VISIBLE:C603(*; "entryField_jobTotalPoBasedCharges"; (Form:C1466.current_item.job#Null:C1517) && (Form:C1466.current_item.job.lineItem=False:C215))
+	OBJECT SET VISIBLE:C603(*; "label_poBasedCharges"; (Form:C1466.current_item.job#Null:C1517) && (Form:C1466.current_item.job.lineItem=False:C215))
 	
 	OBJECT SET ENTERABLE:C238(*; "entryField_type"; False:C215)
 	OBJECT SET ENTERABLE:C238(*; "entryField_job@"; False:C215)
@@ -165,42 +176,79 @@ Function btnOpenCustomer()
 	
 	///*
 Function drawPup_status()
+	// the accounting state (ga_invoicePosting), with a coloured dot; the old manual "paid" status
+	// is replaced by Draft / Posted / Posted in legacy / Void
+	var $state; $color : Text
 	If (Form:C1466.current_item#Null:C1517)
-		$job:=Form:C1466.current_item
-		
-		$invoiceStatus:=Form:C1466.current_item.status
-		
-		$color:=""
-		$pathIcon:=($color#"") ? "sfw/colors/"+$color+"-circle.png" : "sfw/image/skin/rainbow/icon/spacer-1x24.png"
-		Form:C1466.sfw.drawButtonPup("pup_status"; $invoiceStatus; $pathIcon; ($job=Null:C1517))
-	End if 
-	
-	
-Function pup_status()
-	//Create pop up menu
-	If (Form:C1466.sfw.checkIsInModification())
-		$menu:=Create menu:C408
-		$invoiceStatus:=New collection:C1472(New object:C1471("name"; "paid"))  //; New object("name"; "closed"))  
-		For each ($eType; $invoiceStatus)
-			APPEND MENU ITEM:C411($menu; $eType.name; *)
-			SET MENU ITEM PARAMETER:C1004($menu; -1; $eType.name)
-			If ($eType.name=Form:C1466.current_item.staus)
-				SET MENU ITEM MARK:C208($menu; -1; Char:C90(18))
-				If (Is Windows:C1573)
-					SET MENU ITEM STYLE:C425($menu; -1; Bold:K14:2)
-				End if 
-			End if 
-		End for each 
-		$choose:=Dynamic pop up menu:C1006($menu)
-		RELEASE MENU:C978($menu)
-		
+		$state:=Form:C1466.current_item.stateText
 		Case of 
-			: ($choose#"")
-				Form:C1466.current_item.status:=$choose
-				This:C1470._activate_save_cancel_button()
+			: ($state="Posted")
+				$color:="Green"
+				Form:C1466.invoiceStateHelp:="In the books: the customer owes it. Edit it while its month is open (Save corrects the entry), or use Unpost / Void."
+			: ($state="Paid")
+				$color:="Blue"
+				Form:C1466.invoiceStateHelp:="Paid: payments (Receive payment) cover the whole amount. A legacy invoice paid before the start date also shows Paid."
+			: ($state="Partially paid")
+				$color:="Orange"
+				Form:C1466.invoiceStateHelp:="Partially paid: the customer still owes the balance due. Status > Receive payment... records the next payment."
+			: ($state="Posted in legacy")
+				$color:="SteelBlue"
+				Form:C1466.invoiceStateHelp:="Posted in the old application: its amount is in the opening balance. Read-only here."
+			: ($state="Void")
+				$color:="Red"
+				Form:C1466.invoiceStateHelp:="Cancelled: not in the books any more. Kept with its number."
+			Else 
+				$color:="Gray"
+				Form:C1466.invoiceStateHelp:="Draft: not in the books yet. Check the charges, then Post the invoice (job shipped, PO with money left)."
 		End case 
-		
+		Form:C1466.sfw.drawButtonPup("pup_status"; $state; "sfw/colors/"+$color+"-circle.png"; False:C215)
+		Form:C1466.invoiceAmountPaid:=cs:C1710.ga_receivables.me.amountPaid(Form:C1466.current_item)
+		Form:C1466.invoiceBalanceDue:=Form:C1466.current_item.balanceDue
 	End if 
+	
+	// the actions of the state, as in the item actions (outside Modify only)
+Function pup_status()
+	var $menu; $choice : Text
+	var $inModification : Boolean
+	If (Form:C1466.current_item=Null:C1517)
+		return 
+	End if 
+	$inModification:=Form:C1466.sfw.checkIsInModification() && (String:C10(Form:C1466.situation.mode)#"view")
+	$menu:=Create menu:C408
+	APPEND MENU ITEM:C411($menu; "Post the invoice..."; *)
+	SET MENU ITEM PARAMETER:C1004($menu; -1; "post")
+	If (Not:C34(Form:C1466.current_item.canPost)) || $inModification
+		DISABLE MENU ITEM:C150($menu; -1)
+	End if 
+	APPEND MENU ITEM:C411($menu; "Unpost (back to draft)..."; *)
+	SET MENU ITEM PARAMETER:C1004($menu; -1; "unpost")
+	If (Not:C34(Form:C1466.current_item.canUnpost)) || $inModification
+		DISABLE MENU ITEM:C150($menu; -1)
+	End if 
+	APPEND MENU ITEM:C411($menu; "Void the invoice..."; *)
+	SET MENU ITEM PARAMETER:C1004($menu; -1; "void")
+	If (Not:C34(Form:C1466.current_item.canVoid)) || $inModification
+		DISABLE MENU ITEM:C150($menu; -1)
+	End if 
+	APPEND MENU ITEM:C411($menu; "-")
+	APPEND MENU ITEM:C411($menu; "Receive payment..."; *)
+	SET MENU ITEM PARAMETER:C1004($menu; -1; "receivePayment")
+	If (Not:C34(Form:C1466.current_item.canReceivePayment)) || $inModification
+		DISABLE MENU ITEM:C150($menu; -1)
+	End if 
+	If ($inModification)
+		APPEND MENU ITEM:C411($menu; "-")
+		APPEND MENU ITEM:C411($menu; "(save or cancel the changes first)"; *)
+		DISABLE MENU ITEM:C150($menu; -1)
+	End if 
+	$choice:=Dynamic pop up menu:C1006($menu)
+	RELEASE MENU:C978($menu)
+	Case of 
+		: ($choice="receivePayment")
+			JobInvoice_receivePayment
+		: ($choice#"")
+			JobInvoice_action($choice)
+	End case 
 	This:C1470.drawPup_status()
 	
 	//*/
@@ -545,36 +593,36 @@ Function IsPOShort()
 	
 	
 Function UpdateItemTax()  // --> upd_itemstax
+	// The tax of a line-item invoice: the taxable lines at the job's rate, plus the misc charge
+	// when the job is taxable. Computed from 0 each time (it used to add to the previous total on
+	// every recalculation, and the misc tax once per line), so the figure posted to the books
+	// (ga_invoicePosting) is right.
+	var $taxRate; $tax : Real
 	
+	If (Form:C1466.current_item.job=Null:C1517)
+		return 
+	End if 
+	$taxRate:=Form:C1466.current_item.job.salesTax#Null:C1517 ? Form:C1466.current_item.job.salesTax.rate : 0
+	$tax:=0
 	For each ($joblineItem; Form:C1466.lb_jobLineItems)
-		If (Form:C1466.current_item.job#Null:C1517)
-			$taxRate:=Form:C1466.current_item.job.salesTax#Null:C1517 ? Form:C1466.current_item.job.salesTax.rate : 0
-			//If() --> Check if time_billing invoice
-			Form:C1466.current_item.job.totalTax:=Form:C1466.current_item.job.totalTax+(($joblineItem.quantity*$joblineItem.unitPrice)*($taxRate/100)*Num:C11($joblineItem.taxable))
-			$joblineItem.lineTotal:=($joblineItem.quantity*$joblineItem.unitPrice)+(($joblineItem.quantity*$joblineItem.unitPrice)*($taxRate/100)*Num:C11($joblineItem.taxable))
-			
-			////Else
-			//Form.current_item.job.totalTax:=Form.current_item.job.totalTax+(($joblineItem.quantity*$joblineItem.unitPrice)*($taxRate/100)*Num($joblineItem.taxable))
-			//$joblineItem.lineTotal:=($joblineItem.hourCount*$joblineItem.unitPrice)+(($joblineItem.hourCount*$joblineItem.unitPrice)*($taxRate/100)*Num($joblineItem.taxable))
-			
-			//End if
-			
-			If (Form:C1466.current_item.job.taxable=True:C214)
-				Form:C1466.current_item.job.totalTax:=Form:C1466.current_item.job.totalTax+Form:C1466.current_item.job.miscCharges*($taxRate/100)
-			End if 
-			
-			SUSPEND TRANSACTION:C1385
-			$job:=ds:C1482.Job.query("UUID =:1"; Form:C1466.current_item.job.UUID).first()
-			$job:=Form:C1466.current_item.job
-			$info:=$job.save()
-			If (Not:C34($info.success))
-				TRACE:C157
-			End if 
-			
-			RESUME TRANSACTION:C1386
-			
-		End if 
+		//If() --> Check if time_billing invoice (hourCount instead of quantity)
+		$tax:=$tax+(($joblineItem.quantity*$joblineItem.unitPrice)*($taxRate/100)*Num:C11($joblineItem.taxable))
+		$joblineItem.lineTotal:=($joblineItem.quantity*$joblineItem.unitPrice)+(($joblineItem.quantity*$joblineItem.unitPrice)*($taxRate/100)*Num:C11($joblineItem.taxable))
 	End for each 
+	If (Form:C1466.current_item.job.taxable=True:C214)
+		$tax:=$tax+(Form:C1466.current_item.job.miscCharges*($taxRate/100))
+	End if 
+	
+	If (Round:C94($tax; 2)#Round:C94(Form:C1466.current_item.job.totalTax; 2))
+		Form:C1466.current_item.job.totalTax:=$tax
+		SUSPEND TRANSACTION:C1385
+		$job:=Form:C1466.current_item.job
+		$info:=$job.save()
+		If (Not:C34($info.success))
+			TRACE:C157
+		End if 
+		RESUME TRANSACTION:C1386
+	End if 
 	
 	
 Function pgmTotal()

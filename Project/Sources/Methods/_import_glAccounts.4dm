@@ -9,13 +9,21 @@
 //   defaultAsset      the line is a fixed/other asset
 //   allowsConsumable  the buyer may tick Consumable
 //
-// Runs delete-then-recreate, like _import_inventoryUnits. Safe to re-run.
+// Updates the accounts in place, matched on GLAC (creates the missing ones, never deletes):
+// journal lines (JournalLine) and buy lines point to the account UUIDs, so an account must keep
+// its UUID across re-runs. Safe to re-run. An account no longer in the export is left as it is.
+// defaultKey (the role of the account for the documents, ga_ledger.defaultKeys) comes from the
+// legacy [CHART_OF_AC]DefaultKey.
 //
 // After loading the accounts it back-links the buy lines: BuyingOrderLine.glAccount
 // is the legacy GLAC as text, so matching it against GLAccount.glac fills
 // UUID_GLAccount and the "account" relation starts resolving. Both the table and
 // the FK are optional here - the method reports what is missing instead of failing,
 // so it can be installed before the structure changes are made.
+
+// $options (optional): {unattended: True} - no message at the end (_import_accounting,
+// _import_all); the report goes to Project/imports/import_messages.txt (_import_notify).
+#DECLARE($options : Object)
 
 var $projectFolder : 4D:C1709.Folder
 var $importsFolder : 4D:C1709.Folder
@@ -26,6 +34,8 @@ var $accountClass : 4D:C1709.DataClass
 var $account : 4D:C1709.Entity
 var $result : Object
 var $created : Integer
+var $updated : Integer
+var $isNew : Boolean
 var $failed : Integer
 var $linked : Integer
 var $unmatched : Integer
@@ -44,7 +54,7 @@ var $report : Text
 $accountClass:=ds:C1482["GLAccount"]
 
 If ($accountClass=Null:C1517)
-	ALERT:C41("Dataclass GLAccount not found. Create the table first - see Documentation/buyItems_field_migration.md.")
+	_import_notify($options; "Dataclass GLAccount not found. Create the table first - see Documentation/buyItems_field_migration.md.")
 	return
 End if
 
@@ -64,15 +74,14 @@ $importsFolder:=$projectFolder.folder("project/imports")
 $file:=$importsFolder.file("glAccounts_export.json")
 
 If (Not:C34($file.exists))
-	ALERT:C41("Import file not found: "+$file.platformPath)
+	_import_notify($options; "Import file not found: "+$file.platformPath)
 	return
 End if
 
 $records:=JSON Parse:C1218($file.getText())
 
-$accountClass.all().drop()
-
 $created:=0
+$updated:=0
 $failed:=0
 $byGlac:=New object:C1471()
 
@@ -84,8 +93,16 @@ For each ($record; $records)
 		continue
 	End if
 
-	$account:=$accountClass.new()
+	$account:=$accountClass.query("glac = :1"; $glac).first()
+	If ($account=Null:C1517)
+		$account:=$accountClass.new()
+		$isNew:=True:C214
+	Else
+		$isNew:=False:C215
+	End if
 	$account.glac:=$glac
+	$account.defaultKey:=String:C10($record.defaultKey)
+	$account.UUID_Division:="0"*32  // "all divisions" until the name resolves below
 	$account.description:=String:C10($record.description)
 	$account.accountType:=String:C10($record.accountType)
 	$account.accountTypeCode:=Num:C11($record.accountTypeCode)
@@ -132,7 +149,11 @@ For each ($record; $records)
 
 	$result:=$account.save()
 	If ($result.success)
-		$created:=$created+1
+		If ($isNew)
+			$created:=$created+1
+		Else
+			$updated:=$updated+1
+		End if
 		$byGlac[$glac]:=$account.UUID
 	Else
 		$failed:=$failed+1
@@ -140,73 +161,13 @@ For each ($record; $records)
 
 End for each
 
-$report:="GL accounts - created: "+String:C10($created)+" | failed: "+String:C10($failed)
+$report:="GL accounts - created: "+String:C10($created)+" | updated: "+String:C10($updated)+" | failed: "+String:C10($failed)
+$report:=$report+"\rWith a role (defaultKey): "+String:C10($accountClass.query("defaultKey # :1"; "").length)
 $report:=$report+"\rDivision linked: "+String:C10($divisionLinked)+" | division name not found: "+String:C10($divisionUnmatched)
 
-//---back-link the buy lines, when the FK exists
-If (ds:C1482.BuyingOrderLine["UUID_GLAccount"]=Null:C1517)
-	$report:=$report+"\r\rBuyingOrderLine.UUID_GLAccount does not exist yet, so no buy line was linked. Add the field and the \"account\" relation, then re-run."
-Else
-	$linked:=0
-	$unmatched:=0
-	$lines:=ds:C1482.BuyingOrderLine.all()
+//---back-link the buy lines and the buy orders, ON THE SERVER (_import_glAccountsLinkSrv):
+//   12,000 records no longer travel to a 4D Remote client and back, and a record the client
+//   cannot load (an impossible number, see _diag_badNumbers) no longer stops the import.
+$report:=$report+_import_glAccountsLinkSrv($byGlac)
 
-	For each ($line; $lines)
-		$glac:=String:C10($line.glAccount)
-		If ($glac="")
-			continue
-		End if
-		If ($byGlac[$glac]=Null:C1517)
-			$unmatched:=$unmatched+1
-			continue
-		End if
-		$line.UUID_GLAccount:=$byGlac[$glac]
-		$result:=$line.save()
-		If ($result.success)
-			$linked:=$linked+1
-		End if
-	End for each
-
-	$report:=$report+"\rBuy lines linked: "+String:C10($linked)+" | GL account not found: "+String:C10($unmatched)
-End if
-
-//---and the buy ORDERS. [BUY_ORDERS]GLAC is the order-level account the buyer picks; it
-//   defaults onto every line and is what a blanket order's auto-appended lines inherit.
-//
-//   _import_buyOrders keeps the legacy value in moreData.glac - the text, verbatim.
-//   accountNumber holds the same thing as a NUMBER, which is lossy for a sub-account
-//   like "5110.1", so the text is the one matched on here.
-If (ds:C1482.BuyingOrder["UUID_GLAccount"]=Null:C1517)
-	$report:=$report+"\r\rBuyingOrder.UUID_GLAccount does not exist yet, so no buy order was linked. Add the field and the \"account\" relation, then re-run."
-Else
-	$linked:=0
-	$unmatched:=0
-	$noValue:=0
-
-	For each ($order; ds:C1482.BuyingOrder.all())
-		$glac:=""
-		If ($order.moreData#Null:C1517)
-			$glac:=String:C10($order.moreData.glac)
-		End if
-
-		If ($glac="")
-			$noValue:=$noValue+1
-			continue
-		End if
-
-		If ($byGlac[$glac]=Null:C1517)
-			$unmatched:=$unmatched+1
-			continue
-		End if
-
-		$order.UUID_GLAccount:=$byGlac[$glac]
-		$result:=$order.save()
-		If ($result.success)
-			$linked:=$linked+1
-		End if
-	End for each
-
-	$report:=$report+"\rBuy orders linked: "+String:C10($linked)+" | GL account not found: "+String:C10($unmatched)+" | no GL account on the order: "+String:C10($noValue)
-End if
-
-ALERT:C41($report)
+_import_notify($options; $report)
